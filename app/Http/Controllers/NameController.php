@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Numerology\NumerologyFactory;
-use Illuminate\Http\Request;
+use App\Services\Tools\FancyTextGenerator;
 
 class NameController extends Controller
 {
@@ -17,13 +17,19 @@ class NameController extends Controller
         $numerology = NumerologyFactory::create('pythagorean');
         $numerology = $numerology->getNumerologyNumbers($name);
 
-        $data = [];
+        $fancyText = new FancyTextGenerator($name);
+        $fancyTexts = $fancyText->generate();
 
-        // dd($numerology);
+        $name = [
+            'name' => 'Ali'
+        ];
+
+        $data['name'] = [];
+
 
         $data['name'] = $name;
-        $data['numerology']['zodiacSign'] = "signnn";
-
+        $data['name']['numerology'] = $numerology;
+        $data['name']['fancyTexts'] = $fancyTexts;
 
         return view('names.view', compact('data'));
     }

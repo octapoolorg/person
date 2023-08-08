@@ -14,9 +14,9 @@
 <body>
 
     <header class="bg-white shadow-sm">
-        <nav id="top-nav" class="navbar navbar-expand-xl bg-primary navbar-dark">
+        <nav id="top-nav" class="navbar navbar-expand-xl topnav-menu">
             <div class="container">
-                <a href="/" class="text-white text-uppercase">
+                <a href="/" class="navbar-brand">
                     <span class="fs-5">DivineSays</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -25,19 +25,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mx-auto">
+                    <div class="navbar-nav ms-auto">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                         <a class="nav-link" href="#">Names</a>
                         <a class="nav-link" href="#">Blog</a>
-                    </div>
-                    <div class="navbar-nav">
-                        <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-                            <label class="input-group">
-                                <input type="search" class="form-control" placeholder="Search name..."
-                                    aria-label="Search">
-                                <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
-                            </label>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -52,14 +43,14 @@
                 <h1>Details about Ali name</h1>
 
                 <div class="card mt-md-5">
-                    <div class="card-header">
-                        <h3>Meaning of Ali</h3>
-                    </div>
                     <div class="card-body">
-                        <p class="lead">
-                            <b>Lorem ipsum dolor sit amet.</b>
-                        </p>
                         <ul class="list-group" role="list">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Meaning</div>
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">Gender</div>
@@ -80,27 +71,56 @@
                 <section class="mt-md-5">
                     <h2 class="">Ali Name Numerology</h2>
                     <p class="lead">
-                        Ali is [gender] name of [origin] origin. It is mostly used by
-                        people with [religion] religion. Meaning of Ali is [meaning, meaning two]. It
-                        contains [m Letters and n Words]. <a href="#">Persoanlity of Ali</a> , <a
-                            href="#">Soul of Ali</a>
+                        Assigning a specific color to each number can help users quickly identify and resonate with
+                        their numerology number. Here's a potential color association, though the choices are subjective
+                        and can be adjusted: <a href="#">Persoanlity of Ali</a> , <a href="#">Soul of
+                            Ali</a>
                     </p>
 
-                    <section class="my-5">
-                        <div class="d-flex align-items-center my-2">
-                            <div class="flex-grow-1 ms-3">
+                    <section class="p-3 p-md-5 border">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                            <div class="flex-grow-1 ms-md-3 me-md-4">
                                 <h3>Zodiac Sign</h3>
+                                <p>
+                                    A crown is a symbol of leadership, authority, and distinction. It's a clear
+                                    representation of someone who stands out and takes charge.
+                                </p>
                             </div>
                             <div class="flex-shrink-0">
-                                <img src="https://via.placeholder.com/100x100" alt="...">
+                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    ♈
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center my-2">
-                            <div class="flex-grow-1 ms-3">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                            <div class="flex-grow-1 ms-md-3 me-md-4">
                                 <h3>Auspicious Color</h3>
+                                <p>This color is often associated with energy, strength, power, determination, and
+                                    passion. It signifies leadership and assertiveness, making it a great choice for
+                                    number 1.
+                                </p>
                             </div>
                             <div class="flex-shrink-0">
-                                <img src="https://via.placeholder.com/100x100" alt="...">
+                                <div class="flex-shrink-0">
+                                    <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
+                                        style="width:100px;height:100px;font-size:3rem">
+                                        <div class="square pulse red"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                            <div class="flex-grow-1 ms-md-3 me-md-4">
+                                <h3>Symbol or Icon</h3>
+                                <p>A crown is a symbol of leadership, authority, and distinction. It's a clear
+                                    representation of someone who stands out and takes charge.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    👑
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -199,19 +219,20 @@
                 </table>
 
                 <h2 class="">Ali name wallpaper</h2>
-                {{-- <img src="{!! route('name.image', ['name' => strtolower($data['name'])]) !!}" class="img-thumbnail my-3" style="width: 1280px" width="1280" --}}
-                {{-- height="720" alt="Ali"> --}}
+                <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-thumbnail my-3" 
+                    style="width: 1280px" width="1280"
+                    height="720" alt="Ali">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis consequatur totam
                     earum numquam cumque quas. Fugit, quasi minima.</p>
                 <h2 class="">Ali - Fancy Text Styles</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
                 <table class="table table-striped table-bordered table-hover">
                     <tbody>
-                        {{-- @foreach ($data['fancyTexts'] as $fancyText)
+                        @foreach ($data['name']['fancyTexts'] as $fancyText)
                             <tr>
                                 <th scope="row">{{ $fancyText }}</th>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -381,112 +402,45 @@
             <aside class="col-lg-4">
 
                 <div class="card">
-                    <h5 class="card-header">Get name ideas</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">Generate rnadom name</h5>
+                    <div class="card-body py-4">
+                        <h5 class="card-title">Generate random name</h5>
                         <p class="card-text">Click to generate a list of random names to make a better choice.</p>
                         <a href="#" class="btn btn-primary text-uppercase"><i
                                 class="bi bi-shuffle me-2"></i>Randomize</a>
                     </div>
                 </div>
 
-                {{-- <div class="card my-3">
-                    <h5 class="card-header">Follow us on Social</h5>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            <a href=""><img
-                                    src="https://img.icons8.com/color/48/000000/facebook-new.png" /></a>
-                            <a href=""><img
-                                    src="https://img.icons8.com/color/48/000000/pinterest--v1.png" /></a>
-                            <a href=""><img
-                                    src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" /></a>
-                            <a href=""><img src="https://img.icons8.com/color/48/000000/twitter--v1.png" /></a>
-                        </div>
-                    </div>
-                </div> --}}
-
                 <div class="card my-3">
-                    <h5 class="card-header">Popular Boy Names</h5>
+                    <h5 class="ps-3 pt-4">Follow us on Social</h5>
                     <div class="card-body">
-                        <div class="d-flex flex-row flex-wrap gap-2">
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
+                        <div class="d-flex">
+                            <a href="">
+                                <img src="https://img.icons8.com/color/48/000000/facebook-new.png" />
                             </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
+                            <a href="">
+                                <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" />
                             </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
+                            <a>
+                                <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" />
                             </a>
 
                         </div>
-                        <a href="" class="btn btn-info d-block my-2">More Boy Names</a>
                     </div>
                 </div>
 
                 <div class="card my-3">
-                    <h5 class="card-header">Popular Girl Names</h5>
+                    <h5 class="ps-3 pt-4">Popular Baby Names</h5>
                     <div class="card-body">
                         <div class="d-flex flex-row flex-wrap gap-2">
                             <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
+                                <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
+                                <span class="text-center ms-3">Boy Names</span>
                             </a>
                             <a href="" class="name-label">
                                 <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
+                                <span class="text-center ms-3">Girl Names</span>
                             </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-                            <a href="" class="name-label">
-                                <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                                <span class="text-center ms-3">Baby Name</span>
-                            </a>
-
-
                         </div>
-                        <a href="" class="btn btn-danger d-block my-2">More Girl Names</a>
                     </div>
                 </div>
             </aside>
