@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [NameController::class, 'view'])->name('view');
+Route::get('/{name}', [NameController::class, 'view'])->name('view');

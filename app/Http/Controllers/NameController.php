@@ -12,11 +12,19 @@ class NameController extends Controller
         return view('welcome');
     }
 
-    public function view(Request $request)
+    public function view($name)
     {
-        $name = $request->input('name');
         $numerology = NumerologyFactory::create('pythagorean');
-        $numbers = $numerology->getNumerologyNumbers($name);
-        dd($numbers);
+        $numerology = $numerology->getNumerologyNumbers($name);
+
+        $data = [];
+
+        // dd($numerology);
+
+        $data['name'] = $name;
+        $data['numerology']['zodiacSign'] = "signnn";
+
+
+        return view('names.view', compact('data'));
     }
 }

@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$boyColor : #1c73bb;
+$girlColor: #ac3992;
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-boy {
+    background-color: $boyColor;
+}
+
+.bg-girl {
+    background-color: $girlColor;
+}
+
+.name-label {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: $white;
+    color: $black;
+    box-shadow: 0 1px 4px $gray-300;
+    text-decoration: none;
+    padding: 0;
+    width: 48%;
+}
+
+.gender-label {
+    border-radius: 0 50% 50% 0;
+}
+
+td {
+    font-size: 1.25rem;
+}
+
+// Base class
+.callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+}
+
+// Modifier classes
+.callout-primary {
+    border-left-color: $primary !important;
+}
+
+.callout-info {
+    border-left-color: $info !important;
+}
+
+.callout-success {
+    border-left-color: $success !important;
+}
+
+.callout-warning {
+    border-left-color: $warning !important;
+}
+
+.callout-danger {
+    border-left-color: $danger !important;
+}
+
+
+/* Questions */
+
+.questions .item .question {
+    background: #F7F7F7;
+    border-color: #008845;
+}
+
+.questions .item:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.questions .item .question span:first-child {
+    color: #008845;
+}
+
+.questions .item>div {
+    padding: .75rem;
+    font-weight: 300;
+    font-size: 1rem;
+    border-left: 3px solid #fff;
+}
+
+.questions .item .answer {
+    border-color: #CECECE;
+}
+
+.questions .item .answer span:first-child {
+    color: #CECECE;
+}
+
+.questions .item>div>span:first-child {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 30px;
+    line-height: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    vertical-align: sub;
+}
+
+.social .bi::before {
+    font-size: 1.5rem;
+}
+
+/* Social share buttons */
+
+.social-share-btns {
+    display: inline-block;
+    overflow: hidden;
+
+    .share-btn {
+        float: left;
+        margin: 0 5px;
+        padding: 8px 16px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 18px;
+        vertical-align: middle;
+        text-decoration: none;
+        @include transition(background 0.2s ease-in-out);
+
+        i {
+            margin-right: 5px;
+            display: inline-block;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+    }
+}
+
+// Colors
+.share-btn {
+    background-color: #95a5a6;
+
+    &:hover {
+        background-color: darken(#95a5a6, 10%);
+    }
+}
+
+.share-btn-instagram {
+    background-color: #c32aa3;
+
+    &:hover {
+        background-color: darken(#c32aa3, 10%);
+    }
+}
+
+.share-btn-twitter {
+    background-color: #00aced;
+
+    &:hover {
+        background-color: darken(#00aced, 10%);
+    }
+}
+
+.share-btn-facebook {
+    background-color: #3b5998;
+
+    &:hover {
+        background-color: darken(#3b5998, 10%);
+    }
+}
+
+.share-btn-linkedin {
+    background-color: #007bb6;
+
+    &:hover {
+        background-color: darken(#007bb6, 10%);
+    }
+}
+
+.share-btn-reddit {
+    background-color: #ff4500;
+
+    &:hover {
+        background-color: darken(#ff4500, 10%);
+    }
+}
+
+.share-btn-mail {
+    background-color: #7e7e7e;
+
+    &:hover {
+        background-color: darken(#7e7e7e, 5%);
+    }
+}
