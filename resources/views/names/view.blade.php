@@ -50,43 +50,136 @@
         <section class="row mb-5">
             <main class="col-lg-8">
 
-                <h1>Details about Ali name</h1>
 
-                <section class="mb-5">
-                    <div class="details-chart">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Meaning
-                                    </td>
-                                    <td><strong itemprop="applicationCategory">Lorem ipsum dolor sit amet.
 
-                                        </strong>
-                                    </td>
-                                    <td class="hide-for-mobile" rowspan="7">
+                <section>
+                    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                        <div class="container-fluid py-5  text-center">
+                            <h1 class="display-5 fw-bold">Hussain</h1>
+                            <p>means</p>
+                            <p>❀ ❀ ❀ </p>
+                            <h3 class="fs-4">Lorem ipsum dolor sit amet.</3>
+                        </div>
+                        <p class="text-md-end fst-italic">it is a boy name ...</p>
+                    </div>
+                </section>
+
+                <section class="p-3 p-md-4 border mb-5">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                        <div class="flex-grow-1 ms-md-3 me-md-4">
+                            <h3>♈ Zodia Sign
+                                {{-- <span class="ms-md-1 badge bg-boy">Leo</span>     --}}
+                            </h3>
+                            <p>This color is often associated with energy, strength, power, determination, and
+                                passion. It signifies leadership and assertiveness, making it a great choice for
+                                number 1.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
+                                <div class="symbol d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    <figure class="figure">
                                         <img src="https://www.pngall.com/wp-content/uploads/2016/05/Leo-PNG-Image.png"
-                                            style="width:130px">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Gender
-                                    </td>
-                                    <td><strong itemprop="applicationSubCategory">Boy</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Zodiac Sign</td>
-                                    <td><strong itemprop="operatingSystem">Airies</strong>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            class="figure-img img-fluid rounded" alt="...">
+                                        <figcaption class="figure-caption text-center">
+                                            Leo
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                        <div class="flex-grow-1 ms-md-3 me-md-4">
+                            <h3>
+                                💎 Auspicious Stones
+                            </h3>
+                            <p>This color is often associated with energy, strength, power, determination, and
+                                passion. It signifies leadership and assertiveness, making it a great choice for
+                                number 1.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
+                                <div class="symbol d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    <figure class="figure">
+                                        <img src="https://img.icons8.com/color-glass/90/emerald.png"
+                                            class="figure-img img-fluid rounded" alt="...">
+                                        <figcaption class="figure-caption text-center">
+                                            Emerald
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                        <div class="flex-grow-1 ms-md-3 me-md-4">
+                            <h3> Auspicious Metal
+                            </h3>
+                            <p>This color is often associated with energy, strength, power, determination, and
+                                passion. It signifies leadership and assertiveness, making it a great choice for
+                                number 1.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
+                                <div class="symbol d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    <figure class="figure">
+                                        <img src="https://www.pngall.com/wp-content/uploads/2016/05/Leo-PNG-Image.png"
+                                            class="figure-img img-fluid rounded" alt="...">
+                                        <figcaption class="figure-caption text-center">
+                                            Leo
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="p-3 p-md-4 border mb-5">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                        <div class="flex-grow-1 ms-md-3 me-md-4">
+                            <h3>Zodia Sign </h3>
+                            <p>This color is often associated with energy, strength, power, determination, and
+                                passion. It signifies leadership and assertiveness, making it a great choice for
+                                number 1.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
+                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    <img src="" style="width:130px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
+                        <div class="flex-grow-1 ms-md-3 me-md-4">
+                            <h3>Auspicious Color</h3>
+                            <p>This color is often associated with energy, strength, power, determination, and
+                                passion. It signifies leadership and assertiveness, making it a great choice for
+                                number 1.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div class="flex-shrink-0">
+                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
+                                    style="width:100px;height:100px;font-size:3rem">
+                                    <div class="square pulse red"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section class="">
+                    <h1>Details about Ali name</h1>
                     <h2 class="">Ali Name Numerology</h2>
                     <p class="">
                         Assigning a specific color to each number can help users quickly identify and resonate with
@@ -95,7 +188,7 @@
                             Ali</a>
                     </p>
 
-                    <section class="p-3 p-md-4 border mb-3">
+                    {{-- <section class="p-3 p-md-4 border mb-3">
                         <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
                             <div class="flex-grow-1 ms-md-3 me-md-4">
                                 <h3>Auspicious Color</h3>
@@ -126,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> --}}
 
                     <h3>Numerology Number </h3>
                     <p class="callout callout-primary">
@@ -151,15 +244,6 @@
                 {{-- https://mdbootstrap.com/docs/standard/data/tables#section-advanced-example --}}
                 <table class="table table-striped table-bordered">
                     <tbody>
-                        <tr>
-                            <th scope="row" class="text-end">Auspicious Stones</th>
-                            <td class="text-start text-primary">Ruby</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row" class="text-end">Auspicious Metal</th>
-                            <td class="text-start text-primary">Copper, Iron</td>
-                        </tr>
 
                         <tr>
                             <th scope="row" class="text-end">Ruling Hours</th>
@@ -184,11 +268,6 @@
                         <tr>
                             <th scope="row" class="text-end">Vibration</th>
                             <td class="text-start text-primary">Enthusiastic</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row" class="text-end">Ruling Planet</th>
-                            <td class="text-start text-primary">Mars</td>
                         </tr>
 
                         <tr>
@@ -341,63 +420,69 @@
                         </a>
                 </section>
 
-                <div class="my-3">
-                    <h4 class="">User Comments About Ali</h4>
-                    <div class="d-flex my-2">
-                        <div class="flex-shrink-0">
-                            <img src="https://via.placeholder.com/50x50" alt="...">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>Ahmad Ali</h6>
-                            <p>This is some content from a media component. You can replace this with any content and
-                                adjust it as needed.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex my-2">
-                        <div class="flex-shrink-0">
-                            <img src="https://via.placeholder.com/50x50" alt="...">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>Ahmad Ali</h6>
-                            <p>This is some content from a media component. You can replace this with any content and
-                                adjust it as needed.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex my-2">
-                        <div class="flex-shrink-0">
-                            <img src="https://via.placeholder.com/50x50" alt="...">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>Ahmad Ali</h6>
-                            <p>This is some content from a media component. You can replace this with any content and
-                                adjust it as needed.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card my-5">
-                    <div class="card-header">
-                        Add a comment
-                    </div>
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name">
+                <section>
+                    <div class="my-3">
+                        <h4 class="">User Comments About Ali</h4>
+                        <div class="d-flex my-2">
+                            <div class="flex-shrink-0">
+                                <img src="https://via.placeholder.com/50x50" alt="...">
                             </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email">
+                            <div class="flex-grow-1 ms-3">
+                                <h6>Ahmad Ali</h6>
+                                <p>This is some content from a media component. You can replace this with any content
+                                    and
+                                    adjust it as needed.</p>
                             </div>
-                            <div class="col-12">
-                                <label for="comment" class="form-label">Comment</label>
-                                <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                        </div>
+                        <div class="d-flex my-2">
+                            <div class="flex-shrink-0">
+                                <img src="https://via.placeholder.com/50x50" alt="...">
                             </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Submit comment</button>
+                            <div class="flex-grow-1 ms-3">
+                                <h6>Ahmad Ali</h6>
+                                <p>This is some content from a media component. You can replace this with any content
+                                    and
+                                    adjust it as needed.</p>
                             </div>
-                        </form>
+                        </div>
+                        <div class="d-flex my-2">
+                            <div class="flex-shrink-0">
+                                <img src="https://via.placeholder.com/50x50" alt="...">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6>Ahmad Ali</h6>
+                                <p>This is some content from a media component. You can replace this with any content
+                                    and
+                                    adjust it as needed.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="card my-5">
+                        <div class="card-header">
+                            Add a comment
+                        </div>
+                        <div class="card-body">
+                            <form class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="col-12">
+                                    <label for="comment" class="form-label">Comment</label>
+                                    <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Submit comment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
             </main>
             <aside class="col-lg-4">
 
