@@ -17,7 +17,7 @@
         <nav id="top-nav" class="navbar navbar-expand-xl topnav-menu">
             <div class="container">
                 <a href="/" class="navbar-brand">
-                    <span class="fs-5">DivineSays</span>
+                    <span class="fs-5">NameCenter</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -25,6 +25,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                    <div class="nav-bar ms-auto w-25">
+                        <form class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Name"
+                                aria-label="Search Name" aria-describedby="search">
+                            <button class="btn btn-primary" title="Search name" type="button" id="search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                         <a class="nav-link" href="#">Names</a>
@@ -85,24 +95,7 @@
                             Ali</a>
                     </p>
 
-
-
                     <section class="p-3 p-md-4 border mb-3">
-                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                            <div class="flex-grow-1 ms-md-3 me-md-4">
-                                <h3>Zodiac Sign</h3>
-                                <p>
-                                    A crown is a symbol of leadership, authority, and distinction. It's a clear
-                                    representation of someone who stands out and takes charge.
-                                </p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
-                                    style="width:100px;height:100px;font-size:3rem">
-                                    ♈
-                                </div>
-                            </div>
-                        </div>
                         <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
                             <div class="flex-grow-1 ms-md-3 me-md-4">
                                 <h3>Auspicious Color</h3>
@@ -154,8 +147,6 @@
                         excepturi consectetur esse quis earum explicabo veniam ab voluptates, aperiam quae.
                     </p>
                 </section>
-
-
 
                 {{-- https://mdbootstrap.com/docs/standard/data/tables#section-advanced-example --}}
                 <table class="table table-striped table-bordered">
