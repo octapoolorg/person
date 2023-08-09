@@ -1,5 +1,6 @@
 $blue : #0055ff;
 $dark : #32373b;
+$font-size-base : 1.1rem;
 
 $theme-colors: (
     "primary": $blue,
@@ -12,5 +13,11 @@ $navbar-light-hover-color: #0f1012;
 
 $border-color: #dee2e6;
 
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base * 1.12;
+$h6-font-size: $font-size-base;
 //light bg
 // #f8f9fa

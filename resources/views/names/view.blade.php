@@ -42,42 +42,52 @@
 
                 <h1>Details about Ali name</h1>
 
-                <div class="card mt-md-5">
-                    <div class="card-body">
-                        <ul class="list-group" role="list">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Meaning</div>
-                                    <p>Lorem ipsum dolor sit amet.</p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Gender</div>
-                                    Male
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Origin</div>
-                                    Arab
-                                </div>
-                            </li>
-                        </ul>
+                <section class="mb-5">
+                    <div class="details-chart">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Meaning
+                                    </td>
+                                    <td><strong itemprop="applicationCategory">Lorem ipsum dolor sit amet.
+
+                                        </strong>
+                                    </td>
+                                    <td class="hide-for-mobile" rowspan="7">
+                                        <img src="https://www.pngall.com/wp-content/uploads/2016/05/Leo-PNG-Image.png"
+                                            style="width:130px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Gender
+                                    </td>
+                                    <td><strong itemprop="applicationSubCategory">Boy</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Zodiac Sign</td>
+                                    <td><strong itemprop="operatingSystem">Airies</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </section>
 
-                </div>
-
-                <section class="mt-md-5">
+                <section class="">
                     <h2 class="">Ali Name Numerology</h2>
-                    <p class="lead">
+                    <p class="">
                         Assigning a specific color to each number can help users quickly identify and resonate with
                         their numerology number. Here's a potential color association, though the choices are subjective
                         and can be adjusted: <a href="#">Persoanlity of Ali</a> , <a href="#">Soul of
                             Ali</a>
                     </p>
 
-                    <section class="p-3 p-md-5 border">
+
+
+                    <section class="p-3 p-md-4 border mb-3">
                         <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
                             <div class="flex-grow-1 ms-md-3 me-md-4">
                                 <h3>Zodiac Sign</h3>
@@ -126,19 +136,19 @@
                     </section>
 
                     <h3>Numerology Number </h3>
-                    <p class="callout lead fst-italic">
-                        "Lorem ipsum dolor sit, amet consectetur 4 adipisicing
+                    <p class="callout callout-primary">
+                        <b>Note:</b> "Lorem ipsum dolor sit, amet consectetur 4 adipisicing
                         elit. Placeat eius iusto molestias enim veritatis culpa deleniti ullam qui suscipit temporibus
                         dolorem velit, ad, debitis est tempore sapiente, in error harum?"
                     </p>
                     <h3>Soul Number</h3>
-                    <p class="callout lead fst-italic">
+                    <p class="callout callout-primary">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit. Nisi, quo fugiat vero, quidem est ipsam magnam saepe neque, fugit ipsum et harum minima
                         molestiae. Voluptatum modi ut quo ipsum possimus.
                     </p>
                     <h3 class="my-3">Persoanlity Number</h3>
-                    <p class="callout lead fst-italic">
+                    <p class="callout callout-primary">
                         Lorem ipsum dolor sit amet consectetur, adipisicing
                         elit. Commodi quae ratione ullam architecto provident ducimus sint perferendis rem. Voluptas
                         excepturi consectetur esse quis earum explicabo veniam ab voluptates, aperiam quae.
@@ -219,8 +229,7 @@
                 </table>
 
                 <h2 class="">Ali name wallpaper</h2>
-                <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-thumbnail my-3" 
-                    style="width: 1280px" width="1280"
+                <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-thumbnail my-3" style="width: 1280px" width="1280"
                     height="720" alt="Ali">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis consequatur totam
                     earum numquam cumque quas. Fugit, quasi minima.</p>
@@ -448,7 +457,7 @@
     </div>
 
     {{-- https://mdbootstrap.com/docs/standard/navigation/footer/ --}}
-    <footer class="py-5 bg-primary text-white">
+    {{-- <footer class="py-5 bg-primary text-white">
         <div class="container">
             <div class="row">
                 <div class="col-2">
@@ -516,7 +525,132 @@
                 </ul>
             </div>
         </div>
+    </footer> --}}
+
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-white text-muted">
+
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+
+                <!-- Section: Social media -->
+                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                    <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <span>Get connected with us on social networks:</span>
+                    </div>
+                    <!-- Left -->
+
+                    <!-- Right -->
+                    <div>
+                        <a href="" class="me-4 link-dark text-decoration-none">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="" class="me-4 link-dark text-decoration-none">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="" class="me-4 link-dark text-decoration-none">
+                            <i class="bi bi-reddit"></i>
+                        </a>
+                    </div>
+                    <!-- Right -->
+                </section>
+                <!-- Section: Social media -->
+
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="bi bi-gem me-3 text-secondary"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="nav-link">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="nav-link">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="nav-link">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="nav-link">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="nav-link">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class=" nav-link">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class=" nav-link">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+            © {{ date('Y') }} Copyright:
+            <a class="text-reset fw-bold" href="">Domain.com</a>
+        </div>
+        <!-- Copyright -->
     </footer>
+    <!-- Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
