@@ -55,12 +55,14 @@
                 <section>
                     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
                         <div class="container-fluid py-5  text-center">
-                            <h1 class="display-5 fw-bold">Hussain</h1>
+                            <h1 class="display-5 fw-bold text-capitalize">
+                                {!! $data['name']['name'] !!}
+                            </h1>
                             <p>means</p>
-                            <p>❀ ❀ ❀ </p>
-                            <h3 class="fs-4">Lorem ipsum dolor sit amet.</3>
+                            <p class="text-primary">❀ ❀ ❀ </p>
+                            <h3 class="fs-4">lorem, ipsum dolor, sit amet</3>
                         </div>
-                        <p class="text-md-end fst-italic">it is a boy name ...</p>
+                        <p class="text-md-end fst-italic">it is a girl name ...</p>
                     </div>
                 </section>
 
@@ -221,19 +223,19 @@
                         </div>
                     </section> --}}
 
-                    <h3>Numerology Number </h3>
+                    <h3>Numerology Number - {!! $data['name']['numerology']['numbers']['destiny'] !!}</h3>
                     <p class="callout callout-primary">
                         <b>Note:</b> "Lorem ipsum dolor sit, amet consectetur 4 adipisicing
                         elit. Placeat eius iusto molestias enim veritatis culpa deleniti ullam qui suscipit temporibus
                         dolorem velit, ad, debitis est tempore sapiente, in error harum?"
                     </p>
-                    <h3>Soul Number</h3>
+                    <h3>Soul Number - {!! $data['name']['numerology']['numbers']['soul'] !!}</h3>
                     <p class="callout callout-primary">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit. Nisi, quo fugiat vero, quidem est ipsam magnam saepe neque, fugit ipsum et harum minima
                         molestiae. Voluptatum modi ut quo ipsum possimus.
                     </p>
-                    <h3 class="my-3">Persoanlity Number</h3>
+                    <h3 class="my-3">Persoanlity Number - {!! $data['name']['numerology']['numbers']['personality'] !!}</h3>
                     <p class="callout callout-primary">
                         Lorem ipsum dolor sit amet consectetur, adipisicing
                         elit. Commodi quae ratione ullam architecto provident ducimus sint perferendis rem. Voluptas

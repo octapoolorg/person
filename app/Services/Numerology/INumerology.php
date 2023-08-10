@@ -4,5 +4,5 @@ namespace App\Services\Numerology;
 
 interface INumerology
 {
-    public function getNumerologyNumbers($name);
+    public function getNumerologyData($name);
 }

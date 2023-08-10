@@ -36,12 +36,37 @@ abstract class Numerology implements INumerology
         return $total;
     }
 
-    public function getNumerologyNumbers($name)
+    public function getNumerologyData($name)
     {
         return [
-            'destiny' => $this->calculateNumber($name),
-            'soul' => $this->calculateNumber(preg_replace('/[^aeiou]/i', '', $name)),
-            'personality' => $this->calculateNumber(preg_replace('/[aeiou]/i', '', $name))
+            'numbers' => [
+                'destiny' => $this->calculateNumber($name),
+                'soul' => $this->calculateNumber(preg_replace('/[^aeiou]/i', '', $name)),
+                'personality' => $this->calculateNumber(preg_replace('/[aeiou]/i', '', $name))
+            ],
+            'zodiac' => [
+                'sign' => $this->getZodiacSignByDestinyNumber($this->calculateNumber($name))
+            ],
         ];
+    }
+
+    protected function getZodiacSignByDestinyNumber($destinyNumber)
+    {
+        $zodiacSigns = [
+            1 => 'Aries',
+            2 => 'Taurus',
+            3 => 'Gemini',
+            4 => 'Cancer',
+            5 => 'Leo',
+            6 => 'Virgo',
+            7 => 'Libra',
+            8 => 'Scorpio',
+            9 => 'Sagittarius',
+            11 => 'Capricorn', // Master number
+            22 => 'Aquarius',  // Master number
+            33 => 'Pisces'    // Master number
+        ];
+
+        return $zodiacSigns[$destinyNumber] ?? 'Unknown';
     }
 }

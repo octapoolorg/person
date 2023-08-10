@@ -15,13 +15,13 @@ class NameController extends Controller
     public function view($name)
     {
         $numerology = NumerologyFactory::create('pythagorean');
-        $numerology = $numerology->getNumerologyNumbers($name);
+        $numerology = $numerology->getNumerologyData($name);
 
         $fancyText = new FancyTextGenerator($name);
         $fancyTexts = $fancyText->generate();
 
         $name = [
-            'name' => 'Ali'
+            'name' => $name
         ];
 
         $data['name'] = [];
