@@ -1,4 +1,4 @@
 *
 !public/
-!data/
+!../../imports/data/
 !.gitignore

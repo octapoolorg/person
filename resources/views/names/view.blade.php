@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ Vite::asset('resources/scss/app.scss') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <title> {{$data['name']['name']}} </title>
 
 </head>
 
@@ -49,9 +50,6 @@
 
         <section class="row mb-5">
             <main class="col-lg-8">
-
-
-
                 <section>
                     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
                         <div class="container-fluid py-5  text-center">
@@ -60,7 +58,7 @@
                             </h1>
                             <p>means</p>
                             <p class="text-primary">❀ ❀ ❀ </p>
-                            <h3 class="fs-4">lorem, ipsum dolor, sit amet</3>
+                            <h3 class="fs-4">lorem, ipsum dolor, sit amet</h3>
                         </div>
                         <p class="text-md-end fst-italic">it is a girl name ...</p>
                     </div>
@@ -146,7 +144,7 @@
                 <section class="p-3 p-md-4 border mb-5">
                     <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
                         <div class="flex-grow-1 ms-md-3 me-md-4">
-                            <h3>Zodia Sign </h3>
+                            <h3>Zodiac Sign </h3>
                             <p>This color is often associated with energy, strength, power, determination, and
                                 passion. It signifies leadership and assertiveness, making it a great choice for
                                 number 1.
@@ -189,39 +187,6 @@
                         and can be adjusted: <a href="#">Persoanlity of Ali</a> , <a href="#">Soul of
                             Ali</a>
                     </p>
-
-                    {{-- <section class="p-3 p-md-4 border mb-3">
-                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                            <div class="flex-grow-1 ms-md-3 me-md-4">
-                                <h3>Auspicious Color</h3>
-                                <p>This color is often associated with energy, strength, power, determination, and
-                                    passion. It signifies leadership and assertiveness, making it a great choice for
-                                    number 1.
-                                </p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <div class="flex-shrink-0">
-                                    <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
-                                        style="width:100px;height:100px;font-size:3rem">
-                                        <div class="square pulse red"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                            <div class="flex-grow-1 ms-md-3 me-md-4">
-                                <h3>Symbol or Icon</h3>
-                                <p>A crown is a symbol of leadership, authority, and distinction. It's a clear
-                                    representation of someone who stands out and takes charge.</p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
-                                    style="width:100px;height:100px;font-size:3rem">
-                                    👑
-                                </div>
-                            </div>
-                        </div>
-                    </section> --}}
 
                     <h3>Numerology Number - {!! $data['name']['numerology']['numbers']['destiny'] !!}</h3>
                     <p class="callout callout-primary">
@@ -333,60 +298,6 @@
                             <span itemprop="text">Yes, Ali is a good name.</span>
                         </div>
                     </div>
-
-                    <div class="item">
-                        <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <span>Q</span>
-                            <span itemprop="name">
-                                Is Ali a good name?
-                            </span>
-                        </div>
-                        <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <span>A</span>
-                            <span itemprop="text">Yes, Ali is a good name.</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <span>Q</span>
-                            <span itemprop="name">
-                                Is Ali a good name?
-                            </span>
-                        </div>
-                        <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <span>A</span>
-                            <span itemprop="text">Yes, Ali is a good name.</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <span>Q</span>
-                            <span itemprop="name">
-                                Is Ali a good name?
-                            </span>
-                        </div>
-                        <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <span>A</span>
-                            <span itemprop="text">Yes, Ali is a good name.</span>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <span>Q</span>
-                            <span itemprop="name">
-                                Is Ali a good name?
-                            </span>
-                        </div>
-                        <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <span>A</span>
-                            <span itemprop="text">Yes, Ali is a good name.</span>
-                        </div>
-                    </div>
-
-
                 </div>
 
                 <section class="social-share my-4">
@@ -420,33 +331,12 @@
                             <i class='bi bi-envelope'></i>
                             Share
                         </a>
+                    </div>
                 </section>
 
                 <section>
                     <div class="my-3">
                         <h4 class="">User Comments About Ali</h4>
-                        <div class="d-flex my-2">
-                            <div class="flex-shrink-0">
-                                <img src="https://via.placeholder.com/50x50" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h6>Ahmad Ali</h6>
-                                <p>This is some content from a media component. You can replace this with any content
-                                    and
-                                    adjust it as needed.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex my-2">
-                            <div class="flex-shrink-0">
-                                <img src="https://via.placeholder.com/50x50" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h6>Ahmad Ali</h6>
-                                <p>This is some content from a media component. You can replace this with any content
-                                    and
-                                    adjust it as needed.</p>
-                            </div>
-                        </div>
                         <div class="d-flex my-2">
                             <div class="flex-shrink-0">
                                 <img src="https://via.placeholder.com/50x50" alt="...">
@@ -534,81 +424,8 @@
         </section>
     </div>
 
-    {{-- https://mdbootstrap.com/docs/standard/navigation/footer/ --}}
-    {{-- <footer class="py-5 bg-primary text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-2">
-                    <h5>Section</h5>
-                    <nav class="navbar" data-bs-theme="dark">
-                        <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="col-2">
-                    <h5>Section</h5>
-                    <nav class="navbar" data-bs-theme="dark">
-                        <div class="navbar-nav">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="col-2">
-                    <h5>Section</h5>
-                    <nav class="navbar" data-bs-theme="dark">
-                        <div class="navbar-nav">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Features</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                            <a class="nav-link" href="#">Pricing</a>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="col-4 offset-1">
-                    <form action="">
-                        <h5>Subscribe to our newsletter</h5>
-                        <p>Monthly digest of whats new and exciting from us.</p>
-                        <div class="d-flex w-100 gap-2">
-                            <label for="newsletter1" class="visually-hidden">Email address</label>
-                            <input id="newsletter1" required type="text" class="form-control"
-                                placeholder="Email address">
-                            <button class="btn bg-white text-black" type="submit">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-between py-4 my-4 border-top">
-                <p>&copy; 2021 Company, Inc. All rights reserved.</p>
-                <ul class="list-unstyled d-flex social">
-                    <li class="ms-3"><a class="link-dark" href="#"><i
-                                class="bi bi-twitter text-white"></i></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><i
-                                class="bi bi-instagram text-white"></i></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><i
-                                class="bi bi-facebook text-white"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </footer> --}}
-
-
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-white text-muted">
-
 
         <!-- Section: Links  -->
         <section class="">
@@ -729,9 +546,7 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
