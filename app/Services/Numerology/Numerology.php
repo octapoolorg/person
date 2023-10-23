@@ -35,15 +35,15 @@ abstract class Numerology implements INumerology
         'Aries' => ['Red'],
         'Taurus' => ['Green'],
         'Gemini' => ['Yellow'],
-        'Cancer' => ['Silver', 'White'],
-        'Leo' => ['Gold', 'Orange'],
-        'Virgo' => ['Blue', 'Green'],
-        'Libra' => ['Pink', 'Blue'],
-        'Scorpio' => ['Black', 'Red'],
-        'Sagittarius' => ['Purple', 'Blue'],
-        'Capricorn' => ['Black', 'Brown'],
-        'Aquarius' => ['Blue', 'Silver'],
-        'Pisces' => ['Sea Green', 'Indigo']
+        'Cancer' => ['Silver'],
+        'Leo' => ['Gold'],
+        'Virgo' => ['Blue'],
+        'Libra' => ['Pink'],
+        'Scorpio' => ['Black'],
+        'Sagittarius' => ['Purple'],
+        'Capricorn' => ['Black'],
+        'Aquarius' => ['Blue'],
+        'Pisces' => ['Sea Green']
     ];
 
     const ZODIAC_METALS = [

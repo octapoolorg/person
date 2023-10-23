@@ -1,14 +1,17 @@
-$blue : #ac3992;
+$blue : #007bff;
+$purple : #6f42c1;
 $dark : #32373b;
 $font-size-base : 1.1rem;
 
+$primary: $purple;
+
 $theme-colors: (
-    "primary": $blue,
+    "primary": $primary,
     "dark": $dark
 );
 
 $navbar-light-color: $dark;
-$navbar-light-active-color: $blue;
+$navbar-light-active-color: $primary;
 $navbar-light-hover-color: #0f1012;
 
 $border-color: #dee2e6;

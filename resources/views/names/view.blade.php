@@ -4,114 +4,78 @@
     <section class="row mb-5">
         <main class="col-lg-8">
             <section>
-                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                    <div class="container-fluid py-5  text-center">
-                        <h1 class="display-5 fw-bold text-capitalize">
+                <div class="p-5 mb-5 bg-body-tertiary text-dark rounded-3 shadow-sm">
+                    <div class="container py-5 text-center">
+                        <h1 class="display-4 fw-bold text-capitalize text-info mb-2">
                             {!! $data['nameDetails']->name !!}
                         </h1>
-                        <p>means</p>
-                        <p class="text-primary">❀ ❀ ❀ </p>
-                        <h3 class="fs-4">{!! $data['nameDetails']->meaning !!}</h3>
+                        <p class="fs-3 text-muted mb-3">Means</p>
+                        <div class="mb-4">
+                            <span class="text-primary display-3">❀</span>
+                            <span class="text-primary display-3">❀</span>
+                            <span class="text-primary display-3">❀</span>
+                        </div>
+                        <h2 class="fs-1 text-success mb-4">
+                            {!! $data['nameDetails']->meaning !!}
+                        </h2>
                     </div>
-                    <p class="text-md-end fst-italic">it is a {!! $data['nameDetails']->gender->gender !!} ...</p>
+                    <div class="text-end pe-4">
+                        <p class="fs-3 fst-italic text-secondary">
+                            It is a {!! $data['nameDetails']->gender->gender !!} name.
+                        </p>
+                    </div>
                 </div>
             </section>
 
+
+            <!-- Create a separate CSS file for the following styles -->
+            <style>
+                .symbol-container {
+                    width: 100px;
+                    height: 100px;
+                    font-size: 3rem;
+                }
+            </style>
+
             <section class="p-3 p-md-4 border shadow-sm mb-5">
-                <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                    <div class="flex-grow-1 ms-md-3 me-md-4">
-                        <h3>
-                            Zodiac Sign
-                        </h3>
-                        <p>
-{{--{!! $data['numerology']['zodiac']['description'] !!}--}}
-                            The zodiac sign of a person with the name Ali is Aries. This is the first sign of the
-                            zodiac and is ruled by the planet Mars. People with this sign are known to be
-                            courageous, confident, and determined. They are also known to be natural leaders.
-                        </p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="flex-shrink-0">
-                            <div class="symbol d-flex align-items-center justify-content-center"
-                                 style="width:100px;height:100px;font-size:3rem">
-                                <figure class="figure">
-                                    <img src="{!! asset("static/images/zodiac/signs/".strtolower($data['numerology']['zodiac']['sign']).".png") !!}"
-                                         class="figure-img img-fluid rounded" alt="...">
-                                    <figcaption class="figure-caption text-center fw-bolder text-black">
-                                        {{ $data['numerology']['zodiac']['sign'] }}
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                    <div class="flex-grow-1 ms-md-3 me-md-4">
-                        <h3>
-                            Auspicious Stones
-                        </h3>
-                        <p>This color is often associated with energy, strength, power, determination, and
-                            passion. It signifies leadership and assertiveness, making it a great choice for
-                            number 1.
-                        </p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="flex-shrink-0">
-                            <div class="symbol d-flex align-items-center justify-content-center"
-                                 style="width:100px;height:100px;font-size:3rem">
-                                <figure class="figure">
-                                    <img src="{!! asset("static/images/zodiac/stones/citrine.png") !!}"
-                                         class="figure-img img-fluid rounded" alt="...">
-                                    <figcaption class="figure-caption text-center text-black fw-bolder">
-                                        {{ $data['numerology']['zodiac']['attributes']['stone'] }}
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Zodiac Sign Section -->
+                @include('partials.names._box', [
+                    'title' => 'Zodiac Sign',
+                    'description' => __("numerology.".strtolower($data['numerology']['zodiac']['sign']).".zodiac_sign",['name'=>$data['nameDetails']->name]),
+                    'img_src' => asset("static/images/zodiac/signs/".strtolower($data['numerology']['zodiac']['sign']).".png"),
+                    'caption' => $data['numerology']['zodiac']['sign']
+                ])
+
+                <!-- Auspicious Stones Section -->
+                @include('partials.names._box', [
+                    'title' => 'Auspicious Stones',
+                    'description' => __("numerology.".strtolower($data['numerology']['zodiac']['sign']).".auspicious_stones",['name'=>$data['nameDetails']->name]),
+                    'img_src' => asset("static/images/zodiac/stones/citrine.png"),
+                    'caption' => $data['numerology']['zodiac']['attributes']['stone']
+                ])
             </section>
+
 
             <section class="p-3 p-md-4 border mb-5">
                 <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
                     <div class="flex-grow-1 ms-md-3 me-md-4">
-                        <h3>Zodiac Sign </h3>
-                        <p>This color is often associated with energy, strength, power, determination, and
-                            passion. It signifies leadership and assertiveness, making it a great choice for
-                            number 1.
-                        </p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="flex-shrink-0">
-                            <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
-                                 style="width:100px;height:100px;font-size:3rem">
-                                <img src="" style="width:130px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                    <div class="flex-grow-1 ms-md-3 me-md-4">
                         <h3>Auspicious Color</h3>
-                        <p>This color is often associated with energy, strength, power, determination, and
-                            passion. It signifies leadership and assertiveness, making it a great choice for
-                            number 1.
+                        <p>
+                            {!! __("numerology.".strtolower($data['numerology']['zodiac']['sign']).".auspicious_colors",['name'=>$data['nameDetails']->name]) !!}
                         </p>
                     </div>
                     <div class="flex-shrink-0">
-                        <div class="flex-shrink-0">
                             <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
                                  style="width:100px;height:100px;font-size:3rem">
-                                <div class="square pulse red"></div>
+                                <div class="square pulse orange"></div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="">
-                <h1>Details about Ali name</h1>
-                <h2 class="">Ali Name Numerology</h2>
+                <h2>Details about Ali name</h2>
+                <h3 class="">Ali Name Numerology</h3>
                 <p class="">
                     Assigning a specific color to each number can help users quickly identify and resonate with
                     their numerology number. Here's a potential color association, though the choices are subjective
@@ -196,18 +160,18 @@
                 </tbody>
             </table>
 
-            <h2 class="">Ali name wallpaper</h2>
-            <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-thumbnail my-3" style="width: 1280px" width="1280"
-                 height="720" alt="Ali">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis consequatur totam
-                earum numquam cumque quas. Fugit, quasi minima.</p>
-            <h2 class="">Ali - Fancy Text Styles</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
-            <table class="table table-striped table-bordered table-hover">
+            <h2 class="fw-bold text-primary mb-3">Ali Name Wallpaper</h2>
+            <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-fluid rounded img-thumbnail my-4 shadow" alt="Ali" style="max-width: 100%; height: auto;">
+            <p class="text-muted mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis consequatur totam earum numquam cumque quas. Fugit, quasi minima.</p>
+
+            <h2 class="fw-bold text-primary mb-3">Ali - Fancy Text Styles</h2>
+            <p class="text-muted mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
+
+            <table class="table table-striped table-bordered table-hover shadow-sm">
                 <tbody>
                 @foreach ($data['fancyTexts'] as $fancyText)
                     <tr>
-                        <th scope="row">{{ $fancyText }}</th>
+                        <th scope="row" class="fs-5">{{ $fancyText }}</th>
                     </tr>
                 @endforeach
                 </tbody>
@@ -309,49 +273,50 @@
         </main>
         <aside class="col-lg-4">
 
-            <div class="card">
+            <div class="card shadow-sm my-3">
                 <div class="card-body py-4">
-                    <h5 class="card-title">Generate random name</h5>
-                    <p class="card-text">Click to generate a list of random names to make a better choice.</p>
+                    <h5 class="card-title fw-bold text-primary">Generate Random Name</h5>
+                    <p class="card-text text-muted">Click to generate a list of random names to make a better choice.</p>
                     <a href="#" class="btn btn-primary text-uppercase">
                         <i class="bi bi-shuffle me-2"></i>Randomize
                     </a>
                 </div>
             </div>
 
-            <div class="card my-3">
-                <h5 class="ps-3 pt-4">Follow us on Social</h5>
+            <div class="card shadow-sm my-3">
+                <h5 class="ps-3 pt-4 fw-bold text-primary">Follow Us on Social</h5>
                 <div class="card-body">
-                    <div class="d-flex">
+                    <div class="d-flex justify-content-around">
                         <a href="">
-                            <img src="https://img.icons8.com/color/48/000000/facebook-new.png"  alt=""/>
+                            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"/>
                         </a>
                         <a href="">
-                            <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png"  alt=""/>
+                            <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" alt="Instagram"/>
                         </a>
-                        <a>
-                            <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png"  alt=""/>
+                        <a href="">
+                            <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" alt="Pinterest"/>
                         </a>
-
                     </div>
                 </div>
             </div>
 
-            <div class="card my-3">
-                <h5 class="ps-3 pt-4">Popular Baby Names</h5>
+            <div class="card shadow-sm my-3">
+                <h5 class="ps-3 pt-4 fw-bold text-primary">Popular Baby Names</h5>
                 <div class="card-body">
-                    <div class="d-flex flex-row flex-wrap gap-2">
-                        <a href="" class="name-label">
+                    <div class="d-flex flex-row flex-wrap justify-content-around">
+                        <a href="" class="name-label d-flex align-items-center">
                             <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
                             <span class="text-center ms-3">Boy Names</span>
                         </a>
-                        <a href="" class="name-label">
+                        <a href="" class="name-label d-flex align-items-center">
                             <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
                             <span class="text-center ms-3">Girl Names</span>
                         </a>
                     </div>
                 </div>
             </div>
+
         </aside>
+
     </section>
 @endsection
