@@ -70,7 +70,6 @@ class ImportDatabase extends Command
             }
         }
 
-        // Insert remaining records in the final batch
         if (count($batchData) > 0) {
             DB::table($tableName)->insert($batchData);
         }

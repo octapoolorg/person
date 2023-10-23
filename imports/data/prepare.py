@@ -17,14 +17,16 @@ with open('names_root.csv', 'r', encoding='utf-8') as csvfile:
     for row in csvreader:
         name, meaning, gender, origin, syllables, categories = row
 
-        # Populate the Names table
-        names_table.append([name_id, name, meaning, syllables])
-
-        # Populate the Genders table
+        # Populate the Genders and Origins tables
         genders_table.add(gender)
-
-        # Populate the Origins table
         origins_table.add(origin)
+
+        # Create mappings for gender and origin to their respective IDs
+        gender_to_id = {gender: idx+1 for idx, gender in enumerate(genders_table)}
+        origin_to_id = {origin: idx+1 for idx, origin in enumerate(origins_table)}
+
+        # Populate the Names table and include foreign keys
+        names_table.append([name_id, name, meaning, syllables, gender_to_id[gender], origin_to_id[origin]])
 
         # Populate the Categories table and Name_Categories table
         for category in categories.split(","):
@@ -35,22 +37,13 @@ with open('names_root.csv', 'r', encoding='utf-8') as csvfile:
         name_id += 1
 
 # Convert sets to lists with an ID field
-genders_table = [[idx+1, gender] for idx, gender in enumerate(genders_table)]
-origins_table = [[idx+1, origin] for idx, origin in enumerate(origins_table)]
 categories_table = [[idx+1, category] for idx, category in enumerate(categories_table)]
 category_to_id = {category: idx+1 for idx, (id_, category) in enumerate(categories_table)}
 category_name_table = [[name_id, category_to_id[category]] for name_id, category in category_name_table]
 
-# Create mappings for gender and origin to their respective IDs
-gender_to_id = {gender: idx+1 for idx, (id_, gender) in enumerate(genders_table)}
-origin_to_id = {origin: idx+1 for idx, (id_, origin) in enumerate(origins_table)}
-
-# Update Names table with foreign keys
-for row in names_table:
-    name_id, name, meaning, syllables = row
-    gender_id = gender_to_id[gender]
-    origin_id = origin_to_id[origin]
-    row.extend([gender_id, origin_id])
+# Convert sets to lists with an ID field for genders and origins
+genders_table = [[idx+1, gender] for idx, gender in enumerate(genders_table)]
+origins_table = [[idx+1, origin] for idx, origin in enumerate(origins_table)]
 
 # Write the new tables to individual CSV files
 

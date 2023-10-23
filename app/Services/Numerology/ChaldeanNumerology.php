@@ -2,14 +2,14 @@
 
 /**
  * Chaldean Numerology Class
- * 
+ *
  * Implements the Chaldean numerology system, which originates from ancient Babylon.
  * It's considered one of the oldest systems of numerology with a more spiritual approach.
  * The number 9 is considered sacred in this system and is not assigned to any letter.
- * 
+ *
  * This class provides methods to calculate the Destiny, Soul, and Personality Numbers
  * using the Chaldean system.
- * 
+ *
  * @package App\Services\Numerology
  */
 
@@ -17,7 +17,7 @@ namespace App\Services\Numerology;
 
 class ChaldeanNumerology extends Numerology
 {
-    protected $letterMap = [
+    protected array $letterMap = [
         'a' => 1, 'i' => 1, 'j' => 1, 'q' => 1, 'y' => 1,
         'b' => 2, 'k' => 2, 'r' => 2,
         'c' => 3, 'g' => 3, 'l' => 3, 's' => 3,

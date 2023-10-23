@@ -7,15 +7,12 @@ use App\Services\Numerology\PythagoreanNumerology;
 
 class NumerologyFactory
 {
-    public static function create($type)
+    public static function create($type): ChaldeanNumerology|PythagoreanNumerology
     {
-        switch ($type) {
-            case 'pythagorean':
-                return new PythagoreanNumerology();
-            case 'chaldean':
-                return new ChaldeanNumerology();
-            default:
-                throw new \InvalidArgumentException("Invalid numerology type");
-        }
+        return match ($type) {
+            'pythagorean' => new PythagoreanNumerology(),
+            'chaldean' => new ChaldeanNumerology(),
+            default => throw new \InvalidArgumentException("Invalid numerology type"),
+        };
     }
 }

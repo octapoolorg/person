@@ -64,7 +64,7 @@ $relationshipTypes = [
     'business' => $businessCompatibilityMatrix,
 ];
 
-function checkCompatibility($name1, $name2, $relationshipType)
+function checkCompatibility($name1, $name2, $relationshipType): ?int
 {
     global $relationshipTypes;
 
@@ -94,7 +94,7 @@ function checkCompatibility1($name1, $name2, $compatibilityMatrix)
     }
 }
 
-function checkCompatibility2($name1, $name2, $birthdate1, $birthdate2, $relationshipType)
+function checkCompatibility2($name1, $name2, $birthdate1, $birthdate2, $relationshipType): ?int
 {
     global $relationshipTypes;
 
@@ -115,7 +115,7 @@ function checkCompatibility2($name1, $name2, $birthdate1, $birthdate2, $relation
     }
 }
 
-function calculateLifePathNumber($birthdate)
+function calculateLifePathNumber($birthdate): float|int|null
 {
     // Ensure the birthdate is in the format "YYYY-MM-DD"
     $parts = explode('-', $birthdate);
@@ -136,7 +136,7 @@ function calculateLifePathNumber($birthdate)
 
 
 
-function calculateExpressionNumber($name)
+function calculateExpressionNumber($name): float|int
 {
     $lettersToNumbers = [
         'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6, 'G' => 7, 'H' => 8, 'I' => 9,
@@ -155,7 +155,7 @@ function calculateExpressionNumber($name)
     return $sum;
 }
 
-function calculateSoulUrgeNumber($name)
+function calculateSoulUrgeNumber($name): float|int
 {
     $lettersToNumbers = [
         'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6, 'G' => 7, 'H' => 8, 'I' => 9,
@@ -174,7 +174,7 @@ function calculateSoulUrgeNumber($name)
     return $sum;
 }
 
-function calculateNumerologyNumber($name)
+function calculateNumerologyNumber($name): float|int
 {
     $lettersToNumbers = [
         'A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6, 'G' => 7, 'H' => 8, 'I' => 9,
