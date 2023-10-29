@@ -53,7 +53,7 @@ class ImportDatabase extends Command
      */
     protected function importCsv($filename, $tableName): void
     {
-        $csv = Reader::createFromPath(base_path("imports/data/$filename"));
+        $csv = Reader::createFromPath(base_path("imports/database/$filename"));
         $csv->setHeaderOffset(0);
 
         $records = $csv->getRecords();
