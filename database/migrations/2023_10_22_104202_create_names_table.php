@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('names', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('meaning');
             $table->string('syllables')->nullable();
             $table->foreignId('gender_id')->constrained();

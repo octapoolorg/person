@@ -17,48 +17,48 @@ abstract class Numerology implements INumerology
     protected array $letterMap = [];
 
     const ZODIAC_STONES = [
-        'Aries' => ['Diamond'],
-        'Taurus' => ['Emerald'],
-        'Gemini' => ['Agate'],
-        'Cancer' => ['Moonstone', 'Pearl'],
-        'Leo' => ['Ruby'],
-        'Virgo' => ['Sapphire'],
-        'Libra' => ['Opal'],
-        'Scorpio' => ['Topaz'],
-        'Sagittarius' => ['Turquoise'],
-        'Capricorn' => ['Garnet'],
-        'Aquarius' => ['Amethyst'],
-        'Pisces' => ['Aquamarine']
+        'Aries' => 'Diamond',
+        'Taurus' => 'Emerald',
+        'Gemini' => 'Agate',
+        'Cancer' => 'Moonstone',
+        'Leo' => 'Ruby',
+        'Virgo' => 'Sapphire',
+        'Libra' => 'Opal',
+        'Scorpio' => 'Topaz',
+        'Sagittarius' => 'Turquoise',
+        'Capricorn' => 'Garnet',
+        'Aquarius' => 'Amethyst',
+        'Pisces' => 'Aquamarine'
     ];
 
     const ZODIAC_COLORS = [
-        'Aries' => ['Red'],
-        'Taurus' => ['Green'],
-        'Gemini' => ['Yellow'],
-        'Cancer' => ['Silver'],
-        'Leo' => ['Gold'],
-        'Virgo' => ['Blue'],
-        'Libra' => ['Pink'],
-        'Scorpio' => ['Black'],
-        'Sagittarius' => ['Purple'],
-        'Capricorn' => ['Black'],
-        'Aquarius' => ['Blue'],
-        'Pisces' => ['Sea Green']
+        'Aries' => 'Red',
+        'Taurus' => 'Green',
+        'Gemini' => 'Yellow',
+        'Cancer' => 'Silver',
+        'Leo' => 'Gold',
+        'Virgo' => 'Blue',
+        'Libra' => 'Pink',
+        'Scorpio' => 'Black',
+        'Sagittarius' => 'Purple',
+        'Capricorn' => 'Black',
+        'Aquarius' => 'Blue',
+        'Pisces' => 'Sea Green'
     ];
 
     const ZODIAC_METALS = [
-        'Aries' => ['Iron'],
-        'Taurus' => ['Copper'],
-        'Gemini' => ['Aluminum'],
-        'Cancer' => ['Silver'],
-        'Leo' => ['Gold'],
-        'Virgo' => ['Mercury'],
-        'Libra' => ['Copper'],
-        'Scorpio' => ['Iron', 'Plutonium'],
-        'Sagittarius' => ['Tin'],
-        'Capricorn' => ['Lead'],
-        'Aquarius' => ['Uranium'],
-        'Pisces' => ['Tin', 'Neptunium']
+        'Aries' => 'Iron',
+        'Taurus' => 'Copper',
+        'Gemini' => 'Aluminum',
+        'Cancer' => 'Silver',
+        'Leo' => 'Gold',
+        'Virgo' => 'Mercury',
+        'Libra' => 'Copper',
+        'Scorpio' => 'Iron',
+        'Sagittarius' => 'Tin',
+        'Capricorn' => 'Lead',
+        'Aquarius' => 'Uranium',
+        'Pisces' => 'Tin'
     ];
 
     protected function calculateNumber($name)
@@ -111,9 +111,9 @@ abstract class Numerology implements INumerology
             7 => 'Libra',
             8 => 'Scorpio',
             9 => 'Sagittarius',
-            11 => 'Capricorn', // Master number
-            22 => 'Aquarius',  // Master number
-            33 => 'Pisces'     // Master number
+            11 => 'Capricorn',
+            22 => 'Aquarius',
+            33 => 'Pisces'
         ];
 
         return $zodiacSigns[$destinyNumber] ?? 'Unknown';
@@ -124,20 +124,23 @@ abstract class Numerology implements INumerology
         return ucfirst(strtolower(trim($sign)));
     }
 
-    protected function fetchAttributeBySign(array $attributeArray, string $normalizedSign): array
+    protected function fetchAttributeBySign(array $attributeArray, string $normalizedSign): string
     {
-        return $attributeArray[$normalizedSign] ?? ['Unknown'];
+        return $attributeArray[$normalizedSign] ?? 'Unknown';
     }
 
     protected function getZodiacAttributesBySign(string $sign): array
     {
         $normalizedSign = $this->normalizeZodiacSign($sign);
 
+        $stone = $this->fetchAttributeBySign(self::ZODIAC_STONES, $normalizedSign);
+        $color = $this->fetchAttributeBySign(self::ZODIAC_COLORS, $normalizedSign);
+        $metal = $this->fetchAttributeBySign(self::ZODIAC_METALS, $normalizedSign);
+
         return [
-            'stone' => implode(', ', $this->fetchAttributeBySign(self::ZODIAC_STONES, $normalizedSign)),
-            'color' => implode(', ', $this->fetchAttributeBySign(self::ZODIAC_COLORS, $normalizedSign)),
-            'metal' => implode(', ', $this->fetchAttributeBySign(self::ZODIAC_METALS, $normalizedSign))
+            'stone' => $stone,
+            'color' => $color,
+            'metal' => $metal
         ];
     }
-
 }

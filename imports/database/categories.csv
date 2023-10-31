@@ -1,74 +1,74 @@
-id,category
+id,name
 1,
-2,Welsh
-3,Hebrew Christian
-4,African Christian
-5,Persian
-6,Danish Christian
-7,Polish
-8,Christian Native American
-9,Australian Vietnamese
-10,Russian
-11,Greek Islamic/Muslim
-12,Christian Old-norse
-13,Indian
-14,Czech
-15,Arabic
-16,nan
-17,Egyptian
-18,Dutch
-19,French British English Russian Australian Christian
-20,Unknown
-21,Gaelic
-22,French Christian
-23,Thai
-24,Swedish
-25,Greek Christian
-26,Swedish Christian
-27,Korean
-28,Unique
-29,Hawaiian
-30,Latin
-31,Japanese Christian
-32,French
+2,African
+3,African Christian
+4,Arabic
+5,Arabic Christian
+6,Aramaic
+7,Australian Vietnamese
+8,Chinese
+9,Christian
+10,Christian Celtic
+11,Christian Gaelic
+12,Christian Latin
+13,Christian Native American
+14,Christian Old-norse
+15,Czech
+16,Danish
+17,Danish Christian
+18,Danish Islamic/Muslim
+19,Dutch
+20,Dutch Christian
+21,Egyptian
+22,English
+23,English Christian
+24,Finnish
+25,French
+26,French British English Russian Australian Christian
+27,French Christian
+28,Gaelic
+29,Greek
+30,Greek Christian
+31,Greek Islamic/Muslim
+32,Hawaiian
 33,Hebrew
-34,Greek
-35,Japanese
-36,African
-37,Christian
-38,Welsh Christian
-39,Native American
-40,Turkish
-41,Aramaic
-42,Christian Latin
-43,Islamic/Muslim
-44,Spanish Islamic/Muslim
-45,Arabic Christian
-46,Italian
-47,Scottish
-48,User Submitted Names
-49,Sanskrit
-50,Finnish
-51,Spanish Christian
-52,Chinese
-53,Danish
-54,Vietnamese
-55,Norwegian
-56,Korean Christian
-57,English Christian
-58,English
-59,Dutch Christian
-60,Vietnamese Christian
-61,Italian Christian
-62,Christian Gaelic
-63,Slavic
-64,Old-norse
-65,Hindu
-66,Indian African Chinese Korean Hindu Tamil Telugu Kannada
-67,Danish Islamic/Muslim
-68,Indian Chinese Australian Islamic/Muslim Telugu
-69,Indian Hindu Tamil Goddess Radha
-70,Christian Celtic
-71,Turkish Christian
-72,Irish
-73,Spanish
+34,Hebrew Christian
+35,Hindu
+36,Indian
+37,Indian African Chinese Korean Hindu Tamil Telugu Kannada
+38,Indian Chinese Australian Islamic/Muslim Telugu
+39,Indian Hindu Tamil Goddess Radha
+40,Irish
+41,Islamic/Muslim
+42,Italian
+43,Italian Christian
+44,Japanese
+45,Japanese Christian
+46,Korean
+47,Korean Christian
+48,Latin
+49,Native American
+50,Norwegian
+51,Old-norse
+52,Persian
+53,Polish
+54,Russian
+55,Sanskrit
+56,Scottish
+57,Slavic
+58,Spanish
+59,Spanish Christian
+60,Spanish Islamic/Muslim
+61,Swedish
+62,Swedish Christian
+63,Thai
+64,Turkish
+65,Turkish Christian
+66,Unique
+67,Unknown
+68,User Submitted Names
+69,Vietnamese
+70,Vietnamese Christian
+71,Welsh
+72,Welsh Christian
+73,nan

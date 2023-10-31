@@ -17,7 +17,7 @@ class NameController extends Controller
     public function view($name): View
     {
         $nameDetails = Name::with(['gender', 'origin', 'categories'])
-            ->where('name', 'like', "%$name%")
+            ->where('slug', $name)
             ->firstOrFail();
 
         $numerology = NumerologyFactory::create('pythagorean');
@@ -32,7 +32,8 @@ class NameController extends Controller
             'fancyTexts' => $fancyTexts
         ];
 
+
+
         return view('names.view', compact('data'));
     }
-
 }

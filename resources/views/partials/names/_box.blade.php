@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-md-row align-items-md-center my-2 py-2">
+<div class="d-flex flex-column flex-md-row align-items-md-center my-2 py-3">
     <div class="flex-grow-1 ms-md-3 me-md-4">
         <h3>{{ $title }}</h3>
         <p>{!! $description !!}</p>

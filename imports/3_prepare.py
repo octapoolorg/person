@@ -2,73 +2,83 @@ import csv
 import os
 from collections import defaultdict
 
+# Create a directory if it doesn't exist
 def create_directory(directory_name):
-    """Creates a directory if it doesn't exist."""
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
 
-def read_csv_to_populate_tables(filepath, tables, mappings):
-    """Read CSV and populate tables and mapping dictionaries."""
-    categories_set = set()  # Hold unique categories
+# Read CSV and populate tables and mapping dictionaries
+def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, gender_to_id=None, origin_to_id=None):
     with open(filepath, 'r', encoding='utf-8') as csvfile:
         csvreader = csv.reader(csvfile)
         next(csvreader)  # skip header
         for row in csvreader:
-            name, meaning, gender, origin, syllables, categories = row
-            tables['genders'].add(gender)
-            tables['origins'].add(origin)
-
-            # IDs start from 1 and are unique within each table
+            name, meaning, gender, origin, categories, syllables = row
+            unique_genders.add(gender)
+            unique_origins.add(origin)
             name_id = len(tables['names']) + 1
-            tables['names'].append([name_id, name, meaning, syllables])
+            gender_id = gender_to_id.get(gender) if gender_to_id else None
+            origin_id = origin_to_id.get(origin) if origin_to_id else None
+            tables['names'].append([name_id, name, meaning, gender_id, origin_id, syllables])
 
-            # populate the mapping table and categories_set
             for category in categories.split(","):
                 category = category.strip()
                 mappings['category_name'].append([name_id, category])
-                categories_set.add(category)
 
-    tables['categories'] = [[idx+1, category] for idx, category in enumerate(categories_set)]
-
+# Write a table to a CSV file
 def write_table_to_csv(filepath, header, table):
-    """Write a table to a CSV file."""
     with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(header)
         csvwriter.writerows(table)
 
+# Main function
 def main():
     # Initialize
     data_directory = 'database'
     create_directory(data_directory)
     tables = defaultdict(list)
-    tables['genders'] = set()
-    tables['origins'] = set()
+    unique_genders = set()
+    unique_origins = set()
     mappings = defaultdict(list)
 
-    # Populate tables
-    input_file = 'processed_names_root.csv'
-    read_csv_to_populate_tables(input_file, tables, mappings)
+    # First pass to populate tables
+    input_file = 'temp/names_root.csv'
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins)
 
-    # Convert sets to lists with ID
-    for table_name in ['genders', 'origins']:
-        tables[table_name] = [[idx+1, item] for idx, item in enumerate(tables[table_name])]
+    # Create a category to ID mapping based on first pass
+    category_to_id = {category: idx+1 for idx, category in enumerate(sorted(set(category for _, category in mappings['category_name'])))}
+    tables['categories'] = [[idx, category] for category, idx in category_to_id.items()]
+
+    # Convert unique sets to tables with ID
+    tables['genders'] = [[idx+1, item] for idx, item in enumerate(sorted(unique_genders))]
+    tables['origins'] = [[idx+1, item] for idx, item in enumerate(sorted(unique_origins))]
+
+    # Create gender and origin ID mappings
+    gender_to_id = {item[1]: item[0] for item in tables['genders']}
+    origin_to_id = {item[1]: item[0] for item in tables['origins']}
+
+    # Second pass to populate names with IDs for genders and origins
+    tables['names'].clear()
+    mappings['category_name'].clear()
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, gender_to_id, origin_to_id)
 
     # Write tables to CSV
     output_files = {
-        'names': ['id', 'name', 'meaning', 'syllables'],
-        'genders': ['id', 'gender'],
-        'origins': ['id', 'origin'],
-        'categories': ['id', 'category']
+        'names': ['id', 'name', 'meaning', 'gender_id', 'origin_id', 'syllables'],
+        'genders': ['id', 'name'],
+        'origins': ['id', 'name'],
+        'categories': ['id', 'name']
     }
 
     for table_name, header in output_files.items():
         output_file = os.path.join(data_directory, f"{table_name}.csv")
         write_table_to_csv(output_file, header, tables[table_name])
 
-    # Handle special cases like mappings
-    category_to_id = {item[1]: item[0] for item in tables['categories']}
-    mappings['category_name'] = [[name_id, category_to_id[category]] for name_id, category in mappings['category_name']]
+    # Correct the category_name mapping based on category_to_id
+    mappings['category_name'] = [[name_id, category_to_id.get(category, "Unknown")] for name_id, category in mappings['category_name']]
+
+    # Handle mappings
     output_file = os.path.join(data_directory, 'category_name.csv')
     write_table_to_csv(output_file, ['name_id', 'category_id'], mappings['category_name'])
 

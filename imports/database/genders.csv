@@ -1,6 +1,6 @@
-id,gender
+id,name
 1,F
 2,"F, T"
-3,T
-4,M
-5,N
+3,M
+4,N
+5,T

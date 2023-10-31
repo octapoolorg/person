@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use League\Csv\Exception;
 use League\Csv\Reader;
 use League\Csv\UnavailableStream;
@@ -33,10 +34,10 @@ class ImportDatabase extends Command
 
         try {
             DB::transaction(function () {
-                $this->importCsv('names.csv', 'names');
-                $this->importCsv('genders.csv', 'genders');
-                $this->importCsv('origins.csv', 'origins');
-                $this->importCsv('categories.csv', 'categories');
+                $this->importCsv('names.csv', 'names', true);
+                $this->importCsv('genders.csv', 'genders',true);
+                $this->importCsv('origins.csv', 'origins',true);
+                $this->importCsv('categories.csv', 'categories', true);
                 $this->importCsv('category_name.csv', 'category_name');
             });
 
@@ -51,7 +52,7 @@ class ImportDatabase extends Command
      * @throws UnavailableStream
      * @throws Exception
      */
-    protected function importCsv($filename, $tableName): void
+    protected function importCsv($filename, $tableName, $generateSlug = false): void
     {
         $csv = Reader::createFromPath(base_path("imports/database/$filename"));
         $csv->setHeaderOffset(0);
@@ -59,8 +60,25 @@ class ImportDatabase extends Command
         $records = $csv->getRecords();
         $batchSize = 500;
         $batchData = [];
+        $slugCount = [];  // To keep track of duplicate slugs
 
         foreach ($records as $index => $record) {
+            // Generate slug if needed
+            if ($generateSlug && isset($record['name'])) {
+                $baseSlug = Str::slug($record['name']);
+                $slug = $baseSlug;
+
+                // Handle duplicate slugs
+                if (isset($slugCount[$baseSlug])) {
+                    $slugCount[$baseSlug]++;
+                    $slug = $baseSlug . '-' . $slugCount[$baseSlug];
+                } else {
+                    $slugCount[$baseSlug] = 0;
+                }
+
+                $record['slug'] = $slug;
+            }
+
             $batchData[] = $record;
 
             // Insert records in batch
@@ -70,6 +88,7 @@ class ImportDatabase extends Command
             }
         }
 
+        // Insert remaining records if any
         if (count($batchData) > 0) {
             DB::table($tableName)->insert($batchData);
         }

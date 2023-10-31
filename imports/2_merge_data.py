@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 
-# Read the cnames.csv file into a DataFrame
-cnames_df = pd.read_csv('cleaned_names_root.csv', low_memory=False)
+# Read the dedup_names_root.csv file into a DataFrame
+cnames_df = pd.read_csv('temp/dedup_names_root.csv', low_memory=False)
 
 # Initialize an empty DataFrame to store all data from .txt files
 all_txt_data = pd.DataFrame(columns=['Name', 'Gender'])
@@ -28,5 +28,9 @@ cnames_df['Gender'] = cnames_df['Gender_new'].combine_first(cnames_df['Gender'])
 # Drop the temporary column
 cnames_df.drop('Gender_new', axis=1, inplace=True)
 
-# Write the final DataFrame back to cnames.csv
-cnames_df.to_csv('_names.csv', index=False)
+# Convert 'Syllables' to integer, assuming 'Syllables' exists in your DataFrame
+if 'Syllables' in cnames_df.columns:
+    cnames_df['Syllables'] = cnames_df['Syllables'].fillna(0).astype(int)
+
+# Write the final DataFrame back to names_root.csv
+cnames_df.to_csv('temp/names_root.csv', index=False)
