@@ -11,9 +11,9 @@
                         </h1>
                         <p class="fs-3 text-muted mb-3">Means</p>
                         <div class="mb-4">
-                            <span class="text-primary display-3">❀</span>
-                            <span class="text-primary display-3">❀</span>
-                            <span class="text-primary display-3">❀</span>
+                            <span class="text-primary display-6">❀</span>
+                            <span class="text-primary display-6">❀</span>
+                            <span class="text-primary display-6">❀</span>
                         </div>
                         <h2 class="fs-1 text-success mb-4">
                             {!! $data['nameDetails']->meaning !!}
@@ -177,7 +177,7 @@
             </table>
 
             <h2 class="fw-bold text-primary mb-3">{!! $data['nameDetails']->name !!} Name Wallpaper</h2>
-            <img src="{!! asset('static/images/wallpaper.jpg') !!}" class="img-fluid rounded img-thumbnail my-4 shadow"
+            <img src="{!! route('nameWallpaper',['name'=>$data['nameDetails']->slug]) !!}" class="img-fluid rounded img-thumbnail my-4 shadow"
                 alt="{!! $data['nameDetails']->name !!}" style="max-width: 100%; height: auto;">
             <p class="text-muted mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis
                 consequatur totam earum numquam cumque quas. Fugit, quasi minima.</p>
