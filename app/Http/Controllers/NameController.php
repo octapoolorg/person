@@ -23,7 +23,7 @@ class NameController extends Controller
     {
         try {
             $cacheKey = "nameDetails:$name";
-            $nameDetails = Cache::remember($cacheKey, now()->addMinutes(60), function () use ($name) {
+            $nameDetails = Cache::remember($cacheKey, now()->addQuarter(), function () use ($name) {
                 return Name::with(['gender', 'origin', 'categories'])
                     ->where('slug', $name)
                     ->firstOrFail();
@@ -90,7 +90,7 @@ class NameController extends Controller
 
         if (!$base64Image) {
             $base64Image = $this->generateImage($name);
-            Cache::put($cacheKey, $base64Image, now()->addMinutes(60));
+            Cache::put($cacheKey, $base64Image, now()->addQuarter());
         }
 
         return $base64Image;
@@ -103,7 +103,7 @@ class NameController extends Controller
         $imgWidth = $img->width();
         $imgHeight = $img->height();
 
-        $fontSize = 100;
+        $fontSize = 150;
 
         $xPosition = $imgWidth / 2;
         $yPosition = $imgHeight / 2;
