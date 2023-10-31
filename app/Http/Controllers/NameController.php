@@ -98,12 +98,13 @@ class NameController extends Controller
 
     private function generateImage($name): string
     {
-        $img = Image::make(public_path('static/images/wallpaper.png'));
+        $img = Image::make(public_path('static/images/wallpaper.jpg'));
+         $img->resize(1920, 1080);
 
         $imgWidth = $img->width();
         $imgHeight = $img->height();
 
-        $fontSize = 150;
+        $fontSize = 200;
 
         $xPosition = $imgWidth / 2;
         $yPosition = $imgHeight / 2;
