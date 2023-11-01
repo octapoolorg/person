@@ -5,9 +5,9 @@ namespace App\Services\Tools;
 class FancyTextGenerator
 {
 
-    private $name;
+    private string $name;
 
-    private $styles = [
+    private array $styles = [
         'style1_map' => [
             'a' => '【a】', 'b' => '【b】', 'c' => '【c】', 'd' => '【d】', 'e' => '【e】', 'f' => '【f】', 'g' => '【g】',
             'h' => '【h】', 'i' => '【i】', 'j' => '【j】', 'k' => '【k】', 'l' => '【l】', 'm' => '【m】', 'n' => '【n】',
@@ -257,7 +257,7 @@ class FancyTextGenerator
         $this->name = $name;
     }
 
-    public function generateRandomEmojiStyles($name, $count = 5)
+    public function generateRandomEmojiStyles($name, $count = 5): array
     {
         $emojis = ["❤️", "⭐", "🔥", "💎", "🎵", "🚀", "☀️", "❄️", "🎈", "🍃", "🌊", "😀"];
         shuffle($emojis);
@@ -276,17 +276,17 @@ class FancyTextGenerator
         return $emojiStyles;
     }
 
-    public function generateEmojiStyle($name, $emoji)
+    public function generateEmojiStyle($name, $emoji): string
     {
         $name = strtoupper($name);
         return $emoji . implode($emoji, str_split($name)) . $emoji;
     }
 
 
-    private function apply_style($name, $style)
+    private function apply_style($name, $style): string
     {
         $name = strtolower($name);
-        $lowercase_style = array_change_key_case($style, CASE_LOWER);
+        $lowercase_style = array_change_key_case($style);
         $styled = '';
         for ($i = 0; $i < strlen($name); $i++) {
             $styled .= $lowercase_style[strtolower($name[$i])] ?? $name[$i];
@@ -294,17 +294,17 @@ class FancyTextGenerator
         return $styled;
     }
 
-    public function generate()
+    public function generate($styles=5): array
     {
         $usedStyles = [];
         $styleKeys = array_diff(array_keys($this->styles), $usedStyles);
         shuffle($styleKeys);
 
         // Generate 5 different emoji styles
-        $emojiStyles = $this->generateRandomEmojiStyles($this->name, 3);
+        $emojiStyles = $this->generateRandomEmojiStyles($this->name, $styles);
 
         // Generate 5 more styles from the available ones
-        $selectedStyles = array_slice($styleKeys, 0, 7);
+        $selectedStyles = array_slice($styleKeys, 0, $styles);
         $usedStyles = array_merge($usedStyles, $selectedStyles);
 
         $results = [];

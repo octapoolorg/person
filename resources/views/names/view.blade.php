@@ -91,70 +91,109 @@
                 </p>
 
                 <h3 class="my-3">Numerology Number - {!! $data['numerology']['numbers']['destiny'] !!}</h3>
-                <div class="callout callout-primary mb-4">
-                    <b>{!! $data['nameDetails']->name !!}:</b>
-                    <p>
+                <p class="callout callout-primary mb-4">
                         {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], [
                             'name' => $data['nameDetails']->name,
                         ]) !!}
-                    </p>
-                </div>
+                </p>
 
                 <h3 class="my-3">Soul Number - {!! $data['numerology']['numbers']['soul'] !!}</h3>
-                <div class="callout callout-primary mb-4">
-                    <b>{!! $data['nameDetails']->name !!}:</b>
-                    <p>
+                <p class="callout callout-primary mb-4">
                         {!! __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) !!}
-                    </p>
-                </div>
+                </p>
 
                 <h3 class="my-3">Personality Number - {!! $data['numerology']['numbers']['personality'] !!}</h3>
-                <div class="callout callout-primary mb-4">
-                    <b>{!! $data['nameDetails']->name !!}:</b>
-                    <p>
+                <p class="callout callout-primary mb-4">
                         {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], [
                             'name' => $data['nameDetails']->name,
                         ]) !!}
-                    </p>
-                </div>
+                </p>
             </section>
 
+
+            <h3 class="mb-3">Signatures for {{$data['nameDetails']->name}}</h3>
+            <div class="d-flex gap-2">
+                @foreach ($data['signatureUrls'] as $font => $url)
+                    <img src="{{ $url }}" alt="Signature with font {{ $font }}" class="img-thumbnail w-25">
+                @endforeach
+            </div>
+
             {{-- https://mdbootstrap.com/docs/standard/data/tables#section-advanced-example --}}
-            <table class="table table-striped table-bordered mb-5">
+
+            <table class="table align-middle my-5 bg-white">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Attribute</th>
+                    <th>Detail</th>
+                </tr>
+                </thead>
                 <tbody>
-
-                    <tr>
-                        <th scope="row" class="text-end">Ruling Hours</th>
-                        <td class="text-start text-primary">7am ~ 9am</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="text-end">Lucky Days</th>
-                        <td class="text-start text-primary">Tuesday, Thursday</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="text-end">Passion</th>
-                        <td class="text-start text-primary">To lead the way for others</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="text-end">Life Pursuit</th>
-                        <td class="text-start text-primary">The thrill of the moment</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="text-end">Vibration</th>
-                        <td class="text-start text-primary">Enthusiastic</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row" class="text-end">Suffixed Name</th>
-                        <td class="text-start text-primary">
-                            <a href="">{!! $data['nameDetails']->name !!}a</a>
-                            <a href="">{!! $data['nameDetails']->name !!}na</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        Ruling Hours
+                    </td>
+                    <td class="text-start text-primary">
+                        7am ~ 9am
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        Lucky Days
+                    </td>
+                    <td class="text-start text-primary">
+                        Tuesday, Thursday
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        Passion
+                    </td>
+                    <td class="text-start text-primary">
+                        To lead the way for others
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        Life Pursuit
+                    </td>
+                    <td class="text-start text-primary">
+                        The thrill of the moment
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                        </div>
+                    </td>
+                    <td class="text-end">
+                        Vibration
+                    </td>
+                    <td class="text-start text-primary">
+                        Enthusiastic
+                    </td>
+                </tr>
                 </tbody>
             </table>
 
@@ -178,7 +217,7 @@
 
             <h2 class="fw-bold text-primary mb-3">{!! $data['nameDetails']->name !!} Name Wallpaper</h2>
             <img src="{!! route('nameWallpaper',['name'=>$data['nameDetails']->slug]) !!}" class="img-fluid rounded img-thumbnail my-4 shadow"
-                alt="{!! $data['nameDetails']->name !!}" style="max-width: 100%; height: auto;">
+                alt="{!! $data['nameDetails']->name !!}">
             <p class="text-muted mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis
                 consequatur totam earum numquam cumque quas. Fugit, quasi minima.</p>
             <h2 class="fw-bold text-primary mb-3">{!! $data['nameDetails']->name !!} - Fancy Text Styles</h2>

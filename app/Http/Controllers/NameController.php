@@ -3,121 +3,176 @@
 namespace App\Http\Controllers;
 
 use App\Models\Name;
+use App\Services\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextGenerator;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
-use Intervention\Image\Facades\Image;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class NameController extends Controller
 {
+    protected ImageService $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function index(): View
     {
         return view('welcome');
     }
 
-    public function view($name): View
+    public function view(string $name): View
     {
-        try {
-            $cacheKey = "nameDetails:$name";
-            $nameDetails = Cache::remember($cacheKey, now()->addQuarter(), function () use ($name) {
-                return Name::with(['gender', 'origin', 'categories'])
-                    ->where('slug', $name)
-                    ->firstOrFail();
-            });
+        $nameDetails = $this->getCachedData("nameDetails:$name", function () use ($name) {
+            return Name::with(['gender', 'origin', 'categories'])->where('slug', $name)->firstOrFail();
+        });
 
-            $numerology = NumerologyFactory::create('pythagorean');
-            $numerologyData = $numerology->getNumerologyData($nameDetails->name);
+        $numerology = NumerologyFactory::create('pythagorean');
+        $numerologyData = $numerology->getNumerologyData($nameDetails->name);
 
-            $fancyText = new FancyTextGenerator($nameDetails->name);
-            $fancyTexts = $fancyText->generate();
+        $fancyText = new FancyTextGenerator($nameDetails->name);
+        $fancyTexts = $fancyText->generate();
 
-            $data = [
-                'nameDetails' => $nameDetails,
-                'numerology' => $numerologyData,
-                'fancyTexts' => $fancyTexts
-            ];
+        $signatureUrls = $this->nameSignatures($name);
 
-        } catch (Exception $e) {
-            Log::error("Failed to fetch name details: {$e->getMessage()}");
-            abort(404);
-        }
+        $data = [
+            'nameDetails' => $nameDetails,
+            'numerology' => $numerologyData,
+            'fancyTexts' => $fancyTexts,
+            'signatureUrls' => $signatureUrls
+        ];
 
         return view('names.view', compact('data'));
     }
 
-    public function nameWallpaper($name): Response
+    public function nameWallpaper(string $name): Response
     {
-        // Validate input
+        $this->validateName($name);
+        $name = Name::where('slug',$name)->first()->name;
+        $base64Image = $this->generateOrRetrieveImage($name, '#ffffff','static/images/wallpaper.jpg', 'roboto/roboto-medium.ttf', 200);
+        return $this->prepareImageResponse($base64Image, $name);
+    }
+
+    /**
+     * Generate or retrieve multiple name-based signatures.
+     *
+     * @param string $name
+     * @return array
+     */
+    private function nameSignatures(string $name): array
+    {
+        $this->validateName($name);
+        $name = Name::where('slug',$name)->first()->name;
+
+        $fonts = [
+            'cursive' => 'creattion-demo/creattion-demo.ttf',
+            'hand' => 'lucida-handwriting/lucida-handwriting.ttf',
+            'block' => 'verdana/verdana.ttf',
+            'initials' => 'courier-new/courier-new.ttf'
+        ];
+
+        $signatureUrls = [];
+
+        foreach ($fonts as $key => $font) {
+            $url = route('individualSignature',['name'=>$name,$key]);
+            $signatureUrls[$key] = $url;
+        }
+
+        return $signatureUrls;
+    }
+
+    public function individualSignature(string $name, string $fontKey): Response
+    {
+        try {
+            // Validate the provided name
+            $this->validateName($name);
+
+            $name = Name::where('slug',$name)->first()->name;
+
+            // Map the provided font key to its actual path
+            $font = $this->mapFontKeyToPath($fontKey);
+
+            // Check if the font is valid
+            if (!$font) {
+                return response("Invalid font", 400)
+                    ->header('Content-Type', 'text/plain');
+            }
+
+            $base64Image = $this->generateOrRetrieveImage($name, '#000000', 'static/images/signature_background.jpg', $font, 80);
+
+            return $this->prepareImageResponse($base64Image, $name);
+
+        } catch (Exception $e) {
+            // Handle any exceptions that occur
+            $this->handleException("Failed to generate or retrieve signature image for $name", $e);
+
+            return response("Internal Server Error", 500)
+                ->header('Content-Type', 'text/plain');
+        }
+    }
+
+
+    private function mapFontKeyToPath(string $fontKey): ?string
+    {
+        $fonts = [
+            'cursive' => 'creattion-demo/creattion-demo.ttf',
+            'hand' => 'lucida-handwriting/lucida-handwriting.ttf',
+            'block' => 'verdana/verdana.ttf',
+            'initials' => 'courier-new/courier-new.ttf'
+        ];
+
+        return $fonts[$fontKey] ?? null;
+    }
+
+    public function getRandomNames(): mixed
+    {
+        return $this->getCachedData("randomNames", function () {
+            return Name::inRandomOrder()->limit(5)->get();
+        });
+    }
+
+    private function getCachedData(string $key, callable $callback)
+    {
+        try {
+            return Cache::remember($key, now()->addQuarter(), $callback);
+        } catch (Exception $e) {
+            $this->handleException("Failed to fetch or cache data for $key", $e);
+        }
+    }
+
+    private function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
+    {
+        return $this->getCachedData("image:$name:$background:$font", function () use ($name, $color, $background, $font, $fontSize) {
+            return $this->imageService->generateImage($name, $color, $background, $font, $fontSize);
+        });
+    }
+
+    private function validateName(string $name): void
+    {
         if (empty($name) || !is_string($name)) {
             abort(404);
         }
+    }
 
-        try {
-            // Fetch the actual name associated with the slug from the database
-            $nameDetails = Name::where('slug', $name)->firstOrFail();
-            $actualName = $nameDetails->name;
-
-        } catch (Exception $e) {
-            Log::error("Failed to fetch actual name: {$e->getMessage()}");
-            abort(404);
-        }
-
-        try {
-            // Generate or retrieve the image
-            $base64Image = $this->generateOrRetrieveImage($actualName);
-
-        } catch (Exception $e) {
-            Log::error("Failed to generate or retrieve image: {$e->getMessage()}");
-            abort(500);
-        }
-
+    private function prepareImageResponse(string $base64Image, string $actualName): Response
+    {
         $imageInfo = explode(',', $base64Image);
         $imageData = base64_decode($imageInfo[1]);
-
         return response($imageData)
             ->header('Content-Type', 'image/png')
             ->header('Content-Disposition', "inline; filename=\"$actualName.png\"");
     }
 
-    private function generateOrRetrieveImage($name)
+    private function handleException(string $message, Exception $e): void
     {
-        $cacheKey = "nameWallpaper:$name";
-        $base64Image = Cache::get($cacheKey);
-
-        if (!$base64Image) {
-            $base64Image = $this->generateImage($name);
-            Cache::put($cacheKey, $base64Image, now()->addQuarter());
-        }
-
-        return $base64Image;
-    }
-
-    private function generateImage($name): string
-    {
-        $img = Image::make(public_path('static/images/wallpaper.jpg'));
-         $img->resize(1920, 1080);
-
-        $imgWidth = $img->width();
-        $imgHeight = $img->height();
-
-        $fontSize = 200;
-
-        $xPosition = $imgWidth / 2;
-        $yPosition = $imgHeight / 2;
-
-        $img->text($name, $xPosition, $yPosition, function ($font) use ($fontSize) {
-            $font->file(public_path('static/fonts/roboto/roboto-medium.ttf'));
-            $font->size($fontSize);
-            $font->color('#ffffff');
-            $font->align('center');
-            $font->valign('center');
-            $font->angle(0);
-        });
-
-        return (string) $img->encode('data-url');
+        Log::error("$message: {$e->getMessage()}");
+//        abort($e instanceof ModelNotFoundException ? 404 : 500);
     }
 }
