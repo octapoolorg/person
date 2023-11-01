@@ -8,7 +8,7 @@ cnames_df = pd.read_csv('temp/dedup_names_root.csv', low_memory=False)
 all_txt_data = pd.DataFrame(columns=['Name', 'Gender'])
 
 # Path to the source directory containing .txt files
-source_dir = 'source'
+source_dir = 'source/gender'
 
 # Loop through each .txt file in the source directory and append to all_txt_data
 for txt_file in os.listdir(source_dir):

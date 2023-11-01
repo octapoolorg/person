@@ -206,42 +206,30 @@
             <p class="text-muted mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
 
             <!-- Fancy Text Table -->
-            <table class="table table-striped table-bordered table-hover shadow-sm mb-5">
+            <table class="table table-striped table-bordered table-hover shadow-sm mb-5" id="fancyTextTable">
                 <tbody>
-                    @foreach ($data['fancyTexts'] as $fancyText)
-                        <tr>
-                            <th scope="row" class="fs-5">{{ $fancyText }}</th>
-                        </tr>
-                    @endforeach
+                @foreach ($data['fancyTexts'] as $fancyText)
+                    <tr onclick="copyToClipboard(event)">
+                        <th scope="row" class="fs-5">{{ $fancyText }}</th>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 
+
             <!-- FAQ Section -->
             <div class="questions" itemscope itemtype="https://schema.org/FAQPage">
-
                 <h2 class="my-4">
                     Frequently asked questions (FAQ) about {!! $data['nameDetails']->name !!}
                 </h2>
 
+                <!-- About the Name -->
                 <div class="item mb-3">
                     <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <span>Q</span>
                         <span itemprop="name">
-                            Is {!! $data['nameDetails']->name !!} a good name?
-                        </span>
-                    </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
-                        <span itemprop="text">Yes, {!! $data['nameDetails']->name !!} is a good name.</span>
-                    </div>
-                </div>
-
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                            What is the meaning of {!! $data['nameDetails']->name !!}?
-                        </span>
+                What does the name {!! $data['nameDetails']->name !!} specifically mean?
+            </span>
                     </div>
                     <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <span>A</span>
@@ -249,50 +237,71 @@
                     </div>
                 </div>
 
+                <!-- Astrological Information -->
                 <div class="item mb-3">
                     <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <span>Q</span>
                         <span itemprop="name">
-                            How common is the name {!! $data['nameDetails']->name !!}?
-                        </span>
+                How is the zodiac sign Virgo related to {!! $data['nameDetails']->name !!}?
+            </span>
                     </div>
                     <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <span>A</span>
-                        <span itemprop="text">The name {!! $data['nameDetails']->name !!} is relatively common and has been used by
-                            many individuals around the world.</span>
+                        <span itemprop="text">
+                The zodiac sign Virgo is ascribed to {!! $data['nameDetails']->name !!} according to astrological interpretations provided on this page.
+            </span>
                     </div>
                 </div>
 
+                <!-- Numerological Details -->
                 <div class="item mb-3">
                     <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <span>Q</span>
                         <span itemprop="name">
-                            Are there any famous personalities with the name {!! $data['nameDetails']->name !!}?
-                        </span>
+                What does the Numerology Number mean for {!! $data['nameDetails']->name !!}?
+            </span>
                     </div>
                     <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <span>A</span>
-                        <span itemprop="text">Yes, there are several famous personalities named {!! $data['nameDetails']->name !!} in
-                            various fields.</span>
+                        <span itemprop="text">
+                The Numerology Number provides an insight into the potential characteristics or traits of individuals named {!! $data['nameDetails']->name !!}.
+            </span>
                     </div>
                 </div>
 
+                <!-- Stylistic Features -->
                 <div class="item mb-3">
                     <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <span>Q</span>
                         <span itemprop="name">
-                            In which cultures or regions is the name {!! $data['nameDetails']->name !!} popular?
-                        </span>
+                What do the different signature styles for {!! $data['nameDetails']->name !!} mean?
+            </span>
                     </div>
                     <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                         <span>A</span>
-                        <span itemprop="text">The name {!! $data['nameDetails']->name !!} is popular in several cultures and regions,
-                            including [List some regions/cultures here].</span>
+                        <span itemprop="text">
+                These are recommended ways individuals named {!! $data['nameDetails']->name !!} might choose to sign their name.
+            </span>
+                    </div>
+                </div>
+
+                <!-- Miscellaneous Information -->
+                <div class="item mb-3">
+                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <span>Q</span>
+                        <span itemprop="name">
+                What do the ruling hours and lucky days for {!! $data['nameDetails']->name !!} indicate?
+            </span>
+                    </div>
+                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <span>A</span>
+                        <span itemprop="text">
+                These attributes, specific to the name {!! $data['nameDetails']->name !!}, are astrologically determined times and days considered to be fortunate.
+            </span>
                     </div>
                 </div>
 
             </div>
-
 
             <section class="social-share my-4">
                 <div class='social-share-btns'>
@@ -415,8 +424,6 @@
                     </div>
                 </div>
             </div>
-
         </aside>
-
     </section>
 @endsection

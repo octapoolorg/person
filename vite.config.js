@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite';
+// vite.config.js
+import { build, defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
@@ -8,4 +9,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        target: "ES2015",
+        rollupOptions: {
+            output: {
+                format: 'system',
+            },
+        },
+    }
 });
