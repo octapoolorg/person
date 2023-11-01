@@ -62,21 +62,11 @@
 
 
             <section class="p-3 p-md-4 border mb-5">
-                <div class="d-flex flex-column flex-md-row align-items-md-center my-2">
-                    <div class="flex-grow-1 ms-md-3 me-md-4">
-                        <h3>Auspicious Color</h3>
-                        <p>
-                            {!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.auspicious_colors', [
-                                'name' => $data['nameDetails']->name,
-                            ]) !!}
-                        </p>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="symbol bg-body-secondary d-flex align-items-center justify-content-center"
-                            style="width:100px;height:100px;font-size:3rem">
-                            <div class="square pulse orange"></div>
-                        </div>
-                    </div>
+                <h3 class="mb-3">Signatures for {{$data['nameDetails']->name}}</h3>
+                <div class="d-flex justify-content-between">
+                    @foreach ($data['signatureUrls'] as $font => $url)
+                        <img src="{{ $url }}" alt="Signature with font {{ $font }}" class="img-thumbnail w-25">
+                    @endforeach
                 </div>
             </section>
 
@@ -110,14 +100,6 @@
                 </p>
             </section>
 
-
-            <h3 class="mb-3">Signatures for {{$data['nameDetails']->name}}</h3>
-            <div class="d-flex gap-2">
-                @foreach ($data['signatureUrls'] as $font => $url)
-                    <img src="{{ $url }}" alt="Signature with font {{ $font }}" class="img-thumbnail w-25">
-                @endforeach
-            </div>
-
             {{-- https://mdbootstrap.com/docs/standard/data/tables#section-advanced-example --}}
 
             <table class="table align-middle my-5 bg-white">
@@ -135,10 +117,10 @@
                             <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                         </div>
                     </td>
-                    <td class="text-end">
+                    <td >
                         Ruling Hours
                     </td>
-                    <td class="text-start text-primary">
+                    <td class="text-primary">
                         7am ~ 9am
                     </td>
                 </tr>
@@ -148,10 +130,10 @@
                             <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                         </div>
                     </td>
-                    <td class="text-end">
+                    <td >
                         Lucky Days
                     </td>
-                    <td class="text-start text-primary">
+                    <td class="text-primary">
                         Tuesday, Thursday
                     </td>
                 </tr>
@@ -161,10 +143,10 @@
                             <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                         </div>
                     </td>
-                    <td class="text-end">
+                    <td >
                         Passion
                     </td>
-                    <td class="text-start text-primary">
+                    <td class="text-primary">
                         To lead the way for others
                     </td>
                 </tr>
@@ -174,10 +156,10 @@
                             <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                         </div>
                     </td>
-                    <td class="text-end">
+                    <td >
                         Life Pursuit
                     </td>
-                    <td class="text-start text-primary">
+                    <td class="text-primary">
                         The thrill of the moment
                     </td>
                 </tr>
@@ -187,10 +169,10 @@
                             <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                         </div>
                     </td>
-                    <td class="text-end">
+                    <td >
                         Vibration
                     </td>
-                    <td class="text-start text-primary">
+                    <td class="text-primary">
                         Enthusiastic
                     </td>
                 </tr>
