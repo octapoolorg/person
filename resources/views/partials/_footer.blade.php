@@ -1,41 +1,35 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-white text-muted">
-
-    <!-- Section: Links  -->
+<footer class="text-center bg-white text-gray-700">
+    <!-- Section: Links -->
     <section class="">
-        <div class="container text-center text-md-start mt-5">
-
+        <div class="container mx-auto text-center md:text-left mt-5">
             <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <section class="flex justify-center md:justify-between p-4 border-b">
                 <!-- Left -->
-                <div class="me-5 d-none d-lg-block">
+                <div class="mr-5 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
                 </div>
-                <!-- Left -->
-
                 <!-- Right -->
-                <div>
-                    <a href="" class="me-4 link-dark text-decoration-none">
-                        <i class="bi bi-facebook"></i>
+                <div class="flex space-x-4">
+                    <a href="" class="text-gray-700">
+                        <!-- Include your Facebook icon here -->
                     </a>
-                    <a href="" class="me-4 link-dark text-decoration-none">
-                        <i class="bi bi-instagram"></i>
+                    <a href="" class="text-gray-700">
+                        <!-- Include your Instagram icon here -->
                     </a>
-                    <a href="" class="me-4 link-dark text-decoration-none">
-                        <i class="bi bi-reddit"></i>
+                    <a href="" class="text-gray-700">
+                        <!-- Include your Reddit icon here -->
                     </a>
                 </div>
-                <!-- Right -->
             </section>
-            <!-- Section: Social media -->
-
             <!-- Grid row -->
-            <div class="row mt-3">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-3">
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div class="mb-4">
                     <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="bi bi-gem me-3 text-secondary"></i>Company name
+                    <h6 class="text-uppercase font-bold mb-4">
+                        <!-- Include your Gem icon here -->
+                        Company name
                     </h6>
                     <p>
                         Here you can use rows and columns to organize your footer content. Lorem ipsum
@@ -43,81 +37,66 @@
                     </p>
                 </div>
                 <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <div class="mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    <h6 class="text-uppercase font-bold mb-4">
                         Products
                     </h6>
                     <p>
-                        <a href="#!" class="nav-link">Angular</a>
+                        <a href="#!" class="text-base">Angular</a>
                     </p>
                     <p>
-                        <a href="#!" class="nav-link">React</a>
+                        <a href="#!" class="text-base">React</a>
                     </p>
                     <p>
-                        <a href="#!" class="nav-link">Vue</a>
+                        <a href="#!" class="text-base">Vue</a>
                     </p>
                     <p>
-                        <a href="#!" class="nav-link">Laravel</a>
+                        <a href="#!" class="text-base">Laravel</a>
                     </p>
                 </div>
                 <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <div class="mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    <h6 class="text-uppercase font-bold mb-4">
                         Useful links
                     </h6>
                     <p>
-                        <a href="#!" class="nav-link">Pricing</a>
+                        <a href="#!" class="text-base">Pricing</a>
                     </p>
                     <p>
-                        <a href="#!" class=" nav-link">Settings</a>
+                        <a href="#!" class="text-base">Settings</a>
                     </p>
                     <p>
-                        <a href="#!" class=" nav-link">Orders</a>
+                        <a href="#!" class="text-base">Orders</a>
                     </p>
                     <p>
-                        <a href="#!" class=" nav-link">Help</a>
+                        <a href="#!" class="text-base">Help</a>
                     </p>
                 </div>
                 <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <div class="mb-4 md:mb-0">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
+                    <h6 class="text-uppercase font-bold mb-4">
+                        Contact
                     </h6>
                     <p>
-                        <a href="#!" class=" nav-link">Pricing</a>
+                        <a href="#!" class="text-base">Email</a>
                     </p>
                     <p>
-                        <a href="#!" class=" nav-link">Settings</a>
+                        <a href="#!" class="text-base">Phone</a>
                     </p>
                     <p>
-                        <a href="#!" class=" nav-link">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class=" nav-link">Help</a>
+                        <a href="#!" class="text-base">Address</a>
                     </p>
                 </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
         </div>
     </section>
-    <!-- Section: Links  -->
 
     <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+    <div class="text-center p-4 bg-gray-100">
         © {{ date('Y') }} Copyright:
-        <a class="text-reset fw-bold" href="">Domain.com</a>
+        <a class="text-gray-700 font-bold" href="">Domain.com</a>
     </div>
-    <!-- Copyright -->
 </footer>
-<!-- Footer -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

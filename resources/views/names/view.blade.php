@@ -1,43 +1,42 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="row mb-5">
-        <main class="col-lg-8">
+    <section class="flex flex-wrap mb-12">
+        <main class="lg:w-2/3">
             <section>
-                <div class="p-5 mb-5 bg-body-tertiary text-dark rounded-3 shadow-sm">
-                    <div class="container py-5 text-center">
-                        <h1 class="display-4 fw-bold text-capitalize text-info mb-2">
+                <div class="p-12 bg-gradient-to-r from-[#YourTertiaryBodyColorStart] to-[#YourTertiaryBodyColorEnd] text-gray-800 rounded-lg shadow-lg">
+                    <div class="container py-12 text-center">
+                        <!-- Title -->
+                        <h1 class="text-6xl font-extrabold text-blue-500 mb-4 capitalize tracking-wider">
                             {!! $data['nameDetails']->name !!}
                         </h1>
-                        <p class="fs-3 text-muted mb-3">Means</p>
-                        <div class="mb-4">
-                            <span class="text-primary display-6">❀</span>
-                            <span class="text-primary display-6">❀</span>
-                            <span class="text-primary display-6">❀</span>
+
+                        <!-- Subtitle -->
+                        <p class="text-2xl text-gray-600 mb-6 italic">Means</p>
+
+                        <!-- Decorative Elements -->
+                        <div class="mb-8 flex justify-center space-x-4">
+                            <span class="text-4xl text-blue-500">❀</span>
+                            <span class="text-4xl text-blue-500">❀</span>
+                            <span class="text-4xl text-blue-500">❀</span>
                         </div>
-                        <h2 class="fs-1 text-success mb-4">
+
+                        <!-- Name Meaning -->
+                        <h2 class="text-4xl text-green-500 mb-8 font-semibold tracking-wide">
                             {!! $data['nameDetails']->meaning !!}
                         </h2>
                     </div>
-                    <div class="text-end pe-4">
-                        <p class="fs-3 fst-italic text-secondary">
+
+                    <!-- Gender -->
+                    <div class="text-right pr-8">
+                        <p class="text-2xl font-medium italic text-gray-600">
                             It is a {!! $data['nameDetails']->gender->name !!} name.
                         </p>
                     </div>
                 </div>
             </section>
 
-
-            <!-- Create a separate CSS file for the following styles -->
-            <style>
-                .symbol-container {
-                    width: 100px;
-                    height: 100px;
-                    font-size: 3rem;
-                }
-            </style>
-
-            <section class="p-3 p-md-4 border shadow-sm mb-5">
+            <section class="p-4 border shadow-sm mb-10">
                 <!-- Zodiac Sign Section -->
                 @include('partials.names._box', [
                     'title' => 'Zodiac Sign',
@@ -60,319 +59,276 @@
                 ])
             </section>
 
-
-            <section class="p-3 p-md-4 border mb-5">
-                <h3 class="mb-3">Signatures for {{$data['nameDetails']->name}}</h3>
-                <div class="d-flex justify-content-between">
+            <section class="p-4 border mb-10">
+                <h3 class="mb-6">Signatures for {{$data['nameDetails']->name}}</h3>
+                <div class="flex justify-between">
                     @foreach ($data['signatureUrls'] as $font => $url)
-                        <img src="{{ $url }}" alt="Signature with font {{ $font }}" class="img-thumbnail w-25">
+                        <img src="{{ $url }}" alt="Signature with font {{ $font }}" class="w-1/4">
                     @endforeach
                 </div>
             </section>
 
-            <section class="mb-5">
-                <h2 class="mb-4">Details about {!! $data['nameDetails']->name !!} name</h2>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-6">Details about {!! $data['nameDetails']->name !!} name</h2>
 
-                <h3 class="my-3">{!! $data['nameDetails']->name !!} Name Numerology</h3>
-                <p class="mb-3">
+                <h3 class="text-xl font-medium my-4">{!! $data['nameDetails']->name !!} Name Numerology</h3>
+                <p class="text-base leading-relaxed mb-4">
                     Assigning a specific color to each number can help users quickly identify and resonate with
                     their numerology number. Here's a potential color association, though the choices are subjective
                     and can be adjusted.
                 </p>
 
-                <h3 class="my-3">Numerology Number - {!! $data['numerology']['numbers']['destiny'] !!}</h3>
-                <p class="callout callout-primary mb-4">
-                        {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], [
-                            'name' => $data['nameDetails']->name,
-                        ]) !!}
+                <h3 class="text-lg font-medium my-4">Numerology Number - {!! $data['numerology']['numbers']['destiny'] !!}</h3>
+                <p class="bg-blue-100 p-4 rounded mb-4">
+                    {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], [
+                        'name' => $data['nameDetails']->name,
+                    ]) !!}
                 </p>
 
-                <h3 class="my-3">Soul Number - {!! $data['numerology']['numbers']['soul'] !!}</h3>
-                <p class="callout callout-primary mb-4">
-                        {!! __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) !!}
+                <h3 class="text-lg font-medium my-4">Soul Number - {!! $data['numerology']['numbers']['soul'] !!}</h3>
+                <p class="bg-blue-100 p-4 rounded mb-4">
+                    {!! __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) !!}
                 </p>
 
-                <h3 class="my-3">Personality Number - {!! $data['numerology']['numbers']['personality'] !!}</h3>
-                <p class="callout callout-primary mb-4">
-                        {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], [
-                            'name' => $data['nameDetails']->name,
-                        ]) !!}
+                <h3 class="text-lg font-medium my-4">Personality Number - {!! $data['numerology']['numbers']['personality'] !!}</h3>
+                <p class="bg-blue-100 p-4 rounded mb-4">
+                    {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], [
+                        'name' => $data['nameDetails']->name,
+                    ]) !!}
                 </p>
             </section>
 
-            {{-- https://mdbootstrap.com/docs/standard/data/tables#section-advanced-example --}}
 
-            <table class="table align-middle my-5 bg-white">
-                <thead>
+            <table class="min-w-full my-12 bg-white border-collapse">
+                <thead class="bg-gray-100">
                 <tr>
-                    <th>Image</th>
-                    <th>Attribute</th>
-                    <th>Detail</th>
+                    <th class="border border-gray-300 p-4">Image</th>
+                    <th class="border border-gray-300 p-4">Attribute</th>
+                    <th class="border border-gray-300 p-4">Detail</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <!-- Row 1: Ruling Hours -->
+                <tr class="text-center bg-white">
+                    <td class="border border-gray-300 p-4">
+                        <div class="flex items-center justify-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                 class="w-12 h-12 rounded-full"/>
                         </div>
                     </td>
-                    <td >
-                        Ruling Hours
-                    </td>
-                    <td class="text-primary">
-                        7am ~ 9am
-                    </td>
+                    <td class="border border-gray-300 p-4">Ruling Hours</td>
+                    <td class="border border-gray-300 p-4 text-blue-500">7am ~ 9am</td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <!-- Row 2: Lucky Days -->
+                <tr class="text-center bg-gray-50">
+                    <td class="border border-gray-300 p-4">
+                        <div class="flex items-center justify-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt=""
+                                 class="w-12 h-12 rounded-full"/>
                         </div>
                     </td>
-                    <td >
-                        Lucky Days
-                    </td>
-                    <td class="text-primary">
-                        Tuesday, Thursday
-                    </td>
+                    <td class="border border-gray-300 p-4">Lucky Days</td>
+                    <td class="border border-gray-300 p-4 text-blue-500">Tuesday, Thursday</td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <!-- Row 3: Passion -->
+                <tr class="text-center bg-white">
+                    <td class="border border-gray-300 p-4">
+                        <div class="flex items-center justify-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" alt=""
+                                 class="w-12 h-12 rounded-full"/>
                         </div>
                     </td>
-                    <td >
-                        Passion
-                    </td>
-                    <td class="text-primary">
-                        To lead the way for others
-                    </td>
+                    <td class="border border-gray-300 p-4">Passion</td>
+                    <td class="border border-gray-300 p-4 text-blue-500">To lead the way for others</td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <!-- Row 4: Life Pursuit -->
+                <tr class="text-center bg-gray-50">
+                    <td class="border border-gray-300 p-4">
+                        <div class="flex items-center justify-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                                 class="w-12 h-12 rounded-full"/>
                         </div>
                     </td>
-                    <td >
-                        Life Pursuit
-                    </td>
-                    <td class="text-primary">
-                        The thrill of the moment
-                    </td>
+                    <td class="border border-gray-300 p-4">Life Pursuit</td>
+                    <td class="border border-gray-300 p-4 text-blue-500">The thrill of the moment</td>
                 </tr>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <!-- Row 5: Vibration -->
+                <tr class="text-center bg-white">
+                    <td class="border border-gray-300 p-4">
+                        <div class="flex items-center justify-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt=""
+                                 class="w-12 h-12 rounded-full"/>
                         </div>
                     </td>
-                    <td >
-                        Vibration
-                    </td>
-                    <td class="text-primary">
-                        Enthusiastic
-                    </td>
+                    <td class="border border-gray-300 p-4">Vibration</td>
+                    <td class="border border-gray-300 p-4 text-blue-500">Enthusiastic</td>
                 </tr>
                 </tbody>
             </table>
 
-            <h2 class="my-3">Abbreviation of {!! $data['nameDetails']->name !!}</h2>
-            <table class="table table-striped table-bordered mb-5">
-                <tbody>
-                    <tr>
-                        <th scope="row">A</th>
-                        <td>Awesome</td>
+            <!-- Abbreviation section -->
+            <h2 class="my-6 text-xl font-bold">Abbreviation of {!! $data['nameDetails']->name !!}</h2>
+            <div class="border border-gray-300 rounded-md shadow-md mb-12">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <tbody class="bg-white">
+                    <tr class="bg-gray-50">
+                        <th class="p-4 text-left border border-gray-300">A</th>
+                        <td class="p-4 text-left border border-gray-300">Awesome</td>
                     </tr>
-                    <tr>
-                        <th scope="row">L</th>
-                        <td>Lion</td>
+                    <tr class="bg-white">
+                        <th class="p-4 text-left border border-gray-300">L</th>
+                        <td class="p-4 text-left border border-gray-300">Lion</td>
                     </tr>
-                    <tr>
-                        <th scope="row">I</th>
-                        <td colspan="2">Intelligent</td>
+                    <tr class="bg-gray-50">
+                        <th class="p-4 text-left border border-gray-300">I</th>
+                        <td class="p-4 text-left border border-gray-300">Intelligent</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
-            <h2 class="fw-bold text-primary mb-3">{!! $data['nameDetails']->name !!} Name Wallpaper</h2>
-            <img src="{!! route('nameWallpaper',['name'=>$data['nameDetails']->slug]) !!}" class="img-fluid rounded img-thumbnail my-4 shadow"
-                alt="{!! $data['nameDetails']->name !!}">
-            <p class="text-muted mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat, quis
-                consequatur totam earum numquam cumque quas. Fugit, quasi minima.</p>
-            <h2 class="fw-bold text-primary mb-3">{!! $data['nameDetails']->name !!} - Fancy Text Styles</h2>
-            <p class="text-muted mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
+            <!-- Wallpaper section -->
+            <h2 class="font-bold text-blue-500 text-xl my-6">{!! $data['nameDetails']->name !!} Name Wallpaper</h2>
+            <img src="{!! route('nameWallpaper',['name'=>$data['nameDetails']->slug]) !!}"
+                 class="rounded-lg my-8 shadow-lg w-full object-cover h-60" alt="{!! $data['nameDetails']->name !!}">
+            <p class="text-gray-400 my-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus repellat,
+                quis consequatur totam earum numquam cumque quas. Fugit, quasi minima.</p>
 
-            <!-- Fancy Text Table -->
-            <table class="table table-striped table-bordered table-hover shadow-sm mb-5" id="fancyTextTable">
-                <tbody>
-                @foreach ($data['fancyTexts'] as $fancyText)
-                    <tr onclick="copyToClipboard(event)">
-                        <th scope="row" class="fs-5">{{ $fancyText }}</th>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <!-- Fancy Text Styles section -->
+            <h2 class="font-bold text-blue-500 text-xl my-6">{!! $data['nameDetails']->name !!} - Fancy Text Styles</h2>
+            <p class="text-gray-400 my-8">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, fugiat!</p>
 
+            <div class="border border-gray-300 rounded-md shadow-md mb-12">
+                <table class="min-w-full divide-y divide-gray-200 cursor-pointer bg-white hover:shadow-lg" id="fancyTextTable">
+                    <tbody>
+                    @foreach ($data['fancyTexts'] as $key => $fancyText)
+                        <tr onclick="copyToClipboard(event)" class="{{ $key % 2 === 0 ? 'bg-gray-50' : 'bg-white' }}">
+                            <th scope="row" class="text-lg p-4 hover:bg-gray-200 transition ease-in-out duration-150">
+                                {{ $fancyText }}
+                            </th>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
             <!-- FAQ Section -->
-            <div class="questions" itemscope itemtype="https://schema.org/FAQPage">
-                <h2 class="my-4">
+            <div class="space-y-6" itemscope itemtype="https://schema.org/FAQPage">
+                <h2 class="my-8 text-2xl font-semibold">
                     Frequently asked questions (FAQ) about {!! $data['nameDetails']->name !!}
                 </h2>
-
-                <!-- About the Name -->
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                What does the name {!! $data['nameDetails']->name !!} specifically mean?
-            </span>
+                <div class="space-y-2 mb-6 border-l-4 border-blue-500 pl-2">
+                    <div class="flex items-center" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <span class="text-lg font-bold pr-2">Q:</span>
+                        <span itemprop="name">What does the name {!! $data['nameDetails']->name !!} specifically mean?</span>
                     </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
+                    <div class="flex items-center pl-8" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <span class="text-lg font-bold pr-2">A:</span>
                         <span itemprop="text">{!! $data['nameDetails']->meaning !!}</span>
                     </div>
                 </div>
-
-                <!-- Astrological Information -->
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                How is the zodiac sign Virgo related to {!! $data['nameDetails']->name !!}?
-            </span>
-                    </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
-                        <span itemprop="text">
-                The zodiac sign Virgo is ascribed to {!! $data['nameDetails']->name !!} according to astrological interpretations provided on this page.
-            </span>
-                    </div>
-                </div>
-
-                <!-- Numerological Details -->
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                What does the Numerology Number mean for {!! $data['nameDetails']->name !!}?
-            </span>
-                    </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
-                        <span itemprop="text">
-                The Numerology Number provides an insight into the potential characteristics or traits of individuals named {!! $data['nameDetails']->name !!}.
-            </span>
-                    </div>
-                </div>
-
-                <!-- Stylistic Features -->
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                What do the different signature styles for {!! $data['nameDetails']->name !!} mean?
-            </span>
-                    </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
-                        <span itemprop="text">
-                These are recommended ways individuals named {!! $data['nameDetails']->name !!} might choose to sign their name.
-            </span>
-                    </div>
-                </div>
-
-                <!-- Miscellaneous Information -->
-                <div class="item mb-3">
-                    <div class="question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <span>Q</span>
-                        <span itemprop="name">
-                What do the ruling hours and lucky days for {!! $data['nameDetails']->name !!} indicate?
-            </span>
-                    </div>
-                    <div class="answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <span>A</span>
-                        <span itemprop="text">
-                These attributes, specific to the name {!! $data['nameDetails']->name !!}, are astrologically determined times and days considered to be fortunate.
-            </span>
-                    </div>
-                </div>
-
             </div>
 
-            <section class="social-share my-4">
-                <div class='social-share-btns'>
-                    <a class='share-btn share-btn-instagram' href='https://twitter.com/intent/tweet?text=url-current-page'
-                        rel='nofollow' target='_blank'>
-                        <i class='bi bi-instagram'></i>
-                        Tweet
+            <!-- Social Share Section -->
+            <section class="space-y-4 my-8">
+                <div class="flex space-x-4">
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/intent/tweet?text=url-current-page"
+                       class="px-4 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600"
+                       target="_blank" rel="nofollow">
+                        <i class="fab fa-twitter"></i> Tweet
                     </a>
-                    <a class='share-btn share-btn-facebook'
-                        href='https://www.facebook.com/sharer/sharer.php?u=url-current-page' rel='nofollow'
-                        target='_blank'>
-                        <i class='bi bi-facebook'></i>
-                        Share
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=url-current-page"
+                       class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600"
+                       target="_blank" rel="nofollow">
+                        <i class="fab fa-facebook-f"></i> Share
                     </a>
-                    <a class='share-btn share-btn-linkedin' href='https://www.linkedin.com/cws/share?url=url-current-page'
-                        rel='nofollow' target='_blank'>
-                        <i class='bi bi-linkedin'></i>
-                        Share
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/cws/share?url=url-current-page"
+                       class="px-4 py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800"
+                       target="_blank" rel="nofollow">
+                        <i class="fab fa-linkedin-in"></i> Share
                     </a>
-                    <a class='share-btn share-btn-reddit' href='http://www.reddit.com/submit?url=url-current-page'
-                        rel='nofollow' target='_blank'>
-                        <i class='bi bi-reddit'></i>
-                        Share
+                    <!-- Reddit -->
+                    <a href="http://www.reddit.com/submit?url=url-current-page"
+                       class="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600"
+                       target="_blank" rel="nofollow">
+                        <i class="fab fa-reddit-alien"></i> Share
                     </a>
-                    <a class='share-btn share-btn-mail'
-                        href='mailto:?subject={!! $data['nameDetails']->name !!} name - all you need to know&amp;amp;body=url-current-page'
-                        rel='nofollow' target='_blank' title='via email'>
-                        <i class='bi bi-envelope'></i>
-                        Share
+                    <!-- Mail -->
+                    <a href="mailto:?subject={!! $data['nameDetails']->name !!} name - all you need to know&amp;body=url-current-page"
+                       class="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600"
+                       target="_blank" rel="nofollow" title='via email'>
+                        <i class="fas fa-envelope"></i> Share
                     </a>
                 </div>
             </section>
 
-            <section>
-                <div class="my-3">
-                    <h4 class="mb-3">User Comments About {!! $data['nameDetails']->name !!}</h4>
 
-                    <div class="d-flex my-2">
-                        <div class="flex-shrink-0">
-                            <img src="https://via.placeholder.com/50x50" alt="...">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6>{!! $data['nameDetails']->name !!}</h6>
-                            <p>
-                                This is some content from a media component.
-                                You can replace this with any content and
-                                adjust it as needed.
-                            </p>
-                        </div>
+            <!-- User Comments Section -->
+            <section class="space-y-8 bg-gray-50 p-4 rounded-lg">
+                <h4 class="text-lg font-semibold mb-4 flex items-center text-blue-600">
+                    <i class="fas fa-comments mr-2 text-blue-500"></i>
+                    User Comments About {!! $data['nameDetails']->name !!}
+                </h4>
+
+                <!-- Single Comment -->
+                <div class="flex space-x-4 my-2 bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/50x50" alt="User Image" class="rounded-full">
+                    </div>
+                    <div class="flex-grow">
+                        <h6 class="text-md font-semibold flex items-center text-gray-700">
+                            <i class="fas fa-user mr-2"></i>
+                            {!! $data['nameDetails']->name !!}
+                        </h6>
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-comment mr-2"></i>
+                            This is some content from a media component.
+                            You can replace this with any content and
+                            adjust it as needed.
+                        </p>
                     </div>
                 </div>
-                <div class="card my-5">
-                    <div class="card-header">
+
+                <!-- Add a Comment -->
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="bg-gray-200 text-lg font-semibold p-2 rounded-t-lg flex items-center text-gray-700">
+                        <i class="fas fa-pencil-alt mr-2"></i>
                         Add a comment
                     </div>
-                    <div class="card-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name">
+                    <div class="p-4">
+                        <form class="space-y-4">
+                            <!-- Name -->
+                            <div class="flex flex-col">
+                                <label for="name" class="block text-sm font-medium text-gray-600 mb-1">
+                                    <i class="fas fa-user mr-2 text-gray-500"></i> Name
+                                </label>
+                                <input type="text" id="name" placeholder="Enter your name" class="form-input block w-full py-2 px-3 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email">
+
+                            <!-- Email -->
+                            <div class="flex flex-col">
+                                <label for="email" class="block text-sm font-medium text-gray-600 mb-1">
+                                    <i class="fas fa-envelope mr-2 text-gray-500"></i> Email
+                                </label>
+                                <input type="email" id="email" placeholder="Enter your email" class="form-input block w-full py-2 px-3 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
+
+                            <!-- Comment -->
+                            <div class="flex flex-col">
+                                <label for="comment" class="block text-sm font-medium text-gray-600 mb-1">
+                                    <i class="fas fa-comment-dots mr-2 text-gray-500"></i> Comment
+                                </label>
+                                <textarea id="comment" placeholder="Enter your comment" class="form-textarea block w-full py-2 px-3 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" rows="3"></textarea>
+                            </div>
+
+                            <!-- Submit -->
                             <div class="col-12">
-                                <label for="comment" class="form-label">Comment</label>
-                                <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Submit comment</button>
+                                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:ring-blue-500 focus:ring-opacity-50">
+                                    <i class="fas fa-paper-plane mr-2"></i> Submit comment
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -380,48 +336,45 @@
             </section>
 
         </main>
-        <aside class="col-lg-4">
+        <aside class="lg:w-1/4">
+            <!-- Generate Random Name -->
+            <div class="bg-white shadow-md my-6 p-6 rounded-lg">
+                <h5 class="text-xl font-bold text-blue-600 mb-2">Generate Random Name</h5>
+                <p class="text-gray-500 mb-3">Click to generate a list of random names to make a better choice.</p>
+                <a href="#" class="bg-blue-500 text-white p-3 rounded-full inline-flex items-center hover:bg-blue-600 transition duration-200 ease-in uppercase">
+                    <!-- Insert shuffle icon here -->
+                    <span class="ml-2">Randomize</span>
+                </a>
+            </div>
 
-            <div class="card shadow-sm my-3">
-                <div class="card-body py-4">
-                    <h5 class="card-title fw-bold text-primary">Generate Random Name</h5>
-                    <p class="card-text text-muted">Click to generate a list of random names to make a better choice.</p>
-                    <a href="#" class="btn btn-primary text-uppercase">
-                        <i class="bi bi-shuffle me-2"></i>Randomize
+            <!-- Follow Us on Social -->
+            <div class="bg-white shadow-md my-6 p-6 rounded-lg">
+                <h5 class="text-xl font-bold text-blue-600 mb-2">Follow Us on Social</h5>
+                <div class="flex justify-around mt-3">
+                    <a href="" class="hover:opacity-70 transition duration-200 ease-in">
+                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"/>
+                    </a>
+                    <a href="" class="hover:opacity-70 transition duration-200 ease-in">
+                        <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" alt="Instagram"/>
+                    </a>
+                    <a href="" class="hover:opacity-70 transition duration-200 ease-in">
+                        <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" alt="Pinterest"/>
                     </a>
                 </div>
             </div>
 
-            <div class="card shadow-sm my-3">
-                <h5 class="ps-3 pt-4 fw-bold text-primary">Follow Us on Social</h5>
-                <div class="card-body">
-                    <div class="d-flex justify-content-around">
-                        <a href="">
-                            <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook" />
-                        </a>
-                        <a href="">
-                            <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" alt="Instagram" />
-                        </a>
-                        <a href="">
-                            <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" alt="Pinterest" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card shadow-sm my-3">
-                <h5 class="ps-3 pt-4 fw-bold text-primary">Popular Baby Names</h5>
-                <div class="card-body">
-                    <div class="d-flex flex-row flex-wrap justify-content-around">
-                        <a href="" class="name-label d-flex align-items-center">
-                            <i class="bi bi-gender-male bg-boy text-white p-2 gender-label"></i>
-                            <span class="text-center ms-3">Boy Names</span>
-                        </a>
-                        <a href="" class="name-label d-flex align-items-center">
-                            <i class="bi bi-gender-female bg-girl text-white p-2 gender-label"></i>
-                            <span class="text-center ms-3">Girl Names</span>
-                        </a>
-                    </div>
+            <!-- Popular Baby Names -->
+            <div class="bg-white shadow-md my-6 p-6 rounded-lg">
+                <h5 class="text-xl font-bold text-blue-600 mb-2">Popular Baby Names</h5>
+                <div class="flex flex-wrap justify-around mt-3">
+                    <a href="" class="flex items-center hover:underline hover:text-blue-500 transition duration-200 ease-in">
+                        <!-- Insert male icon here with custom background -->
+                        <span class="text-center ml-3">Boy Names</span>
+                    </a>
+                    <a href="" class="flex items-center hover:underline hover:text-blue-500 transition duration-200 ease-in">
+                        <!-- Insert female icon here with custom background -->
+                        <span class="text-center ml-3">Girl Names</span>
+                    </a>
                 </div>
             </div>
         </aside>
