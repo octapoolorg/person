@@ -1,25 +1,36 @@
-<header class="bg-white shadow-sm">
-    <nav id="top-nav" class="bg-white px-4 py-2">
-        <div class="container mx-auto">
-            <div class="flex items-center justify-between">
-                <a href="/" class="text-2xl font-bold text-blue-500">NameCenter</a>
-                <button class="lg:hidden flex items-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- Replace the below span with a suitable menu icon -->
-                    <span class="block h-4 w-4 bg-gray-500"></span>
+<header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
+    <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 py-5" aria-label="Global">
+        <div class="flex items-center justify-between">
+            <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">NameCenter</a>
+            <div class="sm:hidden">
+                <button type="button" class="hs-collapse-toggle p-2 inline-flex items-center rounded-md border border-transparent text-gray-500 shadow-sm bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 transition text-sm dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
                 </button>
-                <div class="hidden lg:flex items-center">
-                    <form class="flex items-center mr-4 w-auto">
-                        <input type="text" class="form-input px-2 py-1" placeholder="Search Name" aria-label="Search Name" aria-describedby="search">
-                        <button class="ml-2 border border-blue-500 text-blue-500 p-2" title="Search name" type="button" id="search">
-                            <!-- Include your search icon here -->
-                        </button>
-                    </form>
-                    <div class="flex items-center space-x-4">
-                        <a class="text-black font-bold" aria-current="page" href="#">Home</a>
-                        <a class="text-black font-medium" href="#">Names</a>
-                        <a class="text-black font-medium" href="#">Blog</a>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block sm:flex sm:items-center sm:justify-between">
+            <!-- Search bar -->
+            <div class="flex w-full ms-auto sm:w-auto sm:mr-6">
+                <form class="relative flex items-center w-full" action="">
+                    <label for="hero-input" class="sr-only">Search</label>
+                    <input type="text" required id="hero-input" name="hero-input" class="py-2 px-4 block w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-700 dark:text-white" placeholder="Search...">
+                    <button type="submit" class="absolute right-2 inset-y-0 my-auto flex items-center justify-center text-blue-600 dark:text-blue-400">
+                        <i class="fas fa fa-search" ></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-7 justify-end">
+                <a class="text-blue-600 hover:text-blue-700 dark:hover:text-blue-500" href="#" aria-current="page">Home</a>
+                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300" href="#">Names</a>
+                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300" href="#">Blog</a>
             </div>
         </div>
     </nav>

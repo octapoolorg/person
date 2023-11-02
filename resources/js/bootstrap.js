@@ -1,5 +1,5 @@
 // Your existing code in bootstrap.js
-
+import('preline')
 window.copyToClipboard = function(event) {
     const textToCopy = event.target.innerText;
     navigator.clipboard.writeText(textToCopy).then(() => {

@@ -69,13 +69,12 @@ class NameController extends Controller
     private function nameSignatures(string $name): array
     {
         $this->validateName($name);
-        $name = Name::where('slug',$name)->first()->name;
+        $name = Name::where('slug',$name)->first()->slug;
 
         $fonts = [
             'cursive' => 'creattion-demo/creattion-demo.ttf',
-            'hand' => 'lucida-handwriting/lucida-handwriting.ttf',
-            'block' => 'verdana/verdana.ttf',
-            'initials' => 'courier-new/courier-new.ttf'
+            'allison-tessa' => 'allison-tessa/allison-tessa.ttf',
+            'monsieur-la-doulaise' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf'
         ];
 
         $signatureUrls = [];
@@ -98,6 +97,7 @@ class NameController extends Controller
 
             // Map the provided font key to its actual path
             $font = $this->mapFontKeyToPath($fontKey);
+            $fontSize = $this->mapFontKeyToSize($fontKey);
 
             // Check if the font is valid
             if (!$font) {
@@ -105,7 +105,7 @@ class NameController extends Controller
                     ->header('Content-Type', 'text/plain');
             }
 
-            $base64Image = $this->generateOrRetrieveImage($name, '#000000', 'static/images/signature_background.jpg', $font, 80);
+            $base64Image = $this->generateOrRetrieveImage($name, '#000000', 'static/images/signature_background.jpg', $font, $fontSize);
 
             return $this->prepareImageResponse($base64Image, $name);
 
@@ -123,9 +123,18 @@ class NameController extends Controller
     {
         $fonts = [
             'cursive' => 'creattion-demo/creattion-demo.ttf',
-            'hand' => 'lucida-handwriting/lucida-handwriting.ttf',
-            'block' => 'verdana/verdana.ttf',
-            'initials' => 'courier-new/courier-new.ttf'
+            'allison-tessa' => 'allison-tessa/allison-tessa.ttf',
+            'monsieur-la-doulaise' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf'
+        ];
+
+        return $fonts[$fontKey] ?? null;
+    }
+
+    private function mapFontKeyToSize(string $fontKey): ?string{
+        $fonts = [
+            'cursive' => 250,
+            'allison-tessa' => 120,
+            'monsieur-la-doulaise' => 190
         ];
 
         return $fonts[$fontKey] ?? null;
@@ -149,7 +158,7 @@ class NameController extends Controller
 
     private function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
     {
-        return $this->getCachedData("image:$name:$background:$font", function () use ($name, $color, $background, $font, $fontSize) {
+        return $this->getCachedData("image:$name:$background:$font:$fontSize", function () use ($name, $color, $background, $font, $fontSize) {
             return $this->imageService->generateImage($name, $color, $background, $font, $fontSize);
         });
     }
