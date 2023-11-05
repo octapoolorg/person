@@ -1,4 +1,4 @@
-<header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
+<header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm sm:py-0 dark:bg-gray-800 dark:border-gray-700">
     <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 py-5" aria-label="Global">
         <div class="flex items-center justify-between">
             <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">NameCenter</a>
@@ -14,23 +14,23 @@
                 </button>
             </div>
         </div>
-        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block sm:flex sm:items-center sm:justify-between">
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:flex sm:items-center sm:justify-between">
             <!-- Search bar -->
             <div class="flex w-full ms-auto sm:w-auto sm:mr-6">
                 <form class="relative flex items-center w-full" action="">
                     <label for="hero-input" class="sr-only">Search</label>
-                    <input type="text" required id="hero-input" name="hero-input" class="py-2 px-4 block w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-700 dark:text-white" placeholder="Search...">
-                    <button type="submit" class="absolute right-2 inset-y-0 my-auto flex items-center justify-center text-blue-600 dark:text-blue-400">
-                        <i class="fas fa fa-search" ></i>
+                    <input type="text" required id="hero-input" name="hero-input" class="py-2 px-4 block w-full border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-700 dark:text-white" placeholder="Search...">
+                    <button type="submit" class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-blue-600 dark:text-blue-400">
+                        <i class="fas fa fa-search"></i>
                     </button>
                 </form>
             </div>
 
             <!-- Links -->
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-7 justify-end">
-                <a class="text-blue-600 hover:text-blue-700 dark:hover:text-blue-500" href="#" aria-current="page">Home</a>
-                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300" href="#">Names</a>
-                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300" href="#">Blog</a>
+            <div class="flex flex-col sm:flex-row gap-5 sm:gap-7 justify-end mt-4 sm:mt-0">
+                <a class="text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 block py-2" href="#" aria-current="page">Home</a>
+                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 block py-2" href="#">Names</a>
+                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 block py-2" href="#">Blog</a>
             </div>
         </div>
     </nav>

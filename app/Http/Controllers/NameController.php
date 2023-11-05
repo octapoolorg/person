@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Name;
+use App\Models\NameTrait;
 use App\Services\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextGenerator;
@@ -23,11 +24,6 @@ class NameController extends Controller
         $this->imageService = $imageService;
     }
 
-    public function index(): View
-    {
-        return view('welcome');
-    }
-
     public function view(string $name): View
     {
         $nameDetails = $this->getCachedData("nameDetails:$name", function () use ($name) {
@@ -40,11 +36,39 @@ class NameController extends Controller
         $fancyText = new FancyTextGenerator($nameDetails->name);
         $fancyTexts = $fancyText->generate();
 
+        $alphabets = str_split($name);
+        $cacheKey = 'name_traits_for_' . implode('', $alphabets);
+
+        $traits = Cache::remember($cacheKey, now()->addMinutes(60), function () use ($alphabets) {
+            // Convert alphabets to uppercase since the database stores them as uppercase
+            $upperAlphabets = array_map('strtoupper', $alphabets);
+
+            // Fetch the traits and key them by 'alphabet'
+            $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->keyBy('alphabet');
+
+            // Sort the collection to maintain the order of alphabets in the name
+            $sortedTraits = collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
+                // Convert the current alphabet to uppercase for matching
+                $alphabetKey = strtoupper($alphabet);
+
+                if (isset($traitsCollection[$alphabetKey])) {
+                    return [$alphabet => $traitsCollection[$alphabetKey]->name];
+                } else {
+                    // If a trait does not exist for an alphabet, handle it as required
+                    // For now, return null or a placeholder string to indicate a missing trait
+                    return [$alphabet => null]; // or some placeholder like 'missing_trait'
+                }
+            });
+
+            return $sortedTraits;
+        });
+
         $signatureUrls = $this->nameSignatures($name);
 
         $data = [
             'nameDetails' => $nameDetails,
             'numerology' => $numerologyData,
+            'traits' => $traits,
             'fancyTexts' => $fancyTexts,
             'signatureUrls' => $signatureUrls
         ];
@@ -142,7 +166,8 @@ class NameController extends Controller
 
     public function getRandomNames(): mixed
     {
-        return $this->getCachedData("randomNames", function () {
+        $random = rand(1,20);
+        return $this->getCachedData("randomNames_$random", function () {
             return Name::inRandomOrder()->limit(5)->get();
         });
     }

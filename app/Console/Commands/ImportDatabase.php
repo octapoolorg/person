@@ -39,6 +39,7 @@ class ImportDatabase extends Command
                 $this->importCsv('origins.csv', 'origins',true);
                 $this->importCsv('categories.csv', 'categories', true);
                 $this->importCsv('category_name.csv', 'category_name');
+                $this->importCsv('name_traits.csv', 'name_traits');
             });
 
             $this->info("Data import was successful.");
