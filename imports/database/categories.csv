@@ -1,4 +1,4 @@
-id,name
+id,category
 1,
 2,African
 3,African Christian
@@ -63,12 +63,9 @@ id,name
 62,Swedish Christian
 63,Thai
 64,Turkish
-65,Turkish Christian
+65,UGC
 66,Unique
-67,Unknown
-68,User Submitted Names
-69,Vietnamese
-70,Vietnamese Christian
-71,Welsh
-72,Welsh Christian
-73,nan
+67,Vietnamese
+68,Vietnamese Christian
+69,Welsh
+70,Welsh Christian

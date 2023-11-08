@@ -15,15 +15,26 @@ def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, uniq
         for row in csvreader:
             name, meaning, gender, origin, categories, syllables = row
             unique_genders.add(gender)
-            unique_origins.add(origin)
+
+            # Split and clean origin data
+            origins_list = [o.strip() for o in origin.split(',') if o.strip()]
+            for origin_name in origins_list:
+                unique_origins[origin_name] = unique_origins.get(origin_name, set())
+
             name_id = len(tables['names']) + 1
             gender_id = gender_to_id.get(gender) if gender_to_id else None
-            origin_id = origin_to_id.get(origin) if origin_to_id else None
-            tables['names'].append([name_id, name, meaning, gender_id, origin_id, syllables])
 
+            # Populate names table
+            tables['names'].append([name_id, name, meaning, gender_id, syllables])
+
+            # Populate the category_name mapping
             for category in categories.split(","):
                 category = category.strip()
                 mappings['category_name'].append([name_id, category])
+
+            # Populate the origin_name mapping
+            for origin_name in origins_list:
+                unique_origins[origin_name].add(name_id)
 
 # Write a table to a CSV file
 def write_table_to_csv(filepath, header, table):
@@ -32,6 +43,18 @@ def write_table_to_csv(filepath, header, table):
         csvwriter.writerow(header)
         csvwriter.writerows(table)
 
+# Handle origins to create a unique list and mapping table
+def handle_origins(unique_origins, tables, mappings):
+    origin_to_id = {}
+    origin_id = 1
+    for origin_name, name_ids in unique_origins.items():
+        origin_to_id[origin_name] = origin_id
+        tables['origins'].append([origin_id, origin_name])
+        for name_id in name_ids:
+            mappings['name_origin'].append([name_id, origin_id])
+        origin_id += 1
+    return origin_to_id
+
 # Main function
 def main():
     # Initialize
@@ -39,24 +62,23 @@ def main():
     create_directory(data_directory)
     tables = defaultdict(list)
     unique_genders = set()
-    unique_origins = set()
+    unique_origins = defaultdict(set)
     mappings = defaultdict(list)
 
     # First pass to populate tables
     input_file = 'temp/names_db.csv'
     read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins)
 
+    # Convert unique genders to table with ID
+    gender_to_id = {gender: idx + 1 for idx, gender in enumerate(sorted(unique_genders))}
+    tables['genders'] = [[idx + 1, gender] for idx, gender in enumerate(sorted(unique_genders))]
+
+    # Handle origins and create a mapping
+    origin_to_id = handle_origins(unique_origins, tables, mappings)
+
     # Create a category to ID mapping based on first pass
     category_to_id = {category: idx+1 for idx, category in enumerate(sorted(set(category for _, category in mappings['category_name'])))}
     tables['categories'] = [[idx, category] for category, idx in category_to_id.items()]
-
-    # Convert unique sets to tables with ID
-    tables['genders'] = [[idx+1, item] for idx, item in enumerate(sorted(unique_genders))]
-    tables['origins'] = [[idx+1, item] for idx, item in enumerate(sorted(unique_origins))]
-
-    # Create gender and origin ID mappings
-    gender_to_id = {item[1]: item[0] for item in tables['genders']}
-    origin_to_id = {item[1]: item[0] for item in tables['origins']}
 
     # Second pass to populate names with IDs for genders and origins
     tables['names'].clear()
@@ -65,10 +87,10 @@ def main():
 
     # Write tables to CSV
     output_files = {
-        'names': ['id', 'name', 'meaning', 'gender_id', 'origin_id', 'syllables'],
-        'genders': ['id', 'name'],
-        'origins': ['id', 'name'],
-        'categories': ['id', 'name']
+        'names': ['id', 'name', 'meaning', 'gender_id', 'syllables'],
+        'genders': ['id', 'gender'],
+        'origins': ['id', 'origin'],
+        'categories': ['id', 'category']
     }
 
     for table_name, header in output_files.items():
@@ -78,9 +100,15 @@ def main():
     # Correct the category_name mapping based on category_to_id
     mappings['category_name'] = [[name_id, category_to_id.get(category, "Unknown")] for name_id, category in mappings['category_name']]
 
-    # Handle mappings
-    output_file = os.path.join(data_directory, 'category_name.csv')
-    write_table_to_csv(output_file, ['name_id', 'category_id'], mappings['category_name'])
+    # Write mappings to CSV
+    mapping_files = {
+        'category_name': ['name_id', 'category_id'],
+        'name_origin': ['name_id', 'origin_id']
+    }
+
+    for table_name, header in mapping_files.items():
+        output_file = os.path.join(data_directory, f"{table_name}.csv")
+        write_table_to_csv(output_file, header, mappings[table_name])
 
     print("CSV files created.")
 

@@ -1,224 +1,339 @@
-id,name
-1,
-2,12/12/2022
-3,1E+13
-4,1english
-5,1telugu
-6,2
-7,4
-8,A combination of Christopher and Evelyn. By a Ghanaian Father.
-9,Aboriginal
-10,Africa
-11,African
-12,Afrikanische
-13,American
-14,Arabic
-15,"Argentina, Russia, Africa"
-16,Asia
-17,Assyrian
-18,Athidevu
-19,Australia ireland
-20,Australian
-21,Australians duh
-22,Azeri
-23,Bad hockey player
-24,Balkan
-25,Bangla
-26,Berber/Moorish
-27,Bohemian
-28,Bosnia and Herzegovina
-29,Boti
-30,Boy
-31,Brasil
-32,British
-33,Brownsville Texas
-34,Buddh / sc
-35,Bulgaria
-36,Cameroonian
-37,Canadian
-38,Chinese
-39,Ching Chong
-40,Confusing
-41,Cornish
-42,"Cumbria, Cockermouth"
-43,Derived from handsome babies that become god
-44,Dummy
-45,Dutch
-46,ENGLISH
-47,English
-48,English (Staffordshire)
-49,English- form of becky
-50,Eritrea
-51,F
-52,Fictional
-53,França
-54,Frisian
-55,From the holy spirit
-56,Gaelic
-57,German
-58,Girl
-59,Global
-60,Gouse basha
-61,Graveyard
-62,Grecque
-63,Greece
-64,Greek
-65,Haitan
-66,Hebrew
-67,Hebrew/US
-68,Hindi
-69,Hindu
-70,"Hindu,"
-71,Hispanic
-72,Hungary
-73,Inde
-74,India
-75,"India ,"
-76,India/Sanskrit
-77,Indian
-78,Indian (Sanskrith)
-79,Iran
-80,Irish
-81,Islamic
-82,Italian
-83,Italy
-84,Jahseh onfory
-85,Jain
-86,Japan
-87,Japanese
-88,Johann Zahn
-89,Jupiter
-90,Kannada
-91,Kenya
-92,Kerala
-93,"Kogi, Igala"
-94,Korea
-95,Korean
-96,"Kuril Islands, Onekotan"
-97,LOVE GODESS
-98,Lao
-99,Latim
-100,Latin
-101,Lesotho
-102,Lithuanian
-103,Made up
-104,Madhujya
-105,Maori
-106,Morocco
-107,Muslim
-108,My daughter Fararah
-109,Nandeswari
-110,Nepal
-111,Nepali
-112,Nigeria
-113,"Nigeria, Tiv"
-114,Nigerian
-115,Nigger langu
-116,NiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNigger
-117,Norwegian
-118,Okene
-119,Old English
-120,On the farm
-121,Ovi
-122,Persia
-123,Persian
-124,Philippines
-125,Poland
-126,PuertoRico
-127,Punjabi
-128,Purépecha
-129,Rape
-130,Remian
-131,Republic of Autisme
-132,Republic of Hermetia
-133,Republic of Kekistan
-134,Romanian
-135,Russian
-136,Rwanda
-137,Rylan land
-138,Sanskrit
-139,Saudi Arabian
-140,Scotland
-141,Scottish
-142,Sheep-barn
-143,Shit Parenting
-144,Sinhala
-145,Sinhalese
-146,Somali
-147,South African
-148,Spanish
-149,Sri Lanka
-150,"Sri Lanka, Sinhalese"
-151,Sri Lankan
-152,Sri lanka
-153,Sri lankan
-154,Swahili
-155,Tamil
-156,Tamil nadu
-157,Telugu
-158,Thai
-159,Thamizhiniyan
-160,The Anxious
-161,The Depressed
-162,The Hood
-163,Truth
-164,Turkey
-165,Turkish
-166,Türk
+id,origin
+1,Slavic
+2,Arabic
+3,Japanese
+4,African
+5,Hebrew
+6,Sanskrit
+7,English
+8,Latin
+9,French
+10,Ancient Greek
+11,Afrikanische
+12,American
+13,Tamil
+14,Persian
+15,Scandinavian
+16,Indian
+17,African American
+18,Hawaiian
+19,Greek
+20,Germanic
+21,Hindi
+22,Yoruba
+23,Spanish
+24,Old English
+25,Norse
+26,Somali
+27,Aramaic
+28,Kerala
+29,Armenian
+30,Norwegian
+31,Berber
+32,Moorish
+33,Modern
+34,German
+35,British
+36,Bulgarian
+37,sri lankan
+38,Celtic
+39,Hungarian
+40,Slovak
+41,Czech
+42,Igbo
+43,Scotland
+44,Russian
+45,Chinese
+46,Irish
+47,Gaelic
+48,Christian
+49,california
+50,Catalan
+51,Portuguese
+52,Maori
+53,Vietnamese
+54,Korean
+55,Cornish
+56,Welsh
+57,Okene
+58,Danish
+59,Cuban
+60,Yiddish
+61,Hindu
+62,Indonesian
+63,Dutch
+64,Lithuanian
+65,Italian
+66,Georgian
+67,Swedish
+68,Albanian
+69,Punjabi
+70,Igala
+71,Kogi
+72,N/A
+73,Latim
+74,Swahili
+75,Bengali
+76,Kazakh
+77,Asian
+78,Hausa
+79,Basque
+80,Thai
+81,Bosnian
+82,Polynesian
+83,Ancient Egyptian
+84,Nordic
+85,Tongan
+86,Akan
+87,Old German
+88,Old Norse
+89,Serbian
+90,Latvian
+91,Turkic
+92,Old French
+93,Ethiopian
+94,Amharic
+95,Scottish
+96,Estonian
+97,Romanian
+98,Laotian
+99,Roman
+100,Mongolian
+101,Nahuatl
+102,Nepalese
+103,Korea
+104,Icelandic
+105,Old Hungarian
+106,None
+107,tamil
+108,korean
+109,Nepali
+110,Breton
+111,Egyptian
+112,Sri Lankan
+113,Navajo
+114,Greece
+115,Athidevu
+116,Australians duh
+117,Tigrinya
+118,Eritrean
+119,Zulu
+120,US
+121,Tiv
+122,Nigeria
+123,Haitian
+124,Provencal
+125,Aztec
+126,Nigerian
+127,Croatian
+128,Nepal
+129,Urdu
+130,Italian and Latin
+131,Sri lanka
+132,Not applicable
+133,Slovenian
+134,UrAnus
+135,Khmer
+136,Old High German
+137,1telugu
+138,Buddhist
+139,srilankan
+140,wales
+141,Johann Zahn
+142,Cameroonian
+143,Greek mythology
+144,Biblical
+145,Tupi-Guarani
+146,Filipino
+147,Anglo-Saxon
+148,ENGLISH
+149,Sinhalese
+150,Algonquian
+151,Cambodian
+152,Sioux
+153,Telugu
+154,Unsure
+155,Hmong
+156,Philippines
+157,Brownsville Texas
+158,Unavailable
+159,Cumbria
+160,Cockermouth
+161,Cherokee
+162,Australia ireland
+163,Phrygian
+164,Kannada
+165,Lao
+166,Illyrian
 167,Ukrainian
-168,Unknown
-169,UrAnus
-170,Urdu
-171,V.jasviga
-172,Vietnam
-173,Vietnamese
-174,Vikha Krishna
-175,"Welsh, Irish, French"
-176,Wet place in ya short
-177,Xhosa
-178,Yoruba
-179,Yoruba (Nigeria)
-180,You
-181,Your beautiful face :)
-182,Yuga shri
-183,Zapotec
-184,Zimbabwe
-185,Zulu
-186,american
-187,asian
-188,bangla
-189,busan
-190,california
-191,canada
-192,chaileen carly claire chance and carrington also charles
-193,china
-194,egyptian
-195,greek
-196,hindu
-197,india
-198,india puliyambedu chennai tamilnadu
-199,indian
-200,jaindis
-201,keltisch
-202,korean
-203,malayalam
-204,mayan
-205,me
-206,"nan, Unknown"
-207,ngoni
-208,nigeria
-209,nirmal+susmita
-210,no
-211,pelvis
-212,punjabi
-213,selam
-214,sri lankan
-215,srilanka
-216,srilankan
-217,stomach
-218,tamil
-219,telugu
-220,wales
-221,zimbamwe
-222,அ
-223,ಕನ್ನಡ
+168,Rape
+169,Tibetan
+170,india
+171,Eritrea
+172,United States
+173,Sri Lanka
+174,Belgian
+175,India
+176,Uzbek
+177,Tamil nadu
+178,Balkan
+179,egyptian
+180,Māori
+181,greek
+182,Sheep-barn
+183,Purépecha
+184,bangla
+185,Morocco
+186,Canadian
+187,Shona
+188,stomach
+189,Muslim
+190,Jupiter
+191,Fictional
+192,Indo-European
+193,Sri lankan
+194,Hungary
+195,Teutonic
+196,china
+197,none
+198,Gouse basha
+199,Middle Eastern
+200,telugu
+201,Taino
+202,indian
+203,Tahitian
+204,hindu
+205,Japan
+206,Bohemian
+207,Burmese
+208,Ching Chong
+209,Quechua
+210,Confusing
+211,Poland
+212,Bangladeshi
+213,Global
+214,Rwanda
+215,Mayan
+216,mayan
+217,Mixed
+218,Invented name
+219,Jamaican
+220,canada
+221,Invention
+222,Saudi Arabian
+223,Slovene
+224,Afrikaans
+225,Phoenician
+226,Various
+227,Montenegrin
+228,busan
+229,Malian
+230,Finnish
+231,European
+232,Setswana
+233,selam
+234,Tswana
+235,american
+236,Ghana
+237,Kikuyu
+238,Africa
+239,Jain
+240,Pashto
+241,Kenyan
+242,Australian
+243,Old Irish
+244,West African
+245,Greenlandic
+246,Dummy
+247,Coptic
+248,Ovi
+249,Romansh
+250,Galician
+251,ngoni
+252,Bosnia and Herzegovina
+253,Frisian
+254,Ancient American
+255,Gaulish
+256,Jewish
+257,Polish
+258,Xhosa
+259,Kenya
+260,Russia
+261,Argentina
+262,Modern American
+263,and Latin
+264,Hebrew and Spanish
+265,Grecque
+266,França
+267,Hispanic
+268,Madhujya
+269,Italy
+270,Afghan
+271,Scots
+272,Kinyarwanda
+273,Brasil
+274,and German
+275,Inde
+276,Not found
+277,Turkey
+278,Belarusian
+279,Ghanaian
+280,Samoan
+281,Nandeswari
+282,Azerbaijani
+283,Invented Name
+284,Not provided
+285,Nigger langu
+286,Sumerian
+287,nirmal+susmita
+288,Rylan land
+289,Türk
+290,nigeria
+291,Brazilian
+292,Irish and English
+293,Irish and Hebrew
+294,Irish Gaelic
+295,Assyrian
+296,Remian
+297,modern American
+298,America
+299,Islamic
+300,Tagalog
+301,jaindis
+302,keltisch
+303,Kurdish
+304,West Germanic
+305,Kuril Islands
+306,Onekotan
+307,Sikh
+308,Lesotho
+309,Middle English
+310,Native American
+311,Sinhala
+312,malayalam
+313,Unkown
+314,Romani
+315,Old Celtic
+316,PuertoRico
+317,Old Swedish
+318,pelvis
+319,Presumably English
+320,Chinook
+321,Bangla
+322,Persia
+323,Iranian
+324,Laos
+325,Invented
+326,Turkmen
+327,Inuit
+328,zimbamwe
+329,Scottish Gaelic
+330,Gaeilge
+331,asian
+332,Shit Parenting
+333,Malagasy
+334,Fijian
+335,Ojibwe
+336,Swiss
+337,Swiss-German
+338,Turkish
