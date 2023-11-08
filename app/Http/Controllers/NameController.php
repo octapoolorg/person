@@ -13,7 +13,6 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class NameController extends Controller
 {
@@ -27,7 +26,7 @@ class NameController extends Controller
     public function view(string $name): View
     {
         $nameDetails = $this->getCachedData("nameDetails:$name", function () use ($name) {
-            return Name::with(['gender', 'origin', 'categories'])->where('slug', $name)->firstOrFail();
+            return Name::with(['gender','origins'])->where('slug', $name)->firstOrFail();
         });
 
         $numerology = NumerologyFactory::create('pythagorean');
