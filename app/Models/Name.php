@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Name extends Model
@@ -13,18 +11,18 @@ class Name extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function gender(): BelongsTo
+    public function genders(): BelongsToMany
     {
-        return $this->belongsTo(Gender::class);
+        return $this->belongsToMany(Gender::class, 'name_gender');
     }
 
-    public function origin(): BelongsTo
+    public function origins(): BelongsToMany
     {
-        return $this->belongsTo(Origin::class);
+        return $this->belongsToMany(Origin::class, 'name_origin');
     }
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'name_category');
     }
 }

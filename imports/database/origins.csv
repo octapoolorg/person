@@ -1,339 +1,339 @@
-id,origin
-1,Slavic
-2,Arabic
-3,Japanese
-4,African
-5,Hebrew
-6,Sanskrit
-7,English
-8,Latin
-9,French
-10,Ancient Greek
-11,Afrikanische
-12,American
-13,Tamil
-14,Persian
-15,Scandinavian
-16,Indian
-17,African American
-18,Hawaiian
-19,Greek
-20,Germanic
-21,Hindi
-22,Yoruba
-23,Spanish
-24,Old English
-25,Norse
-26,Somali
-27,Aramaic
-28,Kerala
-29,Armenian
-30,Norwegian
-31,Berber
-32,Moorish
-33,Modern
-34,German
-35,British
-36,Bulgarian
-37,sri lankan
-38,Celtic
-39,Hungarian
-40,Slovak
-41,Czech
-42,Igbo
-43,Scotland
-44,Russian
-45,Chinese
-46,Irish
-47,Gaelic
-48,Christian
-49,california
-50,Catalan
-51,Portuguese
-52,Maori
-53,Vietnamese
-54,Korean
-55,Cornish
-56,Welsh
-57,Okene
-58,Danish
-59,Cuban
-60,Yiddish
-61,Hindu
-62,Indonesian
-63,Dutch
-64,Lithuanian
-65,Italian
-66,Georgian
-67,Swedish
-68,Albanian
-69,Punjabi
-70,Igala
-71,Kogi
-72,N/A
-73,Latim
-74,Swahili
-75,Bengali
-76,Kazakh
-77,Asian
-78,Hausa
-79,Basque
-80,Thai
-81,Bosnian
-82,Polynesian
-83,Ancient Egyptian
-84,Nordic
-85,Tongan
-86,Akan
-87,Old German
-88,Old Norse
-89,Serbian
-90,Latvian
-91,Turkic
-92,Old French
-93,Ethiopian
-94,Amharic
-95,Scottish
-96,Estonian
-97,Romanian
-98,Laotian
-99,Roman
-100,Mongolian
-101,Nahuatl
-102,Nepalese
-103,Korea
-104,Icelandic
-105,Old Hungarian
-106,None
-107,tamil
-108,korean
-109,Nepali
-110,Breton
-111,Egyptian
-112,Sri Lankan
-113,Navajo
-114,Greece
-115,Athidevu
-116,Australians duh
-117,Tigrinya
-118,Eritrean
-119,Zulu
-120,US
-121,Tiv
-122,Nigeria
-123,Haitian
-124,Provencal
-125,Aztec
-126,Nigerian
-127,Croatian
-128,Nepal
-129,Urdu
-130,Italian and Latin
-131,Sri lanka
-132,Not applicable
-133,Slovenian
-134,UrAnus
-135,Khmer
-136,Old High German
-137,1telugu
-138,Buddhist
-139,srilankan
-140,wales
-141,Johann Zahn
-142,Cameroonian
-143,Greek mythology
-144,Biblical
-145,Tupi-Guarani
-146,Filipino
-147,Anglo-Saxon
-148,ENGLISH
-149,Sinhalese
-150,Algonquian
-151,Cambodian
-152,Sioux
-153,Telugu
-154,Unsure
-155,Hmong
-156,Philippines
-157,Brownsville Texas
-158,Unavailable
-159,Cumbria
-160,Cockermouth
-161,Cherokee
-162,Australia ireland
-163,Phrygian
-164,Kannada
-165,Lao
-166,Illyrian
-167,Ukrainian
-168,Rape
-169,Tibetan
-170,india
-171,Eritrea
-172,United States
-173,Sri Lanka
-174,Belgian
-175,India
-176,Uzbek
-177,Tamil nadu
-178,Balkan
-179,egyptian
-180,Māori
-181,greek
-182,Sheep-barn
-183,Purépecha
-184,bangla
-185,Morocco
-186,Canadian
-187,Shona
-188,stomach
-189,Muslim
-190,Jupiter
-191,Fictional
-192,Indo-European
-193,Sri lankan
-194,Hungary
-195,Teutonic
-196,china
-197,none
-198,Gouse basha
-199,Middle Eastern
-200,telugu
-201,Taino
-202,indian
-203,Tahitian
-204,hindu
-205,Japan
-206,Bohemian
-207,Burmese
-208,Ching Chong
-209,Quechua
-210,Confusing
-211,Poland
-212,Bangladeshi
-213,Global
-214,Rwanda
-215,Mayan
-216,mayan
-217,Mixed
-218,Invented name
-219,Jamaican
-220,canada
-221,Invention
-222,Saudi Arabian
-223,Slovene
-224,Afrikaans
-225,Phoenician
-226,Various
-227,Montenegrin
-228,busan
-229,Malian
-230,Finnish
-231,European
-232,Setswana
-233,selam
-234,Tswana
-235,american
-236,Ghana
-237,Kikuyu
-238,Africa
-239,Jain
-240,Pashto
-241,Kenyan
-242,Australian
-243,Old Irish
-244,West African
-245,Greenlandic
-246,Dummy
-247,Coptic
-248,Ovi
-249,Romansh
-250,Galician
-251,ngoni
-252,Bosnia and Herzegovina
-253,Frisian
-254,Ancient American
-255,Gaulish
-256,Jewish
-257,Polish
-258,Xhosa
-259,Kenya
-260,Russia
-261,Argentina
-262,Modern American
-263,and Latin
-264,Hebrew and Spanish
-265,Grecque
-266,França
-267,Hispanic
-268,Madhujya
-269,Italy
-270,Afghan
-271,Scots
-272,Kinyarwanda
-273,Brasil
-274,and German
-275,Inde
-276,Not found
-277,Turkey
-278,Belarusian
-279,Ghanaian
-280,Samoan
-281,Nandeswari
-282,Azerbaijani
-283,Invented Name
-284,Not provided
-285,Nigger langu
-286,Sumerian
-287,nirmal+susmita
-288,Rylan land
-289,Türk
-290,nigeria
-291,Brazilian
-292,Irish and English
-293,Irish and Hebrew
-294,Irish Gaelic
-295,Assyrian
-296,Remian
-297,modern American
-298,America
-299,Islamic
-300,Tagalog
-301,jaindis
-302,keltisch
-303,Kurdish
-304,West Germanic
-305,Kuril Islands
-306,Onekotan
-307,Sikh
-308,Lesotho
-309,Middle English
-310,Native American
-311,Sinhala
-312,malayalam
-313,Unkown
-314,Romani
-315,Old Celtic
-316,PuertoRico
-317,Old Swedish
-318,pelvis
-319,Presumably English
-320,Chinook
-321,Bangla
-322,Persia
-323,Iranian
-324,Laos
-325,Invented
-326,Turkmen
-327,Inuit
-328,zimbamwe
-329,Scottish Gaelic
-330,Gaeilge
-331,asian
-332,Shit Parenting
-333,Malagasy
-334,Fijian
-335,Ojibwe
-336,Swiss
-337,Swiss-German
-338,Turkish
+id,name
+1,Afghan
+2,Africa
+3,African
+4,African American
+5,Afrikaans
+6,Afrikanische
+7,Akan
+8,Albanian
+9,Algonquian
+10,America
+11,American
+12,Amharic
+13,Ancient American
+14,Ancient Egyptian
+15,Ancient Greek
+16,Anglo-Saxon
+17,Arabic
+18,Aramaic
+19,Argentina
+20,Armenian
+21,Asian
+22,Assyrian
+23,Athidevu
+24,Australia ireland
+25,Australian
+26,Australians duh
+27,Azerbaijani
+28,Aztec
+29,Balkan
+30,Bangla
+31,Bangladeshi
+32,Basque
+33,Belarusian
+34,Belgian
+35,Bengali
+36,Berber
+37,Biblical
+38,Bohemian
+39,Bosnia and Herzegovina
+40,Bosnian
+41,Brasil
+42,Brazilian
+43,Breton
+44,British
+45,Brownsville Texas
+46,Buddhist
+47,Bulgarian
+48,Burmese
+49,Cambodian
+50,Cameroonian
+51,Canadian
+52,Catalan
+53,Celtic
+54,Cherokee
+55,Chinese
+56,Ching Chong
+57,Chinook
+58,Christian
+59,Cockermouth
+60,Confusing
+61,Coptic
+62,Cornish
+63,Croatian
+64,Cuban
+65,Cumbria
+66,Czech
+67,Danish
+68,Dummy
+69,Dutch
+70,ENGLISH
+71,Egyptian
+72,English
+73,Eritrea
+74,Eritrean
+75,Estonian
+76,Ethiopian
+77,European
+78,Fictional
+79,Fijian
+80,Filipino
+81,Finnish
+82,França
+83,French
+84,Frisian
+85,Gaeilge
+86,Gaelic
+87,Galician
+88,Gaulish
+89,Georgian
+90,German
+91,Germanic
+92,Ghana
+93,Ghanaian
+94,Global
+95,Gouse basha
+96,Grecque
+97,Greece
+98,Greek
+99,Greek mythology
+100,Greenlandic
+101,Haitian
+102,Hausa
+103,Hawaiian
+104,Hebrew
+105,Hebrew and Spanish
+106,Hindi
+107,Hindu
+108,Hispanic
+109,Hmong
+110,Hungarian
+111,Hungary
+112,Icelandic
+113,Igala
+114,Igbo
+115,Illyrian
+116,Inde
+117,India
+118,Indian
+119,Indo-European
+120,Indonesian
+121,Inuit
+122,Invented
+123,Invented Name
+124,Invented name
+125,Invention
+126,Iranian
+127,Irish
+128,Irish Gaelic
+129,Irish and English
+130,Irish and Hebrew
+131,Islamic
+132,Italian
+133,Italian and Latin
+134,Italy
+135,Jain
+136,Jamaican
+137,Japan
+138,Japanese
+139,Jewish
+140,Johann Zahn
+141,Jupiter
+142,Kannada
+143,Kazakh
+144,Kenya
+145,Kenyan
+146,Kerala
+147,Khmer
+148,Kikuyu
+149,Kinyarwanda
+150,Kogi
+151,Korea
+152,Korean
+153,Kurdish
+154,Kuril Islands
+155,Lao
+156,Laos
+157,Laotian
+158,Latim
+159,Latin
+160,Latvian
+161,Lesotho
+162,Lithuanian
+163,Madhujya
+164,Malagasy
+165,Malian
+166,Maori
+167,Mayan
+168,Middle Eastern
+169,Middle English
+170,Mixed
+171,Modern
+172,Modern American
+173,Mongolian
+174,Montenegrin
+175,Moorish
+176,Morocco
+177,Muslim
+178,Māori
+179,N/A
+180,Nahuatl
+181,Nandeswari
+182,Native American
+183,Navajo
+184,Nepal
+185,Nepalese
+186,Nepali
+187,Nigeria
+188,Nigerian
+189,Nigger langu
+190,None
+191,Nordic
+192,Norse
+193,Norwegian
+194,Not applicable
+195,Not found
+196,Not provided
+197,Ojibwe
+198,Okene
+199,Old Celtic
+200,Old English
+201,Old French
+202,Old German
+203,Old High German
+204,Old Hungarian
+205,Old Irish
+206,Old Norse
+207,Old Swedish
+208,Onekotan
+209,Ovi
+210,Pashto
+211,Persia
+212,Persian
+213,Philippines
+214,Phoenician
+215,Phrygian
+216,Poland
+217,Polish
+218,Polynesian
+219,Portuguese
+220,Presumably English
+221,Provencal
+222,PuertoRico
+223,Punjabi
+224,Purépecha
+225,Quechua
+226,Rape
+227,Remian
+228,Roman
+229,Romani
+230,Romanian
+231,Romansh
+232,Russia
+233,Russian
+234,Rwanda
+235,Rylan land
+236,Samoan
+237,Sanskrit
+238,Saudi Arabian
+239,Scandinavian
+240,Scotland
+241,Scots
+242,Scottish
+243,Scottish Gaelic
+244,Serbian
+245,Setswana
+246,Sheep-barn
+247,Shit Parenting
+248,Shona
+249,Sikh
+250,Sinhala
+251,Sinhalese
+252,Sioux
+253,Slavic
+254,Slovak
+255,Slovene
+256,Slovenian
+257,Somali
+258,Spanish
+259,Sri Lanka
+260,Sri Lankan
+261,Sri lanka
+262,Sri lankan
+263,Sumerian
+264,Swahili
+265,Swedish
+266,Swiss
+267,Swiss-German
+268,Tagalog
+269,Tahitian
+270,Taino
+271,Tamil
+272,Tamil nadu
+273,Telugu
+274,Teutonic
+275,Thai
+276,Tibetan
+277,Tigrinya
+278,Tiv
+279,Tongan
+280,Tswana
+281,Tupi-Guarani
+282,Turkey
+283,Turkic
+284,Turkish
+285,Turkmen
+286,Türk
+287,US
+288,Ukrainian
+289,Unavailable
+290,United States
+291,Unknown
+292,Unkown
+293,Unsure
+294,UrAnus
+295,Urdu
+296,Uzbek
+297,Various
+298,Vietnamese
+299,Welsh
+300,West African
+301,West Germanic
+302,Xhosa
+303,Yiddish
+304,Yoruba
+305,Zulu
+306,american
+307,and German
+308,and Latin
+309,asian
+310,bangla
+311,busan
+312,california
+313,canada
+314,china
+315,egyptian
+316,greek
+317,hindu
+318,india
+319,indian
+320,jaindis
+321,keltisch
+322,korean
+323,malayalam
+324,mayan
+325,modern American
+326,ngoni
+327,nigeria
+328,nirmal+susmita
+329,none
+330,pelvis
+331,selam
+332,sri lankan
+333,srilankan
+334,stomach
+335,tamil
+336,telugu
+337,wales
+338,zimbamwe

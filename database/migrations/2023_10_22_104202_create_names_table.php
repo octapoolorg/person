@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('meaning');
             $table->string('syllables')->nullable();
             $table->foreignId('gender_id')->constrained();
-            $table->foreignId('origin_id')->constrained();
             $table->timestamps();
         });
 

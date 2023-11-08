@@ -9,12 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Category extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     public function names(): BelongsToMany
     {
-        return $this->belongsToMany(Name::class);
+        return $this->belongsToMany(Name::class, 'name_category');
     }
-
 }

@@ -1,71 +1,70 @@
-id,category
-1,
-2,African
-3,African Christian
-4,Arabic
-5,Arabic Christian
-6,Aramaic
-7,Australian Vietnamese
-8,Chinese
-9,Christian
-10,Christian Celtic
-11,Christian Gaelic
-12,Christian Latin
-13,Christian Native American
-14,Christian Old-norse
-15,Czech
-16,Danish
-17,Danish Christian
-18,Danish Islamic/Muslim
-19,Dutch
-20,Dutch Christian
-21,Egyptian
-22,English
-23,English Christian
-24,Finnish
-25,French
-26,French British English Russian Australian Christian
-27,French Christian
-28,Gaelic
-29,Greek
-30,Greek Christian
-31,Greek Islamic/Muslim
-32,Hawaiian
-33,Hebrew
-34,Hebrew Christian
-35,Hindu
-36,Indian
-37,Indian African Chinese Korean Hindu Tamil Telugu Kannada
-38,Indian Chinese Australian Islamic/Muslim Telugu
-39,Indian Hindu Tamil Goddess Radha
-40,Irish
-41,Islamic/Muslim
-42,Italian
-43,Italian Christian
-44,Japanese
-45,Japanese Christian
-46,Korean
-47,Korean Christian
-48,Latin
-49,Native American
-50,Norwegian
-51,Old-norse
-52,Persian
-53,Polish
-54,Russian
-55,Sanskrit
-56,Scottish
-57,Slavic
-58,Spanish
-59,Spanish Christian
-60,Spanish Islamic/Muslim
-61,Swedish
-62,Swedish Christian
-63,Thai
-64,Turkish
-65,UGC
-66,Unique
-67,Vietnamese
-68,Vietnamese Christian
-69,Welsh
-70,Welsh Christian
+id,name
+1,African
+2,African Christian
+3,Arabic
+4,Arabic Christian
+5,Aramaic
+6,Australian Vietnamese
+7,Chinese
+8,Christian
+9,Christian Celtic
+10,Christian Gaelic
+11,Christian Latin
+12,Christian Native American
+13,Christian Old-norse
+14,Czech
+15,Danish
+16,Danish Christian
+17,Danish Islamic/Muslim
+18,Dutch
+19,Dutch Christian
+20,Egyptian
+21,English
+22,English Christian
+23,Finnish
+24,French
+25,French British English Russian Australian Christian
+26,French Christian
+27,Gaelic
+28,Greek
+29,Greek Christian
+30,Greek Islamic/Muslim
+31,Hawaiian
+32,Hebrew
+33,Hebrew Christian
+34,Hindu
+35,Indian
+36,Indian African Chinese Korean Hindu Tamil Telugu Kannada
+37,Indian Chinese Australian Islamic/Muslim Telugu
+38,Indian Hindu Tamil Goddess Radha
+39,Irish
+40,Islamic/Muslim
+41,Italian
+42,Italian Christian
+43,Japanese
+44,Japanese Christian
+45,Korean
+46,Korean Christian
+47,Latin
+48,Native American
+49,Norwegian
+50,Old-norse
+51,Persian
+52,Polish
+53,Russian
+54,Sanskrit
+55,Scottish
+56,Slavic
+57,Spanish
+58,Spanish Christian
+59,Spanish Islamic/Muslim
+60,Swedish
+61,Swedish Christian
+62,Thai
+63,Turkish
+64,UGC
+65,Unique
+66,Vietnamese
+67,Vietnamese Christian
+68,Welsh
+69,Welsh Christian
