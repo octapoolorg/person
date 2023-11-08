@@ -128,13 +128,22 @@
 
             <!-- Abbreviation section -->
             <section>
-                <h2 class="text-3xl text-gray-700 my-6">Abbreviation of {!! $data['nameDetails']->name !!}</h2>
+        <div class="flex items-center">
+            <h2 class="text-3xl text-gray-700 my-6 capitalize">
+                Acronyms of {!! $data['nameDetails']->name !!}
+            </h2>
+            <span class="ml-5">
+                <a href="#" class="transition-colors duration-300">
+                    Generate another <i class="fas fa-refresh text-green-800 hover:text-green-900"></i>
+                </a>
+            </span>
+        </div>
                 <div class="rounded shadow mb-12">
                     <table class="min-w-full divide-y">
                         <tbody class="bg-white">
                             @foreach($data['traits'] as $alphabet=>$trait)
                                 <tr class="bg-gray-50">
-                                    <th class="p-4 text-left border">{{$alphabet}}</th>
+                                    <th class="p-4 text-left border uppercase">{{$alphabet}}</th>
                                     <td class="p-4 text-left border">{{$trait}}</td>
                                 </tr>
                             @endforeach
