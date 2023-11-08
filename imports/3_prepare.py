@@ -43,7 +43,7 @@ def main():
     mappings = defaultdict(list)
 
     # First pass to populate tables
-    input_file = 'temp/names_root.csv'
+    input_file = 'temp/names_db.csv'
     read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins)
 
     # Create a category to ID mapping based on first pass

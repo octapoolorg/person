@@ -9,11 +9,12 @@ from openai import OpenAI
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # API and file configuration
-api_key = "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"
+api_key = "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"
 model_engine = "gpt-3.5-turbo-1106"
 input_file = "../temp/names_root.csv"
 output_file = "../temp/names_root.json"
 names_get_path = '../temp/names_get.csv'
+names_pending_path = '../temp/names_pending.csv'  # The new file for names pending processing
 
 # Initialize the OpenAI client
 client = OpenAI(api_key=api_key)
@@ -36,63 +37,49 @@ def fetch_name_details(name):
         logging.error(f"An error occurred while fetching details for {name}: {e}")
         return None
 
-def create_temp_csv(input_file, names_get_path):
-    os.makedirs(os.path.dirname(names_get_path), exist_ok=True)
-    with open(input_file, 'r', encoding='utf-8') as csvfile, open(names_get_path, 'w', newline='', encoding='utf-8') as names_get_file:
-        csvreader = csv.DictReader(csvfile)
-        fieldnames = csvreader.fieldnames
-        if 'Meaning' in fieldnames:
-            csvwriter = csv.DictWriter(names_get_file, fieldnames=fieldnames)
-            csvwriter.writeheader()
-            for row in csvreader:
-                name = row['Name'].strip()
-                if name.isalpha() and not row['Meaning'].strip():
-                    csvwriter.writerow({'Name': name, 'Meaning': ''})
-        else:
-            logging.error("The 'Meaning' column does not exist in the CSV file.")
+def read_processed_names(output_file):
+    processed_names = set()
+    if os.path.exists(output_file) and os.path.getsize(output_file) > 0:
+        with open(output_file, 'r', encoding='utf-8') as jsonfile:
+            logging.info(f"Reading processed names from {output_file}...")
+            processed_data = json.load(jsonfile)
+            for entry in processed_data:
+                logging.info(f"Adding {entry['name']} to the processed names set...")
+                processed_names.add(entry['name'])
+    return processed_names
 
-def append_to_json_file(file_path, data):
-    with open(file_path, 'r+', encoding='utf-8') as jsonfile:
-        try:
-            name_details_list = json.load(jsonfile)
-        except json.JSONDecodeError:
-            name_details_list = []
-        name_details_list.extend(data)
-        jsonfile.seek(0)
-        json.dump(name_details_list, jsonfile, ensure_ascii=False, indent=4)
-        jsonfile.truncate()
+def create_names_pending_csv(input_file, processed_names, names_pending_path):
+    with open(input_file, 'r', encoding='utf-8') as infile, open(names_pending_path, 'w', newline='', encoding='utf-8') as outfile:
+        reader = csv.DictReader(infile)
+        fieldnames = reader.fieldnames
+        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in reader:
+            if row['Name'] not in processed_names:
+                writer.writerow(row)
+
+def append_to_json_file(output_file, details):
+    with open(output_file, 'r+', encoding='utf-8') as file:
+        data = json.load(file)
+        data.append(details)
+        file.seek(0)
+        json.dump(data, file, ensure_ascii=False, indent=4)
+        file.truncate()
 
 def main():
-    create_temp_csv(input_file, names_get_path)
+    logging.info("Starting the name details generation process...")
+    processed_names = read_processed_names(output_file)
+    create_names_pending_csv(names_get_path, processed_names, names_pending_path)
 
-    # Ensure the output file exists and is a valid JSON
-    if not os.path.exists(output_file) or os.stat(output_file).st_size == 0:
-        with open(output_file, 'w', encoding='utf-8') as jsonfile:
-            json.dump([], jsonfile)
-
-    with open(names_get_path, 'r', encoding='utf-8') as names_get_file, \
-         open(output_file, 'r+', encoding='utf-8') as jsonfile:
-        csvreader = csv.DictReader(names_get_file)
-        names_list = [row['Name'].strip() for row in csvreader if row['Name'].strip().isalpha()]
-
-        # Load existing data
-        try:
-            name_details_list = json.load(jsonfile)
-        except json.JSONDecodeError:
-            name_details_list = []
-
+    with open(names_pending_path, 'r', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
         with ThreadPoolExecutor(max_workers=5) as executor:
-            futures = [executor.submit(fetch_name_details, name) for name in names_list]
+            futures = {executor.submit(fetch_name_details, row['Name']): row for row in reader}
             for future in as_completed(futures):
                 details = future.result()
                 if details:
-                    name_details_list.append(details)
-                    # Move the file pointer to the start
-                    jsonfile.seek(0)
-                    # Write the updated list back to the file
-                    json.dump(name_details_list, jsonfile, ensure_ascii=False, indent=4)
-                    # Truncate the file in case the new data is smaller than the old data
-                    jsonfile.truncate()
+                    append_to_json_file(output_file, details)
+                    logging.info(f"Added details for {details['name']} to the JSON file.")
 
 if __name__ == "__main__":
     main()
