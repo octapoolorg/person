@@ -39,27 +39,20 @@ class NameController extends Controller
         $cacheKey = 'name_traits_for_' . implode('', $alphabets);
 
         $traits = Cache::remember($cacheKey, now()->addMinutes(60), function () use ($alphabets) {
-            // Convert alphabets to uppercase since the database stores them as uppercase
             $upperAlphabets = array_map('strtoupper', $alphabets);
 
             // Fetch the traits and key them by 'alphabet'
             $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->keyBy('alphabet');
 
-            // Sort the collection to maintain the order of alphabets in the name
-            $sortedTraits = collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
-                // Convert the current alphabet to uppercase for matching
+            return collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
                 $alphabetKey = strtoupper($alphabet);
 
                 if (isset($traitsCollection[$alphabetKey])) {
                     return [$alphabet => $traitsCollection[$alphabetKey]->name];
                 } else {
-                    // If a trait does not exist for an alphabet, handle it as required
-                    // For now, return null or a placeholder string to indicate a missing trait
-                    return [$alphabet => null]; // or some placeholder like 'missing_trait'
+                    return [$alphabet => null];
                 }
             });
-
-            return $sortedTraits;
         });
 
         $signatureUrls = $this->nameSignatures($name);

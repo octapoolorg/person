@@ -17,18 +17,18 @@ abstract class Numerology implements INumerology
     protected array $letterMap = [];
 
     const ZODIAC_STONES = [
-        'Aries' => 'Diamond',
-        'Taurus' => 'Emerald',
+        'Aries' => 'Bloodstone',
+        'Taurus' => 'Sapphire',
         'Gemini' => 'Agate',
-        'Cancer' => 'Moonstone',
-        'Leo' => 'Ruby',
-        'Virgo' => 'Sapphire',
-        'Libra' => 'Opal',
-        'Scorpio' => 'Topaz',
-        'Sagittarius' => 'Turquoise',
-        'Capricorn' => 'Garnet',
-        'Aquarius' => 'Amethyst',
-        'Pisces' => 'Aquamarine'
+        'Cancer' => 'Emerald',
+        'Leo' => 'Onyx',
+        'Virgo' => 'Carnelian',
+        'Libra' => 'Chrysolite',
+        'Scorpio' => 'Beryl',
+        'Sagittarius' => 'Citrine',
+        'Capricorn' => 'Ruby',
+        'Aquarius' => 'Garnet',
+        'Pisces' => 'Amethyst'
     ];
 
     const ZODIAC_COLORS = [
