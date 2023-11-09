@@ -23,7 +23,7 @@
                 </article>
 
                 <footer
-                    class="absolute bottom-0 left-0 w-full bg-blue-700 text-gray-100 text-center py-4 md:py-6 border-t border-blue-800">
+                    class="absolute bottom-0 left-0 w-full bg-indigo-700 text-gray-100 text-center py-4 md:py-6 border-t border-indigo-800">
                     <p class="text-lg md:text-xl font-bold italic">
                         A {{ $data['nameDetails']->gender->name }} name.
                     </p>
@@ -48,7 +48,8 @@
                     'description' => __(
                         'zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.auspicious_stones',
                         ['name' => $data['nameDetails']->name]),
-                    'img_src' => asset('static/images/zodiac/stones/citrine.png'),
+                    'img_src' => asset(
+                        'static/images/zodiac/stones/' . strtolower($data['numerology']['zodiac']['attributes']['stone']) . '.png'),
                     'caption' => $data['numerology']['zodiac']['attributes']['stone'],
                 ])
             </section>
@@ -63,54 +64,45 @@
                 </div>
             </section>
 
-            <!-- Numerology Details with Icons/Illustrations -->
-            <section class="bg-gray-100 p-8 rounded-lg shadow-md mb-10 border border-gray-200">
-                <h2 class="text-3xl text-gray-800 mb-6 font-semibold">{!! $data['nameDetails']->name !!} Name Numerology</h2>
-                <p class="text-lg leading-relaxed my-6">
-                    Assigning a specific color to each number can help users quickly identify and resonate with
-                    their numerology number. Here's a potential color association, though the choices are subjective
-                    and can be adjusted.
+            <!-- Numerology Details with Illustrations -->
+            <section class="bg-white p-10 rounded-lg shadow-lg mb-10 border border-gray-300">
+                <h2 class="text-4xl text-gray-800 mb-8 font-bold">{{ $data['nameDetails']->name }} Name Numerology</h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                    Each numerology number is associated with a specific color to aid in quick identification and resonance. Here's a guide to these color associations, personalized for the name.
                 </p>
 
-                <div class="flex flex-wrap -mx-4">
+                <div class="flex flex-wrap -mx-4 text-center">
                     <!-- Destiny Number -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
-                        <div class="flex items-start mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/9289/9289285.png"
-                                alt="Destiny Icon" class="w-12 h-12 mr-4 flex-shrink-0">
-                            <h3 class="text-2xl font-medium">Numerology Number</h3>
+                        <div class="p-6 bg-indigo-50 rounded-xl shadow-inner">
+                            <img src="{{ asset('static/images/zodiac/numerology/numerology-icon.png') }}" alt="Destiny Icon" class="w-12 h-12 mx-auto mb-4">
+                            <h3 class="text-2xl font-semibold text-indigo-700 mb-4">Numerology Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
                         </div>
-                        <p class="bg-blue-200 p-5 rounded text-gray-700">
-                            {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], [
-                                'name' => $data['nameDetails']->name,
-                            ]) !!}
-                        </p>
                     </div>
 
                     <!-- Soul Number -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
-                        <div class="flex items-start mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/1820/1820124.png" alt="Soul Icon"
-                                class="w-12 h-12 mr-4 flex-shrink-0">
-                            <h3 class="text-2xl font-medium">Soul <br> Number</h3>
+                        <div class="p-6 bg-green-50 rounded-xl shadow-inner">
+                            <img src="{{ asset('static/images/zodiac/numerology/soul-icon.png') }}" alt="Soul Icon" class="w-12 h-12 mx-auto mb-4">
+                            <h3 class="text-2xl font-semibold text-green-700 mb-4">Soul Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
                         </div>
-                        <p class="bg-blue-200 p-5 rounded text-gray-700">
-                            {!! __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) !!}
-                        </p>
                     </div>
 
                     <!-- Personality Number -->
                     <div class="w-full md:w-1/3 px-4 mb-8">
-                        <div class="flex items-start mb-4">
-                            <img src="https://cdn-icons-png.flaticon.com/512/6556/6556130.png" alt="Personality Icon"
-                                class="w-12 h-12 mr-4 flex-shrink-0">
-                            <h3 class="text-2xl font-medium">Personality Number</h3>
+                        <div class="p-6 bg-yellow-50 rounded-xl shadow-inner">
+                            <img src="{{ asset('static/images/zodiac/numerology/personality-icon.png') }}" alt="Personality Icon" class="w-12 h-12 mx-auto mb-4">
+                            <h3 class="text-2xl font-semibold text-yellow-700 mb-4">Personality Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
                         </div>
-                        <p class="bg-blue-200 p-5 rounded text-gray-700">
-                            {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], [
-                                'name' => $data['nameDetails']->name,
-                            ]) !!}
-                        </p>
                     </div>
                 </div>
             </section>
@@ -162,7 +154,7 @@
                                 </div>
                             </td>
                             <td scope="row" class="border border-gray-300 p-4 text-gray-700">{{ $attribute }}</td>
-                            <td class="border border-gray-300 p-4 text-blue-500">Blue {{ $index }}</td>
+                            <td class="border border-gray-300 p-4 text-indigo-500">indigo {{ $index }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -220,7 +212,7 @@
                     <div class="space-y-4">
                         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <h3 class="text-lg text-gray-800 flex items-center">
-                                <i class="fas fa-question-circle text-blue-500 mr-3" aria-hidden="true"></i>
+                                <i class="fas fa-question-circle text-indigo-500 mr-3" aria-hidden="true"></i>
                                 What does the name {{ $data['nameDetails']->name }} mean?
                             </h3>
                         </div>
@@ -322,7 +314,7 @@
 
                             <div class="flex justify-end">
                                 <button type="submit"
-                                    class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-sm">
+                                    class="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow-sm">
                                     Post Comment
                                 </button>
                             </div>
@@ -334,59 +326,6 @@
 
         </main>
 
-        <aside class="w-full lg:w-1/3 px-4">
-            <div class="bg-white shadow-md my-6 p-6 rounded-lg">
-                <h5 class="text-xl font-bold text-blue-600 mb-4">Generate Random Name</h5>
-                <p class="text-gray-600 mb-6">Click to generate a list of random names to make a better choice.</p>
-                <a href="{{ route('getRandomNames') }}"
-                    class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium py-3 px-6 rounded-full hover:bg-gradient-to-l transition duration-300 ease-in-out uppercase text-sm lg:text-base">
-                    <i class="fas fa-dice mr-2"></i>
-                    <span>Randomize</span>
-                </a>
-            </div>
-
-
-            <div class="bg-white shadow-md my-6 p-6 rounded">
-                <h5 class="text-xl font-bold text-blue-600 mb-4">Follow Us on Social</h5>
-                <div class="flex justify-around mt-4 space-x-4">
-                    <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
-                        title="Follow us on Facebook">
-                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"
-                            class="group-hover:scale-110 transform transition-transform duration-150" />
-                    </a>
-                    <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
-                        title="Follow us on Instagram">
-                        <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" alt="Instagram"
-                            class="group-hover:scale-110 transform transition-transform duration-150" />
-                    </a>
-                    <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
-                        title="Follow us on Pinterest">
-                        <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" alt="Pinterest"
-                            class="group-hover:scale-110 transform transition-transform duration-150" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Popular Baby Names -->
-            <div class="bg-white shadow-md my-6 p-6 rounded">
-                <h5 class="text-xl font-bold text-blue-600 mb-4">
-                    Popular Baby Names
-                </h5>
-                <div class="flex justify-between mt-4">
-                    <a href="#" class="flex items-center transition duration-200 ease-in">
-                        <span class="bg-teal-500 text-white rounded-r-full px-4 py-2">
-                            <i class="fas fa-male fa-lg"></i>
-                        </span>
-                        <span class="ml-2 font-medium">Boy Names</span>
-                    </a>
-                    <a href="#" class="flex items-center transition duration-200 ease-in">
-                        <span class="bg-pink-500 text-white rounded-r-full px-4 py-2">
-                            <i class="fas fa-female fa-lg"></i>
-                        </span>
-                        <span class="ml-2 font-medium">Girl Names</span>
-                    </a>
-                </div>
-            </div>
-        </aside>
+        @include('partials.names._sidebar')
     </section>
 @endsection

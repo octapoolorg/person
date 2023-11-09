@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+/**
+ * Name
+ *
+ * @mixin Builder
+ */
+
 
 class Name extends Model
 {
@@ -25,5 +33,15 @@ class Name extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopeSearch(Builder $query, string $search): Builder
+    {
+        return $query->where('name', 'LIKE', "%$search%")->where('meaning', '!=', "");
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

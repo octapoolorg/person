@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row items-start md:items-center bg-gray-100 p-6 md:p-10 rounded-lg shadow-lg my-6 border border-gray-200">
+<div class="flex flex-col md:flex-row items-start md:items-center bg-gray-100 p-6 md:p-10 rounded-lg shadow my-6 border border-gray-200">
     <!-- Icon/Image -->
     <div class="flex-shrink-0 w-full md:w-32 mb-6 md:mb-0 mr-0 md:mr-12">
         <div class="aspect-w-4 aspect-h-3">

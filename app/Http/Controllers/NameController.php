@@ -68,6 +68,25 @@ class NameController extends Controller
         return view('names.view', compact('data'));
     }
 
+    public function getRandomNames(): mixed
+    {
+        $random = rand(1,20);
+        return $this->getCachedData("randomNames_$random", function () {
+            return Name::inRandomOrder()->limit(5)->get();
+        });
+    }
+
+    public function search(): View
+    {
+        $name = request()->input('q');
+        $names = $this->getCachedData("search:$name", function () use ($name) {
+            return Name::search($name)->limit(10)->get();
+        });
+
+        return view('names.search', compact('names'));
+    }
+
+
     public function nameWallpaper(string $name): Response
     {
         $this->validateName($name);
@@ -156,13 +175,6 @@ class NameController extends Controller
         return $fonts[$fontKey] ?? null;
     }
 
-    public function getRandomNames(): mixed
-    {
-        $random = rand(1,20);
-        return $this->getCachedData("randomNames_$random", function () {
-            return Name::inRandomOrder()->limit(5)->get();
-        });
-    }
 
     private function getCachedData(string $key, callable $callback)
     {
