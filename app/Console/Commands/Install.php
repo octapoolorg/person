@@ -35,6 +35,9 @@ class Install extends Command
             $this->info("Running database import...");
             $this->call('app:import-database');
 
+            $this->info("Activating names...");
+            $this->call('app:activate-names');
+
             $this->info("App installation was successful.");
 
         } catch (Exception $e) {

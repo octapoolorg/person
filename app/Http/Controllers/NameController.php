@@ -23,11 +23,22 @@ class NameController extends Controller
         $this->imageService = $imageService;
     }
 
+    public function index(): View
+    {
+        $names = $this->getCachedData("names",now()->addHour(), function () {
+            return Name::validMeaning()->limit(30)->get();
+        });
+
+        return view('names.list', compact('names'));
+    }
+
     public function view(string $name): View
     {
-        $nameDetails = $this->getCachedData("nameDetails:$name", function () use ($name) {
-            return Name::with(['gender','origins'])->where('slug', $name)->firstOrFail();
+        $nameDetails = $this->getCachedData("nameDetails:$name",now()->addQuarter(), function () use ($name) {
+            return Name::with('gender')->where('slug', $name)->firstOrFail();
         });
+
+        $this->validateName($nameDetails);
 
         $numerology = NumerologyFactory::create('pythagorean');
         $numerologyData = $numerology->getNumerologyData($nameDetails->name);
@@ -55,31 +66,35 @@ class NameController extends Controller
             });
         });
 
-        $signatureUrls = $this->nameSignatures($name);
+        $wallpaperUrl = route('nameWallpaper', $nameDetails->name);
+        $signatureUrls = $this->nameSignatures($nameDetails->name);
 
         $data = [
             'nameDetails' => $nameDetails,
             'numerology' => $numerologyData,
             'traits' => $traits,
             'fancyTexts' => $fancyTexts,
+            'wallpaperUrl' => $wallpaperUrl,
             'signatureUrls' => $signatureUrls
         ];
 
-        return view('names.view', compact('data'));
+        return view('names.show', compact('data'));
     }
 
-    public function getRandomNames(): mixed
+    public function getRandomNames(): View
     {
         $random = rand(1,20);
-        return $this->getCachedData("randomNames_$random", function () {
-            return Name::inRandomOrder()->limit(5)->get();
+        $names = $this->getCachedData("randomNames_$random",now()->addQuarter(), function () {
+            return Name::validMeaning()->random()->limit(10)->get();
         });
+
+        return view('names.list', compact('names'));
     }
 
     public function search(): View
     {
         $name = request()->input('q');
-        $names = $this->getCachedData("search:$name", function () use ($name) {
+        $names = $this->getCachedData("search:$name",now()->addQuarter(), function () use ($name) {
             return Name::search($name)->limit(10)->get();
         });
 
@@ -89,8 +104,6 @@ class NameController extends Controller
 
     public function nameWallpaper(string $name): Response
     {
-        $this->validateName($name);
-        $name = Name::where('slug',$name)->first()->name;
         $base64Image = $this->generateOrRetrieveImage($name, '#ffffff','static/images/wallpaper.jpg', 'roboto/roboto-medium.ttf', 200);
         return $this->prepareImageResponse($base64Image, $name);
     }
@@ -103,9 +116,6 @@ class NameController extends Controller
      */
     private function nameSignatures(string $name): array
     {
-        $this->validateName($name);
-        $name = Name::where('slug',$name)->first()->slug;
-
         $fonts = [
             'cursive' => 'creattion-demo/creattion-demo.ttf',
             'allison-tessa' => 'allison-tessa/allison-tessa.ttf',
@@ -128,7 +138,7 @@ class NameController extends Controller
             // Validate the provided name
             $this->validateName($name);
 
-            $name = Name::where('slug',$name)->first()->name;
+            $name = Name::where('slug',$name)->firstOrFail()->name;
 
             // Map the provided font key to its actual path
             $font = $this->mapFontKeyToPath($fontKey);
@@ -176,10 +186,10 @@ class NameController extends Controller
     }
 
 
-    private function getCachedData(string $key, callable $callback)
+    private function getCachedData(string $key,$time, callable $callback)
     {
         try {
-            return Cache::remember($key, now()->addQuarter(), $callback);
+            return Cache::remember($key, $time, $callback);
         } catch (Exception $e) {
             $this->handleException("Failed to fetch or cache data for $key", $e);
         }
@@ -187,14 +197,14 @@ class NameController extends Controller
 
     private function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
     {
-        return $this->getCachedData("image:$name:$background:$font:$fontSize", function () use ($name, $color, $background, $font, $fontSize) {
+        return $this->getCachedData("image:$name:$background:$font:$fontSize", now()->addQuarter(), function () use ($name, $color, $background, $font, $fontSize) {
             return $this->imageService->generateImage($name, $color, $background, $font, $fontSize);
         });
     }
 
-    private function validateName(string $name): void
+    private function validateName($name): void
     {
-        if (empty($name) || !is_string($name)) {
+        if (empty($name)) {
             abort(404);
         }
     }

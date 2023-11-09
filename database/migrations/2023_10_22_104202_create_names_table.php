@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->boolean('is_active')->default(false);
             $table->text('meaning');
             $table->string('syllables')->nullable();
             $table->foreignId('gender_id')->constrained();

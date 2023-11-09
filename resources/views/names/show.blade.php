@@ -16,7 +16,7 @@
                     <!-- Meaning -->
                     <div class="flex flex-col items-center space-y-4 my-8 md:my-12">
                         <strong class="text-xl md:text-3xl font-semibold uppercase">Means:</strong>
-                        <p class="text-xl md:text-2xl leading-relaxed mx-4">
+                        <p class="text-xl md:text-2xl leading-relaxed mx-4 capitalize">
                             {{ $data['nameDetails']->meaning }}
                         </p>
                     </div>
@@ -164,7 +164,7 @@
             <section class="text-gray-900">
                 <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
                 <div class="overflow-hidden rounded-lg shadow-lg my-8">
-                    <img src="{{ route('nameWallpaper', ['name' => $data['nameDetails']->slug]) }}"
+                    <img src="{{ $data['wallpaperUrl'] }}"
                         class="w-full h-auto md:h-96 object-cover"
                         alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }} symbolizing [qualities/themes of the wallpaper].">
                 </div>

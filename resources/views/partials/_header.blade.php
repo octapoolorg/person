@@ -1,13 +1,16 @@
 <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm sm:py-0 dark:bg-gray-800 dark:border-gray-700">
     <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 py-5" aria-label="Global">
         <div class="flex items-center justify-between">
-            <a class="flex-none text-xl font-semibold dark:text-white" href="{!! route('home') !!}" aria-label="Brand">NameCenter</a>
+            <a class="flex-none text-2xl font-bold text-gray-800 hover:text-indigo-600 dark:text-white" href="{!! route('home') !!}" aria-label="Brand">NameCenter</a>
             <div class="sm:hidden">
-                <button type="button" class="hs-collapse-toggle p-2 inline-flex items-center rounded-md border border-transparent text-gray-500 shadow-sm bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 transition text-sm dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Mobile menu button -->
+                <button type="button" class="hs-collapse-toggle p-2 inline-flex items-center justify-center rounded-md border border-gray-300 text-gray-500 shadow-sm bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700" data-hs-collapse="#navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Open main menu</span>
+                    <!-- Icon for menu open -->
                     <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
                     </svg>
+                    <!-- Icon for menu close, hidden by default -->
                     <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -19,18 +22,21 @@
             <div class="flex w-full ms-auto sm:w-auto sm:mr-6">
                 <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">
                     <label for="hero-input" class="sr-only">Search</label>
-                    <input type="text" required id="hero-input" name="q" class="py-2 px-4 block w-full border border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-700 dark:text-white" placeholder="Search a Name...">
-                    <button type="submit" class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-blue-600 dark:text-blue-400">
-                        <i class="fas fa fa-search"></i>
+                    <input type="text" required id="hero-input" name="q" class="py-2 pl-4 pr-10 block w-full border border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-700 dark:text-white placeholder-gray-400" placeholder="Search a Name...">
+                    <button type="submit" class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 21c4.97056 0 9-4.02944 9-9s-4.02944-9-9-9-9 4.02944-9 9 4.02944 9 9 9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
+                        </svg>
                     </button>
                 </form>
             </div>
 
             <!-- Links -->
             <div class="flex flex-col sm:flex-row gap-5 sm:gap-7 justify-end mt-4 sm:mt-0">
-                <a class="text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 block py-2" href="{!! route('home') !!}" aria-current="page">Home</a>
-                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 block py-2" href="#">Names</a>
-                <a class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 block py-2" href="#">Blog</a>
+                <a class="text-gray-800 hover:text-indigo-600 dark:hover:text-indigo-500 block py-2 font-medium {!! request()->routeIs('home') ? 'text-indigo-800' : '' !!}" href="{!! route('home') !!}" aria-current="page">Home</a>
+                <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white block py-2 font-medium {!! request()->routeIs('names') ? 'active' : '' !!}" href="{!! route('names.index') !!}">Names</a>
+                <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white block py-2 font-medium {!! request()->routeIs('blog') ? 'active' : '' !!}" href="">Blog</a>
             </div>
         </div>
     </nav>

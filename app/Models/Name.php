@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @mixin Builder
  */
 
-
 class Name extends Model
 {
     use HasFactory;
@@ -40,8 +39,28 @@ class Name extends Model
         return $query->where('name', 'LIKE', "%$search%")->where('meaning', '!=', "");
     }
 
+    public function scopeRandom(Builder $query): Builder
+    {
+        return $query->inRandomOrder();
+    }
+
+    public function scopeValidMeaning(Builder $query): Builder
+    {
+        return $query->where('meaning', '!=', "");
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::addGlobalScope('active', function (Builder $builder) {
+            $builder->where('is_active', true);
+        });
     }
 }
