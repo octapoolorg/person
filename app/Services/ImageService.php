@@ -4,6 +4,8 @@ namespace App\Services;
 
 use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
 class ImageService
@@ -69,5 +71,22 @@ class ImageService
                 throw new FileNotFoundException("File not found at $path");
             }
         }
+    }
+
+    function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
+    {
+        $key = "image:$name:$background:$font:$fontSize";
+        return Cache::remember($key, now()->addQuarter(), function () use ($name, $color, $background, $font, $fontSize) {
+            return $this->generateImage($name, $color, $background, $font, $fontSize);
+        });
+    }
+
+    function prepareImageResponse(string $base64Image, string $actualName, $type='png'): Response
+    {
+        $imageInfo = explode(',', $base64Image);
+        $imageData = base64_decode($imageInfo[1]);
+        return response($imageData)
+            ->header('Content-Type', "image/$type")
+            ->header('Content-Disposition', "inline; filename=\"$actualName.$type\"");
     }
 }
