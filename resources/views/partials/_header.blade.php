@@ -36,7 +36,7 @@
             <div class="flex flex-col sm:flex-row gap-5 sm:gap-7 justify-end mt-4 sm:mt-0">
                 <a class="text-gray-800 hover:text-indigo-600 dark:hover:text-indigo-500 block py-2 font-medium {!! request()->routeIs('home') ? 'text-indigo-800' : '' !!}" href="{!! route('home') !!}" aria-current="page">Home</a>
                 <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white block py-2 font-medium {!! request()->routeIs('names') ? 'active' : '' !!}" href="{!! route('names.index') !!}">Names</a>
-                <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white block py-2 font-medium {!! request()->routeIs('blog') ? 'active' : '' !!}" href="">Blog</a>
+                <a class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white block py-2 font-medium {!! request()->routeIs('blog') ? 'active' : '' !!}" href="{!! route('blog.index') !!}">Blog</a>
             </div>
         </div>
     </nav>

@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Models\Gender;
 use App\Models\Name;
 use App\Models\NameTrait;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use App\Services\Numerology\NumerologyFactory;
@@ -19,7 +21,7 @@ class NameService
         $this->imageService = $imageService;
     }
 
-    public function getCachedNames(): Collection
+    public function getNames(): Collection
     {
         return Cache::remember('names', now()->addHour(), function () {
             return Name::validMeaning()->limit(30)->get();
@@ -54,10 +56,23 @@ class NameService
         ];
     }
 
+    public function getNamesByGender(string $gender)
+    {
+        $key = "names:$gender";
+        $genderWithNames = Cache::remember('', now()->addHour(), function () use ($gender){
+            return Gender::with(['names' => function($query){
+                $query->validMeaning()->take(30);
+            }])->where('slug', $gender)->firstOrFail();
+        });
+
+        return $genderWithNames->names;
+    }
+
     public function getRandomNames(): Collection
     {
         $random = rand(1, 20);
-        return Cache::remember("randomNames_$random", now()->addQuarter(), function () {
+        $key = "names:$random";
+        return Cache::remember($key, now()->addQuarter(), function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
         });
     }

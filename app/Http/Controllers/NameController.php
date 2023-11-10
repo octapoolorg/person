@@ -4,33 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Name;
 use App\Services\NameService;
+use App\Services\SeoService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
 
 class NameController extends Controller
 {
     private NameService $nameService;
+    private SeoService $seoService;
 
-    public function __construct(NameService $nameService)
+    public function __construct(NameService $nameService,SeoService $seoService)
     {
         $this->nameService = $nameService;
+        $this->seoService = $seoService;
     }
 
     public function index(): View
     {
-        $names = $this->nameService->getCachedNames();
+        $names = $this->nameService->getNames();
+        $this->seoService->getSeoData('list',['page'=>'Popular']);
         return view('names.list', compact('names'));
     }
 
-    public function view(string $name): View
+    public function show(string $name): View
     {
         $data = $this->nameService->getNameDetails($name);
         return view('names.show', compact('data'));
     }
 
+    public function genderNames(string $gender): View
+    {
+        $names = $this->nameService->getNamesByGender($gender);
+        $this->seoService->getSeoData('list',['page'=>$gender]);
+        return view('names.list', compact('names'));
+    }
+
     public function getRandomNames(): View
     {
         $names = $this->nameService->getRandomNames();
+        $this->seoService->getSeoData('list',['page'=>'Random']);
         return view('names.list', compact('names'));
     }
 

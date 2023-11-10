@@ -2,13 +2,12 @@
     <div class="bg-white shadow-md mb-6 p-6 rounded-lg">
         <h5 class="text-xl font-bold text-indigo-600 mb-4">Generate Random Name</h5>
         <p class="text-gray-600 mb-6">Click to generate a list of random names to make a better choice.</p>
-        <a href="{{ route('getRandomNames') }}"
+        <a href="{{ route('names.random') }}"
            class="inline-flex items-center justify-center bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-medium py-3 px-6 rounded-full hover:bg-gradient-to-l transition duration-300 ease-in-out uppercase text-sm lg:text-base">
             <i class="fas fa-dice mr-2"></i>
             <span>Randomize</span>
         </a>
     </div>
-
 
     <div class="bg-white shadow-md my-6 p-6 rounded">
         <h5 class="text-xl font-bold text-indigo-600 mb-4">Follow Us on Social</h5>
@@ -37,16 +36,16 @@
             Popular Baby Names
         </h5>
         <div class="flex justify-between mt-4">
-            <a href="#" class="flex items-center transition duration-200 ease-in">
-                        <span class="bg-teal-500 text-white rounded-r-full px-4 py-2">
-                            <i class="fas fa-male fa-lg"></i>
-                        </span>
+            <a href="{!! route('names.gender',['gender'=>'masculine']) !!}" class="flex items-center transition duration-200 ease-in">
+                <span class="bg-teal-500 text-white rounded-r-full px-4 py-2">
+                    <i class="fas fa-male fa-lg"></i>
+                </span>
                 <span class="ml-2 font-medium">Boy Names</span>
             </a>
-            <a href="#" class="flex items-center transition duration-200 ease-in">
-                        <span class="bg-pink-500 text-white rounded-r-full px-4 py-2">
-                            <i class="fas fa-female fa-lg"></i>
-                        </span>
+            <a href="{!! route('names.gender',['gender'=>'feminine']) !!}" class="flex items-center transition duration-200 ease-in">
+                <span class="bg-pink-500 text-white rounded-r-full px-4 py-2">
+                    <i class="fas fa-female fa-lg"></i>
+                </span>
                 <span class="ml-2 font-medium">Girl Names</span>
             </a>
         </div>

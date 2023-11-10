@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use Exception;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
 
 class ImageService
@@ -13,38 +13,63 @@ class ImageService
     /**
      * Generate an image with text applied.
      *
-     * @param string $name
-     * @param string $color
-     * @param string $background
-     * @param string $font
-     * @param int $fontSize
-     * @return string
-     * @throws FileNotFoundException
-     * @throws Exception
+     * @param string $name The text to be applied on the image.
+     * @param string $color The color of the text.
+     * @param string $background The path to the background image.
+     * @param string $font The font of the text.
+     * @param int $fontSize The size of the font.
+     * @return string The generated image as a data URL.
      */
     public function generateImage(string $name, string $color, string $background, string $font, int $fontSize): string
     {
-        $fontPath = public_path("static/fonts/$font");
-        $backgroundPath = public_path($background);
-        $this->validateFilePaths([$fontPath, $backgroundPath]);
+        try {
+            $fontPath = $this->getFontPath($font);
+            $backgroundPath = $this->getBackgroundPath($background);
 
-        $img = Image::make($backgroundPath);
+            $this->validateFilePaths([$fontPath, $backgroundPath]);
 
-        $this->applyTextToImage($img, $name, $color, $fontPath, $fontSize);
+            $img = Image::make($backgroundPath);
+            $this->applyTextToImage($img, $name, $color, $fontPath, $fontSize);
 
-        return (string)$img->encode('data-url');
+            return (string)$img->encode('data-url');
+        } catch (FileNotFoundException $e) {
+            Log::error($e->getMessage());
+            return '';
+        }
+    }
+
+    /**
+     * Retrieve the full path of a font file.
+     *
+     * @param string $font The font file name.
+     * @return string The full path to the font file.
+     */
+    private function getFontPath(string $font): string
+    {
+        return public_path("static/fonts/$font");
+    }
+
+    /**
+     * Retrieve the full path of a background image file.
+     *
+     * @param string $background The background image file name.
+     * @return string The full path to the background image file.
+     */
+    private function getBackgroundPath(string $background): string
+    {
+        return public_path($background);
     }
 
     /**
      * Apply text to an image.
      *
-     * @param $img
-     * @param string $name
-     * @param string $color
-     * @param string $fontPath
-     * @param int $fontSize
+     * @param \Intervention\Image\Image $img The image object.
+     * @param string $name The text to be applied.
+     * @param string $color The color of the text.
+     * @param string $fontPath The path to the font file.
+     * @param int $fontSize The font size.
      */
-    private function applyTextToImage($img, string $name, string $color, string $fontPath, int $fontSize): void
+    private function applyTextToImage(\Intervention\Image\Image $img, string $name, string $color, string $fontPath, int $fontSize): void
     {
         $xPosition = $img->width() / 2;
         $yPosition = $img->height() / 2;
@@ -61,8 +86,8 @@ class ImageService
     /**
      * Validate if files exist.
      *
-     * @param array $paths
-     * @throws FileNotFoundException
+     * @param array $paths Array of file paths to validate.
+     * @throws FileNotFoundException Thrown if a file does not exist.
      */
     private function validateFilePaths(array $paths): void
     {
@@ -73,15 +98,33 @@ class ImageService
         }
     }
 
-    function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
+    /**
+     * Generate or retrieve a cached image.
+     *
+     * @param string $name The text to be applied on the image.
+     * @param string $color The color of the text.
+     * @param string $background The path to the background image.
+     * @param string $font The font of the text.
+     * @param int $fontSize The size of the font.
+     * @return string The generated image as a data URL.
+     */
+    public function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
     {
         $key = "image:$name:$background:$font:$fontSize";
-        return Cache::remember($key, now()->addQuarter(), function () use ($name, $color, $background, $font, $fontSize) {
+        return Cache::remember($key, now()->addMinutes(30), function () use ($name, $color, $background, $font, $fontSize) {
             return $this->generateImage($name, $color, $background, $font, $fontSize);
         });
     }
 
-    function prepareImageResponse(string $base64Image, string $actualName, $type='png'): Response
+    /**
+     * Prepare an HTTP response with the image data.
+     *
+     * @param string $base64Image The base64 encoded image data.
+     * @param string $actualName The name for the image file.
+     * @param string $type The image type (default 'png').
+     * @return Response The HTTP response with the image.
+     */
+    public function prepareImageResponse(string $base64Image, string $actualName, string $type = 'png'): Response
     {
         $imageInfo = explode(',', $base64Image);
         $imageData = base64_decode($imageInfo[1]);
