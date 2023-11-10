@@ -36,7 +36,7 @@ class Name extends Model
 
     public function scopeSearch(Builder $query, string $search): Builder
     {
-        return $query->where('name', 'LIKE', "%$search%")->where('meaning', '!=', "");
+        return $query->where('name', 'LIKE', "$search%")->where('meaning', '!=', "");
     }
 
     public function scopeRandom(Builder $query): Builder
