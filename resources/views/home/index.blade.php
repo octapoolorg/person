@@ -7,7 +7,7 @@
         <div class="absolute inset-0 bg-indigo-800 opacity-90"></div> <!-- Darker Overlay for Better Text Contrast -->
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative">
             <div class="text-center text-white">
-                <h1 class="text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>
+                <h1 class="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>
                 <p class="text-xl mb-8">Join millions in the quest for names' history, culture, and significance.</p>
                 <div class="flex justify-center">
                     <form action="{!! route('names.search') !!}" method="GET" class="w-full max-w-lg relative">
