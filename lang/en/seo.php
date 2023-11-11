@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "home" => [
+        "title" => "Baby Names with Meanings, Origins and Numerology",
+        "description" => "Search baby names, meanings, origins, numerology and more.",
+    ],
     "list" => [
         "title" => ":page Names",
         "description" => "List of :page names with their meanings, origins and other information.",
@@ -12,10 +16,6 @@ return [
     "search" => [
         "title" => "Search results for :q",
         "description" => "Search results for :q with their meanings, origins and other information.",
-    ],
-    "home" => [
-        "title" => "Baby Names with Meanings, Origins and Numerology",
-        "description" => "Search baby names, meanings, origins, numerology and more.",
     ],
     "privacy" => [
         "title" => "Privacy Policy",
