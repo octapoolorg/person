@@ -91,7 +91,7 @@ class NameService
             $name,
             '#000000',
             'static/images/wallpaper.jpg',
-            'roboto/roboto-black.ttf',
+            'roboto/roboto-bold.ttf',
             $fontSize
         );
 
