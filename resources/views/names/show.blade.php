@@ -59,7 +59,7 @@
                 <h2 class="text-2xl mb-6">Signatures for {{ $data['nameDetails']->name }}</h2>
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                     @foreach ($data['signatureUrls'] as $font => $url)
-                        <img src="{{ $url }}" alt="Signature with font {{ $font }}"
+                        <img src="{{ $url }}" alt="{{ $data['nameDetails']->name }} name Signature"
                              class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-1">
                     @endforeach
                 </div>
@@ -140,7 +140,7 @@
             <section class="text-gray-900">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
-                    <a href="{{ $data['wallpaperUrl'] }}" download="" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
+                    <a href="{{ $data['wallpaperUrl'] }}" download="{{ $data['nameDetails']->name }} Name Wallpaper" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
                         Download
                         <i class="fas fa-file-download ml-2"></i>
                     </a>

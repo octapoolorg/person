@@ -18,19 +18,16 @@ Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 Route::get('names/{gender}',[NameController::class,'gender'])->name('names.gender');
 
 Route::get('/static/images/name/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
-Route::get('/static/images/signature/{name}/{font}', [NameController::class, 'signature'])->name('names.signature');
+Route::get('/static/images/signature/{name}/{font}.jpg', [NameController::class, 'signature'])->name('names.signature');
 
 Route::post('/names/{name}/comments', [CommentController::class, 'store'])->name('names.comments.store');
-
 
 /* Blog Routes */
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-
 /* Legal Pages */
 Route::get('pages/{page}', [PageController::class, 'show']);
-
 
 /* Sitemap */
 Route::get('sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');

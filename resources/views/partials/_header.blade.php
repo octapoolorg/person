@@ -1,7 +1,10 @@
 <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm sm:py-0 dark:bg-gray-800 dark:border-gray-700">
     <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 py-5" aria-label="Global">
         <div class="flex items-center justify-between">
-            <a class="flex-none text-2xl font-bold text-gray-800 hover:text-indigo-600 dark:text-white" href="{!! route('home') !!}" aria-label="Brand">iDenteez</a>
+            <a class="flex items-center text-2xl font-bold text-gray-800 hover:text-indigo-600 dark:text-white" href="{!! route('home') !!}" aria-label="iDenteez">
+                <img src="{!! asset('static/images/logo.png') !!}" class="w-8 md:w-10" alt="iDenteez Logo">
+                <span>iDenteez</span>
+            </a>
             <div class="sm:hidden">
                 <!-- Mobile menu button -->
                 <button type="button" class="hs-collapse-toggle p-2 inline-flex items-center justify-center rounded-md border border-gray-300 text-gray-500 shadow-sm bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700" data-hs-collapse="#navbar-collapse-with-animation" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +20,7 @@
                 </button>
             </div>
         </div>
-        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:flex sm:items-center sm:justify-between">
+        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:flex sm:items-center sm:justify-between mt-10 md:mt-0">
             <!-- Search bar -->
             <div class="flex w-full ms-auto sm:w-auto sm:mr-6">
                 <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">

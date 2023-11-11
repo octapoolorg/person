@@ -121,14 +121,15 @@ class ImageService
      *
      * @param string $base64Image The base64 encoded image data.
      * @param string $actualName The name for the image file.
+     * @param string $seo The SEO for the image file.
      * @return Response The HTTP response with the image.
      */
-    public function prepareImageResponse(string $base64Image, string $actualName): Response
+    public function prepareImageResponse(string $base64Image, string $actualName, string $seo): Response
     {
         $imageInfo = explode(',', $base64Image);
         $imageData = base64_decode($imageInfo[1]);
         return response($imageData)
             ->header('Content-Type', "image/jpg")
-            ->header('Content-Disposition', "inline; filename=\"$actualName.jpg\"");
+            ->header('Content-Disposition', "inline; filename=\"$actualName $seo.jpg\"");
     }
 }

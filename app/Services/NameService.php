@@ -94,7 +94,7 @@ class NameService
             $fontSize
         );
 
-        return $this->imageService->prepareImageResponse($base64Image, $name);
+        return $this->imageService->prepareImageResponse($base64Image, $name, 'name wallpaper');
     }
 
     public function individualSignature(string $name, string $fontKey): Response
@@ -113,7 +113,7 @@ class NameService
             $fontPath,
             $fontSize
         );
-        return $this->imageService->prepareImageResponse($base64Image, $name);
+        return $this->imageService->prepareImageResponse($base64Image, $name, 'name signature');
     }
 
     public function normalizeName($name): array|string|null
