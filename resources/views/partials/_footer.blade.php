@@ -25,10 +25,10 @@
             <div class="lg:w-1/4 mb-6 lg:mb-0">
                 <h6 class="text-lg font-semibold mb-3">
                     <i class="fas fa-info-circle mr-2"></i>
-                    About NameSite
+                    About iDenteez
                 </h6>
                 <p class="text-sm">
-                    NameSite provides deep insights into names, their origins, meanings, and more. Discover the story behind your name.
+                    iDenteez provides deep insights into names, their origins, meanings, and more. Discover the story behind your name.
                 </p>
             </div>
 
@@ -36,21 +36,18 @@
             <div class="lg:w-1/4 mb-6 lg:mb-0">
                 <h6 class="text-lg font-semibold mb-3">Popular Names</h6>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-sm hover:text-gray-900">Emma</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Liam</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Sophia</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Ethan</a></li>
+                    @foreach($popularNames as $name)
+                            <li><a href="{!! route('names.show', $name->slug) !!}" class="text-sm hover:text-gray-900">{{ $name->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
             <!-- Name Categories -->
             <div class="lg:w-1/4 mb-6 lg:mb-0">
-                <h6 class="text-lg font-semibold mb-3">Name Categories</h6>
+                <h6 class="text-lg font-semibold mb-3">Pages</h6>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-sm hover:text-gray-900">Vintage Names</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Unique Names</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Trending Names</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Classical Names</a></li>
+                    <li><a href="{!! route('home') !!}" class="text-sm hover:text-gray-900">Home</a></li>
+                    <li><a href="{!! route('names.index') !!}" class="text-sm hover:text-gray-900">Names</a></li>
                 </ul>
             </div>
 
@@ -58,9 +55,7 @@
             <div class="lg:w-1/4 mb-6 lg:mb-0">
                 <h6 class="text-lg font-semibold mb-3">Reach Us</h6>
                 <ul class="space-y-2">
-                    <li><a href="mailto:info@namesite.com" class="text-sm hover:text-gray-900">Email: info@namesite.com</a></li>
-                    <li><a href="tel:+1234567890" class="text-sm hover:text-gray-900">Phone: +1 234 567 890</a></li>
-                    <li><a href="#" class="text-sm hover:text-gray-900">Address: 123 Name St, NameCity, NS</a></li>
+                    <li><a href="mailto:info@identeez.com" class="text-sm hover:text-gray-900">Email: info@iDenteez.com</a></li>
                 </ul>
             </div>
         </div>
@@ -69,6 +64,6 @@
     <!-- Copyright -->
     <div class="text-center py-4 bg-gray-100">
         © {{ date('Y') }} Copyright:
-        <a class="text-gray-700 font-bold hover:text-gray-900" href="#">NameSite.com</a>
+        <a class="text-gray-700 font-bold hover:text-gray-900" href="{!! route('home') !!}">iDenteez.com</a>
     </div>
 </footer>

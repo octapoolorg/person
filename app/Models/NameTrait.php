@@ -15,4 +15,6 @@ use Illuminate\Database\Eloquent\Model;
 class NameTrait extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

@@ -31,7 +31,7 @@ class NameService
     public function getNameDetails(string $name): array
     {
         $nameDetails = Cache::remember("nameDetails:$name", now()->addQuarter(), function () use ($name) {
-            return Name::with('gender')->where('slug', $name)->firstOrFail();
+            return Name::with(['gender','comments'])->where('slug', $name)->firstOrFail();
         });
 
         $numerology = (new NumerologyFactory())->create('pythagorean');
@@ -42,7 +42,7 @@ class NameService
 
         $traits = $this->getTraits($nameDetails->name);
 
-        $wallpaperUrl = route('nameWallpaper', ['name' => $nameDetails->name]);
+        $wallpaperUrl = route('names.wallpaper', ['name' => $nameDetails->name]);
         $signatureUrls = $this->nameSignatures($nameDetails->slug);
 
         return [
@@ -149,7 +149,7 @@ class NameService
         $signatureUrls = [];
 
         foreach ($fonts as $key => $fontPath) {
-            $signatureUrls[$key] = route('individualSignature', ['name' => $name, 'font' => $key]);
+            $signatureUrls[$key] = route('names.signature', ['name' => $name, 'font' => $key]);
         }
 
         return $signatureUrls;

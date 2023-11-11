@@ -33,14 +33,14 @@ class NameController extends Controller
         return view('names.show', compact('data'));
     }
 
-    public function genderNames(string $gender): View
+    public function gender(string $gender): View
     {
         $names = $this->nameService->getNamesByGender($gender);
         $this->seoService->getSeoData('list',['page'=>$gender]);
         return view('names.list', compact('names'));
     }
 
-    public function getRandomNames(): View
+    public function random(): View
     {
         $names = $this->nameService->getRandomNames();
         $this->seoService->getSeoData('list',['page'=>'Random']);
@@ -53,12 +53,12 @@ class NameController extends Controller
         return view('names.search', compact('names'));
     }
 
-    public function nameWallpaper(string $name): Response
+    public function wallpaper(string $name): Response
     {
         return $this->nameService->nameWallpaper($name);
     }
 
-    public function individualSignature(string $name, string $fontKey): Response
+    public function signature(string $name, string $fontKey): Response
     {
         return $this->nameService->individualSignature($name, $fontKey);
     }

@@ -136,26 +136,6 @@
                 </div>
             </section>
 
-            <div class="my-12 max-w-4xl mx-auto">
-                <!-- Header -->
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-gray-800">Attributes & Details</h2>
-                    <p class="text-gray-600">Explore the unique traits associated with the name</p>
-                </div>
-
-                <!-- Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach (['Ruling Hours', 'Lucky Days', 'Passion', 'Life Pursuit', 'Vibration'] as $index => $attribute)
-                        <div class="bg-white rounded-lg shadow hover:shadow-md transition-shadow duration-300 p-4 flex flex-col items-center text-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="{{ $attribute }} icon" class="w-24 h-24 rounded-full mb-4" />
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ $attribute }}</h3>
-                            <p class="text-indigo-500">{{ $attribute }} related details</p>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-
-
             <!-- Wallpaper section -->
             <section class="text-gray-900">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
@@ -179,59 +159,76 @@
             </section>
 
             <!-- Fancy Text Styles section -->
-            <section class="text-gray-800">
-                <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} - Fancy Text Styles</h2>
-                <p class="my-4 sm:my-8 text-lg leading-relaxed">
+            <section class="px-6 py-10 mb-10 text-gray-800 rounded-lg shadow">
+                <h2 class="text-4xl text-gray-800 font-bold mb-6">{{ $data['nameDetails']->name }} - Fancy Text Styles</h2>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                     Experience the elegance of {{ $data['nameDetails']->name }}
                     presented in various distinctive text styles. Each style is crafted
                     to highlight the uniqueness of the name, adding a touch of sophistication
                     and charm to your content.
                 </p>
                 <div class="overflow-x-auto">
-                    <div class="border border-gray-300 rounded shadow mb-12">
-                        <ul class="divide-y divide-gray-200 bg-white hover:shadow-sm" id="fancyTextList">
-                            @foreach ($data['fancyTexts'] as $key => $fancyText)
-                                <li tabindex="0"
-                                    class="text-lg p-6 hover:bg-gray-200 focus:bg-gray-200 transition ease-in-out duration-150 cursor-pointer"
-                                    aria-label="Select {{ $fancyText }} style"
-                                    onclick="copyToClipboard('{{ $fancyText }}')">
-                                    {{ $fancyText }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <ul class="divide-y divide-gray-200 bg-white" id="fancyTextList">
+                        @foreach ($data['fancyTexts'] as $fancyText)
+                            <li tabindex="0"
+                                class="text-lg p-4 hover:bg-gray-100 focus:bg-gray-100 transition ease-in-out duration-150 cursor-pointer"
+                                aria-label="Select {{ $fancyText }} style"
+                                onclick="copyToClipboard('{{ $fancyText }}')">
+                                {{ $fancyText }}
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </section>
 
-
             <!-- FAQ Section -->
-            <section class="py-10" itemscope itemtype="https://schema.org/FAQPage">
+            <section class="px-6 py-10 mb-10 rounded-lg shadow" itemscope itemtype="https://schema.org/FAQPage">
                 <h2 class="mb-8 text-3xl text-gray-700 font-bold">
                     Frequently Asked Questions about {{ $data['nameDetails']->name }}
                 </h2>
 
-                <div class="mx-auto bg-white p-6 rounded-lg shadow-lg space-y-6">
+                <div class="mx-auto bg-white space-y-6 divide-y divide-gray-200">
                     <!-- Question 1 -->
-                    <div class="space-y-4">
-                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <h3 class="text-lg text-gray-800 flex items-center">
-                                <i class="fas fa-question-circle text-indigo-500 mr-3" aria-hidden="true"></i>
-                                What does the name {{ $data['nameDetails']->name }} mean?
-                            </h3>
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
+                            What does the name {{ $data['nameDetails']->name }} mean?
+                        </h3>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" class="text-gray-600">
+                                {{ $data['nameDetails']->meaning }}
+                            </p>
                         </div>
-                        <p class="text-gray-600 pl-8" itemscope itemprop="acceptedAnswer"
-                           itemtype="https://schema.org/Answer">
-                            {{ $data['nameDetails']->meaning }}
-                        </p>
                     </div>
 
-                    <!-- Question 2 and others would follow the same structure -->
+                    <!-- Question 2 -->
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
+                            Is {{ $data['nameDetails']->name }} typically a male or female name?
+                        </h3>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" class="text-gray-600">
+                                {{ $data['nameDetails']->gender->name }} is the gender typically associated with the name {{ $data['nameDetails']->name }}.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
+                            What are the numerology details of {{ $data['nameDetails']->name }}?
+                        </h3>
+                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text" class="text-gray-600">
+                                According to numerology, the destiny number is {{ $data['numerology']['numbers']['destiny'] }}, the soul number is {{ $data['numerology']['numbers']['soul'] }}, and the personality number is {{ $data['numerology']['numbers']['personality'] }}.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
-
             <!-- Social Share Section -->
-            <section class="my-8">
+            <section class="my-8 mb-10 ">
                 <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
                     <!-- Twitter -->
                     <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"
@@ -268,36 +265,47 @@
 
             <!-- Comments Section -->
             <section class="py-10 w-full"> <!-- Full width section -->
-                <h2 class="mb-6 text-3xl font-semibold text-center text-gray-800 lg:text-4xl">Comments</h2>
+                <h2 class="mb-6 text-3xl font-semibold text-gray-800 lg:text-4xl">Comments</h2>
 
-                <div class="space-y-6 max-w-4xl mx-auto"> <!-- Centered with max width for large screens -->
-                    <!-- Single Comment -->
-                    <article class="flex space-x-4 p-4 bg-white rounded-xl shadow-md">
-                        <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="User profile picture"
-                             class="w-16 h-16 rounded-full">
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    @foreach ($data['nameDetails']->comments as $comment)
+                        <article class="flex space-x-4 p-4 bg-white rounded-lg shadow">
+                            <img src="{!! Avatar::create($comment->email)->toGravatar(['d' => 'identicon']); !!}" alt="User profile picture"
+                                 class="w-16 h-16 rounded-full">
 
-                        <div class="flex-1">
-                            <h3 class="text-lg font-medium text-gray-800">User Name</h3>
-                            <p class="text-gray-600">This is a comment about the post. It's a sample text to show how the comment will look.</p>
-                            <!-- Time and date of comment could also be included here -->
-                        </div>
-                    </article>
-                    <!-- Additional comments will be similarly structured -->
+                            <div class="flex-1">
+                                <h3 class="text-lg font-medium text-gray-800">{{$comment->name}}</h3>
+                                <p class="text-gray-600">{{$comment->content}}</p>
+                                <span>{{ $comment->created_at->diffForHumans() }}</span>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
 
                 <!-- Comment Form -->
-                <div class="mt-10 p-6 bg-white rounded-xl shadow-md max-w-4xl mx-auto">
+                <div class="mt-10 p-6 bg-white rounded-lg shadow max-w-4xl mx-auto">
                     <h3 class="text-xl font-medium text-gray-800 mb-4">
                         Leave a Comment:
                     </h3>
 
-                    <form action="/post-comment" method="POST"> <!-- Action should lead to your comment handling route -->
+                    @if ($errors->any())
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                             role="alert">
+                            <ul class="list-disc">
+                                @foreach ($errors->all() as $error)
+                                    <li class="text-sm">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('names.comments.store', $data['nameDetails']) }}" method="POST">
                         <div class="space-y-4">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
                                 <input type="text" id="name" name="name"
                                        class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm"
-                                       placeholder="Your name" required> <!-- Consider adding 'required' if name is mandatory -->
+                                       placeholder="Your name" required>
                             </div>
 
                             <div>
@@ -306,13 +314,13 @@
                                 </label>
                                 <input type="email" id="email" name="email"
                                        class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm"
-                                       placeholder="you@example.com" required> <!-- Consider adding 'required' if email is mandatory -->
+                                       placeholder="you@example.com" required>
                             </div>
 
                             <div>
                                 <label for="comment" class="block text-sm font-medium text-gray-700">Comment:</label>
-                                <textarea id="comment" name="comment" rows="4"
-                                          class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm" placeholder="Add a comment..." required></textarea> <!-- Consider adding 'required' if comment is mandatory -->
+                                <textarea id="comment" name="content" rows="4"
+                                          class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm" placeholder="Add a comment..." required></textarea>
                             </div>
 
                             <div class="flex justify-end">
