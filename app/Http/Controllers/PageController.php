@@ -18,6 +18,6 @@ class PageController extends Controller
     public function seoTags($page)
     {
         SEOTools::setTitle($page->title);
-        SEOTools::setDescription($page->excerpt);
+        SEOTools::setDescription($page->title);
     }
 }
