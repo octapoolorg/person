@@ -42,7 +42,7 @@ class GenerateSitemap extends Command
             $this->info('Sitemap generated successfully.');
 
             // Submit to search engines
-//            $this->submitSitemapToSearchEngines();
+            $this->submitSitemapToSearchEngines();
 
         } catch (Exception $e) {
             $this->error('An error occurred: ' . $e->getMessage());
