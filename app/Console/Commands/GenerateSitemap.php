@@ -21,14 +21,13 @@ class GenerateSitemap extends Command
         try {
             $sitemapIndex = SitemapIndex::create();
 
-            // Error handling and optimization can be added here
             Name::query()
                 ->select('id')
                 ->chunk(50000, function ($names) use (&$sitemapIndex) {
                     $sitemap = Sitemap::create();
 
                     foreach ($names as $name) {
-                        $url = route('names.show', ['name' => $name->id]);
+                        $url = route('names.show', ['name' => $name]);
                         $sitemap->add(Url::create($url));
                     }
 
