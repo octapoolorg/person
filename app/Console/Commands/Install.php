@@ -30,7 +30,7 @@ class Install extends Command
 
         try {
             $this->info("Running migrations...");
-            $this->call('migrate:fresh');
+            $this->call('migrate:fresh', ['--force' => true]);
 
             $this->info("Running database import...");
             $this->call('app:import-database');
