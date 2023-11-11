@@ -27,7 +27,7 @@ class GenerateSitemap extends Command
                     $sitemap = Sitemap::create();
 
                     foreach ($names as $name) {
-                        $url = route('names.show', ['name' => $name]);
+                        $url = route('names.show', ['name' => $name->slug]);
                         $sitemap->add(Url::create($url));
                     }
 
