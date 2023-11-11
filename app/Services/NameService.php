@@ -42,7 +42,7 @@ class NameService
 
         $traits = $this->getTraits($nameDetails->name);
 
-        $wallpaperUrl = route('names.wallpaper', ['name' => $nameDetails->name]);
+        $wallpaperUrl = route('names.wallpaper', ['name' => $nameDetails->slug]);
         $signatureUrls = $this->nameSignatures($nameDetails->slug);
 
         return [
@@ -85,6 +85,7 @@ class NameService
 
     public function nameWallpaper(string $name): Response
     {
+        $name = Name::where('slug', $name)->firstOrFail()->name;
         $fontSize = strlen($name) > 10 ? 150 : 200;
         $base64Image =  $this->imageService->generateOrRetrieveImage(
             $name,
