@@ -4,7 +4,7 @@
 
     <!-- Hero Section with Image Background and Overlay -->
     <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
-        <div class="absolute inset-0 bg-indigo-800 opacity-80"></div> <!-- Darker Overlay for Better Text Contrast -->
+        <div class="absolute inset-0 bg-indigo-800 opacity-90"></div> <!-- Darker Overlay for Better Text Contrast -->
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative">
             <div class="text-center text-white">
                 <h1 class="text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>

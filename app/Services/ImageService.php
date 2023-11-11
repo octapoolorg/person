@@ -121,15 +121,14 @@ class ImageService
      *
      * @param string $base64Image The base64 encoded image data.
      * @param string $actualName The name for the image file.
-     * @param string $type The image type (default 'png').
      * @return Response The HTTP response with the image.
      */
-    public function prepareImageResponse(string $base64Image, string $actualName, string $type = 'png'): Response
+    public function prepareImageResponse(string $base64Image, string $actualName): Response
     {
         $imageInfo = explode(',', $base64Image);
         $imageData = base64_decode($imageInfo[1]);
         return response($imageData)
-            ->header('Content-Type', "image/$type")
-            ->header('Content-Disposition', "inline; filename=\"$actualName.$type\"");
+            ->header('Content-Type', "image/jpg")
+            ->header('Content-Disposition', "inline; filename=\"$actualName.jpg\"");
     }
 }

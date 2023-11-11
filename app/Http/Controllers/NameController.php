@@ -29,6 +29,7 @@ class NameController extends Controller
     public function show(string $name): View
     {
         $data = $this->nameService->getNameDetails($name);
+        $this->seoService->getSeoData('name',['name'=>$data['nameDetails']->name]);
         return view('names.show', compact('data'));
     }
 

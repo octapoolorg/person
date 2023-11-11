@@ -23,7 +23,7 @@
 
                 <footer
                     class="absolute bottom-0 left-0 w-full bg-indigo-700 text-gray-100 text-center py-4 md:py-6 border-t border-indigo-800">
-                    <p class="text-lg md:text-xl font-bold italic">
+                    <p class="text-lg md:text-xl font-bold italic ">
                         A {{ $data['nameDetails']->gender->name }} name.
                     </p>
                 </footer>
@@ -67,49 +67,49 @@
 
             <!-- Numerology Details Section -->
             <section class="bg-white p-10 rounded-lg shadow mb-10 border border-gray-300">
-    <h2 class="text-4xl text-gray-800 mb-10 font-bold">{{ $data['nameDetails']->name }} Name Numerology</h2>
+                <h2 class="text-4xl text-gray-800 mb-10 font-bold">{{ $data['nameDetails']->name }} Name Numerology</h2>
 
-    <div class="space-y-10">
-        <!-- Numerology Explanation -->
-        <p class="text-lg text-gray-600 leading-relaxed">
-            Numerology numbers, each associated with a unique color, offer insights into personality and destiny. Discover the colors and meanings personalized for {{ $data['nameDetails']->name }}.
-        </p>
+                <div class="space-y-10">
+                    <!-- Numerology Explanation -->
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Numerology numbers, each associated with a unique color, offer insights into personality and destiny. Discover the colors and meanings personalized for {{ $data['nameDetails']->name }}.
+                    </p>
 
-        <!-- Numerology Details -->
-        <!-- Destiny -->
-        <div class="flex flex-col md:flex-row items-center md:items-start bg-indigo-50 rounded-xl shadow-inner p-6">
-            <img src="{{ asset('static/images/zodiac/numerology/numerology-icon.png') }}" alt="Destiny Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
-            <div class="text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Destiny Number</h3>
-                <p class="text-gray-700">
-                    {{ __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $data['nameDetails']->name]) }}
-                </p>
-            </div>
-        </div>
+                    <!-- Numerology Details -->
+                    <!-- Destiny -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start bg-indigo-50 rounded-xl shadow-inner p-6">
+                        <img src="{{ asset('static/images/zodiac/numerology/numerology-icon.png') }}" alt="Destiny Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Destiny Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
+                        </div>
+                    </div>
 
-        <!-- Soul -->
-        <div class="flex flex-col md:flex-row items-center md:items-start bg-green-50 rounded-xl shadow-inner p-6">
-            <img src="{{ asset('static/images/zodiac/numerology/soul-icon.png') }}" alt="Soul Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
-            <div class="text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-green-700 mb-3">Soul Number</h3>
-                <p class="text-gray-700">
-                    {{ __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) }}
-                </p>
-            </div>
-        </div>
+                    <!-- Soul -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start bg-green-50 rounded-xl shadow-inner p-6">
+                        <img src="{{ asset('static/images/zodiac/numerology/soul-icon.png') }}" alt="Soul Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-2xl font-semibold text-green-700 mb-3">Soul Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
+                        </div>
+                    </div>
 
-        <!-- Personality -->
-        <div class="flex flex-col md:flex-row items-center md:items-start bg-yellow-50 rounded-xl shadow-inner p-6">
-            <img src="{{ asset('static/images/zodiac/numerology/personality-icon.png') }}" alt="Personality Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
-            <div class="text-center md:text-left">
-                <h3 class="text-2xl font-semibold text-yellow-700 mb-3">Personality Number</h3>
-                <p class="text-gray-700">
-                    {{ __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $data['nameDetails']->name]) }}
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+                    <!-- Personality -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start bg-yellow-50 rounded-xl shadow-inner p-6">
+                        <img src="{{ asset('static/images/zodiac/numerology/personality-icon.png') }}" alt="Personality Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-2xl font-semibold text-yellow-700 mb-3">Personality Number</h3>
+                            <p class="text-gray-700">
+                                {{ __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $data['nameDetails']->name]) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Abbreviation Section -->
             <section class="bg-white py-8 px-4 md:px-8 rounded-lg shadow my-10">
@@ -158,7 +158,14 @@
 
             <!-- Wallpaper section -->
             <section class="text-gray-900">
-                <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
+                <div class="flex flex-col md:flex-row items-center justify-between mb-6">
+                    <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
+                    <a href="{{ $data['wallpaperUrl'] }}" download="" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
+                        Download
+                        <i class="fas fa-file-download ml-2"></i>
+                    </a>
+                </div>
+
                 <div class="overflow-hidden rounded-lg shadow-lg my-8">
                     <img src="{{ $data['wallpaperUrl'] }}"
                          class="w-full h-auto md:h-96 object-cover"

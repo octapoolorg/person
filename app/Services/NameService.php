@@ -40,8 +40,7 @@ class NameService
         $fancyText = new FancyTextGenerator($nameDetails->name);
         $fancyTexts = $fancyText->generate();
 
-        $alphabets = str_split($nameDetails->name);
-        $traits = $this->getTraits($alphabets);
+        $traits = $this->getTraits($nameDetails->name);
 
         $wallpaperUrl = route('nameWallpaper', ['name' => $nameDetails->name]);
         $signatureUrls = $this->nameSignatures($nameDetails->slug);
@@ -86,12 +85,13 @@ class NameService
 
     public function nameWallpaper(string $name): Response
     {
+        $fontSize = strlen($name) > 10 ? 150 : 200;
         $base64Image =  $this->imageService->generateOrRetrieveImage(
             $name,
-            '#ffffff',
+            '#000000',
             'static/images/wallpaper.jpg',
-            'roboto/roboto-medium.ttf',
-            200
+            'roboto/roboto-black.ttf',
+            $fontSize
         );
 
         return $this->imageService->prepareImageResponse($base64Image, $name);
@@ -100,6 +100,7 @@ class NameService
     public function individualSignature(string $name, string $fontKey): Response
     {
         $actualName = Name::where('slug', $name)->firstOrFail()->name;
+        $actualName = $this->normalizeName($actualName);
         $fontPath = $this->mapFontKeyToPath($fontKey);
         $fontSize = $this->mapFontKeyToSize($fontKey);
 
@@ -111,11 +112,23 @@ class NameService
             $fontPath,
             $fontSize
         );
-        return $this->imageService->prepareImageResponse($base64Image, $name, $type = 'jpg');
+        return $this->imageService->prepareImageResponse($base64Image, $name);
     }
 
-    private function getTraits(array $alphabets): \Illuminate\Support\Collection
+    public function normalizeName($name): array|string|null
     {
+        // Transliterate characters to ASCII
+        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+
+        // Remove any residual non-ASCII characters
+        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
+    }
+
+
+    private function getTraits(string $name): \Illuminate\Support\Collection
+    {
+        $name = $this->normalizeName($name);
+        $alphabets = str_split($name);
         $upperAlphabets = array_map('strtoupper', $alphabets);
         $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->keyBy('alphabet');
 
@@ -141,7 +154,6 @@ class NameService
 
         return $signatureUrls;
     }
-
 
     private function mapFontKeyToPath(string $fontKey): ?string
     {

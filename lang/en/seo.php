@@ -5,6 +5,10 @@ return [
         "title" => ":page Names",
         "description" => "List of :page names with their meanings, origins and other information.",
     ],
+    "name" =>[
+        "title" => ":name - Name Meaning, Origin, Numerology and more",
+        "description" => "Get :name's meaning, origin, numerology and more.",
+    ],
     "search" => [
         "title" => "Search results for :q",
         "description" => "Search results for :q with their meanings, origins and other information.",
