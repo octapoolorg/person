@@ -22,7 +22,7 @@ class GenerateSitemap extends Command
             $sitemapIndex = SitemapIndex::create();
 
             Name::query()
-                ->select('id')
+                ->select(['id', 'slug'])
                 ->chunk(50000, function ($names) use (&$sitemapIndex) {
                     $sitemap = Sitemap::create();
 
