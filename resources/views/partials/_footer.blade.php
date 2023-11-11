@@ -7,14 +7,11 @@
                 <span class="text-sm">Connect with us for name updates and facts:</span>
             </div>
             <div class="flex space-x-4">
-                <a href="" class="text-gray-700 hover:text-gray-900">
+                <a href="https://www.facebook.com/identeez/" target="_blank" class="text-gray-700 hover:text-gray-900">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="" class="text-gray-700 hover:text-gray-900">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="text-gray-700 hover:text-gray-900">
-                    <i class="fab fa-twitter"></i>
+                <a href="https://pinterest.com/identeez" target="_blank" class="text-gray-700 hover:text-gray-900">
+                    <i class="fab fa-pinterest"></i>
                 </a>
             </div>
         </div>

@@ -12,28 +12,28 @@
     <div class="bg-white shadow-md my-6 p-6 rounded">
         <h5 class="text-xl font-bold text-indigo-600 mb-4">Follow Us on Social</h5>
         <div class="flex justify-around mt-4 space-x-4">
-            <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
-               title="Follow us on Facebook">
-                <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"
+            <a href="https://www.facebook.com/identeez/" class="group hover:opacity-70 transition duration-200 ease-in"
+               title="Follow us on Facebook" target="_blank">
+                <img src="{!! asset('static/images/facebook-new.png') !!}" alt="Facebook"
                      class="group-hover:scale-110 transform transition-transform duration-150" />
             </a>
-            <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
+            {{-- <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
                title="Follow us on Instagram">
-                <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" alt="Instagram"
-                     class="group-hover:scale-110 transform transition-transform duration-150" />
-            </a>
-            <a href="#" class="group hover:opacity-70 transition duration-200 ease-in"
-               title="Follow us on Pinterest">
-                <img src="https://img.icons8.com/color/48/000000/pinterest--v1.png" alt="Pinterest"
+                <img src="{!! asset('static/images/instagram-new--v1.png') !!}" alt="Instagram"
+                     class="group-hover:scale-110 transform transition-transform duration-150" target="_blank"/>
+            </a> --}}
+            <a href="https://pinterest.com/identeez" class="group hover:opacity-70 transition duration-200 ease-in"
+               title="Follow us on Pinterest" target="_blank">
+                <img src="{!! asset('static/images/pinterest--v1.png') !!}" alt="Pinterest"
                      class="group-hover:scale-110 transform transition-transform duration-150" />
             </a>
         </div>
     </div>
 
-    <!-- Popular Baby Names -->
+    <!-- Explore Baby Names -->
     <div class="bg-white shadow-md my-6 p-6 rounded">
         <h5 class="text-xl font-bold text-indigo-600 mb-4">
-            Popular Baby Names
+            Explore Baby Names
         </h5>
         <div class="flex justify-between mt-4">
             <a href="{!! route('names.gender',['gender'=>'masculine']) !!}" class="flex items-center transition duration-200 ease-in">
