@@ -100,6 +100,7 @@ class NameService
     public function individualSignature(string $name, string $fontKey): Response
     {
         $actualName = Name::where('slug', $name)->firstOrFail()->name;
+        $actualName = explode(' ', $actualName)[0];
         $actualName = $this->normalizeName($actualName);
         $fontPath = $this->mapFontKeyToPath($fontKey);
         $fontSize = $this->mapFontKeyToSize($fontKey);
@@ -129,6 +130,9 @@ class NameService
     {
         $name = $this->normalizeName($name);
         $alphabets = str_split($name);
+        $alphabets = array_filter($alphabets, function ($alphabet) {
+            return $alphabet !== ' ';
+        });
         $upperAlphabets = array_map('strtoupper', $alphabets);
         $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->keyBy('alphabet');
 
