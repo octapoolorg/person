@@ -34,8 +34,8 @@ class ImportDatabase extends Command
 
         try {
             DB::transaction(function () {
-                $this->importCsv('names.csv', 'names', true);
                 $this->importCsv('genders.csv', 'genders',true);
+                $this->importCsv('names.csv', 'names', true);
                 $this->importCsv('origins.csv', 'origins',true);
                 $this->importCsv('categories.csv', 'categories', true);
                 $this->importCsv('category_name.csv', 'category_name');
