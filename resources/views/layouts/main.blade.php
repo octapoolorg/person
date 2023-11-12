@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +21,7 @@
 <body class="bg-white text-gray-900">
 @include('partials._header')
 
-<div class="container mx-auto">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
     @yield('content')
 </div>
 
@@ -30,4 +29,5 @@
 @vite('resources/js/app.js')
 @stack('scripts')
 </body>
+
 </html>
