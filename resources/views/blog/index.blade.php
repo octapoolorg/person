@@ -3,14 +3,12 @@
 @section('content')
 
     <!-- Blog Header Section -->
-    <section class="bg-indigo-600 text-white py-10 bg-gradient-to-r from-indigo-500 to-purple-600">
+    <section class="bg-indigo-600 text-white py-10 bg-gradient-to-r from-indigo-500 to-purple-600 mt-8 md:mt-20">
         <div class="container mx-auto px-6 md:px-12 xl:px-20">
             <h1 class="text-6xl font-bold text-center mb-4 leading-tight">Blog</h1>
             <p class="text-xl text-center mb-6">Latest insights and stories from our community</p>
-            <!-- Optional navigation menu here -->
         </div>
     </section>
-
 
     <!-- Blog Posts Section -->
     <section class="container py-12">

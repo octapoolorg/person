@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Name;
-use App\Services\NameService;
+use App\Services\Name\NameService;
+use App\Services\Name\UsernameGeneratorService;
 use App\Services\SeoService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class NameController extends Controller
@@ -61,5 +62,29 @@ class NameController extends Controller
     public function signature(string $name, string $fontKey): Response
     {
         return $this->nameService->individualSignature($name, $fontKey);
+    }
+
+    public function generateUsernames(): JsonResponse
+    {
+        $name = request()->input('name');
+        $userNames = $this->nameService->generateUsernames($name);
+        $html = view('partials.names._usernames', compact('userNames'))->render();
+        return response()->json($html);
+    }
+
+    public function generateAcronyms(): JsonResponse
+    {
+        $name = request()->input('name');
+        $acronyms = $this->nameService->generateAcronyms($name);
+        $html = view('partials.names._acronyms', compact('acronyms'))->render();
+        return response()->json($html);
+    }
+
+    public function generateFancyTexts(): JsonResponse
+    {
+        $name = request()->input('name');
+        $fancyTexts = $this->nameService->generateFancyTexts($name);
+        $html = view('partials.names._fancy-texts', compact('fancyTexts'))->render();
+        return response()->json($html);
     }
 }

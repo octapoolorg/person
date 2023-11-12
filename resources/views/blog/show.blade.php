@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="container mx-auto px-4 pt-8 pb-16">
+    <section class="container mx-auto px-4 pt-8 pb-16 mt-8 md:mt-20">
         <div class="flex flex-wrap -mx-4">
             <main class="w-full lg:w-2/3 px-4 mb-12">
                 <div class="bg-white overflow-hidden shadow rounded-lg">

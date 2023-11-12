@@ -2,10 +2,15 @@
 
 namespace App\Services\Tools;
 
-class FancyTextGenerator
+class FancyTextService
 {
 
     private string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
 
     private array $styles = [
         'style1_map' => [
@@ -250,12 +255,6 @@ class FancyTextGenerator
         ],
 
     ];
-
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
 
     public function generateRandomEmojiStyles($name, $count = 5): array
     {

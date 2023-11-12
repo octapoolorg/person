@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Name;
-use App\Services\NameService;
 use App\Services\SeoService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Wink\WinkPost;
@@ -38,9 +36,11 @@ class HomeController extends Controller
 
         $this->seoService->getSeoData('home');
 
-        return view('home.index', [
+        $data = [
             'popularNames' => $popularNames,
-            'latestPosts' => $latestPosts
-        ]);
+            'latestPosts' => $latestPosts,
+        ];
+
+        return view('home.index', compact('data'));
     }
 }

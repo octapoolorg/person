@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row mb-12">
+    <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
             <div id="search-results" class="space-y-4">
                 @forelse ($names as $name)

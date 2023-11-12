@@ -22,7 +22,7 @@ class GlobalComposer
      */
     public function compose(View $view): void
     {
-        $popularNames = Cache::remember('popularNames', now()->addWeek(), function () {
+        $popularNames = Cache::remember('footer:popularNames', now()->addWeek(), function () {
             return $this->name->validMeaning()->popular()->limit(4)->get();
         });
         $view->with('popularNames', $popularNames);

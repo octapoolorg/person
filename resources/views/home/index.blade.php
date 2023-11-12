@@ -3,8 +3,8 @@
 @section('content')
 
     <!-- Hero Section with Image Background and Overlay -->
-    <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
-        <div class="absolute inset-0 bg-indigo-800 opacity-90"></div> <!-- Darker Overlay for Better Text Contrast -->
+    <section class="relative bg-cover bg-center py-32 md:mt-20" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
+        <div class="absolute inset-0 bg-indigo-800 opacity-90"></div>
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative">
             <div class="text-center text-white">
                 <h1 class="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>
@@ -16,13 +16,9 @@
                                class="w-full pl-5 pr-16 py-3 rounded-full bg-white bg-opacity-80 text-gray-700 focus:bg-opacity-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-200"
                                placeholder="Enter a name to get started...">
                         <button type="submit" class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-indigo-500 text-white p-2.5 rounded-full hover:bg-indigo-600 transition duration-200">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 21c4.97056 0 9-4.02944 9-9s-4.02944-9-9-9-9 4.02944-9 9 4.02944 9 9 9z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
-                            </svg>
+                            <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
                         </button>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -32,7 +28,7 @@
     <section class="container mx-auto px-4 sm:px-6 lg:px-12 py-20">
         <h2 class="text-5xl font-extrabold text-center text-gray-800 mb-16">Trending Names</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-            @foreach ($popularNames as $name)
+            @foreach ($data['popularNames'] as $name)
                 <a href="{!! route('names.show', $name->slug) !!}" class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl border border-gray-200 transform hover:scale-105 transition-all duration-300 ease-in-out">
                     <div class="p-8 text-center">
                         <h3 class="text-2xl font-bold text-gray-900 group-hover:text-indigo-700 transition-colors duration-300">{{ $name->name }}</h3>
@@ -49,7 +45,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
             <h2 class="text-5xl font-extrabold text-center text-gray-800 mb-16">Insights & Stories</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                @foreach ($latestPosts as $post)
+                @foreach ($data['latestPosts'] as $post)
                     <a href="{!! route('blog.show', $post->slug) !!}" class="group bg-white rounded-lg border border-gray-200 overflow-hidden shadow transition-transform duration-300 hover:shadow-lg">
                         <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
                         <div class="p-6">

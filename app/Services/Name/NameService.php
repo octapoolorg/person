@@ -1,23 +1,25 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Name;
 
 use App\Models\Gender;
 use App\Models\Name;
 use App\Models\NameTrait;
+use App\Services\ImageService;
+use App\Services\Numerology\NumerologyFactory;
+use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
-use App\Services\Numerology\NumerologyFactory;
-use App\Services\Tools\FancyTextGenerator;
 
 class NameService
 {
+    protected UsernameGeneratorService $usernameGeneratorService;
     protected ImageService $imageService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(UsernameGeneratorService $usernameGeneratorService, ImageService $imageService)
     {
+        $this->usernameGeneratorService = $usernameGeneratorService;
         $this->imageService = $imageService;
     }
 
@@ -34,24 +36,22 @@ class NameService
             return Name::with(['gender','comments'])->where('slug', $name)->firstOrFail();
         });
 
-        $numerology = (new NumerologyFactory())->create('pythagorean');
-        $numerologyData = $numerology->getNumerologyData($nameDetails->name);
-
-        $fancyText = new FancyTextGenerator($nameDetails->name);
-        $fancyTexts = $fancyText->generate();
-
-        $traits = $this->getTraits($nameDetails->name);
+        $numerologyData = NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name);
+        $fancyTexts = (new FancyTextService($nameDetails->name))->generate();
+        $acronyms = $this->getAcronyms($nameDetails->name);
 
         $wallpaperUrl = route('names.wallpaper', ['name' => $nameDetails->slug]);
         $signatureUrls = $this->nameSignatures($nameDetails->slug);
+        $userNames = $this->usernameGeneratorService->generateUsernames($nameDetails->name);
 
         return [
             'nameDetails' => $nameDetails,
             'numerology' => $numerologyData,
-            'traits' => $traits,
+            'acronyms' => $acronyms,
             'fancyTexts' => $fancyTexts,
             'wallpaperUrl' => $wallpaperUrl,
-            'signatureUrls' => $signatureUrls
+            'signatureUrls' => $signatureUrls,
+            'userNames' => $userNames,
         ];
     }
 
@@ -126,8 +126,7 @@ class NameService
         return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
     }
 
-
-    private function getTraits(string $name): \Illuminate\Support\Collection
+    private function getAcronyms(string $name): array
     {
         $name = $this->normalizeName($name);
         $alphabets = str_split($name);
@@ -135,12 +134,21 @@ class NameService
             return $alphabet !== ' ';
         });
         $upperAlphabets = array_map('strtoupper', $alphabets);
-        $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->keyBy('alphabet');
+
+        // Getting all traits for the alphabets
+        $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->groupBy('alphabet');
 
         return collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
             $alphabetKey = strtoupper($alphabet);
-            return [$alphabet => $traitsCollection[$alphabetKey]->name ?? null];
-        });
+
+            // Check if there are multiple traits for the alphabet and pick one randomly
+            if (isset($traitsCollection[$alphabetKey]) && $traitsCollection[$alphabetKey]->count() > 0) {
+                $randomTrait = $traitsCollection[$alphabetKey]->random();
+                return [$alphabet => $randomTrait->name ?? null];
+            }
+
+            return [$alphabet => null];
+        })->toArray();
     }
 
     private function nameSignatures(string $name): array
@@ -158,6 +166,32 @@ class NameService
         }
 
         return $signatureUrls;
+    }
+
+    public function generateUsernames(string $name): array
+    {
+        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
+            return Name::where('name', $name)->firstOrFail()->name;
+        });
+        $usernameGenerator = new UsernameGeneratorService();
+        return $usernameGenerator->generateUsernames($name);
+    }
+
+    public function generateAcronyms(string $name): array
+    {
+        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
+            return Name::where('name', $name)->firstOrFail()->name;
+        });
+        return $this->getAcronyms($name);
+    }
+
+    public function generateFancyTexts(string $name): array
+    {
+        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
+            return Name::where('name', $name)->firstOrFail()->name;
+        });
+        $fancyText = new FancyTextService($name);
+        return $fancyText->generate();
     }
 
     private function mapFontKeyToPath(string $fontKey): ?string

@@ -16,19 +16,18 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
     {!! SEO::generate() !!}
 </head>
 
 <body class="bg-white text-gray-900">
 @include('partials._header')
 
-<div class="container mx-auto mt-8 md:mt-20">
+<div class="container mx-auto">
     @yield('content')
 </div>
 
 @include('partials._footer')
 @vite('resources/js/app.js')
+@stack('scripts')
 </body>
 </html>
