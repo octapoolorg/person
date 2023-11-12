@@ -21,9 +21,13 @@ class GenerateSitemap extends Command
         try {
             $sitemapIndex = SitemapIndex::create();
 
+            $chunkSize = 50000;
+            $chunkCount = 0;
+
             Name::query()
                 ->select(['id', 'slug'])
-                ->chunk(50000, function ($names) use (&$sitemapIndex) {
+                ->chunk($chunkSize, function ($names) use (&$sitemapIndex, &$chunkCount) {
+                    $chunkCount++;
                     $sitemap = Sitemap::create();
 
                     foreach ($names as $name) {
@@ -31,7 +35,8 @@ class GenerateSitemap extends Command
                         $sitemap->add(Url::create($url));
                     }
 
-                    $sitemapName = 'sitemap-' . $names->first()->id . '.xml';
+                    // Static sitemap name based on chunk count
+                    $sitemapName = 'sitemap-' . $chunkCount . '.xml';
                     $sitemap->writeToFile(public_path($sitemapName));
 
                     $sitemapIndex->add('/' . $sitemapName);
@@ -64,7 +69,7 @@ class GenerateSitemap extends Command
                 $this->info('Sitemap submitted to ' . $name . ' successfully.');
             } else {
                 $this->error('Failed to submit sitemap to ' . $name . '.');
-                 Log::error('Failed to submit sitemap to ' . $name . ': ' . $response->body());
+                Log::error('Failed to submit sitemap to ' . $name . ': ' . $response->body());
             }
         }
     }
