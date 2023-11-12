@@ -54,9 +54,9 @@ class NameController extends Controller
         return view('names.search', compact('names'));
     }
 
-    public function wallpaper(string $name): Response
+    public function wallpaper(string $nameSlug): Response
     {
-        return $this->nameService->nameWallpaper($name);
+        return $this->nameService->nameWallpaper($nameSlug);
     }
 
     public function signature(string $name, string $fontKey): Response
@@ -67,7 +67,7 @@ class NameController extends Controller
     public function generateUsernames(): JsonResponse
     {
         $name = request()->input('name');
-        $userNames = $this->nameService->generateUsernames($name);
+        $userNames = $this->nameService->getUsernames($name);
         $html = view('partials.names._usernames', compact('userNames'))->render();
         return response()->json($html);
     }
@@ -75,7 +75,7 @@ class NameController extends Controller
     public function generateAcronyms(): JsonResponse
     {
         $name = request()->input('name');
-        $acronyms = $this->nameService->generateAcronyms($name);
+        $acronyms = $this->nameService->getAcronyms($name);
         $html = view('partials.names._acronyms', compact('acronyms'))->render();
         return response()->json($html);
     }
@@ -83,7 +83,7 @@ class NameController extends Controller
     public function generateFancyTexts(): JsonResponse
     {
         $name = request()->input('name');
-        $fancyTexts = $this->nameService->generateFancyTexts($name);
+        $fancyTexts = $this->nameService->getFancyTexts($name);
         $html = view('partials.names._fancy-texts', compact('fancyTexts'))->render();
         return response()->json($html);
     }

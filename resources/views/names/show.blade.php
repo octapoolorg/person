@@ -219,19 +219,20 @@
                 </h2>
 
                 <div class="mx-auto bg-white space-y-6 divide-y divide-gray-200">
-                    <!-- Question 1 -->
-                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
-                            What does the name {{ $data['nameDetails']->name }} mean?
-                        </h3>
-                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <p itemprop="text" class="text-gray-600">
-                                {{ $data['nameDetails']->meaning }}
-                            </p>
-                        </div>
-                    </div>
 
-                    <!-- Question 2 -->
+                    @if(!empty($data['nameDetails']->meaning))
+                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                            <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
+                                What does the name {{ $data['nameDetails']->name }} mean?
+                            </h3>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p itemprop="text" class="text-gray-600">
+                                    {{ $data['nameDetails']->meaning }}
+                                </p>
+                            </div>
+                        </div>
+                    @endif
+
                     <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
                             Is {{ $data['nameDetails']->name }} typically a male or female name?
@@ -243,7 +244,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 3 -->
                     <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                         <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
                             What are the numerology details of {{ $data['nameDetails']->name }}?
@@ -408,7 +408,7 @@
                         url: '/api/names/generate/{{$key}}',
                         data: {
                             _token: '{{ csrf_token() }}',
-                            name: '{{ $data['nameDetails']->slug }}'
+                            name: '{{ $data['nameDetails']->name }}'
                         },
                         success: function(response) {
                             $('#{{$key}}').html(response);

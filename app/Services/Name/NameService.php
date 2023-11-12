@@ -25,108 +25,110 @@ class NameService
 
     public function getNames(): Collection
     {
-        return Cache::remember('names', now()->addHour(), function () {
+        return $this->cacheRemember('names', function () {
             return Name::validMeaning()->limit(30)->get();
         });
     }
 
     public function getNameDetails(string $name): array
     {
-        $nameDetails = Cache::remember("nameDetails:$name", now()->addQuarter(), function () use ($name) {
+        $nameDetails = $this->cacheRemember("nameDetails:$name", function () use ($name) {
             return Name::with(['gender','comments'])->where('slug', $name)->firstOrFail();
         });
 
-        $numerologyData = NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name);
-        $fancyTexts = (new FancyTextService($nameDetails->name))->generate();
-        $acronyms = $this->getAcronyms($nameDetails->name);
-
-        $wallpaperUrl = route('names.wallpaper', ['name' => $nameDetails->slug]);
-        $signatureUrls = $this->nameSignatures($nameDetails->slug);
-        $userNames = $this->usernameGeneratorService->generateUsernames($nameDetails->name);
-
         return [
             'nameDetails' => $nameDetails,
-            'numerology' => $numerologyData,
-            'acronyms' => $acronyms,
-            'fancyTexts' => $fancyTexts,
-            'wallpaperUrl' => $wallpaperUrl,
-            'signatureUrls' => $signatureUrls,
-            'userNames' => $userNames,
+            'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name),
+            'acronyms' => $this->getAcronyms($nameDetails->name),
+            'fancyTexts' => $this->getFancyTexts($nameDetails->name),
+            'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
+            'signatureUrls' => $this->nameSignatures($nameDetails->slug),
+            'userNames' => $this->getUsernames($nameDetails->name)
         ];
     }
 
-    public function getNamesByGender(string $gender)
+    public function getNamesByGender(string $gender): Collection
     {
-        $key = "names:$gender";
-        $genderWithNames = Cache::remember('', now()->addHour(), function () use ($gender){
+        return $this->cacheRemember("names:$gender", function () use ($gender) {
             return Gender::with(['names' => function($query){
                 $query->validMeaning()->take(30);
-            }])->where('slug', $gender)->firstOrFail();
+            }])->where('slug', $gender)->firstOrFail()->names;
         });
-
-        return $genderWithNames->names;
     }
 
     public function getRandomNames(): Collection
     {
-        $random = rand(1, 20);
-        $key = "names:$random";
-        return Cache::remember($key, now()->addQuarter(), function () {
+        $random = rand(1,15);
+        return $this->cacheRemember("names:random:$random", function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
-        });
+        }, now()->addDay());
     }
 
     public function searchNames(string $query): Collection
     {
-        return Cache::remember("search:$query", now()->addQuarter(), function () use ($query) {
+        return $this->cacheRemember("search:$query", function () use ($query) {
             return Name::search($query)->limit(10)->get();
         });
     }
 
-    public function nameWallpaper(string $name): Response
+    public function nameWallpaper(string $nameSlug): Response
     {
-        $name = Name::where('slug', $name)->firstOrFail()->name;
-        $fontSize = strlen($name) > 10 ? 150 : 200;
-        $base64Image =  $this->imageService->generateOrRetrieveImage(
-            $name,
-            '#000000',
-            'static/images/wallpaper.jpg',
-            'roboto/roboto-bold.ttf',
-            $fontSize
-        );
-
-        return $this->imageService->prepareImageResponse($base64Image, $name, 'name wallpaper');
+        $name = $this->cacheRemember("name:$nameSlug", function () use ($nameSlug) {
+            return Name::where('slug', $nameSlug)->firstOrFail()->name;
+        });
+        return $this->generateImageResponse($name, 'name wallpaper', 'static/images/wallpaper.jpg', 'roboto');
     }
 
     public function individualSignature(string $name, string $fontKey): Response
     {
-        $actualName = Name::where('slug', $name)->firstOrFail()->name;
-        $actualName = explode(' ', $actualName)[0];
-        $actualName = $this->normalizeName($actualName);
-        $fontPath = $this->mapFontKeyToPath($fontKey);
-        $fontSize = $this->mapFontKeyToSize($fontKey);
-
-        // Assuming the generateOrRetrieveImage method returns a base64 encoded image
-        $base64Image = $this->imageService->generateOrRetrieveImage(
-            $actualName,
-            '#000000',
-            'static/images/signature_background.jpg',
-            $fontPath,
-            $fontSize
-        );
-        return $this->imageService->prepareImageResponse($base64Image, $name, 'name signature');
+        $nameParts = explode(' ', $name);
+        $firstPart = $this->normalizeName($nameParts[0]);
+        return $this->generateImageResponse($firstPart, 'name signature', 'static/images/signature_background.jpg', $fontKey);
     }
 
-    public function normalizeName($name): array|string|null
+    private function cacheRemember(string $key, \Closure $callback, $duration = null)
     {
-        // Transliterate characters to ASCII
-        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        $duration = $duration ?? now()->addHour();
+        return Cache::remember($key, $duration, $callback);
+    }
 
-        // Remove any residual non-ASCII characters
+    private function getFontDetails(string $fontKey): array
+    {
+        $fonts = [
+            'cursive' => ['path' => 'creattion-demo/creattion-demo.ttf', 'size' => 250],
+            'allison-tessa' => ['path' => 'allison-tessa/allison-tessa.ttf', 'size' => 120],
+            'monsieur-la-doulaise' => ['path' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf', 'size' => 190],
+        ];
+
+        return $fonts[$fontKey] ?? ['path' => 'roboto/roboto-bold.ttf', 'size' => null];
+    }
+
+    private function generateImageResponse(string $name, string $type, string $backgroundImage, string $fontKey = null): Response
+    {
+        $fontDetails = $this->getFontDetails($fontKey);
+        $base64Image = $this->imageService->generateOrRetrieveImage(
+            $name,
+            '#000000',
+            $backgroundImage,
+            $fontDetails['path'],
+            $fontDetails['size'] ?? (strlen($name) > 10 ? 150 : 200)
+        );
+
+        return $this->imageService->prepareImageResponse($base64Image, $name, $type);
+    }
+
+    private function normalizeName($name): array|string|null
+    {
+        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
         return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
     }
 
-    private function getAcronyms(string $name): array
+    public function getUsernames(string $name): array
+    {
+       return $this->usernameGeneratorService->generateUsernames($name);
+    }
+
+    public function getAcronyms(string $name): array
     {
         $name = $this->normalizeName($name);
         $alphabets = str_split($name);
@@ -168,51 +170,9 @@ class NameService
         return $signatureUrls;
     }
 
-    public function generateUsernames(string $name): array
+    public function getFancyTexts(string $name): array
     {
-        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
-            return Name::where('name', $name)->firstOrFail()->name;
-        });
-        $usernameGenerator = new UsernameGeneratorService();
-        return $usernameGenerator->generateUsernames($name);
-    }
-
-    public function generateAcronyms(string $name): array
-    {
-        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
-            return Name::where('name', $name)->firstOrFail()->name;
-        });
-        return $this->getAcronyms($name);
-    }
-
-    public function generateFancyTexts(string $name): array
-    {
-        $name = Cache::remember("name:$name", now()->addQuarter(), function () use ($name) {
-            return Name::where('name', $name)->firstOrFail()->name;
-        });
-        $fancyText = new FancyTextService($name);
-        return $fancyText->generate();
-    }
-
-    private function mapFontKeyToPath(string $fontKey): ?string
-    {
-        $fonts = [
-            'cursive' => 'creattion-demo/creattion-demo.ttf',
-            'allison-tessa' => 'allison-tessa/allison-tessa.ttf',
-            'monsieur-la-doulaise' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf'
-        ];
-
-        return $fonts[$fontKey] ?? null;
-    }
-
-    private function mapFontKeyToSize(string $fontKey): ?int
-    {
-        $fonts = [
-            'cursive' => 250,
-            'allison-tessa' => 120,
-            'monsieur-la-doulaise' => 190
-        ];
-
-        return $fonts[$fontKey] ?? null;
+        $fancyTextService = new FancyTextService($name);
+        return $fancyTextService->generate();
     }
 }
