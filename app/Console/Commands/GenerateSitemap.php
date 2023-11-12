@@ -10,6 +10,7 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
 
 class GenerateSitemap extends Command
 {
@@ -19,6 +20,9 @@ class GenerateSitemap extends Command
     public function handle(): void
     {
         try {
+            // Clean up existing sitemap files
+            $this->cleanUpSitemaps();
+
             $sitemapIndex = SitemapIndex::create();
 
             $chunkSize = 50000;
@@ -35,7 +39,6 @@ class GenerateSitemap extends Command
                         $sitemap->add(Url::create($url));
                     }
 
-                    // Static sitemap name based on chunk count
                     $sitemapName = 'sitemap-' . $chunkCount . '.xml';
                     $sitemap->writeToFile(public_path($sitemapName));
 
@@ -53,6 +56,16 @@ class GenerateSitemap extends Command
             $this->error('An error occurred: ' . $e->getMessage());
             Log::error('Sitemap generation error: ' . $e->getMessage());
         }
+    }
+
+    private function cleanUpSitemaps(): void
+    {
+        $files = File::glob(public_path('sitemap-*.xml'));
+        foreach ($files as $file) {
+            File::delete($file);
+        }
+
+        $this->info('Existing sitemap files cleaned up.');
     }
 
     private function submitSitemapToSearchEngines(): void
