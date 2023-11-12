@@ -402,7 +402,8 @@
     <script>
         $(document).ready(function() {
             @foreach($generators as $key=>$generator)
-                $('#generate-{{$key}}').click(function() {
+                $('#generate-{{$key}}').click(function(e) {
+                    e.preventDefault();
                     $.ajax({
                         type: 'POST',
                         url: '/api/names/generate/{{$key}}',
