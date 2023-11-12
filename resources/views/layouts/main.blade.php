@@ -19,15 +19,15 @@
 </head>
 
 <body class="bg-white text-gray-900">
-@include('partials._header')
+    @include('partials._header')
 
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    @yield('content')
-</div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        @yield('content')
+    </div>
 
-@include('partials._footer')
-@vite('resources/js/app.js')
-@stack('scripts')
+    @include('partials._footer')
+    @vite('resources/js/app.js')
+    @stack('scripts')
 </body>
 
 </html>
