@@ -125,7 +125,10 @@ class NameService
 
     public function getUsernames(string $name): array
     {
-       return $this->usernameGeneratorService->generateUsernames($name);
+       $randomness = rand(1, 15);
+        return $this->cacheRemember("usernames:$name:$randomness", function () use ($name) {
+             return $this->usernameGeneratorService->generateUsernames($name);
+         });
     }
 
     public function getAcronyms(string $name): array
@@ -138,9 +141,12 @@ class NameService
         $upperAlphabets = array_map('strtoupper', $alphabets);
 
         // Getting all traits for the alphabets
-        $traitsCollection = NameTrait::whereIn('alphabet', $upperAlphabets)->get()->groupBy('alphabet');
+        $randomness = rand(1, 15);
+        $traitsCollection = $this->cacheRemember("traits:$name:$randomness", function () use ($upperAlphabets) {
+            return NameTrait::whereIn('alphabet', $upperAlphabets)->get()->groupBy('alphabet');
+        });
 
-        return collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
+        $traits = collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
             $alphabetKey = strtoupper($alphabet);
 
             // Check if there are multiple traits for the alphabet and pick one randomly
@@ -150,7 +156,9 @@ class NameService
             }
 
             return [$alphabet => null];
-        })->toArray();
+        });
+
+        return $traits->toArray();
     }
 
     private function nameSignatures(string $name): array
@@ -172,7 +180,10 @@ class NameService
 
     public function getFancyTexts(string $name): array
     {
+        $randomness = rand(1, 15);
         $fancyTextService = new FancyTextService($name);
-        return $fancyTextService->generate();
+        return $this->cacheRemember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
+            return $fancyTextService->generate();
+        });
     }
 }
