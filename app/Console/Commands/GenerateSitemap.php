@@ -62,6 +62,7 @@ class GenerateSitemap extends Command
     {
         $files = File::glob(public_path('sitemap-*.xml'));
         foreach ($files as $file) {
+            $this->info('Deleting ' . $file);
             File::delete($file);
         }
 
