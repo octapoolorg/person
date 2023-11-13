@@ -28,9 +28,9 @@
                     <section class="mb-8 bg-white overflow-hidden shadow rounded-lg p-6">
                         <h2 class="text-2xl font-bold text-gray-800 mb-6">About the Author</h2>
                         <div class="flex items-center mb-6">
-                            <img src="{{ $post->author->avatar_url }}" alt="{{ $post->author->name }}" class="h-16 w-16 rounded-full mr-4">
+                            <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}" class="h-16 w-16 rounded-full mr-4">
                             <div class="text-gray-600">
-                                <p>{{ $post->author->bio }}</p>
+                                <p>{!! $post->author->bio !!}</p>
                             </div>
                         </div>
                     </section>
