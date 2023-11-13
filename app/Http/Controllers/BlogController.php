@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\View\View;
 use Wink\WinkPost;
 
@@ -33,10 +34,25 @@ class BlogController extends Controller
             ->take(3)
             ->get();
 
+        $this->seoTags($post);
+
         return view('blog.show', [
             'post' => $post,
             'relatedPosts' => $relatedPosts
         ]);
+    }
+
+    private function seoTags($post)
+    {
+        $seoTags = [
+            'title' => $post->title,
+            'description' => $post->excerpt,
+        ];
+
+        SEOTools::setTitle($seoTags['title']);
+        SEOTools::setDescription($seoTags['description']);
+
+        return $seoTags;
     }
 
 }
