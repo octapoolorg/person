@@ -12,7 +12,7 @@
                         @endif
                         <h1 class="text-4xl font-bold text-gray-800 mb-6">{{ $post->title }}</h1>
                         <div class="flex items-center text-gray-600 mb-6">
-                            <img src="{{ $post->author->avatar_url }}" alt="{{ $post->author->name }}" class="h-12 w-12 rounded-full mr-4">
+                            <img src="{{ $post->author->avatar }}" alt="author {{ $post->author->name }}" class="h-12 w-12 rounded-full mr-4">
                             <div>
                                 By <a href="#" class="text-indigo-600 hover:underline">{{ $post->author->name }}</a> on <time datetime="{{ $post->publish_date }}">{{ $post->publish_date->format('M d, Y') }}</time>
                             </div>
