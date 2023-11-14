@@ -19,8 +19,14 @@ class NumerologyController extends Controller
         $name = request('name');
         $dob = request('dob');
 
-        NumerologyFactory::create('pythagorean')->getNumerologyData($name, $dob);
+        $numerology = NumerologyFactory::create('pythagorean')->getNumerologyData($name, $dob);
 
-        return view('tools.numerology.calculator');
+        $data = [
+            'name' => $name,
+            'dob' => $dob,
+            'numerology' => $numerology
+        ];
+
+        return view('tools.numerology.calculator',compact('data'));
     }
 }
