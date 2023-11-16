@@ -1,15 +1,24 @@
 // vite.config.js
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [
+        react(),
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+
+                "resources/js/components/numerology/App.jsx",
+            ],
             refresh: true,
-        }),
+        })
     ],
-    build: {
-        target: "ES2015"
-    }
+    build:{
+        manifest: true,
+        target: 'es2015',
+        cssTarget: 'chrome61',
+    },
 });

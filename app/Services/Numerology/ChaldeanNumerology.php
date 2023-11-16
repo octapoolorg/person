@@ -29,11 +29,11 @@ class ChaldeanNumerology extends Numerology
     ];
 
     // Override the calculateNumber method for Chaldean to always reduce to a single digit
-    protected function calculateNumber($name)
+    protected function calculateNumber($name): int
     {
         $total = parent::calculateNumber($name);
 
-        // Chaldean reduction (always to a single digit)
+        // Chaldean reduction to a single digit
         while ($total > 9) {
             $total = array_sum(str_split((string)$total));
         }

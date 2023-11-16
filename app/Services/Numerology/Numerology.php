@@ -81,16 +81,44 @@ abstract class Numerology implements INumerology
         return $total;
     }
 
-    public function getNumerologyData($name): array
+    protected function calculateLifePathNumber($dob): int
+    {
+        // Assuming $dob format is YYYY-MM-DD
+        $digits = str_replace('-', '', $dob);
+        return $this->reduceToSingleDigit($digits);
+    }
+
+    protected function calculateBirthdayNumber($dob): int
+    {
+        // Extracting the day of birth
+        $day = (int)substr($dob, 8, 2);
+        return $this->reduceToSingleDigit($day);
+    }
+
+    protected function reduceToSingleDigit($number): int
+    {
+        while ($number > 9) {
+            $number = array_sum(str_split((string)$number));
+        }
+        return $number;
+    }
+
+    public function getNumerologyData($name, $dob): array
     {
         $destinyNumber = $this->calculateNumber($name);
+        $lifePathNumber = $this->calculateLifePathNumber($dob);
+        $birthdayNumber = $this->calculateBirthdayNumber($dob);
+        $maturityNumber = $this->reduceToSingleDigit($destinyNumber + $lifePathNumber);
         $zodiacSign = $this->getZodiacSignByDestinyNumber($destinyNumber);
 
         return [
             'numbers' => [
                 'destiny' => $destinyNumber,
                 'soul' => $this->calculateNumber(preg_replace('/[^aeiou]/i', '', $name)),
-                'personality' => $this->calculateNumber(preg_replace('/[aeiou]/i', '', $name))
+                'personality' => $this->calculateNumber(preg_replace('/[aeiou]/i', '', $name)),
+                'life_path' => $lifePathNumber,
+                'birthday' => $birthdayNumber,
+                'maturity' => $maturityNumber
             ],
             'zodiac' => [
                 'sign' => $zodiacSign,
