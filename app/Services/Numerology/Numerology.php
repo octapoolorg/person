@@ -103,28 +103,33 @@ abstract class Numerology implements INumerology
         return $number;
     }
 
-    public function getNumerologyData($name, $dob): array
+    public function getNumerologyData($name, $dob = null): array
     {
         $destinyNumber = $this->calculateNumber($name);
-        $lifePathNumber = $this->calculateLifePathNumber($dob);
-        $birthdayNumber = $this->calculateBirthdayNumber($dob);
-        $maturityNumber = $this->reduceToSingleDigit($destinyNumber + $lifePathNumber);
-        $zodiacSign = $this->getZodiacSignByDestinyNumber($destinyNumber);
+        $lifePathNumber = $dob ? $this->calculateLifePathNumber($dob) : null;
+        $birthdayNumber = $dob ? $this->calculateBirthdayNumber($dob) : null;
+        $maturityNumber = $dob ? $this->reduceToSingleDigit($destinyNumber + $lifePathNumber) : null;
+        $zodiacSign = $destinyNumber ? $this->getZodiacSignByDestinyNumber($destinyNumber) : null;
 
-        return [
+        $result = [
             'numbers' => [
                 'destiny' => $destinyNumber,
-                'soul' => $this->calculateNumber(preg_replace('/[^aeiou]/i', '', $name)),
+                'soul_urge' => $this->calculateNumber(preg_replace('/[^aeiou]/i', '', $name)),
                 'personality' => $this->calculateNumber(preg_replace('/[aeiou]/i', '', $name)),
-                'life_path' => $lifePathNumber,
-                'birthday' => $birthdayNumber,
-                'maturity' => $maturityNumber
             ],
             'zodiac' => [
                 'sign' => $zodiacSign,
                 'attributes' => $this->getZodiacAttributesBySign($zodiacSign)
-            ],
+            ]
         ];
+
+        if ($dob) {
+            $result['numbers']['life_path'] = $lifePathNumber;
+            $result['numbers']['birthday'] = $birthdayNumber;
+            $result['numbers']['maturity'] = $maturityNumber;
+        }
+
+        return $result;
     }
 
     protected function getZodiacSignByDestinyNumber(int $destinyNumber): string

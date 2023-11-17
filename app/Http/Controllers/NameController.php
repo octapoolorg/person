@@ -48,9 +48,15 @@ class NameController extends Controller
         return view('names.list', compact('names'));
     }
 
+    /**
+     * Search for names based on the query parameter 'q'.
+     *
+     * @return View
+     */
     public function search(): View
     {
-        $names = $this->nameService->searchNames(request()->input('q'));
+        $q = request()->input('q') ?? '';
+        $names = $this->nameService->searchNames($q);
         return view('names.search', compact('names'));
     }
 

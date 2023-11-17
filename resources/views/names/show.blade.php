@@ -93,7 +93,7 @@
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-green-700 mb-3">Soul Number</h3>
                             <p class="text-gray-700">
-                                {{ __('numerology.soul.' . $data['numerology']['numbers']['soul'], ['name' => $data['nameDetails']->name]) }}
+                                {{ __('numerology.soul_urge.' . $data['numerology']['numbers']['soul_urge'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
                     </div>
@@ -250,7 +250,7 @@
                         </h3>
                         <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                             <p itemprop="text" class="text-gray-600">
-                                According to numerology, the destiny number is {{ $data['numerology']['numbers']['destiny'] }}, the soul number is {{ $data['numerology']['numbers']['soul'] }}, and the personality number is {{ $data['numerology']['numbers']['personality'] }}.
+                                According to numerology, the destiny number is {{ $data['numerology']['numbers']['destiny'] }}, the soul number is {{ $data['numerology']['numbers']['soul_urge'] }}, and the personality number is {{ $data['numerology']['numbers']['personality'] }}.
                             </p>
                         </div>
                     </div>

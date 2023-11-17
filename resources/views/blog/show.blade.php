@@ -7,12 +7,12 @@
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <article class="p-8">
                         <!-- Featured Image -->
-                        @if($post->featured_image)
-                            <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="w-full rounded-t-lg mb-6 object-cover">
-                        @endif
+{{--                        @if($post->featured_image)--}}
+{{--                            <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="w-full rounded-t-lg mb-6 object-cover">--}}
+{{--                        @endif--}}
                         <h1 class="text-4xl font-bold text-gray-800 mb-6">{{ $post->title }}</h1>
                         <div class="flex items-center text-gray-600 mb-6">
-                            <img src="{{ $post->author->avatar }}" alt="author {{ $post->author->name }}" class="h-12 w-12 rounded-full mr-4">
+{{--                            <img src="{{ $post->author->avatar }}" alt="author {{ $post->author->name }}" class="h-12 w-12 rounded-full mr-4">--}}
                             <div>
                                 By <a href="#" class="text-indigo-600 hover:underline">{{ $post->author->name }}</a> on <time datetime="{{ $post->publish_date }}">{{ $post->publish_date->format('M d, Y') }}</time>
                             </div>
@@ -28,7 +28,7 @@
                     <section class="mb-8 bg-white overflow-hidden shadow rounded-lg p-6">
                         <h2 class="text-2xl font-bold text-gray-800 mb-6">About the Author</h2>
                         <div class="flex items-center mb-6">
-                            <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}" class="h-16 w-16 rounded-full mr-4">
+{{--                            <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}" class="h-16 w-16 rounded-full mr-4">--}}
                             <div class="text-gray-600">
                                 <p>{!! $post->author->bio !!}</p>
                             </div>

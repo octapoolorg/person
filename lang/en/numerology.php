@@ -26,7 +26,7 @@ return [
 
         '33' => 'With the Master Number 33, :name is anointed as a healer of spirits. They are a touchstone for nurturing growth, spreading teachings of love that ripple through the consciousness of those they reach.',
     ],
-    'soul' => [
+    'soul_urge' => [
         '1' => 'From a numerological standpoint, :name, your Soul Number 1 is indicative of your innate yearning for autonomy and leadership. You derive fulfillment from pioneering initiatives and charting new courses.',
 
         '2' => ':name, your Soul Number 2 resonates with attributes of sensitivity and cooperation. You have an innate ability to sense the needs of others, which often makes you an indispensable companion.',

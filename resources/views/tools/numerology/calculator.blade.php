@@ -1,75 +1,123 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
-        <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
-            <div class="container mx-auto bg-gradient-to-br from-purple-600 to-blue-400 p-6 rounded-lg shadow-xl">
-                <h1 class="text-4xl font-extrabold mb-10 text-white text-center lg:text-left">Unlock Your Numerology Insights</h1>
-                <p class="text-lg text-white mb-8">
-                    Unveil the secrets of your personality and destiny through the ancient art of numerology. Our calculator provides a deep dive into your Life Path, Destiny Number, and more, using the mystical wisdom of numbers derived from your name and date of birth.
-                </p>
+    <section class="flex flex-col lg:flex-row gap-4 mb-12 mt-8 md:mt-10">
+        <main role="main" class="w-full px-4 mb-4 lg:mb-0">
+            <div class="container mx-auto p-6 lg:p-12 bg-white mb-5">
+                <header class="w-full lg:w-2/3 mx-auto mb-10">
+                    <h1 class="text-center text-5xl font-bold text-gray-800 mb-6">Discover Your Numerology</h1>
+                    <p class="text-center text-lg text-gray-600">
+                        Explore the mystical numbers that shape your life's path. Use our intuitive calculator to unlock your unique numerological insights based on your name and birth date.
+                    </p>
+                </header>
 
-                <div class="bg-white rounded-lg shadow-2xl p-10">
-                    <form action="{{ route('tools.numerology.calculate.post') }}" method="POST" class="space-y-8">
+                <section class="mx-auto max-w-2xl">
+                    @if($errors->any())
+                        <div class="bg-red-200 border border-red-400 text-red-800 px-4 py-3 rounded relative mb-6" role="alert">
+                            <span class="block sm:inline">{{ $errors->first() }}</span>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('tools.numerology.calculate.post') }}" method="POST" class="space-y-10">
                         @csrf
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-lg font-medium mb-2">Enter Your Full Name:</label>
-                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" placeholder="e.g., Jane Doe" required>
+                        <fieldset class="space-y-8">
+                            <div class="flex flex-col mb-8">
+                                <label for="name" class="text-xl font-medium text-gray-900 mb-3">Your Full Name:</label>
+                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" placeholder="e.g., Jane Doe" required aria-label="Full name" value="{!! old('name') ?? $data['name'] ?? '' !!}">
                             </div>
 
-                            <div>
-                                <label for="dob" class="block text-lg font-medium mb-2">Your Date of Birth:</label>
-                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+                            <div class="flex flex-col mb-8">
+                                <label for="dob" class="text-xl font-medium text-gray-900 mb-3">Date of Birth:</label>
+                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" required aria-label="Date of birth" value="{!! old('dob') ?? $data['dob'] ?? '' !!}">
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out shadow-md">Get Insights</button>
+                    </form>
+                </section>
+            </div>
+
+            @isset($data)
+                <section class="py-16 bg-gray-50" id="insights">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+                        <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12 shadow-sm">Your Numerology Insights</h2>
+
+                        <div class="space-y-12">
+                            <!-- Life Path Number Section -->
+                            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-blue-600">
+                                <div class="px-10 py-8 bg-blue-50">
+                                    <h3 class="text-3xl font-semibold text-blue-600">
+                                        Life Path Number <span class="text-blue-600 font-bold">{{ $data['numerology']['numbers']['life_path'] }}</span>
+                                    </h3>
+                                    <p class="text-md text-gray-700 my-4 font-bold">
+                                        {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".title", ['name' => $data['name']]) !!}
+                                    </p>
+                                    <p class="text-md text-gray-600">
+                                        {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".description", ['name' => $data['name']]) !!}
+                                    </p>
+
+                                    <!-- Details Accordion -->
+                                    <details class="group py-5">
+                                        <summary class="cursor-pointer text-lg font-semibold text-blue-700">
+                                            <span class="outline-none focus:outline-none">Check Details</span>
+                                        </summary>
+                                        <div class="mt-4 space-y-4">
+                                            <div>
+                                                <h4 class="text-xl font-semibold text-gray-800">Advice</h4>
+                                                <p class="text-gray-600">
+                                                    {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".advice", ['name' => $data['name']]) !!}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-semibold text-gray-800">Challenges</h4>
+                                                <p class="text-gray-600">
+                                                    {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".challenges", ['name' => $data['name']]) !!}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-semibold text-gray-800">Affirmation</h4>
+                                                <p class="italic text-gray-600">
+                                                    {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".affirmation", ['name' => $data['name']]) !!}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+                            </div>
+
+                            <!-- Soul Urge Number Section -->
+                            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-purple-600">
+                                <div class="px-10 py-8 bg-purple-50">
+                                    <h3 class="text-3xl font-semibold text-purple-600">
+                                        Soul Urge Number <span class="text-purple-600 font-bold">{{ $data['numerology']['numbers']['soul_urge'] }}</span>
+                                    </h3>
+                                    <p class="text-md text-gray-700  my-4 font-bold">
+                                        {!! __("tools/numerology/calculator/result.soul_urge.".$data['numerology']['numbers']['soul_urge'].".title", ['name' => $data['name']]) !!}
+                                    </p>
+                                    <p class="text-md text-gray-600">
+                                        {!! __("tools/numerology/calculator/result.soul_urge.".$data['numerology']['numbers']['soul_urge'].".description", ['name' => $data['name']]) !!}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Personality Number Section -->
+                            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-green-600">
+                                <div class="px-10 py-8 bg-green-50">
+                                    <h3 class="text-3xl font-semibold text-green-600">
+                                        Personality Number <span class="text-green-600 font-bold">{{ $data['numerology']['numbers']['personality'] }}</span>
+                                    </h3>
+                                    <p class="text-md text-gray-700  my-4 font-bold">
+                                        {!! __("tools/numerology/calculator/result.personality.".$data['numerology']['numbers']['personality'].".title", ['name' => $data['name']]) !!}
+                                    </p>
+                                    <p class="text-md text-gray-600">
+                                        {!! __("tools/numerology/calculator/result.personality.".$data['numerology']['numbers']['personality'].".description", ['name' => $data['name']]) !!}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out">Get Your Reading</button>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </section>
+            @endisset
         </main>
-
-        @include('partials.tools.numerology._sidebar')
     </section>
-
-    @isset($data)
-        <section class="py-12 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12">
-            <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-10">In-Depth Numerology Insights</h2>
-
-            <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
-                <!-- Numerology Number -->
-                <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-blue-400">
-                    <h3 class="text-2xl font-semibold mb-5">Life Path Number ({{ $data['numerology']['numbers']['life_path'] }})</h3>
-                    <p class="text-md text-gray-600">
-                        Your Life Path Number, {{ $data['numerology']['numbers']['life_path'] }}, is a powerful indicator of your life's purpose and journey. It sheds light on the path you're destined to walk, revealing unique talents, challenges, and opportunities.
-                        As number {{ $data['numerology']['numbers']['life_path'] }}, you possess...
-                    </p>
-                </div>
-
-                <!-- Soul Urge Number -->
-                <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-purple-400">
-                    <h3 class="text-2xl font-semibold mb-5">Soul Urge Number ({{ $data['numerology']['numbers']['soul'] }})</h3>
-                    <p class="text-md text-gray-600">
-                        The Soul Urge Number, also known as the Heart's Desire, speaks to what you truly value and desire at your core.
-                        Number {{ $data['numerology']['numbers']['soul'] }} suggests a deep connection to...
-                        <!-- Detailed interpretation for the Soul Urge Number -->
-                    </p>
-                </div>
-
-                <!-- Personality Number -->
-                <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-green-400">
-                    <h3 class="text-2xl font-semibold mb-5">Personality Number ({{ $data['numerology']['numbers']['personality'] }})</h3>
-                    <p class="text-md text-gray-600">
-                        Your Personality Number, {{ $data['numerology']['numbers']['personality'] }}, reveals the external you—the face you show to the world. It highlights how others perceive you and the impression you make.
-                        As a {{ $data['numerology']['numbers']['personality'] }}, you are likely seen as...
-                        <!-- More insights about the Personality Number -->
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endisset
 @endsection

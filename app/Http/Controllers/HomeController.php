@@ -19,11 +19,15 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        $popularNames = Cache::remember('popularNames', now()->addDay(),function (){
+        $popularNames = Cache::remember('home:popularNames', now()->addDay(),function (){
             return Name::orderBy('created_at', 'desc')
-                ->where('meaning', '!=', '')
+                ->validMeaning()
                 ->take(8)
                 ->get();
+        });
+
+        $nameOfTheDay = Cache::remember('nameOfTheDay', now()->addDay(), function () use ($popularNames) {
+            return $popularNames->random();
         });
 
         $latestPosts = Cache::remember('latestPosts', now()->addDay(), function () {
@@ -39,6 +43,7 @@ class HomeController extends Controller
         $data = [
             'popularNames' => $popularNames,
             'latestPosts' => $latestPosts,
+            'nameOfTheDay' => $nameOfTheDay,
         ];
 
         return view('home.index', compact('data'));
