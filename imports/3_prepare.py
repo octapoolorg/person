@@ -1,7 +1,46 @@
 import csv
 import os
 import pyphen
+import random
 from collections import defaultdict
+
+numerology_meanings = {
+    1: ['Leader', 'Independent', 'Innovative', 'Courageous', 'Original', 'Assertive', 'Pioneering', 'Ambitious', 'Creative', 'Determined'],
+    2: ['Cooperative', 'Diplomatic', 'Sensitive', 'Peaceful', 'Harmonious', 'Understanding', 'Kind', 'Considerate', 'Gentle', 'Empathetic'],
+    3: ['Creative', 'Social', 'Expressive', 'Optimistic', 'Enthusiastic', 'Artistic', 'Inspiring', 'Communicative', 'Friendly', 'Vibrant'],
+    4: ['Organized', 'Practical', 'Reliable', 'Disciplined', 'Stable', 'Hardworking', 'Loyal', 'Trustworthy', 'Determined', 'Steadfast'],
+    5: ['Adventurous', 'Energetic', 'Curious', 'Flexible', 'Versatile', 'Dynamic', 'Exciting', 'Fearless', 'Progressive', 'Inquisitive'],
+    6: ['Caring', 'Responsible', 'Protective', 'Nurturing', 'Sympathetic', 'Compassionate', 'Fair', 'Family-Oriented', 'Community-Minded', 'Supportive'],
+    7: ['Intellectual', 'Analytical', 'Thoughtful', 'Intuitive', 'Mystical', 'Philosophical', 'Contemplative', 'Reflective', 'Insightful', 'Perceptive'],
+    8: ['Ambitious', 'Efficient', 'Powerful', 'Confident', 'Realistic', 'Authoritative', 'Decisive', 'Professional', 'Goal-Oriented', 'Resourceful'],
+    9: ['Humanitarian', 'Generous', 'Altruistic', 'Compassionate', 'Idealistic', 'Global', 'Charitable', 'Empathetic', 'Healing', 'Benevolent'],
+    11: ['Master Intuition', 'Spiritual Messenger', 'Inspiration', 'Enlightenment', 'Idealism', 'Visionary', 'Charisma'],
+    22: ['Master Builder', 'Large Endeavors', 'Powerful Force', 'Leadership', 'Achievement', 'Manifestation', 'Innovation'],
+    33: ['Master Teacher', 'Compassion', 'Blessing', 'Inspiration', 'Enlightenment', 'Humanitarian', 'Understanding']
+}
+
+def calculate_numerology(name):
+    values = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10, 'K': 11, 'L': 12, 'M': 13,
+              'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25,
+              'Z': 26}
+    name_sum = sum(values.get(char.upper(), 0) for char in name if char.isalpha())
+
+    # Adjusting for master numbers
+    if name_sum in [11, 22, 33]:
+        return name_sum
+    while name_sum > 9:
+        name_sum = sum(int(digit) for digit in str(name_sum))
+    return name_sum
+
+def get_numerology_meaning(name, numerology_dict):
+    if not name.strip():
+        return ''
+    num_value = calculate_numerology(name)
+    meanings = numerology_dict.get(num_value, [])
+    if meanings:
+        num_characteristics = random.randint(1, min(5, len(meanings)))
+        return ', '.join(random.sample(meanings, num_characteristics))
+    return ''
 
 # Function to create a directory if it doesn't exist
 def create_directory(directory_name):
@@ -25,6 +64,12 @@ def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, uniq
             origin = row.get('Origin', '')
             categories = row.get('Categories', '')
             syllables = row.get('Syllables', '')
+            generated = 0
+
+            # Check if meaning is empty, and calculate if needed
+            if not meaning.strip():
+                meaning = get_numerology_meaning(name, numerology_meanings)
+                generated = 1
 
             # Check if syllables is "0" or empty, and calculate if needed
             if not syllables or syllables == "0":
@@ -51,6 +96,8 @@ def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, uniq
             # Add gender_id if available
             if gender_id is not None:
                 name_data.append(gender_id)
+
+            name_data.append(generated)
 
             # Populate names table
             tables['names'].append(name_data)
@@ -119,7 +166,7 @@ def main():
 
     # Write tables to CSV
     output_files = {
-        'names': ['id', 'name', 'meaning', 'syllables', 'gender_id'],
+        'names': ['id', 'name', 'meaning', 'syllables', 'gender_id', 'generated'],
         'genders': ['id', 'name'],
         'origins': ['id', 'name'],
         'categories': ['id', 'name']
