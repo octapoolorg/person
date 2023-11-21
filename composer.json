@@ -8,6 +8,7 @@
         "php": "^8.1",
         "ext-iconv": "*",
         "artesaos/seotools": "^1.2",
+        "google/apiclient": "^2.15.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "laravel/framework": "^10.10",
@@ -40,6 +41,7 @@
         }
     },
     "scripts": {
+        "pre-autoload-dump": "Google\\Task\\Composer::cleanup",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
@@ -57,7 +59,10 @@
     "extra": {
         "laravel": {
             "dont-discover": []
-        }
+        },
+        "google/apiclient-services": [
+            "Indexing"
+        ]
     },
     "config": {
         "optimize-autoloader": true,
