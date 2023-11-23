@@ -12,7 +12,7 @@ agg_funcs = {
     "Gender": merge_unique_str,
     "Origin": merge_unique_str,
     "Name Categories": merge_unique_str,
-    "Syllables": 'max'  # Syllables will use max, assuming it is numeric.
+    "Syllables": 'max'
 }
 
 # Function to process each chunk
@@ -33,8 +33,8 @@ if __name__ == '__main__':
         "Name Categories": str
     }
 
-    # Read and process chunks of the CSV file
-    chunk_iter = pd.read_csv("names_root.csv", chunksize=100000, dtype=dtype_spec)
+    # Read and process chunks of the CSV file with specified encoding
+    chunk_iter = pd.read_csv("names_root.csv", chunksize=100000, dtype=dtype_spec, encoding='ISO-8859-1')
 
     # Process each chunk in parallel (if there's any processing to be done)
     # Since in the original code chunk is just returned, we could actually skip this step.
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     # final_df['Syllables'] = final_df['Syllables'].fillna(0)
 
     # Write the final DataFrame to a CSV file
-    final_df.to_csv("temp/dedup_names_root.csv", index=False)
+    final_df.to_csv("temp/names_db.csv", index=False)
 
     # Close the multiprocessing pool
     pool.close()

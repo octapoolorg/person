@@ -4,83 +4,70 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Exception;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
-/**
- * Command to activate a number of names in the database daily, with the number increasing each week.
- */
 class ActivateNames extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'app:activate-names';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Activate a certain number of names each day, with the number increasing weekly.';
-
-    /**
-     * The base number of names to activate.
-     *
-     * @var int
-     */
     protected int $baseNumber = 50;
-
-    /**
-     * The amount to increment the number of names each week.
-     *
-     * @var int
-     */
     protected int $weeklyIncrement = 50;
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle(): int
     {
         try {
-            $startDate = Carbon::parse('2023-11-10');
-            $currentDate = Carbon::now();
+            $totalNamesToActivateToday = $this->calculateNamesToActivate();
+            $this->info("Activating $totalNamesToActivateToday names...");
 
-            // Calculate the number of weeks since the start date
-            $weeksSinceStart = $startDate->diffInWeeks($currentDate);
+            $activatedNamesIds = $this->activateNames($totalNamesToActivateToday);
+            $urls = $this->generateUrls($activatedNamesIds);
+            $this->submitUrlsToSeo($urls);
 
-            // Calculate the total number to activate based on the number of weeks
-            $totalNamesToActivateToday = $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
-
-            $this->info("Activating {$totalNamesToActivateToday} names...");
-
-            // Activate the names
-            $activatedCount = DB::table('names')
-                ->where('is_active', false)
-                ->inRandomOrder()
-                ->limit($totalNamesToActivateToday)
-                ->update(['is_active' => true]);
-
-            $this->info("Successfully activated {$activatedCount} names.");
-
-            Log::info("Activated {$activatedCount} names.");
-
+            $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
             return CommandAlias::SUCCESS;
         } catch (Exception $e) {
             $this->error('Failed to activate names: ' . $e->getMessage());
-
-            Log::error('Failed to activate names: ' . $e->getMessage(), [
-                'exception' => $e,
-            ]);
-
+            Log::error('Failed to activate names: ' . $e->getMessage(), ['exception' => $e]);
             return CommandAlias::FAILURE;
         }
+    }
+
+    private function calculateNamesToActivate(): int
+    {
+        $startDate = Carbon::parse('2023-11-10');
+        $weeksSinceStart = $startDate->diffInWeeks(Carbon::now());
+        return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
+    }
+
+    private function activateNames(int $number): array
+    {
+        $activatedNamesIds = DB::table('names')
+            ->where('is_active', false)
+            ->inRandomOrder()
+            ->limit($number)
+            ->pluck('id');
+        DB::table('names')->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+        return $activatedNamesIds->toArray();
+    }
+
+    private function generateUrls(array $ids): array
+    {
+        $lastActivatedNames = DB::table('names')
+            ->whereIn('id', $ids)
+            ->orderByDesc('updated_at')
+            ->limit(50)
+            ->get(['slug']);
+        return $lastActivatedNames->map(function ($name) {
+            return route('names.show', ['name' => $name->slug]);
+        })->toArray();
+    }
+
+    private function submitUrlsToSeo(array $urls): void
+    {
+        $this->call('app:seo:sitemap',['urls' => $urls]);
     }
 }
