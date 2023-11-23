@@ -3,8 +3,11 @@ from multiprocessing import Pool, cpu_count
 
 # Function to merge unique non-null strings, while ignoring nulls and duplicates.
 def merge_unique_str(x):
-    # Ensure that NaNs are not converted to the string 'nan'
-    return ', '.join(set(filter(pd.notna, x.astype(str).unique())))
+    # Filter out NaN values and convert to string only non-null unique values
+    unique_non_null = set(filter(pd.notna, x))
+    if not unique_non_null:
+        return ''
+    return ', '.join(map(str, unique_non_null))
 
 # Define aggregation functions for each column
 agg_funcs = {
@@ -15,45 +18,52 @@ agg_funcs = {
     "Syllables": 'max'
 }
 
-# Function to process each chunk
 def process_chunk(chunk):
-    # If there's any processing to be done on the chunk, add it here.
     return chunk
+
+def handle_non_utf8(chunk, non_utf8_file):
+    for row in chunk.itertuples(index=False):
+        try:
+            row_str = ','.join(map(str, row))
+            row_str.encode('utf-8')
+        except UnicodeDecodeError:
+            non_utf8_file.write(row_str + '\n')
 
 if __name__ == '__main__':
     num_cores = cpu_count()
     pool = Pool(num_cores)
 
-    # Define the data types for the CSV columns
     dtype_spec = {
         "Meaning": str,
         "Gender": str,
         "Origin": str,
-        "Syllables": 'Int64',  # Nullable integer type
+        "Syllables": 'Int64',
         "Name Categories": str
     }
 
-    # Read and process chunks of the CSV file with specified encoding
-    chunk_iter = pd.read_csv("names_root.csv", chunksize=100000, dtype=dtype_spec, encoding='ISO-8859-1')
+    chunk_size = 100000
+    file_path = "names_root.csv"
+    non_utf8_path = "temp/non_utf8_records.csv"
 
-    # Process each chunk in parallel (if there's any processing to be done)
-    # Since in the original code chunk is just returned, we could actually skip this step.
-    # But it's kept here as a placeholder for any potential future processing.
-    # chunk_list = pool.map(process_chunk, chunk_iter)
+    with open(non_utf8_path, 'w') as non_utf8_file:
+        combined_chunks = []
 
-    # Directly combine chunks if no processing is necessary
-    combined_df = pd.concat(chunk_iter, ignore_index=True)
+        try:
+            chunk_iter = pd.read_csv(file_path, chunksize=chunk_size, dtype=dtype_spec, encoding='utf-8')
+            for chunk in chunk_iter:
+                combined_chunks.append(process_chunk(chunk))
 
-    # Perform final aggregation on the combined DataFrame
-    final_df = combined_df.groupby('Name', as_index=False).agg(agg_funcs)
+        except UnicodeDecodeError:
+            # Re-read file with a permissive encoding and check each row
+            chunk_iter = pd.read_csv(file_path, chunksize=chunk_size, dtype=dtype_spec, encoding='ISO-8859-1')
+            for chunk in chunk_iter:
+                handle_non_utf8(chunk, non_utf8_file)
+                chunk = chunk.applymap(lambda x: x.encode('ISO-8859-1').decode('utf-8', 'ignore') if pd.notna(x) else x)
+                combined_chunks.append(process_chunk(chunk))
 
-    # 'Syllables' is already 'Int64' from the dtype specification, so we can skip this part if NaNs should be preserved
-    # If you want to convert NaNs to 0 in 'Syllables', uncomment the next line
-    # final_df['Syllables'] = final_df['Syllables'].fillna(0)
+        combined_df = pd.concat(combined_chunks, ignore_index=True)
+        final_df = combined_df.groupby('Name', as_index=False).agg(agg_funcs)
+        final_df.to_csv("temp/names_db.csv", index=False)
 
-    # Write the final DataFrame to a CSV file
-    final_df.to_csv("temp/names_db.csv", index=False)
-
-    # Close the multiprocessing pool
     pool.close()
     pool.join()

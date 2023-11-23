@@ -1,2784 +1,1165 @@
 id,name
-1,!Kung
-2,?
-3,? (Archaic)
-4,? (Rare)
-5,?)
-6,Abazin
-7,Abazin (Americanized
-8,Abenaki
-9,Abkhaz
-10,Abkhaz (Latinized
-11,Abkhaz (Rare)
-12,Abnaki
-13,Acehnese
-14,Acholi
-15,Adyghe
-16,Adyghe (Modern)
-17,Adyghe (Rare
-18,Adyghe (Rare)
-19,Afar
-20,Afghan
-21,Afghan (Rare)
-22,Afizere
-23,African
-24,African (?)
-25,African (Americanized
-26,African (Modern
-27,African (Modern)
-28,African (Rare)
-29,African American
-30,African American (?)
-31,African American (Americanized
-32,African American (Americanized)
-33,African American (Anglicized
-34,African American (Archaic)
-35,African American (Modern
-36,African American (Modern)
-37,African American (Rare
-38,African American (Rare)
-39,African Mythology
-40,Afrikaans
-41,Afrikaans (Archaic)
-42,Afrikaans (Modern
-43,Afrikaans (Modern)
-44,Afrikaans (Rare
-45,Afrikaans (Rare)
-46,Afro-American (Slavery-era
-47,Afro-American (Slavery-era)
-48,Afro-American Mythology
-49,Agatu
-50,Ahom
-51,Ainu
-52,Akan
-53,Akan (Rare)
-54,Akkadian
-55,Akkadian (Anglicized)
-56,Alachua
-57,Alanian
-58,Alanic
-59,Albanian
-60,Albanian (?)
-61,Albanian (Archaic)
-62,Albanian (Modern
-63,Albanian (Modern)
-64,Albanian (Rare
-65,Albanian (Rare)
-66,Albanian Mythology
-67,Aleut
-68,Aleut (Archaic)
-69,Algerian (Japanized
-70,Algonquian
-71,Algonquin
-72,Algonquin (Anglicized)
-73,Algonquin (Rare)
-74,Alsatian
-75,Alsatian (Archaic)
-76,Alsatian (Rare)
-77,Altai
-78,Amara
-79,American
-80,American (?)
-81,American (Americanized
-82,American (Anglicized
-83,American (Archaic)
-84,American (Hispanic
-85,American (Hispanic)
-86,American (Modern
-87,American (Modern)
-88,American (Rare
-89,American (Rare)
-90,American (South
-91,American (South)
-92,American rare
-93,Americanized
-94,Americanized)
-95,Ameru
-96,Amharic
-97,Amharic (Modern)
-98,Amharic (Rare)
-99,Amis
-100,Anaang
-101,Ancient
-102,Ancient (Anglicized)
-103,Ancient (Germanized)
-104,Ancient (Hellenized)
-105,Ancient (Latinized)
-106,Ancient (Rare)
-107,Ancient Aramaic
-108,Ancient Aramaic (Anglicized)
-109,Ancient Aramaic (Latinized)
-110,Ancient Aramaic (Rare
-111,Ancient Aramaic (Rare)
-112,Ancient Armenian
-113,Ancient Armenian (Hellenized)
-114,Ancient Assyrian
-115,Ancient Assyrian (Anglicized)
-116,Ancient Assyrian (Hellenized)
-117,Ancient Assyrian (Polonized)
-118,Ancient Egyptian
-119,Ancient Egyptian (Americanized
-120,Ancient Egyptian (Anglicized
-121,Ancient Egyptian (Anglicized)
-122,Ancient Egyptian (Arabized
-123,Ancient Egyptian (Archaic)
-124,Ancient Egyptian (Hellenized)
-125,Ancient Egyptian (Hypothetical)
-126,Ancient Egyptian (Latinized)
-127,Ancient Egyptian (Magyarized)
-128,Ancient Egyptian (Rare
-129,Ancient Egyptian (Rare)
-130,Ancient Germanic (Latinized)
-131,Ancient Greek
-132,Ancient Greek (?)
-133,Ancient Greek (Anglicized)
-134,Ancient Greek (Gallicized)
-135,Ancient Greek (Hispanicized)
-136,Ancient Greek (Italianized)
-137,Ancient Greek (Latinized
-138,Ancient Greek (Latinized)
-139,Ancient Greek (Magyarized)
-140,Ancient Greek (Modern)
-141,Ancient Greek (Polonized)
-142,Ancient Greek (Portuguese-style)
-143,Ancient Greek (Rare)
-144,Ancient Hebrew
-145,Ancient Hebrew (Anglicized
-146,Ancient Hebrew (Hellenized)
-147,Ancient Hebrew (Latinized)
-148,Ancient Hebrew (Rare)
-149,Ancient Iberian
-150,Ancient Near Eastern
-151,Ancient Near Eastern (Hellenized)
-152,Ancient Oscan
-153,Ancient Roman
-154,Ancient Roman (?)
-155,Ancient Roman (Anglicized)
-156,Ancient Roman (Arabized)
-157,Ancient Roman (Archaic)
-158,Ancient Roman (Hellenized)
-159,Ancient Roman (Hispanicized)
-160,Ancient Roman (Magyarized)
-161,Ancient Roman (Rare
-162,Ancient Roman (Rare)
-163,Ancient Roman (Russified
-164,Anglicized
-165,Anglicized)
-166,Anglo-Norman
-167,Anglo-Norman (?)
-168,Anglo-Norman (Anglicized
-169,Anglo-Norman (Latinized)
-170,Anglo-Saxon
-171,Anglo-Saxon (?)
-172,Anglo-Saxon (Anglicized)
-173,Anglo-Saxon (Archaic)
-174,Anglo-Saxon (Gallicized)
-175,Anglo-Saxon (Germanized
-176,Anglo-Saxon (Hypothetical)
-177,Anglo-Saxon (Latinized
-178,Anglo-Saxon (Latinized)
-179,Anglo-Saxon (Modern)
-180,Anglo-Saxon (Rare)
-181,Anglo-Saxon Mythology
-182,Anglo-Saxon Mythology (Latinized)
-183,Anglo-Scandinavian
-184,Antillean Creole
-185,Antillean Creole (Rare)
-186,Apache
-187,Apache (Anglicized)
-188,Apache (Hispanicized
-189,Aquitanian
-190,Aquitanian Mythology
-191,Arabe
-192,Arabic
-193,Arabic (?)
-194,Arabic (Americanized
-195,Arabic (Americanized)
-196,Arabic (Anglicized
-197,Arabic (Anglicized)
-198,Arabic (Arabized
-199,Arabic (Arabized)
-200,Arabic (Archaic)
-201,Arabic (Egyptian
-202,Arabic (Egyptian)
-203,Arabic (Expatriate
-204,Arabic (Gallicized)
-205,Arabic (Germanized
-206,Arabic (Germanized)
-207,Arabic (Hellenized)
-208,Arabic (Hispanicized
-209,Arabic (Hispanicized)
-210,Arabic (Japanized)
-211,Arabic (Latinized
-212,Arabic (Latinized)
-213,Arabic (Maghrebi
-214,Arabic (Maghrebi)
-215,Arabic (Mashriqi
-216,Arabic (Mashriqi)
-217,Arabic (Modern
-218,Arabic (Modern)
-219,Arabic (Rare
-220,Arabic (Rare)
-221,Arabic Ethiopian
-222,Arabic and Nepali (Arabized
-223,Arabized
-224,Aragonese
-225,Aragonese (?)
-226,Aragonese (Archaic)
-227,Aragonese (Modern)
-228,Aragonese (Rare
-229,Aragonese (Rare)
-230,Aramaic/ Arabic (Arabized
-231,Arapaho
-232,Arawak
-233,Archaic
-234,Archaic)
-235,Armenian
-236,Armenian (Anglicized
-237,Armenian (Archaic)
-238,Armenian (Eastern)
-239,Armenian (Expatriate
-240,Armenian (Expatriate)
-241,Armenian (Gallicized)
-242,Armenian (Germanized)
-243,Armenian (Modern)
-244,Armenian (Rare
-245,Armenian (Rare)
-246,Armenian (Western
-247,Armenian (Western)
-248,Armenian Mythology
-249,Arpitan
-250,Arrernte
-251,"Arthurian
+1,Abazin
+2,Abenaki
+3,Abkhaz
+4,Abnaki
+5,Aboriginal
+6,Acehnese
+7,Acholi
+8,Adyghe
+9,Afghan
+10,Afizere
+11,Africa
+12,African
+13,African English
+14,African Mythology
+15,Afrikan
+16,Afro-American
+17,Agatu
+18,Ahom
+19,Ainu
+20,Akan
+21,Akkadian
+22,Alachua
+23,Albanian
+24,Albanian Mythology
+25,Aleut
+26,Algonquian
+27,Algonquin
+28,Alsatian
+29,Altai
+30,Amara
+31,American
+32,American British
+33,American French
+34,American Greek
+35,American Irish
+36,American rare
+37,Ameru
+38,Amharic
+39,Amis
+40,Anaang
+41,Ancient
+42,Ancient Aramaic
+43,Ancient Armenian
+44,Ancient Assyrian
+45,Ancient Egyptian
+46,Ancient Greek
+47,Ancient Hebrew
+48,Ancient Iberian
+49,Ancient Near Eastern
+50,Ancient Oscan
+51,Ancient Roman
+52,Anglo-Norman
+53,Anglo-Saxon
+54,Anglo-Saxon Mythology
+55,Anglo-Scandinavian
+56,Antillean Creole
+57,Apache
+58,Aquitanian
+59,Arabic
+60,Arabic Ethiopian
+61,Aragonese
+62,Arapaho
+63,Archaic
+64,Argentina
+65,ArmeniaNaltese
+66,Armenian
+67,Armenian Mythology
+68,Arpitan
+69,Arrernte
+70,"Arthurian
 Legend"
-252,Arthurian Romance
-253,Arthurian Romance (?)
-254,Arthurian Romance (Anglicized)
-255,Arthurian Romance (Dutchified)
-256,Arthurian Romance (Modern)
-257,Arthurian Romance (Polonized)
-258,Arthurian Romance (Russified)
-259,Asante Twi
-260,Asian
-261,Assamese
-262,Assamese (Rare)
-263,Assiniboine
-264,Assyrian
-265,Assyrian (?)
-266,Assyrian (Rare)
-267,Astronomy
-268,Astronomy (Germanized)
-269,Astronomy (Rare
-270,Asturian
-271,Asturian (Archaic)
-272,Asturian (Modern
-273,Asturian (Modern)
-274,Asturian (Rare
-275,Asturian (Rare)
-276,Atakapa
-277,Atayal
-278,"Australian
+71,Arthurian Romance
+72,Asante Twi
+73,Asian
+74,Assamese
+75,Assiniboine
+76,Assyrian
+77,Astronomy
+78,Asturian
+79,Atakapa
+80,Atayal
+81,Athidevu
+82,Australia ireland
+83,Australian
+84,"Australian
 Aboriginal"
-279,Austrian
-280,Avar
-281,Avar (Rare)
-282,Avar (Russified)
-283,Avestan
-284,Avestan (Hellenized)
-285,Avestan (Polonized)
-286,Aymara
-287,Aymara (?)
-288,Azerbaijani
-289,Azerbaijani (Anglicized
-290,Azerbaijani (Anglicized)
-291,Azerbaijani (Modern)
-292,Azerbaijani (Rare)
-293,Aztec
-294,Aztec and Toltec Mythology
-295,Aztec and Toltec Mythology (Archaic)
-296,Baadi
-297,Babylonian
-298,Babylonian (Anglicized)
-299,Bahamian Creole
-300,Bahamian Creole (Rare
-301,Bahamian Creole (Rare)
-302,Bajan
-303,Bajan (Latinized
-304,Bakongo
-305,Balinese
-306,Balochi
-307,Balti
-308,Baltic Mythology
-309,Baltic Mythology (Anglicized)
-310,Baltic Mythology (Archaic)
-311,Baltic Mythology (Hypothetical)
-312,Bamileke
-313,Banat Swabian
-314,Bandial
-315,Bantu
-316,BaoulÃ©
-317,Bariba
-318,Bashkir
-319,Bashkir (Rare)
-320,Bashkir (Russified)
-321,Basque
-322,Basque (Archaic)
-323,Basque (Gallicized
-324,Basque (Gallicized)
-325,Basque (Hispanicized
-326,Basque (Hispanicized)
-327,Basque (Modern
-328,Basque (Modern)
-329,Basque (Rare
-330,Basque (Rare)
-331,Basque Mythology
-332,Batak
-333,Bee
-334,Belarusian
-335,Belarusian (Archaic)
-336,Belarusian (Gallicized)
-337,Belarusian (Germanized)
-338,Belarusian (Rare
-339,Belarusian (Rare)
-340,Belgian
-341,Belgian (Archaic)
-342,Belgian (Rare
-343,Belgian (Rare)
-344,Bemba
-345,Bemba (?)
-346,Bengali
-347,Bengali (?)
-348,Bengali (Americanized
-349,Bengali (Anglicized
-350,Bengali (Hindu
-351,Bengali (Hindu)
-352,Bengali (Modern
-353,Bengali (Muslim
-354,Bengali (Muslim)
-355,Bengali (Rare
-356,Bengali (Rare)
-357,Berber
-358,Berber (Anglicized)
-359,Berber (Archaic)
-360,Berber (Expatriate
-361,Berber (Rare)
-362,Bermudian (Rare)
-363,Bhojpuri
-364,Bhutanese
-365,Bhutanese (Rare)
-366,Biblical
-367,Biblical (?)
-368,Biblical (All
-369,Biblical (All)
-370,Biblical (Hellenized)
-371,Biblical (Latinized)
-372,Biblical (Polonized)
-373,Biblical (Rare
-374,Biblical (Rare)
-375,Biblical Afrikaans
-376,Biblical Albanian
-377,Biblical Basque
-378,Biblical Catalan
-379,Biblical Czech
-380,Biblical Danish
-381,Biblical Dutch
-382,Biblical English
-383,Biblical Finnish
-384,Biblical French
-385,Biblical German
-386,Biblical German (Archaic)
-387,Biblical Greek
-388,Biblical Greek (Anglicized)
-389,Biblical Greek (Latinized)
-390,Biblical Greek (Modern)
-391,Biblical Greek (Rare)
-392,Biblical Hawaiian
-393,Biblical Hebrew
-394,Biblical Hebrew (?)
-395,Biblical Hebrew (Anglicized
-396,Biblical Hebrew (Archaic
-397,Biblical Hebrew (Latinized
-398,Biblical Hebrew (Latinized)
-399,Biblical Hebrew (Rare)
-400,Biblical Hungarian
-401,Biblical Irish
-402,Biblical Italian
-403,Biblical Italian (Rare
-404,Biblical Latin
-405,Biblical Latin (Latinized)
-406,Biblical Malagasy
-407,Biblical Maltese
-408,Biblical Norwegian
-409,Biblical Polish
-410,Biblical Portuguese
-411,Biblical Romanian
-412,Biblical Spanish
-413,Biblical Swedish
-414,Biblical Welsh
-415,Bini
-416,Bislama
-417,Bodo
-418,Bontoc
-419,Bontoc (Rare)
-420,Bosnian
-421,Bosnian (?)
-422,Bosnian (Anglicized)
-423,Bosnian (Archaic)
-424,Bosnian (Germanized)
-425,Bosnian (Modern)
-426,Bosnian (Rare
-427,Bosnian (Rare)
-428,Brazilian
-429,Brazilian (?)
-430,Brazilian (Italianized
-431,Brazilian (Modern
-432,Brazilian (Modern)
-433,Brazilian (Portuguese-style
-434,Brazilian (Rare
-435,Brazilian (Rare)
-436,Breton
-437,Breton (Archaic)
-438,Breton (Gallicized
-439,Breton (Gallicized)
-440,Breton (Latinized
-441,Breton (Latinized)
-442,Breton (Modern
-443,Breton (Modern)
-444,Breton (Rare
-445,Breton (Rare)
-446,Breton Legend
-447,Breton Legend (Gallicized)
-448,British
-449,Brythonic
-450,Brythonic (Hypothetical)
-451,Brythonic (Latinized)
-452,Buddhism (Rare
-453,Buddhist
-454,Buginese
-455,Bukiyip
-456,Bulgar
-457,Bulgarian
-458,Bulgarian (Archaic)
-459,Bulgarian (Germanized
-460,Bulgarian (Germanized)
-461,Bulgarian (Modern)
-462,Bulgarian (Rare
-463,Bulgarian (Rare)
-464,Bunun
-465,Burmese
-466,Burmese (?)
-467,Burmese (Rare)
-468,Buryat
-469,Caddo
-470,Cambodian
-471,Cambodian (?)
-472,Canaanite
-473,Cappadocian Greek
-474,Carian (Hellenized
-475,Carian (Hellenized)
-476,Caribbean
-477,Caribbean (Americanized
-478,Caribbean (Modern
-479,Caribbean (Modern)
-480,Caribbean (Rare
-481,Caribbean (Rare)
-482,Carpathian (Rare
-483,Catalan
-484,Catalan (?)
-485,Catalan (Archaic)
-486,Catalan (Hispanicized)
-487,Catalan (Modern
-488,Catalan (Modern)
-489,Catalan (Rare
-490,Catalan (Rare)
-491,Catalan (Valencian)
-492,Caucasian
-493,Caucasian Mythology
-494,Cayuga
-495,Cebuano
-496,Cebuano (Modern)
-497,Celtic
-498,Celtic Mythology
-499,Celtic Mythology (?)
-500,Celtic Mythology (Anglicized
-501,Celtic Mythology (Hellenized)
-502,Celtic Mythology (Hispanicized)
-503,Celtic Mythology (Hypothetical)
-504,Celtic Mythology (Latinized)
-505,Celtic Mythology (Portuguese-style)
-506,Central African
-507,Central African (Latinized
-508,Central African (Modern
-509,Central African (Rare)
-510,Central American
-511,Central American (Americanized
-512,Central American (Latinized)
-513,Central American (Rare)
-514,Chagga
-515,Chakhesang
-516,Cham
-517,Chamorro
-518,CharrÃºa
-519,CharrÃºa (Rare
-520,Chatino
-521,Chechen
-522,Chechen (Rare)
-523,Chechen (Russified)
-524,Cherokee
-525,Cherokee (?)
-526,Cherokee (Archaic)
-527,Chewa
-528,Cheyenne
-529,Cheyenne (Anglicized)
-530,Chickasaw
-531,Chin
-532,Chin (Modern)
-533,Chinese
-534,Chinese (?)
-535,Chinese (Anglicized
-536,Chinese (Anglicized)
-537,Chinese (Cantonese
-538,Chinese (Cantonese)
-539,Chinese (Expatriate
-540,Chinese (Expatriate)
-541,Chinese (Hakka)
-542,Chinese (Hokkien)
-543,Chinese (Min Bei)
-544,Chinese (Min Dong)
-545,Chinese (Modern
-546,Chinese (Modern)
-547,Chinese (Rare
-548,Chinese (Rare)
-549,Chinese (Sinicized
-550,Chinese (Teochew)
-551,Chinese (Wu)
-552,Chinese Mythology
-553,Chipewyan
-554,Chitrali
-555,Choctaw
-556,Chukchi
-557,Chuukese
-558,Chuukese (Rare)
-559,Chuvash
-560,Circassian
-561,Circassian (Archaic)
-562,Circassian (Modern)
-563,Circassian (Rare
-564,Circassian (Rare)
-565,Circassian (Russified)
-566,Classic Mayan
-567,Classic Mayan (Archaic)
-568,Classic Mayan (Latinized
-569,Classical Syriac
-570,Colchian
-571,Comanche
-572,Comanche (Anglicized
-573,Comanche (Anglicized)
-574,Comorian
-575,Congolese
-576,Cook Islands Maori
-577,Coos
-578,Coptic
-579,Coptic (Arabized)
-580,Coptic (Archaic)
-581,Coptic (Bohairic)
-582,Coptic (Rare)
-583,Coptic (Sahidic)
-584,Cornish
-585,Cornish (?)
-586,Cornish (Anglicized
-587,Cornish (Anglicized)
-588,Cornish (Archaic)
-589,Cornish (Modern
-590,Cornish (Modern)
-591,Cornish (Rare
-592,Cornish (Rare)
-593,Cornish Welsh
-594,Corsican
-595,Corsican (Archaic)
-596,Corsican (Modern
-597,Corsican (Rare
-598,Corsican (Rare)
-599,Cree
-600,Cree (Anglicized)
-601,Creek
-602,Creek (?)
-603,Creek (Anglicized)
-604,Crimean Tatar
-605,Crimean Tatar (Archaic)
-606,Crimean Tatar (Rare)
-607,Crimean Tatar (Russified)
-608,Croatian
-609,Croatian (?)
-610,Croatian (Anglicized)
-611,Croatian (Archaic)
-612,Croatian (Modern
-613,Croatian (Modern)
-614,Croatian (Rare
-615,Croatian (Rare)
-616,Cuman
-617,Curonian
-618,Czech
-619,Czech (?)
-620,Czech (Archaic)
-621,Czech (Modern
-622,Czech (Modern)
-623,Czech (Rare
-624,Czech (Rare)
-625,Dagarti
-626,Dagbani
-627,Dagbani (Modern)
-628,Dagestani
-629,Dagestani (Rare)
-630,Dagestani (Russified)
-631,Dambro
-632,Danish
-633,Danish (?)
-634,Danish (Americanized
-635,Danish (Archaic
-636,Danish (Archaic)
-637,Danish (Gallicized
-638,Danish (Germanized
-639,Danish (Latinized
-640,Danish (Modern
-641,Danish (Modern)
-642,Danish (Rare
-643,Danish (Rare)
-644,Dargin
-645,Dargin (Russified)
-646,Dari Persian
-647,Darug
-648,Dhivehi
-649,Dinka
-650,Dogri
-651,Dolgan
-652,Dravidian (Latinized
-653,Dungan
-654,Dusun
-655,Dutch
-656,Dutch (?)
-657,Dutch (Anglicized)
-658,Dutch (Antillean
-659,Dutch (Antillean)
-660,Dutch (Archaic
-661,Dutch (Archaic)
-662,Dutch (Latinized
-663,Dutch (Latinized)
-664,Dutch (Modern
-665,Dutch (Modern)
-666,Dutch (Rare
-667,Dutch (Rare)
-668,Dutch (Surinamese
-669,Dutch (Surinamese)
-670,Dutchified)
-671,Duwamish
-672,Duwamish (Anglicized)
-673,East Frisia
-674,East Frisia (Archaic)
-675,East Frisian
-676,East Frisian (?)
-677,East Frisian (Archaic
-678,East Frisian (Archaic)
-679,East Frisian (Modern)
-680,East Frisian (Rare
-681,East Frisian (Rare)
-682,Eastern African
-683,Eastern African (?)
-684,Eastern African (Modern)
-685,Eastern African (Rare)
-686,Edo
-687,Edo (Modern)
-688,Efik
-689,Efik (Modern)
-690,Eggon
-691,Egyptian Mythology
-692,Egyptian Mythology (Anglicized)
-693,Egyptian Mythology (Germanized)
-694,Egyptian Mythology (Hellenized)
-695,Egyptian Mythology (Hypothetical)
-696,Egyptian Mythology (Italianized)
-697,Egyptian Mythology (Latinized)
-698,Egyptian Mythology (Magyarized)
-699,Elamite
-700,Elamite Mythology
-701,Embu
-702,Emilian-Romagnol
-703,Emilian-Romagnol (Rare)
-704,Enets
-705,England and Portuguese (Brazilian
-706,Englis
-707,English
-708,English (?)
-709,English (African
-710,English (African)
-711,English (African) English (American
-712,English (American
-713,English (American)
-714,English (Americanized
-715,English (Anglicized
-716,English (Anglicized)
-717,English (Archaic
-718,English (Archaic)
-719,English (Australian
-720,English (Australian)
-721,English (Australian) Hebrew
-722,English (British
-723,English (British)
-724,English (Canadian
-725,English (Canadian)
-726,English (Dutchified
-727,English (Haitian)
-728,English (Hispanicized
-729,English (Japanized
-730,English (Latinized
-731,English (Latinized)
-732,English (Modern
-733,English (Modern)
-734,English (New Zealand
-735,English (New Zealand)
-736,English (Puritan
-737,English (Puritan)
-738,English (Rare
-739,English (Rare)
-740,English Creole
-741,English Creole (Rare)
-742,English(Modern)Haitian
-743,Eritrean (Modern)
-744,Esan
-745,Esperanto
-746,Esperanto (?)
-747,Estonian
-748,Estonian (Archaic)
-749,Estonian (Modern
-750,Estonian (Modern)
-751,Estonian (Rare
-752,Estonian (Rare)
-753,Ethiopia
-754,Ethiopian
-755,Ethiopian (?)
-756,Ethiopian (Gallicized)
-757,Ethiopian (Germanized)
-758,Ethiopian (Modern)
-759,Etruscan
-760,Etruscan (Archaic)
-761,Etruscan (Latinized)
-762,Etruscan Mythology
-763,Etruscan Mythology (Hypothetical)
-764,Etruscan Mythology (Latinized)
-765,Etsako
-766,Even
-767,Evenki
-768,Ewe
-769,Ewe (Anglicized
-770,Ewe (Rare
-771,Expatriate
-772,Expatriate)
-773,Far Eastern Mythology
-774,Far Eastern Mythology (Rare)
-775,Faroese
-776,Faroese (Archaic)
-777,Faroese (Modern
-778,Faroese (Modern)
-779,Faroese (Rare
-780,Faroese (Rare)
-781,Fijian
-782,Fijian (?)
-783,Fijian (Modern)
-784,Fijian (Rare)
-785,Filipinized)
-786,Filipino
-787,Filipino (?)
-788,Filipino (Americanized
-789,Filipino (Anglicized
-790,Filipino (Archaic)
-791,Filipino (Filipinized
-792,Filipino (Latinized)
-793,Filipino (Modern
-794,Filipino (Modern)
-795,Filipino (Rare
-796,Filipino (Rare)
-797,Finland Swedish
-798,Finland Swedish (Rare
-799,Finland Swedish (Rare)
-800,Finnicized
-801,Finnish
-802,Finnish (?)
-803,Finnish (Archaic)
-804,Finnish (Modern
-805,Finnish (Modern)
-806,Finnish (Rare
-807,Finnish (Rare)
-808,Finnish Mythology
-809,Flemish
-810,Flemish (Archaic)
-811,Flemish (Modern
-812,Flemish (Modern)
-813,Flemish (Rare)
-814,Folklore
-815,Folklore (Anglicized)
-816,Folklore (Gallicized)
-817,Folklore (Germanized)
-818,Folklore (Italianized
-819,Folklore (Italianized)
-820,Franco-ProvenÃ§al
-821,Frankish
-822,Frankish (?)
-823,Frankish (Archaic)
-824,Frankish (Gallicized)
-825,Frankish (Hypothetical)
-826,Frankish (Italianized)
-827,Frankish (Latinized)
-828,French
-829,French (?)
-830,French (Acadian
-831,French (Acadian)
-832,French (African
-833,French (African)
-834,French (Americanized
-835,French (Americanized)
-836,French (Archaic
-837,French (Archaic)
-838,French (Belgian
-839,French (Belgian)
-840,French (Cajun
-841,French (Cajun)
-842,French (Caribbean
-843,French (Caribbean)
-844,French (European
-845,French (Huguenot
-846,French (Huguenot)
-847,French (Latinized)
-848,French (Modern
-849,French (Modern)
-850,French (Nova Scotia) French (Rare) French (Louisiana Creole)
-851,French (Quebec
-852,French (Quebec)
-853,French (Rare
-854,French (Rare)
-855,French (Swiss
-856,French (Swiss)
-857,French Creole
-858,French Creole (Rare)
-859,French Polish Italian
-860,French/ Hebrew (Rare)
-861,Frisian
-862,Frisian (?)
-863,Frisian (Archaic)
-864,Frisian (Rare
-865,Frisian (Rare)
-866,Friulian
-867,Friulian (Archaic)
-868,Friulian (Rare)
-869,Fula
-870,Fula (Gallicized)
-871,Fushan
-872,Ga
-873,Gaelic
-874,Gagauz
-875,Galatian
-876,Galician
-877,Galician (Archaic)
-878,Galician (Modern
-879,Galician (Rare
-880,Galician (Rare)
-881,Galician Mythology
-882,Gallaecian Mythology
-883,Gallicized
-884,Gallicized)
-885,Gallo
-886,Gamilaraay
-887,Ganda
-888,Ganda (?)
-889,Ganda (Modern)
-890,Garo
-891,Gascon
-892,Gascon (Archaic)
-893,Gascon (Gallicized
-894,Gascon (Gallicized)
-895,Gascon (Modern
-896,Gascon (Modern)
-897,Gascon (Rare)
-898,Gaulish
-899,Gaulish (Latinized)
-900,Gaulish Mythology
-901,Gaulish Mythology (Hypothetical)
-902,Gaulish Mythology (Latinized)
-903,Gayonese
-904,Ge'ez
-905,Genizaro
-906,Genoese (Archaic)
-907,Georgian
-908,Georgian (Archaic)
-909,Georgian (Gallicized)
-910,Georgian (Germanized)
-911,Georgian (Rare)
-912,Georgian (Russified)
-913,Georgian Mythology
-914,German
-915,German (?)
-916,German (Anglicized
-917,German (Anglicized)
-918,German (Archaic
-919,German (Archaic)
-920,German (Austrian
-921,German (Austrian)
-922,German (Bessarabian
-923,German (Bessarabian)
-924,German (Bohemian-Moravian
-925,German (Bohemian-Moravian)
-926,German (East Prussian
-927,German (East Prussian)
-928,German (Expatriate)
-929,German (Hellenized)
-930,German (Latinized
-931,German (Latinized)
-932,German (Modern
-933,German (Modern)
-934,German (Rare
-935,German (Rare)
-936,German (Silesian
-937,German (Silesian)
-938,German (Sudeten)
-939,German (Swiss
-940,German (Swiss)
-941,Germanic
-942,Germanic (?)
-943,Germanic (Anglicized)
-944,Germanic (Archaic)
-945,Germanic (Hellenized)
-946,Germanic (Hypothetical)
-947,Germanic (Latinized
-948,Germanic (Latinized)
-949,Germanic (Portuguese-style
-950,Germanic (Portuguese-style)
-951,Germanic (Rare)
-952,Germanic Mythology
-953,Germanic Mythology (Hypothetical)
-954,Germanic Mythology (Latinized)
-955,Germanized)
-956,Ghanaian
-957,Ghanaian (Archaic)
-958,Gikuyu
-959,Gilaki
-960,Gilaki (Archaic)
-961,Gnosticism
-962,Goemai
-963,Gooniyandi
-964,Gorani
-965,Gothic
-966,Gothic (Anglicized)
-967,Gothic (Gallicized)
-968,Gothic (Hispanicized)
-969,Gothic (Hypothetical)
-970,Gothic (Latinized)
-971,Gothic (Modernized)
-972,Greek
-973,Greek (?)
-974,Greek (Americanized
-975,Greek (Anglicized
-976,Greek (Anglicized)
-977,Greek (Archaic)
-978,Greek (Cypriot
-979,Greek (Cypriot)
-980,Greek (Expatriate)
-981,Greek (Germanized)
-982,Greek (Hellenized
-983,Greek (Italianized)
-984,Greek (Latinized
-985,Greek (Latinized)
-986,Greek (Modern
-987,Greek (Modern)
-988,Greek (Portuguese-style
-989,Greek (Rare
-990,Greek (Rare)
-991,Greek Mythology
-992,Greek Mythology (?)
-993,Greek Mythology (Albanianized)
-994,Greek Mythology (Anglicized)
-995,Greek Mythology (Basque-Style)
-996,Greek Mythology (Gallicized)
-997,Greek Mythology (Germanized)
-998,Greek Mythology (Hellenized)
-999,Greek Mythology (Hispanicized
-1000,Greek Mythology (Hispanicized)
-1001,Greek Mythology (Italianized
-1002,Greek Mythology (Italianized)
-1003,Greek Mythology (Latinized
-1004,Greek Mythology (Latinized)
-1005,Greek Mythology (Magyarized)
-1006,Greek Mythology (Modern
-1007,Greek Mythology (Polonized)
-1008,Greek Mythology (Portuguese-style)
-1009,Greek Mythology (Rare)
-1010,Greek Mythology (Russified
-1011,Greek Mythology (Russified)
-1012,Greenlandic
-1013,Greenlandic (?)
-1014,Greenlandic (Archaic)
-1015,Greenlandic (Modern)
-1016,Greenlandic (Rare)
-1017,Guanche
-1018,Guanche (Hispanicized)
-1019,Guanche (Rare)
-1020,Guanche Mythology
-1021,Guanche Mythology (Hispanicized)
-1022,Guarani
-1023,Guarani (Hispanicized
-1024,Guarani (Hispanicized)
-1025,GuernÃ©siais
-1026,GuernÃ©siais (?)
-1027,Gujarati
-1028,Gujarati (Archaic)
-1029,Gujarati (Rare)
-1030,Gumatj
-1031,Gunai (Kurnai)
-1032,Gurani
-1033,Gusii
-1034,Guuni
-1035,HISPANIC
-1036,Haida
-1037,Haida (Anglicized)
-1038,Haiti
-1039,Haitian Creole
-1040,Haitian Creole (Modern
-1041,Haitian Creole (Rare
-1042,Haitian Creole (Rare)
-1043,Hattian Mythology
-1044,Hausa
-1045,Hausa (?)
-1046,Hawaiian
-1047,Hawaiian (?)
-1048,Hawaiian (Americanized
-1049,Hawaiian (Anglicized)
-1050,Hawaiian (Archaic)
-1051,Hawaiian (Hispanicized
-1052,Hawaiian (Modern
-1053,Hawaiian (Modern)
-1054,Hawaiian (Rare
-1055,Hawaiian (Rare)
-1056,Haya
-1057,Haya (Rare)
-1058,Hebrew
-1059,Hebrew (?)
-1060,Hebrew (Americanized
-1061,Hebrew (Americanized)
-1062,Hebrew (Anglicized
-1063,Hebrew (Anglicized)
-1064,Hebrew (Archaic)
-1065,Hebrew (Gallicized)
-1066,Hebrew (Germanized)
-1067,Hebrew (Hellenized)
-1068,Hebrew (Latinized)
-1069,Hebrew (Magyarized)
-1070,Hebrew (Modern
-1071,Hebrew (Modern)
-1072,Hebrew (Polonized)
-1073,Hebrew (Rare
-1074,Hebrew (Rare)
-1075,Herero
-1076,Hidatsa
-1077,Hiligaynon
-1078,Hindi
-1079,Hindi (?)
-1080,Hindi (Americanized
-1081,Hindi (Anglicized
-1082,Hindi (Anglicized)
-1083,Hindi (Archaic)
-1084,Hindi (Germanized
-1085,Hindi (Latinized)
-1086,Hindi (Modern
-1087,Hindi (Modern)
-1088,Hindi (Rare)
-1089,Hindu
-1090,Hindu(telugu)
-1091,Hinduism
-1092,Hinduism (?)
-1093,Hinduism (Americanized
-1094,Hinduism (Anglicized
-1095,Hinduism (Modern
-1096,Hinduism (Modern)
-1097,Hinduism (Rare)
-1098,Hispanicized
-1099,Hispanicized)
-1100,History
-1101,History (?)
-1102,History (Albanianized)
-1103,History (Anglicized)
-1104,History (Basque-style)
-1105,History (Dutchified)
-1106,History (Ecclesiastical
-1107,History (Ecclesiastical)
-1108,History (Gallicized)
-1109,History (Germanized)
-1110,History (Hellenized)
-1111,History (Hispanicized)
-1112,History (Italianized)
-1113,History (Latinized)
-1114,History (Magyarized)
-1115,History (Polonized)
-1116,History (Portuguese-style)
-1117,History (Rare)
-1118,Hittite
-1119,Hittite (Archaic)
-1120,Hittite Mythology
-1121,Hmong
-1122,Hmong (Archaic)
-1123,Ho
-1124,Hopi
-1125,Hualapai
-1126,Huichol (Rare)
-1127,Hungarian
-1128,Hungarian (?)
-1129,Hungarian (Anglicized
-1130,Hungarian (Anglicized)
-1131,Hungarian (Archaic)
-1132,Hungarian (Modern
-1133,Hungarian (Modern)
-1134,Hungarian (Rare
-1135,Hungarian (Rare)
-1136,Hungarian Mythology
-1137,Hunsrik
-1138,Hurrian
-1139,Hurrian Mythology
-1140,Hypothetical)
-1141,Iban
-1142,Ibanag
-1143,Ibibio
-1144,Ibibio (Latinized
-1145,Icelandic
-1146,Icelandic (Anglicized
-1147,Icelandic (Anglicized)
-1148,Icelandic (Archaic
-1149,Icelandic (Archaic)
-1150,Icelandic (Modern
-1151,Icelandic (Modern)
-1152,Icelandic (Rare
-1153,Icelandic (Rare)
-1154,Idoma
-1155,Igbo
-1156,Igbo (Anglicized
-1157,Igbo (Anglicized)
-1158,Igbo (Archaic
-1159,Igbo (Latinized
-1160,Igbo (Modern
-1161,Igbo (Modern)
-1162,Igbo (Rare)
-1163,Igbo Mythology
-1164,Igede
-1165,Ijaw
-1166,Ijaw (Anglicized)
-1167,Ijaw (Rare)
-1168,Illyrian Mythology
-1169,Ilocano
-1170,Ilocano (Rare)
-1171,Inca
-1172,Inca Mythology
-1173,Incan
-1174,Incan Mythology
-1175,Incan Mythology (?)
-1176,Incan Mythology (Anglicized
-1177,Incan Mythology (Hispanicized)
-1178,Indian
-1179,Indian (?)
-1180,Indian (Americanized
-1181,Indian (Anglicized
-1182,Indian (Anglicized)
-1183,Indian (Christian
-1184,Indian (Christian)
-1185,Indian (Italianized
-1186,Indian (Latinized
-1187,Indian (Latinized)
-1188,Indian (Modern
-1189,Indian (Modern)
-1190,Indian (Muslim
-1191,Indian (Muslim)
-1192,Indian (Parsi)
-1193,Indian (Rare
-1194,Indian (Rare)
-1195,Indian (Sikh
-1196,Indian (Sikh)
-1197,Indic
-1198,Indigenous American
-1199,Indigenous American (?)
-1200,Indigenous American (Americanized
-1201,Indigenous American (Modern)
-1202,Indigenous American (Rare
-1203,Indigenous American (Rare)
-1204,Indigenous Australian
-1205,Indigenous Australian (?)
-1206,Indigenous Australian (Anglicized
-1207,Indigenous Australian (Modern)
-1208,Indigenous Australian (Rare)
-1209,Indigenous Australian Mythology
-1210,Indigenous Taiwanese
-1211,Indigenous Tasmanian
-1212,Indina
-1213,Indonesia
-1214,Indonesia (Italianized
-1215,Indonesian
-1216,Indonesian (?)
-1217,Indonesian (Dutchified)
-1218,Indonesian (Modern
-1219,Indonesian (Modern)
-1220,Indonesian (Rare
-1221,Indonesian (Rare)
-1222,Indonesian Mythology
-1223,Ingrian
-1224,Ingush
-1225,Ingush (Rare)
-1226,Ingush (Russified
-1227,Ingush (Russified)
-1228,Interlingua
-1229,Inuit
-1230,Inuit (?)
-1231,Inuit (Anglicized)
-1232,Inuit (Modern)
-1233,Inuit Mythology
-1234,Inupiat
-1235,Iranian
-1236,Iranian (?)
-1237,Iranian (Rare)
-1238,Iranian (Sinicized
-1239,Irish
-1240,Irish (?)
-1241,Irish (Americanized
-1242,Irish (Anglicized
-1243,Irish (Anglicized)
-1244,Irish (Archaic)
-1245,Irish (Latinized
-1246,Irish (Latinized)
-1247,Irish (Modern
-1248,Irish (Modern)
-1249,Irish (Portuguese-style)
-1250,Irish (Rare
-1251,Irish (Rare)
-1252,Irish Mythology
-1253,Irish Mythology (?)
-1254,Irish Mythology (Anglicized)
-1255,Irish Mythology (Rare)
-1256,Iroquois
-1257,Iroquois (Anglicized)
-1258,Isan
-1259,Isoko
-1260,Isoko (Rare)
-1261,Israeli
-1262,Italian
-1263,Italian (?)
-1264,Italian (Americanized
-1265,Italian (Anglicized
-1266,Italian (Anglicized)
-1267,Italian (Archaic)
-1268,Italian (Italianized
-1269,Italian (Latinized)
-1270,Italian (Modern
-1271,Italian (Modern)
-1272,Italian (Rare
-1273,Italian (Rare)
-1274,Italian (Swiss
-1275,Italian (Swiss)
-1276,Italian (Tuscan
-1277,Italian (Tuscan)
-1278,Italianized
-1279,Italianized)
-1280,Jagham
-1281,Jamaican Patois
-1282,Jamaican Patois (?)
-1283,Jamaican Patois (Modern
-1284,Jamaican Patois (Modern)
-1285,Jamaican Patois (Rare
-1286,Jamaican Patois (Rare)
-1287,Japanese
-1288,Japanese (?)
-1289,Japanese (Americanized
-1290,Japanese (Americanized)
-1291,Japanese (Anglicized
-1292,Japanese (Anglicized)
-1293,Japanese (Arabized
-1294,Japanese (Archaic)
-1295,Japanese (Japanized
-1296,Japanese (Japanized)
-1297,Japanese (Latinized
-1298,Japanese (Latinized)
-1299,Japanese (Modern
-1300,Japanese (Modern)
-1301,Japanese (Portuguese-style)
-1302,Japanese (Rare
-1303,Japanese (Rare)
-1304,Japanese (Sinicized
-1305,Japanese Mythology
-1306,Japanized
-1307,Javanese
-1308,Javanese (?)
-1309,Javanese (Dutchified)
-1310,Javanese (Rare)
-1311,Jewish
-1312,Jewish (?)
-1313,Jewish (Archaic)
-1314,Jewish (Gallicized)
-1315,Jewish (Hellenized)
-1316,Jewish (Italianized)
-1317,Jewish (Latinized
-1318,Jewish (Latinized)
-1319,Jewish (Modern
-1320,Jewish (Modern)
-1321,Jewish (Polonized
-1322,Jewish (Rare
-1323,Jewish (Rare)
-1324,Jewish (Russian)
-1325,Jewish (Russified)
-1326,Jewish Legend
-1327,Jewish Legend (Anglicized)
-1328,Jola
-1329,Judaeo-Portuguese
-1330,Judeo-Anglo-Norman
-1331,Judeo-Anglo-Norman (?)
-1332,Judeo-Anglo-Norman (Latinized)
-1333,Judeo-Arabic
-1334,Judeo-Arabic (Archaic)
-1335,Judeo-Catalan
-1336,Judeo-Catalan (Archaic)
-1337,Judeo-Catalan (Latinized
-1338,Judeo-Catalan (Latinized)
-1339,Judeo-Catalan (Rare
-1340,Judeo-Christian-Islamic Legend
-1341,Judeo-Christian-Islamic Legend (?)
-1342,Judeo-Christian-Islamic Legend (Arabized)
-1343,Judeo-Christian-Islamic Legend (Dutchified)
-1344,Judeo-Christian-Islamic Legend (Gallicized)
-1345,Judeo-Christian-Islamic Legend (Hellenized)
-1346,Judeo-Christian-Islamic Legend (Rare)
-1347,Judeo-French
-1348,Judeo-Greek
-1349,Judeo-Italian
-1350,Judeo-Italian (Archaic)
-1351,Judeo-Italian (Rare)
-1352,Judeo-ProvenÃ§al
-1353,Judeo-ProvenÃ§al (Archaic)
-1354,Judeo-ProvenÃ§al (Rare)
-1355,Judeo-Spanish
-1356,Judeo-Spanish (Archaic)
-1357,Judeo-Spanish (Rare)
-1358,Judeo-Tat
-1359,Jula
-1360,JÃ¨rriais
-1361,JÃ¨rriais (Modern
-1362,JÃ¨rriais (Modern)
-1363,Kabardian
-1364,Kabardian (Modern)
-1365,Kabardian (Rare
-1366,Kabardian (Rare)
-1367,Kabyle
-1368,Kabyle (Rare)
-1369,Kadazan
-1370,Kaguru
-1371,Kalasha
-1372,Kalenjin
-1373,Kalinago
-1374,Kalmyk
-1375,Kalmyk (Russified)
-1376,Kamba
-1377,Kannada
-1378,Kannada (Rare)
-1379,Kaonde (Rare)
-1380,Karachay-Balkar
-1381,Karachay-Balkar (Archaic)
-1382,Karachay-Balkar (Rare)
-1383,Karakalpak
-1384,Karelian
-1385,Kashmiri
-1386,Kashubian
-1387,Kashubian (Archaic)
-1388,Kassena
-1389,Kavalan
-1390,Kayapo
-1391,Kazakh
-1392,Kazakh (Rare)
-1393,Kazakh (Russified)
-1394,Kazakh Mythology
-1395,Kelabit
-1396,Kenyang
-1397,Ket (Rare)
-1398,Khakas
-1399,Khanty
-1400,Khasi
-1401,Khazar
-1402,Khazar (Latinized)
-1403,Khmer
-1404,Khmer (?)
-1405,Khmer (Archaic
-1406,Khmer (Italianized
-1407,Khmer (Rare
-1408,Khmer (Rare)
-1409,Khoekhoe
-1410,Kibembe
-1411,Kiga
-1412,Kikuyu
-1413,Kikuyu (Anglicized
-1414,Kikuyu (Archaic)
-1415,Kikuyu (Rare)
-1416,Kisii
-1417,Kizh
-1418,Klingon
-1419,Kolkata
-1420,Komi
-1421,Komi (Rare)
-1422,Kongo
-1423,Kongo (Modern)
-1424,Konkani
-1425,Korean
-1426,Korean (?)
-1427,Korean (Americanized
-1428,Korean (Anglicized
-1429,Korean (Anglicized)
-1430,Korean (Archaic)
-1431,Korean (Latinized
-1432,Korean (Modern
-1433,Korean (Modern)
-1434,Korean (Rare
-1435,Korean (Rare)
-1436,Korean (Sinicized)
-1437,Korean Mythology
-1438,Koryak
-1439,Koryak (?)
-1440,Kosovar
-1441,Kosovar (Modern
-1442,Kosovar (Rare)
-1443,Kraho
-1444,Kru
-1445,Kumyk
-1446,Kumyk (Russified)
-1447,Kurdish
-1448,Kurdish (Modern
-1449,Kurdish (Modern)
-1450,Kurdish (Rare
-1451,Kurdish (Rare)
-1452,Kurmanji
-1453,Kutchi
-1454,Kven
-1455,Kwa
-1456,Kyrgyz
-1457,Kyrgyz (Rare)
-1458,Ladakhi
-1459,Ladin
-1460,Lak
-1461,Lak (Russified)
-1462,Laki
-1463,Lala
-1464,Lao
-1465,Lao (Rare)
-1466,Late Greek
-1467,Late Greek (?)
-1468,Late Greek (Anglicized)
-1469,Late Greek (Gallicized)
-1470,Late Greek (Germanized)
-1471,Late Greek (Latinized)
-1472,Late Greek (Rare)
-1473,Late Roman
-1474,Late Roman (?)
-1475,Late Roman (Anglicized)
-1476,Late Roman (Germanized)
-1477,Late Roman (Hellenized)
-1478,Late Roman (Italianized)
-1479,Late Roman (Modern)
-1480,Late Roman (Portuguese-style)
-1481,Late Roman (Rare
-1482,Late Roman (Rare)
-1483,Latin
-1484,Latin (Archaic)
-1485,Latin irish
-1486,Latinized
-1487,Latinized)
-1488,Latvian
-1489,Latvian (?)
-1490,Latvian (Archaic)
-1491,Latvian (Modern
-1492,Latvian (Modern)
-1493,Latvian (Rare
-1494,Latvian (Rare)
-1495,Lauan
-1496,Laz
-1497,Lebanese
-1498,Lenape
-1499,Lenape (Modern
-1500,Lengadocian
-1501,Lengadocian (Archaic)
-1502,Lengadocian (Rare)
-1503,Lezgin
-1504,Lezgin (Rare)
-1505,Lezgin (Russified)
-1506,Liberia and Guinean (Americanized
-1507,Ligurian
-1508,Limburgish
-1509,Limburgish (Rare)
-1510,Lingala
-1511,Lingua Geral
-1512,Literature
-1513,Literature (?)
-1514,Literature (Anglicized)
-1515,Literature (Archaic)
-1516,Literature (Gallicized)
-1517,Literature (Hispanicized)
-1518,Literature (Italianized)
-1519,Literature (Japanized
-1520,Literature (Modern)
-1521,Literature (Polonized)
-1522,Literature (Portuguese-style)
-1523,Literature (Rare
-1524,Literature (Rare)
-1525,Lithuanian
-1526,Lithuanian (Americanized)
-1527,Lithuanian (Archaic)
-1528,Lithuanian (Expatriate)
-1529,Lithuanian (Germanized
-1530,Lithuanian (Latinized)
-1531,Lithuanian (Modern
-1532,Lithuanian (Modern)
-1533,Lithuanian (Rare
-1534,Lithuanian (Rare)
-1535,Livonian
-1536,Livonian (Archaic)
-1537,Livonian (Rare)
-1538,Lombard
-1539,Lombardian
-1540,Lombardic
-1541,Lombardic (Italianized)
-1542,Lombardic (Latinized)
-1543,Louisiana Creole
-1544,Louisiana Creole (Archaic
-1545,Louisiana Creole (Archaic)
-1546,Louisiana Creole (Rare
-1547,Louisiana Creole (Rare)
-1548,Low German
-1549,Low German (Archaic)
-1550,Low German (Rare
-1551,Low German (Rare)
-1552,Lozi
-1553,Luba
-1554,Luhya
-1555,Lunda
-1556,Luo
-1557,Luo (Archaic)
-1558,Luo (Modern)
-1559,Luri
-1560,Lusitanian Mythology
-1561,Luwian
-1562,Luwian Mythology
-1563,Luxembourgish
-1564,Luxembourgish (Archaic)
-1565,Luxembourgish (Rare)
-1566,Maasai
-1567,Mabaan
-1568,Macedonian
-1569,Macedonian (Anglicized)
-1570,Macedonian (Rare)
-1571,MadÃ­
-1572,Maguindanao
-1573,Mahican
-1574,Maithili
-1575,Malagasy
-1576,Malagasy (?)
-1577,Malagasy (Rare
-1578,Malagasy (Rare)
-1579,Malay
-1580,Malay (Modern
-1581,Malay (Rare)
-1582,Malayalam
-1583,Malayalam (Anglicized
-1584,Malayalam (Modern)
-1585,Malayalam (Rare)
-1586,Malaysian
-1587,Malaysian (?)
-1588,Malaysian (Rare
-1589,Malaysian (Rare)
-1590,Maltese
-1591,Maltese (Archaic)
-1592,Maltese (Biblical)
-1593,Maltese (Modern)
-1594,Maltese (Rare
-1595,Maltese (Rare)
-1596,Manchu
-1597,Mandaic
-1598,Mandailing
-1599,Mande (?)
-1600,Manding
-1601,Manipuri
-1602,Maniq
-1603,Manjak
-1604,Mansi
-1605,Manx
-1606,Manx (Anglicized)
-1607,Manx (Archaic)
-1608,Manx (Modern
-1609,Manx (Modern)
-1610,Manx (Rare
-1611,Manx (Rare)
-1612,Mao
-1613,Maori
-1614,Maori (?)
-1615,Maori (Anglicized
-1616,Maori (Anglicized)
-1617,Maori (Modern
-1618,Maori (Modern)
-1619,Maori (Rare)
-1620,Mapuche
-1621,Mapuche (Hispanicized)
-1622,Mapuche (Rare)
-1623,Maranao
-1624,Marathi
-1625,Marathi (Anglicized
-1626,Marathi (Modern)
-1627,Marathi (Rare)
-1628,Mari
-1629,Marshallese
-1630,Marshallese (Rare)
-1631,Masai
-1632,Mauritian Creole
-1633,Mauritian Creole (?)
-1634,Mauritian Creole (Rare)
-1635,Mayan
-1636,Mayan (Hispanicized)
-1637,Mayan Mythology
-1638,Mayan Mythology (Hispanicized
-1639,Mazanderani
-1640,Mbama
-1641,Mboma
-1642,Mbundu
-1643,Medieval
-1644,Medieval (Latinized)
-1645,Medieval (Rare)
-1646,Medieval Albanian
-1647,Medieval Arabic
-1648,Medieval Arabic (Latinized)
-1649,Medieval Arabic (Moorish)
-1650,Medieval Arabic (Rare
-1651,Medieval Arabic (Rare)
-1652,Medieval Aragonese
-1653,Medieval Baltic
-1654,Medieval Baltic (Latinized)
-1655,Medieval Baltic (Modern)
-1656,Medieval Baltic (Rare)
-1657,Medieval Basque
-1658,Medieval Basque (?)
-1659,Medieval Basque (Archaic)
-1660,Medieval Basque (Latinized)
-1661,Medieval Basque (Rare)
-1662,Medieval Breton
-1663,Medieval Breton (?)
-1664,Medieval Breton (Anglicized)
-1665,Medieval Breton (Gallicized)
-1666,Medieval Breton (Latinized
-1667,Medieval Breton (Latinized)
-1668,Medieval Bulgarian
-1669,Medieval Catalan
-1670,Medieval Catalan (?)
-1671,Medieval Cornish
-1672,Medieval Cornish (?)
-1673,Medieval Cornish (Latinized
-1674,Medieval Corsican
-1675,Medieval Croatian
-1676,Medieval Czech
-1677,Medieval Czech (?)
-1678,Medieval Czech (Germanized)
-1679,Medieval Czech (Latinized
-1680,Medieval Czech (Latinized)
-1681,Medieval Dutch
-1682,Medieval Dutch (?)
-1683,Medieval Dutch (Gallicized)
-1684,Medieval Dutch (Latinized)
-1685,Medieval Dutch (Rare)
-1686,Medieval English
-1687,Medieval English (?)
-1688,Medieval English (Anglicized
-1689,Medieval English (Anglicized)
-1690,Medieval English (Hypothetical)
-1691,Medieval English (Latinized
-1692,Medieval English (Latinized)
-1693,Medieval English (Rare
-1694,Medieval English (Rare)
-1695,Medieval Finnish
-1696,Medieval Finnish (Rare)
-1697,Medieval Flemish
-1698,Medieval Flemish (?)
-1699,Medieval French
-1700,Medieval French (Archaic)
-1701,Medieval French (Gallicized)
-1702,Medieval French (Italianized)
-1703,Medieval French (Latinized
-1704,Medieval French (Latinized)
-1705,Medieval French (Rare)
-1706,Medieval Frisian
-1707,Medieval Galician
-1708,Medieval Galician (?)
-1709,Medieval Georgian
-1710,Medieval German
-1711,Medieval German (?)
-1712,Medieval German (Hypothetical)
-1713,Medieval German (Latinized
-1714,Medieval German (Latinized)
-1715,Medieval German (Rare)
-1716,Medieval Hungarian
-1717,Medieval Hungarian (?)
-1718,Medieval Hungarian (Archaic)
-1719,Medieval Hungarian (Rare)
-1720,Medieval Irish
-1721,Medieval Irish (Anglicized
-1722,Medieval Irish (Anglicized)
-1723,Medieval Irish (Latinized)
-1724,Medieval Italian
-1725,Medieval Italian (?)
-1726,Medieval Italian (Anglicized)
-1727,Medieval Italian (Archaic)
-1728,Medieval Italian (Latinized)
-1729,Medieval Italian (Rare)
-1730,Medieval Italian (Tuscan
-1731,Medieval Italian (Tuscan)
-1732,Medieval Jewish
-1733,Medieval Jewish (Latinized)
-1734,Medieval Jewish (Rare)
-1735,Medieval Latin
-1736,Medieval Latin (?)
-1737,Medieval Low German
-1738,Medieval Mongolian
-1739,Medieval Mongolian (Rare)
-1740,Medieval Occitan
-1741,Medieval Occitan (Gallicized)
-1742,Medieval Occitan (Latinized)
-1743,Medieval Occitan (Rare)
-1744,Medieval Picard
-1745,Medieval Polish
-1746,Medieval Polish (Germanized)
-1747,Medieval Polish (Rare
-1748,Medieval Polish (Rare)
-1749,Medieval Portuguese
-1750,Medieval Portuguese (Archaic)
-1751,Medieval Portuguese (Rare)
-1752,Medieval ProvenÃ§al
-1753,Medieval Romanian
-1754,Medieval Romanian (Anglicized)
-1755,Medieval Romansh
-1756,Medieval Russian
-1757,Medieval Sardinian
-1758,Medieval Sardinian (?)
-1759,Medieval Sardinian (Rare)
-1760,Medieval Scandinavian
-1761,Medieval Scandinavian (?)
-1762,Medieval Scandinavian (Anglicized)
-1763,Medieval Scandinavian (Rare)
-1764,Medieval Scottish
-1765,Medieval Scottish (Anglicized)
-1766,Medieval Scottish (Latinized)
-1767,Medieval Scottish (Rare
-1768,Medieval Scottish (Rare)
-1769,Medieval Serbian
-1770,Medieval Slavic
-1771,Medieval Slavic (?)
-1772,Medieval Slavic (Anglicized)
-1773,Medieval Slavic (Hypothetical)
-1774,Medieval Slavic (Latinized)
-1775,Medieval Slavic (Rare)
-1776,Medieval Spanish
-1777,Medieval Spanish (Latinized
-1778,Medieval Spanish (Latinized)
-1779,Medieval Spanish (Rare)
-1780,Medieval Swiss
-1781,Medieval Turkic
-1782,Medieval Turkic (Rare)
-1783,Medieval Turkic/Medieval Hungarian
-1784,Medieval Ukrainian
-1785,Medieval Walloon
-1786,Medieval Walloon (Rare)
-1787,Medieval Welsh
-1788,Medieval Welsh (?)
-1789,Medieval Welsh (Anglicized)
-1790,Medieval Welsh (Latinized)
-1791,Melanesian
-1792,Melpa
-1793,Melungeon
-1794,Mende
-1795,Menominee
-1796,Meroitic
-1797,Meru
-1798,Mexican
-1799,Mexican (?)
-1800,Mexican (Modern
-1801,Mexican (Modern)
-1802,Mexican (Rare)
-1803,Mi'kmaq
-1804,Micronesian
-1805,Middle Persian
-1806,Middle Persian (Hellenized)
-1807,Middle Persian (Latinized)
-1808,Minangkabau
-1809,Mingrelian
-1810,Mingrelian (Rare)
-1811,Minoan
-1812,Miwok
-1813,Mizo
-1814,Modern
-1815,Modern (Sanskritized
-1816,Modern)
-1817,Modoc
-1818,Mohawk
-1819,Moldovan
-1820,Moldovan (Archaic)
-1821,Moldovan (Rare)
-1822,Mon (?)
-1823,Mongolian
-1824,Mongolian (Archaic)
-1825,Mongolian (Modern
-1826,Mongolian (Rare
-1827,Mongolian (Rare)
-1828,Mongolian Mythology
-1829,Montenegrin
-1830,Montenegrin (Anglicized)
-1831,Montenegrin (Archaic)
-1832,Montenegrin (Rare)
-1833,Mordvin
-1834,Mormon
-1835,Mormon (Archaic)
-1836,Mormon (Latinized)
-1837,Mormon (Rare)
-1838,Mossi
-1839,Mozambique (Rare)
-1840,Muisca Mythology
-1841,Muslim
-1842,Muslim (?)
-1843,Muslim (Arabized
-1844,Muslim (Modern
-1845,Muslim (Rare
-1846,Muslim (Rare)
-1847,Mwanga
-1848,Mwera
-1849,Mythology
-1850,Mythology (Hypothetical)
-1851,Naga
-1852,Nahuatl
-1853,Nahuatl (Anglicized)
-1854,Nahuatl (Archaic)
-1855,Nahuatl (Hispanicized
-1856,Nahuatl (Hispanicized)
-1857,Nanai
-1858,Narragansett
-1859,Narragansett (?)
-1860,"Native
+85,Australians duh
+86,AustriaNrench
+87,Austrian
+88,Avar
+89,Avestan
+90,Aymara
+91,Azerbaijani
+92,Aztec
+93,Aztec and Toltec Mythology
+94,Baadi
+95,Babylonian
+96,Bad hockey player
+97,Bahamian Creole
+98,Bajan
+99,Bakongo
+100,Balinese
+101,Balkan
+102,Balochi
+103,Balti
+104,Baltic Mythology
+105,Bamileke
+106,Banat Swabian
+107,Bandial
+108,Bangla
+109,Bantu
+110,Baoulé
+111,Bariba
+112,Bashkir
+113,Basque
+114,Basque Mythology
+115,Batak
+116,Bee
+117,BelarusiaNoldovan
+118,Belarusian
+119,BelgiaNrench
+120,Belgian
+121,Bemba
+122,Bengali
+123,Berber
+124,Berber/Moorish
+125,Bermudian
+126,Bhojpuri
+127,Bhutanese
+128,Biblical
+129,Biblical African
+130,Biblical Albanian
+131,Biblical Basque
+132,Biblical Catalan
+133,Biblical Czech
+134,Biblical Danish
+135,Biblical Dutch
+136,Biblical Finnish
+137,Biblical French
+138,Biblical German
+139,Biblical Greek
+140,Biblical Hawaiian
+141,Biblical Hebrew
+142,Biblical Hungarian
+143,Biblical Irish
+144,Biblical Italian
+145,Biblical Latin
+146,Biblical Maltese
+147,Biblical Norwegian
+148,Biblical Polish
+149,Biblical Portuguese
+150,Biblical Romanian
+151,Biblical Spanish
+152,Biblical Swedish
+153,Biblical Welsh
+154,Bini
+155,Bislama
+156,Bodo
+157,Bohemian
+158,Bontoc
+159,Bosnia and Herzegovina
+160,BosniaNacedonian
+161,Bosnian
+162,Boti
+163,Brasil
+164,Brazilian
+165,Breton
+166,Breton Legend
+167,British
+168,Brownsville Texas
+169,Brythonic
+170,Buddh / sc
+171,Buginese
+172,Bukiyip
+173,Bulgar
+174,BulgariaNacedonian
+175,Bulgarian
+176,Bunun
+177,Burmese
+178,Buryat
+179,Caddo
+180,Cambodian
+181,Cameroonian
+182,Canaanite
+183,Canadian
+184,Candian
+185,Cappadocian Greek
+186,Caribbean
+187,Catalan
+188,Caucasian
+189,Caucasian Mythology
+190,Cayuga
+191,Cebuano
+192,Celtic
+193,Celtic Mythology
+194,Central African
+195,Central American
+196,Chagga
+197,Chakhesang
+198,Cham
+199,Chamorro
+200,Charrúa
+201,Chatino
+202,Chechen
+203,Cherokee
+204,Chewa
+205,Cheyenne
+206,Chickasaw
+207,Chin
+208,Chinese
+209,Chinese Mythology
+210,Ching Chong
+211,Chipewyan
+212,Chitrali
+213,Choctaw
+214,Chukchi
+215,Chuukese
+216,Chuvash
+217,Circassian
+218,Classic Mayan
+219,Classical Syriac
+220,Cockermouth
+221,Colchian
+222,Comanche
+223,Comorian
+224,Confusing
+225,Congolese
+226,Cook Islands Maori
+227,Coos
+228,Coptic
+229,Cornish
+230,Cornish Welsh
+231,Corsican
+232,Cree
+233,Creek
+234,Crimean Tatar
+235,CroatiaNacedoniaNontenegrin
+236,CroatiaNacedonian
+237,CroatiaNedieval Slavic
+238,Croatian
+239,Cuman
+240,Cumbria
+241,Curonian
+242,Czech
+243,Dagarti
+244,Dagbani
+245,Dagestani
+246,Dambro
+247,Danish
+248,Dargin
+249,Dari Persian
+250,Darug
+251,Derived from handsome babies that become god
+252,Dhivehi
+253,Dinka
+254,Dogri
+255,Dolgan
+256,Dungan
+257,Dusun
+258,Dutch
+259,Duwamish
+260,ENGLISH
+261,East Frisia
+262,East Frisian
+263,Eastern African
+264,Edo
+265,Efik
+266,Eggon
+267,Egyptian
+268,Egyptian Mythology
+269,Elamite
+270,Elamite Mythology
+271,Embu
+272,Emilian-Romagnol
+273,Enets
+274,Englis
+275,English
+276,English Creole
+277,English- form of becky
+278,EnglishAfrican
+279,EnglishEnglish
+280,EnglishHaitian
+281,EnglishHebrew
+282,EnglishIrish
+283,Eritrea
+284,Esan
+285,Esperanto
+286,EstoniaNaori
+287,EstoniaNinnish
+288,Estonian
+289,Ethiopia
+290,Ethiopian
+291,Etruscan
+292,Etruscan Mythology
+293,Etsako
+294,Even
+295,Evenki
+296,Ewe
+297,Far Eastern Mythology
+298,Faroese
+299,Fictional
+300,Fijian
+301,Filipino
+302,Finland Swedish
+303,Finnish
+304,Finnish Mythology
+305,Flemish
+306,Folklore
+307,Franco-Provençal
+308,Frankish
+309,França
+310,French
+311,French Creole
+312,French Polish Italian
+313,French/ Hebrew
+314,Frisian
+315,Friulian
+316,From the holy spirit
+317,Fula
+318,Fushan
+319,Ga
+320,Gaelic
+321,Galatian
+322,Galician
+323,Galician Mythology
+324,Gallaecian Mythology
+325,Gallo
+326,Gamilaraay
+327,Ganda
+328,Garo
+329,Gascon
+330,Gaulish
+331,Gaulish Mythology
+332,Gayonese
+333,Ge'ez
+334,Genizaro
+335,Georgian
+336,Georgian Mythology
+337,GermaNrench
+338,GermaNrisian
+339,German
+340,Germanic
+341,Germanic Mythology
+342,Ghanaian
+343,Gikuyu
+344,Gilaki
+345,Global
+346,Gnosticism
+347,Goemai
+348,Gooniyandi
+349,Gorani
+350,Gothic
+351,Gouse basha
+352,Grecque
+353,Greece
+354,Greek
+355,Greek Mythology
+356,Greenlandic
+357,Guanche
+358,Guanche Mythology
+359,Guarani
+360,Guernésiais
+361,Gujarati
+362,Gumatj
+363,Gurani
+364,Gusii
+365,Guuni
+366,HISPANIC
+367,Haida
+368,Haiti
+369,Haitian
+370,Haitian Creole
+371,Hattian Mythology
+372,Hausa
+373,HawaiiaNrisian
+374,Hawaiian
+375,Haya
+376,Hebrew
+377,Hebrew/US
+378,Herero
+379,Hidatsa
+380,Hiligaynon
+381,Hindi
+382,Hindu
+383,Hinduism
+384,Hispanic
+385,History
+386,Hittite
+387,Hittite Mythology
+388,Hmong
+389,Ho
+390,Hopi
+391,Huichol
+392,HungariaNedieval Hungarian
+393,Hungarian
+394,Hungarian Mythology
+395,Hungary
+396,Hunsrik
+397,Hurrian
+398,Hurrian Mythology
+399,Iban
+400,Ibanag
+401,Ibibio
+402,Icelandic
+403,Idoma
+404,Igala
+405,Igbo
+406,Igbo Mythology
+407,Igede
+408,Ijaw
+409,Illyrian Mythology
+410,Ilocano
+411,Inca
+412,Inca Mythology
+413,Incan
+414,Incan Mythology
+415,Inde
+416,India
+417,India/Sanskrit
+418,Indian
+419,Indic
+420,Indigenous AmericaNapuche
+421,Indigenous American
+422,Indigenous Australian
+423,Indigenous Australian Mythology
+424,Indigenous Taiwanese
+425,Indigenous Tasmanian
+426,Indina
+427,Indonesia
+428,IndonesiaNalay
+429,IndonesiaNaltese
+430,Indonesian
+431,Indonesian Mythology
+432,Ingrian
+433,Ingush
+434,Interlingua
+435,Inuit
+436,Inuit Mythology
+437,Inupiat
+438,Iranian
+439,Irish
+440,Irish Mythology
+441,Iroquois
+442,Isan
+443,Islamic
+444,Isoko
+445,Israeli
+446,ItaliaNaltese
+447,ItaliaNinnish
+448,ItaliaNrisian
+449,Italian
+450,Italy
+451,Jagham
+452,Jain
+453,Jamaican Patois
+454,Japan
+455,Japanese
+456,Japanese Mythology
+457,Javanese
+458,Jewish
+459,Jewish Legend
+460,Johann Zahn
+461,Jola
+462,Judaeo-Portuguese
+463,Judeo-Anglo-Norman
+464,Judeo-Arabic
+465,Judeo-Catalan
+466,Judeo-Christian-Islamic Legend
+467,Judeo-French
+468,Judeo-Greek
+469,Judeo-Italian
+470,Judeo-Provençal
+471,Judeo-Spanish
+472,Jula
+473,Jupiter
+474,Jèrriais
+475,Kabardian
+476,Kabyle
+477,Kadazan
+478,Kaguru
+479,Kalasha
+480,Kalenjin
+481,Kalinago
+482,Kalmyk
+483,Kamba
+484,Kannada
+485,Kaonde
+486,Karachay-Balkar
+487,Karakalpak
+488,KareliaNinnish
+489,Karelian
+490,Kashmiri
+491,Kashubian
+492,Kassena
+493,Kavalan
+494,Kayapo
+495,Kazakh
+496,Kazakh Mythology
+497,Kelabit
+498,Kenya
+499,Kenyang
+500,Kerala
+501,Ket
+502,Khakas
+503,Khanty
+504,Khasi
+505,Khazar
+506,Khmer
+507,Khoekhoe
+508,Kibembe
+509,Kiga
+510,Kikuyu
+511,Kisii
+512,Kizh
+513,Klingon
+514,Kogi
+515,Kolkata
+516,Komi
+517,Kongo
+518,Konkani
+519,Korea
+520,Korean
+521,Korean Mythology
+522,Koryak
+523,Kosovar
+524,Kraho
+525,Kru
+526,Kumyk
+527,Kurdish
+528,Kuril Islands
+529,Kurmanji
+530,Kutchi
+531,KveNinnish
+532,Kven
+533,Kwa
+534,Kyrgyz
+535,LOVE GODESS
+536,Ladakhi
+537,Ladin
+538,Lak
+539,Laki
+540,Lala
+541,Lao
+542,Late Greek
+543,Late Roman
+544,Latim
+545,Latin
+546,Latin irish
+547,LatviaNinnish
+548,Latvian
+549,Lauan
+550,Laz
+551,Lebanese
+552,Lenape
+553,Lengadocian
+554,Lesotho
+555,Lezgin
+556,Ligurian
+557,Limburgish
+558,Lingala
+559,Lingua Geral
+560,Literature
+561,Lithuanian
+562,LivoniaNedieval Baltic
+563,Livonian
+564,Lombard
+565,Lombardian
+566,Lombardic
+567,Louisiana Creole
+568,Low German
+569,Lozi
+570,Luba
+571,Luhya
+572,Lunda
+573,Luo
+574,Luri
+575,Lusitanian Mythology
+576,Luwian
+577,Luwian Mythology
+578,Luxembourgish
+579,M
+580,Maasai
+581,Mabaan
+582,MacedoniaNontenegrin
+583,Macedonian
+584,Madhujya
+585,Madí
+586,Maguindanao
+587,Mahican
+588,Maithili
+589,Malagasy
+590,Malay
+591,Malayalam
+592,Malaysian
+593,Maltese
+594,Manchu
+595,Mandaic
+596,Mandailing
+597,Mande
+598,Manding
+599,Manipuri
+600,Maniq
+601,Manjak
+602,Mansi
+603,Manx
+604,Mao
+605,Maori
+606,Mapuche
+607,Maranao
+608,Marathi
+609,Mari
+610,Marshallese
+611,Masai
+612,Mauritian Creole
+613,Maya
+614,Mayan
+615,Mayan Mythology
+616,Mazanderani
+617,Mbama
+618,Mboma
+619,Mbundu
+620,Medieval
+621,Medieval Albanian
+622,Medieval Arabic
+623,Medieval Aragonese
+624,Medieval Baltic
+625,Medieval Basque
+626,Medieval Breton
+627,Medieval Bulgarian
+628,Medieval Catalan
+629,Medieval Cornish
+630,Medieval Corsican
+631,Medieval Croatian
+632,Medieval Czech
+633,Medieval Dutch
+634,Medieval English
+635,Medieval Finnish
+636,Medieval Flemish
+637,Medieval French
+638,Medieval Galician
+639,Medieval Georgian
+640,Medieval German
+641,Medieval Hungarian
+642,Medieval Irish
+643,Medieval ItaliaNedieval French
+644,Medieval Italian
+645,Medieval Jewish
+646,Medieval Latin
+647,Medieval Low German
+648,Medieval Mongolian
+649,Medieval Occitan
+650,Medieval Picard
+651,Medieval Polish
+652,Medieval Portuguese
+653,Medieval Provençal
+654,Medieval Romanian
+655,Medieval Romansh
+656,Medieval Russian
+657,Medieval Sardinian
+658,Medieval Scandinavian
+659,Medieval Scottish
+660,Medieval Serbian
+661,Medieval Slavic
+662,Medieval Spanish
+663,Medieval Swiss
+664,Medieval Turkic
+665,Medieval Turkic/Medieval Hungarian
+666,Medieval Ukrainian
+667,Medieval Walloon
+668,Medieval Welsh
+669,Melanesian
+670,Melpa
+671,Melungeon
+672,Mende
+673,Menominee
+674,Meroitic
+675,Meru
+676,Mexican
+677,Mi'kmaq
+678,Micronesian
+679,Middle Persian
+680,Minangkabau
+681,Mingrelian
+682,Minoan
+683,Miwok
+684,Mizo
+685,Modoc
+686,Mohawk
+687,Moldovan
+688,Mongolian
+689,Mongolian Mythology
+690,Montenegrin
+691,Mordvin
+692,Mormon
+693,Morocco
+694,Mossi
+695,Mozambique
+696,Muisca Mythology
+697,Muslim
+698,Mwanga
+699,Mwera
+700,My daughter Fararah
+701,Mythology
+702,Naga
+703,Nahuatl
+704,Nanai
+705,Nandeswari
+706,Narragansett
+707,"Native
 American"
-1861,Nauruan
-1862,Nauruan (Rare
-1863,Navajo
-1864,Navajo (?)
-1865,Ndebele
-1866,Ndebele (Rare)
-1867,Ndyuka
-1868,Neapolitan
-1869,Neapolitan (Rare
-1870,Neapolitan (Rare)
-1871,Near Eastern Mythology
-1872,Near Eastern Mythology (Gallicized)
-1873,Near Eastern Mythology (Hellenized)
-1874,Near Eastern Mythology (Latinized)
-1875,Nenets
-1876,Nepali
-1877,Nepali (?)
-1878,Nepali (Modern
-1879,Nepali (Rare)
-1880,Neshat (Arabized
-1881,New World Mythology
-1882,New World Mythology (?)
-1883,New World Mythology (Modern
-1884,Newar
-1885,Newar (?)
-1886,Newar (Rare)
-1887,Nganasan
-1888,Ngarrindjeri
-1889,Ngas
-1890,Ngombe
-1891,Ngoni
-1892,Nguni
-1893,Nigerian
-1894,Nigerian (?)
-1895,Nigerian (Americanized
-1896,Nigerian (Americanized)
-1897,Nigerian (Latinized
-1898,Nigerian (Modern
-1899,Nigerian (Modern)
-1900,Nigerian (Rare
-1901,Nigerian (Rare)
-1902,Nilo-Saharan
-1903,Nisga'a
-1904,Nivkh
-1905,Nivkh (Archaic)
-1906,NiÃ§ard
-1907,NiÃ§ard (Archaic)
-1908,Nkore
-1909,Nogai
-1910,NomenCulture
-1911,Noongar
-1912,Norman
-1913,Norman (?)
-1914,Norman (Gallicized
-1915,Norse
-1916,Norse Mythology
-1917,Norse Mythology (Anglicized)
-1918,North Frisian
-1919,North Frisian (Archaic)
-1920,North Frisian (Rare)
-1921,Northern African
-1922,Northern African (?)
-1923,Northern African (Archaic)
-1924,Northern African (Modern)
-1925,Northern African (Rare)
-1926,Northern Irish
-1927,Norway (Archaic)
-1928,Norwegian
-1929,Norwegian (?)
-1930,Norwegian (Anglicized
-1931,Norwegian (Archaic
-1932,Norwegian (Archaic)
-1933,Norwegian (Hypothetical)
-1934,Norwegian (Modern
-1935,Norwegian (Modern)
-1936,Norwegian (Nynorsk
-1937,Norwegian (Rare
-1938,Norwegian (Rare)
-1939,Nsenga
-1940,Nubian
-1941,Nubian (Archaic)
-1942,Nuer
-1943,Nuu-chah-nulth (Anglicized)
-1944,Nyakyusa
-1945,Nyamwezi
-1946,Nyanga
-1947,Nyari
-1948,Nyoro
-1949,Nyungar
-1950,Obscure
-1951,Obscure (?)
-1952,Obscure (Archaic)
-1953,Obscure (Modern
-1954,Obscure (Modern)
-1955,Obscure (Portuguese-style
-1956,Obscure (Portuguese-style)
-1957,Obscure (Rare
-1958,Obscure (Rare)
-1959,Occitan
-1960,Occitan (?)
-1961,Occitan (Archaic)
-1962,Occitan (Gallicized
-1963,Occitan (Gallicized)
-1964,Occitan (Modern
-1965,Occitan (Modern)
-1966,Occitan (Rare
-1967,Occitan (Rare)
-1968,Odia
-1969,Odia (Rare)
-1970,Ogba
-1971,Ogoni
-1972,Ojibwe
-1973,Ojibwe (Anglicized)
-1974,Old Celtic
-1975,Old Celtic (?)
-1976,Old Celtic (Archaic)
-1977,Old Celtic (Hypothetical)
-1978,Old Celtic (Latinized)
-1979,Old Celtic (Rare)
-1980,Old Chechen
-1981,Old Church Slavic
-1982,Old Czech
-1983,Old Danish
-1984,Old Danish (Archaic)
-1985,Old Danish (Latinized)
-1986,Old Danish (Rare)
-1987,Old Dutch
-1988,Old English
-1989,Old French
-1990,Old Frisian
-1991,Old Frisian (?)
-1992,Old Germanic (Hypothetical)
-1993,Old Germanic (Latinized
-1994,Old Germanic (Latinized)
-1995,Old High German
-1996,Old High German (?)
-1997,Old High German (Latinized)
-1998,Old Icelandic
-1999,Old Irish
-2000,Old Irish (Anglicized)
-2001,Old Irish (Latinized)
-2002,Old Norman
-2003,Old Norse
-2004,Old Norse (?)
-2005,Old Norse (Anglicized
-2006,Old Norse (Anglicized)
-2007,Old Norse (Archaic)
-2008,Old Norse (Hypothetical)
-2009,Old Norse (Latinized)
-2010,Old Norse (Rare)
-2011,Old Norwegian
-2012,Old Norwegian (Rare)
-2013,Old Persian
-2014,Old Persian (?)
-2015,Old Persian (Anglicized
-2016,Old Persian (Hellenized
-2017,Old Persian (Hellenized)
-2018,Old Persian (Hispanicized)
-2019,Old Persian (Hypothetical)
-2020,Old Persian (Latinized)
-2021,Old Persian (Modern
-2022,Old Persian (Rare)
-2023,Old Saxon
-2024,Old Saxon (?)
-2025,Old Swedish
-2026,Old Swedish (Archaic)
-2027,Old Swedish (Latinized)
-2028,Old Swedish (Rare
-2029,Old Swedish (Rare)
-2030,Old Welsh
-2031,Old Welsh (Hypothetical)
-2032,Old Welsh (Latinized)
-2033,Old Welsh (Modernized)
-2034,Olmec
-2035,Omaha
-2036,Omaha-Ponca
-2037,Omaha-Ponca (?)
-2038,Oneida
-2039,Oneida (Anglicized)
-2040,Oromo
-2041,Oromo (Anglicized)
-2042,Oromo (Latinized
-2043,Oromo (Rare)
-2044,Oroqen
-2045,Ossetian
-2046,Ossetian (Rare)
-2047,Ossetian (Russified)
-2048,Ossetian Mythology
-2049,Other
-2050,Otomi
-2051,Ottoman Turkish
-2052,Ottoman Turkish (Portuguese-style)
-2053,Ovambo
-2054,Paiute
-2055,Paiwan
-2056,Pakistani
-2057,Pakistani (?)
-2058,Pakistani (Anglicized
-2059,Pakistani (Latinized
-2060,Pakistani (Rare
-2061,Pakistani (Rare)
-2062,Pampangan
-2063,Papiamento (?)
-2064,Papiamento (Modern
-2065,Papuan
-2066,Papuan (?)
-2067,Papuan (Rare)
-2068,Parthian
-2069,Parthian (Hellenized)
-2070,Parthian (Latinized)
-2071,Pashto
-2072,Pashto (Modern)
-2073,Pashto (Rare
-2074,Pashto (Rare)
-2075,Pawnee
-2076,Pemon
-2077,Persian
-2078,Persian (?)
-2079,Persian (Archaic)
-2080,Persian (Expatriate)
-2081,Persian (Germanized
-2082,Persian (Latinized
-2083,Persian (Latinized)
-2084,Persian (Modern
-2085,Persian (Modern)
-2086,Persian (Rare
-2087,Persian (Rare)
-2088,Persian Mythology
-2089,Persian Mythology (Hellenized)
-2090,Persian Mythology (Modern
-2091,Pet
-2092,Pet (Rare)
-2093,Philippine Mythology
-2094,Philippine Mythology (Rare)
-2095,Phoenician
-2096,Phoenician (Hellenized)
-2097,Phoenician (Latinized)
-2098,Phoenician Mythology
-2099,Picard
-2100,Picard (Archaic)
-2101,Picard (Rare
-2102,Pictish
-2103,Piedmontese
-2104,Pintupi
-2105,Pitjantjatjara
-2106,Pokot
-2107,Polabian
-2108,Polabian (?)
-2109,Polabian (Polonized)
-2110,Polish
-2111,Polish (?)
-2112,Polish (Anglicized)
-2113,Polish (Archaic)
-2114,Polish (Gallicized)
-2115,Polish (Hellenized
-2116,Polish (Latinized
-2117,Polish (Literary
-2118,Polish (Modern
-2119,Polish (Modern)
-2120,Polish (Rare
-2121,Polish (Rare)
-2122,Polish (Russified
-2123,Polonized)
-2124,Polynesian
-2125,Polynesian (Rare)
-2126,Polynesian Mythology
-2127,Pomeranian
-2128,Pomeranian (?)
-2129,Pomo
-2130,Popular Culture
-2131,Popular Culture (?)
-2132,Popular Culture (Americanized
-2133,Popular Culture (Anglicized
-2134,Popular Culture (Archaic)
-2135,Popular Culture (Hispanicized)
-2136,Popular Culture (Japanized
-2137,Popular Culture (Magyarized)
-2138,Popular Culture (Modern
-2139,Popular Culture (Modern)
-2140,Popular Culture (Rare)
-2141,Popular Culture Inuit
-2142,Portuguese
-2143,Portuguese (?)
-2144,Portuguese (African
-2145,Portuguese (African)
-2146,Portuguese (Anglicized)
-2147,Portuguese (Archaic)
-2148,Portuguese (Brazilian
-2149,Portuguese (Brazilian)
-2150,Portuguese (European
-2151,Portuguese (European)
-2152,Portuguese (Germanized)
-2153,Portuguese (Latinized)
-2154,Portuguese (Modern
-2155,Portuguese (Modern)
-2156,Portuguese (Rare
-2157,Portuguese (Rare)
-2158,Portuguese Brazilian (Rare)
-2159,Portuguese Creole
-2160,Portuguese-style
-2161,Portuguese-style)
-2162,Potawatomi
-2163,Powhatan
-2164,Powhatan (Anglicized)
-2165,Prague German
-2166,ProvenÃ§al
-2167,ProvenÃ§al (Archaic)
-2168,ProvenÃ§al (Gallicized)
-2169,ProvenÃ§al (Rare)
-2170,Prussian
-2171,Puerto Rican
-2172,Puerto Rican (Rare
-2173,Puerto Rican (Rare)
-2174,Punjabi
-2175,Punjabi (Modern)
-2176,Punjabi (Rare)
-2177,Punu
-2178,PurÃ©pecha
-2179,PurÃ©pecha (?)
-2180,Puyuma
-2181,PwÃ¢la
-2182,Qashqai
-2183,Qashqai (Rare)
-2184,Quechua
-2185,Quechua (?)
-2186,Quechua (Anglicized)
-2187,Quechua (Hispanicized)
-2188,Rade
-2189,Rajasthani
-2190,Rare
-2191,Rare (Rare)
-2192,Rare)
-2193,Roman Mythology
-2194,Roman Mythology (?)
-2195,Roman Mythology (Anglicized
-2196,Roman Mythology (Anglicized)
-2197,Roman Mythology (Basque-style)
-2198,Roman Mythology (Gallicized)
-2199,Roman Mythology (Hellenized)
-2200,Roman Mythology (Hispanicized
-2201,Roman Mythology (Hispanicized)
-2202,Roman Mythology (Italianized
-2203,Roman Mythology (Italianized)
-2204,Roman Mythology (Magyarized)
-2205,Roman Mythology (Portuguese-style)
-2206,Romana
-2207,Romani
-2208,Romani (?)
-2209,Romani (Anglicized)
-2210,Romani (Archaic)
-2211,Romani (CalÃ³)
-2212,Romani (Latinized)
-2213,Romani (Rare
-2214,Romani (Rare)
-2215,Romanian
-2216,Romanian (?)
-2217,Romanian (Anglicized)
-2218,Romanian (Archaic)
-2219,Romanian (Modern
-2220,Romanian (Modern)
-2221,Romanian (Rare
-2222,Romanian (Rare)
-2223,Romanian Mythology
-2224,Romansh
-2225,Romansh (Archaic)
-2226,Romansh (Modern)
-2227,Romansh (Rare
-2228,Romansh (Rare)
-2229,RomÃ¢n
-2230,Rotuman
-2231,Rotuman (Rare)
-2232,Rukai
-2233,Rundi
-2234,Russian
-2235,Russian (?)
-2236,Russian (Anglicized
-2237,Russian (Anglicized)
-2238,Russian (Archaic)
-2239,Russian (Dutchified)
-2240,Russian (Germanized
-2241,Russian (Germanized)
-2242,Russian (Latinized
-2243,Russian (Modern
-2244,Russian (Modern)
-2245,Russian (Polonized)
-2246,Russian (Rare
-2247,Russian (Rare)
-2248,Russian English (Modern)
-2249,Russified)
-2250,Rusyn (Rare
-2251,Rutul
-2252,Rwandan
-2253,Rwandan (Modern
-2254,Ryukyuan
-2255,Saaroa
-2256,Saint Lucian
-2257,Saint Lucian (?)
-2258,Saisiyat
-2259,Sakizaya
-2260,Sakonnet
-2261,Salishan
-2262,Salishan (?)
-2263,Sami
-2264,Sami (?)
-2265,Sami (Anglicized)
-2266,Sami (Archaic)
-2267,Sami (Rare)
-2268,Sami (Skolt)
-2269,Sami Mythology
-2270,Samoan
-2271,Samoan (?)
-2272,Samoan (Rare
-2273,Samoan (Rare)
-2274,San (Bushmen)
-2275,San Mythology
-2276,Sanskrit
-2277,Sanskrit (?)
-2278,Sanskrit (Americanized
-2279,Sanskrit (Anglicized
-2280,Sanskrit (Archaic)
-2281,Sanskrit (Modern
-2282,Sanskrit (Modern)
-2283,Sanskrit (Rare
-2284,Sanskrit (Rare)
-2285,Santali
-2286,Sarcee
-2287,Sardinian
-2288,Sardinian (Archaic)
-2289,Sardinian (Rare
-2290,Sardinian (Rare)
-2291,Saudi
-2292,Sauk
-2293,Saya
-2294,Scandinavian
-2295,Scandinavian (Modern
-2296,Scandinavian (Rare)
-2297,Scots
-2298,Scots (?)
-2299,Scots (Archaic)
-2300,Scots (Rare)
-2301,Scottish
-2302,Scottish (?)
-2303,Scottish (Americanized
-2304,Scottish (Anglicized
-2305,Scottish (Anglicized)
-2306,Scottish (Archaic
-2307,Scottish (Archaic)
-2308,Scottish (Modern
-2309,Scottish (Modern)
-2310,Scottish (Portuguese-style
-2311,Scottish (Rare
-2312,Scottish (Rare)
-2313,Scottish Gaelic
-2314,Scottish Gaelic (?)
-2315,Scottish Gaelic (Anglicized
-2316,Scottish Gaelic (Anglicized)
-2317,Scottish Gaelic (Archaic)
-2318,Scottish Gaelic (Gallicized
-2319,Scottish Gaelic (Latinized
-2320,Scottish Gaelic (Modern
-2321,Scottish Gaelic (Rare
-2322,Scottish Gaelic (Rare)
-2323,Scythian
-2324,Scythian (Hellenized)
-2325,Scythian (Latinized)
-2326,Seediq
-2327,Sekani
-2328,Selkup
-2329,Semitic Mythology
-2330,Semitic Mythology (Gallicized)
-2331,Semitic Mythology (Hellenized)
-2332,Semitic Mythology (Latinized)
-2333,Seneca
-2334,Serbian
-2335,Serbian (Anglicized)
-2336,Serbian (Archaic)
-2337,Serbian (Germanized)
-2338,Serbian (Latinized
-2339,Serbian (Modern
-2340,Serbian (Rare
-2341,Serbian (Rare)
-2342,Seselwa
-2343,Setswana
-2344,Shakespearian
-2345,Shan
-2346,Shawnee
-2347,Shina
-2348,Shipibo Conibo
-2349,Shona
-2350,Shona (Anglicized
-2351,Shona (Rare)
-2352,Shor
-2353,Shoshone
-2354,Shuar
-2355,Siberian
-2356,Siberian Mythology
-2357,Sicilian
-2358,Sicilian (Rare)
-2359,Siksika
-2360,Silesian
-2361,Silesian (Archaic)
-2362,Sindhi
-2363,Sinhalese
-2364,Sinhalese (?)
-2365,Sinhalese (Modern
-2366,Sinhalese (Modern)
-2367,Sinhalese (Rare
-2368,Sinhalese (Rare)
-2369,Sioux
-2370,Sioux (?)
-2371,Sioux (Anglicized)
-2372,Slavic
-2373,Slavic (Archaic)
-2374,Slavic (Latinized)
-2375,Slavic (Rare)
-2376,Slavic Mythology
-2377,Slavic Mythology (?)
-2378,Slovak
-2379,Slovak (Archaic)
-2380,Slovak (Modern)
-2381,Slovak (Rare)
-2382,Slovene
-2383,Slovene (?)
-2384,Slovene (Archaic)
-2385,Slovene (Modern)
-2386,Slovene (Rare
-2387,Slovene (Rare)
-2388,Slovenian
-2389,Snohomish
-2390,Soli
-2391,Solomon Islands (Modern)
-2392,Somali
-2393,Somali (?)
-2394,Somali (Arabized
-2395,Somali (Archaic)
-2396,Somali (Expatriate)
-2397,Somali (Latinized
-2398,Somali (Rare)
-2399,Soninke
-2400,Sorbian
-2401,Sorbian (Archaic)
-2402,Sorbian (Rare)
-2403,Sotho
-2404,Sotho (?)
-2405,Sotho (Modern)
-2406,Sotho (Rare)
-2407,South Africa
-2408,South African
-2409,South African (Modern
-2410,South African (Rare)
-2411,South American
-2412,South American (Modern
-2413,South American (Modern)
-2414,South American (Rare)
-2415,South Asian
-2416,South Slavic
-2417,Southern African
-2418,Southern African (Rare)
-2419,Soviet
-2420,Spain (Modern)
-2421,Spanish
-2422,Spanish (?)
-2423,Spanish (Americanized
-2424,Spanish (Americanized)
-2425,Spanish (Anglicized)
-2426,Spanish (Archaic)
-2427,Spanish (Canarian
-2428,Spanish (Canarian)
-2429,Spanish (Caribbean
-2430,Spanish (Caribbean)
-2431,Spanish (European
-2432,Spanish (European)
-2433,Spanish (Filipinized)
-2434,Spanish (Hispanicized)
-2435,Spanish (Italianized
-2436,Spanish (Latin American
-2437,Spanish (Latin American)
-2438,Spanish (Latin American) Spanish (Mexican)
-2439,Spanish (Latinized
-2440,Spanish (Mexican
-2441,Spanish (Mexican)
-2442,Spanish (Modern
-2443,Spanish (Modern)
-2444,Spanish (Philippines
-2445,Spanish (Philippines)
-2446,Spanish (Rare
-2447,Spanish (Rare)
-2448,Sri Lankan
-2449,Suisun
-2450,Sula
-2451,Sumerian
-2452,Sumerian Mythology
-2453,Sundanese
-2454,Svan
-2455,Swahili
-2456,Swahili (?)
-2457,Swahili (Dutchified
-2458,Swahili (Modern
-2459,Swahili (Modern)
-2460,Swahili (Rare)
-2461,Swazi
-2462,Swedish
-2463,Swedish (?)
-2464,Swedish (Americanized
-2465,Swedish (Anglicized
-2466,Swedish (Archaic)
-2467,Swedish (Latinized
-2468,Swedish (Latinized)
-2469,Swedish (Modern
-2470,Swedish (Modern)
-2471,Swedish (Rare
-2472,Swedish (Rare)
-2473,Swiss
-2474,Swiss (Archaic)
-2475,Swiss (Rare)
-2476,Tagalog
-2477,Tagalog (?)
-2478,Tagalog (Latinized
-2479,Tagalog (Rare)
-2480,Tahitian
-2481,Tahitian (Gallicized)
-2482,Tahltan
-2483,Taiwanese
-2484,Taiwanese (Rare)
-2485,Tajik
-2486,Tajik (?)
-2487,Tajik (Rare)
-2488,Tajik (Russified)
-2489,Talysh
-2490,Tamil
-2491,Tamil (?)
-2492,Tamil (Anglicized
-2493,Tamil (Arabized
-2494,Tamil (Archaic)
-2495,Tamil (Japanized
-2496,Tamil (Latinized
-2497,Tamil (Modern)
-2498,Tamil (Rare)
-2499,Tao
-2500,Tatar
-2501,Tatar (Archaic)
-2502,Tatar (Germanized)
-2503,Tatar (Modern)
-2504,Tatar (Rare)
-2505,Tatar (Russified)
-2506,Tati
-2507,Tausug
-2508,Tausug (Modern)
-2509,Tausug (Rare)
-2510,TaÃ­no
-2511,TaÃ­no (Archaic)
-2512,TaÃ­no (Rare)
-2513,Telugu
-2514,Telugu (Anglicized
-2515,Telugu (Modern
-2516,Telugu (Modern)
-2517,Telugu (Rare)
-2518,Tenharim
-2519,Teutonic
-2520,Thai
-2521,Thai (?)
-2522,Thai (Anglicized)
-2523,Thai (Archaic
-2524,Thai (Modern)
-2525,Thai (Muslim)
-2526,Thai (Rare
-2527,Thai (Rare)
-2528,Thai (Sanskritized)
-2529,Thao
-2530,Theatre
-2531,Theatre (Gallicized
-2532,Theatre (Gallicized)
-2533,Theatre (Hispanicized)
-2534,Theatre (Italianized)
-2535,Theatre (Magyarized)
-2536,Theatre (Polonized)
-2537,Theatre (Portuguese-style)
-2538,Theology
-2539,Theology (Arabized)
-2540,Theology (Gallicized)
-2541,Theology (Hellenized)
-2542,Theology (Hispanicized)
-2543,Theology (Italianized)
-2544,Theology (Latinized)
-2545,Theology (Polonized)
-2546,Theology (Portuguese-style)
-2547,Theology (Rare)
-2548,Theology (Russified)
-2549,Thracian
-2550,Thracian (Hellenized
-2551,Thracian (Latinized)
-2552,Tiberian
-2553,Tibetan
-2554,Tibetan (Rare)
-2555,Tigrinya
-2556,Tigrinya (Italianized
-2557,Tiv
-2558,Tiv (Modern)
-2559,Tlingit
-2560,Tocharian
-2561,Tonga (?)
-2562,Tongan
-2563,Tongan (?)
-2564,Tongan (Modern
-2565,Tongan (Rare)
-2566,Tooro
-2567,Totonac Mythology
-2568,Transylvanian Saxon
-2569,Trinidadian Creole
-2570,Trinidadian Creole (Modern
-2571,Trinidadian Creole (Rare
-2572,Trinidadian Creole (Rare)
-2573,Tripuri
-2574,Truku
-2575,Tsonga
-2576,Tsou
-2577,Tsuu T'ina
-2578,Tswana
-2579,Tswana (Modern)
-2580,Tswana (Rare)
-2581,Tuareg
-2582,Tumbuka
-2583,Tumbuka (Archaic)
-2584,Tumbuka (Rare)
-2585,Tupi
-2586,Tupi (?)
-2587,Tupi (Hispanicized
-2588,Tupi (Rare)
-2589,Turkish
-2590,Turkish (?)
-2591,Turkish (Anglicized)
-2592,Turkish (Arabized
-2593,Turkish (Archaic
-2594,Turkish (Archaic)
-2595,Turkish (Expatriate)
-2596,Turkish (Hellenized)
-2597,Turkish (Modern
-2598,Turkish (Modern)
-2599,Turkish (Rare)
-2600,Turkmen
-2601,Turkmen (Modern)
-2602,Turkmen (Rare)
-2603,Tuvaluan
-2604,Tuvan
-2605,Tuvan (Rare)
-2606,Twi
-2607,TÅÄ±Ì¨chÇ«
-2608,Ubykh
-2609,Ubykh (?)
-2610,Udmurt
-2611,Ugaritic
-2612,Ugaritic Mythology
-2613,Ukrainian
-2614,Ukrainian (Anglicized
-2615,Ukrainian (Archaic)
-2616,Ukrainian (Germanized
-2617,Ukrainian (Germanized)
-2618,Ukrainian (Modern)
-2619,Ukrainian (Polonized
-2620,Ukrainian (Polonized)
-2621,Ukrainian (Rare
-2622,Ukrainian (Rare)
-2623,Ukrainian (Russified)
-2624,Ukrainian (Ukrainian
-2625,Ukrainian (Ukrainianized
-2626,Ukrainianized
-2627,Ukrainianized)
-2628,Umbrian
-2629,Unknown (?)
-2630,Unknown (Rare
-2631,Unknown (Rare)
-2632,Upper German
-2633,Upper German (Archaic)
-2634,Upper German (Rare
-2635,Upper German (Rare)
-2636,Urartian
-2637,Urdu
-2638,Urdu (?)
-2639,Urdu (Americanized
-2640,Urdu (Archaic)
-2641,Urdu (Modern)
-2642,Urdu (Rare)
-2643,Urhobo
-2644,Ute
-2645,Uyghur
-2646,Uyghur (Arabized)
-2647,Uyghur (Rare)
-2648,Uzbek
-2649,Uzbek (?)
-2650,Uzbek (Arabized
-2651,Uzbek (Archaic)
-2652,Uzbek (Rare
-2653,Uzbek (Rare)
-2654,Uzbek (Russified)
-2655,Uzbeki
-2656,Vandalic (Hypothetical)
-2657,Vandalic (Latinized)
-2658,Various
-2659,Various (?)
-2660,Various (Americanized
-2661,Various (Anglicized
-2662,Various (Archaic)
-2663,Various (Gallicized
-2664,Various (Latinized
-2665,Various (Latinized)
-2666,Various (Modern
-2667,Various (Modern)
-2668,Various (Rare
-2669,Various (Rare)
-2670,Venda
-2671,Venda (Modern)
-2672,Venetian
-2673,Venetian (Archaic)
-2674,Venetian (Latinized)
-2675,Venetic Mythology
-2676,Veps
-2677,Vietnamese
-2678,Vietnamese (?)
-2679,Vietnamese (Anglicized
-2680,Vietnamese (Anglicized)
-2681,Vietnamese (Expatriate)
-2682,Vietnamese (Modern
-2683,Vietnamese (Modern)
-2684,Vietnamese (Rare
-2685,Vietnamese (Rare)
-2686,Vilamovian
-2687,Vilamovian (Rare)
-2688,Vlach
-2689,Wakka Wakka
-2690,Walloon
-2691,Walloon (Archaic)
-2692,Walloon (Gallicized)
-2693,Walloon (Rare)
-2694,Walmajarri
-2695,Wampanoag
-2696,Wampanoag (?)
-2697,Wao
-2698,Warao
-2699,Warlpiri
-2700,Welsh
-2701,Welsh (?)
-2702,Welsh (Anglicized
-2703,Welsh (Anglicized)
-2704,Welsh (Archaic)
-2705,Welsh (Latinized)
-2706,Welsh (Modern
-2707,Welsh (Modern)
-2708,Welsh (Rare
-2709,Welsh (Rare)
-2710,Welsh Mythology
-2711,Welsh Mythology (?)
-2712,West Frisian
-2713,West Frisian (?)
-2714,West Frisian (Archaic)
-2715,West Frisian (Dutchified
-2716,West Frisian (Modern)
-2717,West Frisian (Rare)
-2718,Western African
-2719,Western African (?)
-2720,Western African (Archaic)
-2721,Western African (Expatriate
-2722,Western African (Gallicized)
-2723,Western African (Modern
-2724,Western African (Modern)
-2725,Western African (Rare)
-2726,Western Yugur
-2727,Wolof
-2728,Wurundjeri
-2729,Xhosa
-2730,Xhosa (Modern)
-2731,Yakama
-2732,Yakan
-2733,Yakut
-2734,Yakut (Rare)
-2735,Yakuur
-2736,YakÃ¶
-2737,Yana
-2738,Yao
-2739,Yao (Modern)
-2740,Yapi lugbara (Rare)
-2741,Yavapai
-2742,Yawaru
-2743,Yazidi
-2744,Yellowknife
-2745,Yi
-2746,Yiddish
-2747,Yiddish (?)
-2748,Yiddish (Americanized
-2749,Yiddish (Americanized)
-2750,Yiddish (Anglicized)
-2751,Yiddish (Archaic)
-2752,Yiddish (Polonized)
-2753,Yiddish (Rare
-2754,Yiddish (Rare)
-2755,Yiddish (Russified)
-2756,Yokut
-2757,Yolngu
-2758,YolÅu
-2759,Yoruba
-2760,Yoruba (?)
-2761,Yoruba (Modern
-2762,Yoruba (Modern)
-2763,Yoruba (Rare)
-2764,Yoruba Mythology
-2765,Yucatec Maya
-2766,Yupik
-2767,Zapotec
-2768,Zapotec (Hispanicized)
-2769,Zaza
-2770,Zhuang
-2771,Zimbabwean
-2772,Zomi
-2773,Zulu
-2774,Zulu (Anglicized
-2775,Zulu (Modern)
-2776,Zulu (Rare)
-2777,any
-2778,nan
-2779,sri lankan (Anglicized)
-2780,ØªØ±Ú©Û Ù Ø§ÛØ±Ø§ÙÛ (?)
+708,Nauruan
+709,Navajo
+710,Ndebele
+711,Ndyuka
+712,Neapolitan
+713,Near Eastern Mythology
+714,Nenets
+715,Nepal
+716,Nepali
+717,New World Mythology
+718,Newar
+719,Nganasan
+720,Ngarrindjeri
+721,Ngas
+722,Ngombe
+723,Ngoni
+724,Nguni
+725,Nigeria
+726,Nigerian
+727,Nigger langu
+728,NiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNigger
+729,Nilo-Saharan
+730,Nisga'a
+731,Nivkh
+732,Niçard
+733,Nkore
+734,Nogai
+735,NomenCulture
+736,Noongar
+737,Norman
+738,Norse
+739,Norse Mythology
+740,North Frisian
+741,Northern African
+742,Northern Irish
+743,NorwegiaNrisian
+744,Norwegian
+745,Nsenga
+746,Nubian
+747,Nuer
+748,Nyakyusa
+749,Nyamwezi
+750,Nyanga
+751,Nyari
+752,Nyoro
+753,Nyungar
+754,Obscure
+755,Occitan
+756,Odia
+757,Ogba
+758,Ogoni
+759,Ojibwe
+760,Okene
+761,Old Celtic
+762,Old Chechen
+763,Old Church Slavic
+764,Old Czech
+765,Old Danish
+766,Old Dutch
+767,Old English
+768,Old French
+769,Old Frisian
+770,Old Germanic
+771,Old High GermaNedieval
+772,Old High German
+773,Old Icelandic
+774,Old Irish
+775,Old Norman
+776,Old Norse
+777,Old Norwegian
+778,Old Persian
+779,Old Saxon
+780,Old Swedish
+781,Old Welsh
+782,Olmec
+783,Omaha
+784,Omaha-Ponca
+785,On the farm
+786,Oneida
+787,Onekotan
+788,Oromo
+789,Oroqen
+790,Ossetian
+791,Ossetian Mythology
+792,Other
+793,Otomi
+794,Ottoman Turkish
+795,Ovambo
+796,Ovi
+797,Paiute
+798,Paiwan
+799,Pakistani
+800,Pampangan
+801,Papiamento
+802,Papuan
+803,Parthian
+804,Pashto
+805,Pawnee
+806,Pemon
+807,Persia
+808,Persian
+809,Persian Mythology
+810,Pet
+811,Philippine Mythology
+812,Philippines
+813,Phoenician
+814,Phoenician Mythology
+815,Picard
+816,Pictish
+817,Piedmontese
+818,Pintupi
+819,Pitjantjatjara
+820,Polabian
+821,Poland
+822,Polish
+823,PolynesiaNaori
+824,Polynesian
+825,Polynesian Mythology
+826,Pomeranian
+827,Pomo
+828,Popular Culture
+829,Popular Culture Inuit
+830,Portuguese
+831,Portuguese Brazilian
+832,Portuguese Creole
+833,Potawatomi
+834,Powhatan
+835,Prague German
+836,Provençal
+837,Prussian
+838,Puerto Rican
+839,PuertoRico
+840,Punjabi
+841,Punu
+842,Purépecha
+843,Puyuma
+844,Pwâla
+845,Qashqai
+846,Quechua
+847,Rade
+848,Rajasthani
+849,Rape
+850,Rare
+851,Remian
+852,Republic of Autisme
+853,Republic of Hermetia
+854,Republic of Kekistan
+855,Roman
+856,Roman Mythology
+857,Romana
+858,Romani
+859,RomaniaNacedoniaNacedonian
+860,RomaniaNaori
+861,RomaniaNoldovan
+862,Romanian
+863,Romanian Mythology
+864,Romansh
+865,Român
+866,Rotuman
+867,Rukai
+868,Rundi
+869,Russia
+870,RussiaNoldovan
+871,Russian
+872,Russian English
+873,Rutul
+874,Rwanda
+875,Rwandan
+876,Rylan land
+877,Ryukyuan
+878,Saaroa
+879,Saint Lucian
+880,Saisiyat
+881,Sakizaya
+882,Sakonnet
+883,Salishan
+884,Sami
+885,Sami Mythology
+886,Samoan
+887,San Mythology
+888,Sanskrit
+889,Santali
+890,Sarcee
+891,Sardinian
+892,Saudi
+893,Saudi Arabian
+894,Sauk
+895,Saya
+896,Scandinavian
+897,Scotland
+898,Scots
+899,Scottish
+900,Scottish Gaelic
+901,Scythian
+902,Seediq
+903,Sekani
+904,Selkup
+905,Semitic Mythology
+906,Seneca
+907,SerbiaNacedoniaNacedonian
+908,SerbiaNacedoniaNontenegrin
+909,SerbiaNacedonian
+910,Serbian
+911,Seselwa
+912,Setswana
+913,ShakespeariaNilipino
+914,Shakespearian
+915,Shan
+916,Shawnee
+917,Sheep-barn
+918,Shina
+919,Shipibo Conibo
+920,Shit Parenting
+921,Shona
+922,Shor
+923,Shoshone
+924,Shuar
+925,Siberian
+926,Siberian Mythology
+927,Sicilian
+928,Siksika
+929,Silesian
+930,Sindhi
+931,Sinhala
+932,Sinhalese
+933,Sioux
+934,Slavic
+935,Slavic Mythology
+936,Slovak
+937,Slovene
+938,SloveniaNoldovan
+939,Slovenian
+940,Snohomish
+941,Soli
+942,Solomon Islands
+943,Somali
+944,Soninke
+945,Sorbian
+946,Sotho
+947,South Africa
+948,South African
+949,South American
+950,South Asian
+951,South Slavic
+952,Southern African
+953,Soviet
+954,Spain
+955,Spanish
+956,Sri Lanka
+957,Sri Lankan
+958,Sri lanka
+959,Suisun
+960,Sula
+961,Sumerian
+962,Sumerian Mythology
+963,Sundanese
+964,Svan
+965,Swahili
+966,Swazi
+967,Swedish
+968,Swiss
+969,Tagalog
+970,Tahitian
+971,Tahltan
+972,Taiwanese
+973,Tajik
+974,Talysh
+975,Tamil
+976,Tamil nadu
+977,Tao
+978,Tatar
+979,Tati
+980,Tausug
+981,Taíno
+982,Telugu
+983,Tenharim
+984,Teutonic
+985,Thai
+986,Thao
+987,The Anxious
+988,The Depressed
+989,The Hood
+990,Theatre
+991,Theology
+992,Thracian
+993,Tiberian
+994,Tibetan
+995,Tigrinya
+996,Tiv
+997,Tlingit
+998,Tocharian
+999,Tonga
+1000,Tongan
+1001,Tooro
+1002,Totonac Mythology
+1003,Trinidadian Creole
+1004,Tripuri
+1005,Truku
+1006,Truth
+1007,Tsonga
+1008,Tsou
+1009,Tsuu T'ina
+1010,Tswana
+1011,Tuareg
+1012,Tumbuka
+1013,Tupi
+1014,Turkey
+1015,Turkish
+1016,Turkmen
+1017,Tuvaluan
+1018,Tuvan
+1019,Twi
+1020,Türk
+1021,Tłı̨chǫ
+1022,Ubykh
+1023,Udmurt
+1024,Ugaritic
+1025,Ugaritic Mythology
+1026,Ugc
+1027,Ukrainian
+1028,Umbrian
+1029,Unkno
+1030,UnknowNaori
+1031,UnknowNedieval Basque
+1032,UnknowNedieval Turkic
+1033,UnknowNinnish
+1034,UnknowNontenegrin
+1035,UnknowNrench
+1036,UnknowNrisian
+1037,Upper German
+1038,UrAnus
+1039,Urartian
+1040,Urdu
+1041,Urhobo
+1042,Ute
+1043,Uyghur
+1044,Uzbek
+1045,Uzbeki
+1046,Vandalic
+1047,Various
+1048,Venda
+1049,Venetian
+1050,Venetic Mythology
+1051,Veps
+1052,Vietnamese
+1053,Vilamovian
+1054,Vlach
+1055,Wakka Wakka
+1056,WallooNinnish
+1057,Walloon
+1058,Walmajarri
+1059,Wampanoag
+1060,Wao
+1061,Warao
+1062,Warlpiri
+1063,Welsh
+1064,Welsh Mythology
+1065,West FrisiaNinnish
+1066,West Frisian
+1067,Western Yugur
+1068,Wolof
+1069,Wurundjeri
+1070,Xhosa
+1071,Yakama
+1072,Yakan
+1073,Yakut
+1074,Yakuur
+1075,Yana
+1076,Yao
+1077,Yapi lugbara
+1078,Yavapai
+1079,Yawaru
+1080,Yazidi
+1081,Yellowknife
+1082,Yi
+1083,Yiddish
+1084,Yokut
+1085,Yolngu
+1086,Yolŋu
+1087,Yoruba
+1088,Yoruba Mythology
+1089,You
+1090,Your beautiful face :)
+1091,Yucatec Maya
+1092,Yupik
+1093,Zapotec
+1094,Zaza
+1095,Zhuang
+1096,Zimbabwean
+1097,Zomi
+1098,Zulu
+1099,acedoniaNontenegrin
+1100,acedonian
+1101,alagasy
+1102,alay
+1103,alayalam
+1104,altese
+1105,american
+1106,anipuri
+1107,anx
+1108,any
+1109,aori
+1110,aranao
+1111,arathi
+1112,aroese
+1113,asian
+1114,bangla
+1115,busan
+1116,california
+1117,canada
+1118,chaileen carly claire chance and carrington also charles
+1119,china
+1120,edieval Basque
+1121,edieval Breton
+1122,edieval English
+1123,edieval French
+1124,edieval Hungarian
+1125,edieval Irish
+1126,edieval Italian
+1127,edieval Mongolian
+1128,edieval Occitan
+1129,edieval Polish
+1130,edieval Portuguese
+1131,edieval Romanian
+1132,edieval Russian
+1133,edieval Scandinavian
+1134,edieval Scottish
+1135,edieval Slavic
+1136,edieval Welsh
+1137,egyptian
+1138,exican
+1139,greek
+1140,hindu
+1141,iddle Persian
+1142,ijian
+1143,ilipino
+1144,india
+1145,india puliyambedu chennai tamilnadu
+1146,indian
+1147,innish
+1148,jaindis
+1149,keltisch
+1150,korean
+1151,lemish
+1152,malayalam
+1153,mayan
+1154,ngoni
+1155,nigeria
+1156,oldovan
+1157,ormon
+1158,pelvis
+1159,srilankan
+1160,tamil
+1161,telugu

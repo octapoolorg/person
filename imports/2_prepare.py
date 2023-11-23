@@ -5,23 +5,37 @@ import random
 from collections import defaultdict
 
 numerology_meanings = {
-    1: ['Leader', 'Independent', 'Innovative', 'Courageous', 'Original', 'Assertive', 'Pioneering', 'Ambitious', 'Creative', 'Determined'],
-    2: ['Cooperative', 'Diplomatic', 'Sensitive', 'Peaceful', 'Harmonious', 'Understanding', 'Kind', 'Considerate', 'Gentle', 'Empathetic'],
-    3: ['Creative', 'Social', 'Expressive', 'Optimistic', 'Enthusiastic', 'Artistic', 'Inspiring', 'Communicative', 'Friendly', 'Vibrant'],
-    4: ['Organized', 'Practical', 'Reliable', 'Disciplined', 'Stable', 'Hardworking', 'Loyal', 'Trustworthy', 'Determined', 'Steadfast'],
-    5: ['Adventurous', 'Energetic', 'Curious', 'Flexible', 'Versatile', 'Dynamic', 'Exciting', 'Fearless', 'Progressive', 'Inquisitive'],
-    6: ['Caring', 'Responsible', 'Protective', 'Nurturing', 'Sympathetic', 'Compassionate', 'Fair', 'Family-Oriented', 'Community-Minded', 'Supportive'],
-    7: ['Intellectual', 'Analytical', 'Thoughtful', 'Intuitive', 'Mystical', 'Philosophical', 'Contemplative', 'Reflective', 'Insightful', 'Perceptive'],
-    8: ['Ambitious', 'Efficient', 'Powerful', 'Confident', 'Realistic', 'Authoritative', 'Decisive', 'Professional', 'Goal-Oriented', 'Resourceful'],
-    9: ['Humanitarian', 'Generous', 'Altruistic', 'Compassionate', 'Idealistic', 'Global', 'Charitable', 'Empathetic', 'Healing', 'Benevolent'],
-    11: ['Master Intuition', 'Spiritual Messenger', 'Inspiration', 'Enlightenment', 'Idealism', 'Visionary', 'Charisma'],
-    22: ['Master Builder', 'Large Endeavors', 'Powerful Force', 'Leadership', 'Achievement', 'Manifestation', 'Innovation'],
+    1: ['Leader', 'Independent', 'Innovative', 'Courageous', 'Original', 'Assertive', 'Pioneering', 'Ambitious',
+        'Creative', 'Determined'],
+    2: ['Cooperative', 'Diplomatic', 'Sensitive', 'Peaceful', 'Harmonious', 'Understanding', 'Kind', 'Considerate',
+        'Gentle', 'Empathetic'],
+    3: ['Creative', 'Social', 'Expressive', 'Optimistic', 'Enthusiastic', 'Artistic', 'Inspiring', 'Communicative',
+        'Friendly', 'Vibrant'],
+    4: ['Organized', 'Practical', 'Reliable', 'Disciplined', 'Stable', 'Hardworking', 'Loyal', 'Trustworthy',
+        'Determined', 'Steadfast'],
+    5: ['Adventurous', 'Energetic', 'Curious', 'Flexible', 'Versatile', 'Dynamic', 'Exciting', 'Fearless',
+        'Progressive', 'Inquisitive'],
+    6: ['Caring', 'Responsible', 'Protective', 'Nurturing', 'Sympathetic', 'Compassionate', 'Fair', 'Family-Oriented',
+        'Community-Minded', 'Supportive'],
+    7: ['Intellectual', 'Analytical', 'Thoughtful', 'Intuitive', 'Mystical', 'Philosophical', 'Contemplative',
+        'Reflective', 'Insightful', 'Perceptive'],
+    8: ['Ambitious', 'Efficient', 'Powerful', 'Confident', 'Realistic', 'Authoritative', 'Decisive', 'Professional',
+        'Goal-Oriented', 'Resourceful'],
+    9: ['Humanitarian', 'Generous', 'Altruistic', 'Compassionate', 'Idealistic', 'Global', 'Charitable', 'Empathetic',
+        'Healing', 'Benevolent'],
+    11: ['Master Intuition', 'Spiritual Messenger', 'Inspiration', 'Enlightenment', 'Idealism', 'Visionary',
+         'Charisma'],
+    22: ['Master Builder', 'Large Endeavors', 'Powerful Force', 'Leadership', 'Achievement', 'Manifestation',
+         'Innovation'],
     33: ['Master Teacher', 'Compassion', 'Blessing', 'Inspiration', 'Enlightenment', 'Humanitarian', 'Understanding']
 }
 
+
 def calculate_numerology(name):
-    values = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10, 'K': 11, 'L': 12, 'M': 13,
-              'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25,
+    values = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10, 'K': 11, 'L': 12,
+              'M': 13,
+              'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24,
+              'Y': 25,
               'Z': 26}
     name_sum = sum(values.get(char.upper(), 0) for char in name if char.isalpha())
 
@@ -31,6 +45,7 @@ def calculate_numerology(name):
     while name_sum > 9:
         name_sum = sum(int(digit) for digit in str(name_sum))
     return name_sum
+
 
 def get_numerology_meaning(name, numerology_dict):
     if not name.strip():
@@ -42,10 +57,12 @@ def get_numerology_meaning(name, numerology_dict):
         return ', '.join(random.sample(meanings, num_characteristics))
     return ''
 
+
 # Function to create a directory if it doesn't exist
 def create_directory(directory_name):
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
+
 
 # Function to count syllables using pyphen
 def count_syllables(name):
@@ -53,8 +70,10 @@ def count_syllables(name):
     hyphenated = dic.inserted(name)
     return hyphenated.count('-') + 1
 
+
 # Function to read CSV and populate tables and mapping dictionaries
-def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, unique_categories, gender_to_id, origin_to_id, category_to_id):
+def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, unique_categories,
+                                gender_to_id, origin_to_id, category_to_id):
     with open(filepath, 'r', encoding='utf-8') as csvfile:
         csvreader = csv.DictReader(csvfile)
         for row in csvreader:
@@ -114,12 +133,14 @@ def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, uniq
                 if origin_id:
                     mappings['name_origin'].add((name_id, origin_id))
 
+
 # Function to write a table to a CSV file
 def write_table_to_csv(filepath, header, table):
     with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(header)
         csvwriter.writerows(table)
+
 
 # Main function to execute the script
 def main():
@@ -144,7 +165,8 @@ def main():
 
     # First pass to collect unique genders, origins, and categories
     input_file = 'temp/names_db.csv'
-    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, {}, {}, {})
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, {}, {},
+                                {})
 
     # Create ID mappings
     gender_to_id = {gender: idx + 1 for idx, gender in enumerate(sorted(unique_genders))}
@@ -162,7 +184,8 @@ def main():
     mappings['name_origin'].clear()
 
     # Second pass to update names table with correct gender_ids and origin_ids
-    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, gender_to_id, origin_to_id, category_to_id)
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories,
+                                gender_to_id, origin_to_id, category_to_id)
 
     # Write tables to CSV
     output_files = {
@@ -189,6 +212,7 @@ def main():
         write_table_to_csv(output_file, header, list(data))  # Convert set to list before writing
 
     print("Corrected CSV files created.")
+
 
 if __name__ == '__main__':
     main()
