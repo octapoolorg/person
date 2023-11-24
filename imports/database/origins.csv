@@ -9,1157 +9,1025 @@ id,name
 8,Adyghe
 9,Afghan
 10,Afizere
-11,Africa
-12,African
-13,African English
-14,African Mythology
-15,Afrikan
-16,Afro-American
-17,Agatu
-18,Ahom
-19,Ainu
-20,Akan
-21,Akkadian
-22,Alachua
-23,Albanian
-24,Albanian Mythology
-25,Aleut
-26,Algonquian
-27,Algonquin
-28,Alsatian
-29,Altai
-30,Amara
-31,American
-32,American British
-33,American French
-34,American Greek
-35,American Irish
-36,American rare
-37,Ameru
-38,Amharic
-39,Amis
-40,Anaang
-41,Ancient
-42,Ancient Aramaic
-43,Ancient Armenian
-44,Ancient Assyrian
-45,Ancient Egyptian
-46,Ancient Greek
-47,Ancient Hebrew
-48,Ancient Iberian
-49,Ancient Near Eastern
-50,Ancient Oscan
-51,Ancient Roman
-52,Anglo-Norman
-53,Anglo-Saxon
-54,Anglo-Saxon Mythology
-55,Anglo-Scandinavian
-56,Antillean Creole
-57,Apache
-58,Aquitanian
-59,Arabic
-60,Arabic Ethiopian
-61,Aragonese
-62,Arapaho
-63,Archaic
-64,Argentina
-65,ArmeniaNaltese
-66,Armenian
-67,Armenian Mythology
-68,Arpitan
-69,Arrernte
-70,"Arthurian
+11,African
+12,African Mythology
+13,Afro-American
+14,Agatu
+15,Ahom
+16,Ainu
+17,Akan
+18,Akkadian
+19,Alachua
+20,Albanian
+21,Albanian Mythology
+22,Aleut
+23,Algonquian
+24,Algonquin
+25,Alsatian
+26,Altai
+27,Amara
+28,American
+29,American British
+30,American French
+31,American Greek
+32,American Irish
+33,American rare
+34,Ameru
+35,Amharic
+36,Amis
+37,Anaang
+38,Ancient
+39,Ancient Aramaic
+40,Ancient Armenian
+41,Ancient Assyrian
+42,Ancient Egyptian
+43,Ancient Greek
+44,Ancient Hebrew
+45,Ancient Iberian
+46,Ancient Near Eastern
+47,Ancient Oscan
+48,Ancient Roman
+49,Anglo-Norman
+50,Anglo-Saxon
+51,Anglo-Saxon Mythology
+52,Anglo-Scandinavian
+53,Antillean Creole
+54,Apache
+55,Aquitanian
+56,Arabic
+57,Arabic Ethiopian
+58,Aragonese
+59,Arapaho
+60,Archaic
+61,Argentina
+62,ArmeniaNaltese
+63,Armenian
+64,Armenian Mythology
+65,Arpitan
+66,Arrernte
+67,"Arthurian
 Legend"
-71,Arthurian Romance
-72,Asante Twi
-73,Asian
-74,Assamese
-75,Assiniboine
-76,Assyrian
-77,Astronomy
-78,Asturian
-79,Atakapa
-80,Atayal
-81,Athidevu
-82,Australia ireland
-83,Australian
-84,"Australian
+68,Arthurian Romance
+69,Asante Twi
+70,Asian
+71,Assamese
+72,Assiniboine
+73,Assyrian
+74,Astronomy
+75,Asturian
+76,Atakapa
+77,Atayal
+78,Athidevu
+79,Australia ireland
+80,Australian
+81,"Australian
 Aboriginal"
-85,Australians duh
-86,AustriaNrench
-87,Austrian
-88,Avar
-89,Avestan
-90,Aymara
-91,Azerbaijani
-92,Aztec
-93,Aztec and Toltec Mythology
-94,Baadi
-95,Babylonian
-96,Bad hockey player
-97,Bahamian Creole
-98,Bajan
-99,Bakongo
-100,Balinese
-101,Balkan
-102,Balochi
-103,Balti
-104,Baltic Mythology
-105,Bamileke
-106,Banat Swabian
-107,Bandial
-108,Bangla
-109,Bantu
-110,Baoulé
-111,Bariba
-112,Bashkir
-113,Basque
-114,Basque Mythology
-115,Batak
-116,Bee
-117,BelarusiaNoldovan
-118,Belarusian
-119,BelgiaNrench
-120,Belgian
-121,Bemba
-122,Bengali
-123,Berber
-124,Berber/Moorish
-125,Bermudian
-126,Bhojpuri
-127,Bhutanese
-128,Biblical
-129,Biblical African
-130,Biblical Albanian
-131,Biblical Basque
-132,Biblical Catalan
-133,Biblical Czech
-134,Biblical Danish
-135,Biblical Dutch
-136,Biblical Finnish
-137,Biblical French
-138,Biblical German
-139,Biblical Greek
-140,Biblical Hawaiian
-141,Biblical Hebrew
-142,Biblical Hungarian
-143,Biblical Irish
-144,Biblical Italian
-145,Biblical Latin
-146,Biblical Maltese
-147,Biblical Norwegian
-148,Biblical Polish
-149,Biblical Portuguese
-150,Biblical Romanian
-151,Biblical Spanish
-152,Biblical Swedish
-153,Biblical Welsh
-154,Bini
-155,Bislama
-156,Bodo
-157,Bohemian
-158,Bontoc
-159,Bosnia and Herzegovina
-160,BosniaNacedonian
-161,Bosnian
-162,Boti
-163,Brasil
-164,Brazilian
-165,Breton
-166,Breton Legend
-167,British
-168,Brownsville Texas
-169,Brythonic
-170,Buddh / sc
-171,Buginese
-172,Bukiyip
-173,Bulgar
-174,BulgariaNacedonian
-175,Bulgarian
-176,Bunun
-177,Burmese
-178,Buryat
-179,Caddo
-180,Cambodian
-181,Cameroonian
-182,Canaanite
-183,Canadian
-184,Candian
-185,Cappadocian Greek
-186,Caribbean
-187,Catalan
-188,Caucasian
-189,Caucasian Mythology
-190,Cayuga
-191,Cebuano
-192,Celtic
-193,Celtic Mythology
-194,Central African
-195,Central American
-196,Chagga
-197,Chakhesang
-198,Cham
-199,Chamorro
-200,Charrúa
-201,Chatino
-202,Chechen
-203,Cherokee
-204,Chewa
-205,Cheyenne
-206,Chickasaw
-207,Chin
-208,Chinese
-209,Chinese Mythology
-210,Ching Chong
-211,Chipewyan
-212,Chitrali
-213,Choctaw
-214,Chukchi
-215,Chuukese
-216,Chuvash
-217,Circassian
-218,Classic Mayan
-219,Classical Syriac
-220,Cockermouth
-221,Colchian
-222,Comanche
-223,Comorian
-224,Confusing
-225,Congolese
-226,Cook Islands Maori
-227,Coos
-228,Coptic
-229,Cornish
-230,Cornish Welsh
-231,Corsican
-232,Cree
-233,Creek
-234,Crimean Tatar
-235,CroatiaNacedoniaNontenegrin
-236,CroatiaNacedonian
-237,CroatiaNedieval Slavic
-238,Croatian
-239,Cuman
-240,Cumbria
-241,Curonian
-242,Czech
-243,Dagarti
-244,Dagbani
-245,Dagestani
-246,Dambro
-247,Danish
-248,Dargin
-249,Dari Persian
-250,Darug
-251,Derived from handsome babies that become god
-252,Dhivehi
-253,Dinka
-254,Dogri
-255,Dolgan
-256,Dungan
-257,Dusun
-258,Dutch
-259,Duwamish
-260,ENGLISH
-261,East Frisia
-262,East Frisian
-263,Eastern African
-264,Edo
-265,Efik
-266,Eggon
-267,Egyptian
-268,Egyptian Mythology
-269,Elamite
-270,Elamite Mythology
-271,Embu
-272,Emilian-Romagnol
-273,Enets
-274,Englis
-275,English
-276,English Creole
-277,English- form of becky
-278,EnglishAfrican
-279,EnglishEnglish
-280,EnglishHaitian
-281,EnglishHebrew
-282,EnglishIrish
-283,Eritrea
-284,Esan
-285,Esperanto
-286,EstoniaNaori
-287,EstoniaNinnish
-288,Estonian
-289,Ethiopia
-290,Ethiopian
-291,Etruscan
-292,Etruscan Mythology
-293,Etsako
-294,Even
-295,Evenki
-296,Ewe
-297,Far Eastern Mythology
-298,Faroese
-299,Fictional
-300,Fijian
-301,Filipino
-302,Finland Swedish
-303,Finnish
-304,Finnish Mythology
-305,Flemish
-306,Folklore
-307,Franco-Provençal
-308,Frankish
-309,França
-310,French
-311,French Creole
-312,French Polish Italian
-313,French/ Hebrew
-314,Frisian
-315,Friulian
-316,From the holy spirit
-317,Fula
-318,Fushan
-319,Ga
-320,Gaelic
-321,Galatian
-322,Galician
-323,Galician Mythology
-324,Gallaecian Mythology
-325,Gallo
-326,Gamilaraay
-327,Ganda
-328,Garo
-329,Gascon
-330,Gaulish
-331,Gaulish Mythology
-332,Gayonese
-333,Ge'ez
-334,Genizaro
-335,Georgian
-336,Georgian Mythology
-337,GermaNrench
-338,GermaNrisian
-339,German
-340,Germanic
-341,Germanic Mythology
-342,Ghanaian
-343,Gikuyu
-344,Gilaki
-345,Global
-346,Gnosticism
-347,Goemai
-348,Gooniyandi
-349,Gorani
-350,Gothic
-351,Gouse basha
-352,Grecque
-353,Greece
-354,Greek
-355,Greek Mythology
-356,Greenlandic
-357,Guanche
-358,Guanche Mythology
-359,Guarani
-360,Guernésiais
-361,Gujarati
-362,Gumatj
-363,Gurani
-364,Gusii
-365,Guuni
-366,HISPANIC
-367,Haida
-368,Haiti
-369,Haitian
-370,Haitian Creole
-371,Hattian Mythology
-372,Hausa
-373,HawaiiaNrisian
-374,Hawaiian
-375,Haya
-376,Hebrew
-377,Hebrew/US
-378,Herero
-379,Hidatsa
-380,Hiligaynon
-381,Hindi
-382,Hindu
-383,Hinduism
-384,Hispanic
-385,History
-386,Hittite
-387,Hittite Mythology
-388,Hmong
-389,Ho
-390,Hopi
-391,Huichol
-392,HungariaNedieval Hungarian
-393,Hungarian
-394,Hungarian Mythology
-395,Hungary
-396,Hunsrik
-397,Hurrian
-398,Hurrian Mythology
-399,Iban
-400,Ibanag
-401,Ibibio
-402,Icelandic
-403,Idoma
-404,Igala
-405,Igbo
-406,Igbo Mythology
-407,Igede
-408,Ijaw
-409,Illyrian Mythology
-410,Ilocano
-411,Inca
-412,Inca Mythology
-413,Incan
-414,Incan Mythology
-415,Inde
-416,India
-417,India/Sanskrit
-418,Indian
-419,Indic
-420,Indigenous AmericaNapuche
-421,Indigenous American
-422,Indigenous Australian
-423,Indigenous Australian Mythology
-424,Indigenous Taiwanese
-425,Indigenous Tasmanian
-426,Indina
-427,Indonesia
-428,IndonesiaNalay
-429,IndonesiaNaltese
-430,Indonesian
-431,Indonesian Mythology
-432,Ingrian
-433,Ingush
-434,Interlingua
-435,Inuit
-436,Inuit Mythology
-437,Inupiat
-438,Iranian
-439,Irish
-440,Irish Mythology
-441,Iroquois
-442,Isan
-443,Islamic
-444,Isoko
-445,Israeli
-446,ItaliaNaltese
-447,ItaliaNinnish
-448,ItaliaNrisian
-449,Italian
-450,Italy
-451,Jagham
-452,Jain
-453,Jamaican Patois
-454,Japan
-455,Japanese
-456,Japanese Mythology
-457,Javanese
-458,Jewish
-459,Jewish Legend
-460,Johann Zahn
-461,Jola
-462,Judaeo-Portuguese
-463,Judeo-Anglo-Norman
-464,Judeo-Arabic
-465,Judeo-Catalan
-466,Judeo-Christian-Islamic Legend
-467,Judeo-French
-468,Judeo-Greek
-469,Judeo-Italian
-470,Judeo-Provençal
-471,Judeo-Spanish
-472,Jula
-473,Jupiter
-474,Jèrriais
-475,Kabardian
-476,Kabyle
-477,Kadazan
-478,Kaguru
-479,Kalasha
-480,Kalenjin
-481,Kalinago
-482,Kalmyk
-483,Kamba
-484,Kannada
-485,Kaonde
-486,Karachay-Balkar
-487,Karakalpak
-488,KareliaNinnish
-489,Karelian
-490,Kashmiri
-491,Kashubian
-492,Kassena
-493,Kavalan
-494,Kayapo
-495,Kazakh
-496,Kazakh Mythology
-497,Kelabit
-498,Kenya
-499,Kenyang
-500,Kerala
-501,Ket
-502,Khakas
-503,Khanty
-504,Khasi
-505,Khazar
-506,Khmer
-507,Khoekhoe
-508,Kibembe
-509,Kiga
-510,Kikuyu
-511,Kisii
-512,Kizh
-513,Klingon
-514,Kogi
-515,Kolkata
-516,Komi
-517,Kongo
-518,Konkani
-519,Korea
-520,Korean
-521,Korean Mythology
-522,Koryak
-523,Kosovar
-524,Kraho
-525,Kru
-526,Kumyk
-527,Kurdish
-528,Kuril Islands
-529,Kurmanji
-530,Kutchi
-531,KveNinnish
-532,Kven
-533,Kwa
-534,Kyrgyz
-535,LOVE GODESS
-536,Ladakhi
-537,Ladin
-538,Lak
-539,Laki
-540,Lala
-541,Lao
-542,Late Greek
-543,Late Roman
-544,Latim
-545,Latin
-546,Latin irish
-547,LatviaNinnish
-548,Latvian
-549,Lauan
-550,Laz
-551,Lebanese
-552,Lenape
-553,Lengadocian
-554,Lesotho
-555,Lezgin
-556,Ligurian
-557,Limburgish
-558,Lingala
-559,Lingua Geral
-560,Literature
-561,Lithuanian
-562,LivoniaNedieval Baltic
-563,Livonian
-564,Lombard
-565,Lombardian
-566,Lombardic
-567,Louisiana Creole
-568,Low German
-569,Lozi
-570,Luba
-571,Luhya
-572,Lunda
-573,Luo
-574,Luri
-575,Lusitanian Mythology
-576,Luwian
-577,Luwian Mythology
-578,Luxembourgish
-579,M
-580,Maasai
-581,Mabaan
-582,MacedoniaNontenegrin
-583,Macedonian
-584,Madhujya
-585,Madí
-586,Maguindanao
-587,Mahican
-588,Maithili
-589,Malagasy
-590,Malay
-591,Malayalam
-592,Malaysian
-593,Maltese
-594,Manchu
-595,Mandaic
-596,Mandailing
-597,Mande
-598,Manding
-599,Manipuri
-600,Maniq
-601,Manjak
-602,Mansi
-603,Manx
-604,Mao
-605,Maori
-606,Mapuche
-607,Maranao
-608,Marathi
-609,Mari
-610,Marshallese
-611,Masai
-612,Mauritian Creole
-613,Maya
-614,Mayan
-615,Mayan Mythology
-616,Mazanderani
-617,Mbama
-618,Mboma
-619,Mbundu
-620,Medieval
-621,Medieval Albanian
-622,Medieval Arabic
-623,Medieval Aragonese
-624,Medieval Baltic
-625,Medieval Basque
-626,Medieval Breton
-627,Medieval Bulgarian
-628,Medieval Catalan
-629,Medieval Cornish
-630,Medieval Corsican
-631,Medieval Croatian
-632,Medieval Czech
-633,Medieval Dutch
-634,Medieval English
-635,Medieval Finnish
-636,Medieval Flemish
-637,Medieval French
-638,Medieval Galician
-639,Medieval Georgian
-640,Medieval German
-641,Medieval Hungarian
-642,Medieval Irish
-643,Medieval ItaliaNedieval French
-644,Medieval Italian
-645,Medieval Jewish
-646,Medieval Latin
-647,Medieval Low German
-648,Medieval Mongolian
-649,Medieval Occitan
-650,Medieval Picard
-651,Medieval Polish
-652,Medieval Portuguese
-653,Medieval Provençal
-654,Medieval Romanian
-655,Medieval Romansh
-656,Medieval Russian
-657,Medieval Sardinian
-658,Medieval Scandinavian
-659,Medieval Scottish
-660,Medieval Serbian
-661,Medieval Slavic
-662,Medieval Spanish
-663,Medieval Swiss
-664,Medieval Turkic
-665,Medieval Turkic/Medieval Hungarian
-666,Medieval Ukrainian
-667,Medieval Walloon
-668,Medieval Welsh
-669,Melanesian
-670,Melpa
-671,Melungeon
-672,Mende
-673,Menominee
-674,Meroitic
-675,Meru
-676,Mexican
-677,Mi'kmaq
-678,Micronesian
-679,Middle Persian
-680,Minangkabau
-681,Mingrelian
-682,Minoan
-683,Miwok
-684,Mizo
-685,Modoc
-686,Mohawk
-687,Moldovan
-688,Mongolian
-689,Mongolian Mythology
-690,Montenegrin
-691,Mordvin
-692,Mormon
-693,Morocco
-694,Mossi
-695,Mozambique
-696,Muisca Mythology
-697,Muslim
-698,Mwanga
-699,Mwera
-700,My daughter Fararah
-701,Mythology
-702,Naga
-703,Nahuatl
-704,Nanai
-705,Nandeswari
-706,Narragansett
-707,"Native
+82,Australians duh
+83,AustriaNrench
+84,Austrian
+85,Avar
+86,Avestan
+87,Aymara
+88,Azerbaijani
+89,Aztec
+90,Baadi
+91,Babylonian
+92,Bahamian Creole
+93,Bajan
+94,Bakongo
+95,Balinese
+96,Balkan
+97,Balochi
+98,Balti
+99,Baltic Mythology
+100,Bamileke
+101,Banat Swabian
+102,Bandial
+103,Bangla
+104,Bantu
+105,Baoulé
+106,Bariba
+107,Bashkir
+108,Basque
+109,Basque Mythology
+110,Batak
+111,Bee
+112,Belarusian
+113,Belgian
+114,Bemba
+115,Bengali
+116,Berber
+117,Bermudian
+118,Bhojpuri
+119,Bhutanese
+120,Biblical
+121,Biblical African
+122,Biblical Albanian
+123,Biblical Basque
+124,Biblical Catalan
+125,Biblical Czech
+126,Biblical Danish
+127,Biblical Dutch
+128,Biblical Finnish
+129,Biblical French
+130,Biblical German
+131,Biblical Greek
+132,Biblical Hawaiian
+133,Biblical Hebrew
+134,Biblical Hungarian
+135,Biblical Irish
+136,Biblical Italian
+137,Biblical Latin
+138,Biblical Maltese
+139,Biblical Norwegian
+140,Biblical Polish
+141,Biblical Portuguese
+142,Biblical Romanian
+143,Biblical Spanish
+144,Biblical Swedish
+145,Biblical Welsh
+146,Bini
+147,Bislama
+148,Bodo
+149,Bohemian
+150,Bontoc
+151,Bosnia and Herzegovina
+152,BosniaNacedonian
+153,Bosnian
+154,Boti
+155,Brasil
+156,Brazilian
+157,Breton
+158,Breton Legend
+159,British
+160,Brownsville Texas
+161,Brythonic
+162,Buddhist
+163,Buginese
+164,Bukiyip
+165,Bulgar
+166,Bulgarian
+167,Bunun
+168,Burmese
+169,Buryat
+170,Caddo
+171,Cambodian
+172,Cameroonian
+173,Canaanite
+174,Canadian
+175,Candian
+176,Cappadocian Greek
+177,Caribbean
+178,Catalan
+179,Caucasian
+180,Caucasian Mythology
+181,Cayuga
+182,Cebuano
+183,Celtic
+184,Celtic Mythology
+185,Central African
+186,Central American
+187,Chagga
+188,Chakhesang
+189,Cham
+190,Chamorro
+191,Charrúa
+192,Chatino
+193,Chechen
+194,Cherokee
+195,Chewa
+196,Cheyenne
+197,Chickasaw
+198,Chin
+199,Chinese
+200,Chinese Mythology
+201,Ching Chong
+202,Chipewyan
+203,Chitrali
+204,Choctaw
+205,Chukchi
+206,Chuukese
+207,Chuvash
+208,Circassian
+209,Classic Mayan
+210,Classical Syriac
+211,Cockermouth
+212,Colchian
+213,Comanche
+214,Comorian
+215,Confusing
+216,Congolese
+217,Cook Islands Maori
+218,Coos
+219,Coptic
+220,Cornish
+221,Cornish Welsh
+222,Corsican
+223,Cree
+224,Creek
+225,Crimean Tatar
+226,Croatian
+227,Cuman
+228,Cumbria
+229,Curonian
+230,Czech
+231,Dagarti
+232,Dagbani
+233,Dagestani
+234,Dambro
+235,Danish
+236,Dargin
+237,Dari Persian
+238,Darug
+239,Dhivehi
+240,Dinka
+241,Dogri
+242,Dolgan
+243,Dungan
+244,Dusun
+245,Dutch
+246,Duwamish
+247,ENGLISH
+248,East Frisia
+249,East Frisian
+250,Eastern
+251,Eastern African
+252,Edo
+253,Efik
+254,Eggon
+255,Egyptian
+256,Egyptian Mythology
+257,Elamite
+258,Elamite Mythology
+259,Embu
+260,Emilian-Romagnol
+261,Enets
+262,Englis
+263,English
+264,English Creole
+265,English- form of becky
+266,Eritrea
+267,Esan
+268,Esperanto
+269,Estonian
+270,Ethiopia
+271,Ethiopian
+272,Etruscan
+273,Etruscan Mythology
+274,Etsako
+275,Even
+276,Evenki
+277,Ewe
+278,Far Eastern Mythology
+279,Faroese
+280,Fictional
+281,Fijian
+282,Filipino
+283,Finland Swedish
+284,Finnish
+285,Finnish Mythology
+286,Flemish
+287,Folklore
+288,Franco-Provençal
+289,Frankish
+290,França
+291,French
+292,French Creole
+293,Frisian
+294,Friulian
+295,Fula
+296,Fushan
+297,Gaelic
+298,Galatian
+299,Galician
+300,Gallo
+301,Gamilaraay
+302,Ganda
+303,Garo
+304,Gascon
+305,Gaulish
+306,Gaulish Mythology
+307,Gayonese
+308,Ge'ez
+309,Genizaro
+310,Georgian
+311,GermaNrench
+312,GermaNrisian
+313,German
+314,Germanic
+315,Ghanaian
+316,Gikuyu
+317,Gilaki
+318,Global
+319,Gnosticism
+320,Goemai
+321,Gooniyandi
+322,Gorani
+323,Gothic
+324,Gouse basha
+325,Grecque
+326,Greece
+327,Greek
+328,Greek Mythology
+329,Greenlandic
+330,Guanche
+331,Guarani
+332,Guernésiais
+333,Gujarati
+334,Gumatj
+335,Gurani
+336,Gusii
+337,Guuni
+338,HISPANIC
+339,Haida
+340,Haiti
+341,Haitian
+342,Hausa
+343,Hawaiian
+344,Haya
+345,Hebrew
+346,Herero
+347,Hidatsa
+348,Hiligaynon
+349,Hindi
+350,Hindu
+351,Hinduism
+352,Hispanic
+353,History
+354,Hittite
+355,Hmong
+356,Ho
+357,Hopi
+358,Huichol
+359,Hungarian
+360,Hungary
+361,Hunsrik
+362,Hurrian
+363,Iban
+364,Ibanag
+365,Ibibio
+366,Icelandic
+367,Idoma
+368,Igala
+369,Igbo
+370,Igede
+371,Ijaw
+372,Illyrian
+373,Ilocano
+374,Inca
+375,Incan
+376,Incan Mythology
+377,Inde
+378,India
+379,India/Sanskrit
+380,Indian
+381,Indic
+382,Indina
+383,Indonesian
+384,Ingrian
+385,Ingush
+386,Interlingua
+387,Inuit
+388,Inupiat
+389,Iranian
+390,Irish
+391,Irish Mythology
+392,Iroquois
+393,Isan
+394,Islamic
+395,Isoko
+396,Israeli
+397,Italian
+398,Italy
+399,Jagham
+400,Jain
+401,Jamaican Patois
+402,Japan
+403,Japanese
+404,Javanese
+405,Jewish
+406,Johann Zahn
+407,Jola
+408,Judaeo
+409,Jula
+410,Jupiter
+411,Jèrriais
+412,Kabardian
+413,Kabyle
+414,Kadazan
+415,Kaguru
+416,Kalasha
+417,Kalenjin
+418,Kalinago
+419,Kalmyk
+420,Kamba
+421,Kannada
+422,Kaonde
+423,Karachay-Balkar
+424,Karakalpak
+425,KareliaNinnish
+426,Karelian
+427,Kashmiri
+428,Kashubian
+429,Kassena
+430,Kavalan
+431,Kayapo
+432,Kazakh
+433,Kazakh Mythology
+434,Kelabit
+435,Kenya
+436,Kenyang
+437,Kerala
+438,Ket
+439,Khakas
+440,Khanty
+441,Khasi
+442,Khazar
+443,Khmer
+444,Khoekhoe
+445,Kibembe
+446,Kiga
+447,Kikuyu
+448,Kisii
+449,Kizh
+450,Klingon
+451,Kogi
+452,Kolkata
+453,Komi
+454,Kongo
+455,Konkani
+456,Korea
+457,Korean
+458,Koryak
+459,Kosovar
+460,Kraho
+461,Kru
+462,Kumyk
+463,Kurdish
+464,Kuril Islands
+465,Kurmanji
+466,Kutchi
+467,Kven
+468,Kwa
+469,Kyrgyz
+470,Ladakhi
+471,Ladin
+472,Lak
+473,Laki
+474,Lala
+475,Lao
+476,Late Greek
+477,Late Roman
+478,Latim
+479,Latin
+480,Latin irish
+481,Latvian
+482,Lauan
+483,Laz
+484,Lebanese
+485,Lenape
+486,Lengadocian
+487,Lesotho
+488,Lezgin
+489,Ligurian
+490,Limburgish
+491,Lingala
+492,Lingua Geral
+493,Literature
+494,Lithuanian
+495,Livonian
+496,Lombard
+497,Lombardian
+498,Lombardic
+499,Louisiana Creole
+500,Low German
+501,Lozi
+502,Luba
+503,Luhya
+504,Lunda
+505,Luo
+506,Luri
+507,Lusitanian Mythology
+508,Luwian
+509,Luxembourgish
+510,M
+511,Maasai
+512,Mabaan
+513,Macedonian
+514,Madhujya
+515,Madí
+516,Maguindanao
+517,Mahican
+518,Maithili
+519,Malagasy
+520,Malay
+521,Malayalam
+522,Malaysian
+523,Maltese
+524,Manchu
+525,Mandaic
+526,Mandailing
+527,Mande
+528,Manding
+529,Manipuri
+530,Maniq
+531,Manjak
+532,Mansi
+533,Manx
+534,Mao
+535,Maori
+536,Mapuche
+537,Maranao
+538,Marathi
+539,Mari
+540,Marshallese
+541,Masai
+542,Mauritian Creole
+543,Maya
+544,Mayan
+545,Mayan Mythology
+546,Mazanderani
+547,Mbama
+548,Mboma
+549,Mbundu
+550,Medieval
+551,Medieval Albanian
+552,Medieval Arabic
+553,Medieval Aragonese
+554,Medieval Baltic
+555,Medieval Basque
+556,Medieval Breton
+557,Medieval Bulgarian
+558,Medieval Catalan
+559,Medieval Cornish
+560,Medieval Corsican
+561,Medieval Croatian
+562,Medieval Czech
+563,Medieval Dutch
+564,Medieval English
+565,Medieval Finnish
+566,Medieval Flemish
+567,Medieval French
+568,Medieval Galician
+569,Medieval Georgian
+570,Medieval German
+571,Medieval Hungarian
+572,Medieval Irish
+573,Medieval ItaliaNedieval French
+574,Medieval Italian
+575,Medieval Jewish
+576,Medieval Latin
+577,Medieval Low German
+578,Medieval Mongolian
+579,Medieval Occitan
+580,Medieval Picard
+581,Medieval Polish
+582,Medieval Portuguese
+583,Medieval Provençal
+584,Medieval Romanian
+585,Medieval Romansh
+586,Medieval Russian
+587,Medieval Sardinian
+588,Medieval Scandinavian
+589,Medieval Scottish
+590,Medieval Serbian
+591,Medieval Slavic
+592,Medieval Spanish
+593,Medieval Swiss
+594,Medieval Turkic
+595,Medieval Turkic/Medieval Hungarian
+596,Medieval Ukrainian
+597,Medieval Walloon
+598,Medieval Welsh
+599,Melanesian
+600,Melpa
+601,Melungeon
+602,Mende
+603,Menominee
+604,Meroitic
+605,Meru
+606,Mexican
+607,Mi'kmaq
+608,Micronesian
+609,Middle Persian
+610,Minangkabau
+611,Mingrelian
+612,Minoan
+613,Miwok
+614,Mizo
+615,Modoc
+616,Mohawk
+617,Moldovan
+618,Mongolian
+619,Mongolian Mythology
+620,Montenegrin
+621,Mordvin
+622,Mormon
+623,Morocco
+624,Mossi
+625,Mozambique
+626,Muisca Mythology
+627,Muslim
+628,Mwanga
+629,Mwera
+630,My daughter Fararah
+631,Mythology
+632,Naga
+633,Nahuatl
+634,Nanai
+635,Nandeswari
+636,Narragansett
+637,"Native
 American"
-708,Nauruan
-709,Navajo
-710,Ndebele
-711,Ndyuka
-712,Neapolitan
-713,Near Eastern Mythology
-714,Nenets
-715,Nepal
-716,Nepali
-717,New World Mythology
-718,Newar
-719,Nganasan
-720,Ngarrindjeri
-721,Ngas
-722,Ngombe
-723,Ngoni
-724,Nguni
-725,Nigeria
-726,Nigerian
-727,Nigger langu
-728,NiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNiggerNigger
-729,Nilo-Saharan
-730,Nisga'a
-731,Nivkh
-732,Niçard
-733,Nkore
-734,Nogai
-735,NomenCulture
-736,Noongar
-737,Norman
-738,Norse
-739,Norse Mythology
-740,North Frisian
-741,Northern African
-742,Northern Irish
-743,NorwegiaNrisian
-744,Norwegian
-745,Nsenga
-746,Nubian
-747,Nuer
-748,Nyakyusa
-749,Nyamwezi
-750,Nyanga
-751,Nyari
-752,Nyoro
-753,Nyungar
-754,Obscure
-755,Occitan
-756,Odia
-757,Ogba
-758,Ogoni
-759,Ojibwe
-760,Okene
-761,Old Celtic
-762,Old Chechen
-763,Old Church Slavic
-764,Old Czech
-765,Old Danish
-766,Old Dutch
-767,Old English
-768,Old French
-769,Old Frisian
-770,Old Germanic
-771,Old High GermaNedieval
-772,Old High German
-773,Old Icelandic
-774,Old Irish
-775,Old Norman
-776,Old Norse
-777,Old Norwegian
-778,Old Persian
-779,Old Saxon
-780,Old Swedish
-781,Old Welsh
-782,Olmec
-783,Omaha
-784,Omaha-Ponca
-785,On the farm
-786,Oneida
-787,Onekotan
-788,Oromo
-789,Oroqen
-790,Ossetian
-791,Ossetian Mythology
-792,Other
-793,Otomi
-794,Ottoman Turkish
-795,Ovambo
-796,Ovi
-797,Paiute
-798,Paiwan
-799,Pakistani
-800,Pampangan
-801,Papiamento
-802,Papuan
-803,Parthian
-804,Pashto
-805,Pawnee
-806,Pemon
-807,Persia
-808,Persian
-809,Persian Mythology
-810,Pet
-811,Philippine Mythology
-812,Philippines
-813,Phoenician
-814,Phoenician Mythology
-815,Picard
-816,Pictish
-817,Piedmontese
-818,Pintupi
-819,Pitjantjatjara
-820,Polabian
-821,Poland
-822,Polish
-823,PolynesiaNaori
-824,Polynesian
-825,Polynesian Mythology
-826,Pomeranian
-827,Pomo
-828,Popular Culture
-829,Popular Culture Inuit
-830,Portuguese
-831,Portuguese Brazilian
-832,Portuguese Creole
-833,Potawatomi
-834,Powhatan
-835,Prague German
-836,Provençal
-837,Prussian
-838,Puerto Rican
-839,PuertoRico
-840,Punjabi
-841,Punu
-842,Purépecha
-843,Puyuma
-844,Pwâla
-845,Qashqai
-846,Quechua
-847,Rade
-848,Rajasthani
-849,Rape
-850,Rare
-851,Remian
-852,Republic of Autisme
-853,Republic of Hermetia
-854,Republic of Kekistan
-855,Roman
-856,Roman Mythology
-857,Romana
-858,Romani
-859,RomaniaNacedoniaNacedonian
-860,RomaniaNaori
-861,RomaniaNoldovan
-862,Romanian
-863,Romanian Mythology
-864,Romansh
-865,Român
-866,Rotuman
-867,Rukai
-868,Rundi
-869,Russia
-870,RussiaNoldovan
-871,Russian
-872,Russian English
-873,Rutul
-874,Rwanda
-875,Rwandan
-876,Rylan land
-877,Ryukyuan
-878,Saaroa
-879,Saint Lucian
-880,Saisiyat
-881,Sakizaya
-882,Sakonnet
-883,Salishan
-884,Sami
-885,Sami Mythology
-886,Samoan
-887,San Mythology
-888,Sanskrit
-889,Santali
-890,Sarcee
-891,Sardinian
-892,Saudi
-893,Saudi Arabian
-894,Sauk
-895,Saya
-896,Scandinavian
-897,Scotland
-898,Scots
-899,Scottish
-900,Scottish Gaelic
-901,Scythian
-902,Seediq
-903,Sekani
-904,Selkup
-905,Semitic Mythology
-906,Seneca
-907,SerbiaNacedoniaNacedonian
-908,SerbiaNacedoniaNontenegrin
-909,SerbiaNacedonian
-910,Serbian
-911,Seselwa
-912,Setswana
-913,ShakespeariaNilipino
-914,Shakespearian
-915,Shan
-916,Shawnee
-917,Sheep-barn
-918,Shina
-919,Shipibo Conibo
-920,Shit Parenting
-921,Shona
-922,Shor
-923,Shoshone
-924,Shuar
-925,Siberian
-926,Siberian Mythology
-927,Sicilian
-928,Siksika
-929,Silesian
-930,Sindhi
-931,Sinhala
-932,Sinhalese
-933,Sioux
-934,Slavic
-935,Slavic Mythology
-936,Slovak
-937,Slovene
-938,SloveniaNoldovan
-939,Slovenian
-940,Snohomish
-941,Soli
-942,Solomon Islands
-943,Somali
-944,Soninke
-945,Sorbian
-946,Sotho
-947,South Africa
-948,South African
-949,South American
-950,South Asian
-951,South Slavic
-952,Southern African
-953,Soviet
-954,Spain
-955,Spanish
-956,Sri Lanka
-957,Sri Lankan
-958,Sri lanka
-959,Suisun
-960,Sula
-961,Sumerian
-962,Sumerian Mythology
-963,Sundanese
-964,Svan
-965,Swahili
-966,Swazi
-967,Swedish
-968,Swiss
-969,Tagalog
-970,Tahitian
-971,Tahltan
-972,Taiwanese
-973,Tajik
-974,Talysh
-975,Tamil
-976,Tamil nadu
-977,Tao
-978,Tatar
-979,Tati
-980,Tausug
-981,Taíno
-982,Telugu
-983,Tenharim
-984,Teutonic
-985,Thai
-986,Thao
-987,The Anxious
-988,The Depressed
-989,The Hood
-990,Theatre
-991,Theology
-992,Thracian
-993,Tiberian
-994,Tibetan
-995,Tigrinya
-996,Tiv
-997,Tlingit
-998,Tocharian
-999,Tonga
-1000,Tongan
-1001,Tooro
-1002,Totonac Mythology
-1003,Trinidadian Creole
-1004,Tripuri
-1005,Truku
-1006,Truth
-1007,Tsonga
-1008,Tsou
-1009,Tsuu T'ina
-1010,Tswana
-1011,Tuareg
-1012,Tumbuka
-1013,Tupi
-1014,Turkey
-1015,Turkish
-1016,Turkmen
-1017,Tuvaluan
-1018,Tuvan
-1019,Twi
-1020,Türk
-1021,Tłı̨chǫ
-1022,Ubykh
-1023,Udmurt
-1024,Ugaritic
-1025,Ugaritic Mythology
-1026,Ugc
-1027,Ukrainian
-1028,Umbrian
-1029,Unkno
-1030,UnknowNaori
-1031,UnknowNedieval Basque
-1032,UnknowNedieval Turkic
-1033,UnknowNinnish
-1034,UnknowNontenegrin
-1035,UnknowNrench
-1036,UnknowNrisian
-1037,Upper German
-1038,UrAnus
-1039,Urartian
-1040,Urdu
-1041,Urhobo
-1042,Ute
-1043,Uyghur
-1044,Uzbek
-1045,Uzbeki
-1046,Vandalic
-1047,Various
-1048,Venda
-1049,Venetian
-1050,Venetic Mythology
-1051,Veps
-1052,Vietnamese
-1053,Vilamovian
-1054,Vlach
-1055,Wakka Wakka
-1056,WallooNinnish
-1057,Walloon
-1058,Walmajarri
-1059,Wampanoag
-1060,Wao
-1061,Warao
-1062,Warlpiri
-1063,Welsh
-1064,Welsh Mythology
-1065,West FrisiaNinnish
-1066,West Frisian
-1067,Western Yugur
-1068,Wolof
-1069,Wurundjeri
-1070,Xhosa
-1071,Yakama
-1072,Yakan
-1073,Yakut
-1074,Yakuur
-1075,Yana
-1076,Yao
-1077,Yapi lugbara
-1078,Yavapai
-1079,Yawaru
-1080,Yazidi
-1081,Yellowknife
-1082,Yi
-1083,Yiddish
-1084,Yokut
-1085,Yolngu
-1086,Yolŋu
-1087,Yoruba
-1088,Yoruba Mythology
-1089,You
-1090,Your beautiful face :)
-1091,Yucatec Maya
-1092,Yupik
-1093,Zapotec
-1094,Zaza
-1095,Zhuang
-1096,Zimbabwean
-1097,Zomi
-1098,Zulu
-1099,acedoniaNontenegrin
-1100,acedonian
-1101,alagasy
-1102,alay
-1103,alayalam
-1104,altese
-1105,american
-1106,anipuri
-1107,anx
-1108,any
-1109,aori
-1110,aranao
-1111,arathi
-1112,aroese
-1113,asian
-1114,bangla
-1115,busan
-1116,california
-1117,canada
-1118,chaileen carly claire chance and carrington also charles
-1119,china
-1120,edieval Basque
-1121,edieval Breton
-1122,edieval English
-1123,edieval French
-1124,edieval Hungarian
-1125,edieval Irish
-1126,edieval Italian
-1127,edieval Mongolian
-1128,edieval Occitan
-1129,edieval Polish
-1130,edieval Portuguese
-1131,edieval Romanian
-1132,edieval Russian
-1133,edieval Scandinavian
-1134,edieval Scottish
-1135,edieval Slavic
-1136,edieval Welsh
-1137,egyptian
-1138,exican
-1139,greek
-1140,hindu
-1141,iddle Persian
-1142,ijian
-1143,ilipino
-1144,india
-1145,india puliyambedu chennai tamilnadu
-1146,indian
-1147,innish
-1148,jaindis
-1149,keltisch
-1150,korean
-1151,lemish
-1152,malayalam
-1153,mayan
-1154,ngoni
-1155,nigeria
-1156,oldovan
-1157,ormon
-1158,pelvis
-1159,srilankan
-1160,tamil
-1161,telugu
+638,Nauruan
+639,Navajo
+640,Ndebele
+641,Ndyuka
+642,Neapolitan
+643,Nenets
+644,Nepal
+645,Nepali
+646,New World Mythology
+647,Newar
+648,Nganasan
+649,Ngarrindjeri
+650,Ngas
+651,Ngombe
+652,Ngoni
+653,Nguni
+654,Nigeria
+655,Nigerian
+656,Nigger langu
+657,Nilo-Saharan
+658,Nisga'a
+659,Nivkh
+660,Niçard
+661,Nkore
+662,Nogai
+663,NomenCulture
+664,Noongar
+665,Norman
+666,Norse
+667,Norse Mythology
+668,North Frisian
+669,Northern African
+670,Northern Irish
+671,NorwegiaNrisian
+672,Norwegian
+673,Nsenga
+674,Nubian
+675,Nuer
+676,Nyakyusa
+677,Nyamwezi
+678,Nyanga
+679,Nyari
+680,Nyoro
+681,Nyungar
+682,Obscure
+683,Occitan
+684,Odia
+685,Ogba
+686,Ogoni
+687,Ojibwe
+688,Okene
+689,Old Celtic
+690,Old Chechen
+691,Old Church Slavic
+692,Old Czech
+693,Old Danish
+694,Old Dutch
+695,Old English
+696,Old French
+697,Old Frisian
+698,Old Germanic
+699,Old High GermaNedieval
+700,Old High German
+701,Old Icelandic
+702,Old Irish
+703,Old Norman
+704,Old Norse
+705,Old Norwegian
+706,Old Persian
+707,Old Saxon
+708,Old Swedish
+709,Old Welsh
+710,Olmec
+711,Omaha
+712,Omaha-Ponca
+713,On the farm
+714,Oneida
+715,Onekotan
+716,Oromo
+717,Oroqen
+718,Ossetian
+719,Ossetian Mythology
+720,Other
+721,Otomi
+722,Ottoman Turkish
+723,Ovambo
+724,Ovi
+725,Paiute
+726,Paiwan
+727,Pakistani
+728,Pampangan
+729,Papiamento
+730,Papuan
+731,Parthian
+732,Pashto
+733,Pawnee
+734,Pemon
+735,Persia
+736,Persian
+737,Persian Mythology
+738,Pet
+739,Philippine
+740,Philippines
+741,Phoenician
+742,Phoenician Mythology
+743,Picard
+744,Pictish
+745,Piedmontese
+746,Pintupi
+747,Pitjantjatjara
+748,Polabian
+749,Poland
+750,Polish
+751,PolynesiaNaori
+752,Polynesian
+753,Polynesian Mythology
+754,Pomeranian
+755,Pomo
+756,Popular Culture
+757,Popular Culture Inuit
+758,Portuguese
+759,Portuguese Brazilian
+760,Portuguese Creole
+761,Potawatomi
+762,Powhatan
+763,Prague German
+764,Provençal
+765,Prussian
+766,Puerto Rican
+767,PuertoRico
+768,Punjabi
+769,Punu
+770,Purépecha
+771,Puyuma
+772,Pwâla
+773,Qashqai
+774,Quechua
+775,Rade
+776,Rajasthani
+777,Rape
+778,Rare
+779,Remian
+780,Republic of Autisme
+781,Republic of Hermetia
+782,Republic of Kekistan
+783,Roman
+784,Roman Mythology
+785,Romana
+786,Romani
+787,RomaniaNoldovan
+788,Romanian
+789,Romanian Mythology
+790,Romansh
+791,Român
+792,Rotuman
+793,Rukai
+794,Rundi
+795,Russia
+796,Russian
+797,Russian English
+798,Rutul
+799,Rwanda
+800,Rwandan
+801,Rylan land
+802,Ryukyuan
+803,Saaroa
+804,Saint Lucian
+805,Saisiyat
+806,Sakizaya
+807,Sakonnet
+808,Salishan
+809,Sami
+810,Sami Mythology
+811,Samoan
+812,San Mythology
+813,Sanskrit
+814,Santali
+815,Sarcee
+816,Sardinian
+817,Saudi
+818,Saudi Arabian
+819,Sauk
+820,Saya
+821,Scandinavian
+822,Scotland
+823,Scots
+824,Scottish
+825,Scottish Gaelic
+826,Scythian
+827,Seediq
+828,Sekani
+829,Selkup
+830,Semitic
+831,Seneca
+832,Serbian
+833,Seselwa
+834,Setswana
+835,Shakespearian
+836,Shan
+837,Shawnee
+838,Sheep-barn
+839,Shina
+840,Shipibo Conibo
+841,Shit Parenting
+842,Shona
+843,Shor
+844,Shoshone
+845,Shuar
+846,Siberian
+847,Siberian Mythology
+848,Sicilian
+849,Siksika
+850,Silesian
+851,Sindhi
+852,Sinhala
+853,Sinhalese
+854,Sioux
+855,Slavic
+856,Slavic Mythology
+857,Slovak
+858,Slovene
+859,Slovenian
+860,Snohomish
+861,Soli
+862,Solomon Islands
+863,Somali
+864,Soninke
+865,Sorbian
+866,Sotho
+867,South Africa
+868,South African
+869,South American
+870,South Asian
+871,South Slavic
+872,Southern African
+873,Soviet
+874,Spain
+875,Spanish
+876,Sri Lanka
+877,Sri Lankan
+878,Sri lanka
+879,Srilankan
+880,Suisun
+881,Sula
+882,Sumerian
+883,Sundanese
+884,Svan
+885,Swahili
+886,Swazi
+887,Swedish
+888,Swiss
+889,Tagalog
+890,Tahitian
+891,Tahltan
+892,Taiwanese
+893,Tajik
+894,Talysh
+895,Tamil
+896,Tao
+897,Tasmanian
+898,Tatar
+899,Tati
+900,Tausug
+901,Taíno
+902,Telugu
+903,Tenharim
+904,Teutonic
+905,Thai
+906,Thao
+907,The Hood
+908,Theatre
+909,Theology
+910,Thracian
+911,Tiberian
+912,Tibetan
+913,Tigrinya
+914,Tiv
+915,Tlingit
+916,Tocharian
+917,Tonga
+918,Tongan
+919,Tooro
+920,Totonac
+921,Trinidadian Creole
+922,Tripuri
+923,Truku
+924,Truth
+925,Tsonga
+926,Tsou
+927,Tsuu T'ina
+928,Tswana
+929,Tuareg
+930,Tumbuka
+931,Tupi
+932,Turkey
+933,Turkish
+934,Turkmen
+935,Tuvaluan
+936,Tuvan
+937,Twi
+938,Türk
+939,Tłı̨chǫ
+940,Ubykh
+941,Udmurt
+942,Ugaritic
+943,Ukrainian
+944,Umbrian
+945,Unkno
+946,UrAnus
+947,Urartian
+948,Urdu
+949,Urhobo
+950,Ute
+951,Uyghur
+952,Uzbek
+953,Uzbeki
+954,Vandalic
+955,Various
+956,Venda
+957,Venetian
+958,Venetic
+959,Veps
+960,Vietnamese
+961,Vilamovian
+962,Vlach
+963,Wakka Wakka
+964,Walloon
+965,Walmajarri
+966,Wampanoag
+967,Wao
+968,Warao
+969,Warlpiri
+970,Welsh
+971,Welsh Mythology
+972,West Frisian
+973,Western Yugur
+974,Wolof
+975,Wurundjeri
+976,Xhosa
+977,Yakama
+978,Yakan
+979,Yakut
+980,Yakuur
+981,Yana
+982,Yao
+983,Yapi lugbara
+984,Yavapai
+985,Yawaru
+986,Yazidi
+987,Yellowknife
+988,Yi
+989,Yiddish
+990,Yokut
+991,Yolngu
+992,Yolŋu
+993,Yoruba
+994,Yoruba Mythology
+995,You
+996,Yucatec Maya
+997,Yupik
+998,Zapotec
+999,Zaza
+1000,Zhuang
+1001,Zimbabwean
+1002,Zomi
+1003,Zulu
+1004,aori
+1005,aranao
+1006,arathi
+1007,aroese
+1008,asian
+1009,bangla
+1010,busan
+1011,california
+1012,canada
+1013,china
+1014,egyptian
+1015,exican
+1016,greek
+1017,hindu
+1018,ijian
+1019,ilipino
+1020,indian
+1021,innish
+1022,jaindis
+1023,keltisch
+1024,korean
+1025,lemish
+1026,malayalam
+1027,mayan
+1028,nigeria
+1029,pelvis
