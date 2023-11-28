@@ -30,6 +30,9 @@ numerology_meanings = {
     33: ['Master Teacher', 'Compassion', 'Blessing', 'Inspiration', 'Enlightenment', 'Humanitarian', 'Understanding']
 }
 
+def clean_string(s):
+    """Remove line breaks and extra spaces from a string."""
+    return ' '.join(s.replace('\n', ' ').replace('\r', ' ').strip().split())
 
 def calculate_numerology(name):
     values = {'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10, 'K': 11, 'L': 12,
@@ -90,12 +93,12 @@ def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, uniq
 
         for row in rows:
             try:
-                name = row['Name']
-                meaning = row.get('Meaning', '')
-                gender = row.get('Gender', '')
-                origin = row.get('Origin', '')
-                categories = row.get('Categories', '')
-                syllables = row.get('Syllables', '')
+                name = clean_string(row['Name'])
+                meaning = clean_string(row.get('Meaning', ''))
+                gender = clean_string(row.get('Gender', ''))
+                origin = clean_string(row.get('Origin', ''))
+                categories = clean_string(row.get('Categories', ''))
+                syllables = clean_string(row.get('Syllables', ''))
                 generated = 0
 
                 # Check if meaning is empty, and calculate if needed

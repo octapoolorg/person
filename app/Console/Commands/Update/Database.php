@@ -48,7 +48,7 @@ class Database extends Command
         $csv = Reader::createFromPath(base_path("imports/database/$filename"), 'r');
         $csv->setHeaderOffset(0);
 
-        $chunkSize = 1000;
+        $chunkSize = 1;
         $totalRows = count($csv);
 
         for ($offset = 0; $offset < $totalRows; $offset += $chunkSize) {
@@ -78,11 +78,12 @@ class Database extends Command
 
     protected function generateUniqueSlug($name, $tableName): string
     {
-        $slug = Str::slug($name);
+        $baseSlug = Str::slug($name);
+        $slug = $baseSlug;
         $counter = 1;
 
         while (DB::table($tableName)->where('slug', $slug)->exists()) {
-            $slug = Str::slug($name) . '-' . $counter;
+            $slug = $baseSlug . '-' . $counter;
             $counter++;
         }
 
