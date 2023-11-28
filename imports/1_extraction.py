@@ -42,7 +42,7 @@ if __name__ == '__main__':
     }
 
     chunk_size = 100000
-    file_path = "names_root.csv"
+    file_path = "temp/names_db.csv"
     non_utf8_path = "temp/non_utf8_records.csv"
 
     with open(non_utf8_path, 'w') as non_utf8_file:

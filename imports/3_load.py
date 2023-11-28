@@ -72,67 +72,83 @@ def count_syllables(name):
 
 
 # Function to read CSV and populate tables and mapping dictionaries
-def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, unique_categories,
-                                gender_to_id, origin_to_id, category_to_id):
-    with open(filepath, 'r', encoding='utf-8') as csvfile:
-        csvreader = csv.DictReader(csvfile)
-        for row in csvreader:
-            name = row['Name']
-            meaning = row.get('Meaning', '')
-            gender = row.get('Gender', '')
-            origin = row.get('Origin', '')
-            categories = row.get('Categories', '')
-            syllables = row.get('Syllables', '')
-            generated = 0
+def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, unique_categories, gender_to_id, origin_to_id, category_to_id, error_file_path):
+    # Attempt to read CSV with different encodings
+    def try_read_csv(file_path, encoding):
+        with open(file_path, 'r', encoding=encoding) as file:
+            return list(csv.DictReader(file))
 
-            # Check if meaning is empty, and calculate if needed
-            if not meaning.strip():
-                meaning = get_numerology_meaning(name, numerology_meanings)
-                generated = 1
+    # Try reading with utf-8, fall back to latin1 if there's an error
+    try:
+        rows = try_read_csv(filepath, 'utf-8')
+    except UnicodeDecodeError:
+        rows = try_read_csv(filepath, 'latin1')
 
-            # Check if syllables is "0" or empty, and calculate if needed
-            if not syllables or syllables == "0":
-                syllables = str(count_syllables(name))
+    with open(error_file_path, 'w', newline='', encoding='utf-8') as errorfile:
+        error_writer = csv.DictWriter(errorfile, fieldnames=rows[0].keys())
+        error_writer.writeheader()
 
-            # Add gender to unique list if not empty
-            if gender:
-                unique_genders.add(gender)
+        for row in rows:
+            try:
+                name = row['Name']
+                meaning = row.get('Meaning', '')
+                gender = row.get('Gender', '')
+                origin = row.get('Origin', '')
+                categories = row.get('Categories', '')
+                syllables = row.get('Syllables', '')
+                generated = 0
 
-            # Split and clean origin data
-            origins_list = [o.strip() for o in origin.split(',') if o.strip()]
-            for origin_name in origins_list:
-                unique_origins.add(origin_name)
+                # Check if meaning is empty, and calculate if needed
+                if not meaning.strip():
+                    meaning = get_numerology_meaning(name, numerology_meanings)
+                    generated = 1
 
-            # Split and clean categories data
-            categories_list = [c.strip() for c in categories.split(',') if c.strip()]
-            for category_name in categories_list:
-                unique_categories.add(category_name)
+                # Check if syllables is "0" or empty, and calculate if needed
+                if not syllables or syllables == "0":
+                    syllables = str(count_syllables(name))
 
-            name_id = len(tables['names']) + 1
-            gender_id = gender_to_id.get(gender, None)
-            name_data = [name_id, name, meaning, syllables]
+                # Add gender to unique list if not empty
+                if gender:
+                    unique_genders.add(gender)
 
-            # Add gender_id if available
-            if gender_id is not None:
-                name_data.append(gender_id)
+                # Split and clean origin data
+                origins_list = [o.strip() for o in origin.split(',') if o.strip()]
+                for origin_name in origins_list:
+                    unique_origins.add(origin_name)
 
-            name_data.append(generated)
+                # Split and clean categories data
+                categories_list = [c.strip() for c in categories.split(',') if c.strip()]
+                for category_name in categories_list:
+                    unique_categories.add(category_name)
 
-            # Populate names table
-            tables['names'].append(name_data)
+                name_id = len(tables['names']) + 1
+                gender_id = gender_to_id.get(gender, None)
+                name_data = [name_id, name, meaning, syllables]
 
-            # Populate the category_name mapping
-            for category in categories_list:
-                category_id = category_to_id.get(category)
-                if category_id:
-                    mappings['category_name'].add((name_id, category_id))
+                # Add gender_id if available
+                if gender_id is not None:
+                    name_data.append(gender_id)
 
-            # Populate the name_origin mapping
-            for origin_name in origins_list:
-                origin_id = origin_to_id.get(origin_name)
-                if origin_id:
-                    mappings['name_origin'].add((name_id, origin_id))
+                name_data.append(generated)
 
+                # Populate names table
+                tables['names'].append(name_data)
+
+                # Populate the category_name mapping
+                for category in categories_list:
+                    category_id = category_to_id.get(category)
+                    if category_id:
+                        mappings['category_name'].add((name_id, category_id))
+
+                # Populate the name_origin mapping
+                for origin_name in origins_list:
+                    origin_id = origin_to_id.get(origin_name)
+                    if origin_id:
+                        mappings['name_origin'].add((name_id, origin_id))
+
+            except Exception as e:
+                print(f"Error processing row: {e}")
+                error_writer.writerow(row)
 
 # Function to write a table to a CSV file
 def write_table_to_csv(filepath, header, table):
@@ -145,6 +161,7 @@ def write_table_to_csv(filepath, header, table):
 # Main function to execute the script
 def main():
     data_directory = 'database'
+    error_file_path = 'temp/non_utf8_entries.csv'
     create_directory(data_directory)
 
     tables = {
@@ -165,8 +182,7 @@ def main():
 
     # First pass to collect unique genders, origins, and categories
     input_file = 'temp/names_db.csv'
-    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, {}, {},
-                                {})
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, {}, {}, {}, error_file_path)
 
     # Create ID mappings
     gender_to_id = {gender: idx + 1 for idx, gender in enumerate(sorted(unique_genders))}
@@ -184,8 +200,7 @@ def main():
     mappings['name_origin'].clear()
 
     # Second pass to update names table with correct gender_ids and origin_ids
-    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories,
-                                gender_to_id, origin_to_id, category_to_id)
+    read_csv_to_populate_tables(input_file, tables, mappings, unique_genders, unique_origins, unique_categories, gender_to_id, origin_to_id, category_to_id, error_file_path)
 
     # Write tables to CSV
     output_files = {
