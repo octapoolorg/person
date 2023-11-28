@@ -33,56 +33,56 @@ class Database extends Command
             $this->processCsv('name_traits.csv', 'name_traits');
 
             $this->info("Database updated successfully.");
+
+            $this->call('cache:clear');
+
+            $this->info("Cache cleared successfully.");
+
         } catch (Exception $e) {
             $this->error("Data upsert failed: " . $e->getMessage());
         }
     }
 
-    /**
-     * @throws UnavailableStream
-     * @throws SyntaxError
-     * @throws \League\Csv\Exception
-     */
     protected function processCsv($filename, $tableName, $generateSlug = false): void
     {
-        $csv = Reader::createFromPath(base_path("imports/database/$filename"));
+        $csv = Reader::createFromPath(base_path("imports/database/$filename"), 'r');
         $csv->setHeaderOffset(0);
-        $stmt = new Statement();
-        $existingSlugs = $generateSlug ? DB::table($tableName)->pluck('slug', 'slug')->toArray() : [];
 
-        do {
-            $records = iterator_to_array($stmt->process($csv)->getRecords());
+        $chunkSize = 1000;
+        $totalRows = count($csv);
+
+        for ($offset = 0; $offset < $totalRows; $offset += $chunkSize) {
+            $stmt = (new Statement())
+                        ->offset($offset)
+                        ->limit($chunkSize);
+
+            $records = $stmt->process($csv);
             $batchData = [];
 
             foreach ($records as $record) {
                 if ($generateSlug && isset($record['name'])) {
-                    $record['slug'] = $this->generateUniqueSlug($record['name'], $existingSlugs);
-                    $existingSlugs[$record['slug']] = true;
+                    $record['slug'] = $this->generateUniqueSlug($record['name'], $tableName);
                 }
 
                 $batchData[] = $record;
+            }
 
-                if (count($batchData) >= 500) {
+            if (!empty($batchData)) {
+                $this->info("Upserting $tableName: $offset / $totalRows");
+                DB::transaction(function () use ($batchData, $tableName) {
                     $this->upsertBatch($batchData, $tableName);
-                    $batchData = [];
-                }
+                });
             }
-
-            if (count($batchData) > 0) {
-                $this->upsertBatch($batchData, $tableName);
-            }
-
-        } while (count($records) > 0);
+        }
     }
 
-    protected function generateUniqueSlug($name, &$existingSlugs): string
+    protected function generateUniqueSlug($name, $tableName): string
     {
-        $baseSlug = Str::slug($name);
-        $slug = $baseSlug;
+        $slug = Str::slug($name);
         $counter = 1;
 
-        while (isset($existingSlugs[$slug])) {
-            $slug = $baseSlug . '-' . $counter;
+        while (DB::table($tableName)->where('slug', $slug)->exists()) {
+            $slug = Str::slug($name) . '-' . $counter;
             $counter++;
         }
 
@@ -92,11 +92,12 @@ class Database extends Command
     protected function upsertBatch($batchData, $tableName): void
     {
         $columns = Schema::getColumnListing($tableName);
+        $updateColumns = array_diff($columns, ['is_active', 'created_at']);
         $upsertData = array_map(function ($record) use ($columns) {
             return array_intersect_key($record, array_flip($columns));
         }, $batchData);
 
-        $uniqueBy = ['id']; // Replace with the appropriate unique identifier
-        DB::table($tableName)->upsert($upsertData, $uniqueBy);
+        $uniqueBy = ['name'];
+        DB::table($tableName)->upsert($upsertData, $uniqueBy, $updateColumns);
     }
 }

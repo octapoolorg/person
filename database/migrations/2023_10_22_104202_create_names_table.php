@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('names', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(false);
             $table->text('meaning');
