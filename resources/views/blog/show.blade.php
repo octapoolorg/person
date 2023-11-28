@@ -39,7 +39,7 @@
                         <!-- Loop through related posts -->
                         @foreach ($relatedPosts as $relatedPost)
                             <div class="mb-4 last:mb-0">
-                                <a href="{{ route('blog.show', $relatedPost) }}" class="text-xl text-indigo-600 hover:underline">{{ $relatedPost->title }}</a>
+                                <a href="{{ route('blog.show', $relatedPost->slug) }}" class="text-xl text-indigo-600 hover:underline">{{ $relatedPost->title }}</a>
                             </div>
                         @endforeach
                     </section>
