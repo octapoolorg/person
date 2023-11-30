@@ -46,6 +46,7 @@ class Database extends Command
     protected function processCsv($filename, $tableName, $generateSlug = false): void
     {
         $csv = Reader::createFromPath(base_path("imports/database/$filename"), 'r');
+        $csv->setOutputBOM(Reader::BOM_UTF8);
         $csv->setHeaderOffset(0);
 
         $chunkSize = 1;
@@ -80,7 +81,7 @@ class Database extends Command
     {
         $baseSlug = Str::slug($name);
         $slug = $baseSlug;
-        $counter = 1;
+        $counter = 2;
 
         while (DB::table($tableName)->where('slug', $slug)->exists()) {
             $slug = $baseSlug . '-' . $counter;

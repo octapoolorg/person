@@ -13,24 +13,24 @@
                     </header>
 
                     <!-- Meaning -->
-                    <div class="flex flex-col items-center space-y-4 my-8 md:my-12">
+                    <div class="flex flex-col items-center space-y-4 my-8 md:my-12 relative">
                         <strong class="text-xl md:text-3xl font-semibold uppercase">Means:</strong>
                         <p class="text-xl md:text-2xl leading-relaxed mx-4 capitalize">
                             {{ $data['nameDetails']->meaning }}
-
-                            <div class="group relative flex items-center">
-                                @if($data['nameDetails']->generated>0)
-                                    <!-- SVG Icon -->
-                                    <svg class="fill-indigo-500" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
-
-                                    <!-- Tooltip Text -->
-                                    <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded py-1 px-3 hidden group-hover:block">
-                                        Based on Numerology.
-                                    </span>
-                                @endif
-                            </div>
                         </p>
+                        @if($data['nameDetails']->generated > 0)
+                            <div class="group absolute bottom-0 right-0 mb-2 mr-2 flex items-center">
+                                <!-- SVG Icon -->
+                                <svg class="fill-indigo-500" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+
+                                <!-- Tooltip Text -->
+                                <span class="absolute bottom-full mb-2 right-0 bg-black text-white text-xs rounded py-1 px-3 hidden group-hover:block">
+                                    Based on Numerology.
+                                </span>
+                            </div>
+                        @endif
                     </div>
+
                 </article>
 
                 <footer

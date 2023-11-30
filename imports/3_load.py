@@ -2,6 +2,7 @@ import csv
 import os
 import pyphen
 import random
+import chardet
 from collections import defaultdict
 
 numerology_meanings = {
@@ -29,6 +30,16 @@ numerology_meanings = {
          'Innovation'],
     33: ['Master Teacher', 'Compassion', 'Blessing', 'Inspiration', 'Enlightenment', 'Humanitarian', 'Understanding']
 }
+
+def detect_encoding(file_path):
+    with open(file_path, 'rb') as file:
+        result = chardet.detect(file.read())
+        print(f"Detected encoding: {result['encoding']} with confidence: {result['confidence']}")
+        return result['encoding']
+
+def try_read_csv(file_path, encoding):
+    with open(file_path, 'r', encoding=encoding) as file:
+        return list(csv.DictReader(file, delimiter=','))
 
 def clean_string(s):
     """Remove line breaks and extra spaces from a string."""
@@ -76,16 +87,22 @@ def count_syllables(name):
 
 # Function to read CSV and populate tables and mapping dictionaries
 def read_csv_to_populate_tables(filepath, tables, mappings, unique_genders, unique_origins, unique_categories, gender_to_id, origin_to_id, category_to_id, error_file_path):
-    # Attempt to read CSV with different encodings
-    def try_read_csv(file_path, encoding):
-        with open(file_path, 'r', encoding=encoding) as file:
-            return list(csv.DictReader(file))
+    # Detect encoding
+    encoding_guess = detect_encoding(filepath)
 
-    # Try reading with utf-8, fall back to latin1 if there's an error
-    try:
-        rows = try_read_csv(filepath, 'utf-8')
-    except UnicodeDecodeError:
-        rows = try_read_csv(filepath, 'latin1')
+    # Fallback encodings if the first guess fails
+    fallback_encodings = ['utf-8', 'latin1', 'windows-1252']
+    if encoding_guess:
+        fallback_encodings.insert(0, encoding_guess)
+
+    for encoding in fallback_encodings:
+        try:
+            rows = try_read_csv(filepath, encoding)
+            break
+        except UnicodeDecodeError:
+            continue
+    else:
+        raise ValueError(f"Failed to read file {filepath} with encodings: {fallback_encodings}")
 
     with open(error_file_path, 'w', newline='', encoding='utf-8') as errorfile:
         error_writer = csv.DictWriter(errorfile, fieldnames=rows[0].keys())
