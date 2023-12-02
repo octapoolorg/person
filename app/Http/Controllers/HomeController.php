@@ -27,10 +27,14 @@ class HomeController extends Controller
         });
 
         $nameOfTheDay = Cache::remember('nameOfTheDay', now()->addDay(), function () use ($popularNames) {
-            return $popularNames->random();
+            if ($popularNames->count() > 0) {
+                return $popularNames->random();
+            } else {
+                return null;
+            }
         });
 
-        $latestPosts = Cache::remember('latestPosts', now()->addDay(), function () {
+        $latestPosts = Cache::remember('home:latestPosts', now()->addDay(), function () {
             return WinkPost::with('tags')
                 ->live()
                 ->orderBy('publish_date', 'desc')

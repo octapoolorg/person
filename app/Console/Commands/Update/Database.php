@@ -4,9 +4,11 @@ namespace App\Console\Commands\Update;
 
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use League\Csv\ByteSequence;
 use League\Csv\Reader;
 use League\Csv\Statement;
 use League\Csv\SyntaxError;
@@ -43,10 +45,15 @@ class Database extends Command
         }
     }
 
+    /**
+     * @throws UnavailableStream
+     * @throws SyntaxError
+     * @throws \League\Csv\Exception
+     */
     protected function processCsv($filename, $tableName, $generateSlug = false): void
     {
-        $csv = Reader::createFromPath(base_path("imports/database/$filename"), 'r');
-        $csv->setOutputBOM(Reader::BOM_UTF8);
+        $csv = Reader::createFromPath(base_path("imports/database/$filename"));
+        $csv->setOutputBOM(ByteSequence::BOM_UTF8);
         $csv->setHeaderOffset(0);
 
         $chunkSize = 1;
@@ -54,8 +61,8 @@ class Database extends Command
 
         for ($offset = 0; $offset < $totalRows; $offset += $chunkSize) {
             $stmt = (new Statement())
-                        ->offset($offset)
-                        ->limit($chunkSize);
+                ->offset($offset)
+                ->limit($chunkSize);
 
             $records = $stmt->process($csv);
             $batchData = [];
@@ -100,6 +107,23 @@ class Database extends Command
         }, $batchData);
 
         $uniqueBy = ['name'];
-        DB::table($tableName)->upsert($upsertData, $uniqueBy, $updateColumns);
+
+        foreach ($upsertData as $data) {
+            try {
+                DB::table($tableName)->upsert([$data], $uniqueBy, $updateColumns);
+            } catch (QueryException $e) {
+                // 1062 is the error code for duplicate entry
+                if ($e->errorInfo[1] == 1062) {
+                    $this->writeDuplicateToFile($data);
+                }
+            }
+        }
+    }
+
+    protected function writeDuplicateToFile($data): void
+    {
+        $file = fopen(base_path('imports/database/backlog/duplicates.csv'), 'a');
+        fputcsv($file, $data);
+        fclose($file);
     }
 }
