@@ -62,10 +62,11 @@ class NameController extends Controller
 
     public function wallpaper(string $nameSlug): Response
     {
-        return $this->nameService->nameWallpaper($nameSlug);
+        $size = request()->input('size') ?? 'full';
+        return $this->nameService->nameWallpaper($nameSlug,$size);
     }
 
-    public function signature(string $name, string $fontKey): Response
+    public function signature(string $fontKey,string $name,): Response
     {
         return $this->nameService->individualSignature($name, $fontKey);
     }

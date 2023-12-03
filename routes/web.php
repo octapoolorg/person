@@ -18,8 +18,8 @@ Route::get('names/search', [NameController::class, 'search'])->name('names.searc
 Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 Route::get('names/{gender}',[NameController::class,'gender'])->name('names.gender');
 
-Route::get('/static/images/name/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
-Route::get('/static/images/signature/{name}/{font}.jpg', [NameController::class, 'signature'])->name('names.signature');
+Route::get('/static/images/wallpaper/name/funky/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
+Route::get('/static/images/signature/style/{font}/{name}.jpg', [NameController::class, 'signature'])->name('names.signature');
 
 Route::post('/names/{name}/comments', [CommentController::class, 'store'])->name('names.comments.store');
 
@@ -35,3 +35,16 @@ Route::get('pages/{page}', [PageController::class, 'show']);
 
 /* Sitemap */
 Route::get('sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
+
+
+
+
+
+/* Legacy Routes - Redirects */
+Route::get('/static/images/signature/{name}/{font}.jpg', function ($name, $font) {
+    return redirect()->route('names.signature', [$font,$name], 301);
+});
+
+Route::get('/static/images/name/{name}.jpg', function ($name) {
+    return redirect()->route('names.wallpaper', [$name], 301);
+});

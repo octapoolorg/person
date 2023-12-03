@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mainImage) {
         allImages.forEach(img => {
             img.addEventListener('click', () => {
-                mainImage.src = img.src;
+                mainImage.src = img.dataset.src;
                 allImages.forEach(otherImg => otherImg.classList.add('opacity-60'));
                 img.classList.remove('opacity-60');
             });

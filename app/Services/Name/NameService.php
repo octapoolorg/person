@@ -72,12 +72,12 @@ class NameService
         });
     }
 
-    public function nameWallpaper(string $nameSlug): Response
+    public function nameWallpaper(string $nameSlug, string $size): Response
     {
         $name = $this->cacheRemember("name:$nameSlug", function () use ($nameSlug) {
             return Name::where('slug', $nameSlug)->firstOrFail()->name;
         });
-        return $this->generateImageResponse($name, 'name wallpaper', 'static/images/wallpaper.jpg', 'roboto');
+        return $this->generateImageResponse($name, 'name wallpaper', 'static/images/wallpaper.jpg', 'roboto', $size);
     }
 
     public function individualSignature(string $name, string $fontKey): Response
@@ -104,7 +104,7 @@ class NameService
         return $fonts[$fontKey] ?? ['path' => 'roboto/roboto-bold.ttf', 'size' => null];
     }
 
-    private function generateImageResponse(string $name, string $type, string $backgroundImage, string $fontKey = null): Response
+    private function generateImageResponse(string $name, string $type, string $backgroundImage, string $fontKey = null, string $size = null): Response
     {
         $fontDetails = $this->getFontDetails($fontKey);
         $base64Image = $this->imageService->generateOrRetrieveImage(
@@ -112,7 +112,8 @@ class NameService
             '#000000',
             $backgroundImage,
             $fontDetails['path'],
-            $fontDetails['size'] ?? (strlen($name) > 10 ? 150 : 200)
+            $fontDetails['size'] ?? (strlen($name) > 10 ? 150 : 200),
+            $size
         );
 
         return $this->imageService->prepareImageResponse($base64Image, $name, $type);

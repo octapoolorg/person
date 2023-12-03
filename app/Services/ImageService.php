@@ -20,7 +20,7 @@ class ImageService
      * @param int $fontSize The size of the font.
      * @return string The generated image as a data URL.
      */
-    public function generateImage(string $name, string $color, string $background, string $font, int $fontSize): string
+    public function generateImage(string $name, string $color, string $background, string $font, int $fontSize, string $size = null): string
     {
         try {
             $fontPath = $this->getFontPath($font);
@@ -30,6 +30,13 @@ class ImageService
 
             $img = Image::make($backgroundPath);
             $this->applyTextToImage($img, $name, $color, $fontPath, $fontSize);
+
+            if($size === 'thumb') {
+                $img->resize(400, 400, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            }
 
             return (string)$img->encode('data-url');
         } catch (FileNotFoundException $e) {
@@ -108,11 +115,11 @@ class ImageService
      * @param int $fontSize The size of the font.
      * @return string The generated image as a data URL.
      */
-    public function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize): string
+    public function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize, string $size = null): string
     {
-        $key = "image:$name:$background:$font:$fontSize";
-        return Cache::remember($key, now()->addMinutes(30), function () use ($name, $color, $background, $font, $fontSize) {
-            return $this->generateImage($name, $color, $background, $font, $fontSize);
+        $key = "image:$name:$background:$font:$fontSize:$size";
+        return Cache::remember($key, now()->addYear(), function () use ($name, $color, $background, $font, $fontSize, $size) {
+            return $this->generateImage($name, $color, $background, $font, $fontSize, $size);
         });
     }
 

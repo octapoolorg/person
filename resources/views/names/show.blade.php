@@ -200,8 +200,8 @@
                 </div>
 
                 <div id="wallpaper-thumbnails" class="flex overflow-x-auto space-x-4 mb-8">
-                    <img src="{{ $data['wallpaperUrl'] }}" alt="Image 1" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper">
-                    <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a" alt="Image 2" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper opacity-60">
+                    <img src="{{ $data['wallpaperUrl'] }}?size=thumb" alt="Image 1" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper" data-src="{{ $data['wallpaperUrl'] }}">
+                    <img src="https://identeez.test/static/images/wallpaper/name/funky/sciuricha.jpg?size=thumb" alt="Image 2" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper opacity-60" data-src="https://identeez.test/static/images/wallpaper/name/funky/sciuricha.jpg">
                 </div>
 
                 <p class="text-lg leading-relaxed">
