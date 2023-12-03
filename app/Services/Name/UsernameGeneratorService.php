@@ -2,6 +2,9 @@
 
 namespace App\Services\Name;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Http;
+
 /**
  * Service class to generate usernames based on provided names.
  */
@@ -135,6 +138,46 @@ class UsernameGeneratorService
         return $wordList[array_rand($wordList)];
     }
 
+
+    // TODO - integrate this into the above
+    //https://dnschecker.org/social-media-name-checker.php
+
+    public function checkUsernameAvailability($username): JsonResponse
+    {
+        $sites = [
+            'Twitter' => 'https://twitter.com/',
+            'Instagram' => 'https://www.instagram.com/',
+            'TikTok' => 'https://www.tiktok.com/@',
+            'Facebook' => 'https://www.facebook.com/',
+            'Snapchat' => 'https://www.snapchat.com/add/',
+            'Steam' => 'https://steamcommunity.com/id/',
+            'Reddit' => 'https://www.reddit.com/user/',
+            'LinkedIn' => 'https://www.linkedin.com/in/',
+            'Pinterest' => 'https://www.pinterest.com/',
+            'Spotify' => 'https://open.spotify.com/user/',
+            'Tumblr' => 'https://www.tumblr.com/blog/',
+            'Twitch' => 'https://www.twitch.tv/',
+            'YouTube' => 'https://www.youtube.com/c/',
+            'GitHub' => 'https://github.com/',
+            'Vimeo' => 'https://vimeo.com/',
+            'Flickr' => 'https://www.flickr.com/photos/',
+            'SoundCloud' => 'https://soundcloud.com/',
+            'Medium' => 'https://medium.com/@',
+            'Quora' => 'https://www.quora.com/profile/',
+            'Behance' => 'https://www.behance.net/',
+            'VK' => 'https://vk.com/',
+        ];
+
+        $results = [];
+
+        foreach ($sites as $siteName => $url) {
+            $response = Http::get($url . $username);
+
+            $results[$siteName] = $response->status() === 404;
+        }
+
+        return response()->json($results);
+    }
 
 
 

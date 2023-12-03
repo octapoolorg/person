@@ -11,6 +11,7 @@ use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class NameService
 {
@@ -43,7 +44,7 @@ class NameService
             'fancyTexts' => $this->getFancyTexts($nameDetails->name),
             'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
             'signatureUrls' => $this->nameSignatures($nameDetails->slug),
-            'userNames' => $this->getUsernames($nameDetails->name)
+            'userNames' => $this->getUsernames($nameDetails->slug)
         ];
     }
 
@@ -125,6 +126,7 @@ class NameService
 
     public function getUsernames(string $name): array
     {
+        $name = Str::headline($name);
        $randomness = rand(1, 15);
         return $this->cacheRemember("usernames:$name:$randomness", function () use ($name) {
              return $this->usernameGeneratorService->generateUsernames($name);
@@ -143,23 +145,26 @@ class NameService
         // Getting all traits for the alphabets
         $randomness = rand(1, 15);
         $traitsCollection = $this->cacheRemember("traits:$name:$randomness", function () use ($upperAlphabets) {
-            return NameTrait::whereIn('alphabet', $upperAlphabets)->get()->groupBy('alphabet');
+            return NameTrait::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
         });
 
-        $traits = collect($alphabets)->mapWithKeys(function ($alphabet) use ($traitsCollection) {
+        $traits = [];
+        foreach ($alphabets as $alphabet) {
             $alphabetKey = strtoupper($alphabet);
 
             // Check if there are multiple traits for the alphabet and pick one randomly
             if (isset($traitsCollection[$alphabetKey]) && $traitsCollection[$alphabetKey]->count() > 0) {
                 $randomTrait = $traitsCollection[$alphabetKey]->random();
-                return [$alphabet => $randomTrait->name ?? null];
+                $traits[] = [$alphabet => $randomTrait->name ?? null];
+            } else {
+                $traits[] = [$alphabet => null];
             }
+        }
 
-            return [$alphabet => null];
-        });
-
-        return $traits->toArray();
+        return $traits;
     }
+
+
 
     private function nameSignatures(string $name): array
     {

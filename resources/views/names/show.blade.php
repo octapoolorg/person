@@ -21,7 +21,7 @@
                         @if($data['nameDetails']->generated > 0)
                             <div class="group absolute bottom-0 right-0 mb-2 mr-2 flex items-center">
                                 <!-- SVG Icon -->
-                                <svg class="fill-indigo-500" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+                                <svg class="fill-indigo-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
 
                                 <!-- Tooltip Text -->
                                 <span class="absolute bottom-full mb-2 right-0 bg-black text-white text-xs rounded py-1 px-3 hidden group-hover:block">
@@ -78,7 +78,7 @@
             </section>
 
             <!-- Numerology Details Section -->
-            <section class="bg-white p-10 rounded-lg shadow mb-10 border border-gray-300">
+            <section class="bg-white p-10 rounded-lg shadow mb-10 border">
                 <h2 class="text-4xl text-gray-800 mb-10 font-bold">{{ $data['nameDetails']->name }} Name Numerology</h2>
 
                 <div class="space-y-10">
@@ -123,7 +123,7 @@
                 </div>
             </section>
 
-            <!-- Abbreviation Section -->
+            <!-- Acronyms Section -->
             <section class="bg-white py-8 px-4 md:px-8 rounded-lg shadow my-10">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-4xl text-gray-800 font-bold capitalize">
@@ -134,14 +134,16 @@
                         <svg class="fill-indigo-600 hover:fill-indigo-800 ml-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
                     </a>
                 </div>
-                <div class="overflow-hidden mb-12">
+                <div class="overflow-hidden">
                     <table class="w-full text-left text-gray-600">
                         <tbody class="divide-y divide-gray-200" id="acronyms">
-                        @foreach ($data['acronyms'] as $alphabet => $acronym)
-                            <tr class="hover:bg-gray-50 transition-colors duration-300">
-                                <th class="p-4 font-semibold text-gray-800 bg-gray-100 uppercase">{{ $alphabet }}</th>
-                                <td class="p-4">{{ $acronym }}</td>
-                            </tr>
+                        @foreach ($data['acronyms'] as $acronymData)
+                            @foreach ($acronymData as $alphabet => $acronym)
+                                <tr class="hover:bg-gray-50 transition-colors duration-300">
+                                    <th class="p-4 font-semibold text-gray-800 bg-gray-100 uppercase">{{ $alphabet }}</th>
+                                    <td class="p-4">{{ is_string($acronym) ? $acronym : '' }}</td>
+                                </tr>
+                            @endforeach
                         @endforeach
                         </tbody>
                     </table>
@@ -152,45 +154,58 @@
             <section class="bg-white py-8 px-4 md:px-8 rounded-lg shadow my-10">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-4xl text-gray-800 font-bold capitalize">
-                        Usernames of {{ $data['nameDetails']->name }}
+                        Usernames for {{ $data['nameDetails']->name }}
                     </h2>
                     <a href="javascript:" id="generate-usernames" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
                         Generate another
                         <svg class="fill-indigo-600 hover:fill-indigo-800 ml-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
                     </a>
                 </div>
-                <div class="overflow-hidden mb-12">
-                    <table class="w-full text-left text-gray-600">
-                        <tbody class="divide-y divide-gray-200" id="usernames">
-                        @foreach ($data['userNames'] as $username)
-                            <tr class="hover:bg-gray-50 transition-colors duration-300">
-                                <td class="p-4">{{ $username }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                <div class="mb-8 lg:mb-12">
+                    <p class="text-gray-600 text-base md:text-lg">
+                        Explore the availability of these usernames on various social media platforms. Click to check instantly.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-x-4 gap-y-8 mx-auto" id="usernames">
+                    @foreach ($data['userNames'] as $username)
+                        <div class="bg-gray-100 hover:bg-gray-200 rounded-lg px-5 py-4 flex flex-col items-center transition duration-300 w-full md:w-auto">
+                            <form method="POST">
+                                @csrf
+                                <input type="hidden" name="username" value="{{ $username }}">
+                                <button type="submit" class="text-lg font-medium text-gray-800 text-center break-words w-full">
+                                    {{ $username }}
+                                </button>
+                            </form>
+                        </div>
+                    @endforeach
                 </div>
             </section>
 
+            {{--    Identities        --}}
+            {{--    https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-nested-groups        --}}
+
             <!-- Wallpaper section -->
-            <section class="text-gray-900">
+            <section class="text-gray-900 px-6 py-8">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                    <h2 class="text-3xl text-gray-700 font-bold my-6">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
-                    <a href="{{ $data['wallpaperUrl'] }}" download="{{ $data['nameDetails']->name }} Name Wallpaper" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-4 md:mb-0">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
+                    <a href="{{ $data['wallpaperUrl'] }}" download class="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
                         Download
-                        <svg class="fill-indigo-600 hover:fill-indigo-800 ml-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
+                        <!-- SVG Icon Here -->
                     </a>
                 </div>
 
                 <div class="overflow-hidden rounded-lg shadow-lg my-8">
-                    <img src="{{ $data['wallpaperUrl'] }}"
-                         class="w-full h-auto md:h-96 object-cover"
-                         alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }} symbolizing [qualities/themes of the wallpaper].">
+                    <img src="{{ $data['wallpaperUrl'] }}" class="w-full h-auto md:h-96 object-cover" id="name-wallpaper" alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }}">
                 </div>
-                <p class="text-lg my-8 leading-relaxed">
-                    Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper.
-                    Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for
-                    your devices. Elevate your screens with this blend of artistry and elegance.
+
+                <div id="wallpaper-thumbnails" class="flex overflow-x-auto space-x-4 mb-8">
+                    <img src="{{ $data['wallpaperUrl'] }}" alt="Image 1" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper">
+                    <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a" alt="Image 2" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper opacity-60">
+                </div>
+
+                <p class="text-lg leading-relaxed">
+                    Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper. Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for your devices. Elevate your screens with this blend of artistry and elegance.
                 </p>
             </section>
 
@@ -215,7 +230,7 @@
                     <ul class="divide-y divide-gray-200 bg-white" id="fancy-texts">
                         @foreach ($data['fancyTexts'] as $fancyText)
                             <li tabindex="0"
-                                class="text-lg p-4 hover:bg-gray-100 focus:bg-gray-100 transition ease-in-out duration-150 cursor-pointer"
+                                class="text-lg p-4 hover:bg-gray-100 focus:bg-gray-100 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard"
                                 aria-label="Select {{ $fancyText }} style">
                                 {{ $fancyText }}
                             </li>
@@ -270,119 +285,9 @@
                 </div>
             </section>
 
-            <!-- Social Share Section -->
-            <section class="my-8 mb-10 ">
-                <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
-                    <!-- Twitter -->
-                    <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"
-                       class="px-3 py-2 sm:px-4 sm:py-2 bg-gray-900 text-white rounded-full hover:bg-gray-950 flex items-center gap-2 transition-colors duration-300"
-                       target="_blank" rel="nofollow">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-                        Share
-                    </a>
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={!! request()->url() !!}"
-                       class="px-3 py-2 sm:px-4 sm:py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600  flex items-center gap-2 transition-colors duration-300"
-                       target="_blank" rel="nofollow">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
-                        Share
-                    </a>
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/cws/share?url={!! request()->url() !!}"
-                       class="px-3 py-2 sm:px-4 sm:py-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 flex items-center gap-2 transition-colors duration-300"
-                       target="_blank" rel="nofollow">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
-                        Share
-                    </a>
-                    <!-- Reddit -->
-                    <a href="http://www.reddit.com/submit?url={!! request()->url() !!}"
-                       class="px-3 py-2 sm:px-4 sm:py-2 bg-red-500 text-white rounded-full hover:bg-red-600 flex items-center gap-2 transition-colors duration-300"
-                       target="_blank" rel="nofollow">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M440.3 203.5c-15 0-28.2 6.2-37.9 15.9-35.7-24.7-83.8-40.6-137.1-42.3L293 52.3l88.2 19.8c0 21.6 17.6 39.2 39.2 39.2 22 0 39.7-18.1 39.7-39.7s-17.6-39.7-39.7-39.7c-15.4 0-28.7 9.3-35.3 22l-97.4-21.6c-4.9-1.3-9.7 2.2-11 7.1L246.3 177c-52.9 2.2-100.5 18.1-136.3 42.8-9.7-10.1-23.4-16.3-38.4-16.3-55.6 0-73.8 74.6-22.9 100.1-1.8 7.9-2.6 16.3-2.6 24.7 0 83.8 94.4 151.7 210.3 151.7 116.4 0 210.8-67.9 210.8-151.7 0-8.4-.9-17.2-3.1-25.1 49.9-25.6 31.5-99.7-23.8-99.7zM129.4 308.9c0-22 17.6-39.7 39.7-39.7 21.6 0 39.2 17.6 39.2 39.7 0 21.6-17.6 39.2-39.2 39.2-22 .1-39.7-17.6-39.7-39.2zm214.3 93.5c-36.4 36.4-139.1 36.4-175.5 0-4-3.5-4-9.7 0-13.7 3.5-3.5 9.7-3.5 13.2 0 27.8 28.5 120 29 149 0 3.5-3.5 9.7-3.5 13.2 0 4.1 4 4.1 10.2.1 13.7zm-.8-54.2c-21.6 0-39.2-17.6-39.2-39.2 0-22 17.6-39.7 39.2-39.7 22 0 39.7 17.6 39.7 39.7-.1 21.5-17.7 39.2-39.7 39.2z"/></svg>
-                        Share
-                    </a>
-                    <!-- Mail -->
-                    <a href="mailto:?subject={!! $data['nameDetails']->name !!} name details - all you need to know&amp;body={!! request()->url() !!}"
-                       class="px-3 py-2 sm:px-4 sm:py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 flex items-center gap-2 transition-colors duration-300"
-                       target="_blank" rel="nofollow" title="Share via email">
-                        <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                        Share
-                    </a>
-                </div>
-            </section>
+            @include('partials.names._share')
 
-            <!-- Comments Section -->
-            <section class="py-10 w-full"> <!-- Full width section -->
-                <h2 class="mb-6 text-3xl font-semibold text-gray-800 lg:text-4xl">Comments</h2>
-
-                <div class="space-y-6 max-w-4xl mx-auto">
-                    @foreach ($data['nameDetails']->comments as $comment)
-                        <article class="flex space-x-4 p-4 bg-white rounded-lg shadow">
-                            <img src="{!! Avatar::create($comment->email)->toGravatar(['d' => 'identicon']); !!}" alt="User profile picture"
-                                 class="w-16 h-16 rounded-full">
-
-                            <div class="flex-1">
-                                <h3 class="text-lg font-medium text-gray-800">{{$comment->name}}</h3>
-                                <p class="text-gray-600">{{$comment->content}}</p>
-                                <span>{{ $comment->created_at->diffForHumans() }}</span>
-                            </div>
-                        </article>
-                    @endforeach
-                </div>
-
-                <!-- Comment Form -->
-                <div class="mt-10 p-6 bg-white rounded-lg shadow max-w-4xl mx-auto">
-                    <h3 class="text-xl font-medium text-gray-800 mb-4">
-                        Leave a Comment:
-                    </h3>
-
-                    @if ($errors->any())
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
-                             role="alert">
-                            <ul class="list-disc">
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-sm">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('names.comments.store', $data['nameDetails']) }}" method="POST">
-                        <div class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-                                <input type="text" id="name" name="name"
-                                       class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm"
-                                       placeholder="Your name" required>
-                            </div>
-
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">
-                                    Email (won't be displayed):
-                                </label>
-                                <input type="email" id="email" name="email"
-                                       class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm"
-                                       placeholder="you@example.com" required>
-                            </div>
-
-                            <div>
-                                <label for="comment" class="block text-sm font-medium text-gray-700">Comment:</label>
-                                <textarea id="comment" name="content" rows="4"
-                                          class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm" placeholder="Add a comment..." required></textarea>
-                            </div>
-
-                            <div class="flex justify-end">
-                                <button type="submit"
-                                        class="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow-sm">
-                                    Post Comment
-                                </button>
-                            </div>
-                        </div>
-                        @csrf
-                    </form>
-                </div>
-            </section>
-
+            @include('partials.names._comment')
         </main>
 
         @include('partials.names._sidebar')
