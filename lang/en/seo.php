@@ -6,7 +6,7 @@ return [
         "description" => "Search baby names, meanings, origins, numerology and more.",
     ],
     "list" => [
-        "title" => ":page Names",
+        "title" => ":page baby names",
         "description" => "List of :page names with their meanings, origins and other information.",
     ],
     "name" =>[

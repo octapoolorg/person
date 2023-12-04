@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Seo;
 
 use App\Models\Name;
+use App\Models\Origin; // Assuming you have an Origin model
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -20,42 +21,77 @@ class Sitemap extends Command
     public function handle(): void
     {
         try {
-            // Clean up existing sitemap files
             $this->cleanUpSitemaps();
 
             $sitemapIndex = SitemapIndex::create();
-
             $chunkSize = 50000;
-            $chunkCount = 0;
 
-            Name::query()
-                ->select(['id', 'slug'])
-                ->chunk($chunkSize, function ($names) use (&$sitemapIndex, &$chunkCount) {
-                    $chunkCount++;
-                    $sitemap = SpatieSitemap::create();
+            // Add Names to Sitemap
+            $this->addNamesToSitemap($sitemapIndex, $chunkSize);
 
-                    foreach ($names as $name) {
-                        $url = route('names.show', ['name' => $name->slug]);
-                        $sitemap->add(Url::create($url));
-                    }
+            // Add Origins to Sitemap
+            $this->addOriginsToSitemap($sitemapIndex);
 
-                    $sitemapName = 'sitemap-' . $chunkCount . '.xml';
-                    $sitemap->writeToFile(public_path($sitemapName));
+            // Add Names Starting With Letters to Sitemap
+            $this->addAlphabeticalNamesToSitemap($sitemapIndex);
 
-                    $sitemapIndex->add('/' . $sitemapName);
-                });
-
+            // Write Sitemap Index File
             $sitemapIndexPath = public_path('sitemap_index.xml');
             $sitemapIndex->writeToFile($sitemapIndexPath);
             $this->info('Sitemap generated successfully.');
-
-            // Submit to search engines
-            $this->submitSitemapToSearchEngines();
 
         } catch (Exception $e) {
             $this->error('An error occurred: ' . $e->getMessage());
             Log::error('Sitemap generation error: ' . $e->getMessage());
         }
+    }
+
+    private function addNamesToSitemap(SitemapIndex &$sitemapIndex, $chunkSize): void
+    {
+        $chunkCount = 0;
+        Name::query()
+            ->select(['id', 'slug'])
+            ->chunk($chunkSize, function ($names) use (&$sitemapIndex, &$chunkCount) {
+                $chunkCount++;
+                $sitemap = SpatieSitemap::create();
+
+                foreach ($names as $name) {
+                    $url = route('names.show', ['name' => $name->slug]);
+                    $sitemap->add(Url::create($url));
+                }
+
+                $sitemapName = 'sitemap-names-' . $chunkCount . '.xml';
+                $sitemap->writeToFile(public_path($sitemapName));
+                $sitemapIndex->add('/' . $sitemapName);
+            });
+    }
+
+    private function addOriginsToSitemap(SitemapIndex &$sitemapIndex): void
+    {
+        $sitemap = SpatieSitemap::create();
+        Origin::all()->each(function ($origin) use ($sitemap) {
+            $url = route('names.origin', ['origin' => $origin->slug]);
+            $sitemap->add(Url::create($url));
+        });
+
+        $sitemapName = 'sitemap-origins.xml';
+        $sitemap->writeToFile(public_path($sitemapName));
+        $sitemapIndex->add('/' . $sitemapName);
+    }
+
+    private function addAlphabeticalNamesToSitemap(SitemapIndex &$sitemapIndex): void
+    {
+        $letters = range('A', 'Z');
+        $sitemap = SpatieSitemap::create();
+
+        foreach ($letters as $letter) {
+            $url = route('names.starting', ['letter' => $letter]);
+            $sitemap->add(Url::create($url));
+        }
+
+        $sitemapName = 'sitemap-alphabetical.xml';
+        $sitemap->writeToFile(public_path($sitemapName));
+        $sitemapIndex->add('/' . $sitemapName);
     }
 
     private function cleanUpSitemaps(): void
@@ -67,24 +103,5 @@ class Sitemap extends Command
         }
 
         $this->info('Existing sitemap files cleaned up.');
-    }
-
-    private function submitSitemapToSearchEngines(): void
-    {
-        $sitemapUrl = url('sitemap_index.xml');
-        $searchEngines = [
-            'google' => 'https://www.google.com/ping?sitemap=' . $sitemapUrl,
-        ];
-
-        foreach ($searchEngines as $name => $submissionUrl) {
-            $response = Http::get($submissionUrl);
-
-            if ($response->successful()) {
-                $this->info('Sitemap submitted to ' . $name . ' successfully.');
-            } else {
-                $this->error('Failed to submit sitemap to ' . $name . '.');
-                Log::error('Failed to submit sitemap to ' . $name . ': ' . $response->body());
-            }
-        }
     }
 }

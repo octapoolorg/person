@@ -21,7 +21,7 @@
             <!-- About Section -->
             <div class="lg:w-1/4 mb-6 lg:mb-0">
                 <h6 class="text-lg font-semibold mb-3">
-                    <i class="fas fa-info-circle mr-2"></i>
+                    <img src="{!! asset('static/images/logo.png') !!}" alt="iDenteez Logo" class="w-10 h-10 inline-block">
                     About iDenteez
                 </h6>
                 <p class="text-sm">

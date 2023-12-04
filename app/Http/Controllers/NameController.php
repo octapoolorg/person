@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Origin;
 use App\Services\Name\NameService;
 use App\Services\Name\UsernameGeneratorService;
 use App\Services\SeoService;
@@ -23,28 +24,61 @@ class NameController extends Controller
     public function index(): View
     {
         $names = $this->nameService->getNames();
-        $this->seoService->getSeoData('list',['page'=>'Popular']);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>'Popular']
+        );
         return view('names.list', compact('names'));
     }
 
     public function show(string $name): View
     {
         $data = $this->nameService->getNameDetails($name);
-        $this->seoService->getSeoData('name',['name'=>$data['nameDetails']->name]);
+        $this->seoService->getSeoData(
+            ['page'=>'name','image'=>$data['wallpaperUrl']],
+            ['name'=>$data['nameDetails']->name]
+        );
         return view('names.show', compact('data'));
     }
 
     public function gender(string $gender): View
     {
         $names = $this->nameService->getNamesByGender($gender);
-        $this->seoService->getSeoData('list',['page'=>$gender]);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>$gender]
+        );
+        return view('names.list', compact('names'));
+    }
+
+    public function origin(string $origin): View
+    {
+        $origin = Origin::where('slug',$origin)->firstOrFail();
+        $names = $this->nameService->getNamesByOrigin($origin->slug);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>$origin->name]
+        );
+        return view('names.list', compact('names'));
+    }
+
+    public function starting(string $starting): View
+    {
+        $names = $this->nameService->getNamesByStarting($starting);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>$starting]
+        );
         return view('names.list', compact('names'));
     }
 
     public function random(): View
     {
         $names = $this->nameService->getRandomNames();
-        $this->seoService->getSeoData('list',['page'=>'Random']);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>'Random']
+        );
         return view('names.list', compact('names'));
     }
 
@@ -75,7 +109,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $userNames = $this->nameService->getUsernames($name);
-        $html = view('partials.names._usernames', compact('userNames'))->render();
+        $html = view('partials.names.api._usernames', compact('userNames'))->render();
         return response()->json($html);
     }
 
@@ -83,7 +117,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $acronyms = $this->nameService->getAcronyms($name);
-        $html = view('partials.names._acronyms', compact('acronyms'))->render();
+        $html = view('partials.names.api._acronyms', compact('acronyms'))->render();
         return response()->json($html);
     }
 
@@ -91,7 +125,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $fancyTexts = $this->nameService->getFancyTexts($name);
-        $html = view('partials.names._fancy-texts', compact('fancyTexts'))->render();
+        $html = view('partials.names.api._fancy-texts', compact('fancyTexts'))->render();
         return response()->json($html);
     }
 }

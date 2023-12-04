@@ -42,7 +42,7 @@ class HomeController extends Controller
                 ->get();
         });
 
-        $this->seoService->getSeoData('home');
+        $this->seoService->getSeoData(['page' => 'home']);
 
         $data = [
             'popularNames' => $popularNames,

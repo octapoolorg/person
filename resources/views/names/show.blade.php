@@ -3,6 +3,7 @@
 @section('content')
     <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
+            <!-- Name Section -->
             <section class="bg-gray-100 p-8 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-gray-900 border">
                 <article class="text-center">
                     <!-- Name -->
@@ -41,6 +42,7 @@
                 </footer>
             </section>
 
+            <!-- Name Details Section -->
             <section class="border my-10 rounded-lg shadow">
                 <!-- Zodiac Sign Section -->
                 @include('partials.names._box', [
@@ -67,6 +69,7 @@
                 ])
             </section>
 
+            <!-- Name Signature Section -->
             <section class="p-4 md:p-8 border mb-10 rounded-lg shadow">
                 <h2 class="text-2xl mb-6">Signatures for {{ $data['nameDetails']->name }}</h2>
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -150,40 +153,8 @@
                 </div>
             </section>
 
-            <!-- Usernames Section -->
-            <section class="bg-white py-8 px-4 md:px-8 rounded-lg shadow my-10">
-                <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                    <h2 class="text-4xl text-gray-800 font-bold capitalize">
-                        Usernames for {{ $data['nameDetails']->name }}
-                    </h2>
-                    <a href="javascript:" id="generate-usernames" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
-                        Generate another
-                        <svg class="fill-indigo-600 hover:fill-indigo-800 ml-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
-                    </a>
-                </div>
-                <div class="mb-8 lg:mb-12">
-                    <p class="text-gray-600 text-base md:text-lg">
-                        Explore the availability of these usernames on various social media platforms. Click to check instantly.
-                    </p>
-                </div>
-
-                <div class="flex flex-wrap gap-x-4 gap-y-8 mx-auto" id="usernames">
-                    @foreach ($data['userNames'] as $username)
-                        <div class="bg-gray-100 hover:bg-gray-200 rounded-lg px-5 py-4 flex flex-col items-center transition duration-300 w-full md:w-auto">
-                            <form method="POST">
-                                @csrf
-                                <input type="hidden" name="username" value="{{ $username }}">
-                                <button type="submit" class="text-lg font-medium text-gray-800 text-center break-words w-full">
-                                    {{ $username }}
-                                </button>
-                            </form>
-                        </div>
-                    @endforeach
-                </div>
-            </section>
-
-            {{--    Identities        --}}
-            {{--    https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-nested-groups        --}}
+            <!-- Username Section -->
+            @include('partials.names._usernames')
 
             <!-- Wallpaper section -->
             <section class="text-gray-900 px-6 py-8">
@@ -191,7 +162,7 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-700 mb-4 md:mb-0">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
                     <a href="{{ $data['wallpaperUrl'] }}" download class="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
                         Download
-                        <!-- SVG Icon Here -->
+                        <svg class="fill-indigo-600 hover:fill-indigo-800 ml-2"  xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
                     </a>
                 </div>
 
@@ -199,10 +170,10 @@
                     <img src="{{ $data['wallpaperUrl'] }}" class="w-full h-auto md:h-96 object-cover" id="name-wallpaper" alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }}">
                 </div>
 
-                <div id="wallpaper-thumbnails" class="flex overflow-x-auto space-x-4 mb-8">
-                    <img src="{{ $data['wallpaperUrl'] }}?size=thumb" alt="Image 1" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper" data-src="{{ $data['wallpaperUrl'] }}">
-                    <img src="https://identeez.test/static/images/wallpaper/name/funky/sciuricha.jpg?size=thumb" alt="Image 2" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper opacity-60" data-src="https://identeez.test/static/images/wallpaper/name/funky/sciuricha.jpg">
-                </div>
+{{--                <div id="wallpaper-thumbnails" class="flex overflow-x-auto space-x-4 mb-8">--}}
+{{--                    <img src="{{ $data['wallpaperUrl'] }}?size=thumb" alt="Image 1" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper" data-src="{{ $data['wallpaperUrl'] }}">--}}
+{{--                    <img src="other-image-thumb" alt="Image 2" class="w-48 h-auto object-cover cursor-pointer switch-wallpaper opacity-60" data-src="other-image">--}}
+{{--                </div>--}}
 
                 <p class="text-lg leading-relaxed">
                     Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper. Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for your devices. Elevate your screens with this blend of artistry and elegance.
@@ -213,7 +184,7 @@
             <section class="px-6 py-10 mb-10 text-gray-800 rounded-lg shadow">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-4xl text-gray-800 font-bold capitalize">
-                        {{ $data['nameDetails']->name }} - Fancy Text Styles
+                        {{ $data['nameDetails']->name }} Name - Fancy Texts
                     </h2>
                     <a href="javascript:" id="generate-fancy-texts" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-300 flex items-center">
                         Generate another
@@ -239,51 +210,7 @@
                 </div>
             </section>
 
-            <!-- FAQ Section -->
-            <section class="px-6 py-10 mb-10 rounded-lg shadow" itemscope itemtype="https://schema.org/FAQPage">
-                <h2 class="mb-8 text-3xl text-gray-700 font-bold">
-                    Frequently Asked Questions about {{ $data['nameDetails']->name }}
-                </h2>
-
-                <div class="mx-auto bg-white space-y-6 divide-y divide-gray-200">
-
-                    @if(!empty($data['nameDetails']->meaning))
-                        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                            <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
-                                What does the name {{ $data['nameDetails']->name }} mean?
-                            </h3>
-                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                                <p itemprop="text" class="text-gray-600">
-                                    {{ $data['nameDetails']->meaning }}
-                                </p>
-                            </div>
-                        </div>
-                    @endif
-
-                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
-                            Is {{ $data['nameDetails']->name }} typically a male or female name?
-                        </h3>
-                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <p itemprop="text" class="text-gray-600">
-                                {{ $data['nameDetails']->gender->name }} is the gender typically associated with the name {{ $data['nameDetails']->name }}.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                        <h3 itemprop="name" class="text-lg text-gray-800 font-bold py-4">
-                            What are the numerology details of {{ $data['nameDetails']->name }}?
-                        </h3>
-                        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                            <p itemprop="text" class="text-gray-600">
-                                According to numerology, the destiny number is {{ $data['numerology']['numbers']['destiny'] }}, the soul number is {{ $data['numerology']['numbers']['soul_urge'] }}, and the personality number is {{ $data['numerology']['numbers']['personality'] }}.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
+            @include('partials.names._faqs')
 
             @include('partials.names._share')
 

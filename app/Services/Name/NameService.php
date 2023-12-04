@@ -165,8 +165,6 @@ class NameService
         return $traits;
     }
 
-
-
     private function nameSignatures(string $name): array
     {
         $fonts = [
@@ -190,6 +188,24 @@ class NameService
         $fancyTextService = new FancyTextService($name);
         return $this->cacheRemember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
             return $fancyTextService->generate();
+        });
+    }
+
+    public function getNamesByOrigin(string $origin)
+    {
+        $randomness = rand(1, 15);
+        return $this->cacheRemember("names:$origin:$randomness", function () use ($origin) {
+            return Name::validMeaning()->whereHas('origins', function ($query) use ($origin) {
+                $query->where('slug', $origin);
+            })->limit(30)->get();
+        });
+    }
+
+    public function getNamesByStarting(string $starting)
+    {
+        $randomness = rand(1, 15);
+        return $this->cacheRemember("names:$starting:$randomness", function () use ($starting) {
+            return Name::validMeaning()->where('name', 'like', "$starting%")->limit(30)->get();
         });
     }
 }
