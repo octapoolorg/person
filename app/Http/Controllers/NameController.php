@@ -62,6 +62,16 @@ class NameController extends Controller
         return view('names.list', compact('names'));
     }
 
+    public function category(string $category): View
+    {
+        $names = $this->nameService->getNamesByCategory($category);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>$category]
+        );
+        return view('names.list', compact('names'));
+    }
+
     public function starting(string $starting): View
     {
         $names = $this->nameService->getNamesByStarting($starting);

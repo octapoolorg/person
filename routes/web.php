@@ -18,6 +18,7 @@ Route::get('names/search', [NameController::class, 'search'])->name('names.searc
 Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 Route::get('names/{gender}',[NameController::class,'gender'])->name('names.gender');
 Route::get('names/origin/{origin}',[NameController::class,'origin'])->name('names.origin');
+Route::get('names/category/{category}',[NameController::class,'category'])->name('names.category');
 Route::get('names/starting/{letter}',[NameController::class,'starting'])->name('names.starting');
 
 Route::get('/static/images/wallpaper/name/funky/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');

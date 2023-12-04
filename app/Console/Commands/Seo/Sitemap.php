@@ -2,12 +2,12 @@
 
 namespace App\Console\Commands\Seo;
 
+use App\Models\Category;
 use App\Models\Name;
-use App\Models\Origin; // Assuming you have an Origin model
+use App\Models\Origin;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Spatie\Sitemap\Sitemap as SpatieSitemap;
 use Spatie\Sitemap\SitemapIndex;
@@ -31,6 +31,9 @@ class Sitemap extends Command
 
             // Add Origins to Sitemap
             $this->addOriginsToSitemap($sitemapIndex);
+
+            // Add Categories to Sitemap
+            $this->addCategoriesToSitemap($sitemapIndex);
 
             // Add Names Starting With Letters to Sitemap
             $this->addAlphabeticalNamesToSitemap($sitemapIndex);
@@ -60,7 +63,7 @@ class Sitemap extends Command
                     $sitemap->add(Url::create($url));
                 }
 
-                $sitemapName = 'sitemap-names-' . $chunkCount . '.xml';
+                $sitemapName = 'sitemap-' . $chunkCount . '.xml';
                 $sitemap->writeToFile(public_path($sitemapName));
                 $sitemapIndex->add('/' . $sitemapName);
             });
@@ -69,7 +72,9 @@ class Sitemap extends Command
     private function addOriginsToSitemap(SitemapIndex &$sitemapIndex): void
     {
         $sitemap = SpatieSitemap::create();
-        Origin::all()->each(function ($origin) use ($sitemap) {
+        Origin::whereHas('names', function ($query) {
+            $query->where('is_active', 1);
+        }, '>', 30)->get()->each(function ($origin) use ($sitemap) {
             $url = route('names.origin', ['origin' => $origin->slug]);
             $sitemap->add(Url::create($url));
         });
@@ -79,9 +84,24 @@ class Sitemap extends Command
         $sitemapIndex->add('/' . $sitemapName);
     }
 
+    public function addCategoriesToSitemap(SitemapIndex &$sitemapIndex): void
+    {
+        $sitemap = SpatieSitemap::create();
+        Category::whereHas('names', function ($query) {
+            $query->where('is_active', 1);
+        }, '>', 30)->get()->each(function ($category) use ($sitemap) {
+            $url = route('names.category', ['category' => $category->slug]);
+            $sitemap->add(Url::create($url));
+        });
+
+        $sitemapName = 'sitemap-categories.xml';
+        $sitemap->writeToFile(public_path($sitemapName));
+        $sitemapIndex->add('/' . $sitemapName);
+    }
+
     private function addAlphabeticalNamesToSitemap(SitemapIndex &$sitemapIndex): void
     {
-        $letters = range('A', 'Z');
+        $letters = range('a', 'z');
         $sitemap = SpatieSitemap::create();
 
         foreach ($letters as $letter) {

@@ -201,6 +201,16 @@ class NameService
         });
     }
 
+    public function getNamesByCategory(string $category)
+    {
+        $randomness = rand(1, 15);
+        return $this->cacheRemember("names:$category:$randomness", function () use ($category) {
+            return Name::validMeaning()->whereHas('categories', function ($query) use ($category) {
+                $query->where('slug', $category);
+            })->limit(30)->get();
+        });
+    }
+
     public function getNamesByStarting(string $starting)
     {
         $randomness = rand(1, 15);

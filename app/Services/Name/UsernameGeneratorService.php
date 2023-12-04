@@ -138,8 +138,6 @@ class UsernameGeneratorService
         return $wordList[array_rand($wordList)];
     }
 
-
-    // TODO - integrate this into the above
     //https://dnschecker.org/social-media-name-checker.php
 
     public function checkUsernameAvailability($username): JsonResponse

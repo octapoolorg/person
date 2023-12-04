@@ -18,8 +18,6 @@ class Urls extends Command
      */
     protected $signature = 'app:seo:urls {urls*}';
 
-    //TODO - Test this command with a list of URLs and make sure it works as expected.
-
     /**
      * The console command description.
      *
