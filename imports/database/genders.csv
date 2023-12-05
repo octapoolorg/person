@@ -1,6 +1,6 @@
 id,name
-1,F
-2,M
-3,M/F
-4,N
-5,T
+1,Female
+2,Male
+3,Unisex
+4,Uncertain
+5,Unknown
