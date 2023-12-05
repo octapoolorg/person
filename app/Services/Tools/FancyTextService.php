@@ -9,7 +9,13 @@ class FancyTextService
 
     public function __construct(string $name)
     {
-        $this->name = $name;
+        $this->name = $this->normalizeName($name);
+    }
+
+    private function normalizeName($name): array|string|null
+    {
+        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
     }
 
     private array $styles = [
@@ -280,7 +286,6 @@ class FancyTextService
         $name = strtoupper($name);
         return $emoji . implode($emoji, str_split($name)) . $emoji;
     }
-
 
     private function apply_style($name, $style): string
     {

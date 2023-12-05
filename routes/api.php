@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\NameController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post("/names/generate/acronyms/",[NameController::class,'generateAcronyms'])

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Origin;
 use App\Services\Name\NameService;
-use App\Services\Name\UsernameGeneratorService;
 use App\Services\SeoService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
