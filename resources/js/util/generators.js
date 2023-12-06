@@ -1,9 +1,9 @@
 // generators.js
 export const generators = {
-    'acronyms': {
-        'title': 'Acronyms',
-        'description': 'Generate acronyms of the name.',
-        'url': '/api/names/generate/acronyms'
+    'abbreviations': {
+        'title': 'Abbreviations',
+        'description': 'Generate abbreviations of the name.',
+        'url': '/api/names/generate/abbreviations'
     },
     'usernames': {
         'title': 'Usernames',

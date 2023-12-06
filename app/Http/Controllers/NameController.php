@@ -122,11 +122,11 @@ class NameController extends Controller
         return response()->json($html);
     }
 
-    public function generateAcronyms(): JsonResponse
+    public function generateAbbreviations(): JsonResponse
     {
         $name = request()->input('name');
-        $acronyms = $this->nameService->getAcronyms($name);
-        $html = view('partials.names.api._acronyms', compact('acronyms'))->render();
+        $abbreviations = $this->nameService->getAbbreviations($name);
+        $html = view('partials.names.api._abbreviations', compact('abbreviations'))->render();
         return response()->json($html);
     }
 

@@ -40,7 +40,7 @@ class NameService
         return [
             'nameDetails' => $nameDetails,
             'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name),
-            'acronyms' => $this->getAcronyms($nameDetails->name),
+            'abbreviations' => $this->getAbbreviations($nameDetails->name),
             'fancyTexts' => $this->getFancyTexts($nameDetails->name),
             'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
             'signatureUrls' => $this->nameSignatures($nameDetails->slug),
@@ -127,14 +127,13 @@ class NameService
 
     public function getUsernames(string $name): array
     {
-        $name = Str::headline($name);
        $randomness = rand(1, 15);
         return $this->cacheRemember("usernames:$name:$randomness", function () use ($name) {
              return $this->usernameGeneratorService->generateUsernames($name);
          });
     }
 
-    public function getAcronyms(string $name): array
+    public function getAbbreviations(string $name): array
     {
         $name = $this->normalizeName($name);
         $alphabets = str_split($name);

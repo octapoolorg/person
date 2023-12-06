@@ -41,8 +41,22 @@ class UsernameGeneratorService
      */
     public function generateUsernames(string $name): array
     {
-        $sanitized = $this->sanitizeName($name);
+        $normalized = $this->normalizeName($name);
+        $sanitized = $this->sanitizeName($normalized);
         return $this->createUsernames($sanitized);
+    }
+
+    /**
+     * Normalizes the provided name by converting to ASCII and removing non-alphanumeric characters.
+     *
+     * @param string $name The name to be normalized.
+     * @return array|string|null The normalized name.
+     */
+
+    private function normalizeName(string $name): array|string|null
+    {
+        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
     }
 
     /**
