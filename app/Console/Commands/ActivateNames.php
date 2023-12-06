@@ -23,9 +23,7 @@ class ActivateNames extends Command
             $totalNamesToActivateToday = $this->calculateNamesToActivate();
             $this->info("Activating $totalNamesToActivateToday names...");
 
-            $activatedNamesIds = $this->activateNames($totalNamesToActivateToday);
-            $urls = $this->generateUrls($activatedNamesIds);
-            $this->submitUrlsToSeo($urls);
+            $this->activateNames($totalNamesToActivateToday);
 
             $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
             return CommandAlias::SUCCESS;
@@ -43,7 +41,7 @@ class ActivateNames extends Command
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
     }
 
-    private function activateNames(int $number): array
+    private function activateNames(int $number): void
     {
         $activatedNamesIds = DB::table('names')
             ->where('is_active', false)
@@ -51,23 +49,5 @@ class ActivateNames extends Command
             ->limit($number)
             ->pluck('id');
         DB::table('names')->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
-        return $activatedNamesIds->toArray();
-    }
-
-    private function generateUrls(array $ids): array
-    {
-        $lastActivatedNames = DB::table('names')
-            ->whereIn('id', $ids)
-            ->orderByDesc('updated_at')
-            ->limit(50)
-            ->get(['slug']);
-        return $lastActivatedNames->map(function ($name) {
-            return route('names.show', ['name' => $name->slug]);
-        })->toArray();
-    }
-
-    private function submitUrlsToSeo(array $urls): void
-    {
-        $this->call('app:seo:sitemap',['urls' => $urls]);
     }
 }

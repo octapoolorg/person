@@ -122,7 +122,10 @@ class Database extends Command
 
     protected function writeDuplicateToFile($data): void
     {
-        $file = fopen(base_path('imports/database/backlog/duplicates.csv'), 'a');
+        $formattedDateTime = now()->format('Y-m-d_H-i-s');
+        $filename = base_path("imports/database/backlog/duplicates_$formattedDateTime.csv");
+
+        $file = fopen($filename, 'a');
         fputcsv($file, $data);
         fclose($file);
     }

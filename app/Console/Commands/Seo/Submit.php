@@ -13,7 +13,7 @@ class Submit extends Command
      *
      * @var string
      */
-    protected $signature = 'app:seo:submit {urls*}';
+    protected $signature = 'app:seo:submit';
 
     /**
      * The console command description.
@@ -29,10 +29,7 @@ class Submit extends Command
     {
         $this->info('Submitting to search engines...');
 
-        $urls = $this->argument('urls') ?? [];
-
         $this->submitSitemapToSearchEngines();
-//        $this->call('app:seo:urls', ['urls' => $urls]);
 
         $this->info('Submitted to search engines.');
     }

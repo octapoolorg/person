@@ -190,7 +190,7 @@ return [
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
         'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        'Image'         => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];
