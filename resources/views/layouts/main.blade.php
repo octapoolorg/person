@@ -21,7 +21,7 @@
     {!! SEO::generate() !!}
 </head>
 
-<body class="bg-white text-gray-900 h-full">
+<body class="bg-white text-gray-900 h-full dark:bg-gray-700">
     @include('partials._header')
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
