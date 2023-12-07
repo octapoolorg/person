@@ -45,7 +45,7 @@
                 <ul class="space-y-2">
                     <li><a href="{!! route('home') !!}" class="text-sm hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-300">Home</a></li>
                     <li><a href="{!! route('names.index') !!}" class="text-sm hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-300">Names</a></li>
-                    <li><a href="https://identeez.com/pages/privacy-policy" class="text-sm hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-300">Privacy Policy</a></li>
+                    <li><a href="/pages/privacy-policy" class="text-sm hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-300">Privacy Policy</a></li>
                 </ul>
             </div>
 
