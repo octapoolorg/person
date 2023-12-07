@@ -29,6 +29,13 @@ class Install extends Command
 
         $this->call('app:update:database');
 
+        $this->call('cache:clear');
+        $this->call('config:clear');
+        $this->call('route:clear');
+        $this->call('view:clear');
+
+        $this->call('up');
+
         $this->info('Application updated successfully.');
     }
 }
