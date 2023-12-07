@@ -4,19 +4,19 @@
     <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
             <!-- Name Section -->
-            <section class="bg-gray-100 dark:bg-gray-800 p-8 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-gray-900 dark:text-gray-100 border dark:border-gray-700">
+            <section class="bg-slate-100 dark:bg-slate-800 p-8 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-slate-900 dark:text-slate-100 border dark:border-slate-700">
                 <article class="text-center">
                     <!-- Name -->
                     <header>
-                        <h1 class="text-4xl md:text-7xl font-bold mb-6 md:mb-12 tracking-tight text-gray-900 dark:text-gray-100" id="actual-name">
+                        <h1 class="text-4xl md:text-7xl font-bold mb-6 md:mb-12 tracking-tight text-slate-900 dark:text-slate-100" id="actual-name">
                             {{ $data['nameDetails']->name }}
                         </h1>
                     </header>
 
                     <!-- Meaning -->
                     <div class="flex flex-col items-center space-y-4 my-8 md:my-12 relative">
-                        <strong class="text-xl md:text-3xl font-semibold uppercase text-gray-900 dark:text-gray-100">Means:</strong>
-                        <p class="text-xl md:text-2xl leading-relaxed mx-4 capitalize text-gray-900 dark:text-gray-100">
+                        <strong class="text-xl md:text-3xl font-semibold uppercase text-slate-900 dark:text-slate-100">Means:</strong>
+                        <p class="text-xl md:text-2xl leading-relaxed mx-4 capitalize text-slate-900 dark:text-slate-100">
                             {{ $data['nameDetails']->meaning }}
                         </p>
                         @if($data['nameDetails']->generated > 0)
@@ -35,7 +35,7 @@
                 </article>
 
                 <footer
-                        class="absolute bottom-0 left-0 w-full bg-indigo-700 dark:bg-indigo-800 text-gray-100 text-center py-4 md:py-6 border-t border-indigo-800 dark:border-indigo-700">
+                        class="absolute bottom-0 left-0 w-full bg-indigo-700 dark:bg-indigo-800 text-slate-100 text-center py-4 md:py-6 border-t border-indigo-800 dark:border-indigo-700">
                     <p class="text-lg md:text-xl font-bold italic ">
                         A {{ $data['nameDetails']->gender->name }} name.
                     </p>
@@ -43,7 +43,7 @@
             </section>
 
             <!-- Name Details Section -->
-            <section class="border dark:border-gray-700 my-10 rounded-lg shadow dark:shadow-none dark:bg-gray-800">
+            <section class="border dark:border-slate-700 my-10 rounded-lg shadow dark:shadow-none dark:bg-slate-800">
                 <!-- Zodiac Sign Section -->
                 @include('partials.names._box', [
                     'title' => 'Zodiac Sign',
@@ -55,7 +55,7 @@
                     'caption' => $data['numerology']['zodiac']['sign'],
                 ])
 
-                <hr class="dark:border-gray-700">
+                <hr class="dark:border-slate-700">
 
                 <!-- Auspicious Stones Section -->
                 @include('partials.names._box', [
@@ -70,8 +70,8 @@
             </section>
 
             <!-- Name Signature Section -->
-            <section class="p-4 md:p-8 border dark:border-gray-700 mb-10 rounded-lg shadow dark:shadow-none dark:bg-gray-800">
-                <h2 class="text-2xl mb-6 text-gray-900 dark:text-gray-100">Signatures for {{ $data['nameDetails']->name }}</h2>
+            <section class="p-4 md:p-8 border dark:border-slate-700 mb-10 rounded-lg shadow dark:shadow-none dark:bg-slate-800">
+                <h2 class="text-2xl mb-6 text-slate-900 dark:text-slate-100">Signatures for {{ $data['nameDetails']->name }}</h2>
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                     @foreach ($data['signatureUrls'] as $font => $url)
                         <img src="{{ $url }}" alt="{{ $data['nameDetails']->name }} name Signature"
@@ -81,9 +81,9 @@
             </section>
 
             <!-- Numerology Details Section -->
-            <section class="bg-white dark:bg-gray-800 p-10 rounded-lg shadow dark:shadow-none mb-10 border dark:border-gray-700">
+            <section class="bg-white dark:bg-slate-800 p-10 rounded-lg shadow dark:shadow-none mb-10 border dark:border-slate-700">
                 <div class="flex flex-col md:flex-row justify-between items-center relative">
-                    <h2 class="text-2xl md:text-4xl text-gray-800 dark:text-gray-100 mb-4 md:mb-10 font-bold relative">
+                    <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold relative">
                         {{ $data['nameDetails']->name }} Name Numerology
                     </h2>
                     <span class="group relative md:absolute top-0 right-0 mb-2 mr-2 flex items-center">
@@ -91,7 +91,7 @@
                         <svg class="fill-indigo-500 dark:fill-indigo-300 cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
 
                                     <!-- Tooltip Text -->
-                        <span class="absolute bottom-full mb-2 right-0 bg-black dark:bg-black text-white dark:text-gray-100 text-xs rounded py-1 px-3 hidden group-hover:block">
+                        <span class="absolute bottom-full mb-2 right-0 bg-black dark:bg-black text-white dark:text-slate-100 text-xs rounded py-1 px-3 hidden group-hover:block">
                             Based on Pythagorean Numerology.
                         </span>
                     </span>
@@ -99,7 +99,7 @@
 
                 <div class="space-y-10">
                     <!-- Numerology Explanation -->
-                    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                         Numerology numbers, each associated with a unique color, offer insights into personality and destiny. Discover the colors and meanings personalized for {{ $data['nameDetails']->name }}.
                     </p>
 
@@ -109,7 +109,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/numerology-icon.png') }}" alt="Destiny Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-300 mb-3">Destiny Number</h3>
-                            <p class="text-gray-700 dark:text-gray-300">
+                            <p class="text-slate-700 dark:text-slate-300">
                                 {{ __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -120,7 +120,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/soul-icon.png') }}" alt="Soul Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-green-700 dark:text-green-300 mb-3">Soul Number</h3>
-                            <p class="text-gray-700 dark:text-gray-300">
+                            <p class="text-slate-700 dark:text-slate-300">
                                 {{ __('numerology.soul_urge.' . $data['numerology']['numbers']['soul_urge'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -131,7 +131,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/personality-icon.png') }}" alt="Personality Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-yellow-700 dark:text-yellow-300 mb-3">Personality Number</h3>
-                            <p class="text-gray-700 dark:text-gray-300">
+                            <p class="text-slate-700 dark:text-slate-300">
                                 {{ __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -140,9 +140,9 @@
             </section>
 
             <!-- Abbreviations Section -->
-            <section class="bg-white dark:bg-gray-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
+            <section class="bg-white dark:bg-slate-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                    <h2 class="text-4xl text-gray-800 dark:text-gray-100 font-bold capitalize">
+                    <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize">
                         Abbreviations of {{ $data['nameDetails']->name }}
                     </h2>
                     <a href="javascript:" id="generate-abbreviations" class="mt-4 md:mt-0 text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 font-semibold transition-colors duration-300 flex items-center">
@@ -151,13 +151,13 @@
                     </a>
                 </div>
                 <div class="overflow-hidden">
-                    <table class="w-full text-left text-gray-600 dark:text-gray-300">
-                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700" id="abbreviations">
+                    <table class="w-full text-left text-slate-600 dark:text-slate-300">
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-700" id="abbreviations">
                         @foreach ($data['abbreviations'] as $abbreviationData)
                             @foreach ($abbreviationData as $alphabet => $abbreviation)
-                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
-                                    <th class="p-4 font-semibold text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 uppercase">{{ $alphabet }}</th>
-                                    <td class="p-4 text-gray-900 dark:text-gray-100">{{ $abbreviation }}</td>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-300">
+                                    <th class="p-4 font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-700 uppercase">{{ $alphabet }}</th>
+                                    <td class="p-4 text-slate-900 dark:text-slate-100">{{ $abbreviation }}</td>
                                 </tr>
                             @endforeach
                         @endforeach
@@ -170,9 +170,9 @@
             @include('partials.names._usernames')
 
             <!-- Wallpaper section -->
-            <section class="text-gray-900 dark:text-gray-100 px-6 py-8 dark:bg-gray-700">
+            <section class="text-slate-900 dark:text-slate-100 px-6 py-8 dark:bg-slate-800 shadow rounded-lg">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-100 mb-4 md:mb-0">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-100 mb-4 md:mb-0">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
                     <a href="{{ $data['wallpaperUrl'] }}" download class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 font-semibold transition-colors duration-300 flex items-center">
                         Download
                         <svg class="fill-indigo-600 hover:fill-indigo-800 dark:fill-indigo-400 dark:hover:fill-indigo-200 ml-2"  xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg>
@@ -183,17 +183,17 @@
                     <img src="{{ $data['wallpaperUrl'] }}" class="w-full h-auto md:h-96 object-cover" id="name-wallpaper" alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }}">
                 </div>
 
-                <p class="text-lg leading-relaxed text-gray-900 dark:text-gray-100">
+                <p class="text-lg leading-relaxed text-slate-900 dark:text-slate-100">
                     Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper. Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for your devices. Elevate your screens with this blend of artistry and elegance.
                 </p>
             </section>
 
             <!-- Fancy Text Styles section -->
-            <section class="px-6 py-10 mb-10 text-gray-800 dark:text-gray-100 rounded-lg shadow dark:shadow-none border-t border-gray-100 dark:border-gray-700 dark:bg-gray-800">
-                <h2 class="text-4xl text-gray-800 dark:text-gray-100 font-bold capitalize mb-6">
+            <section class="px-6 py-10 my-10 text-slate-800 dark:text-slate-100 rounded-lg shadow dark:shadow-none border-t border-slate-100 dark:border-slate-700 dark:bg-slate-800">
+                <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize mb-6">
                     {{ $data['nameDetails']->name }} Name - Fancy Texts
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                     Experience the elegance of {{ $data['nameDetails']->name }}
                     presented in various distinctive text styles. Each style is crafted
                     to highlight the uniqueness of the name, adding a touch of sophistication
@@ -206,10 +206,10 @@
                     </a>
                 </div>
                 <div class="overflow-x-auto">
-                    <ul class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-800" id="fancy-texts">
+                    <ul class="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-800" id="fancy-texts">
                         @foreach ($data['fancyTexts'] as $fancyText)
                             <li tabindex="0"
-                                class="text-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-700 focus:bg-gray-100 dark:focus:bg-gray-700 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-gray-900 dark:text-gray-100"
+                                class="text-lg p-4 hover:bg-slate-100 dark:hover:bg-slate-700 focus:bg-slate-100 dark:focus:bg-slate-700 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-slate-900 dark:text-slate-100"
                                 aria-label="Select {{ $fancyText }} style">
                                 {{ $fancyText }}
                             </li>

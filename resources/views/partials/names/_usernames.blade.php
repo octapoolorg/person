@@ -1,9 +1,9 @@
-<section class="bg-white dark:bg-gray-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
-    <h2 class="text-4xl text-gray-800 dark:text-gray-100 font-bold capitalize mb-6">
+<section class="bg-white dark:bg-slate-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
+    <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize mb-6">
         Usernames for {{ $data['nameDetails']->name }}
     </h2>
     <div class="mb-6">
-        <p class="text-gray-600 dark:text-gray-300 text-base md:text-lg">
+        <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
             Explore the availability of these usernames on various social media platforms. Click to check instantly.
         </p>
     </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="flex flex-wrap gap-x-4 gap-y-8 mx-auto" id="usernames">
         @foreach ($data['userNames'] as $username)
-             <span class="bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-lg font-medium text-gray-800 dark:text-gray-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
+             <span class="bg-slate-100 dark:bg-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-lg font-medium text-slate-800 dark:text-slate-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
                 {{ $username }}
             </span>
         @endforeach

@@ -5,8 +5,8 @@
         <main role="main" class="w-full px-4 mb-4 lg:mb-0">
             <div class="container mx-auto p-6 lg:p-12 bg-white mb-5">
                 <header class="w-full lg:w-2/3 mx-auto mb-10">
-                    <h1 class="text-center text-5xl font-bold text-gray-800 mb-6">Discover Your Numerology</h1>
-                    <p class="text-center text-lg text-gray-600">
+                    <h1 class="text-center text-5xl font-bold text-slate-800 mb-6">Discover Your Numerology</h1>
+                    <p class="text-center text-lg text-slate-600">
                         Explore the mystical numbers that shape your life's path. Use our intuitive calculator to unlock your unique numerological insights based on your name and birth date.
                     </p>
                 </header>
@@ -22,13 +22,13 @@
                         @csrf
                         <fieldset class="space-y-8">
                             <div class="flex flex-col mb-8">
-                                <label for="name" class="text-xl font-medium text-gray-900 mb-3">Your Full Name:</label>
-                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" placeholder="e.g., Jane Doe" required aria-label="Full name" value="{!! old('name') ?? $data['name'] ?? '' !!}">
+                                <label for="name" class="text-xl font-medium text-slate-900 mb-3">Your Full Name:</label>
+                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-2 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" placeholder="e.g., Jane Doe" required aria-label="Full name" value="{!! old('name') ?? $data['name'] ?? '' !!}">
                             </div>
 
                             <div class="flex flex-col mb-8">
-                                <label for="dob" class="text-xl font-medium text-gray-900 mb-3">Date of Birth:</label>
-                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" required aria-label="Date of birth" value="{!! old('dob') ?? $data['dob'] ?? '' !!}">
+                                <label for="dob" class="text-xl font-medium text-slate-900 mb-3">Date of Birth:</label>
+                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-2 border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" required aria-label="Date of birth" value="{!! old('dob') ?? $data['dob'] ?? '' !!}">
                             </div>
                         </fieldset>
 
@@ -38,7 +38,7 @@
             </div>
 
             @isset($data)
-                <section class="py-16 bg-gray-50" id="insights">
+                <section class="py-16 bg-slate-50" id="insights">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-12">
                         <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12 shadow-sm">Your Numerology Insights</h2>
 
@@ -49,10 +49,10 @@
                                     <h3 class="text-3xl font-semibold text-blue-600">
                                         Life Path Number <span class="text-blue-600 font-bold">{{ $data['numerology']['numbers']['life_path'] }}</span>
                                     </h3>
-                                    <p class="text-md text-gray-700 my-4 font-bold">
+                                    <p class="text-md text-slate-700 my-4 font-bold">
                                         {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".title", ['name' => $data['name']]) !!}
                                     </p>
-                                    <p class="text-md text-gray-600">
+                                    <p class="text-md text-slate-600">
                                         {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".description", ['name' => $data['name']]) !!}
                                     </p>
 
@@ -63,20 +63,20 @@
                                         </summary>
                                         <div class="mt-4 space-y-4">
                                             <div>
-                                                <h4 class="text-xl font-semibold text-gray-800">Advice</h4>
-                                                <p class="text-gray-600">
+                                                <h4 class="text-xl font-semibold text-slate-800">Advice</h4>
+                                                <p class="text-slate-600">
                                                     {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".advice", ['name' => $data['name']]) !!}
                                                 </p>
                                             </div>
                                             <div>
-                                                <h4 class="text-xl font-semibold text-gray-800">Challenges</h4>
-                                                <p class="text-gray-600">
+                                                <h4 class="text-xl font-semibold text-slate-800">Challenges</h4>
+                                                <p class="text-slate-600">
                                                     {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".challenges", ['name' => $data['name']]) !!}
                                                 </p>
                                             </div>
                                             <div>
-                                                <h4 class="text-xl font-semibold text-gray-800">Affirmation</h4>
-                                                <p class="italic text-gray-600">
+                                                <h4 class="text-xl font-semibold text-slate-800">Affirmation</h4>
+                                                <p class="italic text-slate-600">
                                                     {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".affirmation", ['name' => $data['name']]) !!}
                                                 </p>
                                             </div>
@@ -91,10 +91,10 @@
                                     <h3 class="text-3xl font-semibold text-purple-600">
                                         Soul Urge Number <span class="text-purple-600 font-bold">{{ $data['numerology']['numbers']['soul_urge'] }}</span>
                                     </h3>
-                                    <p class="text-md text-gray-700  my-4 font-bold">
+                                    <p class="text-md text-slate-700  my-4 font-bold">
                                         {!! __("tools/numerology/calculator/result.soul_urge.".$data['numerology']['numbers']['soul_urge'].".title", ['name' => $data['name']]) !!}
                                     </p>
-                                    <p class="text-md text-gray-600">
+                                    <p class="text-md text-slate-600">
                                         {!! __("tools/numerology/calculator/result.soul_urge.".$data['numerology']['numbers']['soul_urge'].".description", ['name' => $data['name']]) !!}
                                     </p>
                                 </div>
@@ -106,10 +106,10 @@
                                     <h3 class="text-3xl font-semibold text-green-600">
                                         Personality Number <span class="text-green-600 font-bold">{{ $data['numerology']['numbers']['personality'] }}</span>
                                     </h3>
-                                    <p class="text-md text-gray-700  my-4 font-bold">
+                                    <p class="text-md text-slate-700  my-4 font-bold">
                                         {!! __("tools/numerology/calculator/result.personality.".$data['numerology']['numbers']['personality'].".title", ['name' => $data['name']]) !!}
                                     </p>
-                                    <p class="text-md text-gray-600">
+                                    <p class="text-md text-slate-600">
                                         {!! __("tools/numerology/calculator/result.personality.".$data['numerology']['numbers']['personality'].".description", ['name' => $data['name']]) !!}
                                     </p>
                                 </div>

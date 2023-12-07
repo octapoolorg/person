@@ -1,5 +1,5 @@
 @foreach ($userNames as $username)
-    <span class="bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-lg font-medium text-gray-800 dark:text-gray-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
+    <span class="bg-slate-100 dark:bg-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-lg font-medium text-slate-800 dark:text-slate-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
         {{ $username }}
     </span>
 @endforeach

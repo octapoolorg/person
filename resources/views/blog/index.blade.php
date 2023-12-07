@@ -11,19 +11,19 @@
     </section>
 
     <!-- Blog Posts Section -->
-    <section class="container py-12 dark:bg-gray-800">
+    <section class="container py-12 dark:bg-slate-800">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             @foreach ($posts as $post)
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <a href="{!! route('blog.show', $post->slug) !!}" class="hover:opacity-90 transition-opacity duration-300">
                         <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="w-full h-64 object-cover">
                     </a>
                     <div class="p-6">
                         <a href="{!! route('blog.show', $post->slug) !!}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300">
-                            <h2 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{{ $post->title }}</h2>
+                            <h2 class="text-2xl font-semibold mb-2 text-slate-900 dark:text-slate-100">{{ $post->title }}</h2>
                         </a>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ Str::limit($post->excerpt, 150) }}</p>
-                        <div class="text-gray-500 dark:text-gray-400 text-xs font-semibold">
+                        <p class="text-slate-600 dark:text-slate-300 mb-4">{{ Str::limit($post->excerpt, 150) }}</p>
+                        <div class="text-slate-500 dark:text-slate-400 text-xs font-semibold">
                             <span>By {{ $post->author->name }}</span> |
                             <span>{{ $post->publish_date->format('F j, Y') }}</span>
                         </div>

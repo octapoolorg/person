@@ -1,9 +1,9 @@
 <!-- Social Share Section -->
-<section class="my-8 mb-10 dark:bg-gray-800 px-6 py-10 shadow rounded-lg">
+<section class="my-8 mb-10 dark:bg-slate-800 px-6 py-10 shadow rounded-lg">
     <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
         <!-- Twitter -->
         <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"
-           class="px-3 py-2 sm:px-4 sm:py-2 bg-gray-900 dark:bg-gray-900 text-white rounded-full hover:bg-gray-950 dark:hover:bg-gray-700 flex items-center gap-2 transition-colors duration-300"
+           class="px-3 py-2 sm:px-4 sm:py-2 bg-slate-900 dark:bg-slate-900 text-white rounded-full hover:bg-slate-950 dark:hover:bg-slate-700 flex items-center gap-2 transition-colors duration-300"
            target="_blank" rel="nofollow">
             <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
             Share
@@ -31,7 +31,7 @@
         </a>
         <!-- Mail -->
         <a href="mailto:?subject={!! $data['nameDetails']->name !!} name details - all you need to know&amp;body={!! request()->url() !!}"
-           class="px-3 py-2 sm:px-4 sm:py-2 bg-gray-500 dark:bg-gray-700 text-white rounded-full hover:bg-gray-600 dark:hover:bg-gray-800 flex items-center gap-2 transition-colors duration-300"
+           class="px-3 py-2 sm:px-4 sm:py-2 bg-slate-500 dark:bg-slate-700 text-white rounded-full hover:bg-slate-600 dark:hover:bg-slate-800 flex items-center gap-2 transition-colors duration-300"
            target="_blank" rel="nofollow" title="Share via email">
             <svg class="fill-white" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
             Share

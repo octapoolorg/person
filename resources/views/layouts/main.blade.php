@@ -18,10 +18,18 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <script>
+        if (localStorage.getItem('dark-mode') === 'true' || (!('dark-mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.querySelector('html').classList.add('dark');
+        } else {
+            document.querySelector('html').classList.remove('dark');
+        }
+    </script>
+
     {!! SEO::generate() !!}
 </head>
 
-<body class="bg-white text-gray-900 h-full dark:bg-gray-700">
+<body class="bg-white text-slate-900 h-full dark:bg-slate-900">
     @include('partials._header')
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
