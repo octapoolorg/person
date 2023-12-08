@@ -29,7 +29,7 @@
         <h2 class="text-5xl font-extrabold text-center text-slate-800 dark:text-slate-100 mb-16">Trending Names</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
             @foreach ($data['popularNames'] as $name)
-                <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 transition-all duration-300 ease-in-out">
+                <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300 ease-in-out">
                     <div class="p-8 text-center">
                         <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-700 transition-colors duration-300">{{ $name->name }}</h3>
                         <p class="text-slate-600 dark:text-slate-300 mt-3 text-sm">{{ $name->meaning }}</p>
@@ -49,8 +49,6 @@
                     <a href="{!! route('blog.show', $post->slug) !!}" class="group dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow dark:hover:shadow-indigo-300 group-hover:shadow-lg">
                         @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
                             <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
-                        @else
-                            <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ asset('static/images/placeholder.jpg') }}" alt="{{ $post->title }}">
                         @endif
                         <div class="p-6">
                             <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-2 transition-colors duration-300">{{ Str::limit($post->title, 25) }}</h3>

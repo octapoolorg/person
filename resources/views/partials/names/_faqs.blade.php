@@ -1,6 +1,6 @@
 <!-- FAQ Section -->
 <section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-slate-700" itemscope itemtype="https://schema.org/FAQPage">
-    <h2 class="mb-8 text-3xl text-slate-700 dark:text-slate-100 font-bold">
+    <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold capitalize">
         Frequently Asked Questions about <span class="text-slate-600 dark:text-slate-300">({{ $data['nameDetails']->name }})</span>
     </h2>
 

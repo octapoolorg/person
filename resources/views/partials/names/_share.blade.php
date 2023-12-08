@@ -1,6 +1,6 @@
 <!-- Social Share Section -->
 <section class="my-8 mb-10 px-6 py-10 shadow rounded-lg border dark:border-slate-700">
-    <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
+    <div class="flex flex-wrap md:justify-start gap-2 sm:gap-4">
         <!-- Twitter -->
         <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"
            class="px-3 py-2 sm:px-4 sm:py-2 bg-slate-900 dark:bg-slate-900 text-white rounded-full hover:bg-slate-950 dark:hover:bg-slate-700 flex items-center gap-2 transition-colors duration-300"
