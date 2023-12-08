@@ -2,25 +2,23 @@
 
 @section('content')
     <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
-        <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
+        <main class="w-full lg:w-2/3 md:px-4 mb-4 lg:mb-0">
             <!-- Name Section -->
-            <section class="bg-slate-100 dark:bg-slate-800 p-8 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-slate-900 dark:text-slate-100 border dark:border-slate-700">
+            <section class="bg-slate-100 dark:bg-slate-800 p-4 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-slate-900 dark:text-slate-100 border dark:border-slate-700">
                 <article class="text-center">
-                    <!-- Name -->
                     <header>
-                        <h1 class="text-4xl md:text-7xl font-bold mb-6 md:mb-12 tracking-tight text-slate-900 dark:text-slate-100" id="actual-name">
+                        <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-slate-900 dark:text-slate-100" id="actual-name">
                             {{ $data['nameDetails']->name }}
                         </h1>
                     </header>
 
-                    <!-- Meaning -->
-                    <div class="flex flex-col items-center space-y-4 my-8 md:my-12 relative">
+                    <div class="flex flex-col items-center space-y-6 mt-10 mb-20 md:mb-16 relative">
                         <strong class="text-xl md:text-3xl font-semibold uppercase text-slate-900 dark:text-slate-100">Means:</strong>
-                        <p class="text-xl md:text-2xl leading-relaxed mx-4 capitalize text-slate-900 dark:text-slate-100">
+                        <p class="text-xl md:text-2xl leading-relaxed md:mx-6 capitalize text-slate-900 dark:text-slate-100">
                             {{ $data['nameDetails']->meaning }}
                         </p>
                         @if($data['nameDetails']->generated > 0)
-                            <div class="group absolute bottom-0 right-0 mb-2 mr-2 flex items-center">
+                            <div class="group absolute -bottom-5 md:-bottom-10 right-0 mb-2 mr-2 flex items-center">
                                 <!-- SVG Icon -->
                                 <svg class="fill-indigo-500 dark:fill-indigo-300 cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
 
@@ -31,11 +29,9 @@
                             </div>
                         @endif
                     </div>
-
                 </article>
 
-                <footer
-                        class="absolute bottom-0 left-0 w-full bg-indigo-700 dark:bg-indigo-800 text-slate-100 text-center py-4 md:py-6 border-t border-indigo-800 dark:border-indigo-700">
+                <footer class="absolute bottom-0 left-0 w-full bg-indigo-700 dark:bg-indigo-800 text-slate-100 text-center py-4 md:py-6 border-t border-indigo-800 dark:border-indigo-700">
                     <p class="text-lg md:text-xl font-bold italic ">
                         A {{ $data['nameDetails']->gender->name }} name.
                     </p>
@@ -43,7 +39,7 @@
             </section>
 
             <!-- Name Details Section -->
-            <section class="border dark:border-slate-700 my-10 rounded-lg shadow dark:shadow-none dark:bg-slate-800">
+            <section class="border dark:border-slate-700 my-10 rounded-lg shadow dark:shadow-none">
                 <!-- Zodiac Sign Section -->
                 @include('partials.names._box', [
                     'title' => 'Zodiac Sign',
@@ -70,7 +66,7 @@
             </section>
 
             <!-- Name Signature Section -->
-            <section class="p-4 md:p-8 border dark:border-slate-700 mb-10 rounded-lg shadow dark:shadow-none dark:bg-slate-800">
+            <section class="p-4 md:p-8 border dark:border-slate-700 mb-10 rounded-lg shadow dark:shadow-none">
                 <h2 class="text-2xl mb-6 text-slate-900 dark:text-slate-100">Signatures for {{ $data['nameDetails']->name }}</h2>
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                     @foreach ($data['signatureUrls'] as $font => $url)
@@ -81,7 +77,7 @@
             </section>
 
             <!-- Numerology Details Section -->
-            <section class="bg-white dark:bg-slate-800 p-10 rounded-lg shadow dark:shadow-none mb-10 border dark:border-slate-700">
+            <section class="p-10 rounded-lg shadow dark:shadow-none mb-10 border dark:border-slate-700">
                 <div class="flex flex-col md:flex-row justify-between items-center relative">
                     <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold relative">
                         {{ $data['nameDetails']->name }} Name Numerology
@@ -140,7 +136,7 @@
             </section>
 
             <!-- Abbreviations Section -->
-            <section class="bg-white dark:bg-slate-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
+            <section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-slate-700">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize">
                         Abbreviations of {{ $data['nameDetails']->name }}
@@ -170,7 +166,7 @@
             @include('partials.names._usernames')
 
             <!-- Wallpaper section -->
-            <section class="text-slate-900 dark:text-slate-100 px-6 py-8 dark:bg-slate-800 shadow rounded-lg">
+            <section class="text-slate-900 dark:text-slate-100 px-6 py-8 shadow rounded-lg border dark:border-slate-700">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6">
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-100 mb-4 md:mb-0">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
                     <a href="{{ $data['wallpaperUrl'] }}" download class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 font-semibold transition-colors duration-300 flex items-center">
@@ -189,7 +185,7 @@
             </section>
 
             <!-- Fancy Text Styles section -->
-            <section class="px-6 py-10 my-10 text-slate-800 dark:text-slate-100 rounded-lg shadow dark:shadow-none border-t border-slate-100 dark:border-slate-700 dark:bg-slate-800">
+            <section class="px-6 py-10 my-10 text-slate-800 dark:text-slate-100 rounded-lg shadow dark:shadow-none border-t dark:border border-slate-100 dark:border-slate-700">
                 <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize mb-6">
                     {{ $data['nameDetails']->name }} Name - Fancy Texts
                 </h2>
@@ -206,10 +202,10 @@
                     </a>
                 </div>
                 <div class="overflow-x-auto">
-                    <ul class="divide-y divide-slate-200 dark:divide-slate-700 bg-white dark:bg-slate-800" id="fancy-texts">
+                    <ul class="divide-y divide-slate-200 dark:divide-slate-700" id="fancy-texts">
                         @foreach ($data['fancyTexts'] as $fancyText)
                             <li tabindex="0"
-                                class="text-lg p-4 hover:bg-slate-100 dark:hover:bg-slate-700 focus:bg-slate-100 dark:focus:bg-slate-700 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-slate-900 dark:text-slate-100"
+                                class="text-lg p-4 hover:bg-slate-100 dark:hover:bg-slate-800 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-slate-900 dark:text-slate-100"
                                 aria-label="Select {{ $fancyText }} style">
                                 {{ $fancyText }}
                             </li>

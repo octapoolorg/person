@@ -1,5 +1,5 @@
 <!-- Social Share Section -->
-<section class="my-8 mb-10 dark:bg-slate-800 px-6 py-10 shadow rounded-lg">
+<section class="my-8 mb-10 px-6 py-10 shadow rounded-lg border dark:border-slate-700">
     <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
         <!-- Twitter -->
         <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"

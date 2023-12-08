@@ -1,10 +1,10 @@
 <!-- Comments Section -->
-<section class="px-6 py-10 w-full dark:bg-slate-800 shadow rounded-lg "> <!-- Full width section -->
+<section class="px-6 py-10 w-full shadow rounded-lg border dark:border-slate-700"> <!-- Full width section -->
     <h2 class="mb-6 text-3xl font-semibold text-slate-800 dark:text-slate-100 lg:text-4xl">Comments</h2>
 
     <div class="space-y-6 max-w-4xl mx-auto">
         @foreach ($data['nameDetails']->comments as $comment)
-            <article class="flex space-x-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow dark:shadow-none">
+            <article class="flex space-x-4 p-4 rounded-lg shadow dark:shadow-none">
                 <img src="{!! Avatar::create($comment->email)->toGravatar(['d' => 'identicon']); !!}" alt="User profile picture"
                      class="w-16 h-16 rounded-full">
 
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Comment Form -->
-    <div class="mt-10 p-6 bg-white dark:bg-slate-800 rounded-lg shadow dark:shadow-none max-w-4xl mx-auto">
+    <div class="space-y-6 max-w-4xl mx-auto mt-10 rounded-lg dark:shadow-none">
         <h3 class="text-xl font-medium text-slate-800 dark:text-slate-100 mb-4">
             Leave a Comment:
         </h3>
@@ -39,7 +39,7 @@
                 <div>
                     <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-100">Name:</label>
                     <input type="text" id="name" name="name"
-                           class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-700 dark:text-slate-100"
+                           class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-800 dark:text-slate-100"
                            placeholder="Your name" required>
                 </div>
 
@@ -48,14 +48,14 @@
                         Email (won't be displayed):
                     </label>
                     <input type="email" id="email" name="email"
-                           class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-700 dark:text-slate-100"
+                           class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-800 dark:text-slate-100"
                            placeholder="you@example.com" required>
                 </div>
 
                 <div>
                     <label for="comment" class="block text-sm font-medium text-slate-700 dark:text-slate-100">Comment:</label>
                     <textarea id="comment" name="content" rows="4"
-                              class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-700 dark:text-slate-100" placeholder="Add a comment..." required></textarea>
+                              class="mt-1 p-2 w-full border border-slate-300 dark:border-slate-700 rounded-md shadow-sm dark:bg-slate-800 dark:text-slate-100" placeholder="Add a comment..." required></textarea>
                 </div>
 
                 <div class="flex justify-end">

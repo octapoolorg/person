@@ -1,10 +1,10 @@
 <!-- FAQ Section -->
-<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none dark:bg-slate-800" itemscope itemtype="https://schema.org/FAQPage">
+<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-slate-700" itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="mb-8 text-3xl text-slate-700 dark:text-slate-100 font-bold">
         Frequently Asked Questions about <span class="text-slate-600 dark:text-slate-300">({{ $data['nameDetails']->name }})</span>
     </h2>
 
-    <div class="mx-auto bg-white dark:bg-slate-800 space-y-6 divide-y divide-slate-200 dark:divide-slate-700">
+    <div class="mx-auto space-y-6 divide-y divide-slate-200 dark:divide-slate-700">
 
         @if(!empty($data['nameDetails']->meaning))
             <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">

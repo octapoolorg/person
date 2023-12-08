@@ -1,4 +1,4 @@
-<section class="bg-white dark:bg-slate-800 py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10">
+<section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-slate-700">
     <h2 class="text-4xl text-slate-800 dark:text-slate-100 font-bold capitalize mb-6">
         Usernames for {{ $data['nameDetails']->name }}
     </h2>
@@ -15,7 +15,7 @@
     </div>
     <div class="flex flex-wrap gap-x-4 gap-y-8 mx-auto" id="usernames">
         @foreach ($data['userNames'] as $username)
-             <span class="bg-slate-100 dark:bg-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg text-lg font-medium text-slate-800 dark:text-slate-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
+             <span class="bg-slate-100 dark:bg-slate-900 dark:border dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg text-lg font-medium text-slate-800 dark:text-slate-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
                 {{ $username }}
             </span>
         @endforeach
