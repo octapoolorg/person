@@ -16,7 +16,6 @@
             @foreach ($posts as $post)
                 <a href="{!! route('blog.show', $post->slug) !!}" class="rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow duration-300 dark:border dark:border-slate-700 dark:hover:border-slate-500">
                     @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
-                        <div class="h-64 bg-cover bg-center" style="background-image: url('{{ $post->featured_image }}')"></div>
                         <div class="hover:opacity-90 transition-opacity duration-300">
                             <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="w-full h-64 object-cover">
                         </div>
