@@ -4,7 +4,7 @@
 
     <!-- Hero Section with Image Background and Overlay -->
     <section class="relative bg-cover bg-center py-32 md:mt-20" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-indigo-600 opacity-90 dark:from-blue-800 dark:to-indigo-900 dark:opacity-80"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-indigo-600 opacity-90 dark:from-blue-800 dark:to-purple-900 dark:opacity-90"></div>
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
             <div class="text-center text-white">
                 <h1 class="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>
@@ -60,19 +60,6 @@
                     </a>
                 @endforeach
             </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Sign-Up Section -->
-    <section class="bg-indigo-600 text-white py-10 my-10">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
-            <p class="mb-6">Sign up for our newsletter to get the latest on baby names.</p>
-            <form action="" method="POST" class="flex justify-center items-center">
-                <input type="email" name="email" placeholder="Enter your email" required
-                       class="p-2 w-1/2 md:w-64 border-2 border-white bg-indigo-600 text-white placeholder:text-slate-100 rounded-lg focus:outline-0" title="Enter your email">
-                <button type="submit" class="bg-white text-indigo-600 py-2 px-4 ml-4">Subscribe</button>
-            </form>
         </div>
     </section>
 

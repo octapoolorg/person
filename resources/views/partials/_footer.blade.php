@@ -44,7 +44,7 @@
                 <h6 class="text-lg font-semibold mb-3 text-slate-900 dark:text-slate-100">Pages</h6>
                 <ul class="space-y-2">
                     <li><a href="/pages/about-us" class="text-sm hover:text-slate-900 dark:text-slate-100 dark:hover:text-slate-300">About Us</a></li>
-                    <li><a href="/pages/contact-us" class="text-sm hover:text-slate-900 dark:text-slate-100 dark:hover:text-slate-300">Contact Us</a></li>
+                    <li><a href="/page/contact-us" class="text-sm hover:text-slate-900 dark:text-slate-100 dark:hover:text-slate-300">Contact Us</a></li>
                     <li><a href="/pages/privacy-policy" class="text-sm hover:text-slate-900 dark:text-slate-100 dark:hover:text-slate-300">Privacy Policy</a></li>
                     <li><a href="/pages/terms-of-service" class="text-sm hover:text-slate-900 dark:text-slate-100 dark:hover:text-slate-300">Terms of Service</a></li>
                 </ul>
