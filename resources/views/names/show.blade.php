@@ -151,8 +151,8 @@
                         <tbody class="divide-y divide-slate-200 dark:divide-slate-700" id="abbreviations">
                         @foreach ($data['abbreviations'] as $abbreviationData)
                             @foreach ($abbreviationData as $alphabet => $abbreviation)
-                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-300">
-                                    <th class="p-4 font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-700 uppercase">{{ $alphabet }}</th>
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-300">
+                                    <th class="p-4 font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 uppercase">{{ $alphabet }}</th>
                                     <td class="p-4 text-slate-900 dark:text-slate-100">{{ $abbreviation }}</td>
                                 </tr>
                             @endforeach
@@ -167,7 +167,7 @@
 
             <!-- Wallpaper section -->
             <section class="text-slate-900 dark:text-slate-100 px-6 py-8 shadow rounded-lg border dark:border-slate-700">
-                <div class="flex flex-col md:flex-row items-center justify-between mb-6">
+                <div class="flex flex-col md:flex-row justify-between mb-6">
                     <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold">{{ $data['nameDetails']->name }} Name Wallpaper</h2>
                     <a href="{{ $data['wallpaperUrl'] }}" download class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 font-semibold transition-colors duration-300 flex items-center self-end">
                         Download
@@ -179,7 +179,7 @@
                     <img src="{{ $data['wallpaperUrl'] }}" class="w-full h-auto md:h-96 object-cover" id="name-wallpaper" alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }}">
                 </div>
 
-                <p class="text-lg leading-relaxed text-slate-900 dark:text-slate-100">
+                <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
                     Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper. Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for your devices. Elevate your screens with this blend of artistry and elegance.
                 </p>
             </section>
@@ -189,7 +189,7 @@
                 <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold capitalize">
                     {{ $data['nameDetails']->name }} Name - Fancy Texts
                 </h2>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
                     Experience the elegance of {{ $data['nameDetails']->name }}
                     presented in various distinctive text styles. Each style is crafted
                     to highlight the uniqueness of the name, adding a touch of sophistication
