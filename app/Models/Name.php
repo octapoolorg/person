@@ -57,7 +57,7 @@ class Name extends Model
 
     public function scopeValidMeaning(Builder $query): Builder
     {
-        return $query->where('meaning', '!=', "");
+        return $query->where('generated', false);
     }
 
     public function getRouteKeyName(): string
