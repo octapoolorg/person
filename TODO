@@ -1,7 +1,19 @@
 # add baby photo generator from parent photos
 
 # add generators
-https://www.name-generator.org.uk/
+    https://www.name-generator.org.uk/
+    https://www.fantasynamegenerators.com/
+
+
+# data from maxmind for city, country, postal, lat, long
+# names we already have
+# random image of fe(male)
+    https://fakepersongenerator.com/
+
+
+# Picker Wheel - Spin the Wheel to Decide a Random Choice
+    pickerwheel.com
+
 
 # add avatar generator - https://github.com/Proxlight/Create-Avatars, https://github.com/fangpenlin/avataaars, https://getavataaars.com/
 # https://chat.openai.com/c/ebcfbc1c-70d6-4d3a-b602-1b22f33c141b
