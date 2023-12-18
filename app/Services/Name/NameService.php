@@ -68,14 +68,14 @@ class NameService
     public function searchNames(string $query): Collection
     {
         return $this->cacheRemember("search:$query", function () use ($query) {
-            return Name::search($query)->limit(10)->get();
+            return Name::withoutGlobalScope('active')->search($query)->limit(10)->get();
         });
     }
 
     public function nameWallpaper(string $nameSlug, string $size): Response
     {
         $name = $this->cacheRemember("name:$nameSlug", function () use ($nameSlug) {
-            return Name::where('slug', $nameSlug)->firstOrFail()->name;
+            return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail()->name;
         });
         return $this->generateImageResponse($name, 'name wallpaper', 'static/images/wallpaper.jpg', 'roboto', $size);
     }
