@@ -34,7 +34,7 @@ class NameService
     public function getNameDetails(string $name): array
     {
         $nameDetails = $this->cacheRemember("nameDetails:$name", function () use ($name) {
-            return Name::with(['gender','comments'])->where('slug', $name)->firstOrFail();
+            return Name::withoutGlobalScope('active')->with(['gender','comments'])->where('slug', $name)->firstOrFail();
         });
 
         return [
