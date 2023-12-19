@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Spatie\Sitemap\Sitemap as SpatieSitemap;
 use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
+use Wink\WinkPost;
 
 class Sitemap extends Command
 {
@@ -37,6 +38,9 @@ class Sitemap extends Command
 
             // Add Names Starting With Letters to Sitemap
             $this->addAlphabeticalNamesToSitemap($sitemapIndex);
+
+            // Add Blog Posts to Sitemap
+            $this->addBlogPostsToSitemap($sitemapIndex);
 
             // Write Sitemap Index File
             $sitemapIndexPath = public_path('sitemap_index.xml');
@@ -110,6 +114,20 @@ class Sitemap extends Command
         }
 
         $sitemapName = 'sitemap-alphabetical.xml';
+        $sitemap->writeToFile(public_path($sitemapName));
+        $sitemapIndex->add('/' . $sitemapName);
+    }
+
+    private function addBlogPostsToSitemap(SitemapIndex &$sitemapIndex): void
+    {
+        $sitemap = SpatieSitemap::create();
+        $posts = WinkPost::where('published', true)->get();
+        foreach ($posts as $post) {
+            $url = route('blog.show', ['slug' => $post->slug]);
+            $sitemap->add(Url::create($url));
+        }
+
+        $sitemapName = 'sitemap-blog.xml';
         $sitemap->writeToFile(public_path($sitemapName));
         $sitemapIndex->add('/' . $sitemapName);
     }
