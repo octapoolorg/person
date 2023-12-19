@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 
 /**
  * Name
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @package App\Models
  *
- * @mixin Builder
+ * @mixin QueryBuilder
  */
 
 class Name extends Model
