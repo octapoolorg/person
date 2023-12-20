@@ -2,9 +2,11 @@
 
 namespace App\Services\Name;
 
+use App\Models\Category;
 use App\Models\Gender;
 use App\Models\Name;
 use App\Models\NameTrait;
+use App\Models\Origin;
 use App\Services\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextService;
@@ -215,6 +217,24 @@ class NameService
         $randomness = rand(1, 15);
         return $this->cacheRemember("names:$starting:$randomness", function () use ($starting) {
             return Name::validMeaning()->where('name', 'like', "$starting%")->limit(30)->get();
+        });
+    }
+
+    public function getCategory(string $category){
+        return $this->cacheRemember("category:$category", function () use ($category) {
+            return Category::where('slug', $category)->firstOrFail();
+        });
+    }
+
+    public function getOrigin(string $origin){
+        return $this->cacheRemember("origin:$origin", function () use ($origin) {
+            return Origin::where('slug', $origin)->firstOrFail();
+        });
+    }
+
+    public function getGender(string $gender){
+        return $this->cacheRemember("gender:$gender", function () use ($gender) {
+            return Gender::where('slug', $gender)->firstOrFail();
         });
     }
 }

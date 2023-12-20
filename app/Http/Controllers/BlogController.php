@@ -15,6 +15,11 @@ class BlogController extends Controller
             ->orderBy('publish_date', 'desc')
             ->paginate(10);
 
+        $this->seoTags([
+            'title' => 'Numerology, Astrology, Name Meanings and More',
+            'description' => 'Stay up to date with the latest news and articles from iDenteez.com',
+        ]);
+
         return view('blog.index', [
             'posts' => $posts
         ]);
@@ -34,7 +39,10 @@ class BlogController extends Controller
             ->take(3)
             ->get();
 
-        $this->seoTags($post);
+        $this->seoTags([
+            'title' => $post->title,
+            'description' => $post->excerpt,
+        ]);
 
         return view('blog.show', [
             'post' => $post,
@@ -42,17 +50,15 @@ class BlogController extends Controller
         ]);
     }
 
-    private function seoTags($post)
+    private function seoTags($post): void
     {
         $seoTags = [
-            'title' => $post->title,
-            'description' => $post->excerpt,
+            'title' => $post['title'],
+            'description' => $post['description'],
         ];
 
         SEOTools::setTitle($seoTags['title']);
         SEOTools::setDescription($seoTags['description']);
-
-        return $seoTags;
     }
 
 }

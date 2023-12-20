@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Origin;
 use App\Services\Name\NameService;
 use App\Services\SeoService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 
 class NameController extends Controller
 {
@@ -42,17 +44,18 @@ class NameController extends Controller
 
     public function gender(string $gender): View
     {
-        $names = $this->nameService->getNamesByGender($gender);
+        $gender = $this->nameService->getGender($gender);
+        $names = $this->nameService->getNamesByGender($gender->slug);
         $this->seoService->getSeoData(
             ['page'=>'list'],
-            ['page'=>$gender]
+            ['page'=>$gender->name]
         );
         return view('names.list', compact('names'));
     }
 
     public function origin(string $origin): View
     {
-        $origin = Origin::where('slug',$origin)->firstOrFail();
+        $origin = $this->nameService->getOrigin($origin);
         $names = $this->nameService->getNamesByOrigin($origin->slug);
         $this->seoService->getSeoData(
             ['page'=>'list'],
@@ -63,16 +66,18 @@ class NameController extends Controller
 
     public function category(string $category): View
     {
-        $names = $this->nameService->getNamesByCategory($category);
+        $category = $this->nameService->getCategory($category);
+        $names = $this->nameService->getNamesByCategory($category->slug);
         $this->seoService->getSeoData(
             ['page'=>'list'],
-            ['page'=>$category]
+            ['page'=>$category->name]
         );
         return view('names.list', compact('names'));
     }
 
     public function starting(string $starting): View
     {
+        $starting = strtoupper($starting);
         $names = $this->nameService->getNamesByStarting($starting);
         $this->seoService->getSeoData(
             ['page'=>'list'],
