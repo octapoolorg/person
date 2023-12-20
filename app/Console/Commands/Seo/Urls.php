@@ -4,6 +4,7 @@ namespace App\Console\Commands\Seo;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class Urls extends Command
 {
@@ -29,18 +30,14 @@ class Urls extends Command
         $urls = $this->argument('urls');
 
         if(!empty($urls)) {
-
             $this->info('Submitting URLs to Google for indexing...');
-
             $this->submit($urls);
-
             $this->info('Done!');
-
-            return 1;
+            return 0;
         }
 
-        return 0;
-
+        $this->error('No URLs provided for indexing.');
+        return 1;
     }
 
     /**
@@ -50,11 +47,15 @@ class Urls extends Command
      */
     protected function submit(array $urls): void
     {
-
         foreach ($urls as $url) {
-            $this->info('Submitting ' . $url);
-
-            $this->submitUrl($url);
+            try {
+                $this->info('Submitting ' . $url);
+                $this->submitUrl($url);
+                Log::info('URL submitted successfully: ' . $url);
+            } catch (\Exception $e) {
+                $this->error('Failed to submit URL: ' . $url);
+                Log::error('Failed to submit URL: ' . $url . '. Error: ' . $e->getMessage());
+            }
         }
     }
 
