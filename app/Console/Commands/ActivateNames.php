@@ -15,7 +15,7 @@ class ActivateNames extends Command
     protected $signature = 'app:activate-names';
     protected $description = 'Activate a certain number of names each day, with the number increasing weekly.';
     protected int $baseNumber = 50;
-    protected int $weeklyIncrement = 50;
+    protected int $weeklyIncrement = 30;
 
     public function handle(): int
     {
@@ -23,7 +23,9 @@ class ActivateNames extends Command
             $totalNamesToActivateToday = $this->calculateNamesToActivate();
             $this->info("Activating $totalNamesToActivateToday names...");
 
-            $this->activateNames($totalNamesToActivateToday);
+            $activatedNamesIds = $this->activateNames($totalNamesToActivateToday);
+            $urls = $this->generateUrls($activatedNamesIds);
+            $this->submitUrlsToSeo($urls);
 
             $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
             return CommandAlias::SUCCESS;
@@ -41,7 +43,7 @@ class ActivateNames extends Command
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
     }
 
-    private function activateNames(int $number): void
+    private function activateNames(int $number): array
     {
         $activatedNamesIds = DB::table('names')
             ->where('is_active', false)
@@ -49,5 +51,23 @@ class ActivateNames extends Command
             ->limit($number)
             ->pluck('id');
         DB::table('names')->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+        return $activatedNamesIds->toArray();
+    }
+
+    private function generateUrls(array $ids): array
+    {
+        $lastActivatedNames = DB::table('names')
+            ->whereIn('id', $ids)
+            ->orderByDesc('updated_at')
+            ->limit(200)
+            ->get(['slug']);
+        return $lastActivatedNames->map(function ($name) {
+            return route('names.show', ['name' => $name->slug]);
+        })->toArray();
+    }
+
+    private function submitUrlsToSeo(array $urls): void
+    {
+        $this->call('app:seo:urls', ['urls' => $urls]);
     }
 }
