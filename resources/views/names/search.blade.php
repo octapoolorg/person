@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
             <div class="mb-4">
                 <form action="{!! route('names.search') !!}" method="GET">
@@ -34,5 +35,6 @@
         </main>
 
         @include('partials.names._sidebar')
+    </section>
     </section>
 @endsection

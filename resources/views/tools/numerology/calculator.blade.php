@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row gap-4 mb-12 mt-8 md:mt-10">
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <section class="flex flex-col lg:flex-row gap-4 mb-12 mt-8 md:mt-10">
         <main role="main" class="w-full px-4 mb-4 lg:mb-0">
             <div class="container mx-auto p-6 lg:p-12 bg-white mb-5">
                 <header class="w-full lg:w-2/3 mx-auto mb-10">
@@ -119,5 +120,6 @@
                 </section>
             @endisset
         </main>
+    </section>
     </section>
 @endsection

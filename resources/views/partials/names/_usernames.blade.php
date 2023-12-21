@@ -3,7 +3,7 @@
         Usernames for {{ $data['nameDetails']->name }}
     </h2>
     <div class="mb-6">
-        <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
+        <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
             Explore the availability of these usernames on various social media platforms. Click to check instantly.
         </p>
     </div>

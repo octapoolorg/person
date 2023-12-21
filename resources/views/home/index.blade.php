@@ -1,9 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-
     <!-- Hero Section with Image Background and Overlay -->
-    <section class="relative bg-cover bg-center py-32 md:mt-20" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
+    <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
         <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-indigo-600 opacity-90 dark:from-blue-800 dark:to-purple-900 dark:opacity-90"></div>
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
             <div class="text-center text-white">
@@ -24,43 +23,45 @@
         </div>
     </section>
 
-    <!-- Popular Names Section with Interactive Cards -->
-    <section class="container mx-auto py-20 my-10">
-        <h2 class="text-5xl font-extrabold text-center text-slate-800 dark:text-slate-100 mb-16">Trending Names</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-            @foreach ($data['popularNames'] as $name)
-                <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300 ease-in-out">
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-700 transition-colors duration-300">{{ $name->name }}</h3>
-                        <p class="text-slate-600 dark:text-slate-300 mt-3 text-sm">{{ $name->meaning }}</p>
-                        <span class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 text-sm font-semibold tracking-wide mt-4 inline-block transition-colors duration-300">Learn more</span>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    </section>
-
-    <!-- Latest Blog Posts Section with Featured Images -->
-    <section class="container mx-auto my-10">
-        <div class="container mx-auto">
-            <h2 class="text-5xl font-extrabold text-center text-slate-800 dark:text-slate-100 mb-16">Insights & Stories</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 lg:px-12 py-20 border dark:border-slate-700 shadow rounded-lg ">
-                @foreach ($data['latestPosts'] as $post)
-                    <a href="{!! route('blog.show', $post->slug) !!}" class="group dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow dark:hover:shadow-indigo-300 group-hover:shadow-lg">
-                        @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
-                            <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
-                        @endif
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-2 transition-colors duration-300">{{ Str::limit($post->title, 25) }}</h3>
-                            <p class="text-slate-600 dark:text-slate-300 text-sm mb-4">{{ Str::limit($post->excerpt, 100) }}</p>
-                            <div class="text-slate-500 dark:text-slate-400 text-xs capitalize tracking-wide font-semibold">
-                                By {{ $post->author->name }} &bull; {{ $post->publish_date->format('M d, Y') }}
-                            </div>
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <!-- Popular Names Section with Interactive Cards -->
+        <section class="container mx-auto py-20 my-10">
+            <h2 class="text-5xl font-extrabold text-center text-slate-800 dark:text-slate-100 mb-16">Trending Names</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                @foreach ($data['popularNames'] as $name)
+                    <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 transition-all duration-300 ease-in-out">
+                        <div class="p-8 text-center">
+                            <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-700 transition-colors duration-300">{{ $name->name }}</h3>
+                            <p class="text-slate-600 dark:text-slate-300 mt-3 text-sm">{{ $name->meaning }}</p>
+                            <span class="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200 text-sm font-semibold tracking-wide mt-4 inline-block transition-colors duration-300">Learn more</span>
                         </div>
                     </a>
                 @endforeach
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Latest Blog Posts Section with Featured Images -->
+        <section class="container mx-auto my-10">
+            <div class="container mx-auto">
+                <h2 class="text-5xl font-extrabold text-center text-slate-800 dark:text-slate-100 mb-16">Insights & Stories</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 lg:px-12 py-20 border dark:border-slate-700 shadow rounded-lg ">
+                    @foreach ($data['latestPosts'] as $post)
+                        <a href="{!! route('blog.show', $post->slug) !!}" class="group dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 shadow dark:hover:shadow-indigo-300 group-hover:shadow-lg">
+                            @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
+                                <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
+                            @endif
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-2 transition-colors duration-300">{{ Str::limit($post->title, 25) }}</h3>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm mb-4">{{ Str::limit($post->excerpt, 100) }}</p>
+                                <div class="text-slate-500 dark:text-slate-400 text-xs capitalize tracking-wide font-semibold">
+                                    By {{ $post->author->name }} &bull; {{ $post->publish_date->format('M d, Y') }}
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+    </section>
 @endsection

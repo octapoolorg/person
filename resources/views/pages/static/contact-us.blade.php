@@ -7,10 +7,12 @@
 @endpushonce
 
 @section('content')
-    <section class="">
+
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <section class="">
         <div class="container px-6 py-12 mx-auto">
-            <div class="flex justify-between items-center mt-8">
-                <div class="w-1/2">
+            <div class="flex flex-col md:flex-row justify-between items-center mt-8">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
                     <h1 class="text-2xl font-semibold text-slate-800 capitalize dark:text-white lg:text-3xl">
                         Contact us for more info
                     </h1>
@@ -58,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="w-1/2">
+                <div class="w-full md:w-1/2">
                     <div class="w-full px-8 p-10 mx-auto overflow-hidden rounded-lg shadow border dark:border-slate-700">
                         <h1 class="text-lg font-medium text-slate-700 dark:text-slate-300">What do you want to ask</h1>
 
@@ -92,6 +94,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </section>
 @endsection
 

@@ -44,7 +44,7 @@
 <body class="bg-white text-slate-900 h-full dark:bg-slate-900 selection:bg-indigo-600 selection:text-white">
     @include('partials._header')
 
-    <div class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+    <div class="">
         @yield('content')
     </div>
 

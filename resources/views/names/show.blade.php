@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 md:px-4 mb-4 lg:mb-0">
             <!-- Name Section -->
             <section class="bg-slate-100 dark:bg-slate-800 px-4 py-10 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-slate-900 dark:text-slate-100 border dark:border-slate-700">
@@ -77,7 +78,7 @@
             </section>
 
             <!-- Numerology Details Section -->
-            <section class="p-10 rounded-lg shadow dark:shadow-none mb-10 border dark:border-slate-700">
+            <section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-slate-700">
                 <div class="flex flex-row justify-between items-center relative">
                     <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold relative">
                         {{ $data['nameDetails']->name }} Name Numerology
@@ -105,7 +106,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/numerology-icon.png') }}" alt="Destiny Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-300 mb-3">Destiny Number</h3>
-                            <p class="text-slate-700 dark:text-slate-300">
+                            <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
                                 {{ __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -116,7 +117,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/soul-icon.png') }}" alt="Soul Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-green-700 dark:text-green-300 mb-3">Soul Number</h3>
-                            <p class="text-slate-700 dark:text-slate-300">
+                            <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
                                 {{ __('numerology.soul_urge.' . $data['numerology']['numbers']['soul_urge'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -127,7 +128,7 @@
                         <img src="{{ asset('static/images/zodiac/numerology/personality-icon.png') }}" alt="Personality Icon" class="w-16 h-16 mb-4 md:mb-0 md:mr-6">
                         <div class="text-center md:text-left">
                             <h3 class="text-2xl font-semibold text-yellow-700 dark:text-yellow-300 mb-3">Personality Number</h3>
-                            <p class="text-slate-700 dark:text-slate-300">
+                            <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
                                 {{ __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $data['nameDetails']->name]) }}
                             </p>
                         </div>
@@ -152,8 +153,8 @@
                         @foreach ($data['abbreviations'] as $abbreviationData)
                             @foreach ($abbreviationData as $alphabet => $abbreviation)
                                 <tr class="hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300">
-                                    <th class="p-4 font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 uppercase">{{ $alphabet }}</th>
-                                    <td class="p-4 text-slate-900 dark:text-slate-100">{{ $abbreviation }}</td>
+                                    <th class="text-lg p-4 font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 uppercase">{{ $alphabet }}</th>
+                                    <td class="text-lg p-4 text-slate-900 dark:text-slate-100">{{ $abbreviation }}</td>
                                 </tr>
                             @endforeach
                         @endforeach
@@ -179,7 +180,7 @@
                     <img src="{{ $data['wallpaperUrl'] }}" class="w-full h-auto md:h-96 object-cover" id="name-wallpaper" alt="Stylish wallpaper with the name {{ $data['nameDetails']->name }}">
                 </div>
 
-                <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
+                <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
                     Discover the unique charm of the {{ $data['nameDetails']->name }} name wallpaper. Every curve and detail of the design captures the essence of the name, making it a perfect backdrop for your devices. Elevate your screens with this blend of artistry and elegance.
                 </p>
             </section>
@@ -189,7 +190,7 @@
                 <h2 class="text-2xl md:text-4xl text-slate-800 dark:text-slate-100 mb-4 md:mb-10 font-bold capitalize">
                     {{ $data['nameDetails']->name }} Name - Fancy Texts
                 </h2>
-                <p class="text-slate-600 dark:text-slate-300 text-base md:text-lg">
+                <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">
                     Experience the elegance of {{ $data['nameDetails']->name }}
                     presented in various distinctive text styles. Each style is crafted
                     to highlight the uniqueness of the name, adding a touch of sophistication
@@ -222,6 +223,7 @@
         </main>
 
         @include('partials.names._sidebar')
+    </section>
     </section>
 @endsection
 

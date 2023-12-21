@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="flex flex-col lg:flex-row mb-12 pt-8 md:pt-20">
+    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
+        <section class="flex flex-col lg:flex-row mb-12 pt-8 md:pt-20">
         <main class="w-full lg:w-2/3 p-4 md:ps-0 mb-4 lg:mb-0">
             <article>
                     @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
@@ -45,5 +46,6 @@
                 </section>
             </div>
         </aside>
+    </section>
     </section>
 @endsection

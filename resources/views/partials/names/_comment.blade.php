@@ -9,8 +9,8 @@
                      class="w-16 h-16 rounded-full">
 
                 <div class="flex-1">
-                    <h3 class="text-lg font-medium text-slate-800 dark:text-slate-100">{{$comment->name}}</h3>
-                    <p class="text-slate-600 dark:text-slate-300">{{$comment->content}}</p>
+                    <h3 class="text-xl font-medium text-slate-800 dark:text-slate-100">{{$comment->name}}</h3>
+                    <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-prose">{{$comment->content}}</p>
                     <span class="text-slate-700 dark:text-slate-300">{{ $comment->created_at->diffForHumans() }}</span>
                 </div>
             </article>
