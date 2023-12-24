@@ -5,6 +5,7 @@ namespace App\Console\Commands\Seo;
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class Urls extends Command
 {
@@ -28,6 +29,10 @@ class Urls extends Command
     public function handle(): int
     {
         $urls = $this->argument('urls');
+
+        $pendingUrls = $this->getUrlsFromCsv('pending-urls.csv');
+
+        $urls = array_merge($urls, $pendingUrls);
 
         if(!empty($urls)) {
             $this->info('Submitting URLs to Google for indexing...');
@@ -57,6 +62,30 @@ class Urls extends Command
                 Log::error('Failed to submit URL: ' . $url . '. Error: ' . $e->getMessage());
             }
         }
+    }
+
+    private function getUrlsFromCsv(string $path): array
+    {
+        // Read the CSV file
+        $csvData = Storage::get($path);
+
+        // Convert CSV data to an array
+        $urls = array_map('str_getcsv', explode("\n", $csvData));
+
+        // Convert the array to a collection
+        $collection = collect($urls);
+
+        // Get the first 150 URLs and remove them from the collection
+        $first150Urls = $collection->splice(0, rand(140, 150));
+
+        // Convert the remaining collection back to CSV format
+        $remainingCsvData = $collection->implode("\n");
+
+        // Write the remaining CSV data back to the file
+        Storage::put($path, $remainingCsvData);
+
+        // Return the first 150 URLs as an array
+        return $first150Urls->toArray();
     }
 
     /**
