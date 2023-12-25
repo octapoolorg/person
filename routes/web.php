@@ -37,8 +37,9 @@ Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('pages/{page}', [PageController::class, 'show']);
 
 /* Sitemap */
-Route::get('sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
-
+Route::get('/sitemap.xml', function () {
+    return redirect('sitemap_index.xml', 301);
+});
 
 
 

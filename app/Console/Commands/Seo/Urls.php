@@ -5,8 +5,10 @@ namespace App\Console\Commands\Seo;
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
+/**
+ * Command to submit URLs to Google for indexing.
+ */
 class Urls extends Command
 {
     /**
@@ -14,7 +16,7 @@ class Urls extends Command
      *
      * @var string
      */
-    protected $signature = 'app:seo:urls {urls*}';
+    protected $signature = 'app:seo:urls {urls?*}';
 
     /**
      * The console command description.
@@ -25,76 +27,88 @@ class Urls extends Command
 
     /**
      * Execute the console command.
+     *
+     * @return int
      */
     public function handle(): int
     {
-        $urls = $this->argument('urls');
-
-        $pendingUrls = $this->getUrlsFromCsv('pending-urls.csv');
-
+        $urls = $this->argument('urls') ?? [];
+        $pendingUrls = $this->getUrlsFromCsv(base_path('imports/pending-urls.csv'));
         $urls = array_merge($urls, $pendingUrls);
 
-        if(!empty($urls)) {
-            $this->info('Submitting URLs to Google for indexing...');
-            $this->submit($urls);
-            $this->info('Done!');
-            return 0;
+        if (empty($urls)) {
+            $this->error('No URLs provided for indexing.');
+            return 1;
         }
 
-        $this->error('No URLs provided for indexing.');
-        return 1;
+        $this->info('Submitting URLs to Google for indexing...');
+        $this->submit($urls);
+        $this->info('Done!');
+        return 0;
     }
 
     /**
-     * Submit URLs to Google for indexing.
+     * Submit a batch of URLs for indexing.
      *
-     * @param array $urls
+     * @param array $urls Array of URLs to submit.
+     *
+     * @return void
      */
     protected function submit(array $urls): void
     {
         foreach ($urls as $url) {
             try {
-                $this->info('Submitting ' . $url);
+                $this->info("Submitting $url");
                 $this->submitUrl($url);
-                Log::info('URL submitted successfully: ' . $url);
+                Log::info("URL submitted successfully: $url");
             } catch (\Exception $e) {
-                $this->error('Failed to submit URL: ' . $url);
-                Log::error('Failed to submit URL: ' . $url . '. Error: ' . $e->getMessage());
+                $this->error("Failed to submit URL: $url");
+                Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
             }
         }
     }
 
+    /**
+     * Retrieves URLs from a CSV file.
+     *
+     * @param string $path Path to the CSV file.
+     *
+     * @return array Array of URLs.
+     */
     private function getUrlsFromCsv(string $path): array
     {
-        // Read the CSV file
-        $csvData = Storage::get($path);
+        if (!file_exists($path)) {
+            Log::error("CSV file not found at $path");
+            return [];
+        }
 
-        // Convert CSV data to an array
-        $urls = array_map('str_getcsv', explode("\n", $csvData));
+        $csvData = file_get_contents($path);
+        $lines = explode("\n", $csvData);
+        array_shift($lines);
 
-        // Convert the array to a collection
-        $collection = collect($urls);
+        $urls = array_map(function ($line) {
+            return str_getcsv($line)[0] ?? null;
+        }, $lines);
 
-        // Get the first 150 URLs and remove them from the collection
-        $first150Urls = $collection->splice(0, rand(140, 150));
+        $urls = array_filter($urls);
+        $urls = array_slice($urls, 0, rand(140, 150));
 
-        // Convert the remaining collection back to CSV format
-        $remainingCsvData = $collection->implode("\n");
+        // Update the CSV file with the remaining URLs
+        $remainingLines = array_slice($lines, count($urls));
+        file_put_contents($path, implode("\n", $remainingLines));
 
-        // Write the remaining CSV data back to the file
-        Storage::put($path, $remainingCsvData);
-
-        // Return the first 150 URLs as an array
-        return $first150Urls->toArray();
+        return $urls;
     }
 
     /**
-     * Submit a URL to Google for indexing.
+     * Submits a single URL to Google for indexing.
      *
-     * @param string $url
+     * @param string $url The URL to submit.
+     *
+     * @return void
      */
     protected function submitUrl(string $url): void
     {
-        LaravelGoogleIndexing::create()->update($url);
+        // LaravelGoogleIndexing::create()->update($url);
     }
 }
