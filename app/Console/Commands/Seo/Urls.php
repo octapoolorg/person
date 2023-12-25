@@ -4,6 +4,7 @@ namespace App\Console\Commands\Seo;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -66,6 +67,8 @@ class Urls extends Command
                 Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
             }
         }
+
+        $this->submitUrlsToBing($urls);
     }
 
     /**
@@ -110,5 +113,24 @@ class Urls extends Command
     protected function submitUrl(string $url): void
     {
         LaravelGoogleIndexing::create()->update($url);
+    }
+
+    protected function submitUrlsToBing(array $urls): void
+    {
+        $apiKey = '0159e8b6982b43f19cdfbb8ada7d0b35';
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json; charset=utf-8',
+        ])->post('https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch', [
+            'apikey' => $apiKey,
+            'siteUrl' => route('home'),
+            'urlList' => [$urls],
+        ]);
+
+        if ($response->successful()) {
+            $this->info('Submitted URLs to Bing for indexing.');
+        } else {
+            $this->error('Failed to submit URLs to Bing for indexing.');
+            throw new \Exception('Failed to submit URLs to Bing for indexing.' . $response->body());
+        }
     }
 }
