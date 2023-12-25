@@ -109,6 +109,6 @@ class Urls extends Command
      */
     protected function submitUrl(string $url): void
     {
-        // LaravelGoogleIndexing::create()->update($url);
+        LaravelGoogleIndexing::create()->update($url);
     }
 }
