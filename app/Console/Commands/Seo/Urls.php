@@ -117,7 +117,7 @@ class Urls extends Command
 
     protected function submitUrlsToBing(array $urls): void
     {
-        $apiKey = '0159e8b6982b43f19cdfbb8ada7d0b35';
+        $apiKey = '18359be9c923455b81c43c5fd24e78c8';
         $response = Http::withHeaders([
             'Content-Type' => 'application/json; charset=utf-8',
         ])->post('https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch', [
