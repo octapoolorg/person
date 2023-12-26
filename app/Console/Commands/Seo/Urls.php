@@ -94,7 +94,7 @@ class Urls extends Command
         }, $lines);
 
         $urls = array_filter($urls);
-        $urls = array_slice($urls, 0, rand(140, 150));
+        $urls = array_slice($urls, 0, rand(130, 140));
 
         // Update the CSV file with the remaining URLs
         $remainingLines = array_slice($lines, count($urls));
