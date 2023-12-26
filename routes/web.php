@@ -36,13 +36,6 @@ Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 /* Legal Pages */
 Route::get('pages/{page}', [PageController::class, 'show']);
 
-/* Sitemap */
-Route::get('/sitemap.xml', function () {
-    return redirect('sitemap_index.xml', 301);
-});
-
-
-
 
 /* Legacy Routes - Redirects */
 Route::get('/static/images/signature/{name}/{font}.jpg', function ($name, $font) {
