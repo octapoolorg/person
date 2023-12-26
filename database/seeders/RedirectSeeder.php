@@ -13,7 +13,7 @@ class RedirectSeeder extends Seeder
      */
     public function run() : void
     {
-        $csv = Reader::createFromPath(database_path('imports/redirects/bulk.csv'), 'r');
+        $csv = Reader::createFromPath(base_path('imports/redirects/bulk.csv'), 'r');
         $csv->setHeaderOffset(0);
 
         foreach ($csv as $record) {
@@ -22,5 +22,7 @@ class RedirectSeeder extends Seeder
                 ['target' => $record['target']]
             );
         }
+
+        $this->command->info('Redirects table seeded!');
     }
 }
