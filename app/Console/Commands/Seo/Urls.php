@@ -68,7 +68,7 @@ class Urls extends Command
             }
         }
 
-        $this->submitUrlsToBing($urls);
+        // $this->submitUrlsToBing($urls);
     }
 
     /**
@@ -117,13 +117,13 @@ class Urls extends Command
 
     protected function submitUrlsToBing(array $urls): void
     {
-        $apiKey = '18359be9c923455b81c43c5fd24e78c8';
+        $apiKey = '04f8b409f3da42908bad830965e9cb62';
         $response = Http::withHeaders([
             'Content-Type' => 'application/json; charset=utf-8',
         ])->post('https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch', [
             'apikey' => $apiKey,
             'siteUrl' => route('home'),
-            'urlList' => [$urls],
+            'urlList' => $urls,
         ]);
 
         if ($response->successful()) {
