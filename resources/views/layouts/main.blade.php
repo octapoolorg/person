@@ -41,7 +41,7 @@
     </script>
 </head>
 
-<body class="bg-white text-slate-900 h-full dark:bg-slate-900 selection:bg-indigo-600 selection:text-white">
+<body class="bg-white text-slate-900 h-full selection:bg-indigo-600 selection:text-white">
     @include('partials._header')
 
     <div class="">

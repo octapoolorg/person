@@ -27,15 +27,15 @@
                         <tr class="h-2 first:h-0"></tr>
                         <tr wire:key="{{ $key }}">
                             <x-pulse::td class="max-w-[1px]">
-                                <code class="block text-xs text-gray-900 dark:text-gray-100 truncate"
+                                <code class="block text-xs text-gray-900 truncate"
                                     title="{{ $page->uri }}">
                                     {{ $page->uri }}
                                 </code>
                             </x-pulse::td>
-                            <x-pulse::td numeric class="text-gray-700 dark:text-gray-300 font-bold">
+                            <x-pulse::td numeric class="text-gray-700 font-bold">
                                 <x-pulse::http-method-badge :method="$page->method" />
                             </x-pulse::td>
-                            <x-pulse::td numeric class="text-gray-700 dark:text-gray-300 font-bold">
+                            <x-pulse::td numeric class="text-gray-700 font-bold">
                                 {{ (int) $page->count }}
                             </x-pulse::td>
                         </tr>
