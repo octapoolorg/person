@@ -65,6 +65,7 @@ class Sitemap extends Command
                 foreach ($names as $name) {
                     $url = route('names.show', ['name' => $name->slug]);
                     $sitemap->add(Url::create($url));
+                    usleep(200000); // 0.2 seconds delay - to not overload the server
                 }
 
                 $sitemapName = 'sitemap-' . $chunkCount . '.xml';
@@ -134,11 +135,7 @@ class Sitemap extends Command
 
     private function cleanUpSitemaps(): void
     {
-        $files = File::glob(public_path('sitemap-*.xml'));
-        foreach ($files as $file) {
-            $this->info('Deleting ' . $file);
-            File::delete($file);
-        }
+        File::delete(File::glob(public_path('sitemap-*.xml')));
 
         $this->info('Existing sitemap files cleaned up.');
     }

@@ -34,7 +34,7 @@ class Urls extends Command
     public function handle(): int
     {
         $urls = $this->argument('urls') ?? [];
-        $pendingUrls = $this->getUrlsFromCsv(base_path('imports/pending-urls.csv'));
+        $pendingUrls = $this->getUrlsFromCsv(base_path('imports/seo/pending-urls.csv'));
         $urls = array_merge($urls, $pendingUrls);
 
         if (empty($urls)) {
@@ -67,8 +67,6 @@ class Urls extends Command
                 Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
             }
         }
-
-        // $this->submitUrlsToBing($urls);
     }
 
     /**
@@ -113,24 +111,5 @@ class Urls extends Command
     protected function submitUrl(string $url): void
     {
         LaravelGoogleIndexing::create()->update($url);
-    }
-
-    protected function submitUrlsToBing(array $urls): void
-    {
-        $apiKey = '04f8b409f3da42908bad830965e9cb62';
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json; charset=utf-8',
-        ])->post('https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch', [
-            'apikey' => $apiKey,
-            'siteUrl' => route('home'),
-            'urlList' => $urls,
-        ]);
-
-        if ($response->successful()) {
-            $this->info('Submitted URLs to Bing for indexing.');
-        } else {
-            $this->error('Failed to submit URLs to Bing for indexing.');
-            throw new \Exception('Failed to submit URLs to Bing for indexing.' . $response->body());
-        }
     }
 }
