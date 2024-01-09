@@ -34,7 +34,7 @@ class Urls extends Command
     public function handle(): int
     {
         $urls = $this->argument('urls') ?? [];
-        $pendingUrls = $this->getUrlsFromCsv(base_path('imports/seo/pending-urls.csv'));
+        $pendingUrls = $this->getUrlsFromCsv(base_path('imports/seo/not-indexed.csv'));
         $urls = array_merge($urls, $pendingUrls);
 
         if (empty($urls)) {

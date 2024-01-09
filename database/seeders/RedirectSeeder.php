@@ -15,7 +15,7 @@ class RedirectSeeder extends Seeder
      */
     public function run() : void
     {
-        $csv = Reader::createFromPath(base_path('imports/redirects/bulk.csv'), 'r');
+        $csv = Reader::createFromPath(base_path('imports/seo/redirects.csv'), 'r');
         $csv->setHeaderOffset(0);
 
         foreach ($csv as $record) {
