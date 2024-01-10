@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Seo;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
+use Ymigval\LaravelIndexnow\Facade\IndexNow;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -66,6 +67,8 @@ class Urls extends Command
                 Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
             }
         }
+
+        $this->submitUrlsToIndexNow($urls);
     }
 
     /**
@@ -110,5 +113,10 @@ class Urls extends Command
     protected function submitUrl(string $url): void
     {
         LaravelGoogleIndexing::create()->update($url);
+    }
+
+    protected function submitUrlsToIndexNow(array $urls): void
+    {
+        IndexNow::submit($urls);
     }
 }
