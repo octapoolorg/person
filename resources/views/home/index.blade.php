@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Hero Section with Image Background and Overlay -->
-    <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.png') }});">
+    <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.jpg') }});">
         <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-indigo-600 opacity-90 dark:from-blue-800 dark:to-purple-900 dark:opacity-90"></div>
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
             <div class="text-center text-white">
