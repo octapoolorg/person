@@ -12,7 +12,7 @@
     <div class="bg-white shadow-md my-6 p-6 rounded">
         <h5 class="text-xl font-bold text-indigo-600 mb-4">Follow Us on Social</h5>
         <div class="flex justify-around mt-4 space-x-4">
-            <a href="https://www.facebook.com/identeez/" class="group hover:opacity-70 transition duration-200 ease-in"
+            <a href="https://www.facebook.com/identeezofficial/" class="group hover:opacity-70 transition duration-200 ease-in"
                title="Follow us on Facebook" target="_blank">
                 <img src="{!! asset('static/images/facebook-new.png') !!}" alt="Facebook"
                      class="group-hover:scale-110 transform transition-transform duration-150" />
