@@ -3,7 +3,7 @@
 namespace App\Console\Commands\Seo;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
-use Ymigval\LaravelIndexnow\Facade\IndexNow;
+use LaravelFreelancerNL\LaravelIndexNow\Facades\IndexNow;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -59,16 +59,12 @@ class Urls extends Command
     {
         foreach ($urls as $url) {
             try {
-                $this->info("Submitting $url");
                 $this->submitUrl($url);
-                Log::info("URL submitted successfully: $url");
             } catch (\Exception $e) {
                 $this->error("Failed to submit URL: $url");
                 Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
             }
         }
-
-        $this->submitUrlsToIndexNow($urls);
     }
 
     /**
@@ -104,7 +100,7 @@ class Urls extends Command
     }
 
     /**
-     * Submits a single URL to Google for indexing.
+     * Submits a URL for indexing.
      *
      * @param string $url The URL to submit.
      *
@@ -112,11 +108,26 @@ class Urls extends Command
      */
     protected function submitUrl(string $url): void
     {
-        LaravelGoogleIndexing::create()->update($url);
+        $this->submitUrlToGoogle($url);
+        $this->submitUrlToIndexNow($url);
     }
 
-    protected function submitUrlsToIndexNow(array $urls): void
+    /**
+     * Submits a single URL to Google for indexing.
+     *
+     * @param string $url The URL to submit.
+     *
+     * @return void
+     */
+    protected function submitUrlToGoogle(string $url): void
     {
-        IndexNow::submit($urls);
+        LaravelGoogleIndexing::create()->update($url);
+        Log::info("URL submitted to Google: $url");
+    }
+
+    protected function submitUrlToIndexNow(string $url): void
+    {
+        IndexNow::delaySubmission($url);
+        Log::info("URL submitted to IndexNow: $url");
     }
 }
