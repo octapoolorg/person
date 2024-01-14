@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::get('names', [NameController::class, 'index'])->name('names.index');
-Route::get('/names/random', [NameController::class, 'random'])->name('names.random');
+Route::get('names/random', [NameController::class, 'random'])->name('names.random');
 Route::get('names/search', [NameController::class, 'search'])->name('names.search');
 
 Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
@@ -45,3 +45,7 @@ Route::get('/static/images/signature/{name}/{font}.jpg', function ($name, $font)
 Route::get('/static/images/name/{name}.jpg', function ($name) {
     return redirect()->route('names.wallpaper', [$name], 301);
 });
+
+Route::get('{url}/', function ($url) {
+    return redirect($url, 301);
+})->where('url', '.*');
