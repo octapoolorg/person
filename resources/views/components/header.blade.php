@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
         <a href="{!! route('home') !!}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img class="h-14" src="{{ asset('/static/images/logo.png') }}" alt="{{ config('app.name') }}">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-surface">
+            <span class="self-center text-2xl font-semibold surfacespace-nowrap dark:text-surface">
                 {{ config('app.name') }}
             </span>
         </a>

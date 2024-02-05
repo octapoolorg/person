@@ -11,7 +11,7 @@
 
         function setThemeMode() {
             const themeName = localStorage.getItem('themeName');
-            const themes = ['default', 'funky', 'mellow', 'girly', 'boyish'];
+            const themes = ['default', 'funky', 'girly', 'boyish','nature'];
             if (themes.includes(themeName)) {
                 document.documentElement.setAttribute('data-theme', themeName);
             } else {

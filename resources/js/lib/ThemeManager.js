@@ -2,7 +2,7 @@ export class ThemeManager {
     constructor() {
         this.themeButton = document.getElementById('themeButton');
         this.themeDropdown = document.getElementById('themeDropdown');
-        this.modes = ['default', 'funky', 'mellow', 'girly', 'boyish'];
+        this.modes = ['default', 'funky', 'girly', 'boyish', 'nature'];
         this.currentTheme = 'default';
 
         // Bind the handleScroll method to the instance

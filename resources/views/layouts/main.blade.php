@@ -5,7 +5,7 @@
     <x-head />
 </head>
 
-<body class="bg-white text-slate-900 h-full dark:bg-slate-900 selection:bg-indigo-600 selection:text-white">
+<body class="bg-surface text-base-900 h-full dark:bg-base-900 selection:bg-primary-600 selection:text-surface">
     <x-header />
 
     <section class="">

@@ -52,17 +52,12 @@ export default {
         require('flowbite/plugin'),
         createThemes({
             'default' : {
-               'primary': colors.blue,
+               'primary': colors.indigo,
                'base': colors.neutral,
                'surface': colors.white,
             },
             'funky' : {
                'primary': colors.fuchsia,
-               'base': colors.neutral,
-               'surface': colors.white,
-            },
-            'mellow' : {
-               'primary': colors.amber,
                'base': colors.neutral,
                'surface': colors.white,
             },
@@ -72,7 +67,12 @@ export default {
                 'surface': colors.white,
             },
             'boyish' : {
-                'primary': colors.indigo,
+                'primary': colors.blue,
+                'base': colors.neutral,
+                'surface': colors.white,
+            },
+            'nature' : {
+                'primary': colors.green,
                 'base': colors.neutral,
                 'surface': colors.white,
             },
