@@ -12,7 +12,7 @@ class PageController extends Controller
     {
         $page = WinkPage::where('slug', $page)->firstOrFail();
         $this->seoTags($page);
-        return view('pages.show', compact('page'));
+        return view('pages.wink.show', compact('page'));
     }
 
     public function seoTags($page)

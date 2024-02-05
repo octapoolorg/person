@@ -2,12 +2,10 @@ import $ from 'jquery';
 import { copyToClipboard } from './clipboard.js';
 import { imageReplacement } from './imageReplacement.js';
 import { generators } from './generators.js';
-import {darkModeToggle} from "./darkMode.js";
 
 $(function() {
     copyToClipboard();
     imageReplacement();
-    darkModeToggle();
 
     for (const key in generators) {
         $(`#generate-${key}`).on('click',function(e) {
