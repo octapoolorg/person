@@ -1,20 +1,19 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full" id="top">
 
 <head>
-
+    <x-head />
 </head>
 
 <body class="bg-white text-slate-900 h-full dark:bg-slate-900 selection:bg-indigo-600 selection:text-white">
-    @include('partials._header')
+    <x-header />
 
-    <div class="">
+    <section class="">
         @yield('content')
-    </div>
+    </section>
 
-    @include('partials._footer')
-    @vite('resources/js/app.js')
-    @stack('scripts')
+    <x-footer />
+    <x-theme-switch />
 </body>
 
 </html>
