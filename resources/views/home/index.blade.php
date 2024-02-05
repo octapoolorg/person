@@ -3,20 +3,22 @@
 @section('content')
     <!-- Hero Section with Image Background and Overlay -->
     <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.jpg') }});">
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-500 to-primary-600 opacity-90 dark:from-blue-800 dark:to-primary-900 dark:opacity-90"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-700 to-primary-800 opacity-90 dark:from-primary-800 dark:to-primary-900 dark:opacity-90"></div>
         <div class="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
             <div class="text-center text-surface">
-                <h1 class="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">Uncover the Meaning of Names</h1>
+                <h1 class="text-3xl md:text-6xl font-bold mb-6 leading-tight">Uncover Name Mysteries</h1>
                 <p class="text-xl mb-8">Join millions in the quest for names' history, culture, and significance.</p>
                 <div class="flex justify-center">
-                    <form action="{!! route('names.search') !!}" method="GET" class="w-full max-w-lg relative">
+                    <form action="{!! route('names.search') !!}" method="GET" class="w-full max-w-lg">
                         <label for="search-home" class="sr-only">Search for a name</label>
-                        <input type="text" id="search-home" name="q"
-                               class="w-full pl-5 pr-16 py-3 rounded-full bg-surface dark:bg-base-800 bg-opacity-90 text-base-700 dark:text-base-300 focus:bg-opacity-100 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:outline-none transition duration-200"
-                               placeholder="Enter a name to get started..." required>
-                        <button type="submit" class="absolute right-1 top-1 transform -tranbase-y-1/2 bg-primary-500 text-surface p-2.5 rounded-full hover:bg-primary-600 transition duration-200">
-                            <i class="fas fa-search"></i>
-                        </button>
+                        <div class="relative">
+                            <input type="text" id="search-home" name="q"
+                                   class="w-full pl-5 py-3 focus:border-primary-200 rounded-full bg-surface dark:bg-base-800 bg-opacity-90 text-base-700 dark:text-base-300 focus:bg-opacity-100 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:outline-none transition duration-200"
+                                   placeholder="Enter a name to get started..." required>
+                            <button type="submit" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary-500 text-surface px-4 py-3 rounded-full hover:bg-primary-600 transition duration-200">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -26,7 +28,7 @@
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <!-- Popular Names Section with Interactive Cards -->
         <section class="container mx-auto py-20 my-10">
-            <h2 class="text-5xl font-extrabold text-center text-base-800 dark:text-base-100 mb-16">Trending Names</h2>
+            <h2 class="text-5xl font-bold text-center text-base-800 dark:text-base-100 mb-16">Trending Names</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                 @foreach ($data['popularNames'] as $name)
                     <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-base-200 dark:border-base-700 transition-all duration-300 ease-in-out">
@@ -43,7 +45,7 @@
         <!-- Latest Blog Posts Section with Featured Images -->
         <section class="container mx-auto my-10">
             <div class="container mx-auto">
-                <h2 class="text-5xl font-extrabold text-center text-base-800 dark:text-base-100 mb-16">Insights & Stories</h2>
+                <h2 class="text-5xl font-bold text-center text-base-800 dark:text-base-100 mb-16">Insights & Stories</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 lg:px-12 py-20 border dark:border-base-700 shadow rounded-lg ">
                     @foreach ($data['latestPosts'] as $post)
                         <a href="{!! route('blog.show', $post->slug) !!}" class="group dark:bg-base-800 rounded-lg border border-base-200 dark:border-base-700 shadow dark:hover:shadow-primary-300 group-hover:shadow-lg">

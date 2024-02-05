@@ -37,6 +37,14 @@
                         <span class="font-normal not-italic">Gender:</span> {{ $data['nameDetails']->gender->name }}
                     </p>
                 </footer>
+
+                <!-- Favorite Icon -->
+                <div class="absolute top-0 right-0 mt-4 mr-4 flex items-center space-x-4">
+                    <a href="javascript:" id="favorite-name" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center">
+                        <span class="hidden group-hover:inline-block px-2">Add to favorites</span>
+                        <i class="far fa-heart text-xl group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
+                    </a>
+                </div>
             </section>
 
             <!-- Name Details Section -->

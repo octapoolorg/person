@@ -5,7 +5,7 @@
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
 
         <!-- Blog Header Section -->
-        <section class="bg-primary-600 text-surface py-10 bg-gradient-to-r from-blue-500 to-primary-600 dark:from-blue-800 dark:to-primary-900 mt-8 md:mt-20">
+        <section class="bg-primary-600 text-surface py-10 bg-gradient-to-r from-primary-500 to-primary-600 dark:from-primary-800 dark:to-primary-900 mt-8 md:mt-20">
             <div class="container mx-auto px-6 md:px-12 xl:px-20">
                 <h1 class="text-6xl font-bold text-center mb-4 leading-tight">Blog</h1>
                 <p class="text-xl text-center mb-6">Latest insights and stories from our community</p>

@@ -24,16 +24,16 @@
                         <fieldset class="space-y-8">
                             <div class="flex flex-col mb-8">
                                 <label for="name" class="text-xl font-medium text-base-900 mb-3">Your Full Name:</label>
-                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-2 border-base-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" placeholder="e.g., Jane Doe" required aria-label="Full name" value="{!! old('name') ?? $data['name'] ?? '' !!}">
+                                <input type="text" name="name" id="name" class="form-input block w-full rounded-lg border-2 border-base-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-300 transition ease-in-out duration-300 px-4 py-3" placeholder="e.g., Jane Doe" required aria-label="Full name" value="{!! old('name') ?? $data['name'] ?? '' !!}">
                             </div>
 
                             <div class="flex flex-col mb-8">
                                 <label for="dob" class="text-xl font-medium text-base-900 mb-3">Date of Birth:</label>
-                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-2 border-base-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition ease-in-out duration-300 px-4 py-3" required aria-label="Date of birth" value="{!! old('dob') ?? $data['dob'] ?? '' !!}">
+                                <input type="date" name="dob" id="dob" class="form-input block w-full rounded-lg border-2 border-base-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-300 transition ease-in-out duration-300 px-4 py-3" required aria-label="Date of birth" value="{!! old('dob') ?? $data['dob'] ?? '' !!}">
                             </div>
                         </fieldset>
 
-                        <button type="submit" class="block w-full bg-blue-600 hover:bg-blue-700 text-surface text-xl font-bold py-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out shadow-md">Get Insights</button>
+                        <button type="submit" class="block w-full bg-primary-600 hover:bg-primary-700 text-surface text-xl font-bold py-4 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out shadow-md">Get Insights</button>
                     </form>
                 </section>
             </div>
@@ -41,14 +41,14 @@
             @isset($data)
                 <section class="py-16 bg-base-50" id="insights">
                     <div class="container mx-auto px-4 sm:px-6 lg:px-12">
-                        <h2 class="text-4xl font-extrabold text-center text-blue-600 mb-12 shadow-sm">Your Numerology Insights</h2>
+                        <h2 class="text-4xl font-bold text-center text-primary-600 mb-12 shadow-sm">Your Numerology Insights</h2>
 
                         <div class="space-y-12">
                             <!-- Life Path Number Section -->
-                            <div class="bg-surface rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-blue-600">
-                                <div class="px-10 py-8 bg-blue-50">
-                                    <h3 class="text-3xl font-semibold text-blue-600">
-                                        Life Path Number <span class="text-blue-600 font-bold">{{ $data['numerology']['numbers']['life_path'] }}</span>
+                            <div class="bg-surface rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-primary-600">
+                                <div class="px-10 py-8 bg-primary-50">
+                                    <h3 class="text-3xl font-semibold text-primary-600">
+                                        Life Path Number <span class="text-primary-600 font-bold">{{ $data['numerology']['numbers']['life_path'] }}</span>
                                     </h3>
                                     <p class="text-md text-base-700 my-4 font-bold">
                                         {!! __("tools/numerology/calculator/result.life_path.".$data['numerology']['numbers']['life_path'].".title", ['name' => $data['name']]) !!}
@@ -59,7 +59,7 @@
 
                                     <!-- Details Accordion -->
                                     <details class="group py-5">
-                                        <summary class="cursor-pointer text-lg font-semibold text-blue-700">
+                                        <summary class="cursor-pointer text-lg font-semibold text-primary-700">
                                             <span class="outline-none focus:outline-none">Check Details</span>
                                         </summary>
                                         <div class="mt-4 space-y-4">

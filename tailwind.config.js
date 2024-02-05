@@ -67,12 +67,12 @@ export default {
                 'surface': colors.white,
             },
             'boyish' : {
-                'primary': colors.blue,
+                'primary': colors.teal,
                 'base': colors.neutral,
                 'surface': colors.white,
             },
             'nature' : {
-                'primary': colors.green,
+                'primary': colors.sky,
                 'base': colors.neutral,
                 'surface': colors.white,
             },

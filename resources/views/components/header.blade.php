@@ -53,6 +53,19 @@
                         Blog
                     </a>
                 </li>
+                <li>
+                    <!-- favorite button -->
+                    <a href=""
+                       @class([
+                           'block py-2 px-3 rounded md:p-0',
+                           'text-primary-600' => request()->routeIs('favorites'),
+                           'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => ! request()->routeIs('favorites'),
+                       ])
+                       {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}
+                    >
+                        <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+                    </a>
+                </li>
                 <li class="hidden md:block">
                     <x-mode-switch />
                 </li>
