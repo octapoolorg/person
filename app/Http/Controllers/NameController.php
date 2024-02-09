@@ -83,6 +83,17 @@ class NameController extends Controller
         return view('names.list', compact('names'));
     }
 
+    public function ending(string $ending): View
+    {
+        $ending = strtoupper($ending);
+        $names = $this->nameService->getNamesByEnding($ending);
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>$ending]
+        );
+        return view('names.list', compact('names'));
+    }
+
     public function random(): View
     {
         $names = $this->nameService->getRandomNames();

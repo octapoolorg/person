@@ -220,6 +220,14 @@ class NameService
         });
     }
 
+    public function getNamesByEnding(string $ending)
+    {
+        $randomness = rand(1, 15);
+        return $this->cacheRemember("names:$ending:$randomness", function () use ($ending) {
+            return Name::validMeaning()->where('name', 'like', "%$ending")->limit(30)->get();
+        });
+    }
+
     public function getCategory(string $category){
         return $this->cacheRemember("category:$category", function () use ($category) {
             return Category::where('slug', $category)->firstOrFail();
