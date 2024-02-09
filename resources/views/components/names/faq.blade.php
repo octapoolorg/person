@@ -9,18 +9,16 @@
 
     <div class="mx-auto space-y-6 divide-y divide-base-200 dark:divide-base-700">
 
-        @if(!empty($data['nameDetails']->meaning))
-            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
-                    What is the meaning of {{ $data['nameDetails']->name }}?
-                </h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                        The meaning of {{ $data['nameDetails']->name }} is "{{ $data['nameDetails']->meaning }}".
-                    </p>
-                </div>
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
+                What is the meaning of {{ $data['nameDetails']->name }}?
+            </h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
+                    The meaning of {{ $data['nameDetails']->name }} is "{{ $data['nameDetails']->meaning }}".
+                </p>
             </div>
-        @endif
+        </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">

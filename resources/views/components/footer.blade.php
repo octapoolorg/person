@@ -122,7 +122,7 @@
             <!-- Scroll to top -->
             <div class="fixed bottom-4 right-4 z-50">
                 <a href="#top"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-800 hover:bg-primary-700 dark:bg-base-700 dark:hover:bg-base-600 focus:outline-none focus:ring-1 focus:ring-base-600">
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-800 hover:bg-primary-700 dark:bg-base-700 dark:hover:bg-base-600 focus:outline-none focus:ring-1 focus:ring-base-600 border border-base-100 dark:border-base-700 transition duration-300 ease-in-out">
                     <i class="fas fa-chevron-up text-surface"></i>
                 </a>
             </div>

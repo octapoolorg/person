@@ -21,7 +21,7 @@
                 </div>
             </main>
 
-            @include('partials.names._sidebar')
+            <x-names.sidebar />
         </section>
     </section>
 @endsection

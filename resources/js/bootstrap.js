@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Alpine from 'alpinejs'
 import 'flowbite';
+import './components/Generator.js';
 
 import { ThemeManager } from './lib/ThemeManager.js';
 

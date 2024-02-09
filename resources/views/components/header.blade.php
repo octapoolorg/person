@@ -1,9 +1,11 @@
 @props(['class' => ''])
-<nav class="bg-surface border-b border-base-200 dark:bg-base-800 dark:border-base-700 py-2">
+<nav class="bg-surface border-b border-base-200 dark:bg-base-800 dark:border-base-700 py-4">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-        <a href="{!! route('home') !!}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img class="h-14" src="{{ asset('/static/images/logo.png') }}" alt="{{ config('app.name') }}">
-            <span class="self-center text-2xl font-semibold surfacespace-nowrap dark:text-surface">
+        <a href="{!! route('home') !!}" class="flex items-center rtl:space-x-reverse">
+            <span class="mr-2">
+                <i class="far fa-star text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+            </span>
+            <span class="self-center text-2xl font-bold surfacespace-nowrap text-base-800 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400">
                 {{ config('app.name') }}
             </span>
         </a>
@@ -18,6 +20,15 @@
         </div>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border border-base-100 rounded-lg bg-base-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-surface dark:bg-base-800 dark:border-base-700">
+                <li>
+                    <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">
+                        <label for="hero-input" class="sr-only">Search</label>
+                        <input type="text" required="" id="hero-input" name="q" class="py-2 pl-4 pr-10 block w-full border border-base-300 dark:border-base-700 rounded-md shadow-sm dark:bg-base-800 text-black dark:text-white placeholder-base-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:focus:border-primary-500" placeholder="Search a Name...">
+                        <button type="submit" class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-primary-600 dark:text-primary-400">
+                            <i class="fas fa-search text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-500" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </li>
                 <li>
                     <a href="{!! route('home') !!}"
                        @class([

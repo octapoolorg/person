@@ -2,7 +2,7 @@
     <!-- Icon/Image -->
     <div class="flex-shrink-0 w-full md:w-32 mb-6 md:mb-0 mr-0 md:mr-12">
         <div class="aspect-w-4 aspect-h-3 flex justify-center">
-            <img src="{{ $img_src }}" class="object-cover rounded-lg h-32 w-32" alt="{{ $caption }} symbol">
+            <img src="{{ $image }}" class="object-cover rounded-lg h-32 w-32" alt="{{ $caption }} symbol">
         </div>
         <figcaption class="text-center font-semibold text-base-800 dark:text-base-100 mt-2">
             {{ $caption }}

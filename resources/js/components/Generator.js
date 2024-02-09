@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class Generator {
+export class Generator {
     constructor() {
         this.generators = {
             'abbreviations': {
@@ -45,4 +45,5 @@ class Generator {
     }
 }
 
-export default Generator;
+const Generate = new Generator();
+Generate.generate();
