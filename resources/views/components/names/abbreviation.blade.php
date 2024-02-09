@@ -3,8 +3,7 @@
         <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold">
             Abbreviations of {{ $data['nameDetails']->name }}
         </h2>
-        <a href="javascript:" id="generate-abbreviations"
-            class="group mt-4 md:mt-0 text-primary-600 hover:text-primary-800 dark:hover:text-primary-200 dark:text-primary-400 font-semibold transition-colors duration-300 flex items-center self-end">
+        <a href="javascript:" id="generate-abbreviations" class="group mt-4 md:mt-0 text-primary-600 hover:text-primary-800 dark:hover:text-primary-200 dark:text-primary-400 font-semibold transition-colors duration-300 flex items-center self-end">
             Generate another
             <i class="fas fa-sync-alt ml-2 group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
         </a>

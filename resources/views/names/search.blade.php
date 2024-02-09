@@ -12,7 +12,7 @@
                             type="search" id="search" name="q"
                             class="w-full pl-10 pr-4 py-3 border border-base-300 dark:border-base-700 rounded-full shadow-sm focus:ring-0 focus:border-primary-500 dark:focus:border-primary-500 transition duration-300 ease-in-out dark:bg-base-800 dark:text-base-100"
                             placeholder="Search names..."
-                            value="{!! request()->query('q') !!}"
+                            value="{{ request()->query('q') }}"
                         >
                         <div class="absolute left-0 top-0 mt-3 ml-4">
                             <i class="fas fa-search text-base-400 dark:text-base-300"></i>
