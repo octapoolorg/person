@@ -22,11 +22,12 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 class Name extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     public function gender(): BelongsTo
     {
-        return $this->belongsTo(Gender::class, );
+        return $this->belongsTo(Gender::class,);
     }
 
     public function origins(): BelongsToMany
@@ -46,7 +47,7 @@ class Name extends Model
 
     public function scopeSearch(Builder $query, string $search): Builder
     {
-        return $query->where('name', 'LIKE', "$search%")->where('meaning', '!=', "");
+        return $query->where('name', 'LIKE', "%$search%");
     }
 
     public function scopeRandom(Builder $query): Builder
@@ -56,7 +57,7 @@ class Name extends Model
 
     public function scopePopular(Builder $query): Builder
     {
-        return $query->inRandomOrder()->limit(4);
+        return $query->where('is_popular', true);
     }
 
     public function scopeValidMeaning(Builder $query): Builder

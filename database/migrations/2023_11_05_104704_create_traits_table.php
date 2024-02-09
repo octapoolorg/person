@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('names', function (Blueprint $table) {
-            $table->boolean('generated')->nullable()->after('meaning')->default(false);
+        Schema::create('traits', function (Blueprint $table) {
+            $table->id();
+            $table->string('alphabet')->index();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('names', function (Blueprint $table) {
-            $table->dropColumn('generated');
-        });
+        Schema::dropIfExists('name_traits');
     }
 };

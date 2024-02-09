@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('names', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->text('meaning');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(false);
-            $table->text('meaning');
-            $table->string('syllables')->nullable();
-            $table->foreignId('gender_id')->constrained();
+            $table->boolean('is_popular')->default(false);
+            $table->boolean('generated')->default(false);
+            $table->foreignId('gender_id');
             $table->timestamps();
         });
 

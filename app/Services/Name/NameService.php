@@ -11,7 +11,9 @@ use App\Services\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
@@ -36,7 +38,7 @@ class NameService
     public function getNameDetails(string $name): array
     {
         $nameDetails = $this->cacheRemember("nameDetails:$name", function () use ($name) {
-            return Name::withoutGlobalScope('active')->with(['gender','comments'])->where('slug', $name)->firstOrFail();
+            return Name::withoutGlobalScope('active')->with(['gender', 'comments'])->where('slug', $name)->firstOrFail();
         });
 
         return [
@@ -53,7 +55,7 @@ class NameService
     public function getNamesByGender(string $gender): Collection
     {
         return $this->cacheRemember("names:$gender", function () use ($gender) {
-            return Gender::with(['names' => function($query){
+            return Gender::with(['names' => function ($query) {
                 $query->validMeaning()->take(30);
             }])->where('slug', $gender)->firstOrFail()->names;
         });
@@ -61,16 +63,41 @@ class NameService
 
     public function getRandomNames(): Collection
     {
-        $random = rand(1,15);
+        $random = rand(1, 15);
         return $this->cacheRemember("names:random:$random", function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
         }, now()->addDay());
     }
 
-    public function searchNames(string $query): Collection
+    public function searchNames(Request $request) : LengthAwarePaginator
     {
-        return $this->cacheRemember("search:$query", function () use ($query) {
-            return Name::withoutGlobalScope('active')->search($query)->limit(10)->get();
+        $randomness = rand(1, 15);
+        $cacheKey = "search:" . Str::slug($request->fullUrl()) . ":$randomness";
+
+        return Cache::remember($cacheKey, now()->addDay(), function () use ($request) {
+            $query = Name::query()->withoutGlobalScope('active');
+
+            $request->whenFilled('q', function ($searchTerm) use ($query) {
+                $query->search($searchTerm);
+            });
+
+            $request->whenFilled('alphabet', function ($alphabet) use ($query) {
+                $query->where('name', 'like', $alphabet . '%');
+            });
+
+            $request->whenFilled('origin', function ($origin) use ($query) {
+                $query->whereHas('origins', function ($q) use ($origin) {
+                    $q->where('slug', $origin);
+                });
+            });
+
+            $request->whenFilled('gender', function ($gender) use ($query) {
+                $query->whereHas('gender', function ($q) use ($gender) {
+                    $q->where('slug', $gender);
+                });
+            });
+
+            return $query->paginate(20);
         });
     }
 
@@ -129,10 +156,10 @@ class NameService
 
     public function getUsernames(string $name): array
     {
-       $randomness = rand(1, 15);
+        $randomness = rand(1, 15);
         return $this->cacheRemember("usernames:$name:$randomness", function () use ($name) {
-             return $this->usernameGeneratorService->generateUsernames($name);
-         });
+            return $this->usernameGeneratorService->generateUsernames($name);
+        });
     }
 
     public function getAbbreviations(string $name): array
@@ -228,19 +255,22 @@ class NameService
         });
     }
 
-    public function getCategory(string $category){
+    public function getCategory(string $category)
+    {
         return $this->cacheRemember("category:$category", function () use ($category) {
             return Category::where('slug', $category)->firstOrFail();
         });
     }
 
-    public function getOrigin(string $origin){
+    public function getOrigin(string $origin)
+    {
         return $this->cacheRemember("origin:$origin", function () use ($origin) {
             return Origin::where('slug', $origin)->firstOrFail();
         });
     }
 
-    public function getGender(string $gender){
+    public function getGender(string $gender)
+    {
         return $this->cacheRemember("gender:$gender", function () use ($gender) {
             return Gender::where('slug', $gender)->firstOrFail();
         });

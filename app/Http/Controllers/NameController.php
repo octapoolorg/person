@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Name\NameService;
 use App\Services\SeoService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -109,10 +110,14 @@ class NameController extends Controller
      *
      * @return View
      */
-    public function search(): View
+    public function search(Request $request): View
     {
-        $q = request()->input('q') ?? '';
-        $names = $this->nameService->searchNames($q);
+        $q = $request->input('q') ?? '';
+        $names = $this->nameService->searchNames($request);
+        $this->seoService->getSeoData(
+            ['page'=>'search'],
+            ['q'=>$q]
+        );
         return view('names.search', compact('names'));
     }
 
