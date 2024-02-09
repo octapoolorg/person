@@ -50,7 +50,9 @@
                     @foreach ($data['latestPosts'] as $post)
                         <a href="{!! route('blog.show', $post->slug) !!}" class="group dark:bg-base-800 rounded-lg border border-base-200 dark:border-base-700 shadow dark:hover:shadow-primary-300 group-hover:shadow-lg">
                             @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
-                                <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
+                                <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300 lazy"
+                                src="data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaaaaa%3Bstroke-width%3A1%22/%3E%0A%3C/svg%3E"
+                                data-src="{{ $post->featured_image }}" alt="{{ $post->title }}">
                             @endif
                             <div class="p-6">
                                 <h3 class="text-2xl font-semibold text-base-800 dark:text-base-100 mb-2 transition-colors duration-300">{{ Str::limit($post->title, 25) }}</h3>

@@ -1,5 +1,13 @@
-export default class Utility {
-    static copyTextToClipboard(text) {
+import LazyLoad from "vanilla-lazyload";
+export class Utility {
+
+    static start() {
+        this.lazyLoad();
+    }
+
+    static copyTextToClipboard(e) {
+        e.preventDefault();
+        const text = e.target.innerText;
         if (navigator.clipboard) {
             return navigator.clipboard.writeText(text);
         } else {
@@ -19,6 +27,12 @@ export default class Utility {
                 return Promise.reject(err);
             }
         }
+    }
+
+    static lazyLoad() {
+        const lazyLoadInstance = new LazyLoad({
+            elements_selector: ".lazy"
+        });
     }
 
     static imageReplacement() {

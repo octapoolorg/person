@@ -5,7 +5,11 @@
             <div class="col-span-full lg:col-span-2">
                 <a class="flex items-center text-xl font-semibold text-surface dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                     href="{!! route('home') !!}" aria-label="Brand">
-                    <img class="w-10 h-10" src="{!! asset('/static/images/logo.png') !!}" alt="{{ config('app.name') }} Logo">
+                    <img
+                        class="w-10 h-10 lazy" src="data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaaaaa%3Bstroke-width%3A1%22/%3E%0A%3C/svg%3E"
+                        data-src="{!! asset('/static/images/logo.png') !!}"
+                        alt="{{ config('app.name') }} Logo"
+                    >
                     <span>
                         {{ config('app.name') }}
                     </span>

@@ -21,6 +21,7 @@
         "axios": "^1.6.7",
         "jquery": "^3.7.1",
         "preline": "^1.9.0",
-        "tw-colors": "^3.3.1"
+        "tw-colors": "^3.3.1",
+        "vanilla-lazyload": "^17.8.5"
     }
 }
