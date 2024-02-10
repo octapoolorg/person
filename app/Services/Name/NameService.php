@@ -46,7 +46,8 @@ class NameService
             'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name),
             'abbreviations' => $this->getAbbreviations($nameDetails->name),
             'fancyTexts' => $this->getFancyTexts($nameDetails->name),
-            'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
+            // 'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
+            'wallpaperUrls' => $this->nameWallpapers($nameDetails->slug),
             'signatureUrls' => $this->nameSignatures($nameDetails->slug),
             'userNames' => $this->getUsernames($nameDetails->slug)
         ];
@@ -206,6 +207,40 @@ class NameService
         }
 
         return $traits;
+    }
+
+    private function nameWallpapers(string $name): array
+    {
+        $wallpapers = [
+            [
+                'image' => 'static/images/wallpaper.jpg',
+                'font' => 'roboto'
+            ],
+            [
+                'image' => 'static/images/wallpaper2.jpg',
+                'font' => 'roboto'
+            ],
+            [
+                'image' => 'static/images/wallpaper3.jpg',
+                'font' => 'roboto'
+            ],
+            [
+                'image' => 'static/images/wallpaper4.jpg',
+                'font' => 'roboto'
+            ],
+            [
+                'image' => 'static/images/wallpaper5.jpg',
+                'font' => 'roboto'
+            ]
+        ];
+
+        $wallpaperUrls = [];
+
+        foreach ($wallpapers as $wallpaper) {
+            $wallpaperUrls[] = route('names.wallpaper', ['name' => $name, 'image' => $wallpaper['image'], 'font' => $wallpaper['font']]);
+        }
+
+        return $wallpaperUrls;
     }
 
     private function nameSignatures(string $name): array
