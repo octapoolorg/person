@@ -139,9 +139,6 @@ class FavoriteList {
             return; // No favorite-list element on this page, so return early
         }
 
-        // Clear the existing list
-        favoriteList.innerHTML = '';
-
         this.favoritesManager.favorites.forEach((favorite) => {
             let listItem = this.getListItemByUrl(favorite.url);
             if (!listItem) {
@@ -151,16 +148,31 @@ class FavoriteList {
                 listItem.classList.add('list-item', 'flex', 'justify-between', 'items-center', 'p-2', 'border', 'border-gray-200', 'rounded'); // Add your Tailwind CSS classes here
 
                 const heartButton = document.createElement('i');
-                heartButton.classList.add('fa-heart', 'cursor-pointer');
+                heartButton.classList.add('fa-heart', 'cursor-pointer', 'fas');
                 heartButton.setAttribute('data-url', favorite.url);
                 heartButton.addEventListener('click', () => {
                     const isFavorite = this.favoritesManager.toggleFavorite(favorite.url, favorite.name, favorite.meaning);
                     this.navbarIcon.updateNavbarIcon();
-                    this.updateFavoriteList();
+                    if (!isFavorite) {
+                        heartButton.classList.remove('fas');
+                        heartButton.classList.add('far');
+                    } else {
+                        heartButton.classList.remove('far');
+                        heartButton.classList.add('fas');
+                    }
                 });
 
                 listItem.appendChild(heartButton);
                 favoriteList.appendChild(listItem);
+            } else {
+                const heartButton = listItem.querySelector('.fa-heart');
+                if (this.favoritesManager.isFavorite(favorite.url)) {
+                    heartButton.classList.remove('far');
+                    heartButton.classList.add('fas');
+                } else {
+                    heartButton.classList.remove('fas');
+                    heartButton.classList.add('far');
+                }
             }
         });
     }
