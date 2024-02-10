@@ -13,5 +13,4 @@ window.Utility = Utility;
 
 window.ThemeManager = new ThemeManager();
 
-Alpine.start();
 Utility.start();
