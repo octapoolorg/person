@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Cache;
 use App\Models\Redirect;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
 
 $cacheKey = 'redirects';
 
@@ -16,7 +16,7 @@ foreach ($redirects as $source => $target) {
 
 /* Legacy Routes - Redirects */
 Route::get('static/images/signature/{name}/{font}.jpg', function ($name, $font) {
-    return redirect()->route('names.signature', [$font,$name], 301);
+    return redirect()->route('names.signature', [$font, $name], 301);
 });
 
 Route::get('static/images/name/{name}.jpg', function ($name) {

@@ -17,6 +17,7 @@ use Wink\WinkPost;
 class Sitemap extends Command
 {
     protected $signature = 'app:seo:sitemap';
+
     protected $description = 'Generate and submit sitemap to search engines';
 
     public function handle(): void
@@ -48,8 +49,8 @@ class Sitemap extends Command
             $this->info('Sitemap generated successfully.');
 
         } catch (Exception $e) {
-            $this->error('An error occurred: ' . $e->getMessage());
-            Log::error('Sitemap generation error: ' . $e->getMessage());
+            $this->error('An error occurred: '.$e->getMessage());
+            Log::error('Sitemap generation error: '.$e->getMessage());
         }
     }
 
@@ -68,9 +69,9 @@ class Sitemap extends Command
                     usleep(200000); // 0.2 seconds delay - to not overload the server
                 }
 
-                $sitemapName = 'sitemap-' . $chunkCount . '.xml';
+                $sitemapName = 'sitemap-'.$chunkCount.'.xml';
                 $sitemap->writeToFile(public_path($sitemapName));
-                $sitemapIndex->add('/' . $sitemapName);
+                $sitemapIndex->add('/'.$sitemapName);
             });
     }
 
@@ -86,7 +87,7 @@ class Sitemap extends Command
 
         $sitemapName = 'sitemap-origins.xml';
         $sitemap->writeToFile(public_path($sitemapName));
-        $sitemapIndex->add('/' . $sitemapName);
+        $sitemapIndex->add('/'.$sitemapName);
     }
 
     public function addCategoriesToSitemap(SitemapIndex &$sitemapIndex): void
@@ -101,7 +102,7 @@ class Sitemap extends Command
 
         $sitemapName = 'sitemap-categories.xml';
         $sitemap->writeToFile(public_path($sitemapName));
-        $sitemapIndex->add('/' . $sitemapName);
+        $sitemapIndex->add('/'.$sitemapName);
     }
 
     private function addAlphabeticalNamesToSitemap(SitemapIndex &$sitemapIndex): void
@@ -116,7 +117,7 @@ class Sitemap extends Command
 
         $sitemapName = 'sitemap-alphabetical.xml';
         $sitemap->writeToFile(public_path($sitemapName));
-        $sitemapIndex->add('/' . $sitemapName);
+        $sitemapIndex->add('/'.$sitemapName);
     }
 
     private function addBlogPostsToSitemap(SitemapIndex &$sitemapIndex): void
@@ -130,7 +131,7 @@ class Sitemap extends Command
 
         $sitemapName = 'sitemap-blog.xml';
         $sitemap->writeToFile(public_path($sitemapName));
-        $sitemapIndex->add('/' . $sitemapName);
+        $sitemapIndex->add('/'.$sitemapName);
     }
 
     private function cleanUpSitemaps(): void

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
 use App\Services\Numerology\NumerologyFactory;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -25,7 +24,7 @@ class NumerologyController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|string|min:3|max:255|not_regex:/[0-9]/',
-            'dob' => 'required|date'
+            'dob' => 'required|date',
         ]);
 
         $numerology = NumerologyFactory::create('pythagorean')->getNumerologyData($name, $dob);
@@ -33,9 +32,9 @@ class NumerologyController extends Controller
         $data = [
             'name' => $name,
             'dob' => $dob,
-            'numerology' => $numerology
+            'numerology' => $numerology,
         ];
 
-        return view('tools.numerology.calculator',compact('data'));
+        return view('tools.numerology.calculator', compact('data'));
     }
 }

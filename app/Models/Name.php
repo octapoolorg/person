@@ -14,11 +14,9 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
  * Name
  *
  *
- * @package App\Models
  *
  * @mixin QueryBuilder
  */
-
 class Name extends Model
 {
     use HasFactory;
@@ -29,7 +27,7 @@ class Name extends Model
 
     public function gender(): BelongsTo
     {
-        return $this->belongsTo(Gender::class,);
+        return $this->belongsTo(Gender::class);
     }
 
     public function origins(): BelongsToMany

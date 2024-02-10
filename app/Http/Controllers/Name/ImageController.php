@@ -15,12 +15,12 @@ class ImageController extends Controller
         $this->imageService = $imageService;
     }
 
-    public function wallpaper(string $style,string $nameSlug) : Response
+    public function wallpaper(string $style, string $nameSlug): Response
     {
         return $this->imageService->individualWallpaper($nameSlug, $style);
     }
 
-    public function signature(string $style,string $name,): Response
+    public function signature(string $style, string $name): Response
     {
         return $this->imageService->individualSignature($name, $style);
     }

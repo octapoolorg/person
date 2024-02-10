@@ -6,9 +6,9 @@ use Artesaos\SEOTools\SEOTools;
 
 class SeoService
 {
-    public function getSeoData(array $meta,array $replace=[]): void
+    public function getSeoData(array $meta, array $replace = []): void
     {
-        $seoData = $this->getData($meta['page'],$replace);
+        $seoData = $this->getData($meta['page'], $replace);
 
         $seoTools = new SEOTools();
 
@@ -16,15 +16,15 @@ class SeoService
         $seoTools->setDescription($seoData['description']);
         $seoTools->opengraph()->setType($seoData['type']);
 
-        if(isset($meta['image'])){
+        if (isset($meta['image'])) {
             $seoTools->addImages($meta['image']);
         }
     }
 
-    private function getData($page,$replace): array
+    private function getData($page, $replace): array
     {
         $seoData = [
-            'type' => 'website'
+            'type' => 'website',
         ];
 
         $seoData['title'] = __("seo.{$page}.title", $replace);

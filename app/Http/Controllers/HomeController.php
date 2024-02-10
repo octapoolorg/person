@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        $popularNames = Cache::remember('home:popularNames', now()->addDay(),function (){
+        $popularNames = Cache::remember('home:popularNames', now()->addDay(), function () {
             return Name::orderBy('created_at', 'desc')
                 ->validMeaning()
                 ->take(8)

@@ -119,5 +119,5 @@ return [
             22 => 'Master Builder, Organized, Practical',
             33 => 'Master Teacher, Compassionate, Inspirational',
         ],
-    ]
+    ],
 ];

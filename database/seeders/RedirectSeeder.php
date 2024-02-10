@@ -10,10 +10,11 @@ use League\Csv\Reader;
 class RedirectSeeder extends Seeder
 {
     use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */
-    public function run() : void
+    public function run(): void
     {
         $csv = Reader::createFromPath(base_path('data/imports/seo/redirects.csv'), 'r');
         $csv->setHeaderOffset(0);

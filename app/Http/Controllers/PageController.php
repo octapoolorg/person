@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\View\View;
 use Wink\WinkPage;
-use Artesaos\SEOTools\Facades\SEOTools;
 
 class PageController extends Controller
 {
@@ -12,6 +12,7 @@ class PageController extends Controller
     {
         $page = WinkPage::where('slug', $page)->firstOrFail();
         $this->seoTags($page);
+
         return view('pages.wink.show', compact('page'));
     }
 

@@ -2,18 +2,21 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Carbon;
-use Exception;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class ActivateNames extends Command
 {
     protected $signature = 'app:activate-names';
+
     protected $description = 'Activate a certain number of names each day, with the number increasing weekly.';
+
     protected int $baseNumber = 50;
+
     protected int $weeklyIncrement = 30;
 
     public function handle(): int
@@ -27,18 +30,21 @@ class ActivateNames extends Command
             $this->submitUrlsToSeo($urls);
 
             $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
+
             return CommandAlias::SUCCESS;
         } catch (Exception $e) {
-            $this->error('Failed to activate names: ' . $e->getMessage());
-            Log::error('Failed to activate names: ' . $e->getMessage(), ['exception' => $e]);
+            $this->error('Failed to activate names: '.$e->getMessage());
+            Log::error('Failed to activate names: '.$e->getMessage(), ['exception' => $e]);
+
             return CommandAlias::FAILURE;
         }
     }
 
     private function calculateNamesToActivate(): int
     {
-        $startDate =  Carbon::parse('2024-01-15');
+        $startDate = Carbon::parse('2024-01-15');
         $weeksSinceStart = $startDate->diffInWeeks(Carbon::now());
+
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
     }
 
@@ -50,6 +56,7 @@ class ActivateNames extends Command
             ->limit($number)
             ->pluck('id');
         DB::table('names')->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+
         return $activatedNamesIds->toArray();
     }
 
@@ -60,6 +67,7 @@ class ActivateNames extends Command
             ->orderByDesc('updated_at')
             ->limit(200)
             ->get(['slug']);
+
         return $lastActivatedNames->map(function ($name) {
             return route('names.show', ['name' => $name->slug]);
         })->toArray();

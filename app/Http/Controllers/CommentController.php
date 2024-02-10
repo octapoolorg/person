@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Name;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

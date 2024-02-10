@@ -21,7 +21,7 @@ class BlogController extends Controller
         ]);
 
         return view('blog.index', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -46,7 +46,7 @@ class BlogController extends Controller
 
         return view('blog.show', [
             'post' => $post,
-            'relatedPosts' => $relatedPosts
+            'relatedPosts' => $relatedPosts,
         ]);
     }
 
@@ -60,5 +60,4 @@ class BlogController extends Controller
         SEOTools::setTitle($seoTags['title']);
         SEOTools::setDescription($seoTags['description']);
     }
-
 }

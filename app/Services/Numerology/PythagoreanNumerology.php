@@ -9,8 +9,6 @@
  *
  * This class provides methods to calculate the Destiny, Soul, and Personality Numbers
  * using the Pythagorean system.
- *
- * @package App\Services\Numerology
  */
 
 namespace App\Services\Numerology;
@@ -26,6 +24,6 @@ class PythagoreanNumerology extends Numerology
         'f' => 6, 'o' => 6, 'x' => 6,
         'g' => 7, 'p' => 7, 'y' => 7,
         'h' => 8, 'q' => 8, 'z' => 8,
-        'i' => 9, 'r' => 9
+        'i' => 9, 'r' => 9,
     ];
 }

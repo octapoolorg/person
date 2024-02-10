@@ -3,9 +3,9 @@
 namespace App\Console\Commands\Seo;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
-use LaravelFreelancerNL\LaravelIndexNow\Facades\IndexNow;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
+use LaravelFreelancerNL\LaravelIndexNow\Facades\IndexNow;
 
 /**
  * Command to submit URLs to Google for indexing.
@@ -28,8 +28,6 @@ class Urls extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
     public function handle(): int
     {
@@ -39,21 +37,21 @@ class Urls extends Command
 
         if (empty($urls)) {
             $this->error('No URLs provided for indexing.');
+
             return 1;
         }
 
         $this->info('Submitting URLs to Google for indexing...');
         $this->submit($urls);
         $this->info('Done!');
+
         return 0;
     }
 
     /**
      * Submit a batch of URLs for indexing.
      *
-     * @param array $urls Array of URLs to submit.
-     *
-     * @return void
+     * @param  array  $urls  Array of URLs to submit.
      */
     protected function submit(array $urls): void
     {
@@ -62,7 +60,7 @@ class Urls extends Command
                 $this->submitUrl($url);
             } catch (\Exception $e) {
                 $this->error("Failed to submit URL: $url");
-                Log::error("Failed to submit URL: $url. Error: " . $e->getMessage());
+                Log::error("Failed to submit URL: $url. Error: ".$e->getMessage());
             }
         }
     }
@@ -70,14 +68,14 @@ class Urls extends Command
     /**
      * Retrieves URLs from a CSV file.
      *
-     * @param string $path Path to the CSV file.
-     *
+     * @param  string  $path  Path to the CSV file.
      * @return array Array of URLs.
      */
     private function getUrlsFromCsv(string $path): array
     {
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             Log::error("CSV file not found at $path");
+
             return [];
         }
 
@@ -102,9 +100,7 @@ class Urls extends Command
     /**
      * Submits a URL for indexing.
      *
-     * @param string $url The URL to submit.
-     *
-     * @return void
+     * @param  string  $url  The URL to submit.
      */
     protected function submitUrl(string $url): void
     {
@@ -115,9 +111,7 @@ class Urls extends Command
     /**
      * Submits a single URL to Google for indexing.
      *
-     * @param string $url The URL to submit.
-     *
-     * @return void
+     * @param  string  $url  The URL to submit.
      */
     protected function submitUrlToGoogle(string $url): void
     {

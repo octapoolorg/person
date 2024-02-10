@@ -2,17 +2,15 @@
 
 namespace App\Services\Name;
 
+use App\Models\Abbreviation;
 use App\Models\Category;
 use App\Models\Gender;
 use App\Models\Name;
-use App\Models\Abbreviation;
 use App\Models\Origin;
-use App\Services\Name\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
@@ -20,6 +18,7 @@ use Illuminate\Support\Str;
 class NameService
 {
     protected UsernameGeneratorService $usernameGeneratorService;
+
     protected ImageService $imageService;
 
     public function __construct(UsernameGeneratorService $usernameGeneratorService, ImageService $imageService)
@@ -48,7 +47,7 @@ class NameService
             'fancyTexts' => $this->getFancyTexts($nameDetails->name),
             'wallpaperUrls' => $this->imageService->nameWallpapers($nameDetails->slug),
             'signatureUrls' => $this->imageService->nameSignatures($nameDetails->slug),
-            'userNames' => $this->getUsernames($nameDetails->slug)
+            'userNames' => $this->getUsernames($nameDetails->slug),
         ];
     }
 
@@ -64,15 +63,16 @@ class NameService
     public function getRandomNames(): Collection
     {
         $random = rand(1, 15);
+
         return cache_remember("names:random:$random", function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
         }, now()->addDay());
     }
 
-    public function searchNames(Request $request) : LengthAwarePaginator
+    public function searchNames(Request $request): LengthAwarePaginator
     {
         $randomness = rand(1, 15);
-        $cacheKey = "search:" . Str::slug($request->fullUrl()) . ":$randomness";
+        $cacheKey = 'search:'.Str::slug($request->fullUrl()).":$randomness";
 
         return Cache::remember($cacheKey, now()->addDay(), function () use ($request) {
             $query = Name::query()->withoutGlobalScope('active');
@@ -82,7 +82,7 @@ class NameService
             });
 
             $request->whenFilled('alphabet', function ($alphabet) use ($query) {
-                $query->where('name', 'like', $alphabet . '%');
+                $query->where('name', 'like', $alphabet.'%');
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {
@@ -101,7 +101,7 @@ class NameService
         });
     }
 
-    public function getFavoriteNames() : array
+    public function getFavoriteNames(): array
     {
         $favoriteNames = request()->cookie('favorites-list');
 
@@ -119,6 +119,7 @@ class NameService
     public function getUsernames(string $name): array
     {
         $randomness = rand(1, 15);
+
         return cache_remember("usernames:$name:$randomness", function () use ($name) {
             return $this->usernameGeneratorService->generateUsernames($name);
         });
@@ -159,6 +160,7 @@ class NameService
     {
         $randomness = rand(1, 15);
         $fancyTextService = new FancyTextService($name);
+
         return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
             return $fancyTextService->generate();
         });
@@ -167,6 +169,7 @@ class NameService
     public function getNamesByOrigin(string $origin)
     {
         $randomness = rand(1, 15);
+
         return cache_remember("names:$origin:$randomness", function () use ($origin) {
             return Name::validMeaning()->whereHas('origins', function ($query) use ($origin) {
                 $query->where('slug', $origin);
@@ -177,6 +180,7 @@ class NameService
     public function getNamesByCategory(string $category)
     {
         $randomness = rand(1, 15);
+
         return cache_remember("names:$category:$randomness", function () use ($category) {
             return Name::validMeaning()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
@@ -187,6 +191,7 @@ class NameService
     public function getNamesByStarting(string $starting)
     {
         $randomness = rand(1, 15);
+
         return cache_remember("names:$starting:$randomness", function () use ($starting) {
             return Name::validMeaning()->where('name', 'like', "$starting%")->limit(30)->get();
         });
@@ -195,6 +200,7 @@ class NameService
     public function getNamesByEnding(string $ending)
     {
         $randomness = rand(1, 15);
+
         return cache_remember("names:$ending:$randomness", function () use ($ending) {
             return Name::validMeaning()->where('name', 'like', "%$ending")->limit(30)->get();
         });

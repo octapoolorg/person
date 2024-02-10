@@ -10,6 +10,7 @@ use League\Csv\Reader;
 class CategoryNameSeeder extends Seeder
 {
     use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */

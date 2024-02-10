@@ -6,8 +6,6 @@
  * Provides foundational methods and structures for calculating numerological numbers.
  * This abstract class serves as the base for specific numerology systems and defines
  * common functionalities such as calculating Destiny, Soul, and Personality Numbers.
- *
- * @package App\Services\Numerology
  */
 
 namespace App\Services\Numerology;
@@ -28,7 +26,7 @@ abstract class Numerology implements INumerology
         'Sagittarius' => 'Citrine',
         'Capricorn' => 'Ruby',
         'Aquarius' => 'Garnet',
-        'Pisces' => 'Amethyst'
+        'Pisces' => 'Amethyst',
     ];
 
     const ZODIAC_COLORS = [
@@ -43,7 +41,7 @@ abstract class Numerology implements INumerology
         'Sagittarius' => 'Purple',
         'Capricorn' => 'Black',
         'Aquarius' => 'Blue',
-        'Pisces' => 'Sea Green'
+        'Pisces' => 'Sea Green',
     ];
 
     const ZODIAC_METALS = [
@@ -58,7 +56,7 @@ abstract class Numerology implements INumerology
         'Sagittarius' => 'Tin',
         'Capricorn' => 'Lead',
         'Aquarius' => 'Uranium',
-        'Pisces' => 'Tin'
+        'Pisces' => 'Tin',
     ];
 
     protected function calculateNumber($name)
@@ -75,7 +73,7 @@ abstract class Numerology implements INumerology
 
         // Pythagorean reduction (with exceptions for master numbers)
         while ($total > 9 && $total != 11 && $total != 22 && $total != 33) {
-            $total = array_sum(str_split((string)$total));
+            $total = array_sum(str_split((string) $total));
         }
 
         return $total;
@@ -85,20 +83,23 @@ abstract class Numerology implements INumerology
     {
         // Assuming $dob format is YYYY-MM-DD
         $digits = str_replace('-', '', $dob);
+
         return $this->reduceToSingleDigit($digits);
     }
 
     protected function calculateBirthdayNumber($dob): int
     {
         $day = (int) substr($dob, 8, 2);
+
         return $this->reduceToSingleDigit($day);
     }
 
     protected function reduceToSingleDigit($number): int
     {
         while ($number > 9) {
-            $number = array_sum(str_split((string)$number));
+            $number = array_sum(str_split((string) $number));
         }
+
         return $number;
     }
 
@@ -119,8 +120,8 @@ abstract class Numerology implements INumerology
             ],
             'zodiac' => [
                 'sign' => $zodiacSign,
-                'attributes' => $this->getZodiacAttributesBySign($zodiacSign)
-            ]
+                'attributes' => $this->getZodiacAttributesBySign($zodiacSign),
+            ],
         ];
 
         if ($dob) {
@@ -146,7 +147,7 @@ abstract class Numerology implements INumerology
             9 => 'Sagittarius',
             11 => 'Capricorn',
             22 => 'Aquarius',
-            33 => 'Pisces'
+            33 => 'Pisces',
         ];
 
         return $zodiacSigns[$destinyNumber] ?? 'Unknown';
@@ -173,7 +174,7 @@ abstract class Numerology implements INumerology
         return [
             'stone' => $stone,
             'color' => $color,
-            'metal' => $metal
+            'metal' => $metal,
         ];
     }
 }

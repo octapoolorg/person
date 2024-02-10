@@ -38,16 +38,16 @@ class Submit extends Command
     {
         $sitemapUrl = url('sitemap_index.xml');
         $searchEngines = [
-            'google' => 'https://www.google.com/ping?sitemap=' . $sitemapUrl,
+            'google' => 'https://www.google.com/ping?sitemap='.$sitemapUrl,
         ];
 
         foreach ($searchEngines as $name => $submissionUrl) {
             $response = Http::get($submissionUrl);
 
             if ($response->successful()) {
-                $this->info('Sitemap submitted to ' . $name . ' successfully.');
+                $this->info('Sitemap submitted to '.$name.' successfully.');
             } else {
-                Log::error('Failed to submit sitemap to ' . $name . ': ' . $response->body());
+                Log::error('Failed to submit sitemap to '.$name.': '.$response->body());
             }
         }
     }

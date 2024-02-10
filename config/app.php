@@ -187,12 +187,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
-        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
-        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
-        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
-        'Image'         => Intervention\Image\Facades\Image::class,
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter' => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd' => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

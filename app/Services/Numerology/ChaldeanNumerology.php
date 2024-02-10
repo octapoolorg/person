@@ -9,8 +9,6 @@
  *
  * This class provides methods to calculate the Destiny, Soul, and Personality Numbers
  * using the Chaldean system.
- *
- * @package App\Services\Numerology
  */
 
 namespace App\Services\Numerology;
@@ -25,7 +23,7 @@ class ChaldeanNumerology extends Numerology
         'e' => 5, 'h' => 5, 'n' => 5, 'x' => 5,
         'u' => 6, 'v' => 6, 'w' => 6,
         'o' => 7, 'z' => 7,
-        'f' => 8, 'p' => 8
+        'f' => 8, 'p' => 8,
     ];
 
     // Override the calculateNumber method for Chaldean to always reduce to a single digit
@@ -35,7 +33,7 @@ class ChaldeanNumerology extends Numerology
 
         // Chaldean reduction to a single digit
         while ($total > 9) {
-            $total = array_sum(str_split((string)$total));
+            $total = array_sum(str_split((string) $total));
         }
 
         return $total;

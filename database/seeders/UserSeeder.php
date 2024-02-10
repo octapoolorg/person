@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class UserSeeder extends Seeder
 {
     use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */

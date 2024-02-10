@@ -231,6 +231,6 @@ return [
             'ignore' => [
                 // Ignore specific urls (regex supported)
             ],
-        ]
+        ],
     ],
 ];

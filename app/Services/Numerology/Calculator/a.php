@@ -28,7 +28,6 @@ $romanticCompatibilityMatrix = [
     22 => [1 => 50, 2 => 75, 3 => 65, 4 => 75, 5 => 65, 6 => 75, 7 => 60, 8 => 75, 9 => 65, 11 => 75, 22 => 80],
 ];
 
-
 $friendshipCompatibilityMatrix = [
     1 => [1 => 70, 2 => 65, 3 => 60, 4 => 55, 5 => 75, 6 => 50, 7 => 45, 8 => 65, 9 => 70, 11 => 60, 22 => 70],
     2 => [1 => 65, 2 => 80, 3 => 50, 4 => 70, 5 => 55, 6 => 65, 7 => 60, 8 => 45, 9 => 65, 11 => 55, 22 => 60],
@@ -42,7 +41,6 @@ $friendshipCompatibilityMatrix = [
     11 => [1 => 60, 2 => 55, 3 => 65, 4 => 50, 5 => 70, 6 => 55, 7 => 65, 8 => 60, 9 => 55, 11 => 75, 22 => 70],
     22 => [1 => 70, 2 => 60, 3 => 55, 4 => 65, 5 => 50, 6 => 70, 7 => 55, 8 => 65, 9 => 60, 11 => 70, 22 => 80],
 ];
-
 
 $businessCompatibilityMatrix = [
     1 => [1 => 70, 2 => 60, 3 => 65, 4 => 75, 5 => 55, 6 => 50, 7 => 70, 8 => 80, 9 => 60, 11 => 75, 22 => 70],
@@ -119,7 +117,7 @@ function calculateLifePathNumber($birthdate): float|int|null
 {
     // Ensure the birthdate is in the format "YYYY-MM-DD"
     $parts = explode('-', $birthdate);
-    if (count($parts) != 3 || !checkdate((int)$parts[1], (int)$parts[2], (int)$parts[0])) {
+    if (count($parts) != 3 || ! checkdate((int) $parts[1], (int) $parts[2], (int) $parts[0])) {
         return null; // Return null if the date is not valid
     }
 
@@ -133,8 +131,6 @@ function calculateLifePathNumber($birthdate): float|int|null
 
     return $sum;
 }
-
-
 
 function calculateExpressionNumber($name): float|int
 {
@@ -152,6 +148,7 @@ function calculateExpressionNumber($name): float|int
     while ($sum > 9 && $sum != 11 && $sum != 22) {
         $sum = array_sum(str_split((string) $sum));
     }
+
     return $sum;
 }
 
@@ -171,6 +168,7 @@ function calculateSoulUrgeNumber($name): float|int
     while ($sum > 9 && $sum != 11 && $sum != 22) {
         $sum = array_sum(str_split((string) $sum));
     }
+
     return $sum;
 }
 
@@ -190,12 +188,12 @@ function calculateNumerologyNumber($name): float|int
     while ($sum > 9 && $sum != 11 && $sum != 22) {
         $sum = array_sum(str_split((string) $sum));
     }
+
     return $sum;
 }
 
-
-$name1 = "Alice";
-$name2 = "Bob";
-$relationshipType = "romantic";
+$name1 = 'Alice';
+$name2 = 'Bob';
+$relationshipType = 'romantic';
 $compatibility = checkCompatibility($name1, $name2, $relationshipType);
 echo "Romantic compatibility between $name1 and $name2 is $compatibility%"; // Output based on the defined matrix

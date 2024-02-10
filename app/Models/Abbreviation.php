@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin Builder
  */
-
 class Abbreviation extends Model
 {
     use HasFactory;
