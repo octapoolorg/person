@@ -5,7 +5,7 @@ namespace App\Services\Name;
 use App\Models\Category;
 use App\Models\Gender;
 use App\Models\Name;
-use App\Models\NameTrait;
+use App\Models\Abbreviation;
 use App\Models\Origin;
 use App\Services\Name\ImageService;
 use App\Services\Numerology\NumerologyFactory;
@@ -136,7 +136,7 @@ class NameService
         // Getting all traits for the alphabets
         $randomness = rand(1, 15);
         $traitsCollection = cache_remember("traits:$name:$randomness", function () use ($upperAlphabets) {
-            return NameTrait::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
+            return Abbreviation::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
         });
 
         $traits = [];

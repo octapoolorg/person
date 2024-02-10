@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Update;
+namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -11,23 +11,27 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'app:update:install';
+    protected $signature = 'app:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update the application to the latest version.';
+    protected $description = 'Install the application';
 
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        $this->info('Updating the application...');
+        $this->call('down');
 
-        $this->call('app:update:database');
+        $this->call('migrate:fresh', [
+            '--seed' => true,
+        ]);
+
+        $this->call('storage:link');
 
         $this->call('cache:clear');
         $this->call('config:clear');
@@ -35,7 +39,5 @@ class Install extends Command
         $this->call('view:clear');
 
         $this->call('up');
-
-        $this->info('Application updated successfully.');
     }
 }

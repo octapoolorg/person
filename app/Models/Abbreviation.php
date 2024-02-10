@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * NameTrait
+ * Abbreviation
  *
  * @mixin Builder
  */
 
-class NameTrait extends Model
+class Abbreviation extends Model
 {
     use HasFactory;
 

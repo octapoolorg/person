@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('traits', function (Blueprint $table) {
+        Schema::create('abbreviations', function (Blueprint $table) {
             $table->id();
             $table->string('alphabet')->index();
             $table->string('name');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('name_traits');
+        Schema::dropIfExists('abbreviations');
     }
 };
