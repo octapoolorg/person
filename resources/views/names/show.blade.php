@@ -46,6 +46,8 @@
     </section>
 @endsection
 
+@production
 @pushonce('scripts')
     <script type="text/javascript" async defer data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
 @endpushonce
+@endproduction

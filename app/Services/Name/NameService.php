@@ -7,7 +7,7 @@ use App\Models\Gender;
 use App\Models\Name;
 use App\Models\NameTrait;
 use App\Models\Origin;
-use App\Services\ImageService;
+use App\Services\Name\ImageService;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
@@ -30,14 +30,14 @@ class NameService
 
     public function getNames(): Collection
     {
-        return $this->cacheRemember('names', function () {
+        return cache_remember('names', function () {
             return Name::validMeaning()->limit(30)->get();
         });
     }
 
     public function getNameDetails(string $name): array
     {
-        $nameDetails = $this->cacheRemember("nameDetails:$name", function () use ($name) {
+        $nameDetails = cache_remember("nameDetails:$name", function () use ($name) {
             return Name::withoutGlobalScope('active')->with(['gender', 'comments'])->where('slug', $name)->firstOrFail();
         });
 
@@ -46,16 +46,15 @@ class NameService
             'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name),
             'abbreviations' => $this->getAbbreviations($nameDetails->name),
             'fancyTexts' => $this->getFancyTexts($nameDetails->name),
-            // 'wallpaperUrl' => route('names.wallpaper', ['name' => $nameDetails->slug]),
-            'wallpaperUrls' => $this->nameWallpapers($nameDetails->slug),
-            'signatureUrls' => $this->nameSignatures($nameDetails->slug),
+            'wallpaperUrls' => $this->imageService->nameWallpapers($nameDetails->slug),
+            'signatureUrls' => $this->imageService->nameSignatures($nameDetails->slug),
             'userNames' => $this->getUsernames($nameDetails->slug)
         ];
     }
 
     public function getNamesByGender(string $gender): Collection
     {
-        return $this->cacheRemember("names:$gender", function () use ($gender) {
+        return cache_remember("names:$gender", function () use ($gender) {
             return Gender::with(['names' => function ($query) {
                 $query->validMeaning()->take(30);
             }])->where('slug', $gender)->firstOrFail()->names;
@@ -65,7 +64,7 @@ class NameService
     public function getRandomNames(): Collection
     {
         $random = rand(1, 15);
-        return $this->cacheRemember("names:random:$random", function () {
+        return cache_remember("names:random:$random", function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
         }, now()->addDay());
     }
@@ -117,70 +116,17 @@ class NameService
         return $names ?? [];
     }
 
-    public function nameWallpaper(string $nameSlug, string $size): Response
-    {
-        $name = $this->cacheRemember("name:$nameSlug", function () use ($nameSlug) {
-            return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail()->name;
-        });
-        return $this->generateImageResponse($name, 'name wallpaper', 'static/images/wallpaper.jpg', 'roboto', $size);
-    }
-
-    public function individualSignature(string $name, string $fontKey): Response
-    {
-        $nameParts = explode(' ', $name);
-        $firstPart = $this->normalizeName($nameParts[0]);
-        return $this->generateImageResponse($firstPart, 'name signature', 'static/images/signature_background.jpg', $fontKey);
-    }
-
-    private function cacheRemember(string $key, \Closure $callback, $duration = null)
-    {
-        $duration = $duration ?? now()->addHour();
-        return Cache::remember($key, $duration, $callback);
-    }
-
-    private function getFontDetails(string $fontKey): array
-    {
-        $fonts = [
-            'cursive' => ['path' => 'creattion-demo/creattion-demo.ttf', 'size' => 250],
-            'allison-tessa' => ['path' => 'allison-tessa/allison-tessa.ttf', 'size' => 120],
-            'monsieur-la-doulaise' => ['path' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf', 'size' => 190],
-        ];
-
-        return $fonts[$fontKey] ?? ['path' => 'roboto/roboto-bold.ttf', 'size' => null];
-    }
-
-    private function generateImageResponse(string $name, string $type, string $backgroundImage, string $fontKey = null, string $size = null): Response
-    {
-        $fontDetails = $this->getFontDetails($fontKey);
-        $base64Image = $this->imageService->generateOrRetrieveImage(
-            $name,
-            '#000000',
-            $backgroundImage,
-            $fontDetails['path'],
-            $fontDetails['size'] ?? (strlen($name) > 10 ? 150 : 200),
-            $size
-        );
-
-        return $this->imageService->prepareImageResponse($base64Image, $name, $type);
-    }
-
-    private function normalizeName($name): array|string|null
-    {
-        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
-        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
-    }
-
     public function getUsernames(string $name): array
     {
         $randomness = rand(1, 15);
-        return $this->cacheRemember("usernames:$name:$randomness", function () use ($name) {
+        return cache_remember("usernames:$name:$randomness", function () use ($name) {
             return $this->usernameGeneratorService->generateUsernames($name);
         });
     }
 
     public function getAbbreviations(string $name): array
     {
-        $name = $this->normalizeName($name);
+        $name = normalize_name($name);
         $alphabets = str_split($name);
         $alphabets = array_filter($alphabets, function ($alphabet) {
             return $alphabet !== ' ';
@@ -189,7 +135,7 @@ class NameService
 
         // Getting all traits for the alphabets
         $randomness = rand(1, 15);
-        $traitsCollection = $this->cacheRemember("traits:$name:$randomness", function () use ($upperAlphabets) {
+        $traitsCollection = cache_remember("traits:$name:$randomness", function () use ($upperAlphabets) {
             return NameTrait::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
         });
 
@@ -209,62 +155,11 @@ class NameService
         return $traits;
     }
 
-    private function nameWallpapers(string $name): array
-    {
-        $wallpapers = [
-            [
-                'image' => 'static/images/wallpaper.jpg',
-                'font' => 'roboto'
-            ],
-            [
-                'image' => 'static/images/wallpaper2.jpg',
-                'font' => 'roboto'
-            ],
-            [
-                'image' => 'static/images/wallpaper3.jpg',
-                'font' => 'roboto'
-            ],
-            [
-                'image' => 'static/images/wallpaper4.jpg',
-                'font' => 'roboto'
-            ],
-            [
-                'image' => 'static/images/wallpaper5.jpg',
-                'font' => 'roboto'
-            ]
-        ];
-
-        $wallpaperUrls = [];
-
-        foreach ($wallpapers as $wallpaper) {
-            $wallpaperUrls[] = route('names.wallpaper', ['name' => $name, 'image' => $wallpaper['image'], 'font' => $wallpaper['font']]);
-        }
-
-        return $wallpaperUrls;
-    }
-
-    private function nameSignatures(string $name): array
-    {
-        $fonts = [
-            'cursive' => 'creattion-demo/creattion-demo.ttf',
-            'allison-tessa' => 'allison-tessa/allison-tessa.ttf',
-            'monsieur-la-doulaise' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf'
-        ];
-
-        $signatureUrls = [];
-
-        foreach ($fonts as $key => $fontPath) {
-            $signatureUrls[$key] = route('names.signature', ['name' => $name, 'font' => $key]);
-        }
-
-        return $signatureUrls;
-    }
-
     public function getFancyTexts(string $name): array
     {
         $randomness = rand(1, 15);
         $fancyTextService = new FancyTextService($name);
-        return $this->cacheRemember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
+        return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
             return $fancyTextService->generate();
         });
     }
@@ -272,7 +167,7 @@ class NameService
     public function getNamesByOrigin(string $origin)
     {
         $randomness = rand(1, 15);
-        return $this->cacheRemember("names:$origin:$randomness", function () use ($origin) {
+        return cache_remember("names:$origin:$randomness", function () use ($origin) {
             return Name::validMeaning()->whereHas('origins', function ($query) use ($origin) {
                 $query->where('slug', $origin);
             })->limit(30)->get();
@@ -282,7 +177,7 @@ class NameService
     public function getNamesByCategory(string $category)
     {
         $randomness = rand(1, 15);
-        return $this->cacheRemember("names:$category:$randomness", function () use ($category) {
+        return cache_remember("names:$category:$randomness", function () use ($category) {
             return Name::validMeaning()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
             })->limit(30)->get();
@@ -292,7 +187,7 @@ class NameService
     public function getNamesByStarting(string $starting)
     {
         $randomness = rand(1, 15);
-        return $this->cacheRemember("names:$starting:$randomness", function () use ($starting) {
+        return cache_remember("names:$starting:$randomness", function () use ($starting) {
             return Name::validMeaning()->where('name', 'like', "$starting%")->limit(30)->get();
         });
     }
@@ -300,28 +195,28 @@ class NameService
     public function getNamesByEnding(string $ending)
     {
         $randomness = rand(1, 15);
-        return $this->cacheRemember("names:$ending:$randomness", function () use ($ending) {
+        return cache_remember("names:$ending:$randomness", function () use ($ending) {
             return Name::validMeaning()->where('name', 'like', "%$ending")->limit(30)->get();
         });
     }
 
     public function getCategory(string $category)
     {
-        return $this->cacheRemember("category:$category", function () use ($category) {
+        return cache_remember("category:$category", function () use ($category) {
             return Category::where('slug', $category)->firstOrFail();
         });
     }
 
     public function getOrigin(string $origin)
     {
-        return $this->cacheRemember("origin:$origin", function () use ($origin) {
+        return cache_remember("origin:$origin", function () use ($origin) {
             return Origin::where('slug', $origin)->firstOrFail();
         });
     }
 
     public function getGender(string $gender)
     {
-        return $this->cacheRemember("gender:$gender", function () use ($gender) {
+        return cache_remember("gender:$gender", function () use ($gender) {
             return Gender::where('slug', $gender)->firstOrFail();
         });
     }

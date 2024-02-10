@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Name;
 
+use App\Http\Controllers\Controller;
 use App\Services\Name\NameService;
 use App\Services\SeoService;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
@@ -34,7 +35,7 @@ class NameController extends Controller
     {
         $data = $this->nameService->getNameDetails($name);
         $this->seoService->getSeoData(
-            ['page'=>'name','image'=>$data['wallpaperUrl']],
+            ['page'=>'name'],
             ['name'=>$data['nameDetails']->name]
         );
         return view('names.show', compact('data'));
@@ -131,16 +132,7 @@ class NameController extends Controller
         return view('names.favorite', compact('names'));
     }
 
-    public function wallpaper(string $nameSlug): Response
-    {
-        $size = request()->input('size') ?? 'full';
-        return $this->nameService->nameWallpaper($nameSlug,$size);
-    }
 
-    public function signature(string $fontKey,string $name,): Response
-    {
-        return $this->nameService->individualSignature($name, $fontKey);
-    }
 
     public function generateUsernames(): JsonResponse
     {
