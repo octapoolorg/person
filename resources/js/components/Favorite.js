@@ -116,86 +116,75 @@ class NavbarIcon {
 }
 
 class FavoriteList {
-    constructor(favoritesManager, navbarIcon) {
+    constructor(favoritesManager) {
         this.favoritesManager = favoritesManager;
-        this.navbarIcon = navbarIcon;
-        if (document.querySelector('#favorite-list')) {
-            window.addEventListener('favoriteToggled', () => this.updateFavoriteList());
-            this.init();
+        this.favoriteListElement = document.getElementById('favorite-list');
+        if (this.favoriteListElement) {
+            window.addEventListener('favoriteToggled', this.updateFavoriteList.bind(this));
+            this.initialPopulate();
         }
     }
 
-    init() {
-        this.updateFavoriteList();
-    }
+    initialPopulate() {
+        // Clear the list before initial population
+        this.favoriteListElement.innerHTML = '';
 
-    getListItemByUrl(url) {
-        return document.querySelector(`#favorite-list a[data-url="${url}"]`);
+        // Initial population of the list with current favorites
+        this.favoritesManager.favorites.forEach(favorite => {
+            const listItem = this.createListItem(favorite);
+            this.favoriteListElement.appendChild(listItem);
+        });
     }
 
     updateFavoriteList() {
-        const favoriteList = document.querySelector('#favorite-list');
-        if (!favoriteList) {
-            return; // No favorite-list element on this page, so return early
-        }
+        // Update UI without removing non-favorite items, just update their state
+        const urlsInUI = Array.from(this.favoriteListElement.querySelectorAll('.favorite-item')).map(li => li.getAttribute('data-url'));
 
-        this.favoritesManager.favorites.forEach((favorite) => {
-            let listItem = this.getListItemByUrl(favorite.url);
-            if (!listItem) {
-                listItem = this.createListItem(favorite);
-                favoriteList.appendChild(listItem);
+        // Add new favorites not yet in UI
+        this.favoritesManager.favorites.forEach(favorite => {
+            if (!urlsInUI.includes(favorite.url)) {
+                const listItem = this.createListItem(favorite);
+                this.favoriteListElement.appendChild(listItem);
             }
-            const heartButton = listItem.querySelector('.fa-heart');
-            if (this.favoritesManager.isFavorite(favorite.url)) {
-                heartButton.classList.remove('far');
-                heartButton.classList.add('fas');
-            } else {
-                heartButton.classList.remove('fas');
-                heartButton.classList.add('far');
-            }
+        });
+
+        // Update all items' favorite state
+        urlsInUI.forEach(url => {
+            const listItem = this.getListItemByUrl(url);
+            const isFavorite = this.favoritesManager.isFavorite(url);
+            this.updateHeartIcon(listItem, isFavorite);
         });
     }
 
-    createListItem(favorite) {
-        const listItem = document.createElement('a');
-        listItem.href = favorite.url;
-        listItem.classList.add('p-4', 'shadow', 'dark:shadow-none', 'rounded-lg', 'flex', 'justify-start', 'items-center', 'dark:border', 'dark:border-base-700', 'hover:bg-base-50', 'dark:hover:bg-base-800', 'transition', 'duration-300', 'ease-in-out');
+    getListItemByUrl(url) {
+        return this.favoriteListElement.querySelector(`li[data-url="${url}"]`);
+    }
 
-        const div = document.createElement('div');
-        div.classList.add('flex-grow');
-        listItem.appendChild(div);
+    updateHeartIcon(listItem, isFavorite) {
+        const heartIcon = listItem.querySelector('.fa-heart');
+        if (heartIcon) {
+            heartIcon.className = `fa-heart cursor-pointer text-red-500 text-2xl ${isFavorite ? 'fas' : 'far'}`;
+        }
+    }
 
-        const h2 = document.createElement('h2');
-        h2.textContent = favorite.name;
-        h2.classList.add('text-xl', 'font-semibold', 'text-primary-800', 'dark:text-primary-100', 'capitalize');
-        div.appendChild(h2);
+    createListItem({ url, name, meaning }) {
+        const listItem = document.createElement('li');
+        listItem.setAttribute('data-url', url);
+        listItem.className = 'favorite-item p-4 shadow rounded-lg flex justify-between items-center transition duration-300 ease-in-out dark:border dark:border-base-700 hover:bg-base-50 dark:bg-base-800 dark:hover:shadow-base-800';
 
-        const p = document.createElement('p');
-        p.textContent = favorite.meaning;
-        p.classList.add('text-md', 'text-base-500', 'dark:text-base-300');
-        div.appendChild(p);
+        listItem.innerHTML = `
+            <a href="${url}" class="flex-grow">
+                <h2 class="text-xl font-semibold text-primary-800 dark:text-primary-100 capitalize">${name}</h2>
+                <p class="text-md text-base-500 dark:text-base-300">${meaning}</p>
+            </a>
+            <i class="fa-heart cursor-pointer ml-4 text-red-500 text-2xl ${this.favoritesManager.isFavorite(url) ? 'fas' : 'far'}"></i>
+        `;
 
-        const span = document.createElement('span');
-        span.textContent = 'Learn more';
-        span.classList.add('text-primary-600', 'hover:text-primary-900', 'dark:text-primary-400', 'dark:hover:text-primary-200', 'transition', 'duration-300', 'ease-in-out');
-        listItem.appendChild(span);
-
-        const heartButton = document.createElement('i');
-        heartButton.classList.add('fa-heart', 'cursor-pointer', 'fas');
-        heartButton.setAttribute('data-url', favorite.url);
-        heartButton.addEventListener('click', (event) => {
+        // Event listener for the heart icon to toggle favorite status
+        listItem.querySelector('.fa-heart').addEventListener('click', (event) => {
             event.preventDefault();
-            const isFavorite = this.favoritesManager.toggleFavorite(favorite.url, favorite.name, favorite.meaning);
-            this.navbarIcon.updateNavbarIcon();
-            if (!isFavorite) {
-                heartButton.classList.remove('fas');
-                heartButton.classList.add('far');
-            } else {
-                heartButton.classList.remove('far');
-                heartButton.classList.add('fas');
-            }
+            this.favoritesManager.toggleFavorite(url, name, meaning);
         });
-        listItem.appendChild(heartButton);
 
         return listItem;
     }
