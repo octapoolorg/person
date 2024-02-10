@@ -121,11 +121,11 @@ class UsernameGeneratorService
         ];
 
         $this->uniqueWords = [
-            'ninja', 'wizard', 'ranger', 'druid', 'knight', 'pirate', 'robot', 'alien', 'samurai', 'king',
-            'queen', 'prince', 'princess', 'ace', 'agent', 'captain', 'champion', 'chief', 'commander', 'guardian',
-            'hero', 'leader', 'master', 'pilot', 'sage', 'scout', 'shaman', 'warrior', 'voyager',
-            'hunter', 'mage', 'priest', 'emperor', 'empress', 'witch', 'dancer', 'singer', 'musician',
-            'bard', 'cleric', 'rogue', 'paladin', 'warlock', 'monk', 'barbarian', 'sorcerer', 'fighter',
+            'musician', 'champion', 'leader', 'captain', 'bard', 'prince', 'barbarian',
+            'pirate', 'scout', 'shaman', 'chief', 'ranger', 'druid', 'monk', 'guardian',
+            'voyager', 'samurai', 'warlock', 'emperor', 'warrior', 'king', 'cleric', 'ace',
+            'hunter', 'knight', 'ninja', 'singer', 'hero', 'fighter', 'alien', 'master', 'paladin',
+            'agent', 'sage', 'wizard', 'empress', 'commander', 'mage', 'pilot', 'sorcerer',
         ];
     }
 
