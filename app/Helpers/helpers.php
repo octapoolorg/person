@@ -9,6 +9,20 @@ if (! function_exists('normalize_name')) {
     }
 }
 
+if (! function_exists('sanitize_name')) {
+    function sanitize_name(string $name)
+    {
+        return strtolower(preg_replace('/[^A-Za-z0-9]/', '', $name));
+    }
+}
+
+if (! function_exists('random_word')) {
+    function random_word(array $words): string
+    {
+        return $words[array_rand($words)];
+    }
+}
+
 if (! function_exists('cache_remember')) {
     function cache_remember($key, $callback, $ttl = null)
     {

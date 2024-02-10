@@ -2,11 +2,10 @@
 
 namespace App\Services\Name;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Service class to generate usernames based on provided names.
+ * Service class to generate usernames based on provided name.
  */
 class UsernameGeneratorService
 {
@@ -41,38 +40,27 @@ class UsernameGeneratorService
      */
     public function generateUsernames(string $name): array
     {
-        $normalized = normalize_name($name);
-        $sanitized = $this->sanitizeName($normalized);
+        $name = normalize_name($name);
+        $name = sanitize_name($name);
 
-        return $this->createUsernames($sanitized);
-    }
-
-    /**
-     * Sanitizes the provided name by lowercase and removing non-alphanumeric characters.
-     *
-     * @param  string  $name  The name to be sanitized.
-     * @return string The sanitized name.
-     */
-    private function sanitizeName(string $name): string
-    {
-        return strtolower(preg_replace('/[^A-Za-z0-9]/', '', $name));
+        return $this->createUsernames($name);
     }
 
     /**
      * Creates usernames using the sanitized name and various word combinations.
      *
-     * @param  string  $sanitized  The sanitized name.
+     * @param  string  $name  The sanitized name to use in the usernames.
      * @return array An array of creative usernames.
      */
-    private function createUsernames(string $sanitized): array
+    private function createUsernames(string $name): array
     {
         $usernames = [];
 
-        $usernames[] = $sanitized.'The'.ucfirst($this->randomWord($this->uniqueWords));
-        $usernames[] = $this->randomWord($this->adjectives).ucfirst($sanitized).$this->randomWord($this->nouns);
-        $usernames[] = $sanitized.'Of'.ucfirst($this->randomWord($this->nouns));
-        $usernames[] = $this->randomWord($this->adjectives).'And'.ucfirst($this->randomWord($this->uniqueWords)).ucfirst($sanitized);
-        $usernames[] = $sanitized.'_'.$this->randomWord($this->adjectives).ucfirst($this->randomWord($this->nouns));
+        $usernames[] = $name.'The'.ucfirst(random_word($this->uniqueWords));
+        $usernames[] = random_word($this->adjectives).ucfirst($name).random_word($this->nouns);
+        $usernames[] = $name.'Of'.ucfirst(random_word($this->nouns));
+        $usernames[] = random_word($this->adjectives).'And'.ucfirst(random_word($this->uniqueWords)).ucfirst($name);
+        $usernames[] = $name.'_'.random_word($this->adjectives).ucfirst(random_word($this->nouns));
 
         return $usernames;
     }
@@ -129,43 +117,21 @@ class UsernameGeneratorService
         ];
     }
 
-    /**
-     * Selects a random word from the provided word list.
-     *
-     * @param  array  $wordList  The list of words to choose from.
-     * @return string A randomly selected word.
-     */
-    private function randomWord(array $wordList): string
-    {
-        return $wordList[array_rand($wordList)];
-    }
-
     //https://dnschecker.org/social-media-name-checker.php
 
-    public function checkUsernameAvailability($username): JsonResponse
+    public function checkUsernameAvailability($username): array
     {
         $sites = [
-            'Twitter' => 'https://twitter.com/',
-            'Instagram' => 'https://www.instagram.com/',
-            'TikTok' => 'https://www.tiktok.com/@',
             'Facebook' => 'https://www.facebook.com/',
-            'Snapchat' => 'https://www.snapchat.com/add/',
-            'Steam' => 'https://steamcommunity.com/id/',
-            'Reddit' => 'https://www.reddit.com/user/',
-            'LinkedIn' => 'https://www.linkedin.com/in/',
-            'Pinterest' => 'https://www.pinterest.com/',
-            'Spotify' => 'https://open.spotify.com/user/',
-            'Tumblr' => 'https://www.tumblr.com/blog/',
-            'Twitch' => 'https://www.twitch.tv/',
             'YouTube' => 'https://www.youtube.com/c/',
-            'GitHub' => 'https://github.com/',
-            'Vimeo' => 'https://vimeo.com/',
-            'Flickr' => 'https://www.flickr.com/photos/',
-            'SoundCloud' => 'https://soundcloud.com/',
-            'Medium' => 'https://medium.com/@',
-            'Quora' => 'https://www.quora.com/profile/',
-            'Behance' => 'https://www.behance.net/',
-            'VK' => 'https://vk.com/',
+            'Instagram' => 'https://www.instagram.com/',
+            'Twitter' => 'https://twitter.com/',
+            'LinkedIn' => 'https://www.linkedin.com/in/',
+            'Snapchat' => 'https://www.snapchat.com/add/',
+            'TikTok' => 'https://www.tiktok.com/@',
+            'Reddit' => 'https://www.reddit.com/user/',
+            'Twitch' => 'https://www.twitch.tv/',
+            'Steam' => 'https://steamcommunity.com/id/',
         ];
 
         $results = [];
@@ -176,39 +142,6 @@ class UsernameGeneratorService
             $results[$siteName] = $response->status() === 404;
         }
 
-        return response()->json($results);
+        return $results;
     }
-
-    //private $usernames = [
-    //'facebook' => $this->usernameGeneratorService->generateFacebookUsername($name),
-    //'twitter' => $this->usernameGeneratorService->generateTwitterUsername($name),
-    //'instagram' => $this->usernameGeneratorService->generateInstagramUsername($name),
-    //'tiktok' => $this->usernameGeneratorService->generateTiktokUsername($name),
-    //'snapchat' => $this->usernameGeneratorService->generateSnapchatUsername($name),
-    //'youtube' => $this->usernameGeneratorService->generateYoutubeUsername($name),
-    //'pinterest' => $this->usernameGeneratorService->generatePinterestUsername($name),
-    //'twitch' => $this->usernameGeneratorService->generateTwitchUsername($name),
-    //'soundcloud' => $this->usernameGeneratorService->generateSoundcloudUsername($name),
-    //'reddit' => $this->usernameGeneratorService->generateRedditUsername($name),
-    //'spotify' => $this->usernameGeneratorService->generateSpotifyUsername($name),
-    //'github' => $this->usernameGeneratorService->generateGithubUsername($name),
-    //'linkedin' => $this->usernameGeneratorService->generateLinkedinUsername($name),
-    //'tumblr' => $this->usernameGeneratorService->generateTumblrUsername($name),
-    //'flickr' => $this->usernameGeneratorService->generateFlickrUsername($name),
-    //'vimeo' => $this->usernameGeneratorService->generateVimeoUsername($name),
-    //'mixer' => $this->usernameGeneratorService->generateMixerUsername($name),
-    //'cashapp' => $this->usernameGeneratorService->generateCashappUsername($name),
-    //'onlyfans' => $this->usernameGeneratorService->generateOnlyfansUsername($name),
-    //'patreon' => $this->usernameGeneratorService->generatePatreonUsername($name),
-    //'paypal' => $this->usernameGeneratorService->generatePaypalUsername($name),
-    //'ebay' => $this->usernameGeneratorService->generateEbayUsername($name),
-    //'etsy' => $this->usernameGeneratorService->generateEtsyUsername($name),
-    //'amazon' => $this->usernameGeneratorService->generateAmazonUsername($name),
-    //'ebay' => $this->usernameGeneratorService->generateEbayUsername($name),
-    //'tinder' => $this->usernameGeneratorService->generateTinderUsername($name),
-    //'badoo' => $this->usernameGeneratorService->generateBadooUsername($name),
-    //'okcupid' => $this->usernameGeneratorService->generateOkcupidUsername($name),
-    //'zoosk' => $this->usernameGeneratorService->generateZooskUsername($name),
-    //];
-    //
 }
