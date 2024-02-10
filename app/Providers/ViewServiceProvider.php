@@ -2,12 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Name;
 use App\View\Composers\GlobalComposer;
-use App\View\Composers\NameComposer;
 use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -25,7 +22,5 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Facades\View::composer('*', GlobalComposer::class);
-
-        Facades\View::composer('*', NameComposer::class);
     }
 }

@@ -6,8 +6,8 @@ return [
         "description" => "Search baby names, meanings, origins, numerology and more.",
     ],
     "list" => [
-        "title" => ":page baby names",
-        "description" => "List of :page names with their meanings, origins and other information.",
+        "title" => ":page Baby Names - Meanings, Origins and More",
+        "description" => "List of :page baby names with their meanings, origins and more.",
     ],
     "name" =>[
         "title" => ":name - Name Meaning, Origin, Numerology and more",

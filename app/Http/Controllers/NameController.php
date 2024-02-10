@@ -121,6 +121,16 @@ class NameController extends Controller
         return view('names.search', compact('names'));
     }
 
+    public function favorites(): View
+    {
+        $names = $this->nameService->getFavoriteNames();
+        $this->seoService->getSeoData(
+            ['page'=>'list'],
+            ['page'=>'Favorite']
+        );
+        return view('names.favorite', compact('names'));
+    }
+
     public function wallpaper(string $nameSlug): Response
     {
         $size = request()->input('size') ?? 'full';
@@ -136,7 +146,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $userNames = $this->nameService->getUsernames($name);
-        $html = view('partials.names.api._usernames', compact('userNames'))->render();
+        $html = view('components.names.api.usernames', compact('userNames'))->render();
         return response()->json($html);
     }
 
@@ -144,7 +154,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $abbreviations = $this->nameService->getAbbreviations($name);
-        $html = view('partials.names.api._abbreviations', compact('abbreviations'))->render();
+        $html = view('components.names.api.abbreviations', compact('abbreviations'))->render();
         return response()->json($html);
     }
 
@@ -152,7 +162,7 @@ class NameController extends Controller
     {
         $name = request()->input('name');
         $fancyTexts = $this->nameService->getFancyTexts($name);
-        $html = view('partials.names.api._fancy-texts', compact('fancyTexts'))->render();
+        $html = view('components.names.api.fancy-texts', compact('fancyTexts'))->render();
         return response()->json($html);
     }
 }

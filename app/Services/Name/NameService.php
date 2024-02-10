@@ -101,6 +101,21 @@ class NameService
         });
     }
 
+    public function getFavoriteNames() : array
+    {
+        $favoriteNames = request()->cookie('favorites-list');
+
+        if ($favoriteNames) {
+            $names = json_decode($favoriteNames, true);
+            //to object
+            $names = array_map(function ($name) {
+                return (object) $name;
+            }, $names);
+        }
+
+        return $names ?? [];
+    }
+
     public function nameWallpaper(string $nameSlug, string $size): Response
     {
         $name = $this->cacheRemember("name:$nameSlug", function () use ($nameSlug) {

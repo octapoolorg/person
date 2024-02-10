@@ -11,7 +11,7 @@
         <div class="flex flex-col items-center space-y-6 mt-10 mb-20 md:mb-16 relative">
             <strong
                 class="text-xl md:text-3xl font-semibold uppercase text-base-900 dark:text-base-100">Means:</strong>
-            <p
+            <p id="actual-meaning"
                 class="text-xl md:text-2xl leading-relaxed md:mx-6 capitalize text-base-900 dark:text-base-100">
                 {{ $data['nameDetails']->meaning }}
             </p>
@@ -38,11 +38,9 @@
 
     <!-- Favorite Icon -->
     <div class="absolute top-0 right-0 mt-4 mr-4 flex items-center space-x-4">
-        <a href="javascript:" id="favorite-name"
+        <a href="javascript:" id="favorite-button"
             class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center">
-            <span class="hidden group-hover:inline-block px-2">Add to favorites</span>
-            <i
-                class="far fa-heart text-xl group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
+            <i class="far fa-heart text-xl group-hover:text-primary-800 dark:group-hover:text-primary-200" id="favorite-icon"></i>
         </a>
     </div>
 </section>

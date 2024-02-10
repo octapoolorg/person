@@ -1,11 +1,11 @@
 @props(['class' => ''])
 <nav class="bg-surface border-b border-base-200 dark:bg-base-800 dark:border-base-700 py-4">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
-        <a href="{!! route('home') !!}" class="flex items-center rtl:space-x-reverse">
-            <span class="mr-2">
-                <i class="far fa-star text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+        <a href="{!! route('home') !!}" class="flex items-center rtl:space-x-reverse space-x-2">
+            <span class="dark:hidden">
+                <img src="{{ asset('static/images/logo.png') }}" alt="{{ config('app.name') }}" class="h-10 w-auto">
             </span>
-            <span class="self-center text-2xl font-bold surfacespace-nowrap text-base-800 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-400">
+            <span class="self-center text-2xl font-bold surfacespace-nowrap text-base-800 hover:text-primary-700 dark:text-base-200 dark:hover:text-primary-500">
                 {{ config('app.name') }}
             </span>
         </a>
@@ -66,15 +66,23 @@
                 </li>
                 <li>
                     <!-- favorite button -->
-                    <a href=""
+                    <a href="{!! route('names.favorites') !!}"
                        @class([
-                           'block py-2 px-3 rounded md:p-0',
+                           'block py-2 px-3 rounded md:p-0 relative',
                            'text-primary-600' => request()->routeIs('favorites'),
                            'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => ! request()->routeIs('favorites'),
                        ])
                        {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}
                     >
                         <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+                        <span
+                            id="navbar-favorite-icon"
+                            @class([
+                                'absolute items-center justify-center size-3 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-0 -end-1 dark:border-gray-900',
+                                'inline-flex' => $favorite,
+                                'hidden' => ! $favorite,
+                            ])
+                        ></span>
                     </a>
                 </li>
                 <li class="hidden md:block">
