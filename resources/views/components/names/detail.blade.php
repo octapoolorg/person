@@ -1,10 +1,13 @@
 <section
     class="bg-base-100 dark:bg-base-800 px-4 py-10 md:p-16 rounded-lg shadow-lg overflow-hidden relative text-base-900 dark:text-base-100 border dark:border-base-700">
-    <article class="text-center">
+    <article class="text-center" x-data="{}">
         <header>
             <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-base-900 dark:text-base-100"
-                id="actual-name">
+                id="actual-name" x-ref="actualname" >
                 {{ $data['nameDetails']->name }}
+                <span class="text-2xl md:text-4xl font-normal text-primary-500 dark:text-primary-300" @click.prevent="SpeechManager.speak($refs.actualname.innerText.trim())">
+                    <i class="fas fa-volume-up cursor-pointer hover:text-primary-600 dark:hover:text-primary-300"></i>
+                </span>
             </h1>
         </header>
 
