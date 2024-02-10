@@ -73,6 +73,11 @@ class FavoriteButton {
             const isFavorite = this.favoritesManager.toggleFavorite(currentPageUrl, name, meaning);
             this.updateFavoriteButton(isFavorite);
         });
+
+        // Check if the current page is favorited when the button is initialized
+        const currentPageUrl = `${window.location.origin}${window.location.pathname}`;
+        const isFavorite = this.favoritesManager.isFavorite(currentPageUrl);
+        this.updateFavoriteButton(isFavorite);
     }
 
     updateFavoriteButton(isFavorite) {
@@ -85,6 +90,7 @@ class FavoriteButton {
         }
     }
 }
+
 
 class NavbarIcon {
     constructor(iconId, favoritesManager) {
