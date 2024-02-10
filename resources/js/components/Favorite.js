@@ -130,7 +130,7 @@ class FavoriteList {
     }
 
     getListItemByUrl(url) {
-        return document.querySelector(`#favorite-list li[data-url="${url}"]`);
+        return document.querySelector(`#favorite-list a[data-url="${url}"]`);
     }
 
     updateFavoriteList() {
@@ -142,39 +142,62 @@ class FavoriteList {
         this.favoritesManager.favorites.forEach((favorite) => {
             let listItem = this.getListItemByUrl(favorite.url);
             if (!listItem) {
-                listItem = document.createElement('li');
-                listItem.textContent = `${favorite.name} - ${favorite.meaning}`;
-                listItem.setAttribute('data-url', favorite.url);
-                listItem.classList.add('list-item', 'flex', 'justify-between', 'items-center', 'p-2', 'border', 'border-gray-200', 'rounded'); // Add your Tailwind CSS classes here
-
-                const heartButton = document.createElement('i');
-                heartButton.classList.add('fa-heart', 'cursor-pointer', 'fas');
-                heartButton.setAttribute('data-url', favorite.url);
-                heartButton.addEventListener('click', () => {
-                    const isFavorite = this.favoritesManager.toggleFavorite(favorite.url, favorite.name, favorite.meaning);
-                    this.navbarIcon.updateNavbarIcon();
-                    if (!isFavorite) {
-                        heartButton.classList.remove('fas');
-                        heartButton.classList.add('far');
-                    } else {
-                        heartButton.classList.remove('far');
-                        heartButton.classList.add('fas');
-                    }
-                });
-
-                listItem.appendChild(heartButton);
+                listItem = this.createListItem(favorite);
                 favoriteList.appendChild(listItem);
+            }
+            const heartButton = listItem.querySelector('.fa-heart');
+            if (this.favoritesManager.isFavorite(favorite.url)) {
+                heartButton.classList.remove('far');
+                heartButton.classList.add('fas');
             } else {
-                const heartButton = listItem.querySelector('.fa-heart');
-                if (this.favoritesManager.isFavorite(favorite.url)) {
-                    heartButton.classList.remove('far');
-                    heartButton.classList.add('fas');
-                } else {
-                    heartButton.classList.remove('fas');
-                    heartButton.classList.add('far');
-                }
+                heartButton.classList.remove('fas');
+                heartButton.classList.add('far');
             }
         });
+    }
+
+    createListItem(favorite) {
+        const listItem = document.createElement('a');
+        listItem.href = favorite.url;
+        listItem.classList.add('p-4', 'shadow', 'dark:shadow-none', 'rounded-lg', 'flex', 'justify-start', 'items-center', 'dark:border', 'dark:border-base-700', 'hover:bg-base-50', 'dark:hover:bg-base-800', 'transition', 'duration-300', 'ease-in-out');
+
+        const div = document.createElement('div');
+        div.classList.add('flex-grow');
+        listItem.appendChild(div);
+
+        const h2 = document.createElement('h2');
+        h2.textContent = favorite.name;
+        h2.classList.add('text-xl', 'font-semibold', 'text-primary-800', 'dark:text-primary-100', 'capitalize');
+        div.appendChild(h2);
+
+        const p = document.createElement('p');
+        p.textContent = favorite.meaning;
+        p.classList.add('text-md', 'text-base-500', 'dark:text-base-300');
+        div.appendChild(p);
+
+        const span = document.createElement('span');
+        span.textContent = 'Learn more';
+        span.classList.add('text-primary-600', 'hover:text-primary-900', 'dark:text-primary-400', 'dark:hover:text-primary-200', 'transition', 'duration-300', 'ease-in-out');
+        listItem.appendChild(span);
+
+        const heartButton = document.createElement('i');
+        heartButton.classList.add('fa-heart', 'cursor-pointer', 'fas');
+        heartButton.setAttribute('data-url', favorite.url);
+        heartButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const isFavorite = this.favoritesManager.toggleFavorite(favorite.url, favorite.name, favorite.meaning);
+            this.navbarIcon.updateNavbarIcon();
+            if (!isFavorite) {
+                heartButton.classList.remove('fas');
+                heartButton.classList.add('far');
+            } else {
+                heartButton.classList.remove('far');
+                heartButton.classList.add('fas');
+            }
+        });
+        listItem.appendChild(heartButton);
+
+        return listItem;
     }
 }
 
