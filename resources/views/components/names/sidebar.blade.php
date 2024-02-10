@@ -1,5 +1,5 @@
 <aside class="w-full lg:w-1/3 md:px-4">
-    <div class="shadow mb-6 p-6 rounded-lg border dark:border-base-700">
+    <div class="shadow mb-6 p-6 rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800">
         <h5 class="text-xl font-bold text-primary-600 dark:text-primary-400 mb-4">
             Generate Random Name
         </h5>
@@ -14,7 +14,7 @@
     </div>
 
     <!-- Explore Baby Names -->
-    <div class="shadow my-6 p-6 rounded-lg  border dark:border-base-700">
+    <div class="shadow my-6 p-6 rounded-lg  border dark:border-base-700 bg-surface dark:bg-base-800">
         <h5 class="text-xl font-bold text-primary-600 dark:text-primary-400 mb-4">
             Explore Baby Names
         </h5>

@@ -1,4 +1,4 @@
-<section class="px-4 py-10 md:p-8 border dark:border-base-700 mb-10 rounded-lg shadow dark:shadow-none">
+<section class="px-4 py-10 md:p-8 border dark:border-base-700 mb-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800">
     <h2 class="text-2xl mb-6 text-base-900 dark:text-base-100">Signatures for
         {{ $data['nameDetails']->name }}</h2>
     <div class="flex flex-wrap gap-4 justify-center md:justify-start">

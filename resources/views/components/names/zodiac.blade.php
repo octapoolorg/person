@@ -1,4 +1,4 @@
-<section class="border dark:border-base-700 my-10 rounded-lg shadow dark:shadow-none">
+<section class="border dark:border-base-700 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800">
     <!-- Zodiac Sign Section -->
     <x-names.box title="Zodiac Sign"
         description="{!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.zodiac_sign', ['name' => $data['nameDetails']->name]) !!}"

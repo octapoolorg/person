@@ -1,5 +1,6 @@
 <!-- FAQ Section -->
-<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-base-700" itemscope itemtype="https://schema.org/FAQPage">
+<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-base-700 bg-surface dark:bg-base-800"
+itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold capitalize">
         Frequently Asked Questions about
         <span class="text-2xl leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
