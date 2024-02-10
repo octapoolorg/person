@@ -90,8 +90,7 @@ abstract class Numerology implements INumerology
 
     protected function calculateBirthdayNumber($dob): int
     {
-        // Extracting the day of birth
-        $day = (int)substr($dob, 8, 2);
+        $day = (int) substr($dob, 8, 2);
         return $this->reduceToSingleDigit($day);
     }
 
@@ -105,7 +104,7 @@ abstract class Numerology implements INumerology
 
     public function getNumerologyData($name, $dob = null): array
     {
-        $name = $this->normalizeName($name);
+        $name = normalize_name($name);
         $destinyNumber = $this->calculateNumber($name);
         $lifePathNumber = $dob ? $this->calculateLifePathNumber($dob) : null;
         $birthdayNumber = $dob ? $this->calculateBirthdayNumber($dob) : null;
@@ -132,13 +131,6 @@ abstract class Numerology implements INumerology
 
         return $result;
     }
-
-    private function normalizeName($name): array|string|null
-    {
-        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
-        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
-    }
-
 
     protected function getZodiacSignByDestinyNumber(int $destinyNumber): string
     {

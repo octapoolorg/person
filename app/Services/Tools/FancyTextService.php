@@ -9,13 +9,7 @@ class FancyTextService
 
     public function __construct(string $name)
     {
-        $this->name = $this->normalizeName($name);
-    }
-
-    private function normalizeName($name): array|string|null
-    {
-        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
-        return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
+        $this->name = normalize_name($name);
     }
 
     private array $styles = [
@@ -298,14 +292,14 @@ class FancyTextService
         return $styled;
     }
 
-    public function generate($styles=5): array
+    public function generate($styles=10): array
     {
         $usedStyles = [];
         $styleKeys = array_diff(array_keys($this->styles), $usedStyles);
         shuffle($styleKeys);
 
         // Generate 5 different emoji styles
-        $emojiStyles = $this->generateRandomEmojiStyles($this->name, $styles);
+        $emojiStyles = $this->generateRandomEmojiStyles($this->name, 3);
 
         // Generate 5 more styles from the available ones
         $selectedStyles = array_slice($styleKeys, 0, $styles);
