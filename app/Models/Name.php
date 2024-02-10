@@ -25,6 +25,8 @@ class Name extends Model
 
     protected $guarded = [];
 
+    protected $with = ['gender'];
+
     public function gender(): BelongsTo
     {
         return $this->belongsTo(Gender::class,);
@@ -53,6 +55,16 @@ class Name extends Model
     public function scopeRandom(Builder $query): Builder
     {
         return $query->inRandomOrder();
+    }
+
+    public function isBoy(): bool
+    {
+        return $this->gender->slug === 'masculine';
+    }
+
+    public function isGirl(): bool
+    {
+        return $this->gender->slug === 'feminine';
     }
 
     public function scopePopular(Builder $query): Builder
