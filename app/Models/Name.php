@@ -56,14 +56,32 @@ class Name extends Model
         return $query->inRandomOrder();
     }
 
-    public function isBoy(): bool
+    public function isMasculine(): bool
     {
         return $this->gender_id === GenderEnum::MASCULINE;
     }
 
-    public function isGirl(): bool
+    public function isFeminine(): bool
     {
         return $this->gender_id === GenderEnum::FEMININE;
+    }
+
+    public function scopeGender(Builder $query, int $gender_id): Builder
+    {
+        return $query->where('gender_id', $gender_id);
+    }
+
+    public function scopeValidGender(Builder $query): Builder
+    {
+        return $query->whereIn('gender_id', [GenderEnum::MASCULINE, GenderEnum::FEMININE]);
+    }
+
+    public function scopeValid(Builder $query): Builder
+    {
+        return
+            $query
+                ->whereIn('gender_id', [GenderEnum::MASCULINE, GenderEnum::FEMININE])
+                ->where('is_generated', false);
     }
 
     public function scopePopular(Builder $query): Builder

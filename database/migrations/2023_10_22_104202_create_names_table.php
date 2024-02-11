@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('meaning');
             $table->boolean('is_active')->default(false)->index();
             $table->boolean('is_popular')->default(false)->index();
-            $table->boolean('generated')->default(false)->index();
+            $table->boolean('is_generated')->default(false)->index();
             $table->foreignId('gender_id');
             $table->timestamps();
         });

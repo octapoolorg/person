@@ -29,7 +29,10 @@ class NameService
     public function getNames(): LengthAwarePaginator
     {
         return cache_remember('names:index', function () {
-            return Name::query()->paginate(30);
+            return
+                    Name::query()
+                    ->validGender()
+                    ->paginate(30);
         });
     }
 
