@@ -19,7 +19,6 @@ class AbbreviationSeeder extends Seeder
         $csv->setHeaderOffset(0);
 
         $batchSize = 500;
-        $timestamp = now();
         $records = [];
         $counter = 0;
 

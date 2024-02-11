@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index(): View
     {
         $popularNames = cache_remember('home:popularNames', function () {
-            return Name::query()->orderBy('created_at', 'desc')
+            return Name::query()
                 ->take(8)
                 ->get();
         });
