@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Gender;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -57,12 +58,12 @@ class Name extends Model
 
     public function isBoy(): bool
     {
-        return $this->gender->slug === 'masculine';
+        return $this->gender_id === Gender::MASCULINE;
     }
 
     public function isGirl(): bool
     {
-        return $this->gender->slug === 'feminine';
+        return $this->gender_id === Gender::FEMININE;
     }
 
     public function scopePopular(Builder $query): Builder
