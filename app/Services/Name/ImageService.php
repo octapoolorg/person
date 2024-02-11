@@ -18,9 +18,15 @@ class ImageService
             'font_size' => 150,
             'font_color' => '#000000',
         ],
+        'dark' => [
+            'image_path' => 'static/images/wallpaper_dark.jpg',
+            'font_path' => 'better-saturday/better-saturday.ttf',
+            'font_size' => 150,
+            'font_color' => '#ffffff',
+        ],
         'gamer' => [
             'image_path' => 'static/images/wallpaper_gamer.jpg',
-            'font_path' => 'roboto/roboto-bold.ttf',
+            'font_path' => 'edo/edo.ttf',
             'font_size' => 150,
             'font_color' => '#000000',
         ],

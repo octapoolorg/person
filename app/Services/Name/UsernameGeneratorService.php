@@ -119,6 +119,13 @@ class UsernameGeneratorService
 
     //https://dnschecker.org/social-media-name-checker.php
 
+    /**
+     * Checks the availability of the provided username on various social media sites.
+     *
+     * @param  string  $username  The username to check.
+     * @return array An array of social media sites and their availability status.
+     */
+
     public function checkUsernameAvailability($username): array
     {
         $sites = [
@@ -137,9 +144,14 @@ class UsernameGeneratorService
         $results = [];
 
         foreach ($sites as $siteName => $url) {
-            $response = Http::get($url.$username);
+            $url = $url.$username;
+            $response = Http::get($url);
 
-            $results[$siteName] = $response->status() === 404;
+            $results[] = [
+                'siteName' => $siteName,
+                'url' => $url,
+                'available' => $response->status() === 404,
+            ];
         }
 
         return $results;
