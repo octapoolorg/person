@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Services\BaseImageService;
 class ImageService
 {
-    protected $wallpaperStyles = [
+    protected array $wallpaperStyles = [
         'funky' => [
             'background' => 'wallpaper_funky.jpg',
             'font_path'  => 'roboto/roboto-bold.ttf',
@@ -40,7 +40,7 @@ class ImageService
         ],
     ];
 
-    protected $signStyles = [
+    protected array $signStyles = [
         'cursive' => [
             'font_path'  => 'creattion-demo/creattion-demo.ttf',
             'font_size'  => 250,
@@ -101,26 +101,23 @@ class ImageService
     public function nameWallpapers(string $name): array
     {
         $styles = array_keys($this->wallpaperStyles);
-
-        $wallpaperUrls = [];
-
-        foreach ($styles as $style) {
-            $wallpaperUrls[] = route('names.wallpaper', ['name' => $name, 'style' => $style]);
-        }
-
-        return $wallpaperUrls;
+        return $this->generateUrls($name, $styles, 'names.wallpaper');
     }
 
     public function nameSignatures(string $name): array
     {
         $styles = array_keys($this->signStyles);
+        return $this->generateUrls($name, $styles, 'names.signature');
+    }
 
-        $signatureUrls = [];
+    private function generateUrls(string $name, array $styles, string $routeName): array
+    {
+        $urls = [];
 
         foreach ($styles as $style) {
-            $signatureUrls[$style] = route('names.signature', ['name' => $name, 'style' => $style]);
+            $urls[$style] = route($routeName, ['name' => $name, 'style' => $style]);
         }
 
-        return $signatureUrls;
+        return $urls;
     }
 }
