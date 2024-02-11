@@ -19,6 +19,9 @@
                         </div>
                     @endforelse
                 </div>
+                <div class="mt-8">
+                    {{ $names->links() }}
+                </div>
             </main>
 
             <x-names.sidebar />

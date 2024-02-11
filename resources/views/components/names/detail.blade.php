@@ -37,8 +37,8 @@
 
     <!-- Favorite Icon -->
     <div class="absolute top-0 right-0 mt-4 mr-4 flex items-center space-x-3 md:space-x-4">
-        <a href="javascript:" id="favorite-button" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center">
-            <i class="far fa-heart text-lg md:text-xl group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
+        <a href="javascript:;" id="favorite-button" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center">
+            <i class="far fa-heart text-lg md:text-xl group-hover:text-primary-800 dark:group-hover:text-primary-200" id="favorite-icon"></i>
         </a>
     </div>
 </section>

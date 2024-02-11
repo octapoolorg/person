@@ -29,7 +29,7 @@ class NameController extends Controller
             ['page' => 'Popular']
         );
 
-        return view('names.list', compact('names'));
+        return view('names.index', compact('names'));
     }
 
     public function show(string $nameSlug): View

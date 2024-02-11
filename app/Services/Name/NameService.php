@@ -26,9 +26,9 @@ class NameService
         $this->imageService = $imageService;
     }
 
-    public function getNames(): Collection
+    public function getNames(): LengthAwarePaginator
     {
-        return cache_remember('names', function () {
+        return cache_remember('names:index', function () {
             return Name::query()->paginate(30);
         });
     }
