@@ -4,54 +4,68 @@ namespace App\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
 class AppSetup extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'app:setup';
+    protected $description = 'Setup the application by merging and extracting multi-part ZIP files.';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Setup the application for installation.';
-
-    /**
-     * Execute the console command.
-     *
-     * @throws Exception
-     */
     public function handle(): void
     {
-        $zipPath = base_path('data/imports/imports.zip');
+        $baseZipPath = 'imports/imports.zip';
+        $tempZipPath = $this->mergeZipParts($baseZipPath);
 
-        if (file_exists($zipPath)) {
-            $this->extractDatabase();
-        } else {
-            throw new Exception('ZIP file not found');
+        try {
+            $this->extractZip($tempZipPath);
+            $this->info('Application setup complete.');
+        } finally {
+            @unlink($tempZipPath);
         }
     }
 
-    /**
-     * Extract the database from the zip file.
-     *
-     * @throws Exception
-     */
-    private function extractDatabase(): void
+    protected function mergeZipParts(string $baseZipPath): string
     {
-        $zip = new ZipArchive();
-
-        if ($zip->open(base_path('data/imports/imports.zip')) === true) {
-            $zip->extractTo(base_path('data/imports'));
-            $zip->close();
-        } else {
-            throw new Exception('Failed to open ZIP file');
+        $tempZipPath = tempnam(sys_get_temp_dir(), 'mergedZip');
+        if (!$tempZipPath) {
+            throw new Exception('Failed to create a temporary file.');
         }
+
+        $tempZipStream = fopen($tempZipPath, 'wb');
+        if (!$tempZipStream) {
+            throw new Exception('Cannot open temporary file for writing.');
+        }
+
+        $part = 1;
+        while (Storage::disk('data')->exists($partialPath = $baseZipPath . '.' . str_pad($part, 3, '0', STR_PAD_LEFT))) {
+            fwrite($tempZipStream, Storage::disk('data')->get($partialPath));
+            $part++;
+        }
+
+        if ($part === 1) {
+            fclose($tempZipStream);
+            @unlink($tempZipPath);
+            throw new Exception('No ZIP file parts found.');
+        }
+
+        fclose($tempZipStream);
+
+        return $tempZipPath;
+    }
+
+    protected function extractZip(string $tempZipPath): void
+    {
+        $zip = new ZipArchive;
+        if ($zip->open($tempZipPath) !== TRUE) {
+            throw new Exception('Failed to open merged ZIP file.');
+        }
+
+        if (!$zip->extractTo(base_path('data/imports'))) {
+            $zip->close();
+            throw new Exception('Failed to extract ZIP file.');
+        }
+
+        $zip->close();
     }
 }
