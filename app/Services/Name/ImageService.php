@@ -5,7 +5,6 @@ namespace App\Services\Name;
 use App\Models\Name;
 use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
 
@@ -13,37 +12,37 @@ class ImageService
 {
     protected $wallpaperStyles = [
         'funky' => [
-            'image_path' => 'static/images/wallpaper_funky.jpg',
+            'image_path' => 'wallpaper_funky.jpg',
             'font_path' => 'roboto/roboto-bold.ttf',
             'font_size' => 150,
             'font_color' => '#000000',
         ],
         'dark' => [
-            'image_path' => 'static/images/wallpaper_dark.jpg',
+            'image_path' => 'wallpaper_dark.jpg',
             'font_path' => 'better-saturday/better-saturday.ttf',
             'font_size' => 150,
             'font_color' => '#ffffff',
         ],
         'gamer' => [
-            'image_path' => 'static/images/wallpaper_gamer.jpg',
+            'image_path' => 'wallpaper_gamer.jpg',
             'font_path' => 'edo/edo.ttf',
             'font_size' => 150,
             'font_color' => '#000000',
         ],
         'nature' => [
-            'image_path' => 'static/images/wallpaper_nature.jpg',
+            'image_path' => 'wallpaper_nature.jpg',
             'font_path' => 'roboto/roboto-bold.ttf',
             'font_size' => 150,
             'font_color' => '#ffffff',
         ],
         'kids' => [
-            'image_path' => 'static/images/wallpaper_kids.jpg',
+            'image_path' => 'wallpaper_kids.jpg',
             'font_path' => 'roboto/roboto-bold.ttf',
             'font_size' => 150,
             'font_color' => '#000000',
         ],
         'summer' => [
-            'image_path' => 'static/images/wallpaper_summer.jpg',
+            'image_path' => 'wallpaper_summer.jpg',
             'font_path' => 'roboto/roboto-bold.ttf',
             'font_size' => 150,
             'font_color' => '#000000',
@@ -52,19 +51,19 @@ class ImageService
 
     protected $fontStyles = [
         'cursive' => [
-            'image_path' => 'static/images/signature_background.jpg',
+            'image_path' => 'signature_background.jpg',
             'font_path' => 'creattion-demo/creattion-demo.ttf',
             'font_size' => 250,
             'font_color' => '#000000',
         ],
         'allison-tessa' => [
-            'image_path' => 'static/images/signature_background.jpg',
+            'image_path' => 'signature_background.jpg',
             'font_path' => 'allison-tessa/allison-tessa.ttf',
             'font_size' => 120,
             'font_color' => '#000000',
         ],
         'monsieur-la-doulaise' => [
-            'image_path' => 'static/images/signature_background.jpg',
+            'image_path' => 'signature_background.jpg',
             'font_path' => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf',
             'font_size' => 190,
             'font_color' => '#000000',
@@ -153,7 +152,7 @@ class ImageService
      * @param  int  $fontSize  The size of the font.
      * @return string The generated image as a data URL.
      */
-    public function generateImage(string $name, string $color, string $background, string $font, int $fontSize, ?string $size = null): string
+    private function generateImage(string $name, string $color, string $background, string $font, int $fontSize, ?string $size = null): string
     {
         try {
             $fontPath = $this->getFontPath($font);
@@ -198,7 +197,7 @@ class ImageService
      */
     private function getBackgroundPath(string $background): string
     {
-        return public_path($background);
+        return resource_path("images/$background");
     }
 
     /**
@@ -254,7 +253,7 @@ class ImageService
     {
         $key = "image:$name:$background:$font:$fontSize:$size";
 
-        return Cache::remember($key, now()->addYear(), function () use ($name, $color, $background, $font, $fontSize, $size) {
+        return cache_remember($key, function () use ($name, $color, $background, $font, $fontSize, $size) {
             return $this->generateImage($name, $color, $background, $font, $fontSize, $size);
         });
     }

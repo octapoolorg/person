@@ -5,7 +5,6 @@ namespace App\View\Composers;
 use App\Models\Gender;
 use App\Models\Name;
 use App\Models\Origin;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class GlobalComposer
@@ -26,15 +25,15 @@ class GlobalComposer
      */
     public function compose(View $view): void
     {
-        $popularNames = Cache::remember('footer:popularNames', now()->addWeek(), function () {
+        $popularNames = cache_remember('footer:popularNames', function () {
             return $this->name->validMeaning()->popular()->limit(4)->get();
         });
 
-        $origins = Cache::remember('origins', now()->addWeek(), function () {
+        $origins = cache_remember('origins', function () {
             return $this->origin->get();
         });
 
-        $genders = Cache::remember('genders', now()->addWeek(), function () {
+        $genders = cache_remember('genders', function () {
             return $this->gender->get();
         });
 

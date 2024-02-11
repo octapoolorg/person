@@ -1,12 +1,11 @@
 <?php
 
 use App\Models\Redirect;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 $cacheKey = 'redirects';
 
-$redirects = Cache::remember($cacheKey, now()->addHours(24), function () {
+$redirects = cache_remember($cacheKey, function () {
     return Redirect::all()->pluck('target', 'source');
 });
 

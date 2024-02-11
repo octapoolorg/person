@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Name;
 use App\Services\SeoService;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Wink\WinkPost;
 
@@ -19,14 +18,14 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        $popularNames = Cache::remember('home:popularNames', now()->addDay(), function () {
+        $popularNames = cache_remember('home:popularNames', function () {
             return Name::orderBy('created_at', 'desc')
                 ->validMeaning()
                 ->take(8)
                 ->get();
         });
 
-        $nameOfTheDay = Cache::remember('nameOfTheDay', now()->addDay(), function () use ($popularNames) {
+        $nameOfTheDay = cache_remember('nameOfTheDay', function () use ($popularNames) {
             if ($popularNames->count() > 0) {
                 return $popularNames->random();
             } else {
@@ -34,7 +33,7 @@ class HomeController extends Controller
             }
         });
 
-        $latestPosts = Cache::remember('home:latestPosts', now()->addDay(), function () {
+        $latestPosts = cache_remember('home:latestPosts', function () {
             return WinkPost::with('tags')
                 ->live()
                 ->orderBy('publish_date', 'desc')

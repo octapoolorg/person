@@ -12,7 +12,6 @@ use App\Services\Tools\FancyTextService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class NameService
@@ -66,7 +65,7 @@ class NameService
 
         return cache_remember("names:random:$random", function () {
             return Name::validMeaning()->inRandomOrder()->limit(10)->get();
-        }, now()->addDay());
+        });
     }
 
     public function searchNames(Request $request): LengthAwarePaginator
@@ -74,7 +73,7 @@ class NameService
         $randomness = rand(1, 15);
         $cacheKey = 'search:'.Str::slug($request->fullUrl()).":$randomness";
 
-        return Cache::remember($cacheKey, now()->addDay(), function () use ($request) {
+        return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()->withoutGlobalScope('active');
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
@@ -128,16 +127,14 @@ class NameService
     public function getAbbreviations(string $name): array
     {
         $name = normalize_name($name);
-        $alphabets = str_split($name);
-        $alphabets = array_filter($alphabets, function ($alphabet) {
+        $alphabets = collect(str_split($name))->filter(function ($alphabet) {
             return $alphabet !== ' ';
-        });
-        $upperAlphabets = array_map('strtoupper', $alphabets);
+        })->toUpper()->unique()->toArray();
 
         // Getting abbreviations for the alphabets
         $randomness = rand(1, 15);
-        $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($upperAlphabets) {
-            return Abbreviation::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
+        $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($alphabets) {
+            return Abbreviation::whereIn('alphabet', $alphabets)->get()->groupBy('alphabet');
         });
 
         $abbreviations = [];
