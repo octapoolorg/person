@@ -134,26 +134,26 @@ class NameService
         });
         $upperAlphabets = array_map('strtoupper', $alphabets);
 
-        // Getting all traits for the alphabets
+        // Getting abbreviations for the alphabets
         $randomness = rand(1, 15);
-        $traitsCollection = cache_remember("traits:$name:$randomness", function () use ($upperAlphabets) {
+        $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($upperAlphabets) {
             return Abbreviation::whereIn('alphabet', array_unique($upperAlphabets))->get()->groupBy('alphabet');
         });
 
-        $traits = [];
+        $abbreviations = [];
         foreach ($alphabets as $alphabet) {
             $alphabetKey = strtoupper($alphabet);
 
-            // Check if there are multiple traits for the alphabet and pick one randomly
-            if (isset($traitsCollection[$alphabetKey]) && $traitsCollection[$alphabetKey]->count() > 0) {
-                $randomTrait = $traitsCollection[$alphabetKey]->random();
-                $traits[] = [$alphabet => $randomTrait->name ?? null];
+            // Check if there are multiple abbreviations for the alphabet and pick one randomly
+            if (isset($abbreviationsCollection[$alphabetKey]) && $abbreviationsCollection[$alphabetKey]->count() > 0) {
+                $randomAbbreviation = $abbreviationsCollection[$alphabetKey]->random();
+                $abbreviations[] = [$alphabet => $randomAbbreviation->name ?? null];
             } else {
-                $traits[] = [$alphabet => null];
+                $abbreviations[] = [$alphabet => null];
             }
         }
 
-        return $traits;
+        return $abbreviations;
     }
 
     public function getFancyTexts(string $name): array
