@@ -29,7 +29,7 @@ class NameSeeder extends Seeder
                 'id' => $record['id'],
                 'name' => $record['name'],
                 'slug' => $record['slug'],
-                'meaning' => $record['meanings'],
+                'meaning' => $record['meaning'],
                 'gender_id' => $record['gender_id'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
