@@ -67,47 +67,63 @@ class ImageService
 
     public function individualWallpaper(string $nameSlug, string $style): Response
     {
+        $name = $this->getNameFromSlug($nameSlug)->name;
+        $style = $this->getStyle($style, 'wallpaper');
+
+        return $this->generateImageResponse($name, $style, 'name wallpaper');
+    }
+
+    public function individualSignature(string $name, string $style): Response
+    {
+        $style = $this->getStyle($style, 'signature');
+        $firstPart = $this->getFirstPartOfName($name);
+
+        return $this->generateImageResponse($firstPart, $style, 'name signature');
+    }
+
+    public function nameWallpapers(string $name): array
+    {
+        return $this->generateUrls($name, array_keys($this->wallpaperStyles), 'names.wallpaper');
+    }
+
+    public function nameSignatures(string $name): array
+    {
+        return $this->generateUrls($name, array_keys($this->signStyles), 'names.signature');
+    }
+
+    private function getNameFromSlug(string $nameSlug): Name
+    {
+        return cache_remember("name:$nameSlug", function () use ($nameSlug) {
+            return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail();
+        });
+    }
+
+    private function getStyle(string $style, string $type): array
+    {
+        $styles = $type === 'wallpaper' ? $this->wallpaperStyles : $this->signStyles;
+        $defaultStyle = $styles['funky'] ?? reset($styles); // For wallpaper, 'funky' is the default; adjust for signatures.
+
+        return $styles[$style] ?? $defaultStyle;
+    }
+
+    private function generateImageResponse(string $name, array $style, string $metaName): Response
+    {
         $meta = [
-            'name' => 'name wallpaper',
+            'name' => $metaName,
         ];
 
-        $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
-            return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail()->name;
-        });
-
-        $style = $this->wallpaperStyles[$style] ?? $this->wallpaperStyles['funky'];
+        if ($metaName === 'name signature') {
+            $meta['background'] = 'signature_background.jpg';
+        }
 
         $style = array_merge($style, $meta);
 
         return $this->baseImageService->generateImageResponse($name, $style);
     }
 
-    public function individualSignature(string $name, string $style): Response
+    private function getFirstPartOfName(string $name): string
     {
-        $meta = [
-            'name' => 'name signature',
-            'background' => 'signature_background.jpg',
-        ];
-
-        $style = $this->signStyles[$style] ?? $this->signStyles['cursive'];
-
-        $style = array_merge($style, $meta);
-
-        $firstPart = normalize_name(explode(' ', $name)[0]);
-
-        return $this->baseImageService->generateImageResponse($firstPart, $style);
-    }
-
-    public function nameWallpapers(string $name): array
-    {
-        $styles = array_keys($this->wallpaperStyles);
-        return $this->generateUrls($name, $styles, 'names.wallpaper');
-    }
-
-    public function nameSignatures(string $name): array
-    {
-        $styles = array_keys($this->signStyles);
-        return $this->generateUrls($name, $styles, 'names.signature');
+        return normalize_name(explode(' ', $name)[0]);
     }
 
     private function generateUrls(string $name, array $styles, string $routeName): array

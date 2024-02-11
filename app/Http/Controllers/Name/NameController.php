@@ -32,15 +32,17 @@ class NameController extends Controller
         return view('names.list', compact('names'));
     }
 
-    public function show(string $name): View
+    public function show(string $nameSlug): View
     {
-        $data = $this->nameService->getNameDetails($name);
+        $data = $this->nameService->getName($nameSlug);
+        $name = $data['name'];
+
         $this->seoService->getSeoData(
             ['page' => 'name'],
-            ['name' => $data['nameDetails']->name]
+            ['name' => $name->name]
         );
 
-        return view('names.show', compact('data'));
+        return view('names.show', compact('name', 'data'));
     }
 
     public function gender(string $gender): View

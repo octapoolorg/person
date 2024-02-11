@@ -70,11 +70,6 @@ class Name extends Model
         return $query->where('is_popular', true);
     }
 
-    public function scopeValidMeaning(Builder $query): Builder
-    {
-        return $query->where('generated', false);
-    }
-
     public function getRouteKeyName(): string
     {
         return 'slug';

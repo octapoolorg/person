@@ -29,24 +29,24 @@ class NameService
     public function getNames(): Collection
     {
         return cache_remember('names', function () {
-            return Name::validMeaning()->limit(30)->get();
+            return Name::query()->paginate(30);
         });
     }
 
-    public function getNameDetails(string $name): array
+    public function getName(string $nameSlug): array
     {
-        $nameDetails = cache_remember("nameDetails:$name", function () use ($name) {
-            return Name::withoutGlobalScope('active')->with(['gender', 'comments'])->where('slug', $name)->firstOrFail();
+        $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
+            return Name::query()->withoutGlobalScopes()->with(['comments'])->where('slug', $nameSlug)->firstOrFail();
         });
 
         return [
-            'nameDetails' => $nameDetails,
-            'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($nameDetails->name),
-            'abbreviations' => $this->getAbbreviations($nameDetails->name),
-            'fancyTexts' => $this->getFancyTexts($nameDetails->name),
-            'wallpaperUrls' => $this->imageService->nameWallpapers($nameDetails->slug),
-            'signatureUrls' => $this->imageService->nameSignatures($nameDetails->slug),
-            'userNames' => $this->getUsernames($nameDetails->slug),
+            'name' => $name,
+            'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($name->name),
+            'abbreviations' => $this->getAbbreviations($name->name),
+            'fancyTexts' => $this->getFancyTexts($name->name),
+            'wallpaperUrls' => $this->imageService->nameWallpapers($name->slug),
+            'signatureUrls' => $this->imageService->nameSignatures($name->slug),
+            'userNames' => $this->getUsernames($name->slug),
         ];
     }
 
@@ -54,7 +54,7 @@ class NameService
     {
         return cache_remember("names:$gender", function () use ($gender) {
             return Gender::with(['names' => function ($query) {
-                $query->validMeaning()->take(30);
+                $query->paginate(30);
             }])->where('slug', $gender)->firstOrFail()->names;
         });
     }
@@ -64,7 +64,7 @@ class NameService
         $random = rand(1, 15);
 
         return cache_remember("names:random:$random", function () {
-            return Name::validMeaning()->inRandomOrder()->limit(10)->get();
+            return Name::inRandomOrder()->limit(10)->get();
         });
     }
 
@@ -74,7 +74,7 @@ class NameService
         $cacheKey = 'search:'.Str::slug($request->fullUrl()).":$randomness";
 
         return cache_remember($cacheKey, function () use ($request) {
-            $query = Name::query()->withoutGlobalScope('active');
+            $query = Name::query()->withoutGlobalScopes();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
                 $query->search($searchTerm);
@@ -168,7 +168,7 @@ class NameService
         $randomness = rand(1, 15);
 
         return cache_remember("names:$origin:$randomness", function () use ($origin) {
-            return Name::validMeaning()->whereHas('origins', function ($query) use ($origin) {
+            return Name::query()->whereHas('origins', function ($query) use ($origin) {
                 $query->where('slug', $origin);
             })->limit(30)->get();
         });
@@ -179,7 +179,7 @@ class NameService
         $randomness = rand(1, 15);
 
         return cache_remember("names:$category:$randomness", function () use ($category) {
-            return Name::validMeaning()->whereHas('categories', function ($query) use ($category) {
+            return Name::query()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
             })->limit(30)->get();
         });
@@ -190,7 +190,7 @@ class NameService
         $randomness = rand(1, 15);
 
         return cache_remember("names:$starting:$randomness", function () use ($starting) {
-            return Name::validMeaning()->where('name', 'like', "$starting%")->limit(30)->get();
+            return Name::query()->where('name', 'like', "$starting%")->limit(30)->get();
         });
     }
 
@@ -199,7 +199,7 @@ class NameService
         $randomness = rand(1, 15);
 
         return cache_remember("names:$ending:$randomness", function () use ($ending) {
-            return Name::validMeaning()->where('name', 'like', "%$ending")->limit(30)->get();
+            return Name::query()->where('name', 'like', "%$ending")->limit(30)->get();
         });
     }
 

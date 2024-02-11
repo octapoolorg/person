@@ -4,7 +4,7 @@ itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold capitalize">
         Frequently Asked Questions about
         <span class="text-2xl leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-            ({{ $data['nameDetails']->name }})
+            ({!! $name->name !!})
         </span>
     </h2>
 
@@ -12,38 +12,38 @@ itemscope itemtype="https://schema.org/FAQPage">
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
-                What is the meaning of {{ $data['nameDetails']->name }}?
+                What is the meaning of {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    The meaning of {{ $data['nameDetails']->name }} is "{{ $data['nameDetails']->meaning }}".
+                    The meaning of {!! $name->name !!} is "{!! $name->meaning !!}".
                 </p>
             </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
-                Is {{ $data['nameDetails']->name }} typically a male or female name?
+                Is {!! $name->name !!} typically a male or female name?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    Typically, {{ $data['nameDetails']->name }} is associated with the {{ $data['nameDetails']->gender->name }} gender. This traditional identification may vary based on cultural and regional influences.
+                    Typically, {!! $name->name !!} is associated with the {!! $name->gender->name !!} gender. This traditional identification may vary based on cultural and regional influences.
                 </p>
             </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
-                What are the key numerology insights for {{ $data['nameDetails']->name }}?
+                What are the key numerology insights for {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    In numerology, {{ $data['nameDetails']->name }} has a destiny number of {{ $data['numerology']['numbers']['destiny'] }},
-                    reflecting {{ trans('numerology.traits.destiny.' . $data['numerology']['numbers']['destiny']) }}.
-                    The soul urge number is {{ $data['numerology']['numbers']['soul_urge'] }},
-                    indicating {{ trans('numerology.traits.soul_urge.' . $data['numerology']['numbers']['soul_urge']) }},
-                    and the personality number is {{ $data['numerology']['numbers']['personality'] }},
-                    suggesting {{ trans('numerology.traits.personality.' . $data['numerology']['numbers']['personality']) }}.
+                    In numerology, {!! $name->name !!} has a destiny number of {!! $data['numerology']['numbers']['destiny'] !!},
+                    reflecting {!! trans('numerology.traits.destiny.' . $data['numerology']['numbers']['destiny']) !!}.
+                    The soul urge number is {!! $data['numerology']['numbers']['soul_urge'] !!},
+                    indicating {!! trans('numerology.traits.soul_urge.' . $data['numerology']['numbers']['soul_urge']) !!},
+                    and the personality number is {!! $data['numerology']['numbers']['personality'] !!},
+                    suggesting {!! trans('numerology.traits.personality.' . $data['numerology']['numbers']['personality']) !!}.
                 </p>
             </div>
         </div>

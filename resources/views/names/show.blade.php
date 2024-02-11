@@ -5,7 +5,7 @@
         <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
             <main class="w-full lg:w-2/3 md:px-4 mb-4 lg:mb-0">
                 <!-- Name Details Section -->
-                <x-names.detail :data="$data" />
+                <x-names.detail :name="$name" />
 
                 <!-- Name Zodiac Section -->
                 <x-names.zodiac :data="$data" />
@@ -47,7 +47,7 @@
 @endsection
 
 @production
-@pushonce('scripts')
-    <script type="text/javascript" async defer data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
-@endpushonce
+    @pushonce('scripts')
+        <script type="text/javascript" async defer data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+    @endpushonce
 @endproduction

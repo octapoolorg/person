@@ -4,7 +4,7 @@
         <header>
             <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-base-900 dark:text-base-100"
                 id="actual-name" x-ref="actualname" >
-                {{ $data['nameDetails']->name }}
+                {{ $name->name }}
                 <span class="text-2xl md:text-4xl font-normal text-primary-500 dark:text-primary-300" @click.prevent="SpeechManager.speak($refs.actualname.innerText.trim())">
                     <i class="fas fa-volume-up cursor-pointer hover:text-primary-600 dark:hover:text-primary-300"></i>
                 </span>
@@ -16,9 +16,9 @@
                 class="text-xl md:text-3xl font-semibold uppercase text-base-900 dark:text-base-100">Means:</strong>
             <p id="actual-meaning"
                 class="text-xl md:text-2xl leading-relaxed md:mx-6 capitalize text-base-900 dark:text-base-100">
-                {{ $data['nameDetails']->meaning }}
+                {{ $name->meaning }}
             </p>
-            @if ($data['nameDetails']->generated)
+            @if ($name->generated)
                 <div class="group absolute -bottom-5 md:-bottom-10 right-0 mb-2 mr-2 flex items-center">
                     <i class="fas fa-circle-info cursor-pointer text-primary-500 dark:text-primary-300"></i>
 
@@ -35,7 +35,7 @@
     <footer
         class="absolute bottom-0 left-0 w-full bg-primary-700 dark:bg-primary-800 text-base-100 text-center py-4 md:py-6 border-t border-primary-800 dark:border-primary-700">
         <p class="text-lg md:text-xl font-bold md:text-end md:mr-5">
-            <span class="font-normal not-italic">Gender:</span> {{ $data['nameDetails']->gender->name }}
+            <span class="font-normal not-italic">Gender:</span> {{ $name->gender->name }}
         </p>
     </footer>
 

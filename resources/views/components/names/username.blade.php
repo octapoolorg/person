@@ -1,6 +1,6 @@
 <section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-base-700 bg-surface dark:bg-base-800">
     <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold">
-        Usernames for {{ $data['nameDetails']->name }}
+        Usernames for {!! $name->name !!}
     </h2>
     <div class="mb-6">
         <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
@@ -16,11 +16,11 @@
     <div class="flex flex-wrap gap-x-4 gap-y-8 mx-auto overflow-auto" id="usernames">
         @foreach ($data['userNames'] as $username)
              <span class="bg-base-100 dark:bg-base-900 dark:border dark:border-base-800 hover:bg-base-200 dark:hover:bg-base-800 rounded-lg text-lg font-medium text-base-800 dark:text-base-100 break-words mr-3 copy-to-clipboard transition duration-300 px-5 py-4">
-                {{ $username }}
+                {!! $username !!}
             </span>
         @endforeach
     </div>
 </section>
 
 {{--    Identities        --}}
-{{--    https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-nested-groups        --}}
+{{--    https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-nested-groups--}}

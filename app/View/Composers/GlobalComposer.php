@@ -26,7 +26,7 @@ class GlobalComposer
     public function compose(View $view): void
     {
         $popularNames = cache_remember('footer:popularNames', function () {
-            return $this->name->validMeaning()->popular()->limit(4)->get();
+            return $this->name->popular()->limit(4)->get();
         });
 
         $origins = cache_remember('origins', function () {
