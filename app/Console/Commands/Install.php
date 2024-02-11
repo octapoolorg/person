@@ -27,6 +27,8 @@ class Install extends Command
     {
         $this->call('down');
 
+        $this->call('app:setup');
+
         $this->call('migrate:fresh', [
             '--seed' => true,
         ]);

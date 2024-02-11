@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('names', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('meaning');
+            $table->string('name')->index();
             $table->string('slug')->unique();
+            $table->text('meaning');
             $table->boolean('is_active')->default(false);
             $table->boolean('is_popular')->default(false);
             $table->boolean('generated')->default(false);
