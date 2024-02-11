@@ -33,13 +33,13 @@ class NameOriginSeeder extends Seeder
             $counter++;
 
             if ($counter % $batchSize === 0) {
-                DB::insert($records);
+                DB::table('name_origin')->insert($records);
                 $records = [];
             }
         }
 
         if (! empty($records)) {
-            DB::insert($records);
+            DB::table('name_origin')->insert($records);
         }
     }
 }

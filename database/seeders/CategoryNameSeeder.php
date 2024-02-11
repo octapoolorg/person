@@ -33,13 +33,13 @@ class CategoryNameSeeder extends Seeder
             $counter++;
 
             if ($counter % $batchSize === 0) {
-                DB::insert($records);
+                DB::table('category_name')->insert($records);
                 $records = [];
             }
         }
 
         if (! empty($records)) {
-            DB::insert($records);
+            DB::table('category_name')->insert($records);
         }
     }
 }
