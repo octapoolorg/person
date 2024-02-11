@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Name;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
@@ -25,9 +26,7 @@ class ActivateNames extends Command
             $totalNamesToActivateToday = $this->calculateNamesToActivate();
             $this->info("Activating $totalNamesToActivateToday names...");
 
-            $activatedNamesIds = $this->activateNames($totalNamesToActivateToday);
-            $urls = $this->generateUrls($activatedNamesIds);
-            $this->submitUrlsToSeo($urls);
+            $this->activateNames($totalNamesToActivateToday);
 
             $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
 
@@ -48,33 +47,39 @@ class ActivateNames extends Command
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
     }
 
-    private function activateNames(int $number): array
+    private function activateNames(int $number) : void
     {
-        $activatedNamesIds = DB::table('names')
+        $activatedNames = Name::query()->withoutGlobalScopes()
             ->where('is_active', false)
-            ->inRandomOrder()
             ->limit($number)
-            ->pluck('id');
-        DB::table('names')->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+            ->get(['id', 'slug']);
 
-        return $activatedNamesIds->toArray();
+        // get the ids of the activated names
+        $activatedNamesIds = $activatedNames->pluck('id')->toArray();
+
+        //get the slugs of the activated names
+        $activatedNamesSlugs = $activatedNames->pluck('slug')->toArray();
+
+        Name::whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+
+        $this->submit($activatedNamesSlugs);
     }
 
-    private function generateUrls(array $ids): array
+    private function submit(array $activatedNamesSlugs): void
     {
-        $lastActivatedNames = DB::table('names')
-            ->whereIn('id', $ids)
-            ->orderByDesc('updated_at')
-            ->limit(200)
-            ->get(['slug']);
+        $lastActivatedNames = collect($activatedNamesSlugs);
 
-        return $lastActivatedNames->map(function ($name) {
-            return route('names.show', ['name' => $name->slug]);
+        $urls = $lastActivatedNames->map(function ($nameSlug) {
+            return route('names.show', ['name' => $nameSlug]);
         })->toArray();
+
+        $this->submitUrlsToSeo($urls);
     }
 
     private function submitUrlsToSeo(array $urls): void
     {
-        $this->call('app:seo:urls', ['urls' => $urls]);
+        if(app()->environment('production')) {
+            $this->call('app:seo:urls', ['urls' => $urls]);
+        }
     }
 }
