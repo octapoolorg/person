@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\NameController;
+use App\Http\Controllers\Name\NameController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/names/generate/abbreviations/', [NameController::class, 'generateAbbreviations'])

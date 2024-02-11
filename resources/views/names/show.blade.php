@@ -8,40 +8,40 @@
                 <x-names.detail :name="$name" />
 
                 <!-- Name Zodiac Section -->
-                <x-names.zodiac :data="$data" />
+                <x-names.zodiac :data="$data" :name="$name" />
 
                 <!-- Name Signature Section -->
-                <x-names.signature :data="$data" />
+                <x-names.signature :data="$data" :name="$name" />
 
                 <!-- Numerology Details Section -->
-                <x-names.numerology :data="$data" />
+                <x-names.numerology :data="$data" :name="$name" />
 
                 <!-- Abbreviations Section -->
-                <x-names.abbreviation :data="$data" />
+                <x-names.abbreviation :data="$data" :name="$name" />
 
                 <!-- Username Section -->
-                <x-names.username :data="$data" />
+                <x-names.username :data="$data" :name="$name" />
 
                 <!-- Wallpaper section -->
-                <x-names.wallpaper :data="$data" />
+                <x-names.wallpaper :data="$data" :name="$name" />
 
                 <!-- Fancy Texts Section -->
-                <x-names.fancy-texts :data="$data" />
+                <x-names.fancy-texts :data="$data" :name="$name" />
 
                 <!-- Similar Names Section -->
-                {{-- <x-names.similar-names :data="$data" /> --}}
+                {{-- <x-names.similar-names :data="$data" :name="$name" /> --}}
 
                 <!-- FAQ Section -->
-                <x-names.faq :data="$data" />
+                <x-names.faq :data="$data" :name="$name" />
 
                 <!-- Share Section -->
-                <x-names.share :data="$data" />
+                <x-names.share :data="$data" :name="$name" />
 
                 <!-- Comment Section -->
-                <x-names.comment :data="$data" />
+                <x-names.comment :data="$data" :name="$name" />
             </main>
 
-            <x-names.sidebar />
+            <x-names.sidebar :name="$name" />
         </section>
     </section>
 @endsection

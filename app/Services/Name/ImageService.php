@@ -23,8 +23,8 @@ class ImageService
         'gamer' => [
             'background' => 'wallpaper_gamer.jpg',
             'font_path'  => 'edo/edo.ttf',
-            'font_size'  => 150,
-            'font_color' => '#000000',
+            'font_size'  => 250,
+            'font_color' => '#ffffff',
         ],
         'nature' => [
             'background' => 'wallpaper_nature.jpg',
