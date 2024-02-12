@@ -1,4 +1,4 @@
-<section class="max-w-4xl mx-auto bg-base-50 dark:bg-base-800 rounded-lg overflow-hidden text-base-900 dark:text-base-100 p-8 md:pt-16 relative">
+<section class="max-w-4xl mx-auto drop-shadow-md bg-base-50 dark:bg-base-800 rounded-lg overflow-hidden text-base-900 dark:text-base-100 p-8 md:pt-16 relative">
     <article class="text-center">
         <header>
             <h1 class="text-4xl sm:text-5xl font-bold mb-4 dark:text-base-100" id="actual-name">
@@ -30,7 +30,7 @@
         @endif
     </article>
 
-    <a href="javascript:;" id="favorite-button" class="absolute top-4 right-4 text-pink-600 dark:text-pink-500 hover:text-pink-700 dark:hover:text-pink-600">
+    <a href="javascript:;" id="favorite-button" class="absolute top-4 right-4 text-pink-600 dark:text-pink-500 hover:text-pink-700 dark:hover:text-pink-600" data-slug="{{ $name->slug }}">
         <i class="far fa-heart" id="favorite-icon"></i>
     </a>
 </section>

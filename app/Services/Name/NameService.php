@@ -4,6 +4,7 @@ namespace App\Services\Name;
 
 use App\Models\Abbreviation;
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Gender;
 use App\Models\Name;
 use App\Models\Origin;
@@ -105,15 +106,13 @@ class NameService
 
     public function getFavoriteNames(): array
     {
-        $favoriteNames = request()->cookie('favorites-list');
+        $uuid = request()->cookie('uuid');
 
-        if ($favoriteNames) {
-            $names = json_decode($favoriteNames, true);
-            //to object
-            $names = array_map(function ($name) {
-                return (object) $name;
-            }, $names);
-        }
+        $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
+            return Favorite::where('uuid', $uuid)->get(['slug']);
+        },now()->addWeek());
+
+        $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
 
         return $names ?? [];
     }

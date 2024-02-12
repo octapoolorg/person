@@ -121,11 +121,10 @@ class NameController extends Controller
      */
     public function search(Request $request): View
     {
-        $q = $request->input('q') ?? '';
         $names = $this->nameService->searchNames($request);
         $this->seoService->getSeoData(
             ['page' => 'search'],
-            ['q' => $q]
+            ['q' => $request->input('q', '')]
         );
 
         return view('names.search', compact('names'));
@@ -134,38 +133,13 @@ class NameController extends Controller
     public function favorites(): View
     {
         $names = $this->nameService->getFavoriteNames();
+
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => 'Favorite']
         );
 
-        return view('names.favorite', compact('names'));
+        return view('names.list', compact('names'));
     }
 
-    public function generateUsernames(): JsonResponse
-    {
-        $name = request()->input('name');
-        $userNames = $this->nameService->getUsernames($name);
-        $html = view('components.names.api.usernames', compact('userNames'))->render();
-
-        return response()->json($html);
-    }
-
-    public function generateAbbreviations(): JsonResponse
-    {
-        $name = request()->input('name');
-        $abbreviations = $this->nameService->getAbbreviations($name);
-        $html = view('components.names.api.abbreviations', compact('abbreviations'))->render();
-
-        return response()->json($html);
-    }
-
-    public function generateFancyTexts(): JsonResponse
-    {
-        $name = request()->input('name');
-        $fancyTexts = $this->nameService->getFancyTexts($name);
-        $html = view('components.names.api.fancy-texts', compact('fancyTexts'))->render();
-
-        return response()->json($html);
-    }
 }
