@@ -5,6 +5,7 @@ namespace App\Services\Name;
 use App\Models\Name;
 use Illuminate\Http\Response;
 use App\Services\BaseImageService;
+
 class ImageService
 {
     protected array $wallpaperStyles = [
@@ -101,7 +102,7 @@ class ImageService
     private function getStyle(string $style, string $type): array
     {
         $styles = $type === 'wallpaper' ? $this->wallpaperStyles : $this->signStyles;
-        $defaultStyle = $styles['funky'] ?? reset($styles); // For wallpaper, 'funky' is the default; adjust for signatures.
+        $defaultStyle = $styles['funky'] ?? reset($styles);
 
         return $styles[$style] ?? $defaultStyle;
     }

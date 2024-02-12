@@ -132,7 +132,7 @@ class BaseImageService
      */
     public function generateOrRetrieveImage(string $name, string $color, string $background, string $font, int $fontSize, ?string $size = null): string
     {
-        $key = "image:$name:$background:$font:$fontSize:$size";
+        $key = "image:$name:$color:$background:$font:$fontSize:$size";
 
         return cache_remember($key, function () use ($name, $color, $background, $font, $fontSize, $size) {
             return $this->generateImage($name, $color, $background, $font, $fontSize, $size);

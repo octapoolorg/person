@@ -28,7 +28,7 @@
                 <div class="mt-3 grid space-y-3">
                     @foreach ($popularNames as $name)
                         <p>
-                            <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                            <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                                 href="{!! route('names.show', $name->slug) !!}">
                                 {{ $name->name }}
                             </a>
@@ -45,25 +45,25 @@
 
                 <div class="mt-3 grid space-y-3">
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/pages/privacy-policy">
                             {!! __('content.link.privacy') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/pages/terms-of-service">
                             {!! __('content.link.terms') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/pages/disclaimer">
                             {!! __('content.link.disclaimer') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/pages/cookies-policy">
                             {!! __('content.link.cookies') !!}
                         </a>
@@ -79,22 +79,22 @@
 
                 <div class="mt-3 grid space-y-3">
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="{!! route('home') !!}"> {!! __('content.link.home') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/page/faqs"> {!! __('content.link.faqs') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/pages/about-us"> {!! __('content.link.about') !!}
                         </a>
                     </p>
                     <p>
-                        <a class="inline-flex gap-x-2 text-base-400 hover:text-base-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
+                        <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                             href="/page/contact-us"> {!! __('content.link.contact') !!}
                         </a>
                     </p>
@@ -126,7 +126,7 @@
             <!-- Scroll to top -->
             <div class="fixed bottom-4 right-4 z-50">
                 <a href="#top"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-800 hover:bg-primary-700 dark:bg-base-700 dark:hover:bg-base-600 focus:outline-none focus:ring-1 focus:ring-base-600 border border-base-100 dark:border-base-700 transition duration-300 ease-in-out">
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-800 hover:bg-primary-700 dark:bg-base-700 dark:hover:bg-base-600 focus:outline-none focus:ring-1 focus:ring-base-600 transition duration-300 ease-in-out">
                     <i class="fas fa-chevron-up text-surface"></i>
                 </a>
             </div>
