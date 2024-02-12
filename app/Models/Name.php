@@ -99,8 +99,8 @@ class Name extends Model
      */
     protected static function booted(): void
     {
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('is_active', true);
+        static::addGlobalScope('active_simple', function (Builder $builder) {
+            $builder->where('is_active', true)->where('is_simple', true);
         });
     }
 }

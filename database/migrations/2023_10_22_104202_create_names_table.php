@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->index();
             $table->string('slug')->unique();
             $table->text('meaning');
+            $table->boolean('is_simple')->default(false)->index();
             $table->boolean('is_active')->default(false)->index();
             $table->boolean('is_popular')->default(false)->index();
             $table->boolean('is_generated')->default(false)->index();

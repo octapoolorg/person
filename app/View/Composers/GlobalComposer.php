@@ -32,7 +32,7 @@ class GlobalComposer
         });
 
         $origins = cache_remember('origins', function () {
-            return $this->origin->get();
+            return $this->origin->orderBy('name')->get();
         });
 
         $genders = cache_remember('genders', function () {

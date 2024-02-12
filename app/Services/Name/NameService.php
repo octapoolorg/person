@@ -57,18 +57,19 @@ class NameService
     public function getNamesByGender(string $gender): Collection
     {
         return cache_remember("names:$gender", function () use ($gender) {
-            return Gender::with(['names' => function ($query) {
-                $query->paginate(30);
-            }])->where('slug', $gender)->firstOrFail()->names;
+            return Name::query()->withoutGlobalScopes()->whereHas('gender', function ($query) use ($gender) {
+                $query->where('slug', $gender);
+            })->paginate(30);
         });
     }
 
     public function getRandomNames(): Collection
     {
-        $random = rand(1, 15);
+        $randomness = rand(1, 30);
 
-        return cache_remember("names:random:$random", function () {
-            return Name::valid()->inRandomOrder()->limit(10)->get();
+        return cache_remember("names:random:$randomness", function () {
+            return Name::withoutGlobalScopes()->
+            valid()->inRandomOrder()->limit(10)->get();
         });
     }
 
