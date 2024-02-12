@@ -30,6 +30,7 @@ class NameSeeder extends Seeder
                 'name' => $record['name'],
                 'slug' => $record['slug'],
                 'meaning' => $record['meaning'],
+                'is_popular' => $record['is_popular'],
                 'gender_id' => $record['gender_id'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,

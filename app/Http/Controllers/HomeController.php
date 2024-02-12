@@ -18,8 +18,9 @@ class HomeController extends Controller
 
     public function index(): View
     {
-        $popularNames = cache_remember('home:popularNames', function () {
+        $popularNames = cache_remember('home:names:popular', function () {
             return Name::query()
+                ->popular()
                 ->take(8)
                 ->get();
         });
