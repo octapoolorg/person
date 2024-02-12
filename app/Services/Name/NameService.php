@@ -54,7 +54,7 @@ class NameService
         ];
     }
 
-    public function getNamesByGender(string $gender): Collection
+    public function getNamesByGender(string $gender): LengthAwarePaginator
     {
         return cache_remember("names:$gender", function () use ($gender) {
             return Name::query()->withoutGlobalScopes()->whereHas('gender', function ($query) use ($gender) {

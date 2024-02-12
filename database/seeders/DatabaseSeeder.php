@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             NameSeeder::class,
             CategorySeeder::class,
             OriginSeeder::class,
+            AbbreviationSeeder::class,
             CategoryNameSeeder::class,
             NameOriginSeeder::class,
-            AbbreviationSeeder::class,
         ]);
     }
 }
