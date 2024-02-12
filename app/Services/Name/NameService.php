@@ -32,7 +32,7 @@ class NameService
         return cache_remember('names:index', function () {
             return
                     Name::query()
-                    ->validGender()
+                    ->valid()
                     ->paginate(30);
         });
     }
@@ -68,7 +68,7 @@ class NameService
         $random = rand(1, 15);
 
         return cache_remember("names:random:$random", function () {
-            return Name::inRandomOrder()->limit(10)->get();
+            return Name::valid()->inRandomOrder()->limit(10)->get();
         });
     }
 

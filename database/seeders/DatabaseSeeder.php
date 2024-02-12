@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             OriginSeeder::class,
             CategoryNameSeeder::class,
             NameOriginSeeder::class,
+            AbbreviationSeeder::class,
         ]);
     }
 }

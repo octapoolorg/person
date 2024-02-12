@@ -60,7 +60,7 @@ class ActivateNames extends Command
         //get the slugs of the activated names
         $activatedNamesSlugs = $activatedNames->pluck('slug')->toArray();
 
-        Name::whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+        Name::withoutGlobalScopes()->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
 
         $this->submit($activatedNamesSlugs);
     }

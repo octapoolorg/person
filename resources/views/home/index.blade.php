@@ -34,7 +34,7 @@
                     <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-base-200 dark:border-base-700 transition-all duration-300 ease-in-out">
                         <div class="p-8 text-center">
                             <h3 class="text-2xl font-bold text-base-900 dark:text-base-100 group-hover:text-primary-700 transition-colors duration-300">{{ $name->name }}</h3>
-                            <p class="text-base-600 dark:text-base-300 mt-3 text-sm truncate">{{ $name->meaning }}</p>
+                            <p class="text-base-600 dark:text-base-300 mt-3 text-sm truncate capitalize">{{ $name->meaning }}</p>
                             <span class="text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 text-sm font-semibold tracking-wide mt-4 inline-block transition-colors duration-300">
                                 Learn more <i class="fas fa-arrow-right ml-1"></i>
                             </span>
