@@ -132,7 +132,7 @@ class NameService
         $name = normalize_name($name);
         $alphabets = collect(str_split($name))->filter(function ($alphabet) {
             return $alphabet !== ' ';
-        })->toUpper()->unique()->toArray();
+        })->toUpper()->toArray();
 
         // Getting abbreviations for the alphabets
         $randomness = rand(1, 15);
