@@ -19,7 +19,7 @@ class CategoryNameSeeder extends Seeder
         $csv = Reader::createFromPath(base_path('data/imports/category_name.csv'));
         $csv->setHeaderOffset(0);
 
-        $batchSize = 500;
+        $batchSize = 2000;
         $timestamp = now();
         $records = [];
         $counter = 0;
