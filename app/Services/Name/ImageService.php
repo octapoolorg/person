@@ -12,8 +12,8 @@ class ImageService
         'funky' => [
             'background' => 'wallpaper_funky.jpg',
             'font_path'  => 'roboto/roboto-bold.ttf',
-            'font_size'  => 150,
-            'font_color' => '#000000',
+            'font_size'  => 200,
+            'font_color' => '#a62756',
         ],
         'dark' => [
             'background' => 'wallpaper_dark.jpg',
@@ -27,14 +27,14 @@ class ImageService
             'font_size'  => 250,
             'font_color' => '#ffffff',
         ],
-        'nature' => [
-            'background' => 'wallpaper_nature.jpg',
+        'dog' => [
+            'background' => 'wallpaper_dog.jpg',
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 150,
-            'font_color' => '#ffffff',
+            'font_color' => '#f2f9f9',
         ],
-        'summer' => [
-            'background' => 'wallpaper_summer.jpg',
+        'cat' => [
+            'background' => 'wallpaper_cat.jpg',
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 150,
             'font_color' => '#000000',
