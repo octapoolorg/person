@@ -28,7 +28,7 @@ export class Generator {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    const name = document.getElementById("actual-name").textContent;
+                    const name = document.getElementById("name").value;
                     axios.post(this.generators[key].url, {
                         _token: csrfToken,
                         name: name,

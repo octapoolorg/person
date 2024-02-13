@@ -16,17 +16,10 @@ class ImageService
             'font_color' => '#a62756',
             'text'       => true
         ],
-        'gamer' => [
-            'background' => 'wallpaper_gamer.jpg',
-            'position_x' => 300,
-            'position_y' => 750,
-            'font_path'  => 'edo/edo.ttf',
-            'font_size'  => 250,
-            'font_color' => '#ffffff',
-            'text'       => true
-        ],
         'pet' => [
             'background' => 'wallpaper_pet.jpg',
+            'position_x' => 970,
+            'position_y' => 400,
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 150,
             'font_color' => '#f2f9f9',

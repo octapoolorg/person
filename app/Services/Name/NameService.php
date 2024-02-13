@@ -40,7 +40,18 @@ class NameService
     public function getName(string $nameSlug): array
     {
         $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
-            return Name::query()->withoutGlobalScopes()->with(['comments'])->where('slug', $nameSlug)->firstOrFail();
+            $name = Name::query()->withoutGlobalScopes()->with(['comments'])->where('slug', $nameSlug)->firstOrFail();
+
+            $name->meanings = collect(explode(',', $name->meaning))
+                ->sort(function ($a, $b) {
+                    return strlen($b) <=> strlen($a);
+                })
+                ->chunk(2)
+                ->map(function ($chunk, $index) {
+                    return $chunk->implode(', ');
+                });
+
+            return $name;
         });
 
         return [
