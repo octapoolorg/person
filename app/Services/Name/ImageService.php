@@ -14,31 +14,37 @@ class ImageService
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 200,
             'font_color' => '#a62756',
-        ],
-        'dark' => [
-            'background' => 'wallpaper_dark.jpg',
-            'font_path'  => 'better-saturday/better-saturday.ttf',
-            'font_size'  => 150,
-            'font_color' => '#ffffff',
+            'text'       => true
         ],
         'gamer' => [
             'background' => 'wallpaper_gamer.jpg',
+            'position_x' => 300,
+            'position_y' => 750,
             'font_path'  => 'edo/edo.ttf',
             'font_size'  => 250,
             'font_color' => '#ffffff',
+            'text'       => true
         ],
-        'dog' => [
-            'background' => 'wallpaper_dog.jpg',
+        'pet' => [
+            'background' => 'wallpaper_pet.jpg',
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 150,
             'font_color' => '#f2f9f9',
+            'text'       => true
+        ],
+        'evening' => [
+            'background' => 'wallpaper_evening.jpg',
+            'position_x' => 970,
+            'position_y' => 600,
+            'font_path'  => 'poppins/poppins-regular.ttf',
+            'font_size'  => 150,
+            'font_color' => '#ffffff',
+            'text'       => true
         ],
         'cat' => [
             'background' => 'wallpaper_cat.jpg',
-            'font_path'  => 'roboto/roboto-bold.ttf',
-            'font_size'  => 150,
-            'font_color' => '#000000',
-        ],
+            'text'       => false
+        ]
     ];
 
     protected array $signStyles = [
@@ -46,17 +52,20 @@ class ImageService
             'font_path'  => 'creattion-demo/creattion-demo.ttf',
             'font_size'  => 250,
             'font_color' => '#000000',
+            'text'       => true
         ],
         'allison-tessa' => [
             'font_path'  => 'allison-tessa/allison-tessa.ttf',
             'font_size'  => 120,
             'font_color' => '#000000',
+            'text'       => true
         ],
         'monsieur-la-doulaise' => [
             'font_path'  => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf',
             'font_size'  => 190,
             'font_color' => '#000000',
-        ],
+            'text'       => true
+        ]
     ];
 
     private BaseImageService $baseImageService;
@@ -66,20 +75,29 @@ class ImageService
         $this->baseImageService = $baseImageService;
     }
 
-    public function individualWallpaper(string $nameSlug, string $style): Response
+    public function wallpaper(string $nameSlug, string $style): Response
     {
         $name = $this->getNameFromSlug($nameSlug)->name;
         $style = $this->getStyle($style, 'wallpaper');
 
-        return $this->generateImageResponse($name, $style, 'name wallpaper');
+        $style = array_merge($style, [
+            'seo_title' => 'Name Wallpaper',
+        ]);
+
+        return $this->baseImageService->generateImage($name, $style);
     }
 
-    public function individualSignature(string $name, string $style): Response
+    public function signature(string $name, string $style): Response
     {
         $style = $this->getStyle($style, 'signature');
         $firstPart = $this->getFirstPartOfName($name);
 
-        return $this->generateImageResponse($firstPart, $style, 'name signature');
+        $style = array_merge($style, [
+            'seo_title' => 'Name Signature',
+            'background' => 'signature_background.jpg'
+        ]);
+
+        return $this->baseImageService->generateImage($firstPart, $style);
     }
 
     public function nameWallpapers(string $name): array
@@ -105,21 +123,6 @@ class ImageService
         $defaultStyle = $styles['funky'] ?? reset($styles);
 
         return $styles[$style] ?? $defaultStyle;
-    }
-
-    private function generateImageResponse(string $name, array $style, string $metaName): Response
-    {
-        $meta = [
-            'name' => $metaName,
-        ];
-
-        if ($metaName === 'name signature') {
-            $meta['background'] = 'signature_background.jpg';
-        }
-
-        $style = array_merge($style, $meta);
-
-        return $this->baseImageService->generateImageResponse($name, $style);
     }
 
     private function getFirstPartOfName(string $name): string

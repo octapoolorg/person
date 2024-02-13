@@ -17,11 +17,11 @@ class ImageController extends Controller
 
     public function wallpaper(string $style, string $nameSlug): Response
     {
-        return $this->imageService->individualWallpaper($nameSlug, $style);
+        return $this->imageService->wallpaper($nameSlug, $style);
     }
 
     public function signature(string $style, string $name): Response
     {
-        return $this->imageService->individualSignature($name, $style);
+        return $this->imageService->signature($name, $style);
     }
 }

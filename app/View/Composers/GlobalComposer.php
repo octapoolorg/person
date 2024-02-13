@@ -27,7 +27,7 @@ class GlobalComposer
     {
         $popularNames = cache_remember('footer:names:popular', function () {
             return $this->name->withoutGlobalScopes()->
-                inRandomOrder()->
+                // inRandomOrder()->
             popular()->limit(4)->get();
         });
 
