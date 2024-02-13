@@ -18,7 +18,7 @@ class EnsureUuidExist
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->hasCookie('uuid')) {
-            $uuid = Str::uuid();
+            $uuid = (string) Str::uuid();
             $expires = 60 * 24 * 30 * 9; // 9 months
             Cookie::queue('uuid', $uuid, $expires);
         }

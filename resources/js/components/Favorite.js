@@ -10,6 +10,22 @@ class FavoriteButton {
         if (this.button) {
             this.button.addEventListener('click', () => this.favorite());
         }
+
+        this.init();
+    }
+
+    init (){
+        const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+        const hasFavorites = favorites.length > 0;
+
+        this.toggleNavbarIcon(hasFavorites);
+
+        if (this.button) {
+            const slug = this.button.dataset.slug;
+            const isFavorited = favorites.includes(slug);
+
+            this.toggleIcon(isFavorited);
+        }
     }
 
     async favorite() {
@@ -38,41 +54,47 @@ class FavoriteButton {
                 this.toggleIcon(actualIsFavorited);
             }
 
-            this.updateCookie(favorites);
-            this.toggleNavbarIcon();
+            this.update(favorites);
         } catch (error) {
             // If the request fails, revert the UI update
             this.toggleIcon(!isFavorited);
             console.error(error);
+            alert('An error occurred while favoriting. Please try again.');
         }
     }
 
     toggleIcon(isFavorited) {
-        const { icon } = this;
         if (isFavorited) {
-            icon.classList.remove('far');
-            icon.classList.add('fas');
+            this.icon.classList.remove('far');
+            this.icon.classList.add('fas');
         } else {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
+            this.icon.classList.remove('fas');
+            this.icon.classList.add('far');
         }
     }
 
-    toggleNavbarIcon() {
-        const { navbarIcon } = this;
-        navbarIcon.classList.toggle('hidden');
+    toggleNavbarIcon(hasFavorites) {
+        if (hasFavorites) {
+            this.navbarIcon.classList.remove('hidden');
+        }else {
+            this.navbarIcon.classList.add('hidden');
+        }
     }
 
-    updateCookie(value) {
-        if (value) {
-            document.cookie = "favorites=true; path=/";
+    update(favorites) {
+        const hasFavorites = favorites.length > 0;
+
+        this.toggleNavbarIcon(hasFavorites);
+        if (hasFavorites) {
+            document.cookie = `favorites=true; path=/`;
+            localStorage.setItem('favorites', JSON.stringify(favorites));
         } else {
-            document.cookie = "favorites=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            document.cookie = `favorites=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            localStorage.removeItem('favorites');
         }
     }
 }
 
-// Instantiate the class
 new FavoriteButton({
     buttonSelector: '#favorite-button',
     iconSelector: '#favorite-icon',

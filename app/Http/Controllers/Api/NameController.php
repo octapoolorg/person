@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Services\Name\NameService;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class NameController extends Controller
 {
@@ -62,14 +63,18 @@ class NameController extends Controller
             if ($favorite) {
                 $favorite->delete();
             } else {
-                Favorite::create(['uuid' => $uuid, 'page_id' => $slug]);
+                Favorite::create([ 'uuid' => $uuid, 'slug' => $slug]);
                 $isFavorited = true;
             }
 
-            $favorites = Favorite::where('uuid', $uuid)->exists();
+            $favorites = Favorite::where('uuid', $uuid)->pluck('slug')->toArray();
 
-            return response()->json(['isFavorited' => $isFavorited, 'favorites' => $favorites]);
+            return response()->json([
+                'isFavorited' => $isFavorited,
+                'favorites' => $favorites,
+            ]);
         }catch (Exception $e) {
+            Log::error($e->getMessage());
             return response()->json(['error' => 'Something went wrong, please try again later.'], 500);
         }
     }

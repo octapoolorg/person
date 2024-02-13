@@ -116,7 +116,7 @@ class NameService
         });
     }
 
-    public function getFavoriteNames(): array
+    public function getFavoriteNames(): collection
     {
         $uuid = request()->cookie('uuid');
 
@@ -126,7 +126,7 @@ class NameService
 
         $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
 
-        return $names ?? [];
+        return $names;
     }
 
     public function getUsernames(string $name): array
