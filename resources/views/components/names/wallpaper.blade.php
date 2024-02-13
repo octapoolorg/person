@@ -19,7 +19,7 @@
         @foreach ($data['wallpaperUrls'] as $key => $url)
         <img
             src="data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaaaaa%3Bstroke-width%3A1%22/%3E%0A%3C/svg%3E"
-            data-src="{!! $url !!}"
+            data-src="{!! $url !!}?size=thumb"
             class="w-24 h-24 cursor-pointer object-cover rounded-lg lazy"
             onclick="changeWallpaper('{!! $url !!}')"
             alt="Thumbnail"
