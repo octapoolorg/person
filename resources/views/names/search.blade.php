@@ -13,7 +13,7 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <input type="search" name="q" id="search" class="w-full pl-10 pr-4 py-3 border border-gray-300 bg-white text-gray-700 rounded-2xl shadow focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition duration-200 ease-in-out" placeholder="Type to search...">
+                            <input type="search" name="q" id="search" class="w-full pl-10 pr-4 py-3 border border-gray-300 bg-white text-gray-700 rounded-2xl shadow focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition duration-200 ease-in-out" placeholder="Type to search..." value="{{ request()->query('q') }}">
                         </div>
                     </div>
                     <div>
@@ -52,29 +52,30 @@
                     </div>
                 </div>
             </form>
+
+            <div class="mt-16">
+                <h2 class="text-2xl font-semibold leading-tight text-gray-900">Search Results</h2>
+                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @forelse($names as $name)
+                        <a href="{{ route('names.show', $name) }}" class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">{{ $name->name }}</h3>
+                            <p class="mt-2 text-base text-gray-600 truncate">{{ $name->meaning }}</p>
+                            <span class="mt-4 block text-indigo-600 hover:text-indigo-700 transition duration-200 ease-in-out">Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                        </a>
+                    @empty
+                        <div class="text-center py-8">
+                            <span class="text-lg text-gray-500">No names found. Try a different search.</span>
+                        </div>
+                    @endforelse
+                </div>
+
+                <div class="mt-6">
+                    {!! $names->onEachSide(1)->links() !!}
+                </div>
+
+            </div>
         </div>
 
-        <div class="mt-16">
-            <h2 class="text-2xl font-semibold leading-tight text-gray-900">Search Results</h2>
-            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                @forelse($names as $name)
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">{{ $name->name }}</h3>
-                        <p class="mt-2 text-base text-gray-600">{{ $name->meaning }}</p>
-                        <a href="{{ route('names.show', $name) }}" class="mt-4 block text-indigo-600 hover:text-indigo-700 transition duration-200 ease-in-out">Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                @empty
-                    <div class="text-center py-8">
-                        <span class="text-lg text-gray-500">No names found. Try a different search.</span>
-                    </div>
-                @endforelse
-            </div>
-
-            <div class="mt-6">
-                {!! $names->onEachSide(1)->links() !!}
-            </div>
-
-        </div>
     </div>
 </section>
 @endsection

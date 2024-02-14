@@ -90,6 +90,11 @@ class Name extends Model
         return $query->where('is_popular', true);
     }
 
+    public function scopeSimple(Builder $query): Builder
+    {
+        return $query->where('is_simple', true);
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

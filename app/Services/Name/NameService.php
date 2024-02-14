@@ -104,7 +104,7 @@ class NameService
         $randomness = rand(1, 15);
         $cacheKey = 'search:' . Str::slug($request->fullUrl()) . ":$randomness";
 
-        return cache_remember($cacheKey, function () use ($request) {
+        // return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()->withoutGlobalScopes();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
@@ -127,8 +127,17 @@ class NameService
                 });
             });
 
-            return $query->paginate(20);
-        });
+
+            $query->orderBy('is_popular', 'desc');
+            $query->orderBy('is_simple', 'desc');
+            $query->orderBy('name', 'asc');
+
+            $query= $query->paginate(20);
+
+            $query->appends(request()->query());
+
+            return $query;
+        // });
     }
 
     public function getFavoriteNames(): collection
