@@ -1,15 +1,15 @@
 class FavoriteButton {
     constructor({ buttonSelector, iconSelector, navbarIconSelector, endpoint }) {
-        this.button = document.querySelector(buttonSelector);
+        this.buttons = document.querySelectorAll(buttonSelector);
         this.icon = document.querySelector(iconSelector);
         this.navbarIcon = document.querySelector(navbarIconSelector);
         this.endpoint = endpoint;
         const csrfMeta = document.querySelector('meta[name="csrf-token"]');
         this.csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
 
-        if (this.button) {
-            this.button.addEventListener('click', () => this.favorite());
-        }
+        this.buttons.forEach(button => {
+            button.addEventListener('click', () => this.favorite(button));
+        });
 
         this.init();
     }
@@ -20,21 +20,21 @@ class FavoriteButton {
 
         this.toggleNavbarIcon(hasFavorites);
 
-        if (this.button) {
-            const slug = this.button.dataset.slug;
+        this.buttons.forEach(button => {
+            const slug = button.dataset.slug;
             const isFavorited = favorites.includes(slug);
 
-            this.toggleIcon(isFavorited);
-        }
+            this.toggleIcon(button, isFavorited);
+        });
     }
 
-    async favorite() {
-        const { endpoint, csrfToken, icon } = this;
-        const slug = this.button.dataset.slug;
+    async favorite(button) {
+        const { endpoint, csrfToken } = this;
+        const slug = button.dataset.slug;
 
         // Optimistically update the UI
-        const isFavorited = !icon.classList.contains('fas');
-        this.toggleIcon(isFavorited);
+        const isFavorited = !button.querySelector('i').classList.contains('fas');
+        this.toggleIcon(button, isFavorited);
 
         try {
             const response = await axios({
@@ -51,25 +51,26 @@ class FavoriteButton {
 
             // Update the UI with the actual state
             if (isFavorited !== actualIsFavorited) {
-                this.toggleIcon(actualIsFavorited);
+                this.toggleIcon(button, actualIsFavorited);
             }
 
             this.update(favorites);
         } catch (error) {
             // If the request fails, revert the UI update
-            this.toggleIcon(!isFavorited);
+            this.toggleIcon(button, !isFavorited);
             console.error(error);
             alert('An error occurred while favoriting. Please try again.');
         }
     }
 
-    toggleIcon(isFavorited) {
+    toggleIcon(button, isFavorited) {
+        const icon = button.querySelector('i');
         if (isFavorited) {
-            this.icon.classList.remove('far');
-            this.icon.classList.add('fas');
+            icon.classList.remove('far');
+            icon.classList.add('fas');
         } else {
-            this.icon.classList.remove('fas');
-            this.icon.classList.add('far');
+            icon.classList.remove('fas');
+            icon.classList.add('far');
         }
     }
 
@@ -96,7 +97,7 @@ class FavoriteButton {
 }
 
 new FavoriteButton({
-    buttonSelector: '#favorite-button',
+    buttonSelector: '.favorite-button',
     iconSelector: '#favorite-icon',
     navbarIconSelector: '#navbar-favorite-icon',
     endpoint: '/api/favorite'

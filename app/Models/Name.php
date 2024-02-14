@@ -15,8 +15,6 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 /**
  * Name
  *
- *
- *
  * @mixin QueryBuilder
  */
 class Name extends Model
@@ -59,12 +57,12 @@ class Name extends Model
 
     public function isMasculine(): bool
     {
-        return $this->gender_id === GenderEnum::MASCULINE;
+        return $this->gender_id === GenderEnum::MASCULINE->value;
     }
 
     public function isFeminine(): bool
     {
-        return $this->gender_id === GenderEnum::FEMININE;
+        return $this->gender_id === GenderEnum::FEMININE->value;
     }
 
     public function scopeGender(Builder $query, int $gender_id): Builder
@@ -74,15 +72,7 @@ class Name extends Model
 
     public function scopeValidGender(Builder $query): Builder
     {
-        return $query->whereIn('gender_id', [GenderEnum::MASCULINE, GenderEnum::FEMININE]);
-    }
-
-    public function scopeValid(Builder $query): Builder
-    {
-        return
-            $query
-                ->whereIn('gender_id', [GenderEnum::MASCULINE, GenderEnum::FEMININE])
-                ->where('is_generated', false);
+        return $query->whereIn('gender_id', [GenderEnum::MASCULINE->value, GenderEnum::FEMININE->value]);
     }
 
     public function scopePopular(Builder $query): Builder

@@ -30,11 +30,15 @@ class NameService
     public function getNames(): LengthAwarePaginator
     {
         return cache_remember('names:index', function () {
-            return
-                Name::query()
+            $names = Name::query()
                 ->withoutGlobalScopes()
-                ->valid()
-                ->paginate(200);
+                ->inRandomOrder()
+                ->limit(300)
+                ->get();
+
+            $names = $names->sortBy('name');
+
+            return paginate($names, 30);
         });
     }
 
@@ -88,20 +92,40 @@ class NameService
 
     public function getNamesByGender(string $gender): LengthAwarePaginator
     {
-        return cache_remember("names:$gender", function () use ($gender) {
-            return Name::query()->withoutGlobalScopes()->whereHas('gender', function ($query) use ($gender) {
-                $query->where('slug', $gender);
-            })->paginate(30);
+        $names = cache_remember("names:$gender", function () use ($gender) {
+            $names = Name::query()
+                ->withoutGlobalScopes()
+                ->popular()
+                ->inRandomOrder()
+                ->whereHas('gender', function ($query) use ($gender) {
+                    $query->where('slug', $gender);
+                })
+                ->limit(200)
+                ->get();
+
+            return $names->sortBy('name');
         });
+
+        return paginate($names, 30);
     }
 
-    public function getRandomNames(): Collection
+    public function getRandomNames(): LengthAwarePaginator
     {
-        $randomness = rand(1, 30);
+        $randomness = rand(1, 2);
 
-        return cache_remember("names:random:$randomness", function () {
-            return Name::withoutGlobalScopes()->valid()->inRandomOrder()->limit(10)->get();
-        });
+        $names = cache_remember("names:random:$randomness", function () {
+            return  Name::query()
+                ->withoutGlobalScopes()
+                ->popular()
+                ->validGender()
+                ->inRandomOrder()
+                ->limit(200)
+                ->get();
+        }, now()->addWeek());
+
+        $names = $names->sortBy('name');
+
+        return paginate($names, 30);
     }
 
     public function searchNames(Request $request): LengthAwarePaginator
@@ -146,7 +170,7 @@ class NameService
         });
     }
 
-    public function getFavoriteNames(): collection
+    public function getFavoriteNames(): LengthAwarePaginator
     {
         $uuid = request()->cookie('uuid');
 
@@ -156,7 +180,7 @@ class NameService
 
         $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
 
-        return $names;
+        return paginate($names, 30);
     }
 
     public function getUsernames(string $name): array
@@ -168,7 +192,7 @@ class NameService
         });
     }
 
-    public function getAbbreviations(string $name): array
+    public function getAbbreviations(string $name, bool $rand = false): array
     {
         $name = normalize_name($name);
         $alphabets = collect(str_split($name))->filter(function ($alphabet) {
@@ -176,7 +200,7 @@ class NameService
         })->toUpper()->toArray();
 
         // Getting abbreviations for the alphabets
-        $randomness = rand(1, 15);
+        $randomness = $rand ? rand(1, 15) : 1;
         $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($alphabets) {
             return Abbreviation::whereIn('alphabet', $alphabets)->get()->groupBy('alphabet');
         });
@@ -197,9 +221,9 @@ class NameService
         return $abbreviations;
     }
 
-    public function getFancyTexts(string $name): array
+    public function getFancyTexts(string $name, bool $random = false): array
     {
-        $randomness = rand(1, 15);
+        $randomness = $random ? rand(1, 15) : 1;
         $fancyTextService = new FancyTextService($name);
 
         return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
@@ -207,42 +231,57 @@ class NameService
         });
     }
 
-    public function getNamesByOrigin(string $origin)
+    public function getOriginNames(string $origin): LengthAwarePaginator
     {
-        $randomness = rand(1, 15);
-
-        return cache_remember("names:$origin:$randomness", function () use ($origin) {
-            return Name::query()->whereHas('origins', function ($query) use ($origin) {
-                $query->where('slug', $origin);
-            })->limit(30)->get();
+        $names = cache_remember("names:origin:$origin", function () use ($origin) {
+            return Name::query()
+                ->withoutGlobalScopes()
+                ->simple()
+                ->validGender()
+                ->inRandomOrder()
+                ->whereHas('origins', function ($query) use ($origin) {
+                    $query->where('slug', $origin);
+                })
+                ->limit(200)
+                ->get();
         });
+
+        $names = $names->sortBy('name');
+
+        return paginate($names, 30);
     }
 
-    public function getNamesByCategory(string $category)
+    public function getCategoryNames(string $category)
     {
-        $randomness = rand(1, 15);
-
-        return cache_remember("names:$category:$randomness", function () use ($category) {
-            return Name::query()->whereHas('categories', function ($query) use ($category) {
-                $query->where('slug', $category);
-            })->limit(30)->get();
+        $names = cache_remember("names:category:$category", function () use ($category) {
+            return Name::query()
+                ->withoutGlobalScopes()
+                ->simple()
+                ->validGender()
+                ->inRandomOrder()
+                ->whereHas('categories', function ($query) use ($category) {
+                    $query->where('slug', $category);
+                })
+                ->limit(200)
+                ->get();
         });
+
+
+        $names->sortBy('name');
+
+        return paginate($names, 30);
     }
 
-    public function getNamesByStarting(string $starting)
+    public function getStartingNames(string $starting)
     {
-        $randomness = rand(1, 15);
-
-        return cache_remember("names:$starting:$randomness", function () use ($starting) {
+        return cache_remember("names:starting:$starting", function () use ($starting) {
             return Name::query()->where('name', 'like', "$starting%")->limit(30)->get();
         });
     }
 
-    public function getNamesByEnding(string $ending)
+    public function getEndingNames(string $ending)
     {
-        $randomness = rand(1, 15);
-
-        return cache_remember("names:$ending:$randomness", function () use ($ending) {
+        return cache_remember("names:ending:$ending", function () use ($ending) {
             return Name::query()->where('name', 'like', "%$ending")->limit(30)->get();
         });
     }

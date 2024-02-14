@@ -29,7 +29,7 @@ class NameController extends Controller
             ['page' => 'Popular']
         );
 
-        return view('names.index', compact('names'));
+        return view('names.list', compact('names'));
     }
 
     public function show(string $nameSlug): View
@@ -60,7 +60,7 @@ class NameController extends Controller
     public function origin(string $origin): View
     {
         $origin = $this->nameService->getOrigin($origin);
-        $names = $this->nameService->getNamesByOrigin($origin->slug);
+        $names = $this->nameService->getOriginNames($origin->slug);
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => $origin->name]
@@ -72,7 +72,7 @@ class NameController extends Controller
     public function category(string $category): View
     {
         $category = $this->nameService->getCategory($category);
-        $names = $this->nameService->getNamesByCategory($category->slug);
+        $names = $this->nameService->getCategoryNames($category->slug);
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => $category->name]
@@ -84,7 +84,7 @@ class NameController extends Controller
     public function starting(string $starting): View
     {
         $starting = strtoupper($starting);
-        $names = $this->nameService->getNamesByStarting($starting);
+        $names = $this->nameService->getStartingNames($starting);
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => $starting]
@@ -96,7 +96,7 @@ class NameController extends Controller
     public function ending(string $ending): View
     {
         $ending = strtoupper($ending);
-        $names = $this->nameService->getNamesByEnding($ending);
+        $names = $this->nameService->getEndingNames($ending);
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => $ending]

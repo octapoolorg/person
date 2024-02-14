@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->index();
             $table->string('slug')->index();
+
+            $table->unique(['uuid', 'slug']);
             $table->timestamps();
         });
     }

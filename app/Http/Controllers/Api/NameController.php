@@ -22,7 +22,7 @@ class NameController extends Controller
     public function generateAbbreviations(): JsonResponse
     {
         $name = request()->input('name');
-        $abbreviations = $this->nameService->getAbbreviations($name);
+        $abbreviations = $this->nameService->getAbbreviations($name, true);
         $html = view('components.names.api.abbreviations', compact('abbreviations'))->render();
 
         return response()->json($html);
@@ -31,7 +31,7 @@ class NameController extends Controller
     public function generateFancyTexts(): JsonResponse
     {
         $name = request()->input('name');
-        $fancyTexts = $this->nameService->getFancyTexts($name);
+        $fancyTexts = $this->nameService->getFancyTexts($name, true);
         $html = view('components.names.api.fancy-texts', compact('fancyTexts'))->render();
 
         return response()->json($html);
@@ -40,14 +40,14 @@ class NameController extends Controller
     public function generateUsernames(): JsonResponse
     {
         $name = request()->input('name');
-        $userNames = $this->nameService->getUsernames($name);
+        $userNames = $this->nameService->getUsernames($name, true);
         $html = view('components.names.api.usernames', compact('userNames'))->render();
 
         return response()->json($html);
     }
 
 
-    public function toggleFavorite(Request $request) : JsonResponse
+    public function toggleFavorite(Request $request): JsonResponse
     {
         try {
             $validated = $request->validate([
@@ -63,7 +63,7 @@ class NameController extends Controller
             if ($favorite) {
                 $favorite->delete();
             } else {
-                Favorite::create([ 'uuid' => $uuid, 'slug' => $slug]);
+                Favorite::create(['uuid' => $uuid, 'slug' => $slug]);
                 $isFavorited = true;
             }
 
@@ -73,7 +73,7 @@ class NameController extends Controller
                 'isFavorited' => $isFavorited,
                 'favorites' => $favorites,
             ]);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['error' => 'Something went wrong, please try again later.'], 500);
         }
