@@ -31,25 +31,41 @@ class NameService
     {
         return cache_remember('names:index', function () {
             return
-                    Name::query()
-                    ->valid()
-                    ->paginate(30);
+                Name::query()
+                ->valid()
+                ->paginate(30);
         });
     }
 
     public function getName(string $nameSlug): array
     {
         $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
-            $name = Name::query()->withoutGlobalScopes()->with(['comments'])->where('slug', $nameSlug)->firstOrFail();
+            $name = Name::query()
+                ->withoutGlobalScopes()
+                ->with(['comments'])
+                ->where('slug', $nameSlug)
+                ->firstOrFail();
 
-            $name->meanings = collect(explode(',', $name->meaning))
+            $sortedMeanings = collect(explode(',', $name->meaning))
                 ->sort(function ($a, $b) {
-                    return strlen($b) <=> strlen($a);
-                })
-                ->chunk(2)
-                ->map(function ($chunk, $index) {
-                    return $chunk->implode(', ');
+                    return Str::length($b) <=> Str::length($a);
                 });
+
+            // Adjust to ensure mainMeaning contains 3 elements if possible
+            if ($sortedMeanings->count() > 3) {
+                $mainMeanings = $sortedMeanings->splice(0, 3);
+                $name->mainMeaning = $mainMeanings->implode(', ');
+            } else {
+                $name->mainMeaning = $sortedMeanings->implode(', ');
+                $name->meanings = collect();
+                return $name; // Early return if not enough meanings for separation
+            }
+
+            // Adjust to limit meanings array to 5 elements, concatenating as necessary
+            $remainingMeanings = $sortedMeanings->chunk(ceil($sortedMeanings->count() / 5));
+            $name->meanings = $remainingMeanings->map(function ($chunk) {
+                return $chunk->implode(', ');
+            });
 
             return $name;
         });
@@ -79,15 +95,14 @@ class NameService
         $randomness = rand(1, 30);
 
         return cache_remember("names:random:$randomness", function () {
-            return Name::withoutGlobalScopes()->
-            valid()->inRandomOrder()->limit(10)->get();
+            return Name::withoutGlobalScopes()->valid()->inRandomOrder()->limit(10)->get();
         });
     }
 
     public function searchNames(Request $request): LengthAwarePaginator
     {
         $randomness = rand(1, 15);
-        $cacheKey = 'search:'.Str::slug($request->fullUrl()).":$randomness";
+        $cacheKey = 'search:' . Str::slug($request->fullUrl()) . ":$randomness";
 
         return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()->withoutGlobalScopes();
@@ -97,7 +112,7 @@ class NameService
             });
 
             $request->whenFilled('alphabet', function ($alphabet) use ($query) {
-                $query->where('name', 'like', $alphabet.'%');
+                $query->where('name', 'like', $alphabet . '%');
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {
@@ -122,7 +137,7 @@ class NameService
 
         $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
             return Favorite::where('uuid', $uuid)->get(['slug']);
-        },now()->addWeek());
+        }, now()->addWeek());
 
         $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
 

@@ -1,63 +1,87 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
-    <div class="py-12 bg-surface dark:bg-base-800 rounded-lg shadow px-5">
-        <h1 class="text-3xl font-bold text-center mb-10 text-base-800 dark:text-surface">Search Names</h1>
-        <!-- Search Form -->
-        <form action="{!! route('names.search') !!}" method="GET" class="mb-10">
-            <div class="flex flex-col md:flex-row gap-6 mb-8">
-                <div class="relative flex-grow">
-                    <input
-                        type="search" id="search" name="q"
-                        class="w-full pl-12 pr-4 py-3 border border-base-300 text-base-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 transition duration-300 ease-in-out placeholder-base-400 dark:placeholder-base-500 dark:ring-0 dark:bg-base-800 dark:text-base-200"
-                        placeholder="Search names..."
-                        value="{{ request()->query('q') }}"
-                        aria-label="Search names"
-                    >
-                    <div class="absolute left-4 top-0 mt-3 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-base-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <button type="submit" class="flex-shrink-0 px-6 py-3 bg-primary-600 text-surface font-semibold rounded-md hover:bg-primary-700 transition duration-300 ease-in-out">
-                    Search
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Filters Here -->
-                <x-names.search-filters :query="request()->query()" />
-            </div>
-        </form>
-
-        <!-- Search Results -->
-        <div id="search-results">
-            @forelse ($names as $name)
-                <div class="mb-6 p-4 bg-surface dark:bg-base-800 border border-base-200 dark:border-base-600 rounded-lg transition-shadow duration-300 ease-in-out hover:shadow-lg">
-                    <a href="{!! route('names.show', $name) !!}" class="flex justify-between items-center text-base-800 dark:text-base-200 hover:text-primary-600 dark:hover:text-primary-400">
-                        <div class="flex-grow">
-                            <h2 class="text-xl font-semibold">{{ $name->name }}</h2>
-                            <p class="text-base-600 dark:text-base-400">{{ $name->meaning }}</p>
+<section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <!-- Search Form -->
+                <form action="{{ route('names.search') }}" method="GET" class="space-y-8 divide-y divide-gray-200">
+                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                        <div>
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    Search Names
+                                </h3>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                                    Find names by keywords, alphabets, origin, or gender.
+                                </p>
+                            </div>
+                            <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="search" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                        Name or Keyword
+                                    </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <div class="max-w-lg flex rounded-md shadow-sm">
+                                            <input type="search" name="q" id="search" class="flex-1 block w-full min-w-0 rounded-md sm:text-sm border-gray-300" placeholder="Search names...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <fieldset>
+                                        <legend class="text-base font-medium text-gray-900">Filters</legend>
+                                        <div class="mt-4 space-y-4">
+                                            <div class="flex items-center">
+                                                <label for="alphabet" class="mr-3 block text-sm font-medium text-gray-700">
+                                                    Alphabet:
+                                                </label>
+                                                <select id="alphabet" name="alphabet" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                                    <option value="">Select Alphabet</option>
+                                                    @foreach(range('A', 'Z') as $char)
+                                                        <option value="{{ $char }}" {{ request()->query('alphabet') == $char ? 'selected' : '' }}>{{ $char }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <label for="origin" class="mr-3 block text-sm font-medium text-gray-700">
+                                                    Origin:
+                                                </label>
+                                                <select id="origin" name="origin" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                                    <option value="">Select Origin</option>
+                                                    @foreach($origins as $origin)
+                                                        <option value="{{ $origin->slug }}" {{ request()->query('origin') == $origin->slug ? 'selected' : '' }}>{{ $origin->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <label for="gender" class="mr-3 block text-sm font-medium text-gray-700">
+                                                    Gender:
+                                                </label>
+                                                <select id="gender" name="gender" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                                    <option value="">Select Gender</option>
+                                                    @foreach($genders as $gender)
+                                                        <option value="{{ $gender->slug }}" {{ request()->query('gender') == $gender->slug ? 'selected' : '' }}>{{ $gender->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
                         </div>
-                        <span class="text-primary-600 hover:text-primary-800 dark:hover:text-primary-500 transition duration-300 ease-in-out dark:text-primary-400">
-                            Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </div>
-            @empty
-                <div class="text-center py-8">
-                    <span class="text-lg text-base-500 dark:text-base-400">No names found. Try a different search.</span>
-                </div>
-            @endforelse
-        </div>
-        <!-- Pagination -->
-        @if($names->total() > 0)
-            <div class="mt-6">
-                {!! $names->onEachSide(1)->links() !!}
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end">
+                            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        @endif
+        </div>
     </div>
 </section>
 @endsection
