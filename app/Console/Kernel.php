@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('app:activate-names')->daily();
         $schedule->command('app:seo:sitemap')->daily();
+
+        $schedule->command('model:prune')->daily();
     }
 
     /**
