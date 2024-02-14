@@ -132,6 +132,7 @@ class NameService
             $query->orderBy('is_simple', 'desc');
             $query->orderBy('name', 'asc');
 
+            
             $query= $query->paginate(20);
 
             $query->appends(request()->query());
