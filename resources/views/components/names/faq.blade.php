@@ -16,14 +16,14 @@ itemscope itemtype="https://schema.org/FAQPage">
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    The meaning of {!! $name->name !!} is "{!! $name->meaning !!}".
+                    The meaning of {!! $name->name !!} is {!! $name->mainMeaning !!}.
                 </p>
             </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
-                Is {!! $name->name !!} typically a male or female name?
+                What is the gender association of {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">

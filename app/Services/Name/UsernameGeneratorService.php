@@ -81,7 +81,7 @@ class UsernameGeneratorService
             'liberty', 'justice', 'memory', 'imagination', 'idea', 'art', 'chaos', 'balance', 'nature',
             'peace', 'warrior', 'poet', 'artist', 'seeker', 'traveler', 'sailor', 'pilot', 'soldier',
             'hunter', 'mage', 'priest', 'king', 'queen', 'prince', 'princess', 'emperor', 'empress', 'wizard',
-            'witch', 'knight', 'ninja', 'samurai', 'ranger', 'druid', 'shaman', 'dancer', 'singer', 'musician',
+            'knight', 'ninja', 'samurai', 'ranger', 'druid', 'shaman', 'dancer', 'singer', 'musician',
             'bard', 'cleric', 'rogue', 'paladin', 'warlock', 'monk', 'barbarian', 'sorcerer', 'fighter',
         ];
 

@@ -25,10 +25,8 @@ class GlobalComposer
      */
     public function compose(View $view): void
     {
-        $popularNames = cache_remember('footer:names:popular', function () {
-            return $this->name->withoutGlobalScopes()->
-                // inRandomOrder()->
-            popular()->limit(4)->get();
+        $namesList = cache_remember('names', function () {
+            return $this->name->withoutGlobalScopes()->popular()->limit(20)->get();
         });
 
         $origins = cache_remember('origins', function () {
@@ -41,9 +39,9 @@ class GlobalComposer
 
         $favorite = request()->cookie('favorites') ? true : false;
 
+        $view->with('namesList', $namesList);
         $view->with('origins', $origins);
         $view->with('genders', $genders);
-        $view->with('popularNames', $popularNames);
         $view->with('favorite', $favorite);
     }
 }

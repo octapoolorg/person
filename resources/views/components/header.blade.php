@@ -23,7 +23,7 @@
                 <li>
                     <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">
                         <label for="hero-input" class="sr-only">Search</label>
-                        <input type="text" required="" id="hero-input" name="q" class="py-2 pl-4 pr-10 block w-full border border-base-300 dark:border-base-700 rounded-md shadow-sm dark:bg-base-800 text-black dark:text-surface placeholder-base-400 focus:ring-0 focus:ring-primary-500 focus:border-primary-500 dark:focus:border-primary-500" placeholder="Search a Name..." {{ request()->filled('q') ? 'value=' . request()->input('q') : '' }}>
+                        <input type="text" required="" id="hero-input" name="q" class="py-2 pl-4 pr-10 block w-full border border-base-300 dark:border-base-700 rounded-md shadow-sm dark:bg-base-800 text-black dark:text-surface placeholder:text-md placeholder:font-normal placeholder-base-400 focus:ring-0 focus:border-primary-500 dark:focus:border-primary-500" placeholder="Search a Name..." {{ request()->filled('q') ? 'value=' . request()->input('q') : '' }}>
                         <button type="submit" class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-primary-600 dark:text-primary-400">
                             <i class="fas fa-search text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-500" aria-hidden="true"></i>
                         </button>

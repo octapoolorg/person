@@ -32,8 +32,9 @@ class NameService
         return cache_remember('names:index', function () {
             return
                 Name::query()
+                ->withoutGlobalScopes()
                 ->valid()
-                ->paginate(30);
+                ->paginate(200);
         });
     }
 
@@ -61,11 +62,15 @@ class NameService
                 return $name; // Early return if not enough meanings for separation
             }
 
-            // Adjust to limit meanings array to 5 elements, concatenating as necessary
-            $remainingMeanings = $sortedMeanings->chunk(ceil($sortedMeanings->count() / 5));
+            // Adjust to distribute meanings evenly across 5 elements
+            $chunkSize = max(3, ceil($sortedMeanings->count() / 5));
+            $remainingMeanings = $sortedMeanings->chunk($chunkSize);
             $name->meanings = $remainingMeanings->map(function ($chunk) {
                 return $chunk->implode(', ');
             });
+
+            // Limit the number of meanings to 5
+            $name->meanings = $name->meanings->slice(0, 5);
 
             return $name;
         });
@@ -101,10 +106,9 @@ class NameService
 
     public function searchNames(Request $request): LengthAwarePaginator
     {
-        $randomness = rand(1, 15);
-        $cacheKey = 'search:' . Str::slug($request->fullUrl()) . ":$randomness";
+        $cacheKey = 'search:' . implode($request->all());
 
-        // return cache_remember($cacheKey, function () use ($request) {
+        return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()->withoutGlobalScopes();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
@@ -127,18 +131,19 @@ class NameService
                 });
             });
 
+            $names = $query->take(200)->get();
 
-            $query->orderBy('is_popular', 'desc');
-            $query->orderBy('is_simple', 'desc');
-            $query->orderBy('name', 'asc');
+            //sort names by name
+            $names = $names->sortBy('is_popular');
+            $names = $names->sortBy('is_simple');
+            $names = $names->sortBy('name');
 
-            
-            $query= $query->paginate(20);
+            $names = paginate($names, 50);
 
-            $query->appends(request()->query());
+            $names->appends($request->query());
 
-            return $query;
-        // });
+            return $names;
+        });
     }
 
     public function getFavoriteNames(): collection
