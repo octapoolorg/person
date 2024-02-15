@@ -19,7 +19,7 @@ export class ThemeManager {
     }
 
     handleScroll() {
-        if (window.scrollY > 70) {
+        if (window.scrollY > 20) {
             this.toggleThemeButton(false);
         } else {
             this.toggleThemeButton(true);
