@@ -2,7 +2,7 @@
     <p class="text-md text-surface font-bold text-lg text-start px-4 dark:text-base-300" id="gender">
         @if ($name->isMasculine())
             <i class="fas fa-mars"></i>
-        @else
+        @elsif ($name->isFeminine())
             <i class="fas fa-venus"></i>
         @endif
         {{ $name->gender->name }}
