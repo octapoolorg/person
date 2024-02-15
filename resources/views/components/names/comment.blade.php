@@ -41,7 +41,7 @@
                     <label for="name"
                         class="block text-sm font-medium text-base-700 dark:text-base-100">Name:</label>
                     <input type="text" id="name" name="name"
-                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:border-primar-200 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
+                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:bg-white placeholder:text-base-700 dark:placeholder:text-base-400 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
                         placeholder="Your name" required>
                 </div>
 
@@ -50,7 +50,7 @@
                         Email (won't be displayed):
                     </label>
                     <input type="email" id="email" name="email"
-                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:border-primar-200 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:bg-base-800 dark:text-base-100"
+                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:bg-white placeholder:text-base-700 dark:placeholder:text-base-400 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
                         placeholder="you@example.com" required>
                 </div>
 
@@ -58,7 +58,7 @@
                     <label for="comment"
                         class="block text-sm font-medium text-base-700 dark:text-base-100">Comment:</label>
                     <textarea id="comment" name="content" rows="4"
-                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:border-primar-200 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:bg-base-800 dark:text-base-100"
+                        class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:bg-white placeholder:text-base-700 dark:placeholder:text-base-400 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
                         placeholder="Add a comment..." required></textarea>
                 </div>
 
