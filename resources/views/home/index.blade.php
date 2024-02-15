@@ -4,7 +4,7 @@
     <!-- Hero Section with Image Background and Overlay -->
     <section class="relative bg-cover bg-center py-32" style="background-image: url({{ asset('static/images/hero-bg.jpg') }});">
         <div class="absolute inset-0 bg-gradient-to-b from-primary-700 to-primary-800 opacity-90 dark:from-primary-800 dark:to-primary-900 dark:opacity-90"></div>
-        <div class="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
+        <div class="container mx-auto px-6 md:px-12 xl:px-20 relative">
             <div class="text-center text-surface">
                 <h1 class="text-3xl md:text-6xl font-bold mb-6 leading-tight">Uncover Name Mysteries</h1>
                 <p class="text-xl mb-8">Join millions in the quest for names' history, culture, and significance.</p>

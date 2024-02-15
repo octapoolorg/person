@@ -42,16 +42,49 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{!! route('names.index') !!}"
-                       @class([
-                           'block py-2 px-3 rounded md:p-0',
-                           'text-primary-600' => request()->routeIs('Names'),
-                           'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => ! request()->routeIs('about'),
-                       ])
-                       {{ request()->routeIs('Names') ? 'aria-current=page' : '' }}
-                    >
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="group flex items-center justify-between w-full py-2 px-3 text-base-900 hover:bg-base-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-surface md:dark:hover:text-primary-500 dark:focus:text-surface dark:hover:bg-base-700 md:dark:hover:bg-transparent">
                         Names
-                    </a>
+                        <i class="fas fa-chevron-down text-base-500 dark:text-base-400 ml-2 group-hover:text-primary-700"
+                        aria-hidden="true"></i>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar" class="z-10 hidden font-normal bg-surface divide-y divide-base-100 rounded-lg shadow w-44 dark:bg-base-700 dark:divide-base-600">
+                        <ul class="py-2 text-sm text-base-700 dark:text-base-200" aria-labelledby="dropdownLargeButton">
+                          <li>
+                            <a href="{!! route('names.index') !!}" class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
+                                Explore
+                            </a>
+                          </li>
+                          <li>
+                            <a href="{!! route('names.random') !!}" class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
+                                Random
+                            </a>
+                          </li>
+                          <li aria-labelledby="dropdownNavbarLink">
+                            <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
+                                Origins
+                                <i class="fas fa-chevron-right text-base-500 dark:text-base-400 ml-2 group-hover:text-primary-700" aria-hidden="true"></i>
+                            </button>
+                            <div id="doubleDropdown" class="z-10 hidden bg-surface divide-y divide-base-100 rounded-lg shadow w-44 dark:bg-base-700">
+                                <ul class="py-2 text-sm text-base-700 dark:text-base-200" aria-labelledby="doubleDropdownButton">
+                                  @foreach($origins->random(10) as $origin)
+                                    <li>
+                                        <a href="{!! route('names.origin', $origin->slug) !!}" class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:text-base-200 dark:hover:text-surface">
+                                            {{ $origin->name }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                    <li>
+                                        <a href="{!! route('names.search') !!}" class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:text-base-200 dark:hover:text-surface">
+                                            More...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                </li>
                 <li>
                     <a href="{!! route('blog.index') !!}"
                        @class([
@@ -78,7 +111,7 @@
                         <span
                             id="navbar-favorite-icon"
                             @class([
-                                'absolute items-center justify-center size-3 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-0 -end-1 dark:border-gray-900',
+                                'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-red-500 border-2 border-surface rounded-full -top-0 -end-1 dark:border-base-900',
                                 'inline-flex' => $favorite,
                                 'hidden' => ! $favorite,
                             ])

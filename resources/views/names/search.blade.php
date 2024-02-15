@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="py-16 bg-gradient-to-b from-primary-50 to-primary-200 dark:from-primary-900 dark:to-primary-800">
+<section class="py-16 bg-gradient-to-b from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-surface dark:bg-base-800 p-8 rounded-lg shadow-2xl dark:text-base-100">
             <h2 class="text-3xl font-bold leading-tight text-base-900 dark:text-base-200">Find Your Perfect Name</h2>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="lg:col-span-4">
-                        <button type="submit" class="w-full flex justify-center py-3 px-4 bg-primary-500 text-surface font-medium rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-primary-300 focus:ring-opacity-50">
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 bg-primary-500 text-surface font-medium rounded-lg shadow hover:shadow-md transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-primary-300 focus:ring-opacity-50">
                             Search
                         </button>
                     </div>
@@ -57,7 +57,7 @@
                 <h2 class="text-2xl font-semibold leading-tight text-base-900 dark:text-base-300">Search Results</h2>
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @forelse($names as $name)
-                        <a href="{{ route('names.show', $name) }}" class="bg-surface dark:bg-base-700 rounded-lg shadow-lg p-6">
+                        <a href="{{ route('names.show', $name) }}" class="bg-surface hover:bg-primary-50/70 dark:bg-base-700 rounded-lg shadow hover:shadow-md p-6">
                             <h3 class="text-xl font-semibold text-base-900 dark:text-base-100">{{ $name->name }}</h3>
                             <p class="mt-2 text-base text-base-600 dark:text-base-300 truncate">{{ $name->meaning }}</p>
                             <span class="mt-4 block text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-400 transition duration-200 ease-in-out">Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i></span>

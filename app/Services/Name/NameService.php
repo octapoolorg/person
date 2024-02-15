@@ -133,7 +133,7 @@ class NameService
         $cacheKey = 'search:' . implode($request->all());
 
         return cache_remember($cacheKey, function () use ($request) {
-            $query = Name::query()->withoutGlobalScopes();
+            $query = Name::query()->withoutGlobalScopes()->validGender()->simple();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
                 $query->search($searchTerm);
