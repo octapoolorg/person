@@ -10,7 +10,6 @@ use App\Models\Name;
 use App\Models\Origin;
 use App\Services\Numerology\NumerologyFactory;
 use App\Services\Tools\FancyTextService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
@@ -175,8 +174,8 @@ class NameService
         $uuid = request()->cookie('uuid');
 
         $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
-            return Favorite::where('uuid', $uuid)->get(['slug']);
-        }, now()->addWeek());
+            return Favorite::where('uuid', $uuid)->pluck('slug');
+        });
 
         $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
 

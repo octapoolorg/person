@@ -67,11 +67,14 @@ class NameController extends Controller
                 $isFavorited = true;
             }
 
-            $favorites = Favorite::where('uuid', $uuid)->pluck('slug')->toArray();
+            cache()->forget("favorites:$uuid");
+            $favorites = cache_remember("favorites:$uuid", function () use ($uuid) {
+                return Favorite::where('uuid', $uuid)->pluck('slug');
+            });
 
             return response()->json([
                 'isFavorited' => $isFavorited,
-                'favorites' => $favorites,
+                'favorites' => $favorites->toArray(),
             ]);
         } catch (Exception $e) {
             Log::error($e->getMessage());
