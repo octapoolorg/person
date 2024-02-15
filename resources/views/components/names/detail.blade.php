@@ -1,8 +1,8 @@
 <div class="bg-primary-500 dark:bg-primary-800 text-center py-4 rounded-t-xl">
     <p class="text-md text-surface font-bold text-lg text-start px-4 dark:text-base-300" id="gender">
-        @if ($name->isMasculine())
+        @if($name->isMasculine())
             <i class="fas fa-mars"></i>
-        @elsif ($name->isFeminine())
+        @elseif ($name->isFeminine())
             <i class="fas fa-venus"></i>
         @endif
         {{ $name->gender->name }}
