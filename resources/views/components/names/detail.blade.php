@@ -3,7 +3,6 @@
         @if ($name->isMasculine())
             <i class="fas fa-mars"></i>
         @else
-        oo
             <i class="fas fa-venus"></i>
         @endif
         {{ $name->gender->name }}
