@@ -1,5 +1,19 @@
 <aside class="w-full lg:w-1/3 md:px-4">
     <!-- Explore Baby Names -->
+    <div class="shadow mb-6 p-6 rounded-lg bg-surface dark:bg-base-800">
+        <h5 class="text-xl font-bold text-primary-600 dark:text-primary-400 mb-4">
+            Generate Random Name
+        </h5>
+        <p class="text-base-600 dark:text-base-300 mb-6">
+            Click to generate a list of random names to make a better choice.
+        </p>
+        <a href="{{ route('names.random') }}"
+           class="inline-flex items-center justify-center bg-gradient-to-r from-primary-500 to-primary-600 text-surface font-medium py-3 px-6 rounded-full hover:bg-gradient-to-l transition duration-300 ease-in-out uppercase text-sm lg:text-base">
+            <i class="fas fa-dice mr-2"></i>
+            <span>Randomize</span>
+        </a>
+    </div>
+
     <div class="shadow mb-6 p-6 rounded-lg bg-surface dark:bg-base-800 sticky top-10">
         <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-4 capitalize">
             Explore Names by gender
