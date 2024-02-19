@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Name;
 
 use App\Http\Controllers\Controller;
 use App\Services\Name\NameService;
+use App\Services\Name\UtilityService;
 use App\Services\SeoService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -11,12 +12,13 @@ use Illuminate\View\View;
 class NameController extends Controller
 {
     private NameService $nameService;
-
+    private UtilityService $utilityService;
     private SeoService $seoService;
 
-    public function __construct(NameService $nameService, SeoService $seoService)
+    public function __construct(NameService $nameService, UtilityService $utilityService, SeoService $seoService)
     {
         $this->nameService = $nameService;
+        $this->utilityService = $utilityService;
         $this->seoService = $seoService;
     }
 
@@ -59,4 +61,17 @@ class NameController extends Controller
         return view('names.list', compact('names'));
     }
 
+    public function signatures(string $nameSlug): View
+    {
+        $images = $this->utilityService->signatureUrls($nameSlug);
+
+        return view('names.images', compact('images'));
+    }
+
+    public function wallpapers(string $nameSlug): View
+    {
+        $images = $this->utilityService->wallpaperUrls($nameSlug);
+
+        return view('names.images', compact('images'));
+    }
 }
