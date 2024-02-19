@@ -81,7 +81,7 @@ class Sitemap extends Command
         Origin::whereHas('names', function ($query) {
             $query->where('is_active', 1);
         }, '>', 30)->get()->each(function ($origin) use ($sitemap) {
-            $url = route('names.origin', ['origin' => $origin->slug]);
+            $url = route('names.search', ['origin' => $origin->slug]);
             $sitemap->add(Url::create($url));
         });
 

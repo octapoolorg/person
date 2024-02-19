@@ -86,7 +86,7 @@
     <div class="flex flex-wrap gap-2">
         @foreach ($name->origins->sortBy('name',SORT_NATURAL) as $origin)
             <a class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-800 dark:text-primary-100 hover:bg-primary-200 dark:hover:bg-primary-900"
-            href="{!! route('names.origin', ['origin' => $origin->slug]) !!}">
+            href="{!! route('names.search', ['origin' => $origin->slug]) !!}">
                 <i class="fas fa-globe mr-2"></i>
                 {{ $origin->name }}
             </a>

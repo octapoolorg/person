@@ -64,12 +64,6 @@
                                     Explore
                                 </a>
                             </li>
-                            <li>
-                                <a href="{!! route('names.random') !!}"
-                                    class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
-                                    Random
-                                </a>
-                            </li>
                             <li aria-labelledby="dropdownNavbarLink">
                                 <button id="doubleDropdownButtonOrigin" data-dropdown-toggle="doubleDropdownOrigin" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
                                     Origins
@@ -81,7 +75,7 @@
                                         aria-labelledby="doubleDropdownButtonOrigin">
                                         @foreach ($origins->random(5) as $origin)
                                             <li>
-                                                <a href="{!! route('names.origin', $origin->slug) !!}"
+                                                <a href="{!! route('names.search', ['origin'=>$origin->slug]) !!}"
                                                     class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:text-base-200 dark:hover:text-surface">
                                                     {{ $origin->name }}
                                                 </a>

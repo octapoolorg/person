@@ -132,14 +132,20 @@ class NameService
         $cacheKey = 'search:' . implode($request->all());
 
         return cache_remember($cacheKey, function () use ($request) {
-            $query = Name::query()->withoutGlobalScopes()->validGender()->simple();
+            $query = Name::query()->withoutGlobalScopes()
+            ->inRandomOrder()
+            ->validGender()->popular();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
                 $query->search($searchTerm);
             });
 
-            $request->whenFilled('alphabet', function ($alphabet) use ($query) {
-                $query->where('name', 'like', $alphabet . '%');
+            $request->whenFilled('starts_with', function ($startsWith) use ($query) {
+                $query->where('name', 'like', "$startsWith%");
+            });
+
+            $request->whenFilled('ends_with', function ($endsWith) use ($query) {
+                $query->where('name', 'like', "%$endsWith");
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {
@@ -158,7 +164,6 @@ class NameService
 
             //sort names by name
             $names = $names->sortBy('is_popular');
-            $names = $names->sortBy('is_simple');
             $names = $names->sortBy('name');
 
             $names = paginate($names, 50);
@@ -227,82 +232,6 @@ class NameService
 
         return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
             return $fancyTextService->generate();
-        });
-    }
-
-    public function getOriginNames(string $origin): LengthAwarePaginator
-    {
-        $names = cache_remember("names:origin:$origin", function () use ($origin) {
-            return Name::query()
-                ->withoutGlobalScopes()
-                ->simple()
-                ->validGender()
-                ->inRandomOrder()
-                ->whereHas('origins', function ($query) use ($origin) {
-                    $query->where('slug', $origin);
-                })
-                ->limit(200)
-                ->get();
-        });
-
-        $names = $names->sortBy('name');
-
-        return paginate($names, 30);
-    }
-
-    public function getCategoryNames(string $category)
-    {
-        $names = cache_remember("names:category:$category", function () use ($category) {
-            return Name::query()
-                ->withoutGlobalScopes()
-                ->simple()
-                ->validGender()
-                ->inRandomOrder()
-                ->whereHas('categories', function ($query) use ($category) {
-                    $query->where('slug', $category);
-                })
-                ->limit(200)
-                ->get();
-        });
-
-
-        $names->sortBy('name');
-
-        return paginate($names, 30);
-    }
-
-    public function getStartingNames(string $starting)
-    {
-        return cache_remember("names:starting:$starting", function () use ($starting) {
-            return Name::query()->where('name', 'like', "$starting%")->limit(30)->get();
-        });
-    }
-
-    public function getEndingNames(string $ending)
-    {
-        return cache_remember("names:ending:$ending", function () use ($ending) {
-            return Name::query()->where('name', 'like', "%$ending")->limit(30)->get();
-        });
-    }
-
-    public function getCategory(string $category)
-    {
-        return cache_remember("category:$category", function () use ($category) {
-            return Category::where('slug', $category)->firstOrFail();
-        });
-    }
-
-    public function getOrigin(string $origin)
-    {
-        return cache_remember("origin:$origin", function () use ($origin) {
-            return Origin::where('slug', $origin)->firstOrFail();
-        });
-    }
-
-    public function getGender(string $gender)
-    {
-        return cache_remember("gender:$gender", function () use ($gender) {
-            return Gender::where('slug', $gender)->firstOrFail();
         });
     }
 }

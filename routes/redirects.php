@@ -22,7 +22,10 @@ Route::get('static/images/name/{name}.jpg', function ($name) {
     return redirect()->route('names.wallpaper', [$name], 301);
 });
 
-//redirect sitemap.xml to sitemap_index.xml with url 301
+Route::get('/names/{gender}', function (string $gender) {
+    return redirect()->route('names.search', ['gender' => $gender], 301);
+})->whereIn('gender', ['masculine', 'feminine', 'unisex']);
+
 Route::get('sitemap.xml', function () {
     return redirect('sitemap_index.xml', 301);
 });
