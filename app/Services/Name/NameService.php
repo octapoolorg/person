@@ -98,24 +98,23 @@ class NameService
         return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()
                 ->with(['gender', 'origins'])
-                ->withoutGlobalScopes()
-                ->validGender()
-                ->popular();
+                ->withoutGlobalScopes();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
-                $query->search($searchTerm);
+                $query->where('names.name', 'like', $searchTerm . '%');
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {
                 $query->whereHas('origins', function ($q) use ($origin) {
-                    $q->select('slug')->where('slug', $origin);
+                    $q->validGender()->popular()->select('slug')->where('slug', $origin);
                 });
             });
 
             $request->whenFilled('gender', function ($gender) use ($query) {
-                $query->join('genders', 'names.gender_id', '=', 'genders.id')
-                      ->where('genders.slug', $gender)
-                      ->select('names.*');
+                $query->validGender()->popular()
+                    ->join('genders', 'names.gender_id', '=', 'genders.id')
+                    ->where('genders.slug', $gender)
+                    ->select('names.*');
             });
 
             $names = $query->take(200)->get();
