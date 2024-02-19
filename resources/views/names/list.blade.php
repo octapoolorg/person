@@ -19,7 +19,16 @@
                     </div>
                     @empty
                         <div class="text-center py-8">
-                            <span class="text-lg text-base-400 dark:text-base-300">No names found. Try a different search.</span>
+                            <div class="mt-4">
+                                <p class="mt-6 text-base leading-7 text-base-600 dark:text-base-300">
+                                    Oops! We looked everywhere but couldn't find what you were looking for.
+                                </p>
+                                <div class="mt-10 flex items-center justify-center gap-x-6">
+                                    <a href="{!! route('names.search') !!}" class="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-surface shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600">
+                                        Explore Names <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                             </div>
                         </div>
                     @endforelse
                 </div>

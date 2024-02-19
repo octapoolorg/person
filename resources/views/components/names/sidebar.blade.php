@@ -9,7 +9,7 @@
         </p>
         <a href="{{ route('names.search') }}"
            class="inline-flex items-center justify-center bg-gradient-to-r from-primary-500 to-primary-600 text-surface font-medium py-3 px-6 rounded-full hover:bg-gradient-to-l transition duration-300 ease-in-out uppercase text-sm lg:text-base">
-            <i class="fas fa-dice mr-2"></i>
+            <i class="fas fa-search mr-2"></i>
             <span>
                 Explore Names
             </span>

@@ -277,8 +277,9 @@ class NameService
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {
+                $query->validGender()->popular();
                 $query->whereHas('origins', function ($q) use ($origin) {
-                    $q->validGender()->popular()->select('slug')->where('slug', $origin);
+                    $q->select('slug')->where('slug', $origin);
                 });
             });
 

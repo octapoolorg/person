@@ -1,21 +1,53 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8 py-8 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        @foreach($images as $image)
-            <div class="flex flex-col bg-white shadow-lg overflow-hidden rounded-lg">
-                <div class="flex-shrink-0">
-                    <img src="{{$image}}" alt="Image name" class="h-48 w-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-6">
-                    <h2 class="text-xl font-semibold text-gray-900 leading-tight">Image Name</h2>
-                    <p class="mt-3 text-base text-gray-500">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, commodi.
-                    </p>
-                </div>
-            </div>
+
+<section class="text-base-900 dark:text-base-100 px-6 py-8 shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800">
+    <div class="flex flex-col md:flex-row justify-between mb-6">
+        <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-0 font-bold">
+            Name Wallpaper
+        </h2>
+    </div>
+
+    <!-- Main displayed wallpaper -->
+    <div class="overflow-hidden rounded-lg shadow-lg dark:shadow-none my-8">
+        <img
+            src="data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaaaaa%3Bstroke-width%3A1%22/%3E%0A%3C/svg%3E"
+            data-src="{!! head($images) !!}"
+            class="w-full h-auto md:h-96 object-cover lazy"
+            id="main-wallpaper"
+        >
+    </div>
+
+    <!-- Thumbnails container -->
+    <div class="flex flex-wrap gap-4 justify-center">
+        @foreach ($images as $image)
+        <img
+            src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaa%3Bstroke-width%3A1%22/%3E%3C/svg%3E"
+            data-src="{!! $image !!}?size=thumb"
+            class="size-48 cursor-pointer object-cover rounded-lg lazy"
+            onclick="changeWallpaper('{!! $image !!}')"
+        >
         @endforeach
     </div>
+
+    <!-- Download link for the currently displayed wallpaper -->
+    <a href="#" download id="download-link" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center justify-center mt-4">
+        Download
+        <i class="fas fa-download ml-2"></i>
+    </a>
+
+    <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 mt-4">
+        Discover the unique charm of the name wallpaper. Every curve and
+        detail of the design captures the essence of the name, making it a perfect backdrop for your
+        devices. Elevate your screens with this blend of artistry and elegance.
+    </p>
 </section>
+
+<script>
+    function changeWallpaper(url) {
+        document.getElementById('main-wallpaper').src = url;
+        document.getElementById('download-link').href = url;
+    }
+</script>
 @endsection
