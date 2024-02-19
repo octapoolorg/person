@@ -16,8 +16,10 @@ Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 // list of popular stuff related to a name
 Route::get('name/{name}/signatures', [NameController::class, 'signatures'])->name('names.signatures');
 Route::get('name/{name}/wallpapers', [NameController::class, 'wallpapers'])->name('names.wallpapers');
-// Route::get('name/{name}/images', [NameController::class, 'images'])->name('names.images');
-// Route::get('name/{name}/videos', [NameController::class, 'videos'])->name('names.videos');
+
+Route::get('static/images/wallpaper/style/{style}/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
+Route::get('static/images/signature/style/{style}/{name}.jpg', [NameController::class, 'signature'])->name('names.signature');
+
 // Route::get('name/{name}/quotes', [NameController::class, 'quotes'])->name('names.quotes');
 // Route::get('name/{name}/memes', [NameController::class, 'memes'])->name('names.memes');
 // Route::get('name/{name}/tattoos', [NameController::class, 'tattoos'])->name('names.tattoos');
@@ -33,17 +35,9 @@ Route::get('name/{name}/wallpapers', [NameController::class, 'wallpapers'])->nam
 // Route::get('name/{name}/personality', [NameController::class, 'personality'])->name('names.personality');
 // Route::get('name/{name}/horoscope', [NameController::class, 'horoscope'])->name('names.horoscope');
 // Route::get('name/{name}/numerology', [NameController::class, 'numerology'])->name('names.numerology');
-// Route::get('name/{name}/name-meaning', [NameController::class, 'nameMeaning'])->name('names.nameMeaning');
-// Route::get('name/{name}/name-origin', [NameController::class, 'nameOrigin'])->name('names.nameOrigin');
 // Route::get('name/{name}/famous-people', [NameController::class, 'famousPeople'])->name('names.famousPeople');
 // Route::get('name/{name}/name-day', [NameController::class, 'nameDay'])->name('names.nameDay');
 // Route::get('name/{name}/birthstone', [NameController::class, 'birthstone'])->name('names.birthstone');
-// Route::get('name/{name}/personalized-gifts', [NameController::class, 'personalizedGifts'])->name('names.personalizedGifts');
-// Route::get('name/{name}/personalized-books', [NameController::class, 'personalizedBooks'])->name('names.personalizedBooks');
-// Route::get('name/{name}/personalized-jewelry', [NameController::class, 'personalizedJewelry'])->name('names.personalizedJewelry');
-// Route::get('name/{name}/personalized-music', [NameController::class, 'personalizedMusic'])->name('names.personalizedMusic');
-// Route::get('name/{name}/personalized-movies', [NameController::class, 'personalizedMovies'])->name('names.personalizedMovies');
-// Route::get('name/{name}/personalized-tv-shows', [NameController::class, 'personalizedTvShows'])->name('names.personalizedTvShows');
 
 // // list of personalized stuff related to a name
 // Route::get('name/{name}/name-popularity', [NameController::class, 'namePopularity'])->name('names.namePopularity');
@@ -76,5 +70,25 @@ Route::get('name/{name}/wallpapers', [NameController::class, 'wallpapers'])->nam
 // Route::get('name/{name}/name-in-quotes', [NameController::class, 'nameInQuotes'])->name('names.nameInQuotes');
 // Route::get('name/{name}/name-in-proverbs', [NameController::class, 'nameInProverbs'])->name('names.nameInProverbs');
 // Route::get('name/{name}/name-in-tongue-twisters', [NameController::class, 'nameInTongueTwisters'])->name('names.nameInTongueTwisters');
+// Route::get('name/{name}/name-in-limericks', [NameController::class, 'nameInLimericks'])->name('names.nameInLimericks');
+// Route::get('name/{name}/name-in-haikus', [NameController::class, 'nameInHaikus'])->name('names.nameInHaikus');
+// Route::get('name/{name}/name-in-sonnets', [NameController::class, 'nameInSonnets'])->name('names.nameInSonnets');
+// Route::get('name/{name}/name-in-epics', [NameController::class, 'nameInEpics'])->name('names.nameInEpics');
+// Route::get('name/{name}/name-in-ballads', [NameController::class, 'nameInBallads'])->name('names.nameInBallads');
+// Route::get('name/{name}/name-in-odes', [NameController::class, 'nameInOdes'])->name('names.nameInOdes');
 
-require __DIR__.'/image.php';
+// // list of personalized stuff related to a name
+// Route::get('name/{name}/name-in-idioms', [NameController::class, 'nameInIdioms'])->name('names.nameInIdioms');
+// Route::get('name/{name}/name-in-slang', [NameController::class, 'nameInSlang'])->name('names.nameInSlang');
+// Route::get('name/{name}/name-in-urban-dictionary', [NameController::class, 'nameInUrbanDictionary'])->name('names.nameInUrbanDictionary');
+// Route::get('name/{name}/name-in-lingo', [NameController::class, 'nameInLingo'])->name('names.nameInLingo');
+// Route::get('name/{name}/name-in-terms', [NameController::class, 'nameInTerms'])->name('names.nameInTerms');
+// Route::get('name/{name}/name-in-phrases', [NameController::class, 'nameInPhrases'])->name('names.nameInPhrases');
+
+// // list of personalized stuff related to a name
+// Route::get('name/{name}/name-in-words', [NameController::class, 'nameInWords'])->name('names.nameInWords');
+// Route::get('name/{name}/name-in-sentences', [NameController::class, 'nameInSentences'])->name('names.nameInSentences');
+// Route::get('name/{name}/name-in-paragraphs', [NameController::class, 'nameInParagraphs'])->name('names.nameInParagraphs');
+// Route::get('name/{name}/name-in-essays', [NameController::class, 'nameInEssays'])->name('names.nameInEssays');
+// Route::get('name/{name}/name-in-stories', [NameController::class, 'nameInStories'])->name('names.nameInStories');
+// Route::get('name/{name}/name-in-novels', [NameController::class, 'nameInNovels'])->name('names.nameInNovels');
