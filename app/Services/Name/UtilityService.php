@@ -6,7 +6,6 @@ use App\Models\Abbreviation;
 use App\Services\Tools\FancyTextService;
 use App\Services\Name\UsernameGeneratorService;
 
-
 class UtilityService
 {
     protected UsernameGeneratorService $usernameGeneratorService;
