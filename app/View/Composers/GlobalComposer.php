@@ -26,8 +26,8 @@ class GlobalComposer
     public function compose(View $view): void
     {
         $namesList = cache_remember('names', function () {
-            return $this->name->withoutGlobalScopes()->popular()->limit(20)->get();
-        });
+            return $this->name->withoutGlobalScopes()->random()->popular()->limit(20)->get();
+        }, now()->addWeek());
 
         $origins = cache_remember('origins', function () {
             return $this->origin->orderBy('name')->get();

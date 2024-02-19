@@ -82,20 +82,19 @@
 </div>
 @endif
 
-<!-- Sources - links to the sources with the name and fontawesome icon -->
-<div id="accordion-collapse-sources" data-accordion="collapse" data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
-    <h2 id="expand-sources">
+<div id="accordion-collapse-external-links" data-accordion="collapse" data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
+    <h2 id="expand-external-links">
         <button type="button"
             class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
-            data-accordion-target="#sources"
-            aria-expanded="false" aria-controls="sources">
+            data-accordion-target="#external-links"
+            aria-expanded="false" aria-controls="external-links">
             <span>
-                Sources
+                External links
             </span>
             <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
         </button>
     </h2>
-    <div id="sources" class="hidden" aria-labelledby="expand-sources">
+    <div id="external-links" class="hidden" aria-labelledby="expand-external-links">
         <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
             <ul class="flex flex-wrap gap-4 text-left text-base-500 list-none list-outside dark:text-base-400 p-3">
                 <li class="flex items-center gap-2 text-base-500 dark:text-base-400 text-lg">

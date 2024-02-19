@@ -53,9 +53,27 @@ class ImageService
             'font_color' => '#000000',
             'text'       => true
         ],
-        'monsieur-la-doulaise' => [
-            'font_path'  => 'monsieur-la-doulaise/monsieur-la-doulaise.ttf',
-            'font_size'  => 190,
+        'motterdam' => [
+            'font_path'  => 'motterdam/motterdam.ttf',
+            'font_size'  => 200,
+            'font_color' => '#000000',
+            'text'       => true
+        ],
+        'darlington' => [
+            'font_path'  => 'darlington/darlington.ttf',
+            'font_size'  => 200,
+            'font_color' => '#000000',
+            'text'       => true
+        ],
+        'autography' => [
+            'font_path'  => 'autography/autography.otf',
+            'font_size'  => 200,
+            'font_color' => '#000000',
+            'text'       => true
+        ],
+        'sign_style' => [
+            'font_path'  => 'sign_style/sign_style.ttf',
+            'font_size'  => 200,
             'font_color' => '#000000',
             'text'       => true
         ]
@@ -70,8 +88,8 @@ class ImageService
 
     public function wallpaper(string $nameSlug, string $style): Response
     {
+        $style = $this->wallpaperStyles[$style];
         $name = $this->getNameFromSlug($nameSlug)->name;
-        $style = $this->getStyle($style, 'wallpaper');
 
         $style = array_merge($style, [
             'seo_title' => 'Name Wallpaper',
@@ -82,7 +100,7 @@ class ImageService
 
     public function signature(string $name, string $style): Response
     {
-        $style = $this->getStyle($style, 'signature');
+        $style = $this->signStyles[$style];
         $firstPart = $this->getFirstPartOfName($name);
 
         $style = array_merge($style, [
@@ -100,7 +118,8 @@ class ImageService
 
     public function nameSignatures(string $name): array
     {
-        return $this->generateUrls($name, array_keys($this->signStyles), 'names.signature');
+        $styles = array_rand($this->signStyles, 3);
+        return $this->generateUrls($name, $styles, 'names.signature');
     }
 
     private function getNameFromSlug(string $nameSlug): Name
@@ -108,14 +127,6 @@ class ImageService
         return cache_remember("name:$nameSlug", function () use ($nameSlug) {
             return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail();
         });
-    }
-
-    private function getStyle(string $style, string $type): array
-    {
-        $styles = $type === 'wallpaper' ? $this->wallpaperStyles : $this->signStyles;
-        $defaultStyle = $styles['funky'] ?? reset($styles);
-
-        return $styles[$style] ?? $defaultStyle;
     }
 
     private function getFirstPartOfName(string $name): string
