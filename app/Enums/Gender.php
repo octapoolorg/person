@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum Gender: int
+enum Gender: string
 {
-    case MASCULINE = 2;
-    case FEMININE  = 1;
-    case UNISEX    = 3;
-    case UNKNOWN   = 4;
+    case MASCULINE = 'masculine';
+    case FEMININE  = 'feminine';
+    case UNISEX    = 'unisex';
+    case UNKNOWN   = 'unknown';
 }

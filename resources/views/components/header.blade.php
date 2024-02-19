@@ -73,7 +73,7 @@
                                     class="z-10 hidden bg-surface divide-y divide-base-100 rounded-lg shadow w-44 dark:bg-base-700">
                                     <ul class="py-2 text-sm text-base-700 dark:text-base-200"
                                         aria-labelledby="doubleDropdownButtonOrigin">
-                                        @foreach ($origins->random(5) as $origin)
+                                        @foreach ($origins->random(5)->sortBy('name') as $origin)
                                             <li>
                                                 <a href="{!! route('names.search', ['origin'=>$origin->slug]) !!}"
                                                     class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:text-base-200 dark:hover:text-surface">
@@ -87,29 +87,6 @@
                                                 More...
                                             </a>
                                         </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li aria-labelledby="dropdownNavbarLink">
-                                <button id="doubleDropdownButtonGender" data-dropdown-toggle="doubleDropdownGender"
-                                    data-dropdown-placement="right-start" type="button"
-                                    class="flex items-center justify-between w-full px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
-                                    Gender
-                                    <i class="fas fa-chevron-right text-base-500 dark:text-base-400 ml-2 group-hover:text-primary-700"
-                                        aria-hidden="true"></i>
-                                </button>
-                                <div id="doubleDropdownGender"
-                                    class="z-10 hidden bg-surface divide-y divide-base-100 rounded-lg shadow w-44 dark:bg-base-700">
-                                    <ul class="py-2 text-sm text-base-700 dark:text-base-200"
-                                        aria-labelledby="doubleDropdownButtonGender">
-                                        @foreach ($genders as $gender)
-                                            <li>
-                                                <a href="{!! route('names.search', ['gender'=>$gender->slug]) !!}"
-                                                    class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:text-base-200 dark:hover:text-surface">
-                                                    {{ $gender->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
                                     </ul>
                                 </div>
                             </li>

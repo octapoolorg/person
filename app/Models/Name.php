@@ -10,13 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder as QueryBuilder;
 
-/**
- * Name
- *
- * @mixin QueryBuilder
- */
 class Name extends Model
 {
     use HasFactory;
@@ -57,22 +51,19 @@ class Name extends Model
 
     public function isMasculine(): bool
     {
-        return $this->gender_id === GenderEnum::MASCULINE->value;
+        return $this->gender->slug === GenderEnum::MASCULINE->value;
     }
 
     public function isFeminine(): bool
     {
-        return $this->gender_id === GenderEnum::FEMININE->value;
-    }
-
-    public function scopeGender(Builder $query, int $gender_id): Builder
-    {
-        return $query->where('gender_id', $gender_id);
+        return $this->gender->slug === GenderEnum::FEMININE->value;
     }
 
     public function scopeValidGender(Builder $query): Builder
     {
-        return $query->whereIn('gender_id', [GenderEnum::MASCULINE->value, GenderEnum::FEMININE->value]);
+        return $query->whereHas('gender', function (Builder $query) {
+            $query->whereIn('slug', [GenderEnum::MASCULINE->value, GenderEnum::FEMININE->value]);
+        });
     }
 
     public function scopePopular(Builder $query): Builder

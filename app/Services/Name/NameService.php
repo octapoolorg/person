@@ -2,43 +2,20 @@
 
 namespace App\Services\Name;
 
-use App\Models\Abbreviation;
-use App\Models\Category;
 use App\Models\Favorite;
-use App\Models\Gender;
 use App\Models\Name;
-use App\Models\Origin;
 use App\Services\Numerology\NumerologyFactory;
-use App\Services\Tools\FancyTextService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 class NameService
 {
-    protected UsernameGeneratorService $usernameGeneratorService;
+    protected UtilityService $utilityService;
 
-    protected ImageService $imageService;
-
-    public function __construct(UsernameGeneratorService $usernameGeneratorService, ImageService $imageService)
+    public function __construct(UtilityService $utilityService)
     {
-        $this->usernameGeneratorService = $usernameGeneratorService;
-        $this->imageService = $imageService;
-    }
-
-    public function getNames(): LengthAwarePaginator
-    {
-        return cache_remember('names:index', function () {
-            $names = Name::query()
-                ->withoutGlobalScopes()
-                ->inRandomOrder()
-                ->limit(300)
-                ->get();
-
-            $names = $names->sortBy('name');
-
-            return paginate($names, 30);
-        });
+        $this->utilityService = $utilityService;
     }
 
     public function getName(string $nameSlug): array
@@ -81,100 +58,15 @@ class NameService
         return [
             'name' => $name,
             'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($name->name),
-            'abbreviations' => $this->getAbbreviations($name->name),
-            'fancyTexts' => $this->getFancyTexts($name->name),
-            'wallpaperUrls' => $this->imageService->nameWallpapers($name->slug),
-            'signatureUrls' => $this->imageService->nameSignatures($name->slug),
-            'userNames' => $this->getUsernames($name->slug),
+            'abbreviations' => $this->utilityService->getAbbreviations($name->name),
+            'fancyTexts' => $this->utilityService->getFancyTexts($name->name),
+            'wallpaperUrls' => $this->utilityService->wallpaperUrls($name->slug),
+            'signatureUrls' => $this->utilityService->signatureUrls($name->slug),
+            'userNames' => $this->utilityService->getUsernames($name->name),
         ];
     }
 
-    public function getNamesByGender(string $gender): LengthAwarePaginator
-    {
-        $names = cache_remember("names:$gender", function () use ($gender) {
-            $names = Name::query()
-                ->withoutGlobalScopes()
-                ->popular()
-                ->inRandomOrder()
-                ->whereHas('gender', function ($query) use ($gender) {
-                    $query->where('slug', $gender);
-                })
-                ->limit(200)
-                ->get();
-
-            return $names->sortBy('name');
-        });
-
-        return paginate($names, 30);
-    }
-
-    public function getRandomNames(): LengthAwarePaginator
-    {
-        $randomness = rand(1, 2);
-
-        $names = cache_remember("names:random:$randomness", function () {
-            return  Name::query()
-                ->withoutGlobalScopes()
-                ->popular()
-                ->validGender()
-                ->inRandomOrder()
-                ->limit(200)
-                ->get();
-        }, now()->addWeek());
-
-        $names = $names->sortBy('name');
-
-        return paginate($names, 30);
-    }
-
-    public function searchNames(Request $request): LengthAwarePaginator
-    {
-        $cacheKey = 'search:' . implode($request->all());
-
-        return cache_remember($cacheKey, function () use ($request) {
-            $query = Name::query()->withoutGlobalScopes()
-            ->inRandomOrder()
-            ->validGender()->popular();
-
-            $request->whenFilled('q', function ($searchTerm) use ($query) {
-                $query->search($searchTerm);
-            });
-
-            $request->whenFilled('starts_with', function ($startsWith) use ($query) {
-                $query->where('name', 'like', "$startsWith%");
-            });
-
-            $request->whenFilled('ends_with', function ($endsWith) use ($query) {
-                $query->where('name', 'like', "%$endsWith");
-            });
-
-            $request->whenFilled('origin', function ($origin) use ($query) {
-                $query->whereHas('origins', function ($q) use ($origin) {
-                    $q->where('slug', $origin);
-                });
-            });
-
-            $request->whenFilled('gender', function ($gender) use ($query) {
-                $query->whereHas('gender', function ($q) use ($gender) {
-                    $q->where('slug', $gender);
-                });
-            });
-
-            $names = $query->take(200)->get();
-
-            //sort names by name
-            $names = $names->sortBy('is_popular');
-            $names = $names->sortBy('name');
-
-            $names = paginate($names, 50);
-
-            $names->appends($request->query());
-
-            return $names;
-        });
-    }
-
-    public function getFavoriteNames(): LengthAwarePaginator
+    public function getFavorites(): LengthAwarePaginator
     {
         $uuid = request()->cookie('uuid');
 
@@ -187,51 +79,55 @@ class NameService
         return paginate($names, 30);
     }
 
-    public function getUsernames(string $name): array
+    public function search(Request $request): LengthAwarePaginator
     {
-        $randomness = rand(1, 15);
+        $request->validate([
+            'q' => 'nullable|string',
+            'origin' => 'nullable|string',
+        ]);
 
-        return cache_remember("usernames:$name:$randomness", function () use ($name) {
-            return $this->usernameGeneratorService->generateUsernames($name);
-        });
-    }
+        $params = $request
+            ->collect()
+            ->sortKeys()
+            ->map(function ($value, $key) {
+                return $key . ':' . $value;
+            })->implode(':');
 
-    public function getAbbreviations(string $name, bool $rand = false): array
-    {
-        $name = normalize_name($name);
-        $alphabets = collect(str_split($name))->filter(function ($alphabet) {
-            return $alphabet !== ' ';
-        })->toUpper()->toArray();
+        $cacheKey = 'search:' . $params;
 
-        // Getting abbreviations for the alphabets
-        $randomness = $rand ? rand(1, 15) : 1;
-        $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($alphabets) {
-            return Abbreviation::whereIn('alphabet', $alphabets)->get()->groupBy('alphabet');
-        });
+        return cache_remember($cacheKey, function () use ($request) {
+            $query = Name::query()
+                ->with(['gender', 'origins'])
+                ->withoutGlobalScopes()
+                ->validGender()
+                ->popular();
 
-        $abbreviations = [];
-        foreach ($alphabets as $alphabet) {
-            $alphabetKey = strtoupper($alphabet);
+            $request->whenFilled('q', function ($searchTerm) use ($query) {
+                $query->search($searchTerm);
+            });
 
-            // Check if there are multiple abbreviations for the alphabet and pick one randomly
-            if (isset($abbreviationsCollection[$alphabetKey]) && $abbreviationsCollection[$alphabetKey]->count() > 0) {
-                $randomAbbreviation = $abbreviationsCollection[$alphabetKey]->random();
-                $abbreviations[] = [$alphabet => $randomAbbreviation->name ?? null];
-            } else {
-                $abbreviations[] = [$alphabet => null];
-            }
-        }
+            $request->whenFilled('origin', function ($origin) use ($query) {
+                $query->whereHas('origins', function ($q) use ($origin) {
+                    $q->select('slug')->where('slug', $origin);
+                });
+            });
 
-        return $abbreviations;
-    }
+            $request->whenFilled('gender', function ($gender) use ($query) {
+                $query->join('genders', 'names.gender_id', '=', 'genders.id')
+                      ->where('genders.slug', $gender)
+                      ->select('names.*');
+            });
 
-    public function getFancyTexts(string $name, bool $random = false): array
-    {
-        $randomness = $random ? rand(1, 15) : 1;
-        $fancyTextService = new FancyTextService($name);
+            $names = $query->take(200)->get();
 
-        return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
-            return $fancyTextService->generate();
+            $names = $names->sortBy('is_popular');
+            $names = $names->sortBy('name');
+
+            $names = paginate($names, 50);
+
+            $names->appends($request->query());
+
+            return $names;
         });
     }
 }
