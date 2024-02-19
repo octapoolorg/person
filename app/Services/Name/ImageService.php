@@ -125,7 +125,7 @@ class ImageService
     private function getNameFromSlug(string $nameSlug): Name
     {
         return cache_remember("name:$nameSlug", function () use ($nameSlug) {
-            return Name::withoutGlobalScope('active')->where('slug', $nameSlug)->firstOrFail();
+            return Name::withoutGlobalScopes()->where('slug', $nameSlug)->firstOrFail();
         });
     }
 

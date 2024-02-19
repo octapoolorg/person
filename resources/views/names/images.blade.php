@@ -11,7 +11,7 @@
                 <div class="p-6">
                     <h2 class="text-xl font-semibold text-gray-900 leading-tight">Image Name</h2>
                     <p class="mt-3 text-base text-gray-500">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum doloribus omnis sequi, animi iure sed voluptate eveniet? Atque asperiores, vitae beatae ex culpa fuga ipsum recusandae minima, similique dolorem saepe.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, commodi.
                     </p>
                 </div>
             </div>
