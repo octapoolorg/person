@@ -1,7 +1,7 @@
 <section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-base-700 bg-surface dark:bg-base-800">
     <div class="flex flex-row justify-between items-center relative">
         <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold relative">
-            {!! $name->name !!} Name Numerology
+            {!! $name->name !!} Name Personality
         </h2>
         <span class="group relative md:absolute top-0 right-0 mb-2 mr-2 flex items-center">
             <i class="cursor-pointer fas fa-info-circle text-primary-500 dark:text-primary-300 text-2xl group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300"></i>
@@ -17,8 +17,8 @@
     <div class="space-y-10">
         <!-- Numerology Explanation -->
         <p class="text-lg text-base-600 dark:text-base-300 leading-relaxed">
-            Numerology numbers, each associated with a unique color, offer insights into personality and
-            destiny. Discover the colors and meanings personalized for {!! $name->name !!}.
+            {!! $name->name !!} is a name that is associated with the numbers {!! $data['numerology']['numbers']['destiny'] !!}, {!! $data['numerology']['numbers']['soul_urge'] !!}, and {!! $data['numerology']['numbers']['personality'] !!}.
+            These numbers are used to determine a person's character, personality, and even the future.
         </p>
 
         <!-- Numerology Details -->

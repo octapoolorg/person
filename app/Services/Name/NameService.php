@@ -274,6 +274,8 @@ class NameService
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
                 $query->where('names.name', 'like', $searchTerm . '%');
+            }, function () use ($query) {
+                $query->validGender()->popular();
             });
 
             $request->whenFilled('origin', function ($origin) use ($query) {

@@ -3,15 +3,15 @@
 use App\Models\Redirect;
 use Illuminate\Support\Facades\Route;
 
-$cacheKey = 'redirects';
+// $cacheKey = 'redirects';
 
-$redirects = cache_remember($cacheKey, function () {
-    return Redirect::all()->pluck('target', 'source');
-});
+// $redirects = cache_remember($cacheKey, function () {
+//     return Redirect::all()->pluck('target', 'source');
+// });
 
-foreach ($redirects as $source => $target) {
-    Route::redirect($source, $target, 301);
-}
+// foreach ($redirects as $source => $target) {
+//     Route::redirect($source, $target, 301);
+// }
 
 
 Route::get('static/images/signature/style/monsieur-la-doulaise/{name}.jpg', function ($name) {

@@ -7,14 +7,17 @@
                 <!-- Name Details Section -->
                 <x-names.detail :name="$name" />
 
-                <!-- Name Zodiac Section -->
-                <x-names.zodiac :data="$data" :name="$name" />
+                <!-- Numerology Details Section -->
+                <x-names.numerology :data="$data" :name="$name" />
+
+                <!-- Fancy Texts Section -->
+                <x-names.fancy-texts :data="$data" :name="$name" />
 
                 <!-- Name Signature Section -->
                 <x-names.signature :data="$data" :name="$name" />
 
-                <!-- Numerology Details Section -->
-                <x-names.numerology :data="$data" :name="$name" />
+                <!-- Wallpaper section -->
+                <x-names.wallpaper :data="$data" :name="$name" />
 
                 <!-- Abbreviations Section -->
                 <x-names.abbreviation :data="$data" :name="$name" />
@@ -22,11 +25,8 @@
                 <!-- Username Section -->
                 <x-names.username :data="$data" :name="$name" />
 
-                <!-- Wallpaper section -->
-                <x-names.wallpaper :data="$data" :name="$name" />
-
-                <!-- Fancy Texts Section -->
-                <x-names.fancy-texts :data="$data" :name="$name" />
+                <!-- Name Zodiac Section -->
+                <x-names.zodiac :data="$data" :name="$name" />
 
                 <!-- Similar Names Section -->
                 {{-- <x-names.similar-names :data="$data" :name="$name" /> --}}
