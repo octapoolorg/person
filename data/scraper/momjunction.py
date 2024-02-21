@@ -1,3 +1,5 @@
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 import warnings
 warnings.filterwarnings("ignore")
 import csv
@@ -14,6 +16,7 @@ from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
 chrome_options.add_argument("--ignore-ssl-errors=yes")
 chrome_options.add_argument("--ignore-certificate-errors")
+chrome_options.add_argument("--allow-insecure-localhost")
 
 chrome_options.add_argument("--disable-gpu")  # Disable GPU hardware acceleration
 chrome_options.add_argument("--disable-images")  # Disable images
