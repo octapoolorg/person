@@ -136,7 +136,8 @@ class NameService
             'abbreviations' => $this->getAbbreviations($name->name),
             'fancyTexts' => $this->getFancyTexts($name->name),
             'userNames' => $this->getUsernames($name->name),
-            'quotes' => $this->getQuotes($name->name)
+            'quotes' => $this->getQuotes($name->name),
+            'statuses' => $this->getStatuses($name->name),
         ];
     }
 
@@ -153,6 +154,12 @@ class NameService
     {
         $quotes = collect(__('quotes',['name' => $name]));
         return $quotes->random(3)->toArray();
+    }
+
+    public function getStatuses (string $name): array
+    {
+        $statuses = collect(__('statuses',['name' => $name]));
+        return $statuses->random(3)->toArray();
     }
 
     public function getAbbreviations(string $name, bool $rand = false): array

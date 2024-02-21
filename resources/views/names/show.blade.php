@@ -22,6 +22,9 @@
                 <!-- Quotes Section -->
                 <x-names.quote :data="$data" :name="$name" />
 
+                <!-- Statuses Section -->
+                <x-names.statuses :data="$data" :name="$name" />
+
                 <!-- Abbreviations Section -->
                 <x-names.abbreviation :data="$data" :name="$name" />
 
