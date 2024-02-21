@@ -1,7 +1,7 @@
 import warnings
-warnings.filterwarnings("ignore")
+import os
 import csv
-import pickle  # Import pickle for saving/loading progress
+import pickle
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,11 +9,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
+warnings.filterwarnings("ignore")
+
 # Chrome options
 chrome_options = Options()
 chrome_options.add_argument("--ignore-ssl-errors=yes")
 chrome_options.add_argument("--ignore-certificate-errors")
-# Removed headless mode
 chrome_options.add_argument("--disable-gpu")  # Disable GPU hardware acceleration
 chrome_options.add_argument("--disable-images")  # Disable images
 chrome_options.add_argument("--disable-javascript")  # Disable JavaScript
@@ -25,9 +26,13 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # CSV file setup
 csv_file_path = 'prokerala.csv'
-with open(csv_file_path, 'w', newline='', encoding='utf-8') as file:
-    writer = csv.writer(file)
-    writer.writerow(["name"])
+
+# Check if the file exists
+if not os.path.isfile(csv_file_path):
+    # If the file doesn't exist, create it and write the header
+    with open(csv_file_path, 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow(["name"])
 
 # Load the last page visited, if it exists
 try:
@@ -49,6 +54,7 @@ try:
         if not names_elements:
             break  # Break the loop if no names are found
 
+        # Open the file in append mode
         with open(csv_file_path, 'a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             for name_element in names_elements:
@@ -59,6 +65,9 @@ try:
             pickle.dump(page_number, f)
 
         page_number += 1
+
+except Exception as e:
+    print(f"An error occurred: {e}")
 
 finally:
     driver.quit()
