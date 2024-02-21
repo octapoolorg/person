@@ -32,6 +32,4 @@
         description="{!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.auspicious_colors', ['name' => $name->name]) !!}"
         image="{!! asset('static/images/zodiac/colors/' . str($data['numerology']['zodiac']['attributes']['color'])->slug() . '.png') !!}"
         caption="{!! $data['numerology']['zodiac']['attributes']['color'] !!}" />
-
-    <hr class="dark:border-base-700">
 </section>
