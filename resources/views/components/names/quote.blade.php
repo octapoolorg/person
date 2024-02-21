@@ -6,12 +6,15 @@
         </h2>
     </div>
     <div class="flex flex-col gap-8">
-        @foreach($data['quotes'] as $quote)
-            <div class="bg-surface border-l-4 border-primary-500 rounded-lg shadow-sm p-6">
-                <p class="text-base-600 text-lg">
-                    {!! $quote !!}
-                </p>
-            </div>
+        @foreach ($data['quotes'] as $quote)
+            <blockquote class="bg-primary-50 dark:bg-base-900 rounded-lg shadow dark:shadow-none">
+                <div class="relative z-10 px-8 py-10">
+                    <i class="fas fa-quote-left text-4xl absolute top-5 left-3 -start-8 size-16 text-primary-100 dark:text-base-700 -z-10"></i>
+                    <p class="text-base-800 sm:text-xl dark:text-surface"><em>
+                            {{ $quote }}
+                        </em></p>
+                </div>
+            </blockquote>
         @endforeach
     </div>
 </section>

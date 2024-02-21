@@ -25,7 +25,7 @@ return [
     ],
     'footer' => [
         'title' => 'iDenteez',
-        'description' => 'iDenteez is a platform that provides a variety of services to help you find the perfect name for your business, brand, product, or service.',
+        'description' => 'iDenteez provides deep insights into names, their origins, meanings, and more. Discover the story behind your name.',
         'rights' => 'All rights reserved.',
     ],
 ];

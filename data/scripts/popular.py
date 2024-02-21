@@ -26,6 +26,15 @@ df['name'] = df['name'].str.title()
 
 df = df.sort_values(by='name')
 
+# add id column starting from 1 at start
+
+df['id'] = range(1, 1 + len(df))
+
+# reorder columns
+
+df = df[['id', 'name']]
+
+
 # save to a new file
 
 df.to_csv('popular_names.csv', index=False)
