@@ -10,8 +10,8 @@
                 <!-- Numerology Details Section -->
                 <x-names.numerology :data="$data" :name="$name" />
 
-                <!-- Fancy Texts Section -->
-                <x-names.fancy-texts :data="$data" :name="$name" />
+                <!-- Fancy Text Section -->
+                <x-names.fancy-text :data="$data" :name="$name" />
 
                 <!-- Name Signature Section -->
                 <x-names.signature :data="$data" :name="$name" />

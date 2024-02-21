@@ -4,7 +4,15 @@
             {!! $name->name !!} Name Wallpaper
         </h2>
     </div>
-
+    @if ($name->is_popular)
+        <div class="flex flex-col md:flex-row items-end md:items-center justify-end mb-6">
+            <a href="{{ route('names.wallpapers', $name->slug) }}" target="_blank"
+                class="group mt-4 md:mt-0 text-primary-600 hover:text-primary-800 dark:hover:text-primary-200 dark:text-primary-400 font-semibold transition-colors duration-300 flex items-center">
+                More wallpapers for {!! $name->name !!}
+                <i class="fas fa-arrow-right ml-2 text-primary-600 dark:text-primary-400 group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
+            </a>
+        </div>
+    @endif
     <!-- Main displayed wallpaper -->
     <div class="overflow-hidden rounded-lg shadow-lg dark:shadow-none my-8">
         <img

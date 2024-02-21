@@ -8,7 +8,7 @@
             Find the perfect name for your baby with our comprehensive search.
         </p>
         <a href="{{ route('names.search') }}"
-           class="inline-block bg-gradient-to-r from-primary-500 to-primary-600 text-surface font-medium py-3 px-6 rounded-lg hover:from-primary-600 hover:to-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-700 transition duration-300 ease-in-out uppercase text-sm lg:text-base focus:outline-none">
+           class="inline-block bg-primary-500 dark:bg-primary-800 text-surface font-medium py-3 px-6 rounded-lg hover:bg-primary-600 dark:hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-700 transition duration-300 ease-in-out uppercase text-sm lg:text-base focus:outline-none">
             <span class="flex items-center justify-center">
                 <i class="fas fa-search mr-2"></i>
                 Explore Names

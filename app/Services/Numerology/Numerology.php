@@ -150,7 +150,7 @@ abstract class Numerology implements INumerology
             33 => 'Pisces',
         ];
 
-        return $zodiacSigns[$destinyNumber] ?? 'Unknown';
+        return $zodiacSigns[$destinyNumber];
     }
 
     protected function normalizeZodiacSign(string $sign): string
@@ -160,7 +160,7 @@ abstract class Numerology implements INumerology
 
     protected function fetchAttributeBySign(array $attributeArray, string $normalizedSign): string
     {
-        return $attributeArray[$normalizedSign] ?? 'Unknown';
+        return $attributeArray[$normalizedSign];
     }
 
     protected function getZodiacAttributesBySign(string $sign): array
