@@ -1,4 +1,4 @@
-<section class="shadow">
+<section class="shadow" x-data>
     <div class="bg-primary-500 dark:bg-primary-800 py-4 shadow rounded-t-xl flex items-center justify-between px-5">
         <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
             <i @class([
@@ -17,7 +17,7 @@
     <section
         class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
         <article class="text-center">
-            <div x-data class="md:px-10">
+            <div class="md:px-10">
                 <h1
                     class="text-3xl text-center md:text-7xl font-bold py-10 md:py-4 dark:text-base-100 leading-relaxed break-words">
                     <input type="hidden" id="name" value="{{ $name->name }}" x-ref="name">
@@ -45,9 +45,9 @@
         </article>
 
         <a href="javascript:;" title="Add to favorites"
-            class="absolute top-5 right-5 text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button"
+            class="absolute top-5 md:top-10 right-5 text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button"
             data-slug="{{ $name->slug }}">
-            <i class="far fa-heart text-2xl md:text-3xl" id="favorite-icon"></i>
+            <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
         </a>
     </section>
 

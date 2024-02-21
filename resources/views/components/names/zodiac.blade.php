@@ -1,6 +1,6 @@
 <section class="border dark:border-base-700 py-8 px-4 md:px-8 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800">
     <div class="flex flex-row justify-between items-center relative">
-        <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold relative">
+        <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold relative">
             {!! $name->name !!} Name Zodiac Details
         </h2>
         <span class="group relative md:absolute top-0 right-0 mb-2 mr-2 flex items-center">

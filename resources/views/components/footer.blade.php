@@ -26,7 +26,7 @@
                 </h4>
 
                 <div class="mt-3 grid space-y-3">
-                    @foreach ($namesList->random(4) as $name)
+                    @foreach ($trendingNames->random(4) as $name)
                         <p>
                             <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
                                 href="{!! route('names.show', $name->slug) !!}">

@@ -19,6 +19,9 @@
                 <!-- Wallpaper section -->
                 <x-names.wallpaper :data="$data" :name="$name" />
 
+                <!-- Quotes Section -->
+                <x-names.quote :data="$data" :name="$name" />
+
                 <!-- Abbreviations Section -->
                 <x-names.abbreviation :data="$data" :name="$name" />
 

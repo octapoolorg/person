@@ -1,7 +1,7 @@
 <!-- FAQ Section -->
 <section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-base-700 bg-surface dark:bg-base-800"
 itemscope itemtype="https://schema.org/FAQPage">
-    <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-bold capitalize">
+    <h2 class="text-2xl md:text-3xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold capitalize">
         Frequently Asked Questions about
         <span class="text-2xl leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
             ({!! $name->name !!})
@@ -11,7 +11,7 @@ itemscope itemtype="https://schema.org/FAQPage">
     <div class="mx-auto space-y-6 divide-y divide-base-200 dark:divide-base-700">
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
+            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-semibold py-4">
                 What is the meaning of {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
@@ -22,7 +22,7 @@ itemscope itemtype="https://schema.org/FAQPage">
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
+            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-semibold py-4">
                 What is the gender association of {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
@@ -33,7 +33,7 @@ itemscope itemtype="https://schema.org/FAQPage">
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-bold py-4">
+            <h3 itemprop="name" class="text-xl text-base-800 dark:text-base-100 font-semibold py-4">
                 What are the key numerology insights for {!! $name->name !!}?
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">

@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Cache;
-use App\Jobs\UpdateCacheJob;
 
 if (! function_exists('normalize_name')) {
     function normalize_name($name): array|string|null
@@ -27,22 +25,12 @@ if (! function_exists('random_word')) {
     }
 }
 
-if (!function_exists('cache_remember')) {
-    function cache_remember($key, $callback, $ttl = null, $default = null)
+if (! function_exists('cache_remember')) {
+    function cache_remember($key, $callback, $ttl = null)
     {
         $ttl = $ttl ?? now()->addDay();
 
-        // Check if cache exists
-        if (Cache::has($key)) {
-            // Return the cached value if it exists
-            return Cache::get($key);
-        } else {
-            // Dispatch a job to update the cache in the background
-            UpdateCacheJob::dispatch($key, $callback, $ttl);
-
-            // Return stale content if available, otherwise return default value
-            return Cache::get($key, $default);
-        }
+        return \Illuminate\Support\Facades\Cache::remember($key, $ttl, $callback);
     }
 }
 

@@ -1,6 +1,6 @@
 <section class="text-base-900 dark:text-base-100 px-6 py-8 shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800">
     <div class="flex flex-col md:flex-row justify-between mb-6">
-        <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-0 font-bold">
+        <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-0 font-semibold">
             {!! $name->name !!} Name Wallpaper
         </h2>
     </div>

@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.8",
         "laravolt/avatar": "^5.0",
         "league/csv": "^9.11",
+        "opis/closure": "^3.6",
         "spatie/laravel-sitemap": "^7.0",
         "themsaid/wink": "^1.3"
     },

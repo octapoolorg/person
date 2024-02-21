@@ -136,8 +136,10 @@ class NameService
             'abbreviations' => $this->getAbbreviations($name->name),
             'fancyTexts' => $this->getFancyTexts($name->name),
             'userNames' => $this->getUsernames($name->name),
+            'quotes' => $this->getQuotes($name->name)
         ];
     }
+
     public function getUsernames(string $name): array
     {
         $randomness = rand(1, 15);
@@ -145,6 +147,12 @@ class NameService
         return cache_remember("usernames:$name:$randomness", function () use ($name) {
             return $this->usernameService->generateUsernames($name);
         });
+    }
+
+    public function getQuotes (string $name): array
+    {
+        $quotes = collect(__('quotes',['name' => $name]));
+        return $quotes->random(3)->toArray();
     }
 
     public function getAbbreviations(string $name, bool $rand = false): array
@@ -201,6 +209,7 @@ class NameService
     public function signature(string $name, string $style): Response
     {
         $style = $this->signStyles[$style];
+        $name = $this->getName($name)['name']->name;
         $firstPart = $this->getFirstPartOfName($name);
 
         $style = array_merge($style, [
@@ -227,6 +236,7 @@ class NameService
         $styles = array_rand($this->signStyles, 3);
         return $this->generateUrls($name, $styles, 'names.signature');
     }
+
     private function generateUrls(string $name, array $styles, string $routeName): array
     {
         $urls = [];

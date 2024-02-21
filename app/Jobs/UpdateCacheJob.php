@@ -6,28 +6,29 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
 
 class UpdateCacheJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable;
 
     protected $key;
-    protected $callback;
+    protected $serializedClosure;
     protected $ttl;
 
-    public function __construct($key, $callback, $ttl)
+    public function __construct($key, $serializedClosure, $ttl)
     {
         $this->key = $key;
-        $this->callback = $callback;
+        $this->serializedClosure = $serializedClosure;
         $this->ttl = $ttl;
     }
 
     public function handle()
     {
-        // Execute the callback and update the cache
-        $value = call_user_func($this->callback);
-        Cache::put($this->key, $value, $this->ttl);
+        $closure = unserialize($this->serializedClosure)->getClosure();
+
+        $data = $closure();
+
+        Cache::put($this->key, $data, $this->ttl);
     }
 }

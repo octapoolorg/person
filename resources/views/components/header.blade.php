@@ -116,7 +116,7 @@
                         {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}>
                         <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
                         <span id="navbar-favorite-icon" @class([
-                            'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-red-500 border-2 border-surface rounded-full -top-0 -end-1 dark:border-base-900',
+                            'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-0 -end-1 dark:border-base-900',
                             'inline-flex' => $favorite,
                             'hidden' => !$favorite,
                         ])></span>
