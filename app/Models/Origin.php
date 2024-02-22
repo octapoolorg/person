@@ -12,9 +12,8 @@ class Origin extends Model
 
     protected $guarded = [];
 
-    public function name()
-    {
-        return $this->belongsTo(Name::class);
+    public function names() {
+        return $this->belongsToMany(Name::class);
     }
 
     public function meanings()
