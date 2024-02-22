@@ -27,27 +27,11 @@ class NameService
     protected array $wallpaperStyles = [
         'funky' => [
             'background' => 'wallpaper_funky.jpg',
-            'font_path'  => 'roboto/roboto-bold.ttf',
-            'font_size'  => 200,
-            'font_color' => '#a62756',
-            'text'       => true
-        ],
-        'pet' => [
-            'background' => 'wallpaper_pet.jpg',
             'position_x' => 970,
             'position_y' => 400,
             'font_path'  => 'roboto/roboto-bold.ttf',
             'font_size'  => 150,
             'font_color' => '#f2f9f9',
-            'text'       => true
-        ],
-        'evening' => [
-            'background' => 'wallpaper_evening.jpg',
-            'position_x' => 970,
-            'position_y' => 600,
-            'font_path'  => 'poppins/poppins-regular.ttf',
-            'font_size'  => 150,
-            'font_color' => '#ffffff',
             'text'       => true
         ],
         'cat' => [
@@ -234,13 +218,15 @@ class NameService
 
     public function wallpaperUrls(string $name): array
     {
-        $styles = array_rand($this->wallpaperStyles, 3);
+        $num = count($this->wallpaperStyles) > 3 ? 3 : count($this->wallpaperStyles);
+        $styles = array_rand($this->wallpaperStyles, $num);
         return $this->generateUrls($name, $styles, 'names.wallpaper');
     }
 
     public function signatureUrls(string $name): array
     {
-        $styles = array_rand($this->signStyles, 3);
+        $num = count($this->signStyles) > 3 ? 3 : count($this->signStyles);
+        $styles = array_rand($this->signStyles, $num);
         return $this->generateUrls($name, $styles, 'names.signature');
     }
 

@@ -6,7 +6,7 @@
     </div>
 
     <!-- Download link for the currently displayed wallpaper -->
-    <a href="#" download id="download-link" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center justify-end mt-4">
+    <a download id="download-link" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center justify-end mt-4" href="{!! head($data['wallpaperUrls']) !!}" target="_blank">
         Download
         <i class="fas fa-download ml-2"></i>
     </a>
