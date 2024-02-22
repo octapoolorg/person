@@ -37,15 +37,31 @@ def first_pass():
             name_to_id[data['name']] = data['id']
 
 # Step 2: Process each line to populate data storage
+def process_list(name_id, data, key, process_func):
+    items = data.get(key, [])
+    if items:
+        process_func(name_id, items)
+
+def process_items(name_id, items, category):
+    for item in items:
+        if category == 'origins':
+            origin_id = len(data_storage['origins']) + 1
+            data_storage['origins'].append([origin_id, name_id, item['origin']])
+            data_storage['meanings'].append([origin_id, item['meanings'], item['description']])
+        elif category in ['sibling_names', 'similar_names']:
+            related_name_id = name_to_id.get(item)
+            if related_name_id is not None:
+                data_storage[category].append([name_id, related_name_id])
+        else:
+            data_storage[category].extend([[name_id, item]])
+
 def second_pass():
     for data in data_lines:
         name_id = data['id']
-        data_storage['names'].append([name_id, data['name'], data['gender'], data['pronunciation'], data['popularity']])
-        process_origins(name_id, data.get('origins', []))
-        process_quotes(name_id, data.get('quotes', []))
-        process_relationships(name_id, data.get('sibling_names', []), 'sibling_names')
-        process_relationships(name_id, data.get('similar_names', []), 'similar_names')
-        process_nicknames(name_id, data.get('nicknames', []))
+        data_storage['names'].append([name_id, data.get('name', ''), data.get('gender', ''), data.get('pronunciation', ''), data.get('popularity', '')])
+        for key in output_paths.keys():
+            if key != 'names':
+                process_list(name_id, data, key, lambda id, items: process_items(id, items, key))
 
 def process_origins(name_id, origins):
     for origin in origins:
@@ -67,7 +83,7 @@ def process_nicknames(name_id, nicknames):
 
 def write_csv():
     for category, path in output_paths.items():
-        with open(path, mode='w', newline='') as file:
+        with open(path, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(headers[category])
             writer.writerows(data_storage[category])
