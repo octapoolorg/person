@@ -2,7 +2,7 @@
     class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-base-700 bg-surface dark:bg-base-800">
     <div class="flex flex-row justify-between items-center relative">
         <h2 class="text-2xl md:text-3xl font-semibold text-base-800 dark:text-base-100 mb-4 md:mb-10 relative">
-            {!! $name->name !!} Name Personality
+            Personality of {!! $name->name !!}
         </h2>
         <span class="group relative md:absolute top-0 right-0 mb-2 mr-2 flex items-center">
             <i
@@ -31,6 +31,9 @@
             <div class="text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-yellow-700 dark:text-yellow-300 mb-3">
                     Personality
+                    <span class="text-yellow-500 dark:text-yellow-100 text-sm font-normal align-middle">
+                        (Based on Personality Number)
+                    </span>
                 </h3>
                 <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
                     {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $name->name]) !!}
@@ -46,6 +49,9 @@
             <div class="text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-primary-700 dark:text-primary-300 mb-3">
                     Life Purpose
+                    <span class="text-primary-500 dark:text-primary-100 text-sm font-normal align-middle">
+                        (Based on Destiny Number)
+                    </span>
                 </h3>
                 <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
                     {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $name->name]) !!}
@@ -60,6 +66,9 @@
             <div class="text-center md:text-left">
                 <h3 class="text-2xl font-semibold text-green-700 dark:text-green-300 mb-3">
                     Heart Voice
+                    <span class="text-green-500 dark:text-green-100 text-sm font-normal align-middle">
+                        (Based on Soul Urge Number)
+                    </span>
                 </h3>
                 <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
                     {!! __('numerology.soul_urge.' . $data['numerology']['numbers']['soul_urge'], ['name' => $name->name]) !!}

@@ -4,7 +4,7 @@
             Abbreviations of {!! $name->name !!}
         </h2>
         <a href="javascript:" id="generate-abbreviations" class="group mt-4 md:mt-0 text-primary-600 hover:text-primary-800 dark:hover:text-primary-200 dark:text-primary-400 font-semibold transition-colors duration-300 flex items-center self-end">
-            Generate another
+            Generate new
             <i class="fas fa-sync-alt ml-2 group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
         </a>
     </div>

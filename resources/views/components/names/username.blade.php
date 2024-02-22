@@ -9,7 +9,7 @@
     </div>
     <div class="flex flex-col md:flex-row items-end md:items-center justify-end mb-6">
         <a href="javascript:" id="generate-usernames" class="group mt-4 md:mt-0 text-primary-600 hover:text-primary-800 dark:hover:text-primary-200 dark:text-primary-400 font-semibold transition-colors duration-300 flex items-center">
-            Generate new usernames
+            Generate new
             <i class="fas fa-sync-alt ml-2 text-primary-600 dark:text-primary-400 group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
         </a>
     </div>

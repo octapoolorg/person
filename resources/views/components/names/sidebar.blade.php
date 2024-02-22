@@ -17,7 +17,7 @@
     </div>
 
     <!-- Trending Names -->
-    <div class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all">
+    <div class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all sticky top-10">
         <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-6">
             Trending Names
         </h5>
