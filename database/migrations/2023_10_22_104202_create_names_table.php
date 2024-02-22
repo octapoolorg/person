@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('names', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->index();
+            $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('meaning');
+            $table->string('gender')->nullable();
+            $table->string('pronunciation')->nullable();
+            $table->integer('popularity')->nullable();
             $table->boolean('is_simple')->default(false)->index();
             $table->boolean('is_active')->default(false)->index();
             $table->boolean('is_popular')->default(false)->index();
             $table->boolean('is_generated')->default(false)->index();
-            $table->foreignId('gender_id');
             $table->timestamps();
         });
 

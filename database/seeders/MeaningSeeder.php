@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Name;
+use App\Models\Meaning;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use League\Csv\Reader;
 
-class NameSeeder extends Seeder
+class MeaningSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $csv = Reader::createFromPath(base_path('data/imports/names.csv'));
+        $csv = Reader::createFromPath(base_path('data/imports/meanings.csv'), 'r');
         $csv->setHeaderOffset(0);
 
         $batchSize = 500;
@@ -27,16 +24,9 @@ class NameSeeder extends Seeder
         foreach ($csv->getRecords() as $record) {
             $records[] = [
                 'id' => $record['id'],
-                'name' => $record['name'],
-                'slug' => $record['slug'],
-                'gender' => $record['gender'],
+                'origin_id' => $record['origin_id'],
                 'meaning' => $record['meaning'],
-                'pronunciation' => $record['pronunciation'],
-                'popularity' => $record['popularity'],
-                'is_active' => $record['is_active'],
-                'is_generated' => $record['is_generated'],
-                'is_popular' => $record['is_popular'],
-                'is_simple' => $record['is_simple'],
+                'description' => $record['description'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];
@@ -44,13 +34,13 @@ class NameSeeder extends Seeder
             $counter++;
 
             if ($counter % $batchSize === 0) {
-                Name::insert($records);
+                Meaning::insert($records);
                 $records = [];
             }
         }
 
-        if (! empty($records)) {
-            Name::insert($records);
+        if (!empty($records)) {
+            Meaning::insert($records);
         }
     }
 }

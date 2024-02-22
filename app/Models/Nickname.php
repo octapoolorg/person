@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Origin extends Model
+class Nickname extends Model
 {
     use HasFactory;
 
@@ -15,10 +14,5 @@ class Origin extends Model
     public function name()
     {
         return $this->belongsTo(Name::class);
-    }
-
-    public function meanings()
-    {
-        return $this->hasMany(Meaning::class);
     }
 }

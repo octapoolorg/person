@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Origin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use League\Csv\Reader;
 
-class OriginSeeder extends Seeder
+class NameSiblingSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $csv = Reader::createFromPath(base_path('data/imports/origins.csv'));
+        $csv = Reader::createFromPath(base_path('data/imports/name_sibling.csv'), 'r');
         $csv->setHeaderOffset(0);
 
         $batchSize = 500;
@@ -26,10 +23,8 @@ class OriginSeeder extends Seeder
 
         foreach ($csv->getRecords() as $record) {
             $records[] = [
-                'id' => $record['id'],
-                'name' => $record['name'],
-                'slug' => $record['slug'],
                 'name_id' => $record['name_id'],
+                'sibling_name_id' => $record['sibling_name_id'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];
@@ -37,13 +32,13 @@ class OriginSeeder extends Seeder
             $counter++;
 
             if ($counter % $batchSize === 0) {
-                Origin::insert($records);
+                DB::table('name_sibling')->insert($records);
                 $records = [];
             }
         }
 
-        if (! empty($records)) {
-            Origin::insert($records);
+        if (!empty($records)) {
+            DB::table('name_sibling')->insert($records);
         }
     }
 }

@@ -17,13 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             RedirectSeeder::class,
-            GenderSeeder::class,
             NameSeeder::class,
             CategorySeeder::class,
             OriginSeeder::class,
             AbbreviationSeeder::class,
             CategoryNameSeeder::class,
-            NameOriginSeeder::class,
         ]);
     }
 }
