@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 data/imports/*.csv
 data/scripts/update/db/*.csv
+data/scripts/update/data.jsonl
