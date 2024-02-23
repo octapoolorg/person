@@ -52,7 +52,6 @@ def clean_string(s):
         # For strings not starting and ending with double quotes, just replace "" with '
         return s.replace('""', "'")
 
-
 def populate_origins_and_mappings():
     origin_id = 1
     for data in data_lines:
@@ -84,12 +83,15 @@ def process_items(name_id, items, category):
             origin_id = origin_to_id[origin_name]
             no_id = len(data_storage['name_origins']) + 1
             data_storage['name_origins'].append([no_id, name_id, origin_id])
-            item['meanings'] = filter_meanings(item['meanings'].split(', '))
-            # convert meanings to a string
-            item['meanings'] = ', '.join(item['meanings'])
-            data_storage['meanings'].append([origin_id, clean_string(item['meanings']), clean_string(item['description'])])
+            if item.get('meanings') is not None:  # Ensure there are meanings to process
+                item['meanings'] = filter_meanings(item['meanings'].split(', '))
+                # convert meanings to a string
+                item['meanings'] = ', '.join(item['meanings'])
+                data_storage['meanings'].append([origin_id, clean_string(item['meanings']), clean_string(item.get('description', ''))])
     elif category in ['sibling_names', 'similar_names']:
         for related_name in items:
+            if isinstance(related_name, list):
+                related_name = ' '.join(related_name)  # Join list elements into a string
             related_name_id = name_to_id.get(clean_string(related_name))
             if related_name_id:
                 rel_id = len(data_storage[category]) + 1
@@ -130,7 +132,9 @@ def second_pass():
 
         # Collect meanings for filtering
         for origin in data.get('origins', []):
-            if 'meanings' in origin:  # Ensure there are meanings to process
+            if 'meanings' in origin and origin['meanings'] is not None:  # Ensure there are meanings to process
+                if isinstance(origin['meanings'], list):
+                    origin['meanings'] = ', '.join(origin['meanings'])  # Join list elements into a string
                 all_meanings.extend([meaning.strip() for meaning in origin['meanings'].split(', ')])
 
         # Filter meanings using the standalone function
@@ -149,7 +153,6 @@ def second_pass():
         ])
         for key in ['origins', 'quotes', 'sibling_names', 'nicknames', 'similar_names']:
             process_list(name_id, data, key, lambda id, items: process_items(id, items, key))
-
 
 def write_csv():
     for category, path in output_paths.items():
