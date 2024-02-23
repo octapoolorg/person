@@ -18,10 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RedirectSeeder::class,
             NameSeeder::class,
-            CategorySeeder::class,
             OriginSeeder::class,
             AbbreviationSeeder::class,
-            CategoryNameSeeder::class,
         ]);
     }
 }

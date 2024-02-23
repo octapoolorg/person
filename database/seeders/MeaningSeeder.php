@@ -23,10 +23,8 @@ class MeaningSeeder extends Seeder
 
         foreach ($csv->getRecords() as $record) {
             $records[] = [
-                'id' => $record['id'],
                 'origin_id' => $record['origin_id'],
-                'meaning' => $record['meaning'],
-                'description' => $record['description'],
+                'text' => $record['text'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];

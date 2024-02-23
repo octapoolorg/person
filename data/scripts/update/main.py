@@ -17,10 +17,10 @@ output_paths = {
 # Initialize storage for CSV data
 data_storage = {key: [] for key in output_paths.keys()}
 headers = {
-    'names': ['id', 'name', 'meanings', 'gender', 'pronunciation', 'popularity'],
+    'names': ['id', 'name', 'meaning', 'gender', 'pronunciation', 'popularity'],
     'origins': ['id', 'origin'],
     'name_origins': ['id', 'name_id', 'origin_id'],
-    'meanings': ['origin_id', 'meaning', 'description'],
+    'meanings': ['origin_id', 'meaning'],
     'quotes': ['id', 'name_id', 'quote'],
     'sibling_names': ['id', 'name_id', 'sibling_name_id'],
     'nicknames': ['id', 'name_id', 'nickname'],
@@ -41,7 +41,7 @@ def clean_string(s):
         # Remove the outer double quotes temporarily
         temp_s = s[1:-1]
         # Replace internal double quotes with single quotes
-        temp_s = temp_s.replace('""', "'")
+        temp_s = temp_s.replace('"', "'")
         # Determine if we need to re-add outer double quotes
         # This is a simplified condition, you might need to expand it
         if ',' in temp_s or "'" in temp_s:
@@ -50,7 +50,7 @@ def clean_string(s):
             return temp_s
     else:
         # For strings not starting and ending with double quotes, just replace "" with '
-        return s.replace('""', "'")
+        return s.replace('"', "'")
 
 def populate_origins_and_mappings():
     origin_id = 1
@@ -87,7 +87,7 @@ def process_items(name_id, items, category):
                 item['meanings'] = filter_meanings(item['meanings'].split(', '))
                 # convert meanings to a string
                 item['meanings'] = ', '.join(item['meanings'])
-                data_storage['meanings'].append([origin_id, clean_string(item['meanings']), clean_string(item.get('description', ''))])
+                data_storage['meanings'].append([origin_id, clean_string(item['meanings'])])
     elif category in ['sibling_names', 'similar_names']:
         for related_name in items:
             if isinstance(related_name, list):
@@ -132,7 +132,7 @@ def second_pass():
 
         # Collect meanings for filtering
         for origin in data.get('origins', []):
-            if 'meanings' in origin and origin['meanings'] is not None:  # Ensure there are meanings to process
+            if 'meanings' in origin and origin['meanings'] is not None:
                 if isinstance(origin['meanings'], list):
                     origin['meanings'] = ', '.join(origin['meanings'])  # Join list elements into a string
                 all_meanings.extend([meaning.strip() for meaning in origin['meanings'].split(', ')])
@@ -161,6 +161,11 @@ def write_csv():
         with open(path, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(headers[category])
+            # Identify the index of the 'name' column if it exists
+            name_index = headers[category].index('name') if 'name' in headers[category] else None
+            # Sort the data by name if the 'name' column exists
+            if name_index is not None:
+                data_storage[category] = sorted(data_storage[category], key=lambda row: row[name_index])
             for row in data_storage[category]:
                 writer.writerow([clean_string(cell) if isinstance(cell, str) else cell for cell in row])
 

@@ -24,8 +24,8 @@ class QuoteSeeder extends Seeder
         foreach ($csv->getRecords() as $record) {
             $records[] = [
                 'id' => $record['id'],
-                'name_id' => $record['name_id'],
                 'quote' => $record['quote'],
+                'name_id' => $record['name_id'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];

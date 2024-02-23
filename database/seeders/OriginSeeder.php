@@ -28,8 +28,7 @@ class OriginSeeder extends Seeder
             $records[] = [
                 'id' => $record['id'],
                 'name' => $record['name'],
-                'slug' => $record['slug'],
-                'name_id' => $record['name_id'],
+                'slug' => str($record['name'])->slug(),
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];
