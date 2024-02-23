@@ -18,4 +18,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/data/imports/*.csv
+data/imports/*.csv
+data/scripts/update/db/*.csv

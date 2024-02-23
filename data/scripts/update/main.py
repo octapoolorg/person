@@ -156,6 +156,8 @@ def second_pass():
 
 def write_csv():
     for category, path in output_paths.items():
+        # add db in path
+        path = f'db/{path}'
         with open(path, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(headers[category])
