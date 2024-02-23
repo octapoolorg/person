@@ -25,7 +25,7 @@ class NicknameSeeder extends Seeder
             $records[] = [
                 'id' => $record['id'],
                 'name_id' => $record['name_id'],
-                'nickname' => $record['nickname'],
+                'name' => $record['name'],
                 'created_at' => $timestamp,
                 'updated_at' => $timestamp,
             ];

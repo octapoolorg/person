@@ -17,9 +17,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             RedirectSeeder::class,
+            AbbreviationSeeder::class,
             NameSeeder::class,
             OriginSeeder::class,
-            AbbreviationSeeder::class,
+            MeaningSeeder::class,
+            NameOriginSeeder::class,
+            NameSiblingSeeder::class,
+            NameSimilarSeeder::class,
+            NicknameSeeder::class,
+            QuoteSeeder::class,
         ]);
     }
 }

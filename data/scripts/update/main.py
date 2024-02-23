@@ -2,28 +2,28 @@ import json
 import csv
 
 # Define paths for the input and output files
-jsonl_input_path = 'data.jsonl'
+jsonl_input_path = 'data-fix.jsonl'
 output_paths = {
     'names': 'names.csv',
     'origins': 'origins.csv',
-    'name_origins': 'name_origins.csv',
+    'name_origins': 'name_origin.csv',
     'meanings': 'meanings.csv',
     'quotes': 'quotes.csv',
-    'sibling_names': 'sibling_names.csv',
+    'sibling_names': 'name_sibling.csv',
     'nicknames': 'nicknames.csv',
-    'similar_names': 'similar_names.csv',
+    'similar_names': 'name_similar.csv',
 }
 
 # Initialize storage for CSV data
 data_storage = {key: [] for key in output_paths.keys()}
 headers = {
     'names': ['id', 'name', 'meaning', 'gender', 'pronunciation', 'popularity'],
-    'origins': ['id', 'origin'],
+    'origins': ['id', 'name'],
     'name_origins': ['id', 'name_id', 'origin_id'],
-    'meanings': ['origin_id', 'meaning'],
-    'quotes': ['id', 'name_id', 'quote'],
+    'meanings': ['origin_id', 'text'],
+    'quotes': ['id', 'name_id', 'text'],
     'sibling_names': ['id', 'name_id', 'sibling_name_id'],
-    'nicknames': ['id', 'name_id', 'nickname'],
+    'nicknames': ['id', 'name_id', 'name'],
     'similar_names': ['id', 'name_id', 'similar_name_id'],
 }
 
@@ -88,10 +88,13 @@ def process_items(name_id, items, category):
                 # convert meanings to a string
                 item['meanings'] = ', '.join(item['meanings'])
                 data_storage['meanings'].append([origin_id, clean_string(item['meanings'])])
-    elif category in ['sibling_names', 'similar_names']:
+    elif category in ['sibling_names', 'similar_names', 'nicknames']:
+        # Convert inner lists to tuples before removing duplicates
+        items = [tuple(item) if isinstance(item, list) else item for item in items]
+        items = list(set(items))  # Remove duplicates
         for related_name in items:
-            if isinstance(related_name, list):
-                related_name = ' '.join(related_name)  # Join list elements into a string
+            if isinstance(related_name, tuple):
+                related_name = ' '.join(related_name)  # Join tuple elements into a string
             related_name_id = name_to_id.get(clean_string(related_name))
             if related_name_id:
                 rel_id = len(data_storage[category]) + 1
@@ -100,10 +103,6 @@ def process_items(name_id, items, category):
         for quote in items:
             quote_id = len(data_storage['quotes']) + 1
             data_storage['quotes'].append([quote_id, name_id, clean_string(quote)])
-    elif category == 'nicknames':
-        for nickname in items:
-            nickname_id = len(data_storage['nicknames']) + 1
-            data_storage['nicknames'].append([nickname_id, name_id, clean_string(nickname)])
 
 def filter_meanings(meanings_list):
     cleaned_meanings = [meaning.strip() for meaning in meanings_list if meaning.strip()]

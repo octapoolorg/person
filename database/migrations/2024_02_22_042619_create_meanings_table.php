@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('meanings', function (Blueprint $table) {
             $table->id();
-            $table->string('meaning');
-            $table->text('description')->nullable();
+            $table->string('text', 500);
             $table->foreignId('origin_id');
             $table->timestamps();
         });

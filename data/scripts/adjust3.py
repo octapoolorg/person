@@ -20,10 +20,25 @@ def generate_unique_slug(name, type):
 
     return slug
 
-df = pd.read_csv('../imports/combined.csv')
+df = pd.read_csv('../imports/names.csv')
+
+# create a temporary column with lowercased names
+df['lower_name'] = df['name'].str.lower()
+
+# remove duplicate rows on lower_name column, keep the is_popular =1 row
+df = df.sort_values('is_popular', ascending=False).drop_duplicates('lower_name').sort_index()
+
+# remove the temporary column
+df = df.drop(columns='lower_name')
 
 # Generate unique slug on the basis of name column
 df['slug'] = df['name'].apply(lambda name: generate_unique_slug(name, 'name'))
 
+# conver name column to title case
+df['name'] = df['name'].str.title()
+
+# sort by name column
+df = df.sort_values('name')
+
 # Save the data
-df.to_csv('../imports/combined.csv', index=False)
+df.to_csv('../imports/names.csv', index=False)

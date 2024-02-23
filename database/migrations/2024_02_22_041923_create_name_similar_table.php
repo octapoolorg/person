@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('name_similar', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('name_id')->constrained('names');
             $table->foreignId('similar_name_id')->constrained('names');
+            $table->primary(['name_id', 'similar_name_id']);
             $table->timestamps();
         });
     }

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->text('text');
+            $table->text('text', 500);
+            $table->foreignId('name_id');
             $table->timestamps();
         });
     }

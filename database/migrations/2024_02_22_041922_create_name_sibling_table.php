@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('name_sibling', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('name_id')->constrained('names');
             $table->foreignId('sibling_name_id')->constrained('names');
+            $table->primary(['name_id', 'sibling_name_id']);
             $table->timestamps();
         });
     }
