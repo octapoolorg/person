@@ -26,6 +26,14 @@ class NameController extends Controller
         $data = $this->nameService->getName($nameSlug);
         $name = $data['name'];
 
+        dd($name->meanings);
+
+        foreach ($name->meanings as $meaning) {
+            echo "Meaning: " . $meaning->text . "<br> <br>";
+        }
+
+        dd();
+
         $this->seoService->getSeoData(
             ['page' => 'name'],
             ['name' => $name->name]

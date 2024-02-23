@@ -44,11 +44,6 @@ class Name extends Model
         return $this->belongsToMany(Name::class, 'name_sibling', 'name_id', 'sibling_name_id');
     }
 
-    public function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(Category::class);
-    }
-
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);

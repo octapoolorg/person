@@ -84,7 +84,7 @@ class NameService
         $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
             $name = Name::query()
                 ->withoutGlobalScopes()
-                ->with(['comments'])
+                ->with(['meanings','comments'])
                 ->where('slug', $nameSlug)
                 ->firstOrFail();
 
