@@ -17,7 +17,7 @@ output_paths = {
 # Initialize storage for CSV data
 data_storage = {key: [] for key in output_paths.keys()}
 headers = {
-    'names': ['id', 'name', 'gender', 'pronunciation', 'popularity'],
+    'names': ['id', 'name', 'meanings', 'gender', 'pronunciation', 'popularity'],
     'origins': ['id', 'origin'],
     'name_origins': ['id', 'name_id', 'origin_id'],
     'meanings': ['origin_id', 'meaning', 'description'],
@@ -36,7 +36,22 @@ data_lines = []
 def clean_string(s):
     if not isinstance(s, str):
         return s
-    return s.strip('"').replace('""', "'")
+    # Check if the string is wrapped in double quotes
+    if s.startswith('"') and s.endswith('"'):
+        # Remove the outer double quotes temporarily
+        temp_s = s[1:-1]
+        # Replace internal double quotes with single quotes
+        temp_s = temp_s.replace('""', "'")
+        # Determine if we need to re-add outer double quotes
+        # This is a simplified condition, you might need to expand it
+        if ',' in temp_s or "'" in temp_s:
+            return '"' + temp_s + '"'
+        else:
+            return temp_s
+    else:
+        # For strings not starting and ending with double quotes, just replace "" with '
+        return s.replace('""', "'")
+
 
 def populate_origins_and_mappings():
     origin_id = 1
@@ -69,6 +84,9 @@ def process_items(name_id, items, category):
             origin_id = origin_to_id[origin_name]
             no_id = len(data_storage['name_origins']) + 1
             data_storage['name_origins'].append([no_id, name_id, origin_id])
+            item['meanings'] = filter_meanings(item['meanings'].split(', '))
+            # convert meanings to a string
+            item['meanings'] = ', '.join(item['meanings'])
             data_storage['meanings'].append([origin_id, clean_string(item['meanings']), clean_string(item['description'])])
     elif category in ['sibling_names', 'similar_names']:
         for related_name in items:
@@ -85,12 +103,53 @@ def process_items(name_id, items, category):
             nickname_id = len(data_storage['nicknames']) + 1
             data_storage['nicknames'].append([nickname_id, name_id, clean_string(nickname)])
 
+def filter_meanings(meanings_list):
+    cleaned_meanings = [meaning.strip() for meaning in meanings_list if meaning.strip()]
+
+    # Filter out meanings that are contained in others
+    filtered_meanings = []
+    for meaning in cleaned_meanings:
+        if not any(meaning != other and meaning in other for other in cleaned_meanings):
+            filtered_meanings.append(meaning)
+
+    # Deduplicate while preserving order
+    final_meanings = []
+    for meaning in filtered_meanings:
+        if meaning not in final_meanings:
+            final_meanings.append(meaning)
+
+    # convert to title case
+    final_meanings = [meaning.title() for meaning in final_meanings]
+
+    return final_meanings
+
 def second_pass():
     for data in data_lines:
         name_id = data['id']
-        data_storage['names'].append([name_id, clean_string(data.get('name')), clean_string(data.get('gender')), clean_string(data.get('pronunciation')), clean_string(data.get('popularity'))])
+        all_meanings = []
+
+        # Collect meanings for filtering
+        for origin in data.get('origins', []):
+            if 'meanings' in origin:  # Ensure there are meanings to process
+                all_meanings.extend([meaning.strip() for meaning in origin['meanings'].split(', ')])
+
+        # Filter meanings using the standalone function
+        filtered_meanings = filter_meanings(all_meanings)
+
+        # Convert the list of filtered meanings to a string, taking up to the top 3
+        top_meanings = ', '.join(filtered_meanings[:3])
+
+        data_storage['names'].append([
+            name_id,
+            clean_string(data.get('name')),
+            top_meanings,
+            clean_string(data.get('gender')),
+            clean_string(data.get('pronunciation')),
+            clean_string(data.get('popularity'))
+        ])
         for key in ['origins', 'quotes', 'sibling_names', 'nicknames', 'similar_names']:
             process_list(name_id, data, key, lambda id, items: process_items(id, items, key))
+
 
 def write_csv():
     for category, path in output_paths.items():
