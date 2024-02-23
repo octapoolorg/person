@@ -27,7 +27,7 @@ itemscope itemtype="https://schema.org/FAQPage">
             </h3>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <p itemprop="text" class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    Typically, {!! $name->name !!} is associated with the {!! $name->gender->name !!} gender. This traditional identification may vary based on cultural and regional influences.
+                    Typically, {!! $name->name !!} is associated with the {!! $name->gender !!} gender. This traditional identification may vary based on cultural and regional influences.
                 </p>
             </div>
         </div>

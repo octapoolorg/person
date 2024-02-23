@@ -9,7 +9,7 @@
                     <div class="p-4 shadow dark:shadow-none rounded-lg flex justify-start items-center dark:border dark:border-base-700 bg-surface dark:bg-base-800 hover:bg-base-50 transition duration-300 ease-in-out">
                         <a href="{!! route('names.show', $name) !!}" class="w-11/12 flex-grow">
                             <h2 class="text-xl font-semibold text-primary-800 dark:text-primary-100 capitalize">
-                                {{ $name->name }} ({{ $name->gender->name[0] }})
+                                {{ $name->name }} ({{ $name->gender }})
                             </h2>
                             <p class="text-md text-base-500 dark:text-base-300 over truncate pe-10">{{ $name->meaning }}</p>
                         </a>

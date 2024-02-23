@@ -2,7 +2,6 @@
 
 namespace App\View\Composers;
 
-use App\Models\Gender;
 use App\Models\Name;
 use App\Models\Origin;
 use Illuminate\View\View;
@@ -15,7 +14,6 @@ class GlobalComposer
     public function __construct(
         protected Name $name,
         protected Origin $origin,
-        protected Gender $gender,
     ) {
         // Dependencies automatically resolved by service container...
     }
@@ -27,21 +25,19 @@ class GlobalComposer
     {
         $trendingNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()->random()->popular()->limit(20)->get();
-        }, now()->addWeek());
+        }, now()->addDay());
 
         $origins = cache_remember('origins', function () {
-            return $this->origin->orderBy('name')->get();
-        });
-
-        $genders = cache_remember('genders', function () {
-            return $this->gender->get();
+            //only get the origins that have names - at least 5000
+            return $this->origin->withCount(['names' => function ($query) {
+                $query->where('is_popular', 1);
+            }])->having('names_count', '>=', 5000)->orderBy('name')->get();
         });
 
         $favorite = request()->cookie('favorites') ? true : false;
 
         $view->with('trendingNames', $trendingNames);
         $view->with('origins', $origins);
-        $view->with('genders', $genders);
         $view->with('favorite', $favorite);
     }
 }

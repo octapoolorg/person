@@ -7,7 +7,7 @@
                 'fa-venus' => $name->isFeminine(),
             ])>
             </i>
-            {{ $name->gender->name }}
+            {{ $name->gender }}
         </p>
         <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak"
             class="ml-2 text-lg md:text-2xl text-base-100 dark:text-base-300 hover:text-base-50 dark:hover:text-base-500">
