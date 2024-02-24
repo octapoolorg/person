@@ -11,6 +11,11 @@ class Meaning extends Model
 
     protected $guarded = [];
 
+    public function name()
+    {
+        return $this->belongsTo(Name::class);
+    }
+
     public function origin()
     {
         return $this->belongsTo(Origin::class);

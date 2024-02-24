@@ -30,18 +30,6 @@
                     {!! $name->mainMeaning !!}
                 </div>
             </div>
-
-            @if ($name->generated)
-                <div class="flex justify-center mb-4">
-                    <div class="relative group">
-                        <i class="fas fa-info-circle text-lg text-primary-500 dark:text-primary-400"></i>
-                        <div
-                            class="absolute bottom-full mb-2 hidden group-hover:block bg-base-900 dark:bg-base-700 text-surface text-xs rounded py-1 px-3">
-                            Based on Numerology.
-                        </div>
-                    </div>
-                </div>
-            @endif
         </article>
 
         <a href="javascript:;" title="Add to favorites"
@@ -51,7 +39,41 @@
         </a>
     </section>
 
-    @if (!$name->meanings->isEmpty())
+    @if (!$name->origins->isEmpty())
+        <div id="accordion-collapse-origin" data-accordion="collapse"
+            data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
+            <h2 id="expand-origin">
+                <button type="button"
+                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
+                    data-accordion-target="#origin" aria-expanded="false" aria-controls="origin">
+                    <span>
+                        Meanings by Origin
+                    </span>
+                    <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+            </h2>
+            <div id="origin" class="hidden" aria-labelledby="expand-origin">
+                <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
+                    <ul class="text-left space-y-1 text-base-500 list-none list-outside dark:text-base-400 p-3">
+                        @foreach ($name->origins as $origin)
+                            <li class="flex gap-2 text-base-500 dark:text-base-400 text-lg">
+                                <i class="fas fa-check text-primary-500 dark:text-primary-400 mt-1"></i>
+                                <p>
+                                    {!! $origin->name !!}
+
+                                    @foreach ($origin->meanings as $meaning)
+                                        <span class="text-base-500 dark:text-base-400">
+                                            ({{ $meaning->text }})
+                                        </span>
+                                    @endforeach
+                                </p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @elseif (!$name->meanings->isEmpty())
         <div id="accordion-collapse-meanings" data-accordion="collapse"
             data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
             <h2 id="expand-meanings">

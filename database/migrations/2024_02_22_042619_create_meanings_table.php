@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('meanings', function (Blueprint $table) {
             $table->id();
             $table->string('text', 500);
+            $table->foreignId('name_id');
             $table->foreignId('origin_id');
             $table->timestamps();
         });

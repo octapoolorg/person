@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('name_similar', function (Blueprint $table) {
             $table->foreignId('name_id')->constrained('names');
             $table->foreignId('similar_name_id')->constrained('names');
-            $table->primary(['name_id', 'similar_name_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('similar_names');
+        Schema::dropIfExists('name_similar');
     }
 };

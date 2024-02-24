@@ -16,12 +16,12 @@ class Name extends Model
     protected $guarded = [];
 
     public function origins() {
-        return $this->belongsToMany(Origin::class);
+        return $this->belongsToMany(Origin::class,'name_origin');
     }
 
     public function meanings()
     {
-        return $this->hasManyThrough(Meaning::class, Origin::class);
+        return $this->hasMany(Meaning::class);
     }
 
     public function quotes()

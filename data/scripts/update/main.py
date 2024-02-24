@@ -20,7 +20,7 @@ headers = {
     'names': ['id', 'name', 'meaning', 'gender', 'pronunciation', 'popularity'],
     'origins': ['id', 'name'],
     'name_origins': ['id', 'name_id', 'origin_id'],
-    'meanings': ['origin_id', 'text'],
+    'meanings': ['name_id', 'origin_id', 'text'],
     'quotes': ['id', 'name_id', 'text'],
     'sibling_names': ['id', 'name_id', 'sibling_name_id'],
     'nicknames': ['id', 'name_id', 'name'],
@@ -36,6 +36,14 @@ data_lines = []
 def clean_string(s):
     if not isinstance(s, str):
         return s
+
+    # trim leading and trailing whitespace
+    s = s.strip()
+
+    # convert to title case
+
+    s = s.title()
+
     # Check if the string is wrapped in double quotes
     if s.startswith('"') and s.endswith('"'):
         # Remove the outer double quotes temporarily
@@ -71,12 +79,7 @@ def first_pass():
             name_to_id[clean_string(data['name'])] = data['id']
     populate_origins_and_mappings()
 
-def process_list(name_id, data, key, process_func):
-    items = data.get(key, [])
-    if items:
-        process_func(name_id, items)
-
-def process_items(name_id, items, category):
+def process_items(name_id, name, items, category):
     if category == 'origins':
         for item in items:
             origin_name = clean_string(item['origin'])
@@ -87,11 +90,15 @@ def process_items(name_id, items, category):
                 item['meanings'] = filter_meanings(item['meanings'].split(', '))
                 # convert meanings to a string
                 item['meanings'] = ', '.join(item['meanings'])
-                data_storage['meanings'].append([origin_id, clean_string(item['meanings'])])
-    elif category in ['sibling_names', 'similar_names', 'nicknames']:
+                data_storage['meanings'].append([name_id, origin_id, clean_string(item['meanings'])])
+    elif category in ['sibling_names', 'similar_names']:
         # Convert inner lists to tuples before removing duplicates
         items = [tuple(item) if isinstance(item, list) else item for item in items]
         items = list(set(items))  # Remove duplicates
+
+        # remove name if it is the same as the current name
+        items = [item for item in items if item != name]
+
         for related_name in items:
             if isinstance(related_name, tuple):
                 related_name = ' '.join(related_name)  # Join tuple elements into a string
@@ -99,10 +106,47 @@ def process_items(name_id, items, category):
             if related_name_id:
                 rel_id = len(data_storage[category]) + 1
                 data_storage[category].append([rel_id, name_id, related_name_id])
+    elif category == 'nicknames':
+        # Convert inner lists to tuples before removing duplicates
+        items = [tuple(item) if isinstance(item, list) else item for item in items]
+        items = list(set(items))
+
+        # remove all non string items
+        items = [item for item in items if isinstance(item, str)]
+
+        # remove nicknames with length less than 3
+        items = [item for item in items if len(item) > 2]
+
+        # remove nicknames with length greater than 10
+        items = [item for item in items if len(item) < 10]
+
+        # remove nicknames that contain numbers or special characters
+        items = [item for item in items if item.isalpha()]
+
+        # remove those that contain non latin characters
+        items = [item for item in items if item.isascii()]
+
+        # List of words to filter out
+        filter_words = ['boy', 'girl', 'baby', 'child', 'kid', 'son']
+
+        # Remove nicknames that contain filter words, case insensitive
+        items = [item for item in items if not any(filter_word in item.lower() for filter_word in filter_words)]
+
+
+        for nickname in items:
+            if isinstance(nickname, tuple):
+                nickname = ' '.join(nickname)  # Join tuple elements into a string
+            nickname_id = len(data_storage[category]) + 1
+            data_storage[category].append([nickname_id, name_id, clean_string(nickname)])
     elif category == 'quotes':
         for quote in items:
             quote_id = len(data_storage['quotes']) + 1
             data_storage['quotes'].append([quote_id, name_id, clean_string(quote)])
+
+def process_list(name_id, name, data, key, process_func):
+    items = data.get(key, [])
+    if items:
+        process_func(name_id, name, items)
 
 def filter_meanings(meanings_list):
     cleaned_meanings = [meaning.strip() for meaning in meanings_list if meaning.strip()]
@@ -126,7 +170,8 @@ def filter_meanings(meanings_list):
 
 def second_pass():
     for data in data_lines:
-        name_id = data['id']
+        name = clean_string(data['name'])
+        name_id = name_to_id[name]
         all_meanings = []
 
         # Collect meanings for filtering
@@ -144,14 +189,14 @@ def second_pass():
 
         data_storage['names'].append([
             name_id,
-            clean_string(data.get('name')),
+            name,
             top_meanings,
             clean_string(data.get('gender')),
             clean_string(data.get('pronunciation')),
             clean_string(data.get('popularity'))
         ])
         for key in ['origins', 'quotes', 'sibling_names', 'nicknames', 'similar_names']:
-            process_list(name_id, data, key, lambda id, items: process_items(id, items, key))
+                process_list(name_id, name, data, key, lambda id, name, items: process_items(id, name, items, key))
 
 def write_csv():
     for category, path in output_paths.items():
@@ -164,7 +209,7 @@ def write_csv():
             name_index = headers[category].index('name') if 'name' in headers[category] else None
             # Sort the data by name if the 'name' column exists
             if name_index is not None:
-                data_storage[category] = sorted(data_storage[category], key=lambda row: row[name_index])
+                data_storage[category] = sorted(data_storage[category], key=lambda row: (row[name_index] is None, row[name_index]))
             for row in data_storage[category]:
                 writer.writerow([clean_string(cell) if isinstance(cell, str) else cell for cell in row])
 

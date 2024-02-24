@@ -11,6 +11,7 @@
                         'signature',
                         'numerology',
                         'fancy-text',
+                        'list',
                         // 'quote',
                         // 'statuses',
                         'wallpaper',

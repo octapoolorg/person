@@ -11,6 +11,7 @@ use App\Services\Tools\FancyTextService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class NameService
@@ -83,10 +84,19 @@ class NameService
     {
         $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
             $name = Name::query()
-                ->withoutGlobalScopes()
-                ->with(['meanings','comments'])
-                ->where('slug', $nameSlug)
-                ->firstOrFail();
+            ->withoutGlobalScopes()
+            ->with(['origins.meanings' => function ($query) use ($nameSlug) {
+                // Assuming you have the Name model accessible here or you fetch it based on the slug
+                // Join the meanings table to filter meanings based on the name's slug
+                $query->whereExists(function ($subQuery) use ($nameSlug) {
+                    $subQuery->select(DB::raw(1))
+                             ->from('names')
+                             ->whereColumn('names.id', 'meanings.name_id')
+                             ->where('names.slug', $nameSlug);
+                });
+            }, 'comments','nicknames','similarNames','siblingNames'])
+            ->where('slug', $nameSlug)
+            ->firstOrFail();
 
             $sortedMeanings = collect(explode(',', $name->meaning))
                 ->sort(function ($a, $b) {
