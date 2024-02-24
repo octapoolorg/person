@@ -7,7 +7,7 @@ class SpeechManager {
         button.classList.remove('hidden');
     }
 
-    speak(text, lang = 'ur-PK') {
+    speak(text, lang = 'en-GB') {
         this.msg.text = text || '';
         this.msg.lang = lang;
         window.speechSynthesis.speak(this.msg);

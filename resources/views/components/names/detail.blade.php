@@ -9,10 +9,6 @@
             </i>
             {{ $name->gender }}
         </p>
-        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak"
-            class="ml-2 text-lg md:text-2xl text-base-100 dark:text-base-300 hover:text-base-50 dark:hover:text-base-500">
-            <i class="fas fa-volume-up"></i>
-        </a>
     </div>
     <section
         class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
@@ -32,11 +28,18 @@
             </div>
         </article>
 
-        <a href="javascript:;" title="Add to favorites"
-            class="absolute top-5 right-5 md:top-10 text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button"
-            data-slug="{{ $name->slug }}">
-            <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
-        </a>
+        <div class="flex justify-center items-center gap-6 mt-8">
+            <a href="javascript:;" title="Add to favorites"
+                class="text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button"
+                data-slug="{{ $name->slug }}">
+                <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
+            </a>
+
+            <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak"
+                class="text-lg md:text-2xl text-green-500 hover:text-green-600">
+                <i class="fas fa-volume-up"></i>
+            </a>
+        </div>
     </section>
 
     @if (!$name->origins->isEmpty())
@@ -138,8 +141,9 @@
                         <!-- Wiktionary -->
                         <li class="flex items-center gap-2 text-base-500 dark:text-base-400 text-lg">
                             <i class="fab fa-wikipedia-w mt-1"></i>
-                            <a href="https://en.wiktionary.org/w/index.php?search={{ $name->name }}" target="_blank"
-                                rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400">
+                            <a href="https://en.wiktionary.org/w/index.php?search={{ $name->name }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="hover:text-primary-500 dark:hover:text-primary-400">
                                 Wiktionary
                             </a>
                         </li>
