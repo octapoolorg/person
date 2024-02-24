@@ -9,15 +9,15 @@ use Illuminate\Database\Eloquent\Prunable;
 
 class Favorite extends Model
 {
-    use Prunable;
+    use Prunable, HasFactory;
+    
     protected $guarded = [];
-    use HasFactory;
 
     /**
      * Get the prunable model query.
      */
     public function prunable(): Builder
     {
-        return static::where('created_at', '<=', now()->subMonth());
+        return static::where('created_at', '<=', now()->subYear());
     }
 }
