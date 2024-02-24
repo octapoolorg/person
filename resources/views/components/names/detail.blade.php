@@ -20,7 +20,15 @@
                     {{ $name->name }}
                 </h1>
 
-                
+                @isset($name->pronunciation)
+                    <!-- IPA Pronunciation -->
+                    <div class="flex items-center justify-center gap-2">
+                        {{-- <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i> --}}
+                        <p class="text-base-500 dark:text-base-400">
+                            {{ $name->pronunciation }}
+                        </p>
+                    </div>
+                @endisset
             </div>
 
             <div class="mt-8">
