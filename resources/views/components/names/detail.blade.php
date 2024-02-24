@@ -56,12 +56,15 @@
                 </button>
             </h2>
             <div id="origin" class="hidden" aria-labelledby="expand-origin">
-                <div class="p-8 bg-gradient-to-br from-base-50 to-base-100 dark:from-base-700 dark:to-base-800">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <div class="p-8 bg-base-100 dark:bg-base-800">
+                    <div @class([
+                        'grid grid-cols-1 gap-6 items-stretch',
+                        'md:grid-cols-2' => $name->origins->count() > 1,
+                        ])>
                         @foreach ($name->origins as $origin)
-                            <div class="bg-surface dark:bg-base-900 rounded-lg shadow p-6">
+                            <div class="bg-surface dark:bg-base-700 rounded-lg shadow p-6">
                                 <div class="flex items-center space-x-3 mb-4">
-                                    <i class="fas fa-atlas text-blue-500 dark:text-blue-400 text-3xl"></i>
+                                    <i class="fas fa-atlas text-primary-500 dark:text-primary-300 text-3xl"></i>
                                     <h3 class="text-xl font-semibold text-base-800 dark:text-base-200">
                                         {{ $origin->name }}
                                     </h3>
