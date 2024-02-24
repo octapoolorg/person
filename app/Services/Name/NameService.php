@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Hashids\Hashids;
 
 class NameService
 {
@@ -251,9 +252,9 @@ class NameService
         return $urls;
     }
 
-    public function getFavorites(): LengthAwarePaginator
+    public function getFavorites(?string $favorite = null): LengthAwarePaginator
     {
-        $uuid = request()->cookie('uuid');
+        $uuid = $favorite ? $favorite : request()->cookie('uuid');
 
         $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
             return Favorite::where('uuid', $uuid)->pluck('slug');

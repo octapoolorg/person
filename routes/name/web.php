@@ -9,7 +9,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('names', [NameController::class, 'search'])->name('names.index');
 
 Route::get('names/search', [NameController::class, 'search'])->name('names.search');
-Route::get('names/favorites', [NameController::class, 'favorites'])->name('names.favorites');
+Route::get('names/favorites/{favorite?}', [NameController::class, 'favorites'])->name('names.favorites');
 
 Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 

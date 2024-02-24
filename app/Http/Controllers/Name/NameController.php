@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Name;
 
 use App\Http\Controllers\Controller;
 use App\Services\Name\NameService;
-use App\Services\Name\UtilityService;
 use App\Services\SeoService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,16 +47,16 @@ class NameController extends Controller
         return view('names.search', compact('names'));
     }
 
-    public function favorites(): View
+    public function favorites(?string $favorite = null): View
     {
-        $names = $this->nameService->getFavorites();
+        $names = $this->nameService->getFavorites($favorite);
 
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => 'Favorite']
         );
 
-        return view('names.list', compact('names'));
+        return view('names.favorite', compact('names'));
     }
 
     public function signatures(string $nameSlug): View

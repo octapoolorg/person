@@ -39,25 +39,6 @@
                     </div>
                 @endif
 
-                @if ($name->similarNames->isNotEmpty())
-                    <!-- Similar Names Section -->
-                    <div class="bg-green-50 dark:bg-green-900 rounded-lg shadow px-5 py-7">
-                        <h3 class="text-2xl font-semibold text-green-600 dark:text-primary-100">Similar Names</h3>
-                        <p class="mt-3 text-base-600 dark:text-base-200">
-                            Discover names similar to {!! $name->name !!}, ideal for those who love the name but are
-                            looking for alternatives with a unique twist.
-                        </p>
-                        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            @foreach ($name->similarNames as $similar)
-                                <a href="{{ route('names.show', $similar->slug) }}" target="_blank"
-                                    class="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-green-400 to-teal-500 hover:from-green-500 hover:to-teal-600 text-surface rounded-md shadow text-base font-medium">
-                                    {{ $similar->name }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
                 @if ($name->nicknames->isNotEmpty())
                     <!-- Nicknames Section -->
                     <div class="bg-yellow-50 dark:bg-yellow-800 rounded-lg shadow px-5 py-7">
@@ -72,6 +53,25 @@
                                     class="inline-flex items-center justify-center px-4 py-2 bg-yellow-100 dark:bg-base-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
                                     {{ $nick->name }}
                                 </span>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if ($name->similarNames->isNotEmpty())
+                    <!-- Similar Names Section -->
+                    <div class="bg-green-50 dark:bg-green-900 rounded-lg shadow px-5 py-7">
+                        <h3 class="text-2xl font-semibold text-green-600 dark:text-primary-100">Similar Names</h3>
+                        <p class="mt-3 text-base-600 dark:text-base-200">
+                            Discover names similar to {!! $name->name !!}, ideal for those who love the name but are
+                            looking for alternatives with a unique twist.
+                        </p>
+                        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            @foreach ($name->similarNames as $similar)
+                                <a href="{{ route('names.show', $similar->slug) }}" target="_blank"
+                                    class="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-surface rounded-md shadow text-base font-medium">
+                                    {{ $similar->name }}
+                                </a>
                             @endforeach
                         </div>
                     </div>
