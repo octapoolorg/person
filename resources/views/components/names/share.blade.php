@@ -31,7 +31,7 @@
         </a>
         <!-- Mail -->
         <a href="mailto:?subject={!! $name->name !!} name details - all you need to know&amp;body={!! request()->url() !!}"
-           class="px-3 py-2 sm:px-4 sm:py-2 bg-base-500 dark:bg-base-700 text-surface rounded-full hover:bg-base-600 dark:hover:bg-base-800 flex items-center gap-2 transition-colors duration-300"
+           class="px-3 py-2 sm:px-4 sm:py-2 bg-base-500 dark:bg-base-700 text-surface rounded-full hover:bg-base-600 dark:hover:bg-base-900 flex items-center gap-2 transition-colors duration-300"
            target="_blank" rel="nofollow" title="Share via email">
             <i class="fas fa-envelope"></i>
             Share

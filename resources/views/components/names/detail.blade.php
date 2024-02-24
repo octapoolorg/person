@@ -23,11 +23,11 @@
                 </h1>
 
                 @isset($name->pronunciation)
-                    <div class="flex items-center justify-center gap-2">
-                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak">
+                    <div class="flex items-center justify-center gap-2 text-base-500 dark:text-base-400 my-4">
+                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak" class="hidden">
                             <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i>
                         </a>
-                        <p class="text-base-500 dark:text-base-400">
+                        <p class="text-2xl">
                             {{ $name->pronunciation }}
                         </p>
                     </div>
@@ -56,7 +56,7 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
                     data-accordion-target="#origin" aria-expanded="false" aria-controls="origin">
-                    <span>
+                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         Meanings by Origin
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -73,10 +73,7 @@
                                 <div class="flex items-center space-x-3 mb-4">
                                     <i class="fas fa-atlas text-primary-500 dark:text-primary-300 text-3xl"></i>
                                     <h3 class="text-xl font-semibold text-base-800 dark:text-base-200">
-                                        <a href="{{ route('names.search', ['origin' => $origin->slug]) }}"
-                                            class="hover:text-primary-500 dark:hover:text-primary-400">
-                                            {{ $origin->name }}
-                                        </a>
+                                        {{ $origin->name }}
                                     </h3>
                                 </div>
                                 <ul class="text-base-600 dark:text-base-400 text-lg list-inside">
@@ -84,6 +81,11 @@
                                         <li>{{ $meaning->text }}</li>
                                     @endforeach
                                 </ul>
+
+                                <a href="{{ route('names.search', ['origin' => $origin->slug]) }}" title="More {{ $origin->name }} names" target="_blank"
+                                    class="block text-primary-500 dark:text-primary-400 text-lg font-semibold mt-4 hover:underline">
+                                    More {{ $origin->name }} names
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -97,7 +99,7 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
                     data-accordion-target="#meanings" aria-expanded="false" aria-controls="meanings">
-                    <span>
+                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         Other Meanings
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -127,16 +129,16 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
                     data-accordion-target="#external-links" aria-expanded="false" aria-controls="external-links">
-                    <span>
+                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         External links
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
             </h2>
             <div id="external-links" class="hidden" aria-labelledby="expand-external-links">
-                <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
+                <div class="p-5 border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800">
                     <ul
-                        class="flex flex-wrap gap-4 text-left text-base-500 list-none list-outside dark:text-base-400 p-3">
+                        class="flex flex-col gap-4 text-left text-base-500 list-none list-outside dark:text-base-400 p-3">
                         <li class="flex items-center gap-2 text-base-500 dark:text-base-400 text-lg">
                             <img src="{{ asset('static/images/wikipedia.png') }}" alt="WikiPedia" class="w-6 h-6">
                             <a href="https://en.wikipedia.org/w/index.php?search={{ $name->name }}" target="_blank"

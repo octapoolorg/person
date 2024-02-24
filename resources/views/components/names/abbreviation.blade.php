@@ -13,8 +13,8 @@
             <tbody class="divide-y divide-base-200 dark:divide-base-700" id="abbreviations">
                 @foreach ($data['abbreviations'] as $abbreviationData)
                     @foreach ($abbreviationData as $alphabet => $abbreviation)
-                        <tr class="hover:bg-base-100 dark:hover:bg-base-800 transition-colors duration-300">
-                            <th class="text-lg p-4 font-semibold text-base-800 dark:text-base-100 bg-base-100 dark:bg-base-800 uppercase">
+                        <tr class="hover:bg-base-100 dark:hover:bg-base-700 transition-colors duration-300">
+                            <th class="text-lg p-4 font-semibold text-base-800 dark:text-base-100 bg-base-100 dark:bg-base-700 uppercase">
                                 {!! $alphabet !!}</th>
                             <td class="text-lg p-4 text-base-900 dark:text-base-100">{!! $abbreviation !!}</td>
                         </tr>

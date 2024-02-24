@@ -38,9 +38,9 @@
             @csrf
             <div class="space-y-4">
                 <div>
-                    <label for="name"
+                    <label for="c-name"
                         class="block text-sm font-medium text-base-700 dark:text-base-100">Name:</label>
-                    <input type="text" id="name" name="name"
+                    <input type="text" id="c-name" name="name"
                         class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:bg-white placeholder:text-base-700 dark:placeholder:text-base-400 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
                         placeholder="Your name" required>
                 </div>
