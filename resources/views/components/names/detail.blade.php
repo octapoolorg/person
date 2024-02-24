@@ -53,23 +53,24 @@
                 </button>
             </h2>
             <div id="origin" class="hidden" aria-labelledby="expand-origin">
-                <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
-                    <ul class="text-left space-y-1 text-base-500 list-none list-outside dark:text-base-400 p-3">
+                <div class="p-8 bg-gradient-to-br from-base-50 to-base-100 dark:from-base-700 dark:to-base-800">
+                    <div class="space-y-6">
                         @foreach ($name->origins as $origin)
-                            <li class="flex gap-2 text-base-500 dark:text-base-400 text-lg">
-                                <i class="fas fa-check text-primary-500 dark:text-primary-400 mt-1"></i>
-                                <p>
-                                    {!! $origin->name !!}
-
+                            <div class="bg-white dark:bg-base-900 rounded-lg shadow-md p-6">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <i class="fas fa-atlas text-blue-500 dark:text-blue-400 text-3xl"></i>
+                                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                                        {{ $origin->name }}
+                                    </h3>
+                                </div>
+                                <ul class="text-gray-600 dark:text-gray-400 text-sm">
                                     @foreach ($origin->meanings as $meaning)
-                                        <span class="text-base-500 dark:text-base-400">
-                                            ({{ $meaning->text }})
-                                        </span>
+                                        <li>{{ $meaning->text }}</li>
                                     @endforeach
-                                </p>
-                            </li>
+                                </ul>
+                            </div>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
