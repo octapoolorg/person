@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 //     Route::redirect($source, $target, 301);
 // }
 
+// Route::get('/{any}-1', function ($any, \Illuminate\Http\Request $request) {
+//     // Remove the -1 and preserve query parameters
+//     return redirect("/$any" .'?'. $request->getQueryString(), 301);
+// })->where('any', '.*');
+
 
 Route::get('static/images/signature/style/monsieur-la-doulaise/{name}.jpg', function ($name) {
     return redirect()->route('names.signature', ['cursive', $name], 301);
