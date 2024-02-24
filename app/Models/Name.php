@@ -51,12 +51,16 @@ class Name extends Model
 
     public function isMasculine(): bool
     {
-        return $this->gender === Gender::MASCULINE;
+        $gender = strtolower($this->gender);
+
+        return $gender === Gender::MASCULINE->value;
     }
 
     public function isFeminine(): bool
     {
-        return $this->gender === Gender::FEMININE;
+        $gender = strtolower($this->gender);
+
+        return $gender === Gender::FEMININE->value;
     }
 
     public function scopePopular(Builder $query): Builder

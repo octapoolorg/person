@@ -9,7 +9,9 @@ export class Utility {
         e.preventDefault();
         const text = e.target.innerText;
         if (navigator.clipboard) {
-            return navigator.clipboard.writeText(text);
+            return navigator.clipboard.writeText(text).then(() => {
+                alert('Text copied to clipboard');
+            });
         } else {
             const textArea = document.createElement("textarea");
             textArea.style.position = 'fixed';
@@ -22,6 +24,9 @@ export class Utility {
             try {
                 const successful = document.execCommand('copy');
                 document.body.removeChild(textArea);
+                if (successful) {
+                    alert('Text copied to clipboard');
+                }
                 return Promise.resolve(successful);
             } catch (err) {
                 return Promise.reject(err);
