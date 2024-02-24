@@ -37,10 +37,15 @@ class GlobalComposer
             }])->having('names_count', '>=', 5000)->orderBy('name')->get();
         });
 
+        $genders = cache_remember('genders', function () {
+            return $this->name->distinct()->pluck('gender');
+        });
+
         $favorite = request()->cookie('favorites') ? true : false;
 
         $view->with('trendingNames', $trendingNames);
         $view->with('origins', $origins);
+        $view->with('genders', $genders);
         $view->with('favorite', $favorite);
     }
 }

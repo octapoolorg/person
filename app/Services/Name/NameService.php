@@ -260,9 +260,9 @@ class NameService
             return Favorite::where('uuid', $uuid)->pluck('slug');
         });
 
-        $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->get();
+        $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->paginate(30);
 
-        return paginate($names, 30);
+        return $names;
     }
 
     public function search(Request $request): LengthAwarePaginator
@@ -297,6 +297,10 @@ class NameService
                 $query->whereHas('origins', function ($q) use ($origin) {
                     $q->select('slug')->where('slug', $origin);
                 });
+            });
+
+            $request->whenFilled('gender', function ($gender) use ($query) {
+                $query->popular()->where('gender', $gender);
             });
 
             $query->orderBy('is_popular', 'desc')->orderBy('name', 'asc');
