@@ -22,7 +22,7 @@ class NameController extends Controller
     public function generateAbbreviations(): JsonResponse
     {
         $name = request()->input('name');
-        $abbreviations = $this->nameService->getAbbreviations($name, true);
+        $abbreviations = $this->nameService->getAbbreviations($name);
         $html = view('components.names.api.abbreviations', compact('abbreviations'))->render();
 
         return response()->json($html);

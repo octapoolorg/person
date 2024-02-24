@@ -160,7 +160,7 @@ class NameService
         return $statuses->random(3)->toArray();
     }
 
-    public function getAbbreviations(string $name, bool $rand = false): array
+    public function getAbbreviations(string $name): array
     {
         $name = normalize_name($name);
         $alphabets = collect(str_split($name))->filter(function ($alphabet) {
@@ -168,9 +168,8 @@ class NameService
         })->toUpper()->toArray();
 
         // Getting abbreviations for the alphabets
-        $randomness = $rand ? rand(1, 15) : 1;
-        $abbreviationsCollection = cache_remember("abbreviations:$name:$randomness", function () use ($alphabets) {
-            return Abbreviation::whereIn('alphabet', $alphabets)->get()->groupBy('alphabet');
+        $abbreviationsCollection = cache_remember("abbreviations", function () use ($alphabets) {
+            return Abbreviation::get()->groupBy('alphabet');
         });
 
         $abbreviations = [];

@@ -3,11 +3,13 @@
         <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
             <i @class([
                 'fas text-xl',
-                'fa-mars' => $name->isMasculine(),
+                'fa-mars'  => $name->isMasculine(),
                 'fa-venus' => $name->isFeminine(),
             ])>
             </i>
-            {{ $name->gender }}
+            <span class="ml-2">
+                {{ $name->gender }}
+            </span>
         </p>
     </div>
     <section
@@ -21,9 +23,10 @@
                 </h1>
 
                 @isset($name->pronunciation)
-                    <!-- IPA Pronunciation -->
                     <div class="flex items-center justify-center gap-2">
-                        {{-- <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i> --}}
+                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak">
+                            <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i>
+                        </a>
                         <p class="text-base-500 dark:text-base-400">
                             {{ $name->pronunciation }}
                         </p>
@@ -38,18 +41,12 @@
             </div>
         </article>
 
-        <div class="flex justify-center items-center gap-6 mt-8">
-            <a href="javascript:;" title="Add to favorites"
-                class="text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button"
-                data-slug="{{ $name->slug }}">
-                <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
-            </a>
 
-            <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak"
-                class="text-lg md:text-2xl text-green-500 hover:text-green-600">
-                <i class="fas fa-volume-up"></i>
-            </a>
-        </div>
+        <a href="javascript:;" title="Add to favorites"
+            class="text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button absolute top-5 right-5 md:top-7 md:right-7"
+            data-slug="{{ $name->slug }}">
+            <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
+        </a>
     </section>
 
     @if (!$name->origins->isEmpty())
