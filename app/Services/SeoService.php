@@ -6,7 +6,7 @@ use Artesaos\SEOTools\SEOTools;
 
 class SeoService
 {
-    public function getSeoData(array $meta, array $replace = []): void
+    public function getSeoData(array $meta, array $replace = []): object
     {
         $seoData = $this->getData($meta['page'], $replace);
 
@@ -19,6 +19,8 @@ class SeoService
         if (isset($meta['image'])) {
             $seoTools->addImages($meta['image']);
         }
+
+        return (object) $seoData;
     }
 
     private function getData($page, $replace): array

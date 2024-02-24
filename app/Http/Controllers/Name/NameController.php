@@ -62,16 +62,28 @@ class NameController extends Controller
 
     public function signatures(string $nameSlug): View
     {
+        $name = $this->nameService->getName($nameSlug)['name'];
         $images = $this->nameService->signatureUrls($nameSlug);
 
-        return view('names.images', compact('images'));
+        $meta = $this->seoService->getSeoData(
+            ['page' => 'signatures'],
+            ['name' => $name->name]
+        );
+
+        return view('names.images', compact('images', 'meta'));
     }
 
     public function wallpapers(string $nameSlug): View
     {
+        $name = $this->nameService->getName($nameSlug)['name'];
         $images = $this->nameService->wallpaperUrls($nameSlug);
 
-        return view('names.images', compact('images'));
+        $meta = $this->seoService->getSeoData(
+            ['page' => 'wallpapers'],
+            ['name' => $name->name]
+        );
+
+        return view('names.images', compact('images', 'meta'));
     }
 
     public function wallpaper(string $style, string $nameSlug): Response

@@ -9,6 +9,14 @@ return [
         'title' => ':page Baby Names - Meanings, Origins and More',
         'description' => 'List of :page baby names with their meanings, origins and more.',
     ],
+    'signatures' => [
+        'title' => ':name Signature Styles - Discover and Download Unique Signatures for :name',
+        'description' => 'Discover a wide range of unique signature styles for :name. Choose your favorite, download it easily, and share your new signature style with friends and colleagues. Perfect for personalizing your digital documents and more.',
+    ],
+    'wallpapers' => [
+        'title' => ':name Wallpapers - Beautiful and Customizable Backgrounds for :name',
+        'description' => 'Find the perfect :name wallpaper to express your style. Explore our collection of beautiful, high-quality backgrounds for your devices. Download your favorite :name wallpaper and customize your screens today. Share your picks with friends.',
+    ],
     'name' => [
         'title' => ':name - Name Meaning, Origin, Numerology and more',
         'description' => "Get :name's meaning, origin, numerology and more.",
