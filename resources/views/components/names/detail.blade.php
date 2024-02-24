@@ -76,7 +76,10 @@
                                 <div class="flex items-center space-x-3 mb-4">
                                     <i class="fas fa-atlas text-primary-500 dark:text-primary-300 text-3xl"></i>
                                     <h3 class="text-xl font-semibold text-base-800 dark:text-base-200">
-                                        {{ $origin->name }}
+                                        <a href="{{ route('names.search', ['origin' => $origin->slug]) }}"
+                                            class="hover:text-primary-500 dark:hover:text-primary-400">
+                                            {{ $origin->name }}
+                                        </a>
                                     </h3>
                                 </div>
                                 <ul class="text-base-600 dark:text-base-400 text-lg list-inside">
