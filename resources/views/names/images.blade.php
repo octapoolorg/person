@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="max-w-7xl mx-auto px-4 py-12 bg-base-50 dark:bg-base-900 rounded-xl shadow-lg">
-        <div class="bg-surface dark:bg-base-800 rounded-xl shadow-md overflow-hidden relative">
-            <a href="{!! head($images) !!}" download id="download-link"
+    <section class="max-w-7xl mx-auto px-4 py-12 my-12 dark:bg-base-800 rounded-xl shadow-lg">
+        <div class="bg-surface dark:bg-base-800 overflow-hidden relative">
+            <a href="{!! $images->first() !!}" download id="download-link"
                 class="inline-block px-3 py-2 bg-primary-800 hover:bg-primary-700 text-surface font-medium rounded-lg shadow transition-all duration-300 absolute top-5 right-5">
                 <i class="text-lg fas fa-download"></i>
             </a>
 
-            <img class="w-full object-cover transition-opacity duration-500 max-h-fit md:max-h-[500px] lazy"
-                src="{!! head($images) !!}" id="main-wallpaper" alt="Main wallpaper">
+            <img class="w-full object-cover transition-opacity duration-500 max-h-fit md:max-h-[400px] lazy"
+                src="{!! $images->first() !!}" id="main-wallpaper" alt="Main wallpaper">
 
             <div class="p-8">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mb-8">

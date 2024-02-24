@@ -11,6 +11,7 @@ use App\Services\Tools\FancyTextService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -146,18 +147,18 @@ class NameService
         });
     }
 
-    public function getQuotes(string $name): array
+    public function getQuotes(string $name): Collection
     {
         $quotes = collect(__('quotes', ['name' => $name]));
 
-        return $quotes->random(3)->toArray();
+        return $quotes->random(3);
     }
 
-    public function getStatuses(string $name): array
+    public function getStatuses(string $name): Collection
     {
         $statuses = collect(__('statuses', ['name' => $name]));
 
-        return $statuses->random(3)->toArray();
+        return $statuses->random(3);
     }
 
     public function getAbbreviations(string $name): array
@@ -229,23 +230,23 @@ class NameService
         return normalize_name(explode(' ', $name)[0]);
     }
 
-    public function wallpaperUrls(string $name): array
+    public function wallpaperUrls(string $name): Collection
     {
-        $num = count($this->wallpaperStyles) > 3 ? 3 : count($this->wallpaperStyles);
+        $num = count($this->wallpaperStyles);
         $styles = array_rand($this->wallpaperStyles, $num);
 
         return $this->generateUrls($name, $styles, 'names.wallpaper');
     }
 
-    public function signatureUrls(string $name): array
+    public function signatureUrls(string $name): Collection
     {
-        $num = count($this->signStyles) > 3 ? 3 : count($this->signStyles);
+        $num = count($this->signStyles);
         $styles = array_rand($this->signStyles, $num);
 
         return $this->generateUrls($name, $styles, 'names.signature');
     }
 
-    private function generateUrls(string $name, array $styles, string $routeName): array
+    private function generateUrls(string $name, array $styles, string $routeName): Collection
     {
         $urls = [];
 
@@ -253,7 +254,7 @@ class NameService
             $urls[$style] = route($routeName, ['name' => $name, 'style' => $style]);
         }
 
-        return $urls;
+        return collect($urls);
     }
 
     public function getFavorites(?string $favorite = null): LengthAwarePaginator

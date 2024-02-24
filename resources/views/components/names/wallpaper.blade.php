@@ -6,7 +6,7 @@
     </div>
 
     <!-- Download link for the currently displayed wallpaper -->
-    <a download id="download-link" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center justify-end mt-4" href="{!! head($data['wallpaperUrls']) !!}" target="_blank">
+    <a download id="download-link" class="group text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-200 font-semibold transition-colors duration-300 flex items-center justify-end mt-4" href="{!! $data['wallpaperUrls']->first() !!}" target="_blank">
         Download
         <i class="fas fa-download ml-2"></i>
     </a>
@@ -15,7 +15,7 @@
     <div class="overflow-hidden rounded-lg shadow-lg dark:shadow-none my-8">
         <img
             src="data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaaaaa%3Bstroke-width%3A1%22/%3E%0A%3C/svg%3E"
-            data-src="{!! head($data['wallpaperUrls']) !!}"
+            data-src="{!! $data['wallpaperUrls']->first() !!}"
             class="w-full h-auto md:h-96 object-cover lazy"
             id="main-wallpaper" alt="Stylish wallpaper with the name {!! $name->name !!}"
         >
@@ -23,7 +23,7 @@
 
     <!-- Thumbnails container -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
-        @foreach ($data['wallpaperUrls'] as $key => $url)
+        @foreach ($data['wallpaperUrls']->random(2) as $url)
         <img
             src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaa%3Bstroke-width%3A1%22/%3E%3C/svg%3E"
             data-src="{!! $url !!}?size=thumb"
