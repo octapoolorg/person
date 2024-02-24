@@ -10,6 +10,7 @@ use League\Csv\Reader;
 class NameOriginSeeder extends Seeder
 {
     use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */
@@ -39,7 +40,7 @@ class NameOriginSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             DB::table('name_origin')->insert($records);
         }
     }

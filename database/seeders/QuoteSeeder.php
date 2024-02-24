@@ -38,7 +38,7 @@ class QuoteSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             Quote::insert($records);
         }
     }

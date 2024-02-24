@@ -12,6 +12,7 @@ use Illuminate\View\View;
 class NameController extends Controller
 {
     private NameService $nameService;
+
     private SeoService $seoService;
 
     public function __construct(NameService $nameService, SeoService $seoService)

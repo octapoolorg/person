@@ -122,10 +122,9 @@ class UsernameService
     /**
      * Checks the availability of the provided username on various social media sites.
      *
-     * @param string $username  The username to check.
+     * @param  string  $username  The username to check.
      * @return array An array of social media sites and their availability status.
      */
-
     public function checkUsernameAvailability(string $username): array
     {
         $sites = [

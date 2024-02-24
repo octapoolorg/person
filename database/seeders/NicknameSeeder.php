@@ -38,7 +38,7 @@ class NicknameSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             Nickname::insert($records);
         }
     }

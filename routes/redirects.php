@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return redirect("/$any" .'?'. $request->getQueryString(), 301);
 // })->where('any', '.*');
 
-
 Route::get('static/images/signature/style/monsieur-la-doulaise/{name}.jpg', function ($name) {
     return redirect()->route('names.signature', ['cursive', $name], 301);
 });

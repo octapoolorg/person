@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use Illuminate\Http\Response;
 use Intervention\Image\Facades\Image;
 
@@ -11,17 +10,16 @@ class BaseImageService
     public function generateImage(string $name, array $style): Response
     {
         $back = $this->getBackgroundPath($style['background']);
-        $key = $name . $style['background'];
+        $key = $name.$style['background'];
 
-        if($style['text'])
-        {
-            $key .= $style['font_path'] . $style['font_size'] . $style['font_color'];
+        if ($style['text']) {
+            $key .= $style['font_path'].$style['font_size'].$style['font_color'];
             request()->filled('size') && $key .= request()->size;
         }
 
         $base64Image = cache_remember($key, function () use ($back, $name, $style) {
             return $this->generateImageResponse($back, $name, $style);
-        },0);
+        }, 0);
 
         return $this->image($base64Image, $name, $style['seo_title']);
     }
@@ -40,8 +38,7 @@ class BaseImageService
     {
         $img = Image::make($back);
 
-        if($style['text'])
-        {
+        if ($style['text']) {
             $this->applyTextToImage($img, $name, $style);
         }
 

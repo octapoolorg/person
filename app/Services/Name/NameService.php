@@ -13,11 +13,11 @@ use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Hashids\Hashids;
 
 class NameService
 {
     protected UsernameService $usernameService;
+
     protected BaseImageService $baseImageService;
 
     public function __construct(UsernameService $usernameService, BaseImageService $baseImageService)
@@ -31,73 +31,73 @@ class NameService
             'background' => 'wallpaper_funky.jpg',
             'position_x' => 970,
             'position_y' => 400,
-            'font_path'  => 'roboto/roboto-bold.ttf',
-            'font_size'  => 150,
+            'font_path' => 'roboto/roboto-bold.ttf',
+            'font_size' => 150,
             'font_color' => '#f2f9f9',
-            'text'       => true
+            'text' => true,
         ],
         'cat' => [
             'background' => 'wallpaper_cat.jpg',
-            'text'       => false
-        ]
+            'text' => false,
+        ],
     ];
 
     protected array $signStyles = [
         'cursive' => [
-            'font_path'  => 'creattion-demo/creattion-demo.ttf',
-            'font_size'  => 250,
+            'font_path' => 'creattion-demo/creattion-demo.ttf',
+            'font_size' => 250,
             'font_color' => '#000000',
-            'text'       => true
+            'text' => true,
         ],
         'allison-tessa' => [
-            'font_path'  => 'allison-tessa/allison-tessa.ttf',
-            'font_size'  => 120,
+            'font_path' => 'allison-tessa/allison-tessa.ttf',
+            'font_size' => 120,
             'font_color' => '#000000',
-            'text'       => true
+            'text' => true,
         ],
         'motterdam' => [
-            'font_path'  => 'motterdam/motterdam.ttf',
-            'font_size'  => 200,
+            'font_path' => 'motterdam/motterdam.ttf',
+            'font_size' => 200,
             'font_color' => '#000000',
-            'text'       => true
+            'text' => true,
         ],
         'darlington' => [
-            'font_path'  => 'darlington/darlington.ttf',
-            'font_size'  => 200,
+            'font_path' => 'darlington/darlington.ttf',
+            'font_size' => 200,
             'font_color' => '#000000',
-            'text'       => true
+            'text' => true,
         ],
         'autography' => [
-            'font_path'  => 'autography/autography.otf',
-            'font_size'  => 200,
+            'font_path' => 'autography/autography.otf',
+            'font_size' => 200,
             'font_color' => '#000000',
-            'text'       => true
+            'text' => true,
         ],
         'sign_style' => [
-            'font_path'  => 'sign_style/sign_style.ttf',
-            'font_size'  => 200,
+            'font_path' => 'sign_style/sign_style.ttf',
+            'font_size' => 200,
             'font_color' => '#000000',
-            'text'       => true
-        ]
+            'text' => true,
+        ],
     ];
 
     public function getName(string $nameSlug): array
     {
         $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
             $name = Name::query()
-            ->withoutGlobalScopes()
-            ->with(['origins.meanings' => function ($query) use ($nameSlug) {
-                // Assuming you have the Name model accessible here or you fetch it based on the slug
-                // Join the meanings table to filter meanings based on the name's slug
-                $query->whereExists(function ($subQuery) use ($nameSlug) {
-                    $subQuery->select(DB::raw(1))
-                             ->from('names')
-                             ->whereColumn('names.id', 'meanings.name_id')
-                             ->where('names.slug', $nameSlug);
-                });
-            }, 'comments','nicknames','similarNames','siblingNames'])
-            ->where('slug', $nameSlug)
-            ->firstOrFail();
+                ->withoutGlobalScopes()
+                ->with(['origins.meanings' => function ($query) use ($nameSlug) {
+                    // Assuming you have the Name model accessible here or you fetch it based on the slug
+                    // Join the meanings table to filter meanings based on the name's slug
+                    $query->whereExists(function ($subQuery) use ($nameSlug) {
+                        $subQuery->select(DB::raw(1))
+                            ->from('names')
+                            ->whereColumn('names.id', 'meanings.name_id')
+                            ->where('names.slug', $nameSlug);
+                    });
+                }, 'comments', 'nicknames', 'similarNames', 'siblingNames'])
+                ->where('slug', $nameSlug)
+                ->firstOrFail();
 
             $sortedMeanings = collect(explode(',', $name->meaning))
                 ->sort(function ($a, $b) {
@@ -110,6 +110,7 @@ class NameService
             } else {
                 $name->mainMeaning = $sortedMeanings->implode(', ');
                 $name->meanings = collect();
+
                 return $name;
             }
 
@@ -145,15 +146,17 @@ class NameService
         });
     }
 
-    public function getQuotes (string $name): array
+    public function getQuotes(string $name): array
     {
-        $quotes = collect(__('quotes',['name' => $name]));
+        $quotes = collect(__('quotes', ['name' => $name]));
+
         return $quotes->random(3)->toArray();
     }
 
-    public function getStatuses (string $name): array
+    public function getStatuses(string $name): array
     {
-        $statuses = collect(__('statuses',['name' => $name]));
+        $statuses = collect(__('statuses', ['name' => $name]));
+
         return $statuses->random(3)->toArray();
     }
 
@@ -216,7 +219,7 @@ class NameService
 
         $style = array_merge($style, [
             'seo_title' => 'Name Signature',
-            'background' => 'signature_background.jpg'
+            'background' => 'signature_background.jpg',
         ]);
 
         return $this->baseImageService->generateImage($firstPart, $style);
@@ -231,6 +234,7 @@ class NameService
     {
         $num = count($this->wallpaperStyles) > 3 ? 3 : count($this->wallpaperStyles);
         $styles = array_rand($this->wallpaperStyles, $num);
+
         return $this->generateUrls($name, $styles, 'names.wallpaper');
     }
 
@@ -238,6 +242,7 @@ class NameService
     {
         $num = count($this->signStyles) > 3 ? 3 : count($this->signStyles);
         $styles = array_rand($this->signStyles, $num);
+
         return $this->generateUrls($name, $styles, 'names.signature');
     }
 
@@ -276,10 +281,10 @@ class NameService
             ->collect()
             ->sortKeys()
             ->map(function ($value, $key) {
-                return $key . ':' . $value;
+                return $key.':'.$value;
             })->implode(':');
 
-        $cacheKey = 'search:' . $params;
+        $cacheKey = 'search:'.$params;
 
         return cache_remember($cacheKey, function () use ($request) {
             $query = Name::query()
@@ -287,7 +292,7 @@ class NameService
                 ->withoutGlobalScopes();
 
             $request->whenFilled('q', function ($searchTerm) use ($query) {
-                $query->where('names.name', 'like', $searchTerm . '%');
+                $query->where('names.name', 'like', $searchTerm.'%');
             }, function () use ($query) {
                 $query->popular();
             });

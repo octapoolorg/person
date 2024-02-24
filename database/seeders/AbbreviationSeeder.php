@@ -10,6 +10,7 @@ use League\Csv\Reader;
 class AbbreviationSeeder extends Seeder
 {
     use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      */
@@ -36,7 +37,7 @@ class AbbreviationSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             Abbreviation::insert($records);
         }
     }

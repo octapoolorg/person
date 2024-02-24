@@ -38,7 +38,7 @@ class MeaningSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             Meaning::insert($records);
         }
     }

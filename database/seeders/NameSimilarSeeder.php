@@ -37,7 +37,7 @@ class NameSimilarSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             DB::table('name_similar')->insert($records);
         }
     }

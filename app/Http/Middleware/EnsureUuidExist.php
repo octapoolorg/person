@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 class EnsureUuidExist
 {
@@ -17,7 +17,7 @@ class EnsureUuidExist
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->hasCookie('uuid')) {
+        if (! $request->hasCookie('uuid')) {
             $uuid = (string) Str::uuid();
             $expires = 60 * 24 * 30 * 9; // 9 months
             Cookie::queue('uuid', $uuid, $expires);

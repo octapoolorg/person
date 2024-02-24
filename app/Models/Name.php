@@ -6,7 +6,6 @@ use App\Enums\Gender;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Name extends Model
@@ -15,8 +14,9 @@ class Name extends Model
 
     protected $guarded = [];
 
-    public function origins() {
-        return $this->belongsToMany(Origin::class,'name_origin');
+    public function origins()
+    {
+        return $this->belongsToMany(Origin::class, 'name_origin');
     }
 
     public function meanings()

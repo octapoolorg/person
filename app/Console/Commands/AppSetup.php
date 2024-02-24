@@ -10,6 +10,7 @@ use ZipArchive;
 class AppSetup extends Command
 {
     protected $signature = 'app:setup';
+
     protected $description = 'Setup the application by merging and extracting multi-part ZIP files.';
 
     public function handle(): void
@@ -28,17 +29,17 @@ class AppSetup extends Command
     protected function mergeZipParts(string $baseZipPath): string
     {
         $tempZipPath = tempnam(sys_get_temp_dir(), 'mergedZip');
-        if (!$tempZipPath) {
+        if (! $tempZipPath) {
             throw new Exception('Failed to create a temporary file.');
         }
 
         $tempZipStream = fopen($tempZipPath, 'wb');
-        if (!$tempZipStream) {
+        if (! $tempZipStream) {
             throw new Exception('Cannot open temporary file for writing.');
         }
 
         $part = 1;
-        while (Storage::disk('data')->exists($partialPath = $baseZipPath . '.' . str_pad($part, 3, '0', STR_PAD_LEFT))) {
+        while (Storage::disk('data')->exists($partialPath = $baseZipPath.'.'.str_pad($part, 3, '0', STR_PAD_LEFT))) {
             fwrite($tempZipStream, Storage::disk('data')->get($partialPath));
             $part++;
         }
@@ -57,11 +58,11 @@ class AppSetup extends Command
     protected function extractZip(string $tempZipPath): void
     {
         $zip = new ZipArchive;
-        if ($zip->open($tempZipPath) !== TRUE) {
+        if ($zip->open($tempZipPath) !== true) {
             throw new Exception('Failed to open merged ZIP file.');
         }
 
-        if (!$zip->extractTo(base_path('data/imports'))) {
+        if (! $zip->extractTo(base_path('data/imports'))) {
             $zip->close();
             throw new Exception('Failed to extract ZIP file.');
         }

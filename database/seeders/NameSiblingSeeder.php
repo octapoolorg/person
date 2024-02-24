@@ -37,7 +37,7 @@ class NameSiblingSeeder extends Seeder
             }
         }
 
-        if (!empty($records)) {
+        if (! empty($records)) {
             DB::table('name_sibling')->insert($records);
         }
     }

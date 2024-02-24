@@ -6,7 +6,6 @@ use App\Models\Name;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
@@ -47,7 +46,7 @@ class ActivateNames extends Command
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
     }
 
-    private function activateNames(int $number) : void
+    private function activateNames(int $number): void
     {
         $activatedNames = Name::query()->withoutGlobalScopes()
             ->where('is_active', false)
@@ -78,7 +77,7 @@ class ActivateNames extends Command
 
     private function submitUrlsToSeo(array $urls): void
     {
-        if(app()->environment('production')) {
+        if (app()->environment('production')) {
             $this->call('app:seo:urls', ['urls' => $urls]);
         }
     }

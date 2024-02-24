@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Prunable;
 
 class Favorite extends Model
 {
-    use Prunable, HasFactory;
-    
+    use HasFactory, Prunable;
+
     protected $guarded = [];
 
     /**
