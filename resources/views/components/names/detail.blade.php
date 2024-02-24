@@ -19,6 +19,8 @@
                     <input type="hidden" id="name" value="{{ $name->name }}" x-ref="name">
                     {{ $name->name }}
                 </h1>
+
+                
             </div>
 
             <div class="mt-8">
@@ -60,7 +62,7 @@
                     <div @class([
                         'grid grid-cols-1 gap-6 items-stretch',
                         'md:grid-cols-2' => $name->origins->count() > 1,
-                        ])>
+                    ])>
                         @foreach ($name->origins as $origin)
                             <div class="bg-surface dark:bg-base-700 rounded-lg shadow p-6">
                                 <div class="flex items-center space-x-3 mb-4">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('meaning');
             $table->string('gender')->nullable()->index();
             $table->string('pronunciation')->nullable();
-            $table->string('popularity')->nullable();
+            $table->string('popularity')->nullable()->index();
             $table->boolean('is_simple')->default(false)->index();
             $table->boolean('is_active')->default(false)->index();
             $table->boolean('is_popular')->default(false)->index();

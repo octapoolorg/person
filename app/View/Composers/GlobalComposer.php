@@ -24,7 +24,10 @@ class GlobalComposer
     public function compose(View $view): void
     {
         $trendingNames = cache_remember('names:random', function () {
-            return $this->name->withoutGlobalScopes()->random()->popular()->limit(20)->get();
+            return $this->name->withoutGlobalScopes()
+            ->random()->popular()
+            ->where('popularity', '!=', '')
+            ->limit(20)->get();
         }, now()->addDay());
 
         $origins = cache_remember('origins', function () {

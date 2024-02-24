@@ -30,6 +30,7 @@
                                     'bg-gradient-to-r text-surface',
                                     'from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600' => $sibling->isMasculine(),
                                     'from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600' => $sibling->isFeminine(),
+                                    'from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600' => !( $sibling->isMasculine() || $sibling->isFeminine() ),
                                 ])>
                                     {{ $sibling->name }}
                                 </a>
