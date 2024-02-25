@@ -27,7 +27,7 @@
                         <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak" class="hidden">
                             <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i>
                         </a>
-                        <p class="text-2xl">
+                        <p class="text-lg">
                             {{ $name->pronunciation }}
                         </p>
                     </div>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="mt-8">
-                <div class="text-base sm:text-lg mt-2 break-words dark:text-base-300 capitalize leading-relaxed">
+                <div class="text-base sm:text-2xl mt-2 break-words dark:text-base-300 capitalize leading-relaxed">
                     {!! $name->mainMeaning !!}
                 </div>
             </div>
