@@ -32,9 +32,11 @@
                         </h2>
                         <p class="text-md text-base-500 dark:text-base-300 overflow-hidden text-ellipsis whitespace-nowrap">{{ $name->meaning }}</p>
                     </a>
+                    @if($myFavorite)
                     <button class="w-10 h-10 flex justify-center items-center text-pink-600 dark:text-pink-500 hover:text-pink-700 dark:hover:text-pink-600 focus:outline-none favorite-button" data-slug="{{ $name->slug }}">
                         <i class="fa-heart text-2xl fas" id="favorite-icon"></i>
                     </button>
+                    @endif
                 </div>
                 @empty
                 <div class="text-center py-8">

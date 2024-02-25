@@ -51,13 +51,14 @@ class NameController extends Controller
     public function favorites(?string $favorite = null): View
     {
         $names = $this->nameService->getFavorites($favorite);
+        $myFavorite = $favorite === null ? true : false;
 
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => 'Favorite']
         );
 
-        return view('names.favorite', compact('names'));
+        return view('names.favorite', compact('names', 'myFavorite'));
     }
 
     public function signatures(string $nameSlug): View
@@ -88,11 +89,13 @@ class NameController extends Controller
 
     public function wallpaper(string $style, string $nameSlug): Response
     {
-        return $this->nameService->wallpaper($nameSlug, $style);
+        $name = $this->nameService->getName($nameSlug)['name']->name;
+        return $this->nameService->wallpaper($name, $style);
     }
 
     public function signature(string $style, string $name): Response
     {
+        $name = $this->nameService->getName($name)['name']->name;
         return $this->nameService->signature($name, $style);
     }
 }

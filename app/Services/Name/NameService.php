@@ -4,7 +4,6 @@ namespace App\Services\Name;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
@@ -14,10 +13,13 @@ class NameService
 
     private SearchService $searchService;
 
-    public function __construct(DetailService $detailService, SearchService $searchService)
+    private ToolService $toolService;
+
+    public function __construct(DetailService $detailService, SearchService $searchService, ToolService $toolService)
     {
         $this->detailService = $detailService;
         $this->searchService = $searchService;
+        $this->toolService   = $toolService;
     }
 
     public function getName (string $nameSlug): array
@@ -27,7 +29,7 @@ class NameService
 
     public function getUserNames (string $nameSlug): Collection
     {
-        return $this->detailService->getUserNames($nameSlug);
+        return $this->toolService->getUserNames($nameSlug);
     }
 
     public function getQuotes (string $nameSlug): Collection
@@ -47,30 +49,30 @@ class NameService
 
     public function getFancyTexts (string $nameSlug,bool $random): Collection
     {
-        return $this->detailService->getFancyTexts($nameSlug, $random);
+        return $this->toolService->getFancyTexts($nameSlug, $random);
     }
 
     public function getWallpapers (string $nameSlug): Collection
     {
-        return $this->detailService->getWallpapers($nameSlug);
+        return $this->toolService->getWallpapers($nameSlug);
     }
 
     public function getSignatures (string $nameSlug): Collection
     {
-        return $this->detailService->getSignatures($nameSlug);
+        return $this->toolService->getSignatures($nameSlug);
     }
 
     public function wallpaper (string $nameSlug, string $style): Response
     {
-        return $this->detailService->wallpaper($nameSlug, $style);
+        return $this->toolService->wallpaper($nameSlug, $style);
     }
 
     public function signature (string $nameSlug, string $style): Response
     {
-        return $this->detailService->signature($nameSlug, $style);
+        return $this->toolService->signature($nameSlug, $style);
     }
 
-    public function getFavorites (?string $favorite = null): LengthAwarePaginator
+    public function getFavorites (?string $favorite = null): Paginator
     {
         return $this->detailService->getFavorites($favorite);
     }
