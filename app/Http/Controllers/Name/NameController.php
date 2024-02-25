@@ -51,18 +51,17 @@ class NameController extends Controller
 
     public function favorites(?string $favorite = null): View
     {
-        $names = $this->nameService->getFavorites($favorite);
-        $myFavorite = $favorite === null ? true : false;
-        $guest = $favorite === null ?
-            Guest::where('uuid', request()->cookie('uuid'))->first() :
-            Guest::where('hash', $favorite)->first();
+        $myFavorite = $favorite === null;
+        $favorites = $this->nameService->getFavorites($favorite);
+        $names = $favorites['names'];
+        $guest = $favorites['guest'];
 
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => 'Favorite']
         );
 
-        return view('names.favorite', compact('names', 'myFavorite', 'guest'));
+        return view('names.favorite', compact('names', 'guest', 'myFavorite'));
     }
 
     public function signatures(string $nameSlug): View

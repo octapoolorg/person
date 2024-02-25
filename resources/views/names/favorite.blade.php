@@ -6,7 +6,7 @@
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="flex flex-col lg:flex-row mb-12 mt-8">
             <main class="w-full px-4 mb-4 lg:mb-0">
-                @if ($names->isNotEmpty())
+                @if ($names->isNotEmpty() && $myFavorite)
                     <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 px-4 py-6">
                         <div class="flex flex-col space-y-2 mb-4 md:mb-0">
                             <h1 class="text-2xl md:text-3xl font-semibold text-base-900 dark:text-base-200">Favorite Names
@@ -24,7 +24,7 @@
                                 <input type="text" id="shareable-link"
                                     class="flex-1 bg-transparent text-base focus:ring-0 border-none text-base-600 dark:text-base-300 focus:outline-none px-2"
                                     value="{!! route('names.favorites',
-                                    ['favorite' =>  (new Hashids())->encode($guest->id)])
+                                    ['favorite' =>  (new Hashids())->encode($guest->id, 10)])
                                     !!}" readonly>
                                 <button
                                     class="ml-2 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-1 px-3 rounded transition ease-in-out duration-150"

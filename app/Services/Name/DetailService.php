@@ -144,21 +144,25 @@ class DetailService
         return collect($abbreviations);
     }
 
-    public function getFavorites(?string $favorite = null): Paginator
+    public function getFavorites(?string $favorite = null): array
     {
-        $guest_id =
+        $guest =
             $favorite === null ?
-            Guest::query()->where('uuid', request()->cookie('uuid'))->value('id') :
-            Guest::query()->where('hash', $favorite)->value('id');
+            Guest::query()->where('uuid', request()->cookie('uuid'))->firstOrFail() :
+            Guest::query()->where('hash', $favorite)->firstOrFail();
 
-        $nameSlugs = cache_remember("favorites:$guest_id", function () use ($guest_id) {
-            return Favorite::where('guest_id', $guest_id)->pluck('slug');
+        $nameSlugs = cache_remember("favorites:$guest->id", function () use ($guest) {
+            return Favorite::where('guest_id', $guest->id)->pluck('slug');
         });
 
-        return
-            Name::query()
-            ->withoutGlobalScopes()
-            ->whereIn('slug', $nameSlugs)
-            ->simplePaginate(50);
+        $names = Name::query()
+                ->withoutGlobalScopes()
+                ->whereIn('slug', $nameSlugs)
+                ->simplePaginate(50);
+
+        return [
+            'names' => $names,
+            'guest' => $guest,
+        ];
     }
 }

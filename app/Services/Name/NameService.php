@@ -72,7 +72,7 @@ class NameService
         return $this->toolService->signature($nameSlug, $style);
     }
 
-    public function getFavorites (?string $favorite = null): Paginator
+    public function getFavorites (?string $favorite = null): array
     {
         return $this->detailService->getFavorites($favorite);
     }
