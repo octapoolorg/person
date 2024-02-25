@@ -41,8 +41,7 @@ class SearchService
 
     private function executeSearchQuery(Request $request) : Paginator
     {
-        $query = Name::query()
-            ->with(['origins']);
+        $query = Name::query();
 
         $this->applyRequestFilters($query, $request);
 

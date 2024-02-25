@@ -34,8 +34,17 @@
                 <h2 class="text-2xl font-semibold leading-tight text-base-900 dark:text-base-300">Search Results</h2>
                 <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @forelse($names as $name)
-                        <a href="{{ route('names.show', $name) }}" class="bg-surface hover:bg-primary-50/70 dark:bg-base-600 rounded-lg shadow hover:shadow-md p-6">
+                        <a href="{{ route('names.show', $name) }}" class="bg-surface hover:bg-primary-50/70 dark:bg-base-600 rounded-lg shadow hover:shadow-md p-6 relative">
                             <h3 class="text-xl font-semibold text-base-900 dark:text-base-100">{{ $name->name }}</h3>
+                            <div class="absolute top-5 right-5">
+                                @if($name->isMasculine())
+                                <i class="fas fa-mars text-blue-500 text-xl" title="Male"></i>
+                                @elseif($name->isFeminine())
+                                <i class="fas fa-venus text-pink-500 text-xl" title="Female"></i>
+                                @else
+                                <i class="fas fa-genderless text-gray-400 text-xl" title="{!! $name->gender !!}"></i>
+                                @endif
+                            </div>
                             <p class="mt-2 text-base text-base-600 dark:text-base-300 truncate">{{ $name->meaning }}</p>
                             <span class="mt-4 block text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-400 transition duration-200 ease-in-out">Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                         </a>
