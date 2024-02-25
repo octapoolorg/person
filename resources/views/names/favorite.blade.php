@@ -3,23 +3,25 @@
 <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
     <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
         <main class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
-            <h1 class="text-3xl font-semibold text-primary-800 dark:text-primary-100">Favorite Names</h1>
-            <p class="mt-2 text-base text-base-600 dark:text-base-300">Here are the names you've favorited.</p>
+            @if($names->isNotEmpty())
+                <h1 class="text-3xl font-semibold text-primary-800 dark:text-primary-100">Favorite Names</h1>
+                <p class="mt-2 text-base text-base-600 dark:text-base-300">Here are the names you've favorited.</p>
 
-            <!-- Improved Shareable link section with better focus and accessibility -->
-            <div class="mt-8">
-                <div class="flex items-center justify-between bg-surface dark:bg-base-800 p-4 rounded-lg shadow-md">
-                    <div class="flex items-center w-10/12">
-                        <i class="fas fa-link text-2xl text-primary-600 dark:text-primary-500"></i>
-                        <input type="text" id="shareable-link" class="w-full ml-4 bg-transparent border-none text-base text-base-600 dark:text-base-300 focus:outline-none"
-                        value="{!! route('names.favorites', ['favorite'=> request()->cookie('uuid')]) !!}"
-                        readonly>
+                <!-- Improved Shareable link section with better focus and accessibility -->
+                <div class="mt-8">
+                    <div class="flex items-center justify-between bg-surface dark:bg-base-800 p-4 rounded-lg shadow-md">
+                        <div class="flex items-center w-10/12">
+                            <i class="fas fa-link text-2xl text-primary-600 dark:text-primary-500"></i>
+                            <input type="text" id="shareable-link" class="w-full ml-4 bg-transparent border-none text-base text-base-600 dark:text-base-300 focus:outline-none"
+                            value="{!! route('names.favorites', ['favorite'=> request()->cookie('uuid')]) !!}"
+                            readonly>
+                        </div>
+                        <button class="bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-150" id="copy-link">
+                            Copy
+                        </button>
                     </div>
-                    <button class="bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-150" id="copy-link">
-                        Copy
-                    </button>
                 </div>
-            </div>
+            @endif
 
             <div id="search-results" class="space-y-4 mt-6">
                 @forelse ($names as $name)

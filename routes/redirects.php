@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 //     Route::redirect($source, $target, 301);
 // }
 
+
+Route::redirect('names', 'names/search', 301);
+
 // Route::get('/{any}-1', function ($any, \Illuminate\Http\Request $request) {
 //     // Remove the -1 and preserve query parameters
 //     return redirect("/$any" .'?'. $request->getQueryString(), 301);

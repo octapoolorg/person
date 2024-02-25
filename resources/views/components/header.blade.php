@@ -59,7 +59,7 @@
                         class="z-10 hidden font-normal bg-surface divide-y divide-base-100 rounded-lg shadow w-44 dark:bg-base-700 dark:divide-base-600">
                         <ul class="py-2 text-sm text-base-700 dark:text-base-200" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="{!! route('names.index') !!}"
+                                <a href="{!! route('names.search') !!}"
                                     class="block px-4 py-2 hover:bg-base-100 dark:hover:bg-base-600 dark:hover:text-surface">
                                     Explore
                                 </a>

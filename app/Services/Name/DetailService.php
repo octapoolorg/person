@@ -51,7 +51,7 @@ class DetailService
         ],
         'allison-tessa' => [
             'font_path' => 'allison-tessa/allison-tessa.ttf',
-            'font_size' => 120,
+            'font_size' => 100,
             'font_color' => '#000000',
             'text' => true,
         ],
