@@ -5,6 +5,7 @@ namespace App\Services\Name;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
 class NameService
@@ -74,7 +75,7 @@ class NameService
         return $this->detailService->getFavorites($favorite);
     }
 
-    public function search (Request $request): LengthAwarePaginator
+    public function search (Request $request): Paginator
     {
         return $this->searchService->search($request);
     }

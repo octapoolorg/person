@@ -103,7 +103,7 @@ abstract class Numerology implements INumerology
         return $number;
     }
 
-    public function getNumerologyData($name, $dob = null): array
+    public function getAnalysis($name, $dob = null): array
     {
         $name = normalize_name($name);
         $destinyNumber = $this->calculateNumber($name);

@@ -4,9 +4,11 @@
 <section class="py-16 bg-gradient-to-b from-primary-50 to-primary-100 dark:from-primary-700 dark:to-primary-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-surface dark:bg-base-700 p-8 rounded-lg shadow-2xl dark:text-base-100">
-            <h2 class="text-3xl font-bold leading-tight text-base-900 dark:text-base-200">Find Your Perfect Name</h2>
-            <p class="mt-4 text-lg text-base-600 dark:text-base-300">Start your search by typing a name, selecting an alphabet, origin, or gender.</p>
-            <form action="{{ route('names.search') }}" method="GET" class="mt-12">
+            @if(! request()->anyFilled(['q', 'origin','gender']))
+                <h2 class="text-3xl font-bold leading-tight text-base-900 dark:text-base-200">Find Your Perfect Name</h2>
+                <p class="mt-4 text-lg text-base-600 dark:text-base-300 mb-12">Start your search by typing a name, selecting an alphabet, origin, or gender.</p>
+            @endisset
+            <form action="{{ route('names.search') }}" method="GET" class="">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div class="lg:col-span-8">
                         <div class="relative">

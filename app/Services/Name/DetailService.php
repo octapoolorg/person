@@ -160,13 +160,20 @@ class DetailService
             'name' => $name,
             'wallpapers' => $this->getWallpapers($name->slug),
             'signatures' => $this->getSignatures($name->slug),
-            'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($name->name),
+            'numerology' => $this->getNumerology($name->name),
             'abbreviations' => $this->getAbbreviations($name->name),
             'fancyTexts' => $this->getFancyTexts($name->name),
             'userNames' => $this->getUsernames($name->name),
             'quotes' => $this->getQuotes($name->name),
             'statuses' => $this->getStatuses($name->name),
         ];
+    }
+
+    public function getNumerology(string $name): array
+    {
+        return cache_remember("numerology:$name", function () use ($name) {
+            return NumerologyFactory::create()->getAnalysis($name);
+        });
     }
 
     public function getUsernames(string $name): Collection
@@ -265,7 +272,7 @@ class DetailService
             'seo_title' => 'Name Wallpaper',
         ]);
 
-        return $this->baseImageService->generateImage($name, $style);
+        return $this->baseImageService->generate($name, $style);
     }
 
     public function signature(string $name, string $style): Response
@@ -279,7 +286,7 @@ class DetailService
             'background' => 'signature_background.jpg',
         ]);
 
-        return $this->baseImageService->generateImage($firstPart, $style);
+        return $this->baseImageService->generate($firstPart, $style);
     }
 
     public function getFavorites(?string $favorite = null): LengthAwarePaginator

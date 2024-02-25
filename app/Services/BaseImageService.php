@@ -7,7 +7,7 @@ use Intervention\Image\Facades\Image;
 
 class BaseImageService
 {
-    public function generateImage(string $name, array $style): Response
+    public function generate(string $name, array $style): Response
     {
         $back = $this->getBackgroundPath($style['background']);
         $key = $name.$style['background'];

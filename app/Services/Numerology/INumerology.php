@@ -9,5 +9,5 @@ namespace App\Services\Numerology;
  */
 interface INumerology
 {
-    public function getNumerologyData(string $name, string $dob): array;
+    public function getAnalysis(string $name, string $dob): array;
 }

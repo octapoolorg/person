@@ -9,7 +9,7 @@
             <!-- Tooltip Text -->
             <span
                 class="absolute bottom-full mb-2 right-0 bg-black dark:bg-black text-surface dark:text-base-100 text-xs rounded py-1 px-3 w-28 hidden group-hover:block">
-                Based on Starting Letter of Name.
+                Based on Destiny Number.
             </span>
         </span>
     </div>

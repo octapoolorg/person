@@ -4,7 +4,7 @@ namespace App\Services\Numerology;
 
 class NumerologyFactory
 {
-    public static function create($type): ChaldeanNumerology|PythagoreanNumerology
+    public static function create($type = 'pythagorean'): ChaldeanNumerology|PythagoreanNumerology
     {
         return match ($type) {
             'pythagorean' => new PythagoreanNumerology(),

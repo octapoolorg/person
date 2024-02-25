@@ -4,11 +4,11 @@ namespace App\Services\Name;
 
 use App\Models\Name;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class SearchService
 {
-    public function search(Request $request): LengthAwarePaginator
+    public function search(Request $request): Paginator
     {
         $this->validateSearchRequest($request);
 
@@ -39,7 +39,7 @@ class SearchService
         return 'search:'.$params;
     }
 
-    private function executeSearchQuery(Request $request): LengthAwarePaginator
+    private function executeSearchQuery(Request $request) : Paginator
     {
         $query = Name::query()
             ->with(['origins']);
@@ -48,7 +48,7 @@ class SearchService
 
         $query->orderBy('is_popular', 'desc')->orderBy('name', 'asc');
 
-        $names = $query->paginate(30);
+        $names = $query->simplePaginate(50);
         $names->appends($request->query());
 
         return $names;
