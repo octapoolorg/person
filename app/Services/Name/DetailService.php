@@ -6,7 +6,6 @@ use App\Models\Abbreviation;
 use App\Models\Favorite;
 use App\Models\Guest;
 use App\Models\Name;
-use Hashids\Hashids;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -146,23 +145,31 @@ class DetailService
 
     public function getFavorites(?string $favorite = null): array
     {
-        $guest =
-            $favorite === null ?
-            Guest::query()->where('uuid', request()->cookie('uuid'))->firstOrFail() :
-            Guest::query()->where('hash', $favorite)->firstOrFail();
+        if ($favorite === null) {
+            $guest = Guest::query()->where('uuid', request()->cookie('uuid'))->first();
+        } else {
+            $guest = Guest::query()->where('hash', $favorite)->first();
+        }
 
-        $nameSlugs = cache_remember("favorites:$guest->id", function () use ($guest) {
-            return Favorite::where('guest_id', $guest->id)->pluck('slug');
-        });
-
-        $names = Name::query()
-                ->withoutGlobalScopes()
-                ->whereIn('slug', $nameSlugs)
-                ->simplePaginate(50);
+        $names = $guest ? $this->getFavoriteNames($guest) : collect();
 
         return [
             'names' => $names,
             'guest' => $guest,
         ];
+    }
+
+    private function getFavoriteNames($guest): Paginator
+    {
+        $nameSlugs = cache_remember("favorites:$guest->id", function () use ($guest) {
+            return Favorite::where('guest_id', $guest->id)->pluck('slug');
+        });
+
+        $names = Name::query()
+            ->withoutGlobalScopes()
+            ->whereIn('slug', $nameSlugs)
+            ->simplePaginate(45);
+
+        return $names;
     }
 }

@@ -1,7 +1,5 @@
 @extends('layouts.main')
 
-@use('Hashids\Hashids')
-
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="flex flex-col lg:flex-row mb-12 mt-8">
@@ -24,7 +22,7 @@
                                 <input type="text" id="shareable-link"
                                     class="flex-1 bg-transparent text-base focus:ring-0 border-none text-base-600 dark:text-base-300 focus:outline-none px-2"
                                     value="{!! route('names.favorites',
-                                    ['favorite' =>  (new Hashids())->encode($guest->id, 10)])
+                                    ['favorite' => $guest->hash])
                                     !!}" readonly>
                                 <button
                                     class="ml-2 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-1 px-3 rounded transition ease-in-out duration-150"
@@ -86,7 +84,11 @@
                 </div>
 
                 <div class="mt-8">
-                    {{ $names->links() }}
+                    @if ($names->isNotEmpty())
+                        <div class="flex justify-center">
+                            {{ $names->links() }}
+                        </div>
+                    @endif
                 </div>
             </main>
         </section>

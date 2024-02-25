@@ -7,7 +7,7 @@ use App\Models\Favorite;
 use App\Models\Guest;
 use App\Services\Name\NameService;
 use Exception;
-use Hashids\Hashids;
+use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -63,7 +63,7 @@ class NameController extends Controller
                 'ip_address' => $request->ip(),
             ]);
 
-            $guest->hash = (new Hashids())->encode($guest->id);
+            $guest->hash = Hashids::encode($guest->id);
             $guest->save();
 
             $favorite = Favorite::query()->firstOrCreate([
