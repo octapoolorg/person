@@ -8,7 +8,7 @@
                 <i class="text-lg fas fa-download"></i>
             </a>
 
-            <img class="w-full object-cover transition-opacity duration-500 max-h-fit md:max-h-[400px] lazy"
+            <img class="w-full object-contain transition-opacity duration-500 max-h-fit md:max-h-[400px] lazy"
                 src="{!! $images->first() !!}" id="main-wallpaper" alt="Main wallpaper">
 
             <div class="p-8">
@@ -16,7 +16,7 @@
                     @foreach ($images as $image)
                         <div
                             class="border border-base-200 dark:border-base-700 rounded-lg overflow-hidden shadow-sm transition-transform duration-300 cursor-pointer">
-                            <img class="rounded-lg w-full h-32 object-cover transition-opacity duration-300 lazy"
+                            <img class="rounded-lg w-full h-32 object-contain transition-opacity duration-300 lazy"
                                 src="{!! $image !!}?size=thumb"
                                 onclick="changeWallpaper('{!! $image !!}')" alt="Thumbnail">
                         </div>

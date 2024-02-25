@@ -2,6 +2,8 @@
 
 namespace App\Services\Tools;
 
+use Illuminate\Support\Collection;
+
 class FancyTextService
 {
     private string $name;
@@ -293,7 +295,7 @@ class FancyTextService
         return $styled;
     }
 
-    public function generate($styles = 10): array
+    public function generate($styles = 10): Collection
     {
         $usedStyles = [];
         $styleKeys = array_diff(array_keys($this->styles), $usedStyles);
@@ -315,6 +317,6 @@ class FancyTextService
         $results = array_merge($results, $emojiStyles);
         shuffle($results);
 
-        return $results;
+        return collect($results);
     }
 }

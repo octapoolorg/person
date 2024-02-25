@@ -142,14 +142,14 @@
                         <li class="flex items-center gap-2 text-base-500 dark:text-base-400 text-lg">
                             <img src="{{ asset('static/images/wikipedia.png') }}" alt="WikiPedia" class="w-6 h-6">
                             <a href="https://en.wikipedia.org/w/index.php?search={{ $name->name }}" target="_blank"
-                                rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400">
+                                rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400 hover:underline">
                                 Wikipedia
                             </a>
                         </li>
                         <li class="flex items-center gap-2 text-base-500 dark:text-base-400 text-lg">
                             <img src="{{ asset('static/images/ancestry.png') }}" alt="Ancestry" class="w-6 h-6">
-                            <a href="https://www.ancestry.com/name-origin?surname={{ $name->slug }}" target="_blank"
-                                rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400">
+                            <a href="https://www.ancestry.com/name-origin?surname={{ $name->name }}" target="_blank"
+                                rel="noopener noreferrer" class="hover:text-primary-500 dark:hover:text-primary-400 hover:underline">
                                 Ancestry
                             </a>
                         </li>
@@ -158,7 +158,7 @@
                             <i class="fab fa-wikipedia-w mt-1"></i>
                             <a href="https://en.wiktionary.org/w/index.php?search={{ $name->name }}"
                                 target="_blank" rel="noopener noreferrer"
-                                class="hover:text-primary-500 dark:hover:text-primary-400">
+                                class="hover:text-primary-500 dark:hover:text-primary-400 hover:underline">
                                 Wiktionary
                             </a>
                         </li>

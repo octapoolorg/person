@@ -2,6 +2,7 @@
 
 namespace App\Services\Name;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -36,9 +37,9 @@ class UsernameService
      * Generates a list of usernames based on the provided name.
      *
      * @param  string  $name  The name to base the usernames on.
-     * @return array An array of generated usernames.
+     * @return Collection A collection of creative usernames.
      */
-    public function generateUsernames(string $name): array
+    public function generateUsernames(string $name): Collection
     {
         $name = normalize_name($name);
         $name = sanitize_name($name);
@@ -50,9 +51,9 @@ class UsernameService
      * Creates usernames using the sanitized name and various word combinations.
      *
      * @param  string  $name  The sanitized name to use in the usernames.
-     * @return array An array of creative usernames.
+     * @return Collection A collection of creative usernames.
      */
-    private function createUsernames(string $name): array
+    private function createUsernames(string $name): Collection
     {
         $usernames = [];
 
@@ -62,7 +63,7 @@ class UsernameService
         $usernames[] = random_word($this->adjectives).'And'.ucfirst(random_word($this->uniqueWords)).ucfirst($name);
         $usernames[] = $name.'_'.random_word($this->adjectives).ucfirst(random_word($this->nouns));
 
-        return $usernames;
+        return collect($usernames);
     }
 
     /**

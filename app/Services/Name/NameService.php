@@ -2,318 +2,80 @@
 
 namespace App\Services\Name;
 
-use App\Models\Abbreviation;
-use App\Models\Favorite;
-use App\Models\Name;
-use App\Services\BaseImageService;
-use App\Services\Numerology\NumerologyFactory;
-use App\Services\Tools\FancyTextService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class NameService
 {
-    protected UsernameService $usernameService;
+    private DetailService $detailService;
 
-    protected BaseImageService $baseImageService;
+    private SearchService $searchService;
 
-    public function __construct(UsernameService $usernameService, BaseImageService $baseImageService)
+    public function __construct(DetailService $detailService, SearchService $searchService)
     {
-        $this->usernameService = $usernameService;
-        $this->baseImageService = $baseImageService;
+        $this->detailService = $detailService;
+        $this->searchService = $searchService;
     }
-
-    protected array $wallpaperStyles = [
-        'funky' => [
-            'background' => 'wallpaper_funky.jpg',
-            'position_x' => 970,
-            'position_y' => 400,
-            'font_path' => 'roboto/roboto-bold.ttf',
-            'font_size' => 150,
-            'font_color' => '#f2f9f9',
-            'text' => true,
-        ],
-        'cat' => [
-            'background' => 'wallpaper_cat.jpg',
-            'text' => false,
-        ],
-    ];
-
-    protected array $signStyles = [
-        'cursive' => [
-            'font_path' => 'creattion-demo/creattion-demo.ttf',
-            'font_size' => 250,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-        'allison-tessa' => [
-            'font_path' => 'allison-tessa/allison-tessa.ttf',
-            'font_size' => 120,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-        'motterdam' => [
-            'font_path' => 'motterdam/motterdam.ttf',
-            'font_size' => 200,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-        'darlington' => [
-            'font_path' => 'darlington/darlington.ttf',
-            'font_size' => 200,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-        'autography' => [
-            'font_path' => 'autography/autography.otf',
-            'font_size' => 200,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-        'sign_style' => [
-            'font_path' => 'sign_style/sign_style.ttf',
-            'font_size' => 200,
-            'font_color' => '#000000',
-            'text' => true,
-        ],
-    ];
 
     public function getName(string $nameSlug): array
     {
-        $name = cache_remember("name:$nameSlug", function () use ($nameSlug) {
-            $name = Name::query()
-                ->withoutGlobalScopes()
-                ->with(['origins.meanings' => function ($query) use ($nameSlug) {
-                    // Assuming you have the Name model accessible here or you fetch it based on the slug
-                    // Join the meanings table to filter meanings based on the name's slug
-                    $query->whereExists(function ($subQuery) use ($nameSlug) {
-                        $subQuery->select(DB::raw(1))
-                            ->from('names')
-                            ->whereColumn('names.id', 'meanings.name_id')
-                            ->where('names.slug', $nameSlug);
-                    });
-                }, 'comments', 'nicknames', 'similarNames', 'siblingNames'])
-                ->where('slug', $nameSlug)
-                ->firstOrFail();
-
-            $sortedMeanings = collect(explode(',', $name->meaning))
-                ->sort(function ($a, $b) {
-                    return Str::length($b) <=> Str::length($a);
-                });
-
-            if ($sortedMeanings->count() > 3) {
-                $mainMeanings = $sortedMeanings->splice(0, 3);
-                $name->mainMeaning = $mainMeanings->implode(', ');
-            } else {
-                $name->mainMeaning = $sortedMeanings->implode(', ');
-                $name->meanings = collect();
-
-                return $name;
-            }
-
-            // Adjust to distribute meanings evenly across 5 elements
-            $chunkSize = max(3, ceil($sortedMeanings->count() / 5));
-            $remainingMeanings = $sortedMeanings->chunk($chunkSize);
-            $name->meanings = $remainingMeanings->map(function ($chunk) {
-                return $chunk->implode(', ');
-            });
-
-            return $name;
-        });
-
-        return [
-            'name' => $name,
-            'wallpaperUrls' => $this->wallpaperUrls($name->slug),
-            'signatureUrls' => $this->signatureUrls($name->slug),
-            'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($name->name),
-            'abbreviations' => $this->getAbbreviations($name->name),
-            'fancyTexts' => $this->getFancyTexts($name->name),
-            'userNames' => $this->getUsernames($name->name),
-            'quotes' => $this->getQuotes($name->name),
-            'statuses' => $this->getStatuses($name->name),
-        ];
+        return $this->detailService->getName($nameSlug);
     }
 
-    public function getUsernames(string $name): array
+    public function getUserNames(string $nameSlug): Collection
     {
-        $randomness = rand(1, 15);
-
-        return cache_remember("usernames:$name:$randomness", function () use ($name) {
-            return $this->usernameService->generateUsernames($name);
-        });
+        return $this->detailService->getUserNames($nameSlug);
     }
 
-    public function getQuotes(string $name): Collection
+    public function getQuotes(string $nameSlug): Collection
     {
-        $quotes = collect(__('quotes', ['name' => $name]));
-
-        return $quotes->random(3);
+        return $this->detailService->getQuotes($nameSlug);
     }
 
-    public function getStatuses(string $name): Collection
+    public function getStatuses(string $nameSlug): Collection
     {
-        $statuses = collect(__('statuses', ['name' => $name]));
-
-        return $statuses->random(3);
+        return $this->detailService->getStatuses($nameSlug);
     }
 
-    public function getAbbreviations(string $name): array
+    public function getAbbreviations (string $nameSlug): Collection
     {
-        $name = normalize_name($name);
-        $alphabets = collect(str_split($name))->filter(function ($alphabet) {
-            return $alphabet !== ' ';
-        })->toUpper()->toArray();
-
-        // Getting abbreviations for the alphabets
-        $abbreviationsCollection = cache_remember("abbreviations", function () use ($alphabets) {
-            return Abbreviation::get()->groupBy('alphabet');
-        });
-
-        $abbreviations = [];
-        foreach ($alphabets as $alphabet) {
-            $alphabetKey = strtoupper($alphabet);
-
-            // Check if there are multiple abbreviations for the alphabet and pick one randomly
-            if (isset($abbreviationsCollection[$alphabetKey]) && $abbreviationsCollection[$alphabetKey]->count() > 0) {
-                $randomAbbreviation = $abbreviationsCollection[$alphabetKey]->random();
-                $abbreviations[] = [$alphabet => $randomAbbreviation->name ?? null];
-            } else {
-                $abbreviations[] = [$alphabet => null];
-            }
-        }
-
-        return $abbreviations;
+        return $this->detailService->getAbbreviations($nameSlug);
     }
 
-    public function getFancyTexts(string $name, bool $random = false): array
+    public function getFancyTexts (string $nameSlug): Collection
     {
-        $randomness = $random ? rand(1, 15) : 1;
-        $fancyTextService = new FancyTextService($name);
-
-        return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
-            return $fancyTextService->generate();
-        });
+        return $this->detailService->getFancyTexts($nameSlug);
     }
 
-    public function wallpaper(string $nameSlug, string $style): Response
+    public function wallpaperUrls (string $nameSlug): Collection
     {
-        $style = $this->wallpaperStyles[$style];
-        $name = $this->getName($nameSlug)['name']->name;
-
-        $style = array_merge($style, [
-            'seo_title' => 'Name Wallpaper',
-        ]);
-
-        return $this->baseImageService->generateImage($name, $style);
+        return $this->detailService->wallpaperUrls($nameSlug);
     }
 
-    public function signature(string $name, string $style): Response
+    public function signatureUrls (string $nameSlug): Collection
     {
-        $style = $this->signStyles[$style];
-        $name = $this->getName($name)['name']->name;
-        $firstPart = $this->getFirstPartOfName($name);
-
-        $style = array_merge($style, [
-            'seo_title' => 'Name Signature',
-            'background' => 'signature_background.jpg',
-        ]);
-
-        return $this->baseImageService->generateImage($firstPart, $style);
+        return $this->detailService->signatureUrls($nameSlug);
     }
 
-    private function getFirstPartOfName(string $name): string
+    public function wallpaper (string $nameSlug, string $style): Response
     {
-        return normalize_name(explode(' ', $name)[0]);
+        return $this->detailService->wallpaper($nameSlug, $style);
     }
 
-    public function wallpaperUrls(string $name): Collection
+    public function signature (string $nameSlug, string $style): Response
     {
-        $num = count($this->wallpaperStyles);
-        $styles = array_rand($this->wallpaperStyles, $num);
-
-        return $this->generateUrls($name, $styles, 'names.wallpaper');
-    }
-
-    public function signatureUrls(string $name): Collection
-    {
-        $num = count($this->signStyles);
-        $styles = array_rand($this->signStyles, $num);
-
-        return $this->generateUrls($name, $styles, 'names.signature');
-    }
-
-    private function generateUrls(string $name, array $styles, string $routeName): Collection
-    {
-        $urls = [];
-
-        foreach ($styles as $style) {
-            $urls[$style] = route($routeName, ['name' => $name, 'style' => $style]);
-        }
-
-        return collect($urls);
+        return $this->detailService->signature($nameSlug, $style);
     }
 
     public function getFavorites(?string $favorite = null): LengthAwarePaginator
     {
-        $uuid = $favorite ? $favorite : request()->cookie('uuid');
-
-        $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
-            return Favorite::where('uuid', $uuid)->pluck('slug');
-        });
-
-        $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->paginate(30);
-
-        return $names;
+        return $this->detailService->getFavorites($favorite);
     }
 
     public function search(Request $request): LengthAwarePaginator
     {
-        $request->validate([
-            'q' => 'nullable|string',
-            'origin' => 'nullable|string',
-        ]);
-
-        $params = $request
-            ->collect()
-            ->sortKeys()
-            ->map(function ($value, $key) {
-                return $key.':'.$value;
-            })->implode(':');
-
-        $cacheKey = 'search:'.$params;
-
-        return cache_remember($cacheKey, function () use ($request) {
-            $query = Name::query()
-                ->with(['origins'])
-                ->withoutGlobalScopes();
-
-            $request->whenFilled('q', function ($searchTerm) use ($query) {
-                $query->where('names.name', 'like', $searchTerm.'%');
-            }, function () use ($query) {
-                $query->popular();
-            });
-
-            $request->whenFilled('origin', function ($origin) use ($query) {
-                $query->popular();
-                $query->whereHas('origins', function ($q) use ($origin) {
-                    $q->select('slug')->where('slug', $origin);
-                });
-            });
-
-            $request->whenFilled('gender', function ($gender) use ($query) {
-                $query->popular()->where('gender', $gender);
-            });
-
-            $query->orderBy('is_popular', 'desc')->orderBy('name', 'asc');
-            $names = $query->paginate(30);
-
-            $names->appends($request->query());
-
-            return $names;
-        });
+        return $this->searchService->search($request);
     }
 }
