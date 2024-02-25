@@ -44,9 +44,9 @@ class NameService
         return $this->detailService->getAbbreviations($nameSlug);
     }
 
-    public function getFancyTexts (string $nameSlug): Collection
+    public function getFancyTexts (string $nameSlug,bool $random): Collection
     {
-        return $this->detailService->getFancyTexts($nameSlug);
+        return $this->detailService->getFancyTexts($nameSlug, $random);
     }
 
     public function wallpaperUrls (string $nameSlug): Collection

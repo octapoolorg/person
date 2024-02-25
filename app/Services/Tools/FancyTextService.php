@@ -6,13 +6,6 @@ use Illuminate\Support\Collection;
 
 class FancyTextService
 {
-    private string $name;
-
-    public function __construct(string $name)
-    {
-        $this->name = normalize_name($name);
-    }
-
     private array $styles = [
         'style1_map' => [
             'a' => '【a】', 'b' => '【b】', 'c' => '【c】', 'd' => '【d】', 'e' => '【e】', 'f' => '【f】', 'g' => '【g】',
@@ -257,66 +250,92 @@ class FancyTextService
 
     ];
 
-    public function generateRandomEmojiStyles($name, $count = 5): array
+    /**
+     * Generate a list of random emoji styles for a given name.
+     *
+     * @param string $name The name to stylize.
+     * @param int $count The number of styles to generate.
+     * @return Collection A collection of styled names with emojis.
+     */
+    public function generateEmojiStyles(string $name, int $count = 5): Collection
     {
-        $emojis = ['❤️', '⭐', '🔥', '💎', '🎵', '🚀', '☀️', '❄️', '🎈', '🍃', '🌊', '😀'];
-        shuffle($emojis);
-
-        $selectedEmojis = array_slice($emojis, 0, $count);
-        $emojiStyles = [];
-        foreach ($selectedEmojis as $emoji) {
-            $emojiStyles[] = $this->generateEmojiStyle($name, $emoji);
-        }
-
-        // If we have fewer styles than requested, pad the array with the original name
-        while (count($emojiStyles) < $count) {
-            $emojiStyles[] = $name;
-        }
-
-        return $emojiStyles;
+        return collect(['❤️', '⭐', '🔥', '💎', '🎵', '🚀', '☀️', '❄️', '🎈', '🍃', '🌊', '😀'])
+            ->shuffle()
+            ->take($count)
+            ->map(fn($emoji) => $this->generateEmojiStyle($name, $emoji));
     }
 
-    public function generateEmojiStyle($name, $emoji): string
+    /**
+     * Generate a styled string with emojis around and within the given name.
+     *
+     * @param string $name The name to stylize.
+     * @param string $emoji The emoji to use in the styling.
+     * @return string The styled name.
+     */
+    public function generateEmojiStyle(string $name, string $emoji): string
     {
-        $name = strtoupper($name);
-
-        return $emoji.implode($emoji, str_split($name)).$emoji;
+        $spacedName = implode($emoji, str_split(strtoupper($name)));
+        return "{$emoji}{$spacedName}{$emoji}";
     }
 
-    private function apply_style($name, $style): string
+     /**
+     * Generate a specified number of custom styles for the name.
+     *
+     * @param string $name The name to apply custom styles to.
+     * @param int $stylesCount The number of custom styles to generate.
+     * @return Collection A collection of custom-styled names.
+     */
+    private function generateCustomStyles(string $name, int $stylesCount): Collection
     {
-        $name = strtolower($name);
-        $lowercase_style = array_change_key_case($style);
-        $styled = '';
-        for ($i = 0; $i < strlen($name); $i++) {
-            $styled .= $lowercase_style[strtolower($name[$i])] ?? $name[$i];
-        }
+        $styleKeys = collect($this->styles)
+            ->keys()
+            ->shuffle()
+            ->take($stylesCount);
 
-        return $styled;
+        return $styleKeys->mapWithKeys(function ($styleName) use ($name) {
+            // Apply each selected style to the name
+            return [$styleName => $this->applyStyle($name, $this->styles[$styleName])];
+        });
     }
 
-    public function generate($styles = 10): Collection
+
+    /**
+     * Apply a predefined style to the name.
+     *
+     * @param string $name The name to style.
+     * @param array $style The style mapping.
+     * @return string The styled name.
+     */
+    private function applyStyle($name, $style): string
     {
-        $usedStyles = [];
-        $styleKeys = array_diff(array_keys($this->styles), $usedStyles);
-        shuffle($styleKeys);
+        $lowercase_style = collect($style)->mapWithKeys(function ($value, $key) {
+            return [strtolower($key) => $value];
+        });
 
-        // Generate 5 different emoji styles
-        $emojiStyles = $this->generateRandomEmojiStyles($this->name, 3);
+        return collect(str_split(strtolower($name)))
+            ->map(fn($char) => $lowercase_style->get($char, $char))
+            ->implode('');
+    }
 
-        // Generate 5 more styles from the available ones
-        $selectedStyles = array_slice($styleKeys, 0, $styles);
-        $usedStyles = array_merge($usedStyles, $selectedStyles);
+    /**
+     * Generate a collection of styled names using both emoji and custom styles.
+     *
+     * @param string $name The name to stylize.
+     * @param int $stylesCount The total number of styles to generate.
+     * @return Collection A collection of styled names.
+     */
+    public function generate(string $name, int $stylesCount = 10): Collection
+    {
+        $name = normalize_name($name);
 
-        $results = [];
-        foreach ($selectedStyles as $styleName) {
-            $results[$styleName] = $this->apply_style($this->name, $this->styles[$styleName]);
-        }
+        $emojiStylesCount = 3;
+        $customStylesCount = $stylesCount - $emojiStylesCount;
 
-        // Merge the emoji styles into the results
-        $results = array_merge($results, $emojiStyles);
-        shuffle($results);
+        // Generate both emoji and custom styles
+        $emojiStyles = $this->generateEmojiStyles($name, $emojiStylesCount);
+        $customStyles = $this->generateCustomStyles($name, $customStylesCount);
 
-        return collect($results);
+        // Combine and shuffle the resulting styles
+        return $emojiStyles->merge($customStyles)->shuffle();
     }
 }

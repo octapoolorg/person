@@ -19,11 +19,13 @@ class DetailService
 {
     private BaseImageService $baseImageService;
     private UsernameService $usernameService;
+    private FancyTextService $fancyTextService;
 
-    public function __construct(BaseImageService $baseImageService, UsernameService $usernameService)
+    public function __construct(BaseImageService $baseImageService, UsernameService $usernameService, FancyTextService $fancyTextService)
     {
         $this->baseImageService = $baseImageService;
         $this->usernameService = $usernameService;
+        $this->fancyTextService = $fancyTextService;
     }
 
     protected array $wallpaperStyles = [
@@ -221,10 +223,9 @@ class DetailService
     public function getFancyTexts(string $name, bool $random = false): Collection
     {
         $randomness = $random ? rand(1, 15) : 1;
-        $fancyTextService = new FancyTextService($name);
 
-        return cache_remember("fancyTexts:$name:$randomness", function () use ($fancyTextService) {
-            return $fancyTextService->generate();
+        return cache_remember("fancyTexts:$name:$randomness", function () use ($name) {
+            return $this->fancyTextService->generate($name);
         });
     }
 
