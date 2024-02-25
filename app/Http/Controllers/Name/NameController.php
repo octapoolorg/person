@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Name;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guest;
 use App\Services\Name\NameService;
 use App\Services\SeoService;
 use Illuminate\Http\Request;
@@ -52,13 +53,16 @@ class NameController extends Controller
     {
         $names = $this->nameService->getFavorites($favorite);
         $myFavorite = $favorite === null ? true : false;
+        $guest = $favorite === null ?
+            Guest::where('uuid', request()->cookie('uuid'))->first() :
+            Guest::where('hash', $favorite)->first();
 
         $this->seoService->getSeoData(
             ['page' => 'list'],
             ['page' => 'Favorite']
         );
 
-        return view('names.favorite', compact('names', 'myFavorite'));
+        return view('names.favorite', compact('names', 'myFavorite', 'guest'));
     }
 
     public function signatures(string $nameSlug): View

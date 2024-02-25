@@ -13,6 +13,12 @@ class Favorite extends Model
 
     protected $guarded = [];
 
+
+    public function guest()
+    {
+        return $this->belongsTo(Guest::class);
+    }
+
     /**
      * Get the prunable model query.
      */

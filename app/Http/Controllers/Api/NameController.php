@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
+use App\Models\Guest;
 use App\Services\Name\NameService;
 use Exception;
+use Hashids\Hashids;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class NameController extends Controller
 {
@@ -54,30 +55,36 @@ class NameController extends Controller
             ]);
 
             $uuid = $request->cookie('uuid');
-            $slug = $validated['slug'];
+            $slug = e($validated['slug']);
 
-            $favorite = Favorite::where('uuid', $uuid)->where('slug', $slug)->first();
+            $guest = Guest::query()->firstOrCreate([
+                'uuid' => $uuid,
+            ], [
+                'ip_address' => $request->ip(),
+            ]);
 
-            $isFavorited = false;
-            if ($favorite) {
-                $favorite->delete();
-            } else {
-                Favorite::create(['uuid' => $uuid, 'slug' => $slug]);
+            $guest->hash = (new Hashids())->encode($guest->id);
+            $guest->save();
+
+            $favorite = Favorite::query()->firstOrCreate([
+                'slug' => $slug, 'guest_id' => $guest->id
+            ]);
+
+            if ($favorite->wasRecentlyCreated) {
                 $isFavorited = true;
+            } else {
+                $favorite->delete();
+                $isFavorited = false;
             }
 
-            cache()->forget("favorites:$uuid");
-            $favorites = cache_remember("favorites:$uuid", function () use ($uuid) {
-                return Favorite::where('uuid', $uuid)->pluck('slug');
-            });
+            $favorites = Favorite::where('guest_id', $guest->id)->pluck('slug')->toArray();
 
             return response()->json([
                 'isFavorited' => $isFavorited,
-                'favorites' => $favorites->toArray(),
+                'favorites' => $favorites,
             ]);
         } catch (Exception $e) {
-            Log::error($e->getMessage());
-
+            logger($e->getMessage());
             return response()->json(['error' => 'Something went wrong, please try again later.'], 500);
         }
     }

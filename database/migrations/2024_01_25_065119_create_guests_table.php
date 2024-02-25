@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('guests', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->index();
-            $table->foreignId('guest_id');
+            $table->string('ip_address')->nullable();
+            $table->uuid('uuid')->unique()->nullable();
+            $table->string('hash')->unique()->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('guests');
     }
 };

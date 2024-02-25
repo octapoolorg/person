@@ -1,4 +1,7 @@
 @extends('layouts.main')
+
+@use('Hashids\Hashids')
+
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="flex flex-col lg:flex-row mb-12 mt-8">
@@ -20,7 +23,9 @@
                                 <i class="fas fa-link text-lg text-primary-600 dark:text-primary-500 mx-2"></i>
                                 <input type="text" id="shareable-link"
                                     class="flex-1 bg-transparent text-base focus:ring-0 border-none text-base-600 dark:text-base-300 focus:outline-none px-2"
-                                    value="{!! route('names.favorites', ['favorite' => request()->cookie('uuid')]) !!}" readonly>
+                                    value="{!! route('names.favorites',
+                                    ['favorite' =>  (new Hashids())->encode($guest->id)])
+                                    !!}" readonly>
                                 <button
                                     class="ml-2 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-1 px-3 rounded transition ease-in-out duration-150"
                                     id="copy-link">

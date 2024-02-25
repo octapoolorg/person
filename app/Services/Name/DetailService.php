@@ -4,7 +4,9 @@ namespace App\Services\Name;
 
 use App\Models\Abbreviation;
 use App\Models\Favorite;
+use App\Models\Guest;
 use App\Models\Name;
+use Hashids\Hashids;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -144,14 +146,19 @@ class DetailService
 
     public function getFavorites(?string $favorite = null): Paginator
     {
-        $uuid = $favorite ? $favorite : request()->cookie('uuid');
+        $guest_id =
+            $favorite === null ?
+            Guest::query()->where('uuid', request()->cookie('uuid'))->value('id') :
+            Guest::query()->where('hash', $favorite)->value('id');
 
-        $nameSlugs = cache_remember("favorites:$uuid", function () use ($uuid) {
-            return Favorite::where('uuid', $uuid)->pluck('slug');
+        $nameSlugs = cache_remember("favorites:$guest_id", function () use ($guest_id) {
+            return Favorite::where('guest_id', $guest_id)->pluck('slug');
         });
 
-        $names = Name::query()->withoutGlobalScopes()->whereIn('slug', $nameSlugs)->simplePaginate(50);
-
-        return $names;
+        return
+            Name::query()
+            ->withoutGlobalScopes()
+            ->whereIn('slug', $nameSlugs)
+            ->simplePaginate(50);
     }
 }
