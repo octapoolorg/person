@@ -19,22 +19,22 @@ class NameService
         $this->searchService = $searchService;
     }
 
-    public function getName(string $nameSlug): array
+    public function getName (string $nameSlug): array
     {
         return $this->detailService->getName($nameSlug);
     }
 
-    public function getUserNames(string $nameSlug): Collection
+    public function getUserNames (string $nameSlug): Collection
     {
         return $this->detailService->getUserNames($nameSlug);
     }
 
-    public function getQuotes(string $nameSlug): Collection
+    public function getQuotes (string $nameSlug): Collection
     {
         return $this->detailService->getQuotes($nameSlug);
     }
 
-    public function getStatuses(string $nameSlug): Collection
+    public function getStatuses (string $nameSlug): Collection
     {
         return $this->detailService->getStatuses($nameSlug);
     }
@@ -49,14 +49,14 @@ class NameService
         return $this->detailService->getFancyTexts($nameSlug, $random);
     }
 
-    public function wallpaperUrls (string $nameSlug): Collection
+    public function getWallpapers (string $nameSlug): Collection
     {
-        return $this->detailService->wallpaperUrls($nameSlug);
+        return $this->detailService->getWallpapers($nameSlug);
     }
 
-    public function signatureUrls (string $nameSlug): Collection
+    public function getSignatures (string $nameSlug): Collection
     {
-        return $this->detailService->signatureUrls($nameSlug);
+        return $this->detailService->getSignatures($nameSlug);
     }
 
     public function wallpaper (string $nameSlug, string $style): Response
@@ -69,12 +69,12 @@ class NameService
         return $this->detailService->signature($nameSlug, $style);
     }
 
-    public function getFavorites(?string $favorite = null): LengthAwarePaginator
+    public function getFavorites (?string $favorite = null): LengthAwarePaginator
     {
         return $this->detailService->getFavorites($favorite);
     }
 
-    public function search(Request $request): LengthAwarePaginator
+    public function search (Request $request): LengthAwarePaginator
     {
         return $this->searchService->search($request);
     }

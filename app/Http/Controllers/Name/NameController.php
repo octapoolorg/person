@@ -63,7 +63,7 @@ class NameController extends Controller
     public function signatures(string $nameSlug): View
     {
         $name = $this->nameService->getName($nameSlug)['name'];
-        $images = $this->nameService->signatureUrls($nameSlug);
+        $images = $this->nameService->getSignatures($nameSlug);
 
         $meta = $this->seoService->getSeoData(
             ['page' => 'signatures'],
@@ -76,7 +76,7 @@ class NameController extends Controller
     public function wallpapers(string $nameSlug): View
     {
         $name = $this->nameService->getName($nameSlug)['name'];
-        $images = $this->nameService->wallpaperUrls($nameSlug);
+        $images = $this->nameService->getWallpapers($nameSlug);
 
         $meta = $this->seoService->getSeoData(
             ['page' => 'wallpapers'],

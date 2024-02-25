@@ -158,8 +158,8 @@ class DetailService
     {
         return [
             'name' => $name,
-            'wallpaperUrls' => $this->wallpaperUrls($name->slug),
-            'signatureUrls' => $this->signatureUrls($name->slug),
+            'wallpapers' => $this->getWallpapers($name->slug),
+            'signatures' => $this->getSignatures($name->slug),
             'numerology' => NumerologyFactory::create('pythagorean')->getNumerologyData($name->name),
             'abbreviations' => $this->getAbbreviations($name->name),
             'fancyTexts' => $this->getFancyTexts($name->name),
@@ -229,7 +229,7 @@ class DetailService
         });
     }
 
-    public function wallpaperUrls(string $name): Collection
+    public function getWallpapers(string $name): Collection
     {
         $num = count($this->wallpaperStyles);
         $styles = array_rand($this->wallpaperStyles, $num);
@@ -237,7 +237,7 @@ class DetailService
         return $this->generateUrls($name, $styles, 'names.wallpaper');
     }
 
-    public function signatureUrls(string $name): Collection
+    public function getSignatures(string $name): Collection
     {
         $num = count($this->signStyles);
         $styles = array_rand($this->signStyles, $num);
