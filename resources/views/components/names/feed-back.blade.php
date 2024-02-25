@@ -1,4 +1,4 @@
-<section class="px-6 py-10 w-full shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800">
+<section class="px-6 py-10 w-full shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800" id="feed-back">
     <h2 class="mb-6 text-3xl font-semibold text-base-800 dark:text-base-100 lg:text-4xl">Comments</h2>
 
     <div class="space-y-6 max-w-4xl mx-auto">

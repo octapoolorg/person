@@ -1,6 +1,12 @@
 <!-- Social Share Section -->
-<section class="my-8 mb-10 px-6 py-10 shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800">
-    <div class="flex flex-wrap md:justify-start gap-2 sm:gap-4">
+<section class="my-8 mb-10 px-6 py-10 shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800" id="share">
+    <h2 class="mb-6 text-2xl font-semibold text-base-800 dark:text-base-100 lg:text-3xl">
+        Share {!! $name->name !!} with your friends
+    </h2>
+    <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
+        Spread the word about {!! $name->name !!} and let your friends know about it. Share it on your favorite social media platforms.
+    </p>
+    <div class="flex flex-wrap md:justify-start gap-2 sm:gap-4 mt-6">
         <!-- Twitter -->
         <a href="https://twitter.com/intent/tweet?text={!! request()->url() !!}"
            class="px-3 py-2 sm:px-4 sm:py-2 bg-base-900 dark:bg-base-950 text-surface rounded-full hover:bg-base-950 dark:hover:bg-base-700 flex items-center gap-2 transition-colors duration-300"

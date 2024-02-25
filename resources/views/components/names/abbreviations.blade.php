@@ -1,4 +1,4 @@
-<section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-base-700 bg-surface dark:bg-base-800">
+<section class="py-8 px-4 md:px-8 rounded-lg shadow dark:shadow-none my-10 border dark:border-base-700 bg-surface dark:bg-base-800" id="abbreviations">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
         <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold">
             Abbreviations of {!! $name->name !!}
@@ -15,7 +15,8 @@
                     @foreach ($abbreviationData as $alphabet => $abbreviation)
                         <tr class="hover:bg-base-100 dark:hover:bg-base-700 transition-colors duration-300">
                             <th class="text-lg p-4 font-semibold text-base-800 dark:text-base-100 bg-base-100 dark:bg-base-700 uppercase">
-                                {!! $alphabet !!}</th>
+                                {!! $alphabet !!}
+                            </th>
                             <td class="text-lg p-4 text-base-900 dark:text-base-100">{!! $abbreviation !!}</td>
                         </tr>
                     @endforeach

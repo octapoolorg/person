@@ -22,7 +22,7 @@ return [
         'description' => "Get :name's meaning, origin, numerology and more.",
     ],
     'search' => [
-        'title' => 'Search results for :q',
+        'title' => 'Search results for :q :origin :gender Names - Meanings, Origins and Numerology',
         'description' => 'Search results for :q with their meanings, origins and other information.',
     ],
     'privacy' => [

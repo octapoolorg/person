@@ -1,4 +1,4 @@
-<section class="px-4 py-10 md:p-8 border dark:border-base-700 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800">
+<section class="px-4 py-10 md:p-8 border dark:border-base-700 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800" id="signatures">
     <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 font-semibold">
         Signature styles for {!! $name->name !!}
     </h2>

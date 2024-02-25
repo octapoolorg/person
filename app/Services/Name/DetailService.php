@@ -118,20 +118,37 @@ class DetailService
     public function getAbbreviations(string $name): Collection
     {
         $name = normalize_name($name);
-        $alphabets = collect(str_split($name))->filter(function ($alphabet) {
-            return $alphabet !== ' ';
-        })->toUpper()->toArray();
+        $alphabets = $this->extractAlphabets($name);
+        $abbreviationsCollection = $this->fetchAbbreviationsCollection();
 
-        // Getting abbreviations for the alphabets
-        $abbreviationsCollection = cache_remember("abbreviations", function () use ($alphabets) {
+        return $this->buildAbbreviations($alphabets, $abbreviationsCollection);
+    }
+
+    private function extractAlphabets(string $name): array
+    {
+        return collect(str_split($name))
+            ->filter(function ($alphabet) {
+                return $alphabet !== ' ';
+            })
+            ->map(function ($alphabet) {
+                return strtoupper($alphabet);
+            })
+            ->toArray();
+    }
+
+    private function fetchAbbreviationsCollection(): Collection
+    {
+        return cache_remember("abbreviations", function () {
             return Abbreviation::get()->groupBy('alphabet');
         });
+    }
 
+    private function buildAbbreviations(array $alphabets, Collection $abbreviationsCollection): Collection
+    {
         $abbreviations = [];
+
         foreach ($alphabets as $alphabet) {
             $alphabetKey = strtoupper($alphabet);
-
-            // Check if there are multiple abbreviations for the alphabet and pick one randomly
             if (isset($abbreviationsCollection[$alphabetKey]) && $abbreviationsCollection[$alphabetKey]->count() > 0) {
                 $randomAbbreviation = $abbreviationsCollection[$alphabetKey]->random();
                 $abbreviations[] = [$alphabet => $randomAbbreviation->name ?? null];

@@ -47,7 +47,7 @@ class SearchService
 
         $query->orderBy('is_popular', 'desc')->orderBy('name', 'asc');
 
-        $names = $query->simplePaginate(50);
+        $names = $query->simplePaginate(45);
         $names->appends($request->query());
 
         return $names;

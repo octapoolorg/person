@@ -1,4 +1,4 @@
-<section class="border dark:border-base-700 py-8 px-4 md:px-8 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800">
+<section class="border dark:border-base-700 py-8 px-4 md:px-8 my-10 rounded-lg shadow dark:shadow-none bg-surface dark:bg-base-800" id="good-luck">
     <div class="flex flex-row justify-between items-center relative">
         <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold relative">
             {!! $name->name !!} Name Zodiac Details

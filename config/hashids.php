@@ -30,7 +30,7 @@ return [
 
         'main' => [
             'salt' => env('APP_NAME', 'Laravel'),
-            'length' => 10,
+            'length' => 6,
             // 'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         ],
 

@@ -1,4 +1,4 @@
-<section class="shadow" x-data>
+<section class="shadow" x-data id="meanings">
     <div class="bg-primary-500 dark:bg-primary-800 py-4 shadow rounded-t-xl flex items-center justify-between px-5">
         <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
             <i @class([

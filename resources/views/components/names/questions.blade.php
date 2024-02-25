@@ -1,5 +1,5 @@
 <!-- FAQ Section -->
-<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-base-700 bg-surface dark:bg-base-800"
+<section class="px-6 py-10 mb-10 rounded-lg shadow dark:shadow-none border dark:border-base-700 bg-surface dark:bg-base-800" id="questions"
 itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="text-2xl md:text-3xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold capitalize">
         Frequently Asked Questions about

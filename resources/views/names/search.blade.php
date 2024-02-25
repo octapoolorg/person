@@ -6,7 +6,7 @@
         <div class="bg-surface dark:bg-base-700 p-8 rounded-lg shadow-2xl dark:text-base-100">
             @if(! request()->anyFilled(['q', 'origin','gender']))
                 <h2 class="text-3xl font-bold leading-tight text-base-900 dark:text-base-200">Find Your Perfect Name</h2>
-                <p class="mt-4 text-lg text-base-600 dark:text-base-300 mb-12">Start your search by typing a name, selecting an alphabet, origin, or gender.</p>
+                <p class="mt-4 text-lg text-base-600 dark:text-base-300 mb-12">Start your search by typing a name, selecting an origin, or gender.</p>
             @endisset
             <form action="{{ route('names.search') }}" method="GET" class="">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -15,12 +15,12 @@
                             <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
                                 <i class="fas fa-search text-base-400 text-lg" aria-hidden="true"></i>
                             </div>
-                            <input type="search" name="q" id="search" class="w-full pl-14 pr-4 py-3 bg-base-50 dark:bg-base-600 dark:placeholder:text-base-300 border border-base-300 dark:border-base-500 dark:focus:border-primary-500 text-base-700 dark:text-base-300 rounded-lg transition duration-300 ease-in-out focus:bg-surface focus:border-primary-500 focus:ring-0" placeholder="Search here ..."
+                            <input type="search" name="q" id="search" class="w-full pl-14 pr-4 py-2 bg-base-50 dark:bg-base-600 dark:placeholder:text-base-300 border border-base-300 dark:border-base-500 dark:focus:border-primary-500 text-base-700 dark:text-base-300 rounded-lg transition duration-300 ease-in-out focus:bg-surface focus:border-primary-500 focus:ring-0" placeholder="Search here ..."
                             value="{{ request()->query('q') }}">
                         </div>
                     </div>
                     <div class="lg:col-span-4">
-                        <button type="submit" class="w-full flex justify-center py-3 px-4 bg-primary-500 dark:bg-primary-600 text-surface font-medium rounded-lg shadow hover:shadow-md transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-primary-300 focus:ring-opacity-50">
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 bg-primary-500 dark:bg-primary-600 text-surface font-medium rounded-lg shadow hover:shadow-md transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-primary-300 focus:ring-opacity-50">
                             Search
                         </button>
                     </div>

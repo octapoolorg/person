@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Name;
 
 use App\Http\Controllers\Controller;
-use App\Models\Guest;
 use App\Services\Name\NameService;
 use App\Services\SeoService;
 use Illuminate\Http\Request;
@@ -43,7 +42,11 @@ class NameController extends Controller
         $names = $this->nameService->search($request);
         $this->seoService->getSeoData(
             ['page' => 'search'],
-            ['q' => $request->input('q', '')]
+            [
+                'q' => str($request->input('q', ''))->headline(),
+                'origin' => str($request->input('origin', ''))->headline(),
+                'gender' => str($request->input('gender',''))->headline()
+            ]
         );
 
         return view('names.search', compact('names'));
