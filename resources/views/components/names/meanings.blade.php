@@ -102,7 +102,9 @@
                 </div>
             </div>
         </div>
-    @elseif (!$name->meanings->isEmpty())
+    @endif
+
+    @if (!$name->meanings->isEmpty())
         <div id="accordion-collapse-meanings" data-accordion="collapse"
             data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
             <h2 id="expand-meanings">
