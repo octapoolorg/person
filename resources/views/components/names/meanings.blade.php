@@ -35,7 +35,7 @@
             </div>
 
             <div class="text-base sm:text-2xl mt-2 md:py-3 break-words dark:text-base-300 text-balance leading-relaxed lg:px-10">
-                {!! str($name->mainMeaning)->apa() !!}
+                {!! $name->mainMeaning !!}
             </div>
         </article>
 
