@@ -78,7 +78,7 @@ class DetailService
             $name->meanings = collect();
             return;
         }
-
+        
         $chunkSize = max(3, ceil($sortedMeanings->count() / 5));
         $remainingMeanings = $sortedMeanings->chunk($chunkSize);
         $name->meanings = $remainingMeanings->map(function ($chunk) {

@@ -20,7 +20,7 @@
                         'good-luck',
                         'questions',
                         'share',
-                        'feed-back',
+                        'comments',
                     ];
                 @endphp
 
@@ -31,20 +31,25 @@
             </main>
 
             <aside class="w-full lg:w-1/3 md:px-4 space-y-8">
+                <x-names.sidebar :name="$name" :data="$data" />
+
                 <!--- Anchor Links to Sections -->
-                <div class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all">
+                <div class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all sticky top-5">
                     <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-4">
                         On This Page
                     </h5>
                     <ul class="list-none pl-0 text-base-600 dark:text-base-300">
                         @foreach ($sections as $section)
-                            <li class="mb-4">
-                                <a href="#{{ $section }}" class="flex items center justify-between text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 focus:text-primary-600 dark:focus:text-primary-400 transition duration-300 focus:outline-none">
-                                    {{  str($section)->camel()->headline() }}
-                                    <i class="fas fa-arrow-right text-primary-500 dark:text-primary-400"></i>
-                                </a>
-                            </li>
+                            @if ($section !== 'related-names')
+                                <li class="mb-4">
+                                    <a href="#{{ $section }}" class="flex items center justify-between text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 focus:text-primary-600 dark:focus:text-primary-400 transition duration-300 focus:outline-none">
+                                        {{  str($section)->camel()->headline() }}
+                                        <i class="fas fa-arrow-right text-primary-500 dark:text-primary-400"></i>
+                                    </a>
+                                </li>
+                            @endif
                         @endforeach
+                    </ul>
                 </div>
             </aside>
         </section>

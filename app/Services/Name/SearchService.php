@@ -59,7 +59,6 @@ class SearchService
 
         if ($request->filled('q')) {
             if (strlen($request->input('q')) > 3) {
-                $query->withoutGlobalScopes();
                 $shouldApplyPopular = false;
             }
             $query->where('names.name', 'like', $request->input('q').'%');
@@ -80,6 +79,8 @@ class SearchService
         // Finally, apply 'popular' filter if needed
         if ($shouldApplyPopular) {
             $query->popular();
+        }else{
+            $query->withoutGlobalScopes();
         }
     }
 }

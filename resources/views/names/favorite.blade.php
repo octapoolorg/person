@@ -95,12 +95,14 @@
     </section>
 @endsection
 
-@push('scripts')
-    <script>
-        document.getElementById('copy-link').addEventListener('click', function() {
-            const linkInput = document.getElementById('shareable-link');
-            linkInput.select();
-            document.execCommand('copy');
-        });
-    </script>
-@endpush
+@if($names->isNotEmpty() && $myFavorite)
+    @push('scripts')
+        <script>
+            document.getElementById('copy-link').addEventListener('click', function() {
+                const linkInput = document.getElementById('shareable-link');
+                linkInput.select();
+                document.execCommand('copy');
+            });
+        </script>
+    @endpush
+@endif

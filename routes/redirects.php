@@ -15,7 +15,7 @@ foreach ($redirects as $source => $target) {
 
 Route::redirect('names', 'names/search', 301);
 
-// Remove the -1 from the URL
+//Remove the -1 from the URL
 Route::get('/name/{any}-1', function ($any) {
     return redirect("name/$any" , 301);
 })->where('any', '.*');

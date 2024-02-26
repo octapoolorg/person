@@ -10,7 +10,7 @@
                 {{ config('app.name') }}
             </span>
         </a>
-        <div class="inline-flex items-center justify-center md:hidden">
+        <div class="inline-flex items-center justify-center lg:hidden">
             <x-mode-switch />
             <button data-collapse-toggle="navbar-default" type="button"
                 class=" p-2 w-10 h-10 text-sm text-base-500 rounded-lg hover:bg-base-100 focus:outline-none focus:ring-2 focus:ring-base-200 dark:text-base-400 dark:hover:bg-base-700 dark:focus:ring-base-600"
@@ -19,9 +19,9 @@
                 <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
         </div>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
             <ul
-                class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border border-base-100 rounded-lg bg-base-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-surface dark:bg-base-800 dark:border-base-700">
+                class="font-medium flex flex-col items-center p-4 lg:p-0 mt-4 border border-base-100 rounded-lg bg-base-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 lg:bg-surface dark:bg-base-800 dark:border-base-700 *:w-full *:lg:w-fit">
                 <li>
                     <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">
                         <label for="hero-input" class="sr-only">Search</label>
@@ -38,9 +38,9 @@
                 </li>
                 <li>
                     <a href="{!! route('home') !!}" @class([
-                        'block py-2 px-3 rounded md:p-0',
+                        'block py-2 px-3 rounded lg:p-0',
                         'text-primary-600' => request()->routeIs('home'),
-                        'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => !request()->routeIs(
+                        'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs(
                             'home'),
                     ])
                         {{ request()->routeIs('home') ? 'aria-current=page' : '' }}>
@@ -49,7 +49,7 @@
                 </li>
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                        class="group flex items-center justify-between w-full py-2 px-3 text-base-900 hover:bg-base-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-700 md:p-0 md:w-auto dark:text-surface md:dark:hover:text-primary-500 dark:focus:text-surface dark:hover:bg-base-700 md:dark:hover:bg-transparent">
+                        class="group flex items-center justify-between w-full py-2 px-3 text-base-900 hover:bg-base-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:w-auto dark:text-surface lg:dark:hover:text-primary-500 dark:focus:text-surface dark:hover:bg-base-700 lg:dark:hover:bg-transparent">
                         Names
                         <i class="fas fa-chevron-down text-base-500 dark:text-base-400 ml-2 group-hover:text-primary-700"
                             aria-hidden="true"></i>
@@ -96,10 +96,9 @@
                 <li>
                     <a href="{!! route('blog.index') !!}"
                         @class([
-                            'block py-2 px-3 rounded md:p-0',
+                            'block py-2 px-3 rounded lg:p-0',
                             'text-primary-600' => request()->routeIs('blog'),
-                            'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => !request()->routeIs(
-                                'blog'),
+                            'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('blog'),
                         ])
                         {{ request()->routeIs('blog') ? 'aria-current=page' : '' }}>
                         Blog
@@ -108,21 +107,22 @@
                 <li>
                     <!-- favorite button -->
                     <a href="{!! route('names.favorites') !!}" @class([
-                        'block py-2 px-3 rounded md:p-0 relative',
+                        'block py-2 px-3 rounded lg:p-0 relative',
                         'text-primary-600' => request()->routeIs('favorites'),
-                        'text-base-800 md:hover:text-primary-700 dark:text-surface md:dark:hover:text-primary-500' => !request()->routeIs(
-                            'favorites'),
+                        'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('favorites'),
                     ])
                         {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}>
                         <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
-                        <span id="navbar-favorite-icon" @class([
-                            'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-0 -end-1 dark:border-base-900',
-                            'inline-flex' => $favorite,
-                            'hidden' => !$favorite,
-                        ])></span>
+                        <span id="navbar-favorite-icon"
+                            @class([
+                                'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full top-2 end-2 lg:-top-0 lg:-end-1 dark:border-base-900',
+                                'inline-flex' => $haveFavorites,
+                                'hidden' => ! $haveFavorites,
+                            ])
+                        ></span>
                     </a>
                 </li>
-                <li class="hidden md:block">
+                <li class="hidden lg:block">
                     <x-mode-switch />
                 </li>
             </ul>

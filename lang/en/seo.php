@@ -19,7 +19,7 @@ return [
     ],
     'name' => [
         'title' => ':name - Name Meaning, Origin, Numerology and more',
-        'description' => "Get :name's meaning, origin, numerology and more.",
+        'description' => "Find the meaning, origin, and other details of the name :name. Get numerology analysis, lucky number, and other information of :name.",
     ],
     'search' => [
         'title' => 'Search results for :q :origin :gender Names - Meanings, Origins and Numerology',

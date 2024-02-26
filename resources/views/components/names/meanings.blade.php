@@ -1,4 +1,4 @@
-<section class="shadow" x-data id="meanings">
+<section class="lg:shadow" x-data id="meanings">
     <div class="bg-primary-500 dark:bg-primary-800 py-4 shadow rounded-t-xl flex items-center justify-between px-5">
         <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
             <i @class([
@@ -17,15 +17,15 @@
         <article class="text-center">
             <div class="md:px-10">
                 <h1
-                    class="text-3xl text-center md:text-6xl font-bold py-10 md:py-4 dark:text-base-100 leading-relaxed break-words">
+                    class="text-3xl text-center md:text-6xl font-bold md:py-4 dark:text-base-100 text-balance leading-relaxed break-words">
                     <input type="hidden" id="name" value="{{ $name->name }}" x-ref="name">
                     {{ $name->name }}
                 </h1>
 
                 @isset($name->pronunciation)
                     <div class="flex items-center justify-center gap-2 text-base-500 dark:text-base-400 my-4">
-                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak" class="hidden">
-                            <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg"></i>
+                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak" class="hidden" title="Pronounce">
+                            <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg hover:text-green-600 dark:hover:text-green-500"></i>
                         </a>
                         <p class="text-lg">
                             {{ $name->pronunciation }}
@@ -34,10 +34,8 @@
                 @endisset
             </div>
 
-            <div class="mt-8">
-                <div class="text-base sm:text-2xl mt-2 break-words dark:text-base-300 capitalize leading-relaxed">
-                    {!! $name->mainMeaning !!}
-                </div>
+            <div class="text-base sm:text-2xl mt-2 md:py-3 break-words dark:text-base-300 text-balance leading-relaxed lg:px-10">
+                {!! str($name->mainMeaning)->apa() !!}
             </div>
         </article>
 
@@ -47,6 +45,18 @@
             data-slug="{{ $name->slug }}">
             <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
         </a>
+
+        @if($name->is_ugc)
+            <div class="group absolute bottom-5 right-5">
+                <!-- info icon fa- -->
+                <i class="fas fa-info-circle text-base-500 dark:text-base-400 text-xl cursor-pointer group-hover:text-primary-500 dark:group-hover:text-primary-400"></i>
+
+                <!-- Tooltip Text -->
+                <span class="absolute bottom-full mb-2 right-0 bg-black text-white text-xs rounded py-1 px-3 hidden group-hover:block">
+                    User Submitted Name
+                </span>
+            </div>
+        @endif
     </section>
 
     @if (!$name->origins->isEmpty())

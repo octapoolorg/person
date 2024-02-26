@@ -25,15 +25,18 @@ class GlobalComposer
     {
         $trendingNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()
-                ->random()->popular()
-                ->where('popularity', '!=', '')
-                ->limit(20)->get();
-        }, now()->addDay());
+                ->random()
+                ->popular()
+                ->limit(20)
+                ->get();
+        });
 
         $origins = cache_remember('origins', function () {
             //only get the origins that have names - at least 5000
             return $this->origin->withCount(['names' => function ($query) {
-                $query->where('is_popular', 1);
+                $query
+                ->withoutGlobalScopes()
+                ->where('is_popular', 1);
             }])->having('names_count', '>=', 5000)->orderBy('name')->get();
         });
 
@@ -41,11 +44,11 @@ class GlobalComposer
             return $this->name->distinct()->pluck('gender');
         });
 
-        $favorite = request()->cookie('favorites') ? true : false;
+        $haveFavorites = request()->cookie('favorites') ? true : false;
 
         $view->with('trendingNames', $trendingNames);
         $view->with('origins', $origins);
         $view->with('genders', $genders);
-        $view->with('favorite', $favorite);
+        $view->with('haveFavorites', $haveFavorites);
     }
 }
