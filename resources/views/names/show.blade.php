@@ -1,5 +1,17 @@
 @extends('layouts.main')
 
+@section('data-theme')
+    @php
+        $theme =
+        $name->isMasculine() ? 'boyish' :
+        (
+            $name->isFeminine() ? 'girly' :
+            'default'
+        );
+    @endphp
+    data-theme="{{ $theme }}"
+@endsection
+
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
@@ -25,16 +37,17 @@
                 @endphp
 
                 @foreach ($sections as $section)
-                    @include("components.names.{$section}", ['name' => $name, 'data' => $data])
+                    @include("components.names.$section", ['name' => $name, 'data' => $data])
                 @endforeach
 
             </main>
 
             <aside class="w-full lg:w-1/3 md:px-4 space-y-8">
-                <x-names.sidebar :name="$name" :data="$data" />
+                <x-names.sidebar :name="$name" :data="$data"/>
 
                 <!--- Anchor Links to Sections -->
-                <div class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all sticky top-5">
+                <div
+                    class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all sticky top-5">
                     <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-4">
                         On This Page
                     </h5>
@@ -42,7 +55,8 @@
                         @foreach ($sections as $section)
                             @if ($section !== 'related-names')
                                 <li class="mb-4">
-                                    <a href="#{{ $section }}" class="flex items center justify-between text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 focus:text-primary-600 dark:focus:text-primary-400 transition duration-300 focus:outline-none">
+                                    <a href="#{{ $section }}"
+                                       class="flex items center justify-between text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 focus:text-primary-600 dark:focus:text-primary-400 transition duration-300 focus:outline-none">
                                         {{  str($section)->camel()->headline() }}
                                         <i class="fas fa-arrow-right text-primary-500 dark:text-primary-400"></i>
                                     </a>
@@ -58,6 +72,7 @@
 
 @production
     @pushonce('scripts')
-        <script type="text/javascript" async defer data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>
+        <script type="text/javascript" async defer data-pin-hover="true"
+                src="//assets.pinterest.com/js/pinit.js"></script>
     @endpushonce
 @endproduction

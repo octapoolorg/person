@@ -54,8 +54,9 @@ export class ThemeManager {
     }
 
     initColorTheme() {
+        const defaultTheme = document.documentElement.getAttribute('data-theme') || 'default';
         const storedTheme = localStorage.getItem('themeName');
-        this.currentTheme = this.modes.includes(storedTheme) ? storedTheme : this.modes[0];
+        this.currentTheme = this.modes.includes(storedTheme) ? storedTheme : defaultTheme;
         this.changeColorTheme(this.currentTheme);
     }
 

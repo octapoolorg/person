@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" id="top">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+class="scroll-smooth" id="top"
+@yield('data-theme')
+>
 
 <head>
     <x-head />
