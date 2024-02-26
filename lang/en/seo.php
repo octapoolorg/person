@@ -22,8 +22,8 @@ return [
         'description' => "Find the meaning, origin, and other details of the name :name. Get numerology analysis, lucky number, and other information of :name.",
     ],
     'search' => [
-        'title' => 'Search results for :q :origin :gender Names - Meanings, Origins and Numerology',
-        'description' => 'Search results for :q with their meanings, origins and other information.',
+        'title' => ':q :origin :gender Baby Names - Meanings, Origins and Numerology',
+        'description' => ':q :origin :gender names with their meanings, origins, and more. Find the perfect name for your baby.',
     ],
     'privacy' => [
         'title' => 'Privacy Policy',
