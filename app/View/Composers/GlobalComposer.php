@@ -23,7 +23,7 @@ class GlobalComposer
      */
     public function compose(View $view): void
     {
-        $trendingNames = cache_remember('names:random', function () {
+        $popularNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()
                 ->random()
                 ->popular()
@@ -46,7 +46,7 @@ class GlobalComposer
 
         $haveFavorites = request()->cookie('favorites') ? true : false;
 
-        $view->with('trendingNames', $trendingNames);
+        $view->with('popularNames', $popularNames);
         $view->with('origins', $origins);
         $view->with('genders', $genders);
         $view->with('haveFavorites', $haveFavorites);

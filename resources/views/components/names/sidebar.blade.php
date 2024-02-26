@@ -21,7 +21,7 @@
         Trending Names
     </h5>
     <ul class="list-none pl-0 text-base-600 dark:text-base-300">
-        @foreach($trendingNames->random(5) as $name)
+        @foreach($popularNames->random(5) as $name)
             <li class="mb-4">
                 <a href="{{ route('names.show', $name->slug) }}" class="flex items-center justify-between text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 focus:text-primary-600 dark:focus:text-primary-400 transition duration-300 focus:outline-none">
                     {{ $name->name }}

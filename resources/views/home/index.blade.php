@@ -28,9 +28,14 @@
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <!-- Popular Names Section with Interactive Cards -->
         <section class="container mx-auto py-20 my-10">
-            <h2 class="text-5xl font-bold text-center text-base-800 dark:text-base-100 mb-16">Trending Names</h2>
+            <h2 class="text-5xl font-bold text-center text-base-800 dark:text-base-100 mb-8">
+                Popular Names
+            </h2>
+            <p class="text-center text-base-600 dark:text-base-300 mb-12">
+                Explore the most popular names in our database. Find out the meaning, origin, and more.
+            </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-                @foreach ($trendingNames->random(8) as $name)
+                @foreach ($popularNames->random(8) as $name)
                     <a href="{!! route('names.show', $name->slug) !!}" class="group rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-base-200 dark:border-base-700 transition-all duration-300 ease-in-out">
                         <div class="p-8 text-center">
                             <h3 class="text-2xl font-bold text-base-900 dark:text-base-100 group-hover:text-primary-700 transition-colors duration-300 truncate">{{ $name->name }}</h3>
