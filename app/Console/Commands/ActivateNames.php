@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class ActivateNames extends Command
 {
@@ -29,12 +28,12 @@ class ActivateNames extends Command
 
             $this->info("Successfully activated $totalNamesToActivateToday names and submitted URLs for SEO.");
 
-            return CommandAlias::SUCCESS;
+            return Command::SUCCESS;
         } catch (Exception $e) {
             $this->error('Failed to activate names: '.$e->getMessage());
             Log::error('Failed to activate names: '.$e->getMessage(), ['exception' => $e]);
 
-            return CommandAlias::FAILURE;
+            return Command::FAILURE;
         }
     }
 
@@ -78,7 +77,7 @@ class ActivateNames extends Command
     private function submitUrlsToSeo(array $urls): void
     {
         if (app()->environment('production')) {
-            $this->call('app:seo:urls', ['urls' => $urls]);
+            $this->call('app:request-indexing', ['urls' => $urls]);
         }
     }
 }

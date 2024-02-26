@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Seo;
+namespace App\Console\Commands;
 
 use Famdirksen\LaravelGoogleIndexing\LaravelGoogleIndexing;
 use Illuminate\Console\Command;
@@ -10,14 +10,14 @@ use LaravelFreelancerNL\LaravelIndexNow\Facades\IndexNow;
 /**
  * Command to submit URLs to Google for indexing.
  */
-class Urls extends Command
+class RequestIndexing extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:seo:urls {urls?*}';
+    protected $signature = 'app:request-indexing {urls?*}';
 
     /**
      * The console command description.
