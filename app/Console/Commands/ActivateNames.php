@@ -47,20 +47,37 @@ class ActivateNames extends Command
 
     private function activateNames(int $number): void
     {
-        $activatedNames = Name::query()->withoutGlobalScopes()
+        $activatedNames = $this->fetchNamesToActivate($number);
+
+        $this->updateNamesAsActive($activatedNames->pluck('id')->toArray());
+
+        $this->submit($activatedNames->pluck('slug')->toArray());
+    }
+
+    private function fetchNamesToActivate(int $number)
+    {
+        $query = Name::query()->withoutGlobalScopes()
             ->where('is_active', false)
-            ->limit($number)
-            ->get(['id', 'slug']);
+            ->inRandomOrder();
 
-        // get the ids of the activated names
-        $activatedNamesIds = $activatedNames->pluck('id')->toArray();
+        $query = $this->applyConditionalScope($query);
 
-        //get the slugs of the activated names
-        $activatedNamesSlugs = $activatedNames->pluck('slug')->toArray();
+        return $query->take($number)->get(['id', 'slug']);
+    }
 
-        Name::withoutGlobalScopes()->whereIn('id', $activatedNamesIds)->update(['is_active' => true]);
+    private function applyConditionalScope($query)
+    {
+        // randomly activate simple names on a certain day of the week
+        if (now()->dayOfWeek === rand(0, 6)) {
+            return $query->simple();
+        } else {
+            return $query->popular();
+        }
+    }
 
-        $this->submit($activatedNamesSlugs);
+    private function updateNamesAsActive(array $ids): void
+    {
+        Name::withoutGlobalScopes()->whereIn('id', $ids)->update(['is_active' => true]);
     }
 
     private function submit(array $activatedNamesSlugs): void

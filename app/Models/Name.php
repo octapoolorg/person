@@ -83,6 +83,11 @@ class Name extends Model
         return $query->where('is_simple', true);
     }
 
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('is_active', true);
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';
