@@ -21,6 +21,7 @@
         "axios": "^1.6.7",
         "jquery": "^3.7.1",
         "preline": "^1.9.0",
+        "signature_pad": "^4.1.7",
         "tw-colors": "^3.3.1",
         "vanilla-lazyload": "^17.8.5"
     }

@@ -1,16 +1,16 @@
 import LazyLoad from "vanilla-lazyload";
+
 export class Utility {
 
     static start() {
         this.lazyLoad();
     }
 
-    static copyTextToClipboard(e) {
+    static copyTextToClipboard(text, e) {
         e.preventDefault();
-        const text = e.target.innerText;
         if (navigator.clipboard) {
             return navigator.clipboard.writeText(text).then(() => {
-                alert('Text copied to clipboard');
+                this.toast('Copied to clipboard');
             });
         } else {
             const textArea = document.createElement("textarea");
@@ -25,13 +25,64 @@ export class Utility {
                 const successful = document.execCommand('copy');
                 document.body.removeChild(textArea);
                 if (successful) {
-                    alert('Text copied to clipboard');
+                    this.toast('Copied to clipboard');
                 }
                 return Promise.resolve(successful);
             } catch (err) {
                 return Promise.reject(err);
             }
         }
+    }
+
+    static toast(message) {
+        //device width - mobile will show alert, desktop will show toast
+        if (window.innerWidth < 768) {
+            alert(message);
+            return;
+        }
+        // Create the toast container if it doesn't exist
+        let toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.id = 'toast-container';
+            toastContainer.className = 'fixed bottom-10 left-10 p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800';
+            document.body.appendChild(toastContainer);
+        }
+
+        // Create the toast element
+        const toast = document.createElement('div');
+        toast.className = 'flex items-center';
+        toast.innerHTML = `
+            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="ms-3 text-sm font-normal">${message}</div>
+            <button type="button" class="bg-white text-gray-400 hover:text-gray-900 h-8 w-8" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+
+        // Add the toast to the container
+        toastContainer.appendChild(toast);
+
+        // Remove the toast after 5 seconds
+        setTimeout(() => {
+            toastContainer.removeChild(toast);
+            if (toastContainer.childElementCount === 0) {
+                // If there are no more toasts, remove the container
+                document.body.removeChild(toastContainer);
+            }
+        }, 5000);
+
+        // Close button functionality
+        const closeButton = toast.querySelector('button[aria-label="Close"]');
+        closeButton.addEventListener('click', () => {
+            toastContainer.removeChild(toast);
+            if (toastContainer.childElementCount === 0) {
+                document.body.removeChild(toastContainer);
+            }
+        });
     }
 
     static lazyLoad() {

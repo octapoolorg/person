@@ -15,7 +15,7 @@
                             </p>
                         </div>
 
-                        <div class="flex items-center">
+                        <div class="flex items-center" x-data>
                             <div
                                 class="flex items-center justify-between bg-surface dark:bg-base-800 p-2 rounded-lg shadow w-full">
                                 <i class="fas fa-link text-lg text-primary-600 dark:text-primary-500 mx-2"></i>
@@ -23,8 +23,11 @@
                                     class="flex-1 bg-transparent text-base focus:ring-0 border-none text-base-600 dark:text-base-300 focus:outline-none px-2"
                                     value="{!! route('names.favorites',
                                     ['favorite' => $guest->hash])
-                                    !!}" readonly>
+                                    !!}" readonly
+                                    x-ref="shareableLink"
+                                    >
                                 <button
+                                @click.prevent="Utility.copyTextToClipboard($refs.shareableLink.value,$event)"
                                     class="ml-2 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 text-white font-bold py-1 px-3 rounded transition ease-in-out duration-150"
                                     id="copy-link">
                                     Copy
@@ -94,15 +97,3 @@
         </section>
     </section>
 @endsection
-
-@if($names->isNotEmpty() && $myFavorite)
-    @push('scripts')
-        <script>
-            document.getElementById('copy-link').addEventListener('click', function() {
-                const linkInput = document.getElementById('shareable-link');
-                linkInput.select();
-                document.execCommand('copy');
-            });
-        </script>
-    @endpush
-@endif
