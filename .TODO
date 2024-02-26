@@ -15,7 +15,7 @@ TODO:
     [] by starting, ending and even containing specific letters and/or
     [x] any combinations of the above.
     [x] Add favorites
-    [] Share list of names can print/pdf/url.
+    [x] Share list of names can print/pdf/url.
     [] Can add the Middle, Last and (any) other initials to come up with your babys' Initials
 
     [] Birthday Wish(es/er)
@@ -65,41 +65,15 @@ TODO:
     [] names by birth time
     [] names by birth place
     [] names by birth country
-    [] names by birth continent
-    [] names by birth timezone
-    [] names by birth city
-    [] names by birth state
-    [] names by birth postal
-    [] names by birth latitude
-    [] names by birth longitude
-    [] names by birth coordinates
-    [] names by birth country code
-    [] names by birth country code iso3
-    [] names by birth country code iso2
 
     [] names by parent names
-    [] names by sibling names
+    [x] names by sibling names
     [] names by grandparent names
-    [] names by cousin names
-    [] names by aunt names
-    [] names by uncle names
-    [] names by friend names
-    [] names by colleague names
-    [] names by neighbor names
-    [] names by classmate names
-    [] names by teacher names
-    [] names by student names
-    [] names by boss names
-    [] names by employee names
-    [] names by partner names
-    [] names by spouse names
-    [] names by ex names
-    [] names by crush names
     [] names by celebrity names
     [] names by character names
-    [] names by pet names
-    [] names by plant names
-    [] names by animal names
+    [] pet names
+    [] plant names
+    [] animal names
     [] names by color names
     [] names by food names
     [] names by drink names
@@ -109,13 +83,6 @@ TODO:
     [] names by herb names
     [] names by flower names
 
-    [] names by baby names
-    [] names by child names
-    [] names by teenager names
-    [] names by adult names
-    [] names by senior names
-    [] names by dead names
-    [] names by alive names
     [] names by famous names
     [] names by infamous names
     [] names by historical names
@@ -127,67 +94,69 @@ TODO:
 
     [] add baby photo generator from parent photos
 
-[] add generators
-    https://www.name-generator.org.uk/
-    https://www.fantasynamegenerators.com/
+Tools
+    TODO:
+        [] add generators
+            https://www.name-generator.org.uk/
+            https://www.fantasynamegenerators.com/
 
 
-[] data from maxmind for city, country, postal, lat, long
-[] names we already have
-[] random image of fe(male)
-    https://fakepersongenerator.com/
+        [] data from maxmind for city, country, postal, lat, long
+        [] names we already have
+        [] random image of fe(male)
+            https://fakepersongenerator.com/
 
 
-[] Picker Wheel - Spin the Wheel to Decide a Random Choice
-    pickerwheel.com
+        [] Picker Wheel - Spin the Wheel to Decide a Random Choice
+            pickerwheel.com
 
 
-[] add avatar generator - https://github.com/Proxlight/Create-Avatars, https://github.com/fangpenlin/avataaars, https://getavataaars.com/
-[] https://chat.openai.com/c/ebcfbc1c-70d6-4d3a-b602-1b22f33c141b
-[] add identity generator - Combine all the generators below into one generator, like https://www.fakenamegenerator.com/
+        [] add avatar generator - https://github.com/Proxlight/Create-Avatars, https://github.com/fangpenlin/avataaars, https://getavataaars.com/
+        [] https://chat.openai.com/c/ebcfbc1c-70d6-4d3a-b602-1b22f33c141b
+        [] add identity generator - Combine all the generators below into one generator, like https://www.fakenamegenerator.com/
 
-[] add address generator
-[] add phone number generator
-[] add email generator
-[] add credit card generator
-[] add company generator
-[] add job generator
-[] add date generator
-[] add time generator
-[] add datetime generator
-[] add timezone generator
-[] add url generator
-[] add ipv4 generator
-[] add ipv6 generator
-[] add mac address generator
-[] add user agent generator
-[] add password generator
-[] add color generator
-[] add file generator
-[] add image generator
-[] add lorem ipsum generator
-[] add uuid generator
-[] add isbn generator
-[] add issn generator
-[] add ean generator
-[] add upc generator
-[] add bank account generator
-[] add bic generator
-[] add iban generator
-[] add currency generator
-[] add language generator
-[] add country generator
-[] add continent generator
-[] add timezone generator
-[] add city generator
-[] add street generator
-[] add building number generator
-[] add postcode generator
-[] add state generator
-[] add country code generator
-[] add country code iso3 generator
-[] add country code iso2 generator
-[] add latitude generator
-[] add longitude generator
-[] add coordinates generator
-[] add baby name generator
+        [] add address generator
+        [] add phone number generator
+        [] add email generator
+        [] add credit card generator
+        [] add company generator
+        [] add job generator
+        [] add date generator
+        [] add time generator
+        [] add datetime generator
+        [] add timezone generator
+        [] add url generator
+        [] add ipv4 generator
+        [] add ipv6 generator
+        [] add mac address generator
+        [] add user agent generator
+        [] add password generator
+        [] add color generator
+        [] add file generator
+        [] add image generator
+        [] add lorem ipsum generator
+        [] add uuid generator
+        [] add isbn generator
+        [] add issn generator
+        [] add ean generator
+        [] add upc generator
+        [] add bank account generator
+        [] add bic generator
+        [] add iban generator
+        [] add currency generator
+        [] add language generator
+        [] add country generator
+        [] add continent generator
+        [] add timezone generator
+        [] add city generator
+        [] add street generator
+        [] add building number generator
+        [] add postcode generator
+        [] add state generator
+        [] add country code generator
+        [] add country code iso3 generator
+        [] add country code iso2 generator
+        [] add latitude generator
+        [] add longitude generator
+        [] add coordinates generator
+        [] add baby name generator
