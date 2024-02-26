@@ -12,8 +12,8 @@ Route::get('names/favorites/{favorite?}', [NameController::class, 'favorites'])-
 Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 
 // list of popular stuff related to a name
-Route::get('name/{name}/signatures', [NameController::class, 'signatures'])->name('names.signatures');
-Route::get('name/{name}/wallpapers', [NameController::class, 'wallpapers'])->name('names.wallpapers');
+Route::get('signatures/{name}', [NameController::class, 'signatures'])->name('names.signatures');
+Route::get('wallpapers/{name}', [NameController::class, 'wallpapers'])->name('names.wallpapers');
 
 Route::get('static/images/wallpaper/style/{style}/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
 Route::get('static/images/signature/style/{style}/{name}.jpg', [NameController::class, 'signature'])->name('names.signature');
