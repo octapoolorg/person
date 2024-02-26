@@ -110,14 +110,14 @@
             <h2 id="expand-meanings">
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
-                    data-accordion-target="#meanings" aria-expanded="false" aria-controls="meanings">
+                    data-accordion-target="#meanings-list" aria-expanded="false" aria-controls="meanings-list">
                     <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         Other Meanings
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
             </h2>
-            <div id="meanings" class="hidden" aria-labelledby="expand-meanings">
+            <div id="meanings-list" class="hidden" aria-labelledby="expand-meanings">
                 <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
                     <ul class="text-left space-y-1 text-base-500 list-none list-outside dark:text-base-400 p-3">
                         @foreach ($name->meanings as $meaning)
