@@ -46,11 +46,13 @@
                             Nicknames offer a personal touch to {!! $name->name !!}, showcasing affection and
                             individuality within your unique family dynamic.
                         </p>
-                        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div x-data class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             @foreach ($name->nicknames as $nick)
                                 <span
                                     class="inline-flex items-center justify-center px-4 py-2 bg-yellow-100 dark:bg-base-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
-                                    {{ $nick->name }}
+                                    <i @click.prevent="SpeechManager.speak($refs.nickname{!! $loop->index !!}.innerText.trim())"
+                                    class="speak hidden fas fa-volume-up mr-2 text-yellow-600 dark:text-yellow-100 text-xs cursor-pointer hover:text-yellow-800 dark:hover:text-yellow-200"></i>
+                                    <span x-ref="nickname{!! $loop->index !!}">{{ $nick->name }}</span>
                                 </span>
                             @endforeach
                         </div>

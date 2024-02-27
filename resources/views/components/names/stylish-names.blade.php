@@ -16,10 +16,10 @@
             <i class="fas fa-sync-alt ml-2 text-primary-600 dark:text-primary-400 group-hover:text-primary-800 dark:group-hover:text-primary-200"></i>
         </a>
     </div>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto" x-data>
         <ul class="divide-y divide-base-200 dark:divide-base-700" id="fancy-texts">
             @foreach ($name->fancyTexts as $fancyText)
-                <li tabindex="0"
+                <li tabindex="0" @click.prevent="Utility.copyTextToClipboard($event.target.innerText,$event)"
                     class="text-lg p-4 hover:bg-base-100 dark:hover:bg-base-700 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-base-900 dark:text-base-100"
                     aria-label="Select {!! $fancyText !!} style">
                     {!! $fancyText !!}

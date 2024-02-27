@@ -1,10 +1,12 @@
 class SpeechManager {
-    constructor(button) {
+    constructor(buttons) {
         if (!('speechSynthesis' in window)) {
             throw new Error("Speech synthesis not supported");
         }
         this.msg = new SpeechSynthesisUtterance();
-        button.classList.remove('hidden');
+        buttons.forEach(button => {
+            button.classList.remove('hidden');
+        });
     }
 
     speak(text, lang = 'en-GB') {
@@ -13,7 +15,7 @@ class SpeechManager {
         window.speechSynthesis.speak(this.msg);
     }
 }
-const button = document.querySelector('#speak');
-if (button){
-    window.SpeechManager = new SpeechManager(button);
+const buttons = document.querySelectorAll('.speak');
+if (buttons.length) {
+    window.SpeechManager = new SpeechManager(buttons);
 }

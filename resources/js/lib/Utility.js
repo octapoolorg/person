@@ -45,7 +45,7 @@ export class Utility {
         if (!toastContainer) {
             toastContainer = document.createElement('div');
             toastContainer.id = 'toast-container';
-            toastContainer.className = 'fixed bottom-10 left-10 p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800';
+            toastContainer.className = 'fixed bottom-10 left-10 p-4 mb-4 text-base-500 bg-surface rounded-lg shadow dark:text-base-400 dark:bg-base-800';
             document.body.appendChild(toastContainer);
         }
 
@@ -53,11 +53,11 @@ export class Utility {
         const toast = document.createElement('div');
         toast.className = 'flex items-center';
         toast.innerHTML = `
-            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+            <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200 my-2">
                 <i class="fas fa-check"></i>
             </div>
             <div class="ms-3 text-sm font-normal">${message}</div>
-            <button type="button" class="bg-white text-gray-400 hover:text-gray-900 h-8 w-8" aria-label="Close">
+            <button type="button" class="bg-surface dark:bg-transparent text-base-400 hover:text-base-900 dark:hover:text-base-300 h-8 w-8" aria-label="Close">
                 <span class="sr-only">Close</span>
                 <i class="fas fa-times"></i>
             </button>

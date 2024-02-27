@@ -1,8 +1,8 @@
 <!-- Explore Baby Names -->
 <div class="shadow mb-6 p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all">
     <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-4">
-        <i class="fas fa-search mr-2"></i>
-        Explore Baby Names
+        <i class="fas fa-list mr-2"></i>
+        Browse Baby Names
     </h5>
     <p class="text-base-600 dark:text-base-300 mb-6">
         Explore our collection of baby names by origin, meaning, and gender.

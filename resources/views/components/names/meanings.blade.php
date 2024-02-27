@@ -24,7 +24,7 @@
 
                 @isset($name->pronunciation)
                     <div class="flex items-center justify-center gap-2 text-base-500 dark:text-base-400 my-4">
-                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" id="speak" class="hidden" title="Pronounce">
+                        <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" class="hidden speak" title="Pronounce">
                             <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg hover:text-green-600 dark:hover:text-green-500"></i>
                         </a>
                         <p class="text-lg">
