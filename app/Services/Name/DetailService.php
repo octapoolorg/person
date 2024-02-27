@@ -25,10 +25,14 @@ class DetailService
     {
         $name = $this->fetchNameData($nameSlug);
 
+        if (!$name) {
+            abort(404);
+        }
+
         return $this->prepareResponseData($name);
     }
 
-    private function fetchNameData(string $nameSlug)
+    public function fetchNameData(string $nameSlug)
     {
         return cache_remember("name:$nameSlug", function () use ($nameSlug) {
             return $this->queryNameData($nameSlug);
@@ -47,6 +51,10 @@ class DetailService
             ])
             ->where('slug', $nameSlug)
             ->first();
+
+        if (!$name) {
+            return null;
+        }
 
         $this->processMeanings($name);
 

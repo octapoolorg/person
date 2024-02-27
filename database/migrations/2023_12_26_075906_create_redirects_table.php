@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('redirects', function (Blueprint $table) {
             $table->id();
             $table->string('source')->unique();
-            $table->string('target');
-            $table->timestamps();
+            $table->string('target')->index();
         });
     }
 

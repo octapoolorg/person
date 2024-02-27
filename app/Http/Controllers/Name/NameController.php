@@ -68,7 +68,7 @@ class NameController extends Controller
 
     public function signatures(string $nameSlug): View
     {
-        $name = $this->nameService->getName($nameSlug);
+        $name = $this->nameService->fetchNameData($nameSlug);
         $signatures = $this->nameService->getSignatures($nameSlug);
 
         $meta = $this->seoService->getSeoData(
@@ -100,7 +100,7 @@ class NameController extends Controller
 
     public function signature(string $style, string $name): Response
     {
-        $name = $this->nameService->getName($name)->name ?? $name;
+        $name = $this->nameService->fetchNameData($name)->name ?? slug_name($name);
         return $this->nameService->signature($name, $style);
     }
 }

@@ -27,6 +27,11 @@ class NameService
         return $this->detailService->getName($nameSlug);
     }
 
+    public function fetchNameData (string $nameSlug)
+    {
+        return $this->detailService->fetchNameData($nameSlug);
+    }
+
     public function getUserNames (string $nameSlug): Collection
     {
         return $this->toolService->getUserNames($nameSlug);

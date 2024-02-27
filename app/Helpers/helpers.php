@@ -5,7 +5,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 if (! function_exists('normalize_name')) {
     function normalize_name($name): array|string|null
     {
-        $normalized = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        $normalized = str($name)->ascii($name);
 
         return preg_replace('/[^A-Za-z0-9 ]/', '', $normalized);
     }
@@ -34,6 +34,14 @@ if (! function_exists('get_first_part_of_name')) {
         } else {
             return $firstWord;
         }
+    }
+}
+
+// slug to name, without any special characters , numbers. only alphabets,replace - with space, first part of name
+if (! function_exists('slug_name')) {
+    function slug_name(string $slug): string
+    {
+        return get_first_part_of_name(str_replace('-', ' ', $slug));
     }
 }
 
