@@ -26,7 +26,7 @@ class GlobalComposer
         $popularNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()
                 ->random()
-                ->popular()
+                ->where('popularity', '>=', 10)
                 ->limit(20)
                 ->get();
         });
