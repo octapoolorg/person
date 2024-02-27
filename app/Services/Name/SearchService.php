@@ -55,15 +55,24 @@ class SearchService
 
     private function applyRequestFilters($query, Request $request)
     {
-        $this->applySearchFilter($query, $request);
+        $this->applySearchFilterIfFilled($query, $request);
 
         $this->applyFilterIfFilled($query, $request, 'origin', 'origins', 'slug');
         $this->applyFilterIfFilled($query, $request, 'gender', 'gender');
     }
 
-    private function applySearchFilter($query, Request $request)
+    private function applySearchFilterIfFilled($query, Request $request)
     {
-        if (strlen($request->input('q')) > 2) {
+        $request->whenFilled('q', function ($value) use ($query) {
+
+            $this->applySearchFilter($query, $value);
+        });
+    }
+
+    private function applySearchFilter($query, $value)
+    {
+        $query->where('names.name', 'like', $value.'%');
+        if (strlen($value) > 2) {
             $query->withoutGlobalScopes();
         }else{
             $query->popular();
