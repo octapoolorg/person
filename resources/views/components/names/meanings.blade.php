@@ -78,7 +78,7 @@
                         'grid grid-cols-1 gap-6 items-stretch',
                         'md:grid-cols-2' => $name->origins->count() > 1,
                     ])>
-                        @foreach ($name->origins as $origin)
+                        @foreach ($name->origins->sortBy('name') as $origin)
                             <div class="bg-surface dark:bg-base-700 rounded-lg shadow p-6">
                                 <div class="flex items-center space-x-3 mb-4">
                                     <i class="fas fa-atlas text-primary-500 dark:text-primary-300 text-3xl"></i>
