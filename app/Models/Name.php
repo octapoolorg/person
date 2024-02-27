@@ -36,12 +36,12 @@ class Name extends Model
 
     public function similarNames()
     {
-        return $this->belongsToMany(Name::class, 'name_similar', 'name_id', 'similar_name_id');
+        return $this->belongsToMany(Name::class, 'name_similar', 'name_id', 'similar_name_id')->withoutGlobalScopes();
     }
 
     public function siblingNames()
     {
-        return $this->belongsToMany(Name::class, 'name_sibling', 'name_id', 'sibling_name_id');
+        return $this->belongsToMany(Name::class, 'name_sibling', 'name_id', 'sibling_name_id')->withoutGlobalScopes();
     }
 
     public function comments(): HasMany
@@ -51,23 +51,19 @@ class Name extends Model
 
     public function isMasculine(): bool
     {
-        $gender = strtolower($this->gender);
-
-        return $gender === Gender::MASCULINE->value;
+        return $this->gender === Gender::MASCULINE->value;
     }
 
     public function isFeminine(): bool
     {
-        $gender = strtolower($this->gender);
-
-        return $gender === Gender::FEMININE->value;
+        return $this->gender === Gender::FEMININE->value;
     }
 
     public function scopeValidGender(Builder $query): Builder
     {
-        return $query->whereRaw("LOWER(gender) IN (?, ?)", [
-            strtolower(Gender::MASCULINE->value),
-            strtolower(Gender::FEMININE->value)
+        return $query->whereIn("gender", [
+            Gender::MASCULINE->value,
+            Gender::FEMININE->value
         ]);
     }
 
@@ -108,8 +104,8 @@ class Name extends Model
      */
     protected static function booted()
     {
-        // static::addGlobalScope('active', function (Builder $builder) {
-        //     $builder->where('is_active', true);
-        // });
+        static::addGlobalScope('active', function (Builder $builder) {
+            $builder->where('is_active', true);
+        });
     }
 }

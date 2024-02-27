@@ -46,7 +46,7 @@ class DetailService
                 'comments', 'nicknames', 'similarNames', 'siblingNames'
             ])
             ->where('slug', $nameSlug)
-            ->firstOrFail();
+            ->first();
 
         $this->processMeanings($name);
 

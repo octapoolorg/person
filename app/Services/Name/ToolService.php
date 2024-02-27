@@ -38,31 +38,31 @@ class ToolService
             'font_color' => '#000000',
             'text' => true,
         ],
-        'allison-tessa' => [
+        'casual' => [
             'font_path' => 'allison-tessa/allison-tessa.ttf',
             'font_size' => 100,
             'font_color' => '#000000',
             'text' => true,
         ],
-        'motterdam' => [
+        'modern' => [
             'font_path' => 'motterdam/motterdam.ttf',
             'font_size' => 200,
             'font_color' => '#000000',
             'text' => true,
         ],
-        'darlington' => [
+        'classic' => [
             'font_path' => 'darlington/darlington.ttf',
             'font_size' => 200,
             'font_color' => '#000000',
             'text' => true,
         ],
-        'autography' => [
+        'script' => [
             'font_path' => 'autography/autography.otf',
             'font_size' => 200,
             'font_color' => '#000000',
             'text' => true,
         ],
-        'sign_style' => [
+        'pen' => [
             'font_path' => 'sign_style/sign_style.ttf',
             'font_size' => 200,
             'font_color' => '#000000',
@@ -79,7 +79,7 @@ class ToolService
 
     public function wallpaper (string $name, string $style): Response
     {
-        $style = $this->wallpaperStyles[$style];
+        $style = $this->wallpaperStyles[$style] ?? abort(404);
 
         $style = array_merge($style, [
             'seo_title' => 'Name Wallpaper',
@@ -90,7 +90,7 @@ class ToolService
 
     public function signature(string $name, string $style): Response
     {
-        $style = $this->signStyles[$style];
+        $style = $this->signStyles[$style] ?? abort(404);
         $firstPart = get_first_part_of_name($name);
 
         $style = array_merge($style, [

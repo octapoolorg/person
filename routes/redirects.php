@@ -19,8 +19,15 @@ Route::get('/name/{any}-1', function ($any) {
     return redirect("name/$any" , 301);
 })->where('any', '.*');
 
-Route::get('static/images/signature/style/monsieur-la-doulaise/{name}.jpg', function ($name) {
-    return redirect()->route('names.signature', ['cursive', $name], 301);
+
+$signatures = [
+    'monsieur-la-doulaise' => 'cursive',
+    'allison-tessa' => 'casual',
+];
+
+Route::get('static/images/signature/style/{stlye}/{name}.jpg', function ($style, $name) use ($signatures) {
+    $style = $signatures[$style] ?? 'cursive';
+    return redirect()->route('names.signature', [$style, $name], 301);
 });
 
 Route::get('static/images/signature/{name}/{font}.jpg', function ($name, $font) {

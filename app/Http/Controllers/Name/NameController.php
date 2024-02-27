@@ -94,13 +94,13 @@ class NameController extends Controller
 
     public function wallpaper(string $style, string $nameSlug): Response
     {
-        $name = $this->nameService->getName($nameSlug);
-        return $this->nameService->wallpaper($name->name, $style);
+        $name = $this->nameService->getName($nameSlug)->name;
+        return $this->nameService->wallpaper($name, $style);
     }
 
     public function signature(string $style, string $name): Response
     {
-        $name = $this->nameService->getName($name);
-        return $this->nameService->signature($name->name, $style);
+        $name = $this->nameService->getName($name)->name ?? $name;
+        return $this->nameService->signature($name, $style);
     }
 }

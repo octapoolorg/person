@@ -21,7 +21,7 @@ class HomeController extends Controller
         $popularNames = cache_remember('home:names:popular', function () {
             return Name::query()
                 ->withoutGlobalScopes()
-                ->inRandomOrder()
+                ->random()
                 ->popular()
                 ->take(8)
                 ->get();

@@ -58,7 +58,7 @@ class ActivateNames extends Command
     {
         $query = Name::query()->withoutGlobalScopes()
             ->where('is_active', false)
-            ->inRandomOrder();
+            ->random();
 
         $query = $this->applyConditionalScope($query);
 
