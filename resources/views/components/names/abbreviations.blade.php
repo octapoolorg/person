@@ -11,7 +11,7 @@
     <div class="overflow-hidden">
         <table class="w-full text-left text-base-600 dark:text-base-300">
             <tbody class="divide-y divide-base-200 dark:divide-base-700" id="abbreviations">
-                @foreach ($data['abbreviations'] as $abbreviationData)
+                @foreach ($name->abbreviations as $abbreviationData)
                     @foreach ($abbreviationData as $alphabet => $abbreviation)
                         <tr class="hover:bg-base-100 dark:hover:bg-base-700 transition-colors duration-300">
                             <th class="text-lg p-4 font-semibold text-base-800 dark:text-base-100 bg-base-100 dark:bg-base-700 uppercase">

@@ -15,21 +15,21 @@
     </div>
 
     <x-names.box title="Zodiac Sign"
-        description="{!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.zodiac_sign', ['name' => $name->name]) !!}"
-        image="{!! asset('static/images/zodiac/signs/' . strtolower($data['numerology']['zodiac']['sign']) . '.png') !!}"
-        caption="{!! $data['numerology']['zodiac']['sign'] !!}" />
+        description="{!! __('zodiac.' . strtolower($name->numerology['zodiac']['sign']) . '.zodiac_sign', ['name' => $name->name]) !!}"
+        image="{!! asset('static/images/zodiac/signs/' . strtolower($name->numerology['zodiac']['sign']) . '.png') !!}"
+        caption="{!! $name->numerology['zodiac']['sign'] !!}" />
 
     <hr class="dark:border-base-700">
 
     <x-names.box title="Auspicious Stones"
-        description="{!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.auspicious_stones', ['name' => $name->name]) !!}"
-        image="{!! asset('static/images/zodiac/stones/' . strtolower($data['numerology']['zodiac']['attributes']['stone']) . '.png') !!}"
-        caption="{!! $data['numerology']['zodiac']['attributes']['stone'] !!}" />
+        description="{!! __('zodiac.' . strtolower($name->numerology['zodiac']['sign']) . '.auspicious_stones', ['name' => $name->name]) !!}"
+        image="{!! asset('static/images/zodiac/stones/' . strtolower($name->numerology['zodiac']['attributes']['stone']) . '.png') !!}"
+        caption="{!! $name->numerology['zodiac']['attributes']['stone'] !!}" />
 
     <hr class="dark:border-base-700">
 
     <x-names.box title="Auspicious Colors"
-        description="{!! __('zodiac.' . strtolower($data['numerology']['zodiac']['sign']) . '.auspicious_colors', ['name' => $name->name]) !!}"
-        image="{!! asset('static/images/zodiac/colors/' . str($data['numerology']['zodiac']['attributes']['color'])->slug() . '.png') !!}"
-        caption="{!! $data['numerology']['zodiac']['attributes']['color'] !!}" />
+        description="{!! __('zodiac.' . strtolower($name->numerology['zodiac']['sign']) . '.auspicious_colors', ['name' => $name->name]) !!}"
+        image="{!! asset('static/images/zodiac/colors/' . str($name->numerology['zodiac']['attributes']['color'])->slug() . '.png') !!}"
+        caption="{!! $name->numerology['zodiac']['attributes']['color'] !!}" />
 </section>

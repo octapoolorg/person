@@ -20,9 +20,9 @@
         <!-- Numerology Explanation -->
         <p class="text-lg text-base-600 dark:text-base-300 leading-relaxed">
             {!! $name->name !!} is a name that is associated with
-            the personality number {!! $data['numerology']['numbers']['personality'] !!},
-            destiny number {!! $data['numerology']['numbers']['destiny'] !!},
-            and soul urge number {!! $data['numerology']['numbers']['soul_urge'] !!}.
+            the personality number {!! $name->numerology['numbers']['personality'] !!},
+            destiny number {!! $name->numerology['numbers']['destiny'] !!},
+            and soul urge number {!! $name->numerology['numbers']['soul_urge'] !!}.
             These numbers are used to determine a person's character, personality,
             and even the future.
         </p>
@@ -35,7 +35,7 @@
                 Based on Personality Number
             </span>
             {{-- <span class="absolute top-0 right-0 text-green-500 dark:text-green-300 text-2xl md:text-5xl font-semibold py-1 px-3 opacity-70">
-                {!! $data['numerology']['numbers']['personality'] !!}
+                {!! $name->numerology['numbers']['personality'] !!}
             </span> --}}
             <div class="my-4 flex flex-col md:flex-row items-center md:items-start">
                 <img src="{!! asset('static/images/zodiac/numerology/personality-icon.png') !!}" alt="Personality Icon"
@@ -45,7 +45,7 @@
                     Personality
                 </h3>
                 <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    {!! __('numerology.personality.' . $data['numerology']['numbers']['personality'], ['name' => $name->name]) !!}
+                    {!! __('numerology.personality.' . $name->numerology['numbers']['personality'], ['name' => $name->name]) !!}
                 </p>
             </div>
             </div>
@@ -68,7 +68,7 @@
                     Life Purpose
                 </h3>
                 <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                    {!! __('numerology.destiny.' . $data['numerology']['numbers']['destiny'], ['name' => $name->name]) !!}
+                    {!! __('numerology.destiny.' . $name->numerology['numbers']['destiny'], ['name' => $name->name]) !!}
                 </p>
             </div>
             </div>
@@ -89,7 +89,7 @@
                         Heart Voice
                     </h3>
                     <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
-                        {!! __('numerology.soul_urge.' . $data['numerology']['numbers']['soul_urge'], ['name' => $name->name]) !!}
+                        {!! __('numerology.soul_urge.' . $name->numerology['numbers']['soul_urge'], ['name' => $name->name]) !!}
                     </p>
                 </div>
             </div>

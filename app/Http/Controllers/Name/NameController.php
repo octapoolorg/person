@@ -23,15 +23,14 @@ class NameController extends Controller
 
     public function show(string $nameSlug): View
     {
-        $data = $this->nameService->getName($nameSlug);
-        $name = $data['name'];
+        $name = $this->nameService->getName($nameSlug);
 
         $this->seoService->getSeoData(
             ['page' => 'name'],
             ['name' => $name->name]
         );
 
-        return view('names.show', compact('name', 'data'));
+        return view('names.show', compact('name'));
     }
 
     /**
@@ -69,7 +68,7 @@ class NameController extends Controller
 
     public function signatures(string $nameSlug): View
     {
-        $name = $this->nameService->getName($nameSlug)['name'];
+        $name = $this->nameService->getName($nameSlug);
         $signatures = $this->nameService->getSignatures($nameSlug);
 
         $meta = $this->seoService->getSeoData(
@@ -82,7 +81,7 @@ class NameController extends Controller
 
     public function wallpapers(string $nameSlug): View
     {
-        $name = $this->nameService->getName($nameSlug)['name'];
+        $name = $this->nameService->getName($nameSlug);
         $images = $this->nameService->getWallpapers($nameSlug);
 
         $meta = $this->seoService->getSeoData(
@@ -95,13 +94,13 @@ class NameController extends Controller
 
     public function wallpaper(string $style, string $nameSlug): Response
     {
-        $name = $this->nameService->getName($nameSlug)['name']->name;
-        return $this->nameService->wallpaper($name, $style);
+        $name = $this->nameService->getName($nameSlug);
+        return $this->nameService->wallpaper($name->name, $style);
     }
 
     public function signature(string $style, string $name): Response
     {
-        $name = $this->nameService->getName($name)['name']->name;
-        return $this->nameService->signature($name, $style);
+        $name = $this->nameService->getName($name);
+        return $this->nameService->signature($name->name, $style);
     }
 }

@@ -15,8 +15,8 @@ Route::get('name/{name}', [NameController::class, 'show'])->name('names.show');
 Route::get('signatures/{name}', [NameController::class, 'signatures'])->name('names.signatures');
 Route::get('wallpapers/{name}', [NameController::class, 'wallpapers'])->name('names.wallpapers');
 
-Route::get('static/images/wallpaper/style/{style}/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
-Route::get('static/images/signature/style/{style}/{name}.jpg', [NameController::class, 'signature'])->name('names.signature');
+Route::get('/wallpaper/{style}/{name}.jpg', [NameController::class, 'wallpaper'])->name('names.wallpaper');
+Route::get('/signature/{style}/{name}.jpg', [NameController::class, 'signature'])->name('names.signature');
 
 // Route::get('name/{name}/quotes', [NameController::class, 'quotes'])->name('names.quotes');
 // Route::get('name/{name}/memes', [NameController::class, 'memes'])->name('names.memes');

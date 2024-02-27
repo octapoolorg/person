@@ -77,11 +77,6 @@ class ToolService
         $this->usernameService = $usernameService;
     }
 
-    private function getFirstPartOfName(string $name): string
-    {
-        return normalize_name(explode(' ', $name)[0]);
-    }
-
     public function wallpaper (string $name, string $style): Response
     {
         $style = $this->wallpaperStyles[$style];
@@ -96,7 +91,7 @@ class ToolService
     public function signature(string $name, string $style): Response
     {
         $style = $this->signStyles[$style];
-        $firstPart = $this->getFirstPartOfName($name);
+        $firstPart = get_first_part_of_name($name);
 
         $style = array_merge($style, [
             'seo_title' => 'Name Signature',

@@ -18,7 +18,7 @@
     </div>
     <div class="overflow-x-auto">
         <ul class="divide-y divide-base-200 dark:divide-base-700" id="fancy-texts">
-            @foreach ($data['fancyTexts'] as $fancyText)
+            @foreach ($name->fancyTexts as $fancyText)
                 <li tabindex="0"
                     class="text-lg p-4 hover:bg-base-100 dark:hover:bg-base-700 transition ease-in-out duration-150 cursor-pointer copy-to-clipboard text-base-900 dark:text-base-100"
                     aria-label="Select {!! $fancyText !!} style">

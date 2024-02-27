@@ -96,7 +96,6 @@ class DetailService
         $name->abbreviations = $this->getAbbreviations($name->name);
         $name->quotes = $this->getQuotes($name->name);
         $name->statuses = $this->getStatuses($name->name);
-
         return $name;
     }
 

@@ -37,13 +37,13 @@
                 @endphp
 
                 @foreach ($sections as $section)
-                    @include("components.names.$section", ['name' => $name, 'data' => $data])
+                    @include("components.names.$section", ['name' => $name])
                 @endforeach
 
             </main>
 
             <aside class="w-full lg:w-1/3 md:px-4 space-y-8">
-                <x-names.sidebar :name="$name" :data="$data"/>
+                <x-names.sidebar :name="$name"/>
 
                 <!--- Anchor Links to Sections -->
                 <div
