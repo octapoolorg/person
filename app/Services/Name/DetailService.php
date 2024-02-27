@@ -21,7 +21,7 @@ class DetailService
         $this->toolService = $toolService;
     }
 
-    public function getName(string $nameSlug): array
+    public function getName(string $nameSlug): object
     {
         $name = $this->fetchNameData($nameSlug);
 
@@ -78,7 +78,7 @@ class DetailService
             $name->meanings = collect();
             return;
         }
-        
+
         $chunkSize = max(3, ceil($sortedMeanings->count() / 5));
         $remainingMeanings = $sortedMeanings->chunk($chunkSize);
         $name->meanings = $remainingMeanings->map(function ($chunk) {
@@ -86,19 +86,18 @@ class DetailService
         });
     }
 
-    private function prepareResponseData($name): array
+    private function prepareResponseData($name) : object
     {
-        return [
-            'name' => $name,
-            'wallpapers' => $this->toolService->getWallpapers($name->slug),
-            'signatures' => $this->toolService->getSignatures($name->slug),
-            'fancyTexts' => $this->toolService->getFancyTexts($name->name),
-            'userNames'  => $this->toolService->getUsernames($name->name),
-            'numerology' => $this->toolService->getNumerology($name->name),
-            'abbreviations' => $this->getAbbreviations($name->name),
-            'quotes' => $this->getQuotes($name->name),
-            'statuses' => $this->getStatuses($name->name),
-        ];
+        $name->wallpapers = $this->toolService->getWallpapers($name->slug);
+        $name->signatures = $this->toolService->getSignatures($name->slug);
+        $name->fancyTexts = $this->toolService->getFancyTexts($name->name);
+        $name->userNames  = $this->toolService->getUsernames($name->name);
+        $name->numerology = $this->toolService->getNumerology($name->name);
+        $name->abbreviations = $this->getAbbreviations($name->name);
+        $name->quotes = $this->getQuotes($name->name);
+        $name->statuses = $this->getStatuses($name->name);
+
+        return $name;
     }
 
     public function getQuotes(string $name): Collection

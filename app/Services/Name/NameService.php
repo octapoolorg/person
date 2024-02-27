@@ -22,7 +22,7 @@ class NameService
         $this->toolService   = $toolService;
     }
 
-    public function getName (string $nameSlug): array
+    public function getName (string $nameSlug): object
     {
         return $this->detailService->getName($nameSlug);
     }
