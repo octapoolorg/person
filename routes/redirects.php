@@ -2,9 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Legacy redirects - these are old URLs that have been changed and need to be redirected to the new URLs.
+ * The old URLs are still being used by search engines and other websites.
+ *
+ * SEO best practices: 301 redirect old URLs to new URLs.
+ * This will help search engines understand that the old URLs have been replaced by new URLs.
+ *
+ * @see https://en.wikipedia.org/wiki/HTTP_301
+ *
+ */
+
 Route::redirect('names', 'names/search', 301);
 
-//Remove the -1 from the URL
 Route::get('/name/{any}-1', function ($any) {
     return redirect("name/$any" , 301);
 })->where('any', '.*');
@@ -13,13 +23,12 @@ Route::get('static/images/signature/style/monsieur-la-doulaise/{name}.jpg', func
     return redirect()->route('names.signature', ['cursive', $name], 301);
 });
 
-/* Legacy Routes - Redirects */
 Route::get('static/images/signature/{name}/{font}.jpg', function ($name, $font) {
     return redirect()->route('names.signature', [$font, $name], 301);
 });
 
 Route::get('/static/images/name/{name}.jpg', function ($name) {
-    return redirect()->route('names.wallpaper', [$name], 301);
+    return redirect()->route('names.wallpaper', ['funky', $name], 301);
 });
 
 Route::get('/names/{gender}', function (string $gender) {
