@@ -106,11 +106,12 @@
                 </li>
                 <li>
                     <!-- favorite button -->
-                    <a href="{!! route('names.favorites') !!}" @class([
-                        'block py-2 px-3 rounded lg:p-0 relative',
-                        'text-primary-600' => request()->routeIs('favorites'),
-                        'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('favorites'),
-                    ])
+                    <a href="{!! route('names.favorites') !!}"
+                        @class([
+                            'block py-2 px-3 rounded lg:p-0 relative',
+                            'text-primary-600' => request()->routeIs('favorites'),
+                            'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('favorites'),
+                        ])
                         {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}>
                         <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
                         <span id="navbar-favorite-icon"

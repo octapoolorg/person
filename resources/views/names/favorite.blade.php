@@ -54,11 +54,11 @@
                                     </div>
                                     <div class="absolute top-5 right-5">
                                         @if ($name->isMasculine())
-                                            <i class="fas fa-mars text-sky-500 text-xl" title="Male"></i>
+                                            <i class="fas fa-mars text-sky-500 text-xl" title="{!! $name->gender !!}"></i>
                                         @elseif($name->isFeminine())
-                                            <i class="fas fa-venus text-pink-500 text-xl" title="Female"></i>
+                                            <i class="fas fa-venus text-pink-500 text-xl" title="{!! $name->gender !!}"></i>
                                         @else
-                                            <i class="fas fa-genderless text-base-400 text-xl" title="Unspecified"></i>
+                                            <i class="fas fa-genderless text-base-400 text-xl" title="{!! $name->gender !!}"></i>
                                         @endif
                                     </div>
                                 </a>
