@@ -32,7 +32,7 @@
                         'fas fa-arrow-trend-up',
                         'text-sky-500 dark:text-sky-400' => $name->isMasculine(),
                         'text-fuchsia-500 dark:text-fuchsia-400' => $name->isFeminine(),
-                        'text-primary-500 dark:text-primary-400' => ! ($name->isMasculine() || $name->isFeminine())
+                        'text-base-500 dark:text-base-400' => ! ($name->isMasculine() || $name->isFeminine())
                     ])
                     ></i>
                 </a>

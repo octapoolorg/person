@@ -25,6 +25,7 @@ class GlobalComposer
     {
         $popularNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()
+                ->validGender()
                 ->random()
                 ->where('popularity', '>=', 10)
                 ->limit(20)
@@ -36,7 +37,7 @@ class GlobalComposer
             return $this->origin->withCount(['names' => function ($query) {
                 $query
                 ->withoutGlobalScopes()
-                ->where('is_popular', 1);
+                ->popular();
             }])->having('names_count', '>=', 5000)->orderBy('name')->get();
         });
 

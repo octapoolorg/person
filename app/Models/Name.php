@@ -63,6 +63,14 @@ class Name extends Model
         return $gender === Gender::FEMININE->value;
     }
 
+    public function scopeValidGender(Builder $query): Builder
+    {
+        return $query->whereRaw("LOWER(gender) IN (?, ?)", [
+            strtolower(Gender::MASCULINE->value),
+            strtolower(Gender::FEMININE->value)
+        ]);
+    }
+
     public function scopePopular(Builder $query): Builder
     {
         return $query->where('is_popular', true);
@@ -100,8 +108,8 @@ class Name extends Model
      */
     protected static function booted()
     {
-        static::addGlobalScope('active', function (Builder $builder) {
-            $builder->where('is_active', true);
-        });
+        // static::addGlobalScope('active', function (Builder $builder) {
+        //     $builder->where('is_active', true);
+        // });
     }
 }

@@ -14,29 +14,6 @@
             </p>
 
             <div class="mt-12 space-y-12">
-                @if ($name->siblingNames->isNotEmpty())
-                    <!-- Sibling Names Section -->
-                    <div class="bg-base-50 dark:bg-base-700 rounded-lg shadow px-5 py-7">
-                        <h3 class="text-2xl font-semibold text-base-600 dark:text-base-200">Sibling Names</h3>
-                        <p class="mt-3 text-base-600 dark:text-base-200">
-                            Explore names that complement the unique personality of {!! $name->name !!}'s siblings.
-                            Perfect for finding a harmonious balance in your family.
-                        </p>
-                        <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            @foreach ($name->siblingNames as $sibling)
-                                <a href="{{ route('names.show', $sibling->slug) }}" target="_blank"
-                                    @class([
-                                    'inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium',
-                                    'bg-sky-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isMasculine(),
-                                    'bg-pink-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isFeminine(),
-                                    'bg-primary-200 dark:bg-base-700 text-base-800 dark:text-base-300' => !( $sibling->isMasculine() || $sibling->isFeminine() ),
-                                ])>
-                                    {{ $sibling->name }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
 
                 @if ($name->nicknames->isNotEmpty())
                     <!-- Nicknames Section -->
@@ -77,6 +54,30 @@
                         </div>
                     </div>
                 @endif
+
+                @if ($name->siblingNames->isNotEmpty())
+                <!-- Sibling Names Section -->
+                <div class="bg-base-50 dark:bg-base-700 rounded-lg shadow px-5 py-7">
+                    <h3 class="text-2xl font-semibold text-base-600 dark:text-base-200">Sibling Names</h3>
+                    <p class="mt-3 text-base-600 dark:text-base-200">
+                        Explore names that complement the unique personality of {!! $name->name !!}'s siblings.
+                        Perfect for finding a harmonious balance in your family.
+                    </p>
+                    <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        @foreach ($name->siblingNames as $sibling)
+                            <a href="{{ route('names.show', $sibling->slug) }}" target="_blank"
+                                @class([
+                                'inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium',
+                                'bg-sky-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isMasculine(),
+                                'bg-pink-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isFeminine(),
+                                'bg-primary-200 dark:bg-base-700 text-base-800 dark:text-base-300' => !( $sibling->isMasculine() || $sibling->isFeminine() ),
+                            ])>
+                                {{ $sibling->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
             </div>
         </div>
     </section>
