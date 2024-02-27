@@ -45,7 +45,7 @@ class SearchService
 
         $this->applyRequestFilters($query, $request);
 
-        $query->orderBy('is_popular', 'desc')->orderBy('name', 'asc');
+        $query->orderBy('popularity', 'desc')->orderBy('name', 'asc');
 
         $names = $query->simplePaginate(45);
         $names->appends($request->query());
@@ -58,7 +58,7 @@ class SearchService
         $shouldApplyPopular = true;
 
         if ($request->filled('q')) {
-            if (strlen($request->input('q')) > 3) {
+            if (strlen($request->input('q')) > 2) {
                 $query->withoutGlobalScopes();
                 $shouldApplyPopular = false;
             }
