@@ -55,31 +55,44 @@ class SearchService
 
     private function applyRequestFilters($query, Request $request)
     {
-        $shouldApplyPopular = true;
+        $shouldApplyPopular = false;
 
         if ($request->filled('q')) {
-            if (strlen($request->input('q')) > 2) {
-                $query->withoutGlobalScopes();
-                $shouldApplyPopular = false;
-            }
-            $query->where('names.name', 'like', $request->input('q').'%');
+            $shouldApplyPopular = $this->applySearchFilter($query, $request);
         }
 
-        // Apply 'origin' filter if provided
-        $request->whenFilled('origin', function ($origin) use ($query) {
-            $query->whereHas('origins', function ($q) use ($origin) {
-                $q->where('slug', $origin);
-            });
-        });
+        $this->applyFilterIfFilled($query, $request, 'origin', 'origins', 'slug');
+        $this->applyFilterIfFilled($query, $request, 'gender', 'gender');
 
-        // Apply 'gender' filter
-        $request->whenFilled('gender', function ($gender) use ($query) {
-            $query->where('gender', $gender);
-        });
-
-        // Finally, apply 'popular' filter if needed
         if ($shouldApplyPopular) {
             $query->popular();
         }
+    }
+
+    private function applySearchFilter($query, Request $request)
+    {
+        $query->where('names.name', 'like', $request->input('q').'%');
+
+        if (strlen($request->input('q')) > 2) {
+            $query->withoutGlobalScopes();
+            return false;
+        }
+
+        return true;
+    }
+
+    private function applyFilterIfFilled($query, Request $request, $requestKey, $queryKey, $subQueryKey = null)
+    {
+        $query->withoutGlobalScopes();
+
+        $request->whenFilled($requestKey, function ($value) use ($query, $queryKey, $subQueryKey) {
+            if ($subQueryKey) {
+                $query->whereHas($queryKey, function ($q) use ($subQueryKey, $value) {
+                    $q->where($subQueryKey, $value);
+                });
+            } else {
+                $query->where($queryKey, $value);
+            }
+        });
     }
 }
