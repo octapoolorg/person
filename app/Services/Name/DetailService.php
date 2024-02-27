@@ -176,9 +176,7 @@ class DetailService
 
     private function getFavoriteNames($guest): Paginator
     {
-        $nameSlugs = cache_remember("favorites:$guest->id", function () use ($guest) {
-            return Favorite::where('guest_id', $guest->id)->pluck('slug');
-        });
+        $nameSlugs = Favorite::where('guest_id', $guest->id)->pluck('slug');
 
         $names = Name::query()
             ->withoutGlobalScopes()
