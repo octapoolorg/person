@@ -6,7 +6,7 @@
             <main role="main" class="w-full px-4 mb-4 lg:mb-0 lg:p-12 bg-surface dark:bg-base-800 dark:text-base-300 shadow rounded-lg">
 
                 @isset($data)
-                    <section class="py-16" id="insights">
+                    <section class="py-10" id="insights">
                         <div class="container mx-auto px-4 sm:px-6 lg:px-12">
                             <h2 class="text-4xl font-bold text-center mb-12">
                                 Numerology Analysis for {{ $data['name'] }}
@@ -14,110 +14,13 @@
 
                             <div class="space-y-12">
                                 <!-- Life Path Number Section -->
-                                <div
-                                    class="bg-surface rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-primary-600">
-                                    <div class="px-10 py-8 bg-primary-50">
-                                        <h3 class="text-3xl font-semibold text-primary-600">
-                                            Life Path Number
-                                            <span class="text-primary-600 font-bold">{{ $data['numerology']['numbers']['life_path'] }}</span>
-                                        </h3>
-                                        <p class="text-md text-base-700 my-4 font-bold">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.life_path.' . $data['numerology']['numbers']['life_path'] . '.title',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-                                        <p class="text-md text-base-600">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.life_path.' . $data['numerology']['numbers']['life_path'] . '.description',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-
-                                        <!-- Details Accordion -->
-                                        <details class="group py-5">
-                                            <summary class="cursor-pointer text-lg font-semibold text-primary-700">
-                                                <span class="outline-none focus:outline-none">Check Details</span>
-                                            </summary>
-                                            <div class="mt-4 space-y-4">
-                                                <div>
-                                                    <h4 class="text-xl font-semibold text-base-800">Advice</h4>
-                                                    <p class="text-base-600">
-                                                        {!! __(
-                                                            'tools/numerology/calculator/result.life_path.' . $data['numerology']['numbers']['life_path'] . '.advice',
-                                                            ['name' => $data['name']],
-                                                        ) !!}
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <h4 class="text-xl font-semibold text-base-800">Challenges</h4>
-                                                    <p class="text-base-600">
-                                                        {!! __(
-                                                            'tools/numerology/calculator/result.life_path.' . $data['numerology']['numbers']['life_path'] . '.challenges',
-                                                            ['name' => $data['name']],
-                                                        ) !!}
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <h4 class="text-xl font-semibold text-base-800">Affirmation</h4>
-                                                    <p class="italic text-base-600">
-                                                        {!! __(
-                                                            'tools/numerology/calculator/result.life_path.' . $data['numerology']['numbers']['life_path'] . '.affirmation',
-                                                            ['name' => $data['name']],
-                                                        ) !!}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </details>
-                                    </div>
-                                </div>
+                                <x-tools.numerology.analysis :data="$data" type="life_path" />
 
                                 <!-- Soul Urge Number Section -->
-                                <div
-                                    class="bg-surface rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-rose-600">
-                                    <div class="px-10 py-8 bg-rose-50">
-                                        <h3 class="text-3xl font-semibold text-rose-600">
-                                            Soul Urge Number <span
-                                                class="text-rose-600 font-bold">{{ $data['numerology']['numbers']['soul_urge'] }}</span>
-                                        </h3>
-                                        <p class="text-md text-base-700  my-4 font-bold">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.soul_urge.' . $data['numerology']['numbers']['soul_urge'] . '.title',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-                                        <p class="text-md text-base-600">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.soul_urge.' . $data['numerology']['numbers']['soul_urge'] . '.description',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-                                    </div>
-                                </div>
+                                <x-tools.numerology.analysis :data="$data" type="soul_urge" />
 
                                 <!-- Personality Number Section -->
-                                <div
-                                    class="bg-surface rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4 border-green-600">
-                                    <div class="px-10 py-8 bg-green-50">
-                                        <h3 class="text-3xl font-semibold text-green-600">
-                                            Personality Number <span
-                                                class="text-green-600 font-bold">{{ $data['numerology']['numbers']['personality'] }}</span>
-                                        </h3>
-                                        <p class="text-md text-base-700  my-4 font-bold">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.personality.' . $data['numerology']['numbers']['personality'] . '.title',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-                                        <p class="text-md text-base-600">
-                                            {!! __(
-                                                'tools/numerology/calculator/result.personality.' . $data['numerology']['numbers']['personality'] . '.description',
-                                                ['name' => $data['name']],
-                                            ) !!}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                                <x-tools.numerology.analysis :data="$data" type="personality"/>
                         </div>
                     </section>
                 @endisset
