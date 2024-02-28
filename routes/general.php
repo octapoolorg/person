@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('names/{name}/comments', [CommentController::class, 'store'])->name('names.comments.store');
 
-Route::get('tools/numerology/calculator', [NumerologyController::class, 'calculator'])->name('tools.numerology.calculator.get');
-Route::post('tools/numerology/calculator', [NumerologyController::class, 'calculate'])->name('tools.numerology.calculate.post');
+Route::match(['get','post'], 'tools/numerology/calculator', [NumerologyController::class, 'calculator'])->name('tools.numerology.calculator');
 
 /* Blog Routes */
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');

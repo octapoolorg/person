@@ -4,20 +4,24 @@ namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
 use App\Services\Numerology\NumerologyFactory;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class NumerologyController extends Controller
 {
-    public function calculator(): View
+    public function calculator(Request $request): View
     {
+        if ($request->isMethod('post')) {
+            return $this->calculate();
+        }
         return view('tools.numerology.calculator');
     }
 
     /**
      * @throws ValidationException
      */
-    public function calculate(): View
+    private function calculate(): View
     {
         $name = ucwords(request('name'));
         $dob = request('dob');
@@ -27,7 +31,7 @@ class NumerologyController extends Controller
             'dob' => 'required|date',
         ]);
 
-        $numerology = NumerologyFactory::create('pythagorean')->getNumerologyData($name, $dob);
+        $numerology = NumerologyFactory::create('pythagorean')->getAnalysis($name, $dob);
 
         $data = [
             'name' => $name,
