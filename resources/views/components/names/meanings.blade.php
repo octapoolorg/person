@@ -1,4 +1,4 @@
-<section class="lg:shadow" x-data id="meanings">
+<section class="drop-shadow" x-data id="meanings">
     <div class="bg-primary-500 dark:bg-primary-800 py-4 shadow rounded-t-xl flex items-center justify-between px-5">
         <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
             <i @class([
@@ -7,13 +7,13 @@
                 'fa-venus' => $name->isFeminine(),
             ])>
             </i>
-            <span class="ml-2">
+            <span class="ml-2 capitalize">
                 {{ $name->gender }}
             </span>
         </p>
     </div>
     <section
-        class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
+        class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
         <article class="text-center">
             <div class="md:px-10">
                 <h1
@@ -61,10 +61,10 @@
 
     @if (!$name->origins->isEmpty())
         <div id="accordion-collapse-origin" data-accordion="collapse"
-            data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
+            data-inactive-classes="bg-surface dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
             <h2 id="expand-origin">
                 <button type="button"
-                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
+                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#origin" aria-expanded="false" aria-controls="origin">
                     <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         Meanings by Origin
@@ -106,10 +106,10 @@
 
     @if (!$name->meanings->isEmpty())
         <div id="accordion-collapse-meanings" data-accordion="collapse"
-            data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
+            data-inactive-classes="bg-surface dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
             <h2 id="expand-meanings">
                 <button type="button"
-                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
+                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#meanings-list" aria-expanded="false" aria-controls="meanings-list">
                     <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         Other Meanings
@@ -118,7 +118,7 @@
                 </button>
             </h2>
             <div id="meanings-list" class="hidden" aria-labelledby="expand-meanings">
-                <div class="p-5 border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-800">
+                <div class="p-5 border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800">
                     <ul class="text-left space-y-1 text-base-500 list-none list-outside dark:text-base-400 p-3">
                         @foreach ($name->meanings as $meaning)
                             <li class="flex gap-2 text-base-500 dark:text-base-400 text-lg">
@@ -136,10 +136,10 @@
 
     @if ($name->is_simple or $name->is_popular)
         <div id="accordion-collapse-external-links" data-accordion="collapse"
-            data-inactive-classes="bg-base-50 dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
+            data-inactive-classes="bg-surface dark:bg-base-800" data-active-classes="bg-base-100 dark:bg-base-700">
             <h2 id="expand-external-links">
                 <button type="button"
-                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-base-50 dark:bg-base-800"
+                    class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#external-links" aria-expanded="false" aria-controls="external-links">
                     <span class="text-lg font-semibold text-base-800 dark:text-base-200">
                         External links

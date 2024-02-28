@@ -27,8 +27,9 @@
                             @foreach ($name->nicknames as $nick)
                                 <span
                                     class="inline-flex items-center justify-center px-4 py-2 bg-yellow-100 dark:bg-base-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
-                                    <i @click.prevent="SpeechManager.speak($refs.nickname{!! $loop->index !!}.innerText.trim())"
-                                    class="speak hidden fas fa-volume-up mr-2 text-yellow-600 dark:text-yellow-100 text-xs cursor-pointer hover:text-yellow-800 dark:hover:text-yellow-200"></i>
+                                    <a href="javascript:" class="speak hidden" @click.prevent="SpeechManager.speak($refs.nickname{!! $loop->index !!}.innerText.trim())">
+                                        <i class="fas fa-volume-up mr-2 text-yellow-600 dark:text-yellow-100 text-xs cursor-pointer hover:text-yellow-800 dark:hover:text-yellow-200"></i>
+                                    </a>
                                     <span x-ref="nickname{!! $loop->index !!}">{{ $nick->name }}</span>
                                 </span>
                             @endforeach

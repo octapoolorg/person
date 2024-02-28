@@ -53,13 +53,10 @@ class ImageService
         return $this->generateUrls($nameSlug, $styles, 'names.wallpaper');
     }
 
-    public function getSignatures(string $nameSlug, bool $more = false): Collection
+    public function getSignatures(string $nameSlug): Collection
     {
-        if (!$more) {
-            $styles = array_slice(array_keys($this->signStyles), 0, 3);
-        } else {
-            $styles = array_slice(array_keys($this->signStyles), 3);
-        }
+        $num = count($this->signStyles);
+        $styles = array_rand($this->signStyles, $num);
 
         return $this->generateUrls($nameSlug, $styles, 'names.signature');
     }

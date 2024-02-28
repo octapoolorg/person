@@ -65,9 +65,9 @@ class NameService
         return $this->imageService->getWallpapers($nameSlug);
     }
 
-    public function getSignatures (string $nameSlug, bool $more = false): Collection
+    public function getSignatures (string $nameSlug): Collection
     {
-        return $this->imageService->getSignatures($nameSlug, $more);
+        return $this->imageService->getSignatures($nameSlug);
     }
 
     public function wallpaper (string $nameSlug, string $style): Response

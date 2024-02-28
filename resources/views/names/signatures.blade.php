@@ -10,22 +10,29 @@
                     <p class="text-lg text-base-500 dark:text-base-400">
                         {!! $meta->description !!}
                     </p>
+                    <input type="hidden" id="name" value="{{ $name->name }}">
                 </div>
 
-                @foreach ($signatures as $signature)
-                    <div class="border border-base-200 dark:border-base-700 rounded-lg overflow-hidden shadow-sm transition-transform duration-300 cursor-pointer my-5 relative">
-                        <a href="{!! $signature !!}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
-                        <!--Download button fa icon on right top -->
-                        <a href="{!! $signature !!}" download="" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 z-20 bg-surface dark:bg-base-800 py-2 px-3 rounded-lg transition-transform duration-300 hover:scale-110">
-                            <i class="fas fa-download text-base-500 dark:text-base-400"></i>
-                        </a>
-                        <img
-                            class="inline-block rounded-lg w-full h-52 object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-80 dark:hover:opacity-90"
-                            src="{!! $signature !!}"
-                            alt="{{ $name->name }} Signature"
-                        >
-                    </div>
-                @endforeach
+                <div id="signatures" class="mt-8 transition-opacity duration-300">
+                    @foreach ($signatures as $signature)
+                        <header class="font-semibold text-base-800 dark:text-surface bg-primary-100 dark:bg-primary-900 p-2">
+                            <h2>Signature {{ $loop->iteration }}</h2>
+                        </header>
+                        <div class="overflow-hidden shadow-sm transition-transform duration-300 cursor-pointer mt-2 mb-5 relative p-4">
+                            <a href="{!! $signature !!}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
+                            <!--Download button fa icon on right top -->
+                            <a href="{!! $signature !!}" download="" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 z-20 bg-primary-700 dark:bg-base-700 py-1 px-2 rounded transition-transform duration-300 hover:scale-110" title="Download Signature">
+                                <i class="fas fa-download text-base-100 dark:text-primary-500"></i>
+                            </a>
+                            <img
+                                class="inline-block rounded-lg w-full h-52 object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-90 dark:hover:opacity-100"
+                                src="{!! $signature !!}"
+                                alt="{{ $name->name }} Signature"
+                            >
+                        </div>
+                    @endforeach
+                </div>
+
             </main>
 
             <aside class="w-full lg:w-1/3 md:px-4 space-y-8">
