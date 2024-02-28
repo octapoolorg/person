@@ -11,13 +11,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-
 class DetailService
 {
+    private ImageService $imageService;
     private ToolService $toolService;
 
-    public function __construct(ToolService $toolService)
+    public function __construct(ImageService $imageService, ToolService $toolService)
     {
+        $this->imageService = $imageService;
         $this->toolService = $toolService;
     }
 
@@ -96,8 +97,8 @@ class DetailService
 
     private function prepareResponseData($name) : object
     {
-        $name->wallpapers = $this->toolService->getWallpapers($name->slug);
-        $name->signatures = $this->toolService->getSignatures($name->slug);
+        $name->wallpapers = $this->imageService->getWallpapers($name->slug);
+        $name->signatures = $this->imageService->getSignatures($name->slug);
         $name->fancyTexts = $this->toolService->getFancyTexts($name->name);
         $name->userNames  = $this->toolService->getUsernames($name->name);
         $name->numerology = $this->toolService->getNumerology($name->name);

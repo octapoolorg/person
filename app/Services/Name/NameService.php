@@ -15,11 +15,14 @@ class NameService
 
     private ToolService $toolService;
 
-    public function __construct(DetailService $detailService, SearchService $searchService, ToolService $toolService)
+    private ImageService $imageService;
+
+    public function __construct(DetailService $detailService, SearchService $searchService, ToolService $toolService, ImageService $imageService)
     {
         $this->detailService = $detailService;
         $this->searchService = $searchService;
         $this->toolService   = $toolService;
+        $this->imageService  = $imageService;
     }
 
     public function getName (string $nameSlug): object
@@ -59,22 +62,22 @@ class NameService
 
     public function getWallpapers (string $nameSlug): Collection
     {
-        return $this->toolService->getWallpapers($nameSlug);
+        return $this->imageService->getWallpapers($nameSlug);
     }
 
-    public function getSignatures (string $nameSlug): Collection
+    public function getSignatures (string $nameSlug, bool $more = false): Collection
     {
-        return $this->toolService->getSignatures($nameSlug);
+        return $this->imageService->getSignatures($nameSlug, $more);
     }
 
     public function wallpaper (string $nameSlug, string $style): Response
     {
-        return $this->toolService->wallpaper($nameSlug, $style);
+        return $this->imageService->wallpaper($nameSlug, $style);
     }
 
     public function signature (string $nameSlug, string $style): Response
     {
-        return $this->toolService->signature($nameSlug, $style);
+        return $this->imageService->signature($nameSlug, $style);
     }
 
     public function getFavorites (?string $favorite = null): array
