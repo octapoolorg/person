@@ -40,11 +40,11 @@
                             <h3 class="text-xl font-semibold text-base-900 dark:text-base-100">{{ $name->name }}</h3>
                             <div class="absolute top-5 right-5">
                                 @if($name->isMasculine())
-                                <i class="fas fa-mars text-blue-500 text-xl" title="Male"></i>
+                                <i class="fas fa-mars text-blue-500 text-xl capitalize" title="{!! str($name->gender)->title() !!}"></i>
                                 @elseif($name->isFeminine())
-                                <i class="fas fa-venus text-pink-500 text-xl" title="Female"></i>
+                                <i class="fas fa-venus text-pink-500 text-xl capitalize" title="{!! str($name->gender)->title() !!}"></i>
                                 @else
-                                <i class="fas fa-genderless text-gray-400 text-xl" title="{!! $name->gender !!}"></i>
+                                <i class="fas fa-genderless text-gray-400 text-xl capitalize" title="{!! str($name->gender)->title() !!}"></i>
                                 @endif
                             </div>
                             <p class="mt-2 text-base text-base-600 dark:text-base-300 truncate">{{ $name->meaning }}</p>

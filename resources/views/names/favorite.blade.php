@@ -2,10 +2,10 @@
 
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
-        <section class="flex flex-col lg:flex-row mb-12 mt-8 dark:bg-base-800">
+        <section class="flex flex-col lg:flex-row mb-12 mt-8 shadow rounded-lg bg-surface dark:bg-base-800">
             <main class="w-full px-4 mb-4 lg:mb-0">
                 @if ($names->isNotEmpty() && $myFavorite)
-                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 px-4 py-6">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 px-4 py-10">
                         <div class="flex flex-col space-y-2 mb-4 md:mb-0">
                             <h1 class="text-2xl md:text-3xl font-semibold text-base-900 dark:text-base-200">Favorite Names
                             </h1>
@@ -17,7 +17,7 @@
 
                         <div class="flex items-center" x-data>
                             <div
-                                class="flex items-center justify-between bg-surface dark:bg-base-700 p-2 rounded-lg shadow w-full">
+                                class="flex items-center justify-between bg-base-100 dark:bg-base-700 p-2 rounded-lg shadow w-full">
                                 <i class="fas fa-link text-lg text-primary-600 dark:text-primary-500 mx-2"></i>
                                 <input type="text" id="shareable-link"
                                     class="flex-1 bg-transparent text-base focus:ring-0 border-none text-base-600 dark:text-base-300 focus:outline-none px-2"
@@ -31,7 +31,7 @@
                                     @click.prevent="Utility.copyTextToClipboard($refs.shareableLink.value,$event)"
                                     class="ml-2 bg-primary-600 dark:bg-primary-800 hover:bg-primary-700 focus:ring-2 focus:ring-primary-300 dark:focus:ring-primary-800 text-surface dark:text-base-200 font-bold py-1 px-3 rounded transition ease-in-out duration-150"
                                     id="copy-link">
-                                    Copy
+                                    Share
                                 </button>
                             </div>
                         </div>
@@ -52,15 +52,15 @@
 
                                             @if ($name->isMasculine())
                                                 <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900">
-                                                    <i class="fas fa-mars text-blue-500 text-sm" title="Male"></i>
+                                                    <i class="fas fa-mars text-blue-500 text-sm" title="{!! str($name->gender)->title() !!}"></i>
                                                 </span>
                                             @elseif($name->isFeminine())
                                                 <span class="flex items-center justify-center w-6 h-6 rounded-full bg-pink-100 dark:bg-pink-900">
-                                                    <i class="fas fa-venus text-pink-500 text-sm" title="Female"></i>
+                                                    <i class="fas fa-venus text-pink-500 text-sm" title="{!! str($name->gender)->title() !!}"></i>
                                                 </span>
                                             @else
                                                 <span class="flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-700">
-                                                    <i class="fas fa-genderless text-gray-500 text-sm" title="Unspecified"></i>
+                                                    <i class="fas fa-genderless text-gray-500 text-sm" title="{!! str($name->gender)->title() !!}"></i>
                                                 </span>
                                             @endif
                                         </h2>

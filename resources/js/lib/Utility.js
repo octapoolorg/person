@@ -35,6 +35,7 @@ export class Utility {
     }
 
     static highlightText(e) {
+        // alert('Success! The content has been copied to your clipboard. Feel free to share it with others.');
         // highlight the text, can be input, textarea or div, span
         if (typeof e.target.select === "function") {
             // For input and textarea elements
@@ -59,7 +60,7 @@ export class Utility {
             } else {
                 document.selection.empty(); // For old IE versions
             }
-        }, 1000);
+        }, 5000);
     }
 
     static lazyLoad() {
