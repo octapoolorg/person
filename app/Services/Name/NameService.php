@@ -80,6 +80,11 @@ class NameService
         return $this->imageService->signature($nameSlug, $style);
     }
 
+    public function cover ($name): Response
+    {
+        return $this->imageService->cover($name);
+    }
+
     public function getFavorites (?string $favorite = null): array
     {
         return $this->detailService->getFavorites($favorite);

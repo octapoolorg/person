@@ -26,7 +26,10 @@ class NameController extends Controller
         $name = $this->nameService->getName($nameSlug);
 
         $this->seoService->getSeoData(
-            ['page' => 'name'],
+            [
+                'page' => 'name',
+                'image' => $name->cover,
+            ],
             ['name' => $name->name]
         );
 
@@ -102,5 +105,11 @@ class NameController extends Controller
     {
         $name = $this->nameService->fetchNameData($name)->name ?? slug_name($name);
         return $this->nameService->signature($name, $style);
+    }
+
+    public function cover(string $nameSlug): Response
+    {
+        $name = $this->nameService->getName($nameSlug);
+        return $this->nameService->cover($name);
     }
 }

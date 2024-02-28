@@ -97,6 +97,7 @@ class DetailService
 
     private function prepareResponseData($name) : object
     {
+        $name->cover = route('names.cover', $name->slug);
         $name->wallpapers = $this->imageService->getWallpapers($name->slug);
         $name->signatures = $this->imageService->getSignatures($name->slug);
         $name->fancyTexts = $this->toolService->getFancyTexts($name->name);
