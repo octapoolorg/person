@@ -82,7 +82,6 @@ class SearchService
     private function applyFilterIfFilled($query, Request $request, $requestKey, $queryKey, $subQueryKey = null)
     {
         $request->whenFilled($requestKey, function ($value) use ($query, $queryKey, $subQueryKey) {
-            $query->withoutGlobalScopes();
             if ($subQueryKey) {
                 $query->whereHas($queryKey, function ($q) use ($subQueryKey, $value) {
                     $q->where($subQueryKey, $value);

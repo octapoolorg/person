@@ -1,35 +1,17 @@
 <?php
 
 return [
-    'cover_1_masculine' => [
-        'background' => 'cover_1_masculine.jpg',
-        'position_x' => 1050,
-        'position_y' => 530,
-        'font_path' => 'roboto/roboto-bold.ttf',
-        'font_size' => 150,
-        'font_color' => '#000000',
+    'cover_masculine' => [
+        'background' => 'cover_masculine.jpg',
+        'position_x' => 1080,
+        'position_y' => 550,
+        'font_path' => 'marykate/marykate-regular.ttf',
+        'font_size' => 210,
+        'font_color' => '#5D2619',
         'text' => true,
     ],
-    'cover_2_masculine' => [
-        'background' => 'cover_2_masculine.jpg',
-        'position_x' => 970,
-        'position_y' => 400,
-        'font_path' => 'roboto/roboto-bold.ttf',
-        'font_size' => 150,
-        'font_color' => '#f2f9f9',
-        'text' => true,
-    ],
-    'cover_1_feminine' => [
-        'background' => 'cover_1_feminine.jpg',
-        'position_x' => 1120,
-        'position_y' => 520,
-        'font_path' => 'roboto/roboto-bold.ttf',
-        'font_size' => 150,
-        'font_color' => '#f2f9f9',
-        'text' => true,
-    ],
-    'cover_2_feminine' => [
-        'background' => 'cover_2_feminine.jpg',
+    'cover_feminine' => [
+        'background' => 'cover_feminine.jpg',
         'position_x' => 950,
         'position_y' => 780,
         'font_path' => 'roboto/roboto-bold.ttf',
@@ -37,12 +19,12 @@ return [
         'font_color' => '#f2f9f9',
         'text' => true,
     ],
-    'cover_1_neutral' => [
-        'background' => 'cover_1_neutral.jpg',
-        'position_x' => 1020,
-        'position_y' => 520,
+    'cover_neutral' => [
+        'background' => 'cover_neutral.jpg',
+        'position_x' => 920,
+        'position_y' => 540,
         'font_path' => 'roboto/roboto-bold.ttf',
-        'font_size' => 250,
+        'font_size' => 180,
         'font_color' => '#f2f9f9',
         'text' => true,
     ],

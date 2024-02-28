@@ -70,14 +70,14 @@ class NameService
         return $this->imageService->getSignatures($nameSlug);
     }
 
-    public function wallpaper (string $nameSlug, string $style): Response
+    public function wallpaper (string $name, string $style): Response
     {
-        return $this->imageService->wallpaper($nameSlug, $style);
+        return $this->imageService->wallpaper($name, $style);
     }
 
-    public function signature (string $nameSlug, string $style): Response
+    public function signature (string $name, string $style): Response
     {
-        return $this->imageService->signature($nameSlug, $style);
+        return $this->imageService->signature($name, $style);
     }
 
     public function cover ($name): Response

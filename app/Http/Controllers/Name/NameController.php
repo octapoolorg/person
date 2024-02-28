@@ -97,7 +97,7 @@ class NameController extends Controller
 
     public function wallpaper(string $style, string $nameSlug): Response
     {
-        $name = $this->nameService->getName($nameSlug)->name;
+        $name = $this->nameService->fetchNameData($nameSlug)->name ?? slug_name($nameSlug);
         return $this->nameService->wallpaper($name, $style);
     }
 

@@ -13,7 +13,7 @@
         </p>
     </div>
     <section
-        class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
+        class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800 overflow-hidden text-base-800 dark:text-base-100 p-8 md:py-16 relative">
         <article class="text-center">
             <div class="md:px-10">
                 <h1
