@@ -11,6 +11,33 @@ if (! function_exists('normalize_name')) {
     }
 }
 
+if (! function_exists('fix_name')) {
+    function fix_name($name): string
+    {
+        $name = normalize_name($name);
+        $length = strlen($name);
+
+        // Check if the length of the name is greater than 8
+        if ($length > 8) {
+            $parts = explode(' ', $name);
+            $firstPart = $parts[0];
+            $firstPartLength = strlen($firstPart);
+
+            // Check if the length of the first part is at least 3 and at most 8
+            if ($firstPartLength >= 3 && $firstPartLength <= 8) {
+                // Return the first part of the name
+                return $firstPart;
+            }
+
+            // If the first part is less than 3 characters or more than 8, return the first 8 characters of the name
+            return substr($name, 0, 8);
+        }
+
+        // If the length of the name is not greater than 8, return the name as is
+        return $name;
+    }
+}
+
 // slug to name, without any special characters , numbers. only alphabets,replace - with space, first part of name
 if (! function_exists('slug_name')) {
     function slug_name(string $slug): string

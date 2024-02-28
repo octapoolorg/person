@@ -42,6 +42,7 @@ class NameController extends Controller
     public function search(Request $request): View
     {
         $names = $this->nameService->search($request);
+        $query = $request->query('q', '');
         $this->seoService->getSeoData(
             ['page' => 'search'],
             [
@@ -51,7 +52,7 @@ class NameController extends Controller
             ]
         );
 
-        return view('names.search', compact('names'));
+        return view('names.search', compact('names', 'query'));
     }
 
     public function favorites(?string $favorite = null): View

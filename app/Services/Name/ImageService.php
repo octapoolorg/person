@@ -57,6 +57,8 @@ class ImageService
     {
         $style = $this->signStyles[$style] ?? abort(404);
 
+        $name = fix_name($name);
+
         $style = array_merge($style, [
             'seo_title' => 'Name Signature',
             'background' => 'signature_background.jpg',
