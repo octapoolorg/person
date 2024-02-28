@@ -14,21 +14,23 @@
                 </div>
 
                 <div id="signatures" class="mt-8 transition-opacity duration-300">
-                    @foreach ($signatures as $signature)
-                        <header class="font-semibold text-base-800 dark:text-surface bg-primary-100 dark:bg-primary-900 p-2">
-                            <h2>Signature {{ $loop->iteration }}</h2>
-                        </header>
-                        <div class="overflow-hidden shadow-sm transition-transform duration-300 cursor-pointer mt-2 mb-5 relative p-4">
-                            <a href="{!! $signature !!}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
-                            <!--Download button fa icon on right top -->
-                            <a href="{!! $signature !!}" download="" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 z-20 bg-primary-700 dark:bg-base-700 py-1 px-2 rounded transition-transform duration-300 hover:scale-110" title="Download Signature">
-                                <i class="fas fa-download text-base-100 dark:text-primary-500"></i>
-                            </a>
-                            <img
-                                class="inline-block rounded-lg w-full h-52 object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-90 dark:hover:opacity-100"
-                                src="{!! $signature !!}"
-                                alt="{{ $name->name }} Signature"
-                            >
+                    @foreach ($signatures as $style => $signature)
+                        <div class="border mb-5">
+                            <header class="font-semibold text-base-800 dark:text-surface bg-primary-100 dark:bg-primary-900 p-2">
+                                <h2>{{ str($style)->headline() }}</h2>
+                            </header>
+                            <div class="overflow-hidden transition-transform duration-300 cursor-pointer mt-2 mb-5 relative p-2">
+                                <a href="{!! $signature !!}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 z-10"></a>
+                                <!--Download button fa icon on right top -->
+                                <a href="{!! $signature !!}" download="" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 z-20 bg-primary-700 dark:bg-base-700 py-1 px-2 rounded transition-transform duration-300 hover:scale-110" title="Download Signature">
+                                    <i class="fas fa-download text-base-100 dark:text-primary-500"></i>
+                                </a>
+                                <img
+                                    class="inline-block rounded-lg w-full h-52 object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-90 dark:hover:opacity-100"
+                                    src="{!! $signature !!}"
+                                    alt="{{ $name->name }} Signature"
+                                >
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -38,7 +40,7 @@
             <aside class="w-full lg:w-1/3 md:px-4 space-y-8">
                 <x-names.sidebar :name=$name />
 
-                <div class="bg-surface dark:bg-base-800 rounded-lg shadow-md p-4 md:p-8">
+                {{-- <div class="bg-surface dark:bg-base-800 rounded-lg shadow-md p-4 md:p-8">
                     <h2 class="text-lg font-semibold text-base-800 dark:text-surface mb-4">Share {!! $name->name !!}</h2>
                     <div class="flex space-x-4">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank" rel="noopener noreferrer" class="text-base-500 dark:text-base-400 hover:text-base-600 dark:hover:text-base-300">
@@ -51,7 +53,7 @@
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
-                </div>
+                </div> --}}
 
             </aside>
         </section>

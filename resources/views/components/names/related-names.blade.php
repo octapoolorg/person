@@ -5,7 +5,7 @@
         $name->nicknames->isNotEmpty())
     <section class="bg-surface dark:bg-base-800 py-12 my-10 shadow rounded-lg" id="related-names">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-base-900 dark:text-surface">
+            <h2 class="text-2xl md:text-4xl text-base-800 dark:text-base-100 mb-4 md:mb-10 font-semibold capitalize">
                 Explore More About {!! $name->name !!} Name
             </h2>
 

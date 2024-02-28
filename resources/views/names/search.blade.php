@@ -8,7 +8,7 @@
                 <h2 class="text-3xl font-bold leading-tight text-base-900 dark:text-base-200">Find Your Perfect Name</h2>
                 <p class="mt-4 text-lg text-base-600 dark:text-base-300 mb-12">Start your search by typing a name, selecting an origin, or gender.</p>
             @endisset
-            <form action="{{ route('names.search') }}" method="GET" class="">
+            <form action="{{ route('names.search') }}" method="GET" class="" id="searchForm">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div class="lg:col-span-8">
                         <div class="relative">
@@ -30,7 +30,7 @@
                 </div>
             </form>
 
-            <div class="mt-16">
+            <div class="mt-16" id="search-results">
                 <h2 class="text-2xl font-semibold leading-tight text-base-900 dark:text-base-300">
                     Search Results
                 </h2>
@@ -65,5 +65,21 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function() {
+        // Check if 'firstLoad' key exists in localStorage
+        if (!localStorage.getItem('firstLoad')) {
+            // Set 'firstLoad' key in localStorage
+            localStorage.setItem('firstLoad', 'done');
+
+            // Scroll to #search-results element
+            const searchResults = document.querySelector('#searchForm');
+            if (searchResults) {
+                searchResults.scrollIntoView();
+            }
+        }
+    }
+</script>
 @endsection
 

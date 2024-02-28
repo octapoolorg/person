@@ -22,7 +22,7 @@
     </div>
 
     <!-- Thumbnails container -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center">
         @foreach ($name->wallpapers->random(2) as $url)
         <img
             src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cline%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22100%25%22%20y2%3D%220%22%20style%3D%22stroke%3Aaaa%3Bstroke-width%3A1%22/%3E%3C/svg%3E"

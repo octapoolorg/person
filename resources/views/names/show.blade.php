@@ -14,7 +14,7 @@
 
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
-        <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-20">
+        <section class="flex flex-col lg:flex-row mb-12 mt-8 md:mt-16">
             <main class="w-full lg:w-2/3 md:px-4 mb-4 lg:mb-0">
 
                 @php
