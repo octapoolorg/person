@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('data-theme')
+{{-- @section('data-theme')
     @php
         $theme =
         $name->isMasculine() ? 'boyish' :
@@ -10,7 +10,7 @@
         );
     @endphp
     data-theme="{{ $theme }}"
-@endsection
+@endsection --}}
 
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
