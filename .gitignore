@@ -1,12 +1,9 @@
 /.phpunit.cache
 /node_modules
+/public/build
 /public/hot
-/public/build/*
-/public/build/manifest.json
-/public/sitemap*.xml
 /public/storage
 /storage/*.key
-/storage/debugbar
 /vendor
 .env
 .env.backup
