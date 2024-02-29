@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Redirect;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpFoundation\Response;
 
 class RedirectMiddleware
@@ -18,7 +19,7 @@ class RedirectMiddleware
     {
         $cacheKey = 'redirects';
 
-        $redirects = cache_remember($cacheKey, function () {
+        $redirects = Cache::remember($cacheKey, now()->addYear(), function () {
             return Redirect::all()->pluck('target', 'source');
         }, now()->addYear());
 
