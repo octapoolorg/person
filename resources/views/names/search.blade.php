@@ -62,7 +62,7 @@
                         <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach ($names as $name)
                                 <a href="{{ route('names.show', $name) }}"
-                                    class="bg-surface hover:bg-primary-50/70 dark:bg-base-700 rounded-lg shadow hover:shadow-md p-6 relative">
+                                    class="bg-surface hover:bg-primary-50/70 dark:bg-base-700 dark:hover:bg-base-600 rounded-lg shadow hover:shadow-md p-6 relative">
                                     <h3 class="text-xl font-semibold text-base-900 dark:text-base-100">{{ $name->name }}
                                     </h3>
                                     <div class="absolute top-5 right-5">
