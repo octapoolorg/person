@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function index(): View
     {
-        $posts = WinkPost::with('tags')
+        $posts = WinkPost::with(['tags', 'author'])
             ->live()
             ->orderBy('publish_date', 'desc')
             ->paginate(10);
@@ -27,9 +27,10 @@ class BlogController extends Controller
 
     public function show(string $slug): View
     {
-        $post = WinkPost::with('tags')->where('slug', $slug)->firstOrFail();
+        $post = WinkPost::with(['tags', 'author'])
+        ->where('slug', $slug)->firstOrFail();
 
-        $relatedPosts = WinkPost::with('tags')
+        $relatedPosts = WinkPost::with(['tags', 'author'])
             ->live()
             ->where('id', '!=', $post->id)
             ->whereHas('tags', function ($query) use ($post) {
