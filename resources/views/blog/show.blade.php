@@ -3,7 +3,7 @@
 @section('content')
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="container mb-12 pt-8">
-            <main class="p-4 md:ps-0 mb-4 lg:mb-0 bg-surface dark:bg-base-700">
+            <main class="p-4 md:ps-0 mb-4 lg:mb-0 bg-surface dark:bg-base-800">
                 <article class="md:p-10 prose prose-base max-w-none dark:prose-invert">
                     @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
                         <img src="{{ $post->featured_image }}" alt="{{ $post->title }}"
