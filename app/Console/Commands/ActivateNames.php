@@ -39,7 +39,7 @@ class ActivateNames extends Command
 
     private function calculateNamesToActivate(): int
     {
-        $startDate = Carbon::parse('2024-01-15');
+        $startDate = Carbon::parse('2024-02-15');
         $weeksSinceStart = $startDate->diffInWeeks(Carbon::now());
 
         return $this->baseNumber + ($weeksSinceStart * $this->weeklyIncrement);
