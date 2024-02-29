@@ -68,9 +68,11 @@ class FavoriteButton {
         if (isFavorited) {
             icon.classList.remove('far');
             icon.classList.add('fas');
+            button.title = 'Remove from favorites';
         } else {
             icon.classList.remove('fas');
             icon.classList.add('far');
+            button.title = 'Add to favorites';
         }
     }
 
