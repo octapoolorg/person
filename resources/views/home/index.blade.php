@@ -63,21 +63,7 @@
             <h2 class="text-3xl md:text-5xl font-semibold text-center text-base-800 dark:text-base-100 mb-16">Insights & Stories</h2>
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 lg:px-12 py-20">
-                <!-- Dummy Post -->
-                <a href="#"
-                    class="group dark:bg-base-700 rounded-lg border border-base-200 dark:border-base-700 shadow hover:shadow-lg">
-                    <img class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-300"
-                        src="https://via.placeholder.com/800x400" alt="Post Title">
-                    <div class="p-6">
-                        <h3
-                            class="text-2xl font-semibold text-base-800 dark:text-base-100 mb-2 transition-colors duration-300">
-                            Post Title</h3>
-                        <p class="text-base-600 dark:text-base-300 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div class="text-base-500 dark:text-base-400 text-xs capitalize tracking-wide font-semibold">
-                            By Author Name &bull; Jan 01, 2022
-                        </div>
-                    </div>
+                
                 @foreach ($data['latestPosts'] as $post)
                     <a href="{!! route('blog.show', $post->slug) !!}"
                         class="group dark:bg-base-700 rounded-lg border border-base-200 dark:border-base-700 shadow hover:shadow-lg">
