@@ -10,7 +10,7 @@ export class Utility {
         e.preventDefault();
         if (navigator.clipboard) {
             return navigator.clipboard.writeText(text).then(() => {
-                this.highlightText(e);
+                // this.highlightText(e);
             });
         } else {
             const textArea = document.createElement("textarea");
@@ -25,7 +25,7 @@ export class Utility {
                 const successful = document.execCommand('copy');
                 document.body.removeChild(textArea);
                 if (successful) {
-                    this.highlightText(e);
+                    // this.highlightText(e);
                 }
                 return Promise.resolve(successful);
             } catch (err) {
