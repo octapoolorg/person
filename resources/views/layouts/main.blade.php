@@ -17,7 +17,6 @@ class="bg-base-50 text-base-900 dark:bg-base-900 selection:bg-primary-600 select
     </section>
 
     <x-footer />
-    <x-theme-switch />
 </body>
 
 </html>

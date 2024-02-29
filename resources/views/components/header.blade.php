@@ -11,7 +11,11 @@
             </span>
         </a>
         <div class="inline-flex items-center justify-center lg:hidden">
-            <x-darkmode-switch />
+            <a href="{!! route('names.search') !!}"
+                class="p-2 text-base-500 rounded-lg hover:bg-base-100 focus:outline-none focus:ring-2 focus:ring-base-200 dark:text-base-400 dark:hover:bg-base-700 dark:focus:ring-base-600">
+                <span class="sr-only">Search</span>
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </a>
             <button data-collapse-toggle="navbar-default" type="button"
                 class=" p-2 w-10 h-10 text-sm text-base-500 rounded-lg hover:bg-base-100 focus:outline-none focus:ring-2 focus:ring-base-200 dark:text-base-400 dark:hover:bg-base-700 dark:focus:ring-base-600"
                 aria-controls="navbar-default" aria-expanded="false">
@@ -22,19 +26,8 @@
         <div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
             <ul
                 class="font-medium flex flex-col items-center p-4 lg:p-0 mt-4 border border-base-100 rounded-lg bg-base-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 lg:bg-surface dark:bg-base-800 dark:border-base-700 *:w-full *:lg:w-fit">
-                <li>
-                    <form class="relative flex items-center w-full" action="{!! route('names.search') !!}">
-                        <label for="hero-input" class="sr-only">Search</label>
-                        <input type="text" required="" id="hero-input" name="q"
-                            class="py-2 pl-4 pr-10 block w-full border border-base-300 dark:border-base-700 rounded-md shadow-sm dark:bg-base-800 text-black dark:text-surface placeholder:text-md placeholder:font-normal placeholder-base-400 focus:ring-0 focus:border-primary-500 dark:focus:border-primary-500"
-                            placeholder="Search a Name..."
-                            {{ request()->filled('q') ? 'value=' . request()->input('q') : '' }}>
-                        <button type="submit"
-                            class="absolute right-3 inset-y-0 my-auto flex items-center justify-center text-primary-600 dark:text-primary-400">
-                            <i class="fas fa-search text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-500"
-                                aria-hidden="true"></i>
-                        </button>
-                    </form>
+                <li class="text-right lg:hidden">
+                    <x-darkmode-switch />
                 </li>
                 <li>
                     <a href="{!! route('home') !!}" @class([
@@ -113,19 +106,22 @@
                             'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('favorites'),
                         ])
                         {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}>
-                        <span class="relative">
-                            <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
-                            <span id="navbar-favorite-icon"
-                                @class([
-                                    'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-1.5 -right-1.5 lg:-top-0 lg:-end-1 dark:border-base-900',
-                                    'inline-flex' => $haveFavorites,
-                                    'hidden' => ! $haveFavorites,
-                                ])
-                            ></span>
-                        </span>
+                        <div class="relative">
+                            <span class=" lg:hidden">Favorites</span>
+                            <div class="hidden lg:inline-block">
+                                <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+                                <span id="navbar-favorite-icon"
+                                    @class([
+                                        'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-1.5 -right-1.5 lg:-top-0 lg:-end-1 dark:border-base-900',
+                                        'inline-flex' => $haveFavorites,
+                                        'hidden' => ! $haveFavorites,
+                                    ])
+                                ></span>
+                            </div>
+                        </div>
                     </a>
                 </li>
-                <li class="hidden lg:block">
+                <li class="hidden lg:block mr-2">
                     <x-darkmode-switch />
                 </li>
             </ul>
