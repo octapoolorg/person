@@ -4,7 +4,6 @@ namespace App\View\Composers;
 
 use App\Models\Name;
 use App\Models\Origin;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class GlobalComposer
@@ -24,7 +23,7 @@ class GlobalComposer
      */
     public function compose(View $view): void
     {
-        $popularNames = Cache::remember('names:random', now()->addDay(), function () {
+        $popularNames = cache_remember('names:random', function () {
             return $this->name->withoutGlobalScopes()
                 ->popular()
                 ->validGender()
@@ -34,7 +33,7 @@ class GlobalComposer
                 ->get();
         });
 
-        $origins = Cache::remember('origins', now()->addDay(), function () {
+        $origins = cache_remember('origins', function () {
             //only get the origins that have names - at least 5000
             return $this->origin->withCount(['names' => function ($query) {
                 $query
@@ -43,7 +42,7 @@ class GlobalComposer
             }])->having('names_count', '>=', 5000)->orderBy('name')->get();
         });
 
-        $genders = Cache::remember('genders', now()->addDay(), function () {
+        $genders = cache_remember('genders', function () {
             return $this->name->distinct()->pluck('gender');
         });
 
