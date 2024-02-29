@@ -4,7 +4,7 @@
     <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8">
         <section class="container mb-12 pt-8">
             <main class="p-4 md:ps-0 mb-4 lg:mb-0 bg-surface dark:bg-base-700">
-                <article>
+                <article class="md:p-10 prose prose-base max-w-none dark:prose-invert">
                     @if (!empty($post->featured_image) && file_exists(public_path($post->featured_image)))
                         <img src="{{ $post->featured_image }}" alt="{{ $post->title }}"
                             class="w-full rounded-t-lg mb-6 object-cover">
@@ -21,7 +21,7 @@
                             on <time datetime="{{ $post->publish_date }}">{{ $post->publish_date->format('M d, Y') }}</time>
                         </div>
                     </div>
-                    <div class="prose prose-slate max-w-none  dark:prose-invert">
+                    <div class="">
                         {!! $post->content !!}
                     </div>
                 </article>
