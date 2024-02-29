@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 if (! function_exists('normalize_name')) {
     function normalize_name($name): array|string|null
@@ -67,7 +68,7 @@ if (! function_exists('cache_remember')) {
     {
         $ttl = $ttl ?? now()->addDay();
 
-        return \Illuminate\Support\Facades\Cache::remember($key, $ttl, $callback);
+        return Cache::remember($key, $ttl, $callback);
     }
 }
 
