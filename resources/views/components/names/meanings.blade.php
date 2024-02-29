@@ -1,23 +1,19 @@
 <section class="drop-shadow" x-data id="meanings">
-    <div class="bg-primary-500 dark:bg-primary-800 py-4 shadow rounded-t-xl flex items-center justify-between px-5">
-        <p class="text-lg font-bold text-surface dark:text-base-300" id="gender">
+    <div class="bg-primary-600 dark:bg-primary-900 py-4 shadow-md rounded-t-xl flex items-center justify-between px-5">
+        <p class="text-lg font-bold text-surface" id="gender">
             <i @class([
                 'fas text-xl',
                 'fa-mars'  => $name->isMasculine(),
                 'fa-venus' => $name->isFeminine(),
-            ])>
-            </i>
-            <span class="ml-2 capitalize">
-                {{ $name->gender }}
-            </span>
+            ])></i>
+            <span class="ml-2 capitalize">{{ $name->gender }}</span>
         </p>
     </div>
-    <section
-        class="max-w-4xl mx-auto border border-base-200 dark:border-base-700 bg-surface dark:bg-base-800 overflow-hidden text-base-800 dark:text-base-100 p-8 md:py-16 relative">
+
+    <section class="max-w-4xl mx-auto border border-base-300 dark:border-base-700 bg-surface dark:bg-base-800 overflow-hidden text-base-900 dark:text-base-100 p-8 md:py-16 relative">
         <article class="text-center">
             <div class="md:px-10">
-                <h1
-                    class="text-3xl text-center md:text-6xl font-bold md:py-4 dark:text-base-100 text-balance leading-relaxed break-words">
+                <h1 class="text-3xl text-center md:text-6xl font-bold md:py-4 dark:text-surface leading-relaxed break-words">
                     <input type="hidden" id="name" value="{{ $name->name }}" x-ref="name">
                     {{ $name->name }}
                 </h1>
@@ -25,39 +21,32 @@
                 @isset($name->pronunciation)
                     <div class="flex items-center justify-center gap-2 text-base-500 dark:text-base-400 my-4">
                         <a href="javascript:;" @click.prevent="SpeechManager.speak($refs.name.value.trim())" class="hidden speak" title="Pronounce">
-                            <i class="fas fa-volume-up text-green-500 dark:text-green-400 text-lg hover:text-green-600 dark:hover:text-green-500"></i>
+                            <i class="fas fa-volume-up text-emerald-500 dark:text-emerald-400 text-lg hover:text-emerald-600 dark:hover:text-emerald-500"></i>
                         </a>
-                        <p class="text-lg">
-                            {{ $name->pronunciation }}
-                        </p>
+                        <p class="text-lg">{{ $name->pronunciation }}</p>
                     </div>
                 @endisset
             </div>
 
-            <div class="text-base sm:text-2xl mt-2 md:py-3 break-words dark:text-base-300 text-balance leading-relaxed lg:px-10">
+            <div class="text-base sm:text-2xl mt-2 md:py-3 break-words dark:text-base-300 leading-relaxed lg:px-10">
                 {!! $name->mainMeaning !!}
             </div>
         </article>
 
-
-        <a href="javascript:;" title="Add to favorites"
-            class="text-pink-500 dark:text-pink-500 hover:text-pink-600 dark:hover:text-pink-600 favorite-button absolute top-5 right-5 md:top-7 md:right-7"
-            data-slug="{{ $name->slug }}">
-            <i class="far fa-heart text-xl md:text-2xl" id="favorite-icon"></i>
+        <a href="javascript:;" title="Add to favorites" class="text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-500 favorite-button absolute top-5 right-5 md:top-7 md:right-7">
+            <i class="far fa-heart text-xl md:text-2xl"></i>
         </a>
 
         @if($name->is_ugc)
             <div class="group absolute bottom-5 right-5">
-                <!-- info icon fa- -->
                 <i class="fas fa-info-circle text-base-500 dark:text-base-400 text-xl cursor-pointer group-hover:text-primary-500 dark:group-hover:text-primary-400"></i>
-
-                <!-- Tooltip Text -->
-                <span class="absolute bottom-full mb-2 right-0 bg-black text-white text-xs rounded py-1 px-3 hidden group-hover:block">
+                <span class="absolute bottom-full mb-2 right-0 bg-base-900 text-surface text-xs rounded py-1 px-3 hidden group-hover:block">
                     User Submitted Name
                 </span>
             </div>
         @endif
     </section>
+
 
     @if (!$name->origins->isEmpty())
         <div id="accordion-collapse-origin" data-accordion="collapse"
