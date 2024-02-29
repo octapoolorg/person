@@ -1,14 +1,5 @@
 <script>
     (function() {
-        function setDarkMode() {
-            const darkMode = localStorage.getItem('color-theme');
-            if (darkMode === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
-
         function setThemeMode() {
             let defaultTheme = document.documentElement.getAttribute('data-theme') || 'default';
             const themeName = localStorage.getItem('themeName');
@@ -19,8 +10,6 @@
                 document.documentElement.setAttribute('data-theme', defaultTheme);
             }
         }
-
-        setDarkMode();
         setThemeMode();
     })();
 </script>

@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 const { createThemes } = require('tw-colors');
 
 export default {
-    darkMode: 'class',
+    darkMode: 'selector',
     content: [
         "./resources/**/*.blade.php",
         "./storage/framework/views/*.php",
@@ -67,12 +67,12 @@ export default {
                 'surface': colors.white,
             },
             'boyish' : {
-                'primary': colors.teal,
+                'primary': colors.sky,
                 'base': colors.neutral,
                 'surface': colors.white,
             },
             'nature' : {
-                'primary': colors.sky,
+                'primary': colors.teal,
                 'base': colors.neutral,
                 'surface': colors.white,
             },

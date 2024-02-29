@@ -11,7 +11,7 @@
             </span>
         </a>
         <div class="inline-flex items-center justify-center lg:hidden">
-            <x-mode-switch />
+            <x-darkmode-switch />
             <button data-collapse-toggle="navbar-default" type="button"
                 class=" p-2 w-10 h-10 text-sm text-base-500 rounded-lg hover:bg-base-100 focus:outline-none focus:ring-2 focus:ring-base-200 dark:text-base-400 dark:hover:bg-base-700 dark:focus:ring-base-600"
                 aria-controls="navbar-default" aria-expanded="false">
@@ -108,23 +108,25 @@
                     <!-- favorite button -->
                     <a href="{!! route('names.favorites') !!}"
                         @class([
-                            'block py-2 px-3 rounded lg:p-0 relative',
+                            'block py-2 px-3 rounded lg:p-0',
                             'text-primary-600' => request()->routeIs('favorites'),
                             'text-base-800 lg:hover:text-primary-700 dark:text-surface lg:dark:hover:text-primary-500' => !request()->routeIs('favorites'),
                         ])
                         {{ request()->routeIs('favorites') ? 'aria-current=page' : '' }}>
-                        <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
-                        <span id="navbar-favorite-icon"
-                            @class([
-                                'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full top-2 end-2 lg:-top-0 lg:-end-1 dark:border-base-900',
-                                'inline-flex' => $haveFavorites,
-                                'hidden' => ! $haveFavorites,
-                            ])
-                        ></span>
+                        <span class="relative">
+                            <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
+                            <span id="navbar-favorite-icon"
+                                @class([
+                                    'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-1.5 -right-1.5 lg:-top-0 lg:-end-1 dark:border-base-900',
+                                    'inline-flex' => $haveFavorites,
+                                    'hidden' => ! $haveFavorites,
+                                ])
+                            ></span>
+                        </span>
                     </a>
                 </li>
                 <li class="hidden lg:block">
-                    <x-mode-switch />
+                    <x-darkmode-switch />
                 </li>
             </ul>
         </div>

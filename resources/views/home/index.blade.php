@@ -29,9 +29,9 @@
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-6 md:px-4 lg:px-8 my-10">
+    <section class="max-w-7xl mx-auto lg:px-8 lg:my-10">
         <!-- Popular Names Section with Interactive Cards -->
-        <section class="container mx-auto py-20 px-10 mb-10 bg-surface dark:bg-base-800 shadow rounded-lg">
+        <section class="container mx-auto py-20 px-5 lg:px-10 mb-10 bg-surface dark:bg-base-800 shadow rounded-lg">
             <h2 class="text-3xl md:text-5xl font-semibold text-center text-base-800 dark:text-base-100 mb-8">
                 Popular Names
             </h2>

@@ -4,15 +4,8 @@
         <h2 class="text-2xl md:text-3xl font-semibold text-base-800 dark:text-base-100 mb-4 md:mb-10 relative">
             Personality analysis for {!! $name->name !!}
         </h2>
-        <span class="group relative md:absolute top-0 right-0 mb-2 mr-2 flex items-center">
-            <i
-                class="cursor-pointer fas fa-info-circle text-primary-500 dark:text-primary-300 text-2xl group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300"></i>
-
-            <!-- Tooltip Text -->
-            <span
-                class="absolute bottom-full mb-2 right-0 bg-black dark:bg-black text-surface dark:text-base-100 text-xs rounded py-1 px-3 hidden group-hover:block">
-                Based on Pythagorean Numerology.
-            </span>
+        <span class="group absolute top-0 right-0 mb-2 mr-2" title="Based on Pythagorean Numerology.">
+            <i class="cursor-pointer fas fa-info-circle text-primary-500 dark:text-primary-300 text-2xl group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300"></i>
         </span>
     </div>
 

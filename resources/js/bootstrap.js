@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Alpine from 'alpinejs'
+import persist from '@alpinejs/persist'
 import { ThemeManager } from './lib/ThemeManager.js';
 import { Utility } from './lib/Utility.js';
 import 'flowbite';
@@ -14,4 +15,6 @@ window.Utility = Utility;
 window.ThemeManager = new ThemeManager();
 
 Utility.start();
+
+Alpine.plugin(persist)
 Alpine.start();

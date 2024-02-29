@@ -14,7 +14,7 @@ export default defineConfig({
     ],
     build:{
         manifest: true,
-        target: 'es2015',
+        target: 'es2017',
         cssTarget: 'chrome61',
     },
 });

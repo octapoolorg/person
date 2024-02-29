@@ -10,7 +10,6 @@ export class ThemeManager {
     }
 
     init() {
-        this.initializeDarkMode();
         this.initColorTheme();
         this.createThemeDropdown();
         this.addEventListeners();
@@ -24,33 +23,6 @@ export class ThemeManager {
         } else {
             this.toggleThemeButton(true);
         }
-    }
-
-    toggleDarkMode() {
-        const isDarkMode = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
-        this.updateIcons();
-    }
-
-    updateIcons() {
-        const isDarkMode = document.documentElement.classList.contains('dark');
-        const buttons = document.querySelectorAll('.toggle');
-        buttons.forEach((btn) => {
-            const darkIcon = btn.querySelector('.dark-icon');
-            const lightIcon = btn.querySelector('.light-icon');
-            darkIcon.classList.toggle('hidden', !isDarkMode);
-            lightIcon.classList.toggle('hidden', isDarkMode);
-        });
-    }
-
-    initializeDarkMode() {
-        const colorTheme = localStorage.getItem('color-theme');
-        if (colorTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-        this.updateIcons();
     }
 
     initColorTheme() {
