@@ -6,7 +6,7 @@
                 <img src="{{ asset('static/images/logo.png') }}" alt="{{ config('app.name') }}" class="h-10 w-auto">
             </span>
             <span
-                class="self-center text-2xl font-bold surfacespace-nowrap text-base-800 hover:text-primary-600 dark:text-base-200 dark:hover:text-primary-500">
+                class="self-center text-xl md:text-2xl font-bold surfacespace-nowrap text-base-800 hover:text-primary-600 dark:text-base-200 dark:hover:text-primary-500">
                 {{ config('app.name') }}
             </span>
         </a>
