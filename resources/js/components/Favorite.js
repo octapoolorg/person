@@ -106,14 +106,20 @@ class FavoriteButton {
         const iconRect = button.getBoundingClientRect();
         const navbarIconRect = this.navbarFavBtn.getBoundingClientRect();
 
+        // Calculate the target position based on the scroll position
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetLeft = navbarIconRect.left + scrollLeft;
+        const targetTop = navbarIconRect.top + scrollTop;
+
         icon.style.position = 'absolute';
-        icon.style.left = `${iconRect.left}px`;
-        icon.style.top = `${iconRect.top}px`;
+        icon.style.left = `${iconRect.left + scrollLeft}px`;
+        icon.style.top = `${iconRect.top + scrollTop}px`;
         document.body.appendChild(icon);
 
         icon.animate([
             { transform: `translate(0, 0)` },
-            { transform: `translate(${navbarIconRect.left - iconRect.left}px, ${navbarIconRect.top - iconRect.top}px)` }
+            { transform: `translate(${targetLeft - iconRect.left - scrollLeft}px, ${targetTop - iconRect.top - scrollTop}px)` }
         ], {
             duration: 700,
             easing: 'ease-in-out'
