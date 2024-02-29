@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Model::shouldBeStrict();
+        // Model::shouldBeStrict();
 
         Collection::macro('toUpper', function () {
             return $this->map(function (string $value) {
