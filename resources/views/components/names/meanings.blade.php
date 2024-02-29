@@ -33,7 +33,7 @@
             </div>
         </article>
 
-        <a href="javascript:;" title="Add to favorites" class="text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-500 favorite-button absolute top-5 right-5 md:top-7 md:right-7">
+        <a data-slug="{{ $name->slug }}"  href="javascript:;" title="Add to favorites" class="text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-500 favorite-button absolute top-5 right-5 md:top-7 md:right-7">
             <i class="far fa-heart text-xl md:text-2xl"></i>
         </a>
 

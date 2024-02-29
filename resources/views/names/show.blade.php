@@ -47,7 +47,7 @@
 
                 <!--- Anchor Links to Sections -->
                 <div
-                    class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-gray-200 dark:border-gray-700 transition-all sticky top-5">
+                    class="shadow p-6 rounded-lg bg-surface dark:bg-base-800 border border-base-200 dark:border-base-700 transition-all sticky top-5">
                     <h5 class="text-xl font-bold text-primary-600 dark:text-primary-500 mb-4">
                         On This Page
                     </h5>
@@ -74,5 +74,13 @@
     @pushonce('scripts')
         <script type="text/javascript" async defer data-pin-hover="true"
                 src="//assets.pinterest.com/js/pinit.js"></script>
+
+        <div class="fixed bottom-20 right-0 z-10 transform origin-top-right rotate-90">
+            <a href="https://www.surveymonkey.com/r/L6ZFDD7" target="_blank"
+                class="inline-flex items-center gap-x-1 bg-base-500 hover:bg-base-600 dark:bg-base-400 dark:hover:bg-base-500 text-surface text-xs px-2 py-1 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-base-500 dark:focus:ring-base-400 transition duration-300">
+                <i class="fas fa-comment-alt"></i>
+                <span>Feedback</span>
+            </a>
+        </div>
     @endpushonce
 @endproduction
