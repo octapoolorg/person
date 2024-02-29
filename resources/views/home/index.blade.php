@@ -62,8 +62,7 @@
         <section class="container mx-auto py-20 px-10 mb-10 bg-surface dark:bg-base-800 shadow rounded-lg">
             <h2 class="text-3xl md:text-5xl font-semibold text-center text-base-800 dark:text-base-100 mb-16">Insights & Stories</h2>
             <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-6 lg:px-12 py-20">
-                
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-20">
                 @foreach ($data['latestPosts'] as $post)
                     <a href="{!! route('blog.show', $post->slug) !!}"
                         class="group dark:bg-base-700 rounded-lg border border-base-200 dark:border-base-700 shadow hover:shadow-lg">
