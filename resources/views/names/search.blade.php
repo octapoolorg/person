@@ -36,7 +36,7 @@
                 </form>
 
                 <div class="mt-16" id="search-results">
-                    @if(empty($names))
+                    @if($names->isEmpty())
                         <div class="text-center py-10">
                             <div
                                 class="inline-flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow">

@@ -42,7 +42,7 @@ class NameController extends Controller
     public function search(Request $request): View
     {
         $names = $this->nameService->search($request);
-        $query = $request->query('q', '');
+        $query = $request->query('q');
         $this->seoService->getSeoData(
             ['page' => 'search'],
             [

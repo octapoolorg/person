@@ -85,7 +85,7 @@
                     </p>
                     <p>
                         <a class="inline-flex gap-x-2 text-base-400 hover:text-primary-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-base-600"
-                            href="/page/faqs"> {!! __('content.link.faqs') !!}
+                            href="/pages/faqs"> {!! __('content.link.faqs') !!}
                         </a>
                     </p>
                     <p>

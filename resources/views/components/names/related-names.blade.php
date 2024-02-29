@@ -26,7 +26,7 @@
                         <div x-data class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             @foreach ($name->nicknames as $nick)
                                 <span
-                                    class="inline-flex items-center justify-center px-4 py-2 bg-yellow-100 dark:bg-base-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
+                                    class="inline-flex items-center justify-center px-4 py-2 bg-yellow-100 dark:bg-yellow-600 dark:hover:bg-yellow-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
                                     <a href="javascript:" class="speak hidden" @click.prevent="SpeechManager.speak($refs.nickname{!! $loop->index !!}.innerText.trim())">
                                         <i class="fas fa-volume-up mr-2 text-yellow-600 dark:text-yellow-100 text-xs cursor-pointer hover:text-yellow-800 dark:hover:text-yellow-200"></i>
                                     </a>
@@ -48,7 +48,7 @@
                         <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             @foreach ($name->similarNames as $similar)
                                 <a href="{{ route('names.show', $similar->slug) }}" target="_blank"
-                                    class="inline-flex items-center justify-center px-4 py-2 bg-green-100 dark:bg-base-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
+                                    class="inline-flex items-center justify-center px-4 py-2 bg-green-100 dark:bg-green-600 dark:hover:bg-green-700 text-base-800 dark:text-base-300 rounded-md shadow text-base font-medium">
                                     {{ $similar->name }}
                                 </a>
                             @endforeach
@@ -69,9 +69,9 @@
                             <a href="{{ route('names.show', $sibling->slug) }}" target="_blank"
                                 @class([
                                 'inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium',
-                                'bg-sky-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isMasculine(),
-                                'bg-pink-200 dark:bg-base-700 text-base-800 dark:text-base-300' => $sibling->isFeminine(),
-                                'bg-primary-200 dark:bg-base-700 text-base-800 dark:text-base-300' => !( $sibling->isMasculine() || $sibling->isFeminine() ),
+                                'bg-sky-200 dark:bg-sky-600 dark:hover:bg-sky-700 text-base-800 dark:text-base-300' => $sibling->isMasculine(),
+                                'bg-pink-200 dark:bg-pink-600 dark:hover:bg-pink-700 text-base-800 dark:text-base-300' => $sibling->isFeminine(),
+                                'bg-primary-200 dark:bg-primary-700 text-base-800 dark:text-base-300' => !( $sibling->isMasculine() || $sibling->isFeminine() ),
                             ])>
                                 {{ $sibling->name }}
                             </a>
