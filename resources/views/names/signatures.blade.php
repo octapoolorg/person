@@ -26,7 +26,7 @@
                                     <i class="fas fa-download text-base-100 dark:text-primary-500"></i>
                                 </a>
                                 <img
-                                    class="inline-block rounded-lg w-full h-52 object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-90 dark:hover:opacity-100"
+                                    class="inline-block rounded-lg w-full h-52 object-contain md:object-cover transition-opacity duration-300 lazy hover:opacity-80 dark:opacity-90 dark:hover:opacity-100"
                                     src="{!! $signature !!}"
                                     alt="{{ $name->name }} Signature"
                                 >
