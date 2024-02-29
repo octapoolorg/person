@@ -113,7 +113,7 @@
                 </li>
                 <li>
                     <!-- favorite button -->
-                    <a href="{!! route('names.favorites') !!}"
+                    <a href="{!! route('names.favorites') !!}" id="navbar-favorite"
                         @class([
                             'block py-2 px-3 rounded lg:p-0',
                             'text-primary-600' => request()->routeIs('favorites'),
@@ -123,8 +123,8 @@
                         <div class="relative">
                             <span class=" lg:hidden">Favorites</span>
                             <div class="hidden lg:inline-block">
-                                <i class="far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true"></i>
-                                <span id="navbar-favorite-icon"
+                                <i class="z-50 far fa-heart text-primary-500 dark:text-primary-400 text-2xl" aria-hidden="true" id="navbar-favorite-icon"></i>
+                                <span id="navbar-favorite-indicator"
                                     @class([
                                         'absolute items-center justify-center size-3 text-xs font-bold text-surface bg-pink-500 border-2 border-surface rounded-full -top-1.5 -right-1.5 lg:-top-0 lg:-end-1 dark:border-base-900',
                                         'inline-flex' => $haveFavorites,

@@ -1,8 +1,8 @@
 class FavoriteButton {
-    constructor({ buttonSelector, iconSelector, navbarIconSelector, endpoint }) {
+    constructor({ buttonSelector, navbarIndicator, navbarFavBtn, endpoint }) {
         this.buttons = document.querySelectorAll(buttonSelector);
-        this.icon = document.querySelector(iconSelector);
-        this.navbarIcon = document.querySelector(navbarIconSelector);
+        this.navbarFavBtn = document.querySelector(navbarFavBtn);
+        this.indicator = document.querySelector(navbarIndicator);
         this.endpoint = endpoint;
         const csrfMeta = document.querySelector('meta[name="csrf-token"]');
         this.csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
@@ -14,7 +14,7 @@ class FavoriteButton {
         this.init();
     }
 
-    init (){
+    init() {
         const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
         const hasFavorites = favorites.length > 0;
 
@@ -35,6 +35,9 @@ class FavoriteButton {
         // Optimistically update the UI
         const isFavorited = !button.querySelector('i').classList.contains('fas');
         this.toggleIcon(button, isFavorited);
+        if (isFavorited) {
+            this.animateIcon(button);
+        }
 
         try {
             const response = await axios({
@@ -68,19 +71,17 @@ class FavoriteButton {
         if (isFavorited) {
             icon.classList.remove('far');
             icon.classList.add('fas');
-            button.title = 'Remove from favorites';
         } else {
             icon.classList.remove('fas');
             icon.classList.add('far');
-            button.title = 'Add to favorites';
         }
     }
 
     toggleNavbarIcon(hasFavorites) {
         if (hasFavorites) {
-            this.navbarIcon.classList.remove('hidden');
-        }else {
-            this.navbarIcon.classList.add('hidden');
+            this.indicator.classList.remove('hidden');
+        } else {
+            this.indicator.classList.add('hidden');
         }
     }
 
@@ -96,11 +97,35 @@ class FavoriteButton {
             localStorage.removeItem('favorites');
         }
     }
+
+    animateIcon(button) {
+        if (window.innerWidth < 768) {
+            return;
+        }
+        const icon = button.querySelector('i').cloneNode(true);
+        const iconRect = button.getBoundingClientRect();
+        const navbarIconRect = this.navbarFavBtn.getBoundingClientRect();
+
+        icon.style.position = 'absolute';
+        icon.style.left = `${iconRect.left}px`;
+        icon.style.top = `${iconRect.top}px`;
+        document.body.appendChild(icon);
+
+        icon.animate([
+            { transform: `translate(0, 0)` },
+            { transform: `translate(${navbarIconRect.left - iconRect.left}px, ${navbarIconRect.top - iconRect.top}px)` }
+        ], {
+            duration: 700,
+            easing: 'ease-in-out'
+        }).onfinish = () => {
+            icon.remove();
+        };
+    }
 }
 
 new FavoriteButton({
     buttonSelector: '.favorite-button',
-    iconSelector: '#favorite-icon',
-    navbarIconSelector: '#navbar-favorite-icon',
+    navbarIndicator: '#navbar-favorite-indicator',
+    navbarFavBtn: '#navbar-favorite',
     endpoint: '/api/favorite'
 });
