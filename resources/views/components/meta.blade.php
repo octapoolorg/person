@@ -10,13 +10,10 @@
         }
 
         function setThemeMode() {
-            let defaultTheme = 'default';
-            const documentTheme = document.documentElement.getAttribute('data-theme');
+            let defaultTheme = document.documentElement.getAttribute('data-theme') || 'default';
             const themeName = localStorage.getItem('themeName');
             const themes = ['default', 'funky', 'girly', 'boyish','nature'];
-            if (themes.includes(documentTheme)) {
-                document.documentElement.setAttribute('data-theme', documentTheme);
-            } else if (themes.includes(themeName)) {
+            if (themes.includes(themeName)) {
                 document.documentElement.setAttribute('data-theme', themeName);
             } else {
                 document.documentElement.setAttribute('data-theme', defaultTheme);
