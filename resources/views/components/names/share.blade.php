@@ -1,7 +1,7 @@
 <!-- Social Share Section -->
 <section class="my-8 mb-10 px-6 py-10 shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800" id="share">
     <h2 class="mb-6 text-2xl font-semibold text-base-800 dark:text-base-100 lg:text-3xl">
-        Share {!! $name->name !!} with your friends
+        Share {!! $name->name !!} name information with your friends
     </h2>
     <p class="text-lg leading-relaxed text-base-700 dark:text-base-300 max-w-prose">
         Spread the word about {!! $name->name !!} and let your friends know about it. Share it on your favorite social media platforms.

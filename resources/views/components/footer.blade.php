@@ -128,7 +128,21 @@
                 <x-theme-switch />
             </div>
         </div>
+
+        <!-- Security Seals -->
+        <div class="flex flex-col lg:flex-row justify-center lg:gap-4 items-center mt-10">
+            <a href="https://transparencyreport.google.com/safe-browsing/search?url=identeez.com" title="Google Safe Browsing" target="_blank" class="mx-2 min-w-36">
+                <img src="{!! asset('static/images/google_safe_browsing.svg') !!}" alt="Google Safe Browsing" class="max-h-36">
+            </a>
+            <a href="https://safeweb.norton.com/report?url=identeez.com" title="Norton Secured" target="_blank" class="mx-2">
+                <img src="{!! asset('static/images/norton_seal.svg') !!}" alt="Norton Secured" class="max-h-12">
+            </a>
+            <a href="https://www.trustpilot.com/review/identeez.com" title="Norton Secured" target="_blank" class="mx-2 min-w-28">
+                <img src="{!! asset('static/images/trustpilot.svg') !!}" alt="Norton Secured" class="max-h-20">
+            </a>
+        </div>
     </div>
+
 </footer>
 
 @stack('scripts')

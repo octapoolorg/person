@@ -6,7 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Tools\NumerologyController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('names/{name}/comments', [CommentController::class, 'store'])->name('names.comments.store');
+Route::post('names/{name}/stories', [CommentController::class, 'store'])->name('names.stories');
 
 Route::match(['get','post'], 'tools/numerology/calculator', [NumerologyController::class, 'calculator'])->name('tools.numerology.calculator');
 

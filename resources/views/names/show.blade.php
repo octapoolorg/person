@@ -27,12 +27,12 @@
                         // 'quote',
                         // 'statuses',
                         'wallpapers',
-                        'abbreviations',
+                        'forms',
                         'usernames',
                         'good-luck',
                         'questions',
                         'share',
-                        'comments',
+                        'stories',
                     ];
                 @endphp
 

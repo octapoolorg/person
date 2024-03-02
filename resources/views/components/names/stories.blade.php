@@ -1,28 +1,33 @@
-<section class="px-6 py-10 w-full shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800" id="comments">
-    <h2 class="mb-6 text-3xl font-semibold text-base-800 dark:text-base-100 lg:text-4xl">Comments</h2>
+<section class="px-6 py-10 w-full shadow rounded-lg border dark:border-base-700 bg-surface dark:bg-base-800" id="stories">
+    <h2 class="mb-6 text-3xl font-semibold text-base-800 dark:text-base-100 lg:text-4xl">
+        Share a story about {!! $name->name !!}
+    </h2>
 
     <div class="space-y-6 max-w-4xl mx-auto">
         @foreach ($name->comments as $comment)
-        <article class="flex space-x-6 p-6 rounded-lg bg-surface dark:bg-base-900 shadow transition duration-300 ease-in-out hover:bg-base-50 dark:hover:bg-base-700">
-            <img src="{!! Avatar::create($comment->email)->toGravatar(['d' => 'identicon']) !!}" alt="Profile picture of {!! $comment->name !!}" class="w-16 h-16 rounded-full border-4 border-base-200 dark:border-base-700 object-cover">
+            <article
+                class="flex space-x-6 p-6 rounded-lg bg-surface dark:bg-base-900 shadow transition duration-300 ease-in-out hover:bg-base-50 dark:hover:bg-base-700">
+                <img src="{!! Avatar::create($comment->email)->toGravatar(['d' => 'identicon']) !!}" alt="Profile picture of {!! $comment->name !!}"
+                    class="w-16 h-16 rounded-full border-4 border-base-200 dark:border-base-700 object-cover">
 
-            <div class="flex-1">
-                <div class="flex justify-between items-center mb-1">
-                    <h3 class="text-lg font-bold text-base-900 dark:text-surface">{!! $comment->name !!}</h3>
-                    <span class="text-sm font-medium text-base-500 dark:text-base-400">{!! $comment->created_at->diffForHumans() !!}</span>
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="text-lg font-bold text-base-900 dark:text-surface">{!! $comment->name !!}</h3>
+                        <span
+                            class="text-sm font-medium text-base-500 dark:text-base-400">{!! $comment->created_at->diffForHumans() !!}</span>
+                    </div>
+                    <p class="text-base text-base-800 dark:text-base-300 leading-snug mb-2">
+                        {!! $comment->content !!}
+                    </p>
                 </div>
-                <p class="text-base text-base-800 dark:text-base-300 leading-snug mb-2">
-                    {!! $comment->content !!}
-                </p>
-            </div>
-        </article>
+            </article>
         @endforeach
     </div>
 
-    <!-- Comment Form -->
+    <!-- Sotry Form -->
     <div class="space-y-6 max-w-4xl mx-auto mt-10 rounded-lg dark:shadow-none">
         <h3 class="text-xl font-medium text-base-800 dark:text-base-100 mb-4">
-            Leave a Comment:
+            Share your story
         </h3>
 
         @if ($errors->any())
@@ -36,7 +41,7 @@
             </div>
         @endif
 
-        <form action="{!! route('names.comments.store', $name) !!}" method="POST">
+        <form action="{!! route('names.stories', $name) !!}" method="POST">
             @csrf
             <div class="space-y-4">
                 <div>
@@ -64,13 +69,21 @@
                         placeholder="Add a comment..." required></textarea>
                 </div>
 
+
+
+                <!-- Data Privacy Notice -->
+                <div class="mt-6 text-sm text-base-500 dark:text-base-400">
+                    By submitting this form, you agree to our <a href="/pages/privacy-policy">Privacy Policy</a>.
+                </div>
+
                 <div class="flex justify-end">
                     <button type="submit"
                         class="py-2 px-4 bg-primary-600 hover:bg-primary-700 text-surface font-semibold rounded-md shadow-sm">
-                        Post Comment
+                        Submit
                     </button>
                 </div>
             </div>
         </form>
     </div>
+
 </section>
