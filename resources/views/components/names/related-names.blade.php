@@ -55,7 +55,7 @@
                 @if ($name->siblingNames->isNotEmpty())
                 <!-- Sibling Names Section -->
                 <div class="bg-base-50 dark:bg-base-700 rounded-lg shadow px-5 py-7">
-                    <h3 class="text-2xl font-semibold text-base-600 dark:text-base-200">Sibling Names</h3>
+                    <h3 class="text-2xl font-semibold text-base-800 dark:text-base-200">Sibling Names</h3>
                     <p class="mt-3 text-base-600 dark:text-base-200">
                         Explore names that complement the unique personality of {!! $name->name !!}'s siblings.
                         Perfect for finding a harmonious balance in your family.
