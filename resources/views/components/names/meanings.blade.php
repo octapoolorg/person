@@ -57,7 +57,7 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#origin" aria-expanded="false" aria-controls="origin">
-                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
+                    <span class="text-lg font-semibold text-base-700 dark:text-base-200">
                         Meanings by Origin
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -102,7 +102,7 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#meanings-list" aria-expanded="false" aria-controls="meanings-list">
-                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
+                    <span class="text-lg font-semibold text-base-700 dark:text-base-200">
                         Other Meanings
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -132,7 +132,7 @@
                 <button type="button"
                     class="flex items-center justify-between w-full py-4 px-5 font-medium rtl:text-right text-base-500 border border-t-0 border-base-200 dark:border-base-700 dark:text-base-400 gap-3 bg-surface dark:bg-base-800"
                     data-accordion-target="#external-links" aria-expanded="false" aria-controls="external-links">
-                    <span class="text-lg font-semibold text-base-800 dark:text-base-200">
+                    <span class="text-lg font-semibold text-base-700 dark:text-base-200">
                         External links
                     </span>
                     <i data-accordion-icon class="fas fa-chevron-down" aria-hidden="true"></i>
