@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Name;
+use App\Services\Name\DetailService;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Name $name): RedirectResponse
+    private DetailService $detailService;
+
+    public function __construct(DetailService $detailService)
     {
+        $this->detailService = $detailService;
+    }
+
+    public function store(Request $request, string $nameSlug): RedirectResponse
+    {
+        $name = $this->detailService->fetchNameData($nameSlug);
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',

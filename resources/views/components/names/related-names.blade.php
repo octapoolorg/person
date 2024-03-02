@@ -9,10 +9,6 @@
                 Explore More About {!! $name->name !!} Name
             </h2>
 
-            <p class="mt-3 text-base-600 dark:text-base-400">
-                Discover more about {!! $name->name !!} name, common sibling names, nicknames, and similar names.
-            </p>
-
             <div class="mt-12 space-y-12">
 
                 @if ($name->nicknames->isNotEmpty())

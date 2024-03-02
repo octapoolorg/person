@@ -62,11 +62,12 @@
                 </div>
 
                 <div>
-                    <label for="comment"
-                        class="block text-sm font-medium text-base-700 dark:text-base-100">Comment:</label>
-                    <textarea id="comment" name="content" rows="4"
+                    <label for="content" class="block text-sm font-medium text-base-700 dark:text-base-100">
+                        Story:
+                    </label>
+                    <textarea id="content" name="content" rows="4"
                         class="mt-1 p-2 w-full border border-base-300 dark:border-base-500 focus:bg-surface placeholder:text-base-700 dark:placeholder:text-base-400 focus:border-primary-500 dark:focus:border-primary-500 focus:ring-0 rounded-md shadow-sm dark:text-base-100 bg-base-100 dark:bg-base-800"
-                        placeholder="Add a comment..." required></textarea>
+                        placeholder="Your story ..." required></textarea>
                 </div>
 
 
