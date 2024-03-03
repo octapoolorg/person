@@ -72,6 +72,10 @@ Route::get('static/images/signature/style/{stlye}/{name}.jpg', function ($style,
     return redirect()->route('names.signature', [$style, $name], 301);
 });
 
+Route::get('static/images/wallpaper/name/{style}/{name}.jpg', function ($style, $name) {
+    return redirect()->route('names.wallpaper', [$style, $name], 301);
+});
+
 Route::get('static/images/signature/{name}/{font}.jpg', function ($name, $font) {
     return redirect()->route('names.signature', [$font, $name], 301);
 });
