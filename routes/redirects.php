@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::redirect('names', 'names/search', 301);
+Route::redirect('names/random', 'names/search', 301);
 
 
 // redirect all names ending with -1 to the same name without the -1
