@@ -1,0 +1,9 @@
+#Editor&Publisher trust.txt file
+# For more information visit identeez.com
+
+# social channels:
+social=https://www.facebook.com/identeezofficial
+social=https://pinterest.com/identeez
+
+# contact information:
+contact=https://identeez.com/page/contact-us
