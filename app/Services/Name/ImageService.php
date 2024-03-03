@@ -46,6 +46,8 @@ class ImageService
     {
         $style = $this->wallpaperStyles[$style] ?? abort(404);
 
+        $name = fix_name($name);
+
         $style = array_merge($style, [
             'seo_title' => 'Name Wallpaper',
         ]);
