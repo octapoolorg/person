@@ -40,13 +40,17 @@ Route::get('/category/{category}', function (string $category) {
     return redirect()->route('names.search', ['category' => $category], 301);
 })->where('category', '.*');
 
+Route::get('/names/category/{category}', function (string $category) {
+    return redirect()->route('names.search', ['category' => $category], 301);
+})->where('category', '.*');
+
 Route::get('/origin/{origin}', function (string $origin) {
     return redirect()->route('names.search', ['origin' => $origin], 301);
 })->where('origin', '.*');
 
-Route::get('sitemap.xml', function () {
-    return redirect('sitemap_index.xml', 301);
-});
+Route::get('/names/origin/{origin}', function (string $origin) {
+    return redirect()->route('names.search', ['origin' => $origin], 301);
+})->where('origin', '.*');
 
 
 
