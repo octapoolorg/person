@@ -83,3 +83,8 @@ Route::get('static/images/signature/{name}/{font}.jpg', function ($name, $font) 
 Route::get('/static/images/name/{name}.jpg', function ($name) {
     return redirect()->route('names.wallpaper', ['funky', $name], 301);
 });
+
+
+Route::get('/names/starting/{letter}', function ($letter) {
+    return redirect()->route('names.search', ['q' => $letter], 301);
+});
