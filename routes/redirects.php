@@ -22,12 +22,11 @@ use Illuminate\Support\Facades\Route;
  */
 
 
-Route::redirect('names', 'names/search', 301);
-Route::redirect('names/random', 'names/search', 301);
+Route::redirect('names', '/names/search', 301);
+Route::redirect('names/random', '/names/search', 301);
 
 
 // redirect all names ending with -1 to the same name without the -1
-// like "name/alex-1" to "name/alex"
 Route::get('/name/{any}-1', function ($any) {
     return redirect("name/$any" , 301);
 })->where('any', '.*');
