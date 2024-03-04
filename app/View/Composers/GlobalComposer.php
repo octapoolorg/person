@@ -40,11 +40,11 @@ class GlobalComposer
                 ->withoutGlobalScopes()
                 ->popular();
             }])->having('names_count', '>=', 5000)->orderBy('name')->get();
-        });
+        }, now()->addMonth());
 
         $genders = cache_remember('genders', function () {
             return $this->name->distinct()->pluck('gender');
-        });
+        }, now()->addMonth());
 
         $haveFavorites = request()->cookie('favorites') ? true : false;
 
