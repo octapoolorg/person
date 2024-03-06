@@ -80,7 +80,7 @@
         {{-- <script type="text/javascript" async defer data-pin-hover="true"
                 src="//assets.pinterest.com/js/pinit.js"></script> --}}
 
-        <div class="fixed bottom-20 right-0 z-10 transform origin-top-right rotate-90">
+        <div class="fixed bottom-40 right-0 z-10 transform origin-top-right rotate-90">
             <a href="https://www.surveymonkey.com/r/L6ZFDD7" target="_blank"
                 class="inline-flex items-center gap-x-1 bg-base-500 hover:bg-base-600 dark:bg-base-400 dark:hover:bg-base-500 text-surface text-xs px-2 py-1 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-base-500 dark:focus:ring-base-400 transition duration-300">
                 <i class="fas fa-comment-alt"></i>
