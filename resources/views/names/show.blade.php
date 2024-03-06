@@ -71,6 +71,10 @@
 @endsection
 
 @production
+    @pushOnce('head_tags')
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5845517826660589"
+    crossorigin="anonymous"></script>
+    @endPushOnce
     @pushonce('scripts')
         <script type="text/javascript" async defer data-pin-hover="true"
                 src="//assets.pinterest.com/js/pinit.js"></script>
