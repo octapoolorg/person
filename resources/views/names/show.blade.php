@@ -77,8 +77,8 @@
     @endPushOnce
 
     @pushonce('scripts')
-        <script type="text/javascript" async defer data-pin-hover="true"
-                src="//assets.pinterest.com/js/pinit.js"></script>
+        {{-- <script type="text/javascript" async defer data-pin-hover="true"
+                src="//assets.pinterest.com/js/pinit.js"></script> --}}
 
         <div class="fixed bottom-20 right-0 z-10 transform origin-top-right rotate-90">
             <a href="https://www.surveymonkey.com/r/L6ZFDD7" target="_blank"
