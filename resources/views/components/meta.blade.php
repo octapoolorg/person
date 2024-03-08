@@ -30,7 +30,9 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
 <meta name="msvalidate.01" content="EDC406416E2FB3CDAC4827429E67472A" />
+<meta name="google-adsense-account" content="ca-pub-5845517826660589">
 
 @stack('head')
 
