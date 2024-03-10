@@ -28,7 +28,6 @@
                         'signatures',
                         // 'quote',
                         // 'statuses',
-                        'wallpapers',
                         'usernames',
                         'questions',
                         'share',
